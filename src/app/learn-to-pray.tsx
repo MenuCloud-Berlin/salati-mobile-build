@@ -32,6 +32,7 @@ import { resolveText } from '@/features/guides/hooks';
 import { speakArabic } from '@/features/learn/audio';
 import {
   buildSteps,
+  LEARN_CORE_TEXTS,
   POSTURE_ICON,
   PRAY_ALONG_UI,
   PRAYERS,
@@ -51,14 +52,11 @@ type Locale = ReturnType<typeof useTranslation>['locale'];
 // Ablauf inkl. beider kurzer Suren.
 const DEFAULT_PRAYER: PrayerId = 'fajr';
 
-// Die beiden kurzen Suren einmalig aus den geprüften Fajr-Schritten ziehen
-// (Rak'ah 1 → Al-Ikhlas, Rak'ah 2 → Al-Kawthar). shortSurahStep ist der einzige
-// Qiyam-Schritt mit einzeiligem Arabisch (Al-Fatiha ist mehrzeilig, per '\n'
-// zusammengesetzt; Qunut hat keinen arabischen Text). So bleibt prayers.ts die
-// einzige Quelle — kein doppelter religiöser Text in dieser Datei.
-const SHORT_SURAHS: PrayStep[] = buildSteps('fajr').filter(
-  (s) => s.posture === 'qiyam' && !!s.arabic && !s.arabic.includes('\n'),
-);
+// Kern-Texte, die immer (unabhängig vom gewählten Gebet) gezeigt werden: die
+// KOMPLETTE Al-Fatiha (7 Verse) plus die beiden kürzesten Suren Al-Ikhlas und
+// Al-Kawthar. Direkt aus prayers.ts (LEARN_CORE_TEXTS) — prayers.ts bleibt die
+// einzige Quelle, kein doppelter religiöser Text in dieser Datei.
+const CORE_TEXTS: PrayStep[] = LEARN_CORE_TEXTS;
 
 export default function LearnToPrayScreen() {
   const { t, locale } = useTranslation();
@@ -162,13 +160,13 @@ export default function LearnToPrayScreen() {
               <View style={[styles.surahHeading, rtl && styles.rowReverse]}>
                 <IconSymbol name="book" size={18} color={colors.accent} />
                 <ThemedText type="subtitle" style={styles.surahHeadingText}>
-                  {t('learnToPray.surahsTitle')}
+                  {t('learnToPray.coreTitle')}
                 </ThemedText>
               </View>
               <ThemedText type="small" themeColor="textSecondary" style={[styles.surahSub, rtl && styles.textRtl]}>
-                {t('learnToPray.surahsSubtitle')}
+                {t('learnToPray.coreSubtitle')}
               </ThemedText>
-              {SHORT_SURAHS.map((sura, i) => (
+              {CORE_TEXTS.map((sura, i) => (
                 <SurahCard
                   key={i}
                   step={sura}
@@ -202,6 +200,37 @@ export default function LearnToPrayScreen() {
         />
       </SafeAreaView>
     </ThemedView>
+  );
+}
+
+// Arabisch verse-für-Vers rendern: mehrzeilige Texte (Al-Fatiha, per '\n'
+// zusammengesetzt) bekommen so jeden Vers in einer eigenen Zeile; einzeilige
+// Suren bleiben eine Zeile. Nichts wird abgeschnitten.
+function ArabicLines({ text }: { text: string }) {
+  return (
+    <>
+      {text.split('\n').map((line, i) => (
+        <ThemedText key={i} style={styles.arabicText}>
+          {line}
+        </ThemedText>
+      ))}
+    </>
+  );
+}
+
+function TranslitLines({ text, rtl }: { text: string; rtl: boolean }) {
+  return (
+    <>
+      {text.split('\n').map((line, i) => (
+        <ThemedText
+          key={i}
+          type="default"
+          themeColor="accent"
+          style={[styles.translit, rtl && styles.textRtl]}>
+          {line}
+        </ThemedText>
+      ))}
+    </>
   );
 }
 
@@ -272,16 +301,12 @@ function StepCard({
             )}
             <IconSymbol name="volume-high" size={18} color={colors.accent} />
           </View>
-          <ThemedText style={styles.arabicText}>{step.arabic}</ThemedText>
+          <ArabicLines text={step.arabic} />
         </Pressable>
       )}
 
       {/* Lateinische Umschrift */}
-      {step.transliteration && (
-        <ThemedText type="default" themeColor="accent" style={[styles.translit, rtl && styles.textRtl]}>
-          {step.transliteration}
-        </ThemedText>
-      )}
+      {step.transliteration && <TranslitLines text={step.transliteration} rtl={rtl} />}
 
       {/* Übersetzung */}
       <ThemedText type="default" style={[styles.translation, rtl && styles.textRtl]}>
@@ -336,14 +361,10 @@ function SurahCard({
             <View />
             <IconSymbol name="volume-high" size={18} color={colors.accent} />
           </View>
-          <ThemedText style={styles.arabicText}>{step.arabic}</ThemedText>
+          <ArabicLines text={step.arabic} />
         </Pressable>
       )}
-      {step.transliteration && (
-        <ThemedText type="default" themeColor="accent" style={[styles.translit, rtl && styles.textRtl]}>
-          {step.transliteration}
-        </ThemedText>
-      )}
+      {step.transliteration && <TranslitLines text={step.transliteration} rtl={rtl} />}
       <ThemedText type="default" style={[styles.translation, rtl && styles.textRtl]}>
         {resolveText(step.translation, locale)}
       </ThemedText>

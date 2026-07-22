@@ -70,6 +70,9 @@ export interface PrayStep {
   repeat?: string;
   /** Rak'ah-Nummer (für die Fortschrittsanzeige), fehlt bei Rahmen-Schritten. */
   rakah?: number;
+  /** true für die kurzen Suren-Schritte (Al-Ikhlas/Al-Kawthar), z. B. für die
+   *  Lern-Ansicht, die Kern-Texte gesondert präsentiert. Rein additiv. */
+  isSurah?: boolean;
 }
 
 export interface PrayerDef {
@@ -314,6 +317,7 @@ function shortSurahStep(rakah: number): PrayStep {
   return {
     posture: 'qiyam',
     rakah,
+    isSurah: true,
     label: {
       de: `Kurze Sure – ${name}`,
       en: `Short surah – ${name}`,
@@ -735,6 +739,33 @@ export function buildSteps(id: PrayerId): PrayStep[] {
 
   return steps;
 }
+
+// ── Kern-Texte für die Lern-Ansicht ("Beten lernen") ─────────────────────────
+// Die drei Texte, die Anfänger als Erstes vollständig können müssen: die
+// komplette Al-Fatiha (7 Verse, in jeder Rak'ah Pflicht) sowie die beiden
+// kürzesten Suren Al-Ikhlas und Al-Kawthar. Alle drei stammen 1:1 aus den
+// oben geprüften Konstanten/Schritten — hier wird nichts dupliziert.
+const AL_FATIHA_LABEL: LocalizedText = {
+  de: 'Al-Fatiha – die Eröffnende (Pflicht in jeder Rak’ah)',
+  en: 'Al-Fatiha – the Opening (required in every rakah)',
+  tr: 'Fâtiha – açılış suresi (her rekâtta farz)',
+  ar: 'الفاتحة – فاتحة الكتاب (ركن في كل ركعة)',
+  es: 'Al-Fatiha – la Apertura (obligatoria en cada raka)',
+  fr: 'Al-Fatiha – l’Ouverture (obligatoire à chaque rak’a)',
+};
+
+export const LEARN_CORE_TEXTS: PrayStep[] = [
+  {
+    posture: 'qiyam',
+    isSurah: true,
+    label: AL_FATIHA_LABEL,
+    arabic: AL_FATIHA_ARABIC,
+    transliteration: AL_FATIHA_TRANSLIT,
+    translation: AL_FATIHA_TRANSLATION,
+  },
+  shortSurahStep(1), // Al-Ikhlas
+  shortSurahStep(2), // Al-Kawthar
+];
 
 // ── UI-Texte (inline lokalisiert, keine i18n-Keys → keine locales/*.json-Änderung,
 //    resolveText fällt für nicht abgedeckte Sprachen auf en/de zurück, wie bei

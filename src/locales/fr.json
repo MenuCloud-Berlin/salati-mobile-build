@@ -614,6 +614,8 @@
     },
     "location": "Position",
     "current": "Actuelle",
+    "search": "Rechercher dans les réglages",
+    "searchNoResults": "Aucun réglage trouvé",
     "useMyLocation": "Utiliser ma position actuelle",
     "locating": "Localisation…",
     "searchCity": "Rechercher une ville…",
@@ -2123,8 +2125,8 @@
     "subtitle": "Apprends tranquillement : arabe, translittération et traduction à chaque étape.",
     "intro": "Comment prier, étape par étape. Prends ton temps : chaque étape montre le texte arabe, la translittération latine et la traduction. Touche le texte arabe pour l’écouter. Pour suivre pendant la prière, utilise « Prier pas à pas ».",
     "pickPrompt": "Quelle prière veux-tu apprendre ?",
-    "surahsTitle": "Les deux courtes sourates",
-    "surahsSubtitle": "Al-Ikhlas et Al-Kawthar : les premières sourates que l’on mémorise."
+    "coreTitle": "Al-Fatiha et courtes sourates",
+    "coreSubtitle": "La sourate Al-Fatiha complète (7 versets) ainsi qu’Al-Ikhlas et Al-Kawthar : les premiers textes que l’on mémorise."
   },
   "widgetConfig": {
     "title": "Configurer le widget",

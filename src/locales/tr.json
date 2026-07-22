@@ -614,6 +614,8 @@
     },
     "location": "Konum",
     "current": "Şu an",
+    "search": "Ayarlarda ara",
+    "searchNoResults": "Ayar bulunamadı",
     "useMyLocation": "Mevcut konumumu kullan",
     "locating": "Konum alınıyor…",
     "searchCity": "Şehir ara…",
@@ -2123,8 +2125,8 @@
     "subtitle": "Sakince öğren – her adım için Arapça, okunuş ve anlam.",
     "intro": "Adım adım nasıl namaz kılınır. Acele etme: Her adımda Arapça metin, Latin harfli okunuş ve anlamı gösterilir. Dinlemek için Arapça metne dokun. Namaz sırasında eşlik etmek için „Namaza eşlik et\" bölümünü kullan.",
     "pickPrompt": "Hangi namazı öğrenmek istersin?",
-    "surahsTitle": "İki kısa sure",
-    "surahsSubtitle": "İhlâs ve Kevser – ilk ezberlenen surelerdir."
+    "coreTitle": "Fâtiha ve kısa sureler",
+    "coreSubtitle": "Tam Fâtiha (7 ayet) ile İhlâs ve Kevser – ilk ezberlenen metinlerdir."
   },
   "widgetConfig": {
     "title": "Widget'ı ayarla",

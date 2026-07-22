@@ -624,6 +624,8 @@
     },
     "location": "Standort",
     "current": "Aktuell",
+    "search": "Einstellungen durchsuchen",
+    "searchNoResults": "Keine Einstellungen gefunden",
     "useMyLocation": "Aktuellen Standort verwenden",
     "locating": "Ortung läuft…",
     "searchCity": "Stadt suchen…",
@@ -2143,8 +2145,8 @@
     "subtitle": "In Ruhe lernen – Arabisch, Umschrift und Übersetzung für jeden Schritt.",
     "intro": "So betest du – Schritt für Schritt. Nimm dir Zeit: Jeder Schritt zeigt den arabischen Wortlaut, die lateinische Umschrift und die Übersetzung. Tippe auf den arabischen Text, um ihn zu hören. Zum Mitsprechen während des Gebets nutze „Gebet mitbeten\".",
     "pickPrompt": "Welches Gebet möchtest du lernen?",
-    "surahsTitle": "Die beiden kurzen Suren",
-    "surahsSubtitle": "Al-Ikhlas und Al-Kawthar – die ersten Suren, die man auswendig lernt."
+    "coreTitle": "Al-Fatiha & kurze Suren",
+    "coreSubtitle": "Die komplette Al-Fatiha (7 Verse) sowie Al-Ikhlas und Al-Kawthar – die ersten Texte, die man auswendig lernt."
   },
   "widgetConfig": {
     "title": "Widget einrichten",

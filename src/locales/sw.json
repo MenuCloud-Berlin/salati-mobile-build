@@ -614,6 +614,8 @@
     },
     "location": "Eneo",
     "current": "Sasa",
+    "search": "Tafuta mipangilio",
+    "searchNoResults": "Hakuna mipangilio iliyopatikana",
     "useMyLocation": "Tumia eneo la sasa",
     "locating": "Inatafuta mahali…",
     "searchCity": "Tafuta jiji…",
@@ -2123,8 +2125,8 @@
     "subtitle": "Jifunze kwa utulivu — Kiarabu, matamshi na tafsiri kwa kila hatua.",
     "intro": "Jinsi ya kusali, hatua kwa hatua. Chukua muda wako: kila hatua inaonyesha maandishi ya Kiarabu, matamshi ya Kilatini na tafsiri yake. Gusa maandishi ya Kiarabu ili kuyasikia. Kufuatana wakati wa sala, tumia hali ya kusali pamoja.",
     "pickPrompt": "Ungependa kujifunza sala gani?",
-    "surahsTitle": "Sura mbili fupi",
-    "surahsSubtitle": "Al-Ikhlas na Al-Kawthar — sura za kwanza kuhifadhiwa."
+    "coreTitle": "Al-Fatiha na sura fupi",
+    "coreSubtitle": "Al-Fatiha kamili (aya 7) pamoja na Al-Ikhlas na Al-Kawthar — matini za kwanza kuhifadhiwa."
   },
   "widgetConfig": {
     "title": "Sanidi wijeti",

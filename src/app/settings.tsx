@@ -3,10 +3,11 @@ import Constants from 'expo-constants';
 import * as DocumentPicker from 'expo-document-picker';
 import { router } from 'expo-router';
 import * as Sharing from 'expo-sharing';
-import { useEffect, useRef, useState } from 'react';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { Alert, Linking, Platform, Pressable, ScrollView, StyleSheet, TextInput, View } from 'react-native';
 
 import { SwitchRow } from '@/components/settings/switch-row';
+import { SettingsSearchBar } from '@/components/settings/search-bar';
 import { azanSource } from '@/features/prayer-times/azan';
 import { markBatteryHintShown, wasBatteryHintShown } from '@/features/prayer-times/battery-hint';
 import { checkExactAlarmPermission } from '@/features/prayer-times/exact-alarm';
@@ -133,6 +134,99 @@ const THEME_OPTIONS: { id: 'auto' | 'light' | 'dark'; labelKey: string }[] = [
   { id: 'light', labelKey: 'settings.themeLight' },
   { id: 'dark', labelKey: 'settings.themeDark' },
 ];
+
+// Such-Index für die Live-Filterung: bildet die gerenderte Reihenfolge der
+// Gruppen und Sektionen 1:1 ab. `id` ist der i18n-Schlüssel des Sektions-Titels
+// (identisch zum an <Section label=…> übergebenen Titel) und dient zugleich als
+// durchsuchbarer Begriff. `keys` sind i18n-Schlüssel (bzw. reine Literale wie
+// Gebetsnamen) — sie werden zur Laufzeit via t() in die AKTUELLE Sprache
+// übersetzt und dann gegen die Suchanfrage geprüft, damit die Suche in jeder
+// Sprache die tatsächlich angezeigten Labels trifft. Trifft eine Sektion, legt
+// der Provider ihren übersetzten Titel (t(id)) + den Gruppentitel ins Sichtbar-
+// Set; Section/GroupHeader lesen das per Context und rendern sich sonst zu null.
+type SearchGroup = { group: string; sections: { id: string; keys: string[] }[] };
+const SETTINGS_SEARCH_INDEX: SearchGroup[] = [
+  {
+    group: 'settings.groups.prayer',
+    sections: [
+      { id: 'settings.location', keys: ['settings.location', 'settings.useMyLocation', 'settings.searchCity', 'settings.savedLocations.title', 'settings.savedLocations.saveCurrent'] },
+      { id: 'settings.travel.title', keys: ['settings.travel.title', 'settings.travel.enable', 'settings.travel.setHome'] },
+      { id: 'settings.method', keys: ['settings.method'] },
+      { id: 'settings.asrSchool', keys: ['settings.asrSchool', 'settings.asrEarlier', 'settings.asrLater'] },
+      { id: 'settings.iqama.title', keys: ['settings.iqama.title', 'settings.iqama.enable'] },
+      { id: 'settings.timeFormat', keys: ['settings.timeFormat', 'settings.format24', 'settings.format12'] },
+    ],
+  },
+  {
+    group: 'settings.groups.notifications',
+    sections: [
+      { id: 'settings.notificationsOverview.navLabel', keys: ['settings.notificationsOverview.navLabel', 'settings.notificationsOverview.navHint'] },
+      { id: 'settings.notifications', keys: ['settings.notifications', 'Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha', 'settings.notifPrefs.sound', 'settings.notifPrefs.vibrate', 'settings.notifPrefs.headsUp'] },
+      { id: 'settings.lateNotif.title', keys: ['settings.lateNotif.title', 'settings.lateNotif.exactAlarm', 'settings.lateNotif.battery'] },
+      { id: 'settings.azan.title', keys: ['settings.azan.title'] },
+      { id: 'settings.preAdhan.title', keys: ['settings.preAdhan.title', 'settings.preAdhan.enable'] },
+      { id: 'settings.adhkar.title', keys: ['settings.adhkar.title', 'settings.adhkar.morning', 'settings.adhkar.evening'] },
+      { id: 'settings.reviewReminder.title', keys: ['settings.reviewReminder.title', 'settings.reviewReminder.enable'] },
+      { id: 'settings.verseOfDay.title', keys: ['settings.verseOfDay.title', 'settings.verseOfDay.enable'] },
+      { id: 'settings.jumuah.title', keys: ['settings.jumuah.title', 'settings.jumuah.enable'] },
+      { id: 'settings.sunnah.title', keys: ['settings.sunnah.title', 'settings.sunnah.duha', 'settings.sunnah.tahajjud', 'settings.sunnah.witr'] },
+      { id: 'settings.weeklySummary.title', keys: ['settings.weeklySummary.title', 'settings.weeklySummary.enable'] },
+      { id: 'settings.udhiyah.title', keys: ['settings.udhiyah.title', 'settings.udhiyah.enable'] },
+    ],
+  },
+  {
+    group: 'settings.groups.quran',
+    sections: [
+      { id: 'nav.quran', keys: ['nav.quran', 'quran.chooseReciter', 'quran.chooseTranslation'] },
+      { id: 'settings.fontSize', keys: ['settings.fontSize', 'settings.fontSmall', 'settings.fontMedium', 'settings.fontLarge', 'settings.fontXLarge'] },
+      { id: 'settings.offlinePack.title', keys: ['settings.offlinePack.title', 'settings.offlinePack.download'] },
+      { id: 'settings.reciterAudioPack.title', keys: ['settings.reciterAudioPack.title', 'settings.reciterAudioPack.chooseReciter'] },
+      { id: 'settings.storage.title', keys: ['settings.storage.title'] },
+    ],
+  },
+  {
+    group: 'settings.groups.language',
+    sections: [
+      { id: 'settings.language', keys: ['settings.language'] },
+      { id: 'settings.hadithLanguage', keys: ['settings.hadithLanguage'] },
+      { id: 'settings.appearance', keys: ['settings.appearance', 'settings.themeAuto', 'settings.themeLight', 'settings.themeDark'] },
+      { id: 'settings.display.title', keys: ['settings.display.title', 'settings.display.transliteration', 'settings.display.isolatedLetters'] },
+      { id: 'settings.appIcon.title', keys: ['settings.appIcon.title'] },
+      { id: 'settings.dashboard.navLabel', keys: ['settings.dashboard.navLabel', 'settings.dashboard.navHint'] },
+      { id: 'settings.widgets.title', keys: ['settings.widgets.title', 'widgets.themeTitle'] },
+    ],
+  },
+  {
+    group: 'settings.groups.learning',
+    sections: [
+      { id: 'settings.pace.title', keys: ['settings.pace.title', 'settings.pace.freeUnlock'] },
+      { id: 'settings.exercise.title', keys: ['settings.exercise.title', 'settings.exercise.mixed', 'settings.exercise.audio', 'settings.exercise.reading', 'settings.exercise.speech', 'settings.recitationModel.title'] },
+    ],
+  },
+  {
+    group: 'settings.groups.data',
+    sections: [
+      { id: 'settings.backup.title', keys: ['settings.backup.title', 'settings.backup.exportButton', 'settings.backup.importButton', 'sync.title'] },
+      { id: 'settings.support.title', keys: ['settings.support.title', 'settings.support.copyReport', 'settings.support.replayOnboarding'] },
+    ],
+  },
+  {
+    group: 'settings.groups.about',
+    sections: [
+      { id: 'settings.legal', keys: ['settings.legal', 'nav.impressum', 'nav.datenschutz', 'nav.agb', 'settings.legalFeedback', 'settings.legalVersion'] },
+    ],
+  },
+];
+
+// Sichtbarkeits-Context der Live-Suche: `null` = keine Suche aktiv (alles
+// sichtbar), sonst ein Set der übersetzten Titel, die zur aktuellen Anfrage
+// passen. Section/GroupHeader lesen das und rendern sich zu `null`, wenn ihr
+// Titel nicht enthalten ist — so bleibt die JSX-Struktur unverändert.
+const SettingsFilterContext = createContext<Set<string> | null>(null);
+function useSectionVisible(title: string): boolean {
+  const visible = useContext(SettingsFilterContext);
+  return visible === null || visible.has(title);
+}
 
 export default function SettingsScreen() {
   const { settings, update, reset } = useSettings();
@@ -502,13 +596,49 @@ export default function SettingsScreen() {
     ? editionDisplayName(currentTranslationEdition)
     : settings.quranTranslation;
 
+  // Live-Suche über alle Einstellungen (iOS-artig): filtert Sektionen und
+  // Gruppen-Überschriften anhand ihrer in die aktuelle Sprache übersetzten
+  // Titel + Unter-Labels (SETTINGS_SEARCH_INDEX). Statt jede der ~35 Sektionen
+  // im JSX einzeln mit einem Gate zu umschließen, stellen wir das Ergebnis als
+  // Set der SICHTBAREN übersetzten Titel per Context bereit: Section/GroupHeader
+  // rendern sich selbst zu `null`, wenn ihr Titel nicht im Set ist. Leeres Feld
+  // => `null` = alles sichtbar. Auswertung pro Render günstig, kein useMemo.
+  const [search, setSearch] = useState('');
+  const query = search.trim().toLowerCase();
+  let visibleTitles: Set<string> | null = null;
+  if (query) {
+    visibleTitles = new Set<string>();
+    for (const g of SETTINGS_SEARCH_INDEX) {
+      const groupMatches = t(g.group).toLowerCase().includes(query);
+      const matchedSections = g.sections.filter(
+        (s) => groupMatches || s.keys.some((k) => t(k).toLowerCase().includes(query)),
+      );
+      if (matchedSections.length > 0) {
+        visibleTitles.add(t(g.group));
+        for (const s of matchedSections) visibleTitles.add(t(s.id));
+      }
+    }
+  }
+  const filterVisible = visibleTitles;
+  const noResults = filterVisible !== null && filterVisible.size === 0;
+
   return (
+    <SettingsFilterContext.Provider value={filterVisible}>
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <ScrollView ref={scrollRef} contentContainerStyle={styles.scroll}>
           <ThemedText type="title" style={styles.title}>
             {t('nav.settings')}
           </ThemedText>
+
+          <SettingsSearchBar value={search} onChangeText={setSearch} />
+
+          {noResults && (
+            <EmptyState
+              icon="search-outline"
+              title={t('settings.searchNoResults')}
+            />
+          )}
 
           <GroupHeader label={t('settings.groups.prayer')} rtl={rtl} />
 
@@ -1517,13 +1647,15 @@ export default function SettingsScreen() {
           </Section>
           </AnimatedListItem>
 
-          <Pressable
-            onPress={reset}
-            style={({ pressed }) => [Platform.OS === 'web' ? styles.pressableWeb : undefined, pressed && styles.rowPressed]}>
-            <ThemedText type="small" themeColor="textSecondary" style={styles.reset}>
-              {t('settings.resetDefaults')}
-            </ThemedText>
-          </Pressable>
+          {!query && (
+            <Pressable
+              onPress={reset}
+              style={({ pressed }) => [Platform.OS === 'web' ? styles.pressableWeb : undefined, pressed && styles.rowPressed]}>
+              <ThemedText type="small" themeColor="textSecondary" style={styles.reset}>
+                {t('settings.resetDefaults')}
+              </ThemedText>
+            </Pressable>
+          )}
         </ScrollView>
 
         <EditionPicker
@@ -1573,6 +1705,7 @@ export default function SettingsScreen() {
         />
       </SafeAreaView>
     </ThemedView>
+    </SettingsFilterContext.Provider>
   );
 }
 
@@ -1583,6 +1716,10 @@ export default function SettingsScreen() {
  * beschriftete, scanbare Hierarchie-Ebene ÜBER den Sektions-Labels.
  */
 function GroupHeader({ label, rtl }: { label: string; rtl: boolean }) {
+  // Bei aktiver Suche nur einblenden, wenn mindestens eine Sektion der Gruppe
+  // trifft (der Provider nimmt den Gruppen-Titel dann in das Sichtbar-Set auf).
+  const visible = useSectionVisible(label);
+  if (!visible) return null;
   return (
     <View style={[styles.groupHeader, rtl && styles.groupHeaderRtl]}>
       <ThemedText type="smallBold" style={[styles.groupHeaderText, rtl && styles.rtlText]}>
@@ -1606,6 +1743,12 @@ function Section({
   const colors = Colors[scheme];
   const { locale } = useTranslation();
   const rtl = isRtlLocale(locale);
+  // Live-Suche: Sektion verschwindet, wenn ihr Titel nicht ins Treffer-Set des
+  // Providers fällt. Der umgebende AnimatedListItem-Wrapper bleibt dann leer
+  // (0 Höhe) — deshalb trägt die Abstands-Logik unten `marginBottom` an der
+  // Sektion selbst statt am (früheren) `gap` des ScrollView-Containers.
+  const visible = useSectionVisible(label);
+  if (!visible) return null;
   return (
     <View style={styles.section}>
       <View style={[styles.sectionHeader, rtl && styles.sectionHeaderRtl]}>
@@ -1722,7 +1865,11 @@ const styles = StyleSheet.create({
   pressed: { opacity: 0.6 },
   container: { flex: 1 },
   safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
-  scroll: { paddingHorizontal: Spacing.three, paddingBottom: Spacing.six, gap: Spacing.three, alignSelf: 'center', width: '100%', maxWidth: MaxContentWidth, },
+  // Kein `gap` mehr: bei aktiver Suche rendern gefilterte Sektionen zu `null`,
+  // ihr AnimatedListItem-Wrapper bliebe aber ein Flex-Kind und `gap` würde
+  // leere Lücken erzeugen. Abstände liegen daher an den Elementen selbst
+  // (section.marginBottom, groupHeader.marginTop/Bottom, title.marginBottom).
+  scroll: { paddingHorizontal: Spacing.three, paddingBottom: Spacing.six, alignSelf: 'center', width: '100%', maxWidth: MaxContentWidth, },
   title: { textAlign: 'center', marginBottom: Spacing.two },
   // Beschriftete Gruppen-Überschrift statt namenloser Hairline: ordnet die
   // ~30 Sektionen in wenige scanbare Themenblöcke ein (Gebet / Benachrichtigungen
@@ -1749,7 +1896,7 @@ const styles = StyleSheet.create({
     height: StyleSheet.hairlineWidth,
     backgroundColor: 'rgba(128,124,116,0.35)',
   },
-  section: { gap: Spacing.one },
+  section: { gap: Spacing.one, marginBottom: Spacing.three },
   sectionHeader: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one },
   sectionHeaderRtl: { flexDirection: 'row-reverse' },
   sectionIconBadge: {

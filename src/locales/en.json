@@ -614,6 +614,8 @@
     },
     "location": "Location",
     "current": "Current",
+    "search": "Search settings",
+    "searchNoResults": "No settings found",
     "useMyLocation": "Use my current location",
     "locating": "Locating…",
     "searchCity": "Search city…",
@@ -2143,8 +2145,8 @@
     "subtitle": "Learn calmly — Arabic, transliteration and translation for every step.",
     "intro": "How to pray, step by step. Take your time: each step shows the Arabic wording, the Latin transliteration and the translation. Tap the Arabic text to hear it. To follow along during prayer, use “Pray along”.",
     "pickPrompt": "Which prayer would you like to learn?",
-    "surahsTitle": "The two short surahs",
-    "surahsSubtitle": "Al-Ikhlas and Al-Kawthar — the first surahs you memorize."
+    "coreTitle": "Al-Fatiha & short surahs",
+    "coreSubtitle": "The complete Al-Fatiha (7 verses) plus Al-Ikhlas and Al-Kawthar — the first texts you memorize."
   },
   "widgetConfig": {
     "title": "Configure widget",

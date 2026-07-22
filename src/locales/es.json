@@ -614,6 +614,8 @@
     },
     "location": "Ubicación",
     "current": "Actual",
+    "search": "Buscar ajustes",
+    "searchNoResults": "No se encontraron ajustes",
     "useMyLocation": "Usar mi ubicación actual",
     "locating": "Localizando…",
     "searchCity": "Buscar ciudad…",
@@ -2123,8 +2125,8 @@
     "subtitle": "Aprende con calma: árabe, transliteración y traducción en cada paso.",
     "intro": "Cómo rezar, paso a paso. Tómate tu tiempo: cada paso muestra el texto árabe, la transliteración latina y la traducción. Toca el texto árabe para escucharlo. Para seguir la oración mientras rezas, usa «Reza paso a paso».",
     "pickPrompt": "¿Qué oración quieres aprender?",
-    "surahsTitle": "Las dos suras cortas",
-    "surahsSubtitle": "Al-Ikhlas y Al-Kawthar: las primeras suras que se memorizan."
+    "coreTitle": "Al-Fatiha y suras cortas",
+    "coreSubtitle": "La Al-Fatiha completa (7 versículos) más Al-Ikhlas y Al-Kawthar: los primeros textos que se memorizan."
   },
   "widgetConfig": {
     "title": "Configurar widget",

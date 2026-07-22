@@ -614,6 +614,8 @@
     },
     "location": "Lokasi",
     "current": "Semasa",
+    "search": "Cari tetapan",
+    "searchNoResults": "Tiada tetapan dijumpai",
     "useMyLocation": "Gunakan lokasi semasa",
     "locating": "Mencari lokasi…",
     "searchCity": "Cari bandar…",
@@ -2123,8 +2125,8 @@
     "subtitle": "Belajar dengan tenang — teks Arab, transliterasi dan terjemahan pada setiap langkah.",
     "intro": "Cara solat, langkah demi langkah. Ambil masa anda: setiap langkah menunjukkan teks Arab, transliterasi Latin dan terjemahannya. Ketik teks Arab untuk mendengarnya. Untuk mengikuti semasa solat, gunakan mod solat bersama.",
     "pickPrompt": "Solat mana yang ingin anda pelajari?",
-    "surahsTitle": "Dua surah pendek",
-    "surahsSubtitle": "Al-Ikhlas dan Al-Kawthar — surah pertama yang dihafal."
+    "coreTitle": "Al-Fatihah & surah pendek",
+    "coreSubtitle": "Al-Fatihah lengkap (7 ayat) serta Al-Ikhlas dan Al-Kawthar — teks pertama yang dihafal."
   },
   "widgetConfig": {
     "title": "Konfigur widget",
