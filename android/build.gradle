@@ -39,15 +39,24 @@ apply plugin: "com.facebook.react.rootproject"
 // root-project subprojects{} hook runs for some modules. AGP's own suggested fix is to
 // use the variant API's finalizeDsl {} callback, which is guaranteed to run after the
 // module's own build.gradle has configured the android {} block but before AGP locks it.
-def shortCxxRoot = new File("C:/rnb/Salati")
-subprojects { sub ->
-  ["com.android.library", "com.android.application"].each { pluginId ->
-    sub.plugins.withId(pluginId) {
-      def androidComponents = sub.extensions.findByName("androidComponents")
-      if (androidComponents != null) {
-        androidComponents.finalizeDsl { ext ->
-          if (ext.externalNativeBuild?.cmake?.path != null) {
-            ext.externalNativeBuild.cmake.buildStagingDirectory = new File(shortCxxRoot, sub.name)
+// NUR unter Windows: der kurze C:/rnb/Salati-Staging-Pfad ist ein reiner
+// Workaround gegen CMAKE_OBJECT_PATH_MAX/260-Zeichen. Auf Linux/macOS
+// (GitHub-Actions-CI, s. Memory project_salati_github_actions_build) gibt es
+// die Grenze nicht UND der Pfad "C:/rnb/..." ist dort ungültig
+// (FileNotFoundException beim CMake-Configure) — dort den Standard-Staging-Pfad
+// (unter dem jeweiligen module/build/) unangetastet lassen.
+def isWindows = System.getProperty("os.name").toLowerCase().contains("windows")
+if (isWindows) {
+  def shortCxxRoot = new File("C:/rnb/Salati")
+  subprojects { sub ->
+    ["com.android.library", "com.android.application"].each { pluginId ->
+      sub.plugins.withId(pluginId) {
+        def androidComponents = sub.extensions.findByName("androidComponents")
+        if (androidComponents != null) {
+          androidComponents.finalizeDsl { ext ->
+            if (ext.externalNativeBuild?.cmake?.path != null) {
+              ext.externalNativeBuild.cmake.buildStagingDirectory = new File(shortCxxRoot, sub.name)
+            }
           }
         }
       }
