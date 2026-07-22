@@ -123,7 +123,11 @@ export async function recognizeArabicStreaming(options: StreamingOptions): Promi
     // Ayah ist kurz (< Fensterlänge, < 224 Prompt-Tokens) → hier reicht der
     // ganze Ayah-Text als Prompt, kein gleitendes Fenster nötig. Die finale
     // Bewertung unten bleibt der volle Beam-5-Durchlauf.
-    transcribePcm(trimSilence(float32), ctx, 'hifz-partial.wav', options.expectedText, { fast: true })
+    // skipIfBusy: falls die vorige Transkription (Tick oder der finale Durchlauf)
+    // noch auf dem geteilten Kontext läuft, diesen Tick verwerfen statt „already
+    // transcribing" zu riskieren — der globale Serializer ist die maßgebliche
+    // Absicherung, partialBusy nur die günstige Vor-Prüfung.
+    transcribePcm(trimSilence(float32), ctx, 'hifz-partial.wav', options.expectedText, { fast: true, skipIfBusy: true })
       .then((t) => {
         if (t && options.onPartial) options.onPartial(t);
       })
@@ -213,7 +217,10 @@ export async function recognizeArabicContinuous(options: ContinuousOptions): Pro
     // Prompt. `fast`: greedy für Live-Takt.
     const windowed = tailWindow(trimSilence(float32), CONTINUOUS_WINDOW_SEC);
     const prompt = progress ? progress.prompt() : options.expectedText;
-    transcribePcm(windowed, whisperContext, 'hifz-surah-partial.wav', prompt, { fast: true })
+    // skipIfBusy: kontinuierlicher Takt darf nie parallel transkribieren — läuft
+    // noch ein Lauf (Tick oder der finale Durchlauf aus stop()), Tick verwerfen
+    // statt „already transcribing" (globaler Serializer, s. transcribeSerializer.ts).
+    transcribePcm(windowed, whisperContext, 'hifz-surah-partial.wav', prompt, { fast: true, skipIfBusy: true })
       .then((t) => {
         if (t && !stopped) {
           // ingest() rückt die Front positions-gekoppelt vor (steuert den Prompt

@@ -7,7 +7,7 @@
 import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import { useQuery } from '@tanstack/react-query';
-import { Alert, FlatList, Pressable, StyleSheet, View } from 'react-native';
+import { Alert, FlatList, Linking, Pressable, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AnimatedListItem } from '@/components/ui/animated-list-item';
@@ -29,6 +29,11 @@ import { usePodcastDownload } from '@/features/podcast/downloads';
 import { useSharedPlayer } from '@/features/quran/usePlayer';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
 import { useTranslation } from '@/lib/i18n';
+
+// Offizieller Spotify-Show-Link (der Podcast laeuft auch auf Spotify). Marken-
+// Gruen (#1DB954) bleibt in beiden Themes fix — Spotify-Wiedererkennung.
+const SPOTIFY_SHOW_URL = 'https://open.spotify.com/show/033U0teP7zMDXYm3zQ3fje';
+const SPOTIFY_GREEN = '#1DB954';
 
 type ListRow =
   | { kind: 'section'; key: string; title: string }
@@ -97,6 +102,20 @@ export default function PodcastListScreen() {
                   {series.description}
                 </ThemedText>
               ) : null}
+              <Pressable
+                onPress={() => {
+                  Linking.openURL(SPOTIFY_SHOW_URL).catch(() => {});
+                }}
+                accessibilityRole="link"
+                accessibilityLabel={t('podcast.listenOnSpotify')}
+                style={({ pressed }) => [styles.spotifyBtn, pressed && styles.pressed]}>
+                {/* Ionicons dieser Version hat kein logo-spotify — musical-notes
+                    als passender Ersatz auf dem Spotify-gruenen Button. */}
+                <IconSymbol name="musical-notes" size={20} color="#FFFFFF" />
+                <ThemedText type="smallBold" style={styles.spotifyLabel}>
+                  {t('podcast.listenOnSpotify')}
+                </ThemedText>
+              </Pressable>
             </View>
           }
           renderItem={({ item }) =>
@@ -271,6 +290,18 @@ const styles = StyleSheet.create({
   seriesTitle: { textAlign: 'center', marginTop: Spacing.two },
   seriesSubtitle: { textAlign: 'center' },
   seriesDesc: { textAlign: 'center', paddingHorizontal: Spacing.two },
+  spotifyBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: Spacing.one,
+    marginTop: Spacing.two,
+    paddingVertical: Spacing.two,
+    paddingHorizontal: Spacing.four,
+    borderRadius: 999,
+    backgroundColor: SPOTIFY_GREEN,
+  },
+  spotifyLabel: { color: '#FFFFFF' },
   sectionHeader: { paddingTop: Spacing.two, paddingBottom: Spacing.half, paddingHorizontal: Spacing.one },
   sectionHeaderText: { letterSpacing: 0.5 },
   center: { alignItems: 'center', paddingVertical: Spacing.five },

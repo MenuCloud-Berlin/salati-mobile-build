@@ -64,8 +64,10 @@ interface Phase {
   lessons: Lesson[];
   progress: LearnProgress;
   // Optionaler Podcast-Vorschlag je Phase (User-Wunsch): vor den Uebungen kann
-  // der Nutzer die passende Folge anhoeren — KEINE Pflicht. Nur Phasen mit klar
-  // passender Folge tragen eine Nummer (core=Buchstaben, tajwid, grammar=Ism).
+  // der Nutzer die passende Folge anhoeren — KEINE Pflicht. Jede Phase traegt
+  // die THEMATISCH passende Einstiegsfolge (core=Buchstaben ep1, tajwid ep2,
+  // grammar=Ism/Nahw ep3, madinah=Madinah-Arabisch-Reihe ep16, amau=Wortschatz-
+  // Reihe ep26). Nur Phasen ohne passende Folge blieben ohne Nummer.
   // Bewusst als Feld am Phase-Objekt statt Lookup ueber `key`: SectionList
   // konsumiert `section.key` als React-Key, im renderSectionHeader ist er
   // dann nicht mehr zuverlaessig lesbar.
@@ -205,6 +207,7 @@ export default function LearnOverviewScreen() {
       titleKey: `study.courses.${MADINAH_META.id}.title`,
       lessons: madinahLessons,
       progress: madinahProgress,
+      episodeNo: 16,
     },
     {
       key: 'amau',
@@ -212,6 +215,7 @@ export default function LearnOverviewScreen() {
       titleKey: `study.courses.${AMAU_META.id}.title`,
       lessons: amauLessons,
       progress: amauProgress,
+      episodeNo: 26,
     },
   ];
   const sections = phases.map((p) => ({

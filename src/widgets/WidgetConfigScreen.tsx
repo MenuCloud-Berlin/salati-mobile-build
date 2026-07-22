@@ -32,15 +32,25 @@ import {
   widgetContentToggles,
   type ResolvedWidgetConfig,
   type WidgetContentToggle,
+  type WidgetDuaSelection,
   type WidgetInstanceConfig,
+  type WidgetTimeFormat,
 } from './widgetConfig';
 import { renderWidgetForInfo } from './widget-task-handler';
 import {
+  WIDGET_CORNER_RADII,
+  WIDGET_CORNER_STYLE_KEYS,
+  WIDGET_FONT_SCALE_KEYS,
+  WIDGET_FONT_SCALES,
+  WIDGET_OPACITY_STEPS,
   WIDGET_TEXT_COLOR_KEYS,
   WIDGET_TEXT_COLORS,
   WIDGET_THEME_KEYS,
   WIDGET_THEMES,
   widgetTextColorHex,
+  type WidgetCornerStyle,
+  type WidgetFontScale,
+  type WidgetOpacity,
   type WidgetTextColor,
   type WidgetTheme,
 } from './widgetTheme';
@@ -76,9 +86,32 @@ function widgetTypeLabel(base: string, t: (k: string) => string): string {
 const TOGGLE_LABEL_KEY: Record<WidgetContentToggle, string> = {
   showCoords: 'widgetConfig.showCoords',
   showNextTime: 'widgetConfig.showNextTime',
+  showHijri: 'widgetConfig.showHijri',
+  showSunrise: 'widgetConfig.showSunrise',
+  highlightNext: 'widgetConfig.highlightNext',
+  showCountdown: 'widgetConfig.showCountdown',
+  showArabic: 'widgetConfig.showArabic',
   showTranslation: 'widgetConfig.showTranslation',
+  showSource: 'widgetConfig.showSource',
   showDistance: 'widgetConfig.showDistance',
+  showBearing: 'widgetConfig.showBearing',
+  showDirection: 'widgetConfig.showDirection',
+  streakLarge: 'widgetConfig.streakLarge',
+  showStreakLabel: 'widgetConfig.showStreakLabel',
 };
+
+// Gemeinsame Darstellungs-Props für die Vorschau — spiegelt styleProps() im
+// Task-Handler, sodass die Vorschau exakt wie das echte Widget aussieht.
+function previewCommon(cfg: ResolvedWidgetConfig) {
+  return {
+    theme: cfg.theme,
+    opacity: cfg.backgroundOpacity,
+    radius: WIDGET_CORNER_RADII[cfg.cornerStyle],
+    fontScale: WIDGET_FONT_SCALES[cfg.fontScale],
+    textColor: widgetTextColorHex(cfg.textColor),
+    accentColor: widgetTextColorHex(cfg.accentColor),
+  };
+}
 
 // Repräsentativer Vorschau-Render mit Beispieldaten (keine Netz-/Storage-Last
 // in der Config-Activity). Nach setResult('ok') rendert der Task-Handler das
@@ -89,34 +122,43 @@ function buildPreview(
   settings: AppSettings,
 ): WidgetRepresentation | null {
   const t = (key: string) => translate(settings.language, key);
-  const common = {
-    theme: cfg.theme,
-    transparent: cfg.transparent,
-    textColor: widgetTextColorHex(cfg.textColor),
-  };
+  const common = previewCommon(cfg);
+  const timeFormat = cfg.timeFormat === 'auto' ? settings.timeFormat : cfg.timeFormat;
+  const sample12 = timeFormat === '12h';
   switch (base) {
-    case 'SalatiPrayer':
+    case 'SalatiPrayer': {
+      const times = sample12
+        ? ['5:12 AM', '1:05 PM', '3:42 PM', '6:20 PM', '8:01 PM']
+        : ['05:12', '13:05', '15:42', '18:20', '20:01'];
+      const rows: { name: string; time: string; active: boolean }[] = [];
+      PRAYERS.forEach((p, i) => {
+        rows.push({ name: t(`prayers.${p.toLowerCase()}`), time: times[i], active: i === 2 });
+        if (cfg.showSunrise && p === 'Fajr') {
+          rows.push({ name: t('prayer.sunrise'), time: sample12 ? '6:48 AM' : '06:48', active: false });
+        }
+      });
       return (
         <PrayerWidget
           title={`${t('widgets.nextPrayer')} · ${settings.location.label}`}
           nextName={t('prayers.asr')}
-          nextTime="15:42"
-          rows={PRAYERS.map((p, i) => ({
-            name: t(`prayers.${p.toLowerCase()}`),
-            time: ['05:12', '13:05', '15:42', '18:20', '20:01'][i],
-            active: i === 2,
-          }))}
+          nextTime={sample12 ? '3:42 PM' : '15:42'}
+          rows={rows}
           showCoords={cfg.showCoords}
           showNextTime={cfg.showNextTime}
+          highlightNext={cfg.highlightNext}
+          showCountdown={cfg.showCountdown}
+          remaining={t('widgets.remaining').replace('{t}', '2h 15m')}
+          hijri={cfg.showHijri ? '12 Rajab 1447' : undefined}
           {...common}
         />
       );
+    }
     case 'SalatiCountdown':
       return (
         <CountdownWidget
           title={`${t('widgets.nextPrayer')} · ${settings.location.label}`}
           nextName={t('prayers.asr')}
-          nextTime="15:42"
+          nextTime={sample12 ? '3:42 PM' : '15:42'}
           remaining={t('widgets.remaining').replace('{t}', '2h 15m')}
           showCoords={cfg.showCoords}
           showNextTime={cfg.showNextTime}
@@ -129,7 +171,10 @@ function buildPreview(
           title={t('widgets.duaOfDay')}
           arabic="رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً"
           translation="Unser Herr, gib uns im Diesseits Gutes."
+          source="Al-Baqara 2:201"
+          showArabic={cfg.showArabic}
           showTranslation={cfg.showTranslation}
+          showSource={cfg.showSource}
           {...common}
         />
       );
@@ -140,6 +185,8 @@ function buildPreview(
           bearing="137°"
           direction={t('qibla.dir.so')}
           distance="4312 km"
+          showBearing={cfg.showBearing}
+          showDirection={cfg.showDirection}
           showDistance={cfg.showDistance}
           {...common}
         />
@@ -150,12 +197,69 @@ function buildPreview(
           streak={7}
           streakLabel={t('widgets.streakLabel')}
           todayLine={t('widgets.todayLessons').replace('{n}', '2')}
+          streakLarge={cfg.streakLarge}
+          showStreakLabel={cfg.showStreakLabel}
           {...common}
         />
       );
     default:
       return null;
   }
+}
+
+const FONT_SCALE_LABEL_KEY: Record<WidgetFontScale, string> = {
+  small: 'widgetConfig.fontSmall',
+  medium: 'widgetConfig.fontMedium',
+  large: 'widgetConfig.fontLarge',
+};
+
+const CORNER_LABEL_KEY: Record<WidgetCornerStyle, string> = {
+  sharp: 'widgetConfig.cornerSharp',
+  rounded: 'widgetConfig.cornerRounded',
+  round: 'widgetConfig.cornerRound',
+};
+
+const TIME_FORMAT_LABEL_KEY: Record<WidgetTimeFormat, string> = {
+  auto: 'widgetConfig.timeAuto',
+  '24h': 'widgetConfig.time24h',
+  '12h': 'widgetConfig.time12h',
+};
+
+const DUA_SELECTION_LABEL_KEY: Record<WidgetDuaSelection, string> = {
+  daily: 'widgetConfig.duaDaily',
+  random: 'widgetConfig.duaRandom',
+};
+
+// Segmentierte Auswahl (Pillen-Reihe) für Optionen mit festen Stufen —
+// Schriftgröße, Ecken, Deckkraft, Zeitformat, Dua-Auswahl.
+function Segmented<V extends string | number>({
+  options,
+  selected,
+  onSelect,
+}: {
+  options: { value: V; label: string }[];
+  selected: V;
+  onSelect: (v: V) => void;
+}) {
+  return (
+    <View style={styles.segmentRow}>
+      {options.map((o) => {
+        const on = o.value === selected;
+        return (
+          <Pressable
+            key={String(o.value)}
+            onPress={() => onSelect(o.value)}
+            style={[styles.segment, on && styles.segmentOn]}
+            accessibilityRole="button"
+            accessibilityState={{ selected: on }}>
+            <Text style={[styles.segmentText, on && styles.segmentTextOn]} numberOfLines={1}>
+              {o.label}
+            </Text>
+          </Pressable>
+        );
+      })}
+    </View>
+  );
 }
 
 export function WidgetConfigScreen({ widgetInfo, renderWidget, setResult }: WidgetConfigurationScreenProps) {
@@ -291,16 +395,13 @@ export function WidgetConfigScreen({ widgetInfo, renderWidget, setResult }: Widg
           })}
         </View>
 
-        {/* Transparenz */}
-        <View style={styles.toggleRow}>
-          <Text style={styles.toggleLabel}>{t('widgetConfig.transparent')}</Text>
-          <Switch
-            value={resolved.transparent}
-            onValueChange={(v) => apply({ transparent: v })}
-            trackColor={{ true: '#d4af37', false: '#3a3a3f' }}
-            thumbColor="#f7f3ea"
-          />
-        </View>
+        {/* Hintergrund-Deckkraft in Stufen (ersetzt den alten An/Aus-Schalter) */}
+        <Text style={styles.sectionLabel}>{t('widgetConfig.opacity')}</Text>
+        <Segmented<WidgetOpacity>
+          options={WIDGET_OPACITY_STEPS.map((v) => ({ value: v, label: `${v}%` }))}
+          selected={resolved.backgroundOpacity as WidgetOpacity}
+          onSelect={(v) => apply({ backgroundOpacity: v })}
+        />
 
         {/* Textfarbe: 'default' zeigt die Textfarbe des gewählten Themes, alle
             anderen überschreiben den Haupttext (z. B. rot). */}
@@ -327,6 +428,62 @@ export function WidgetConfigScreen({ widgetInfo, renderWidget, setResult }: Widg
           })}
         </View>
 
+        {/* Akzentfarbe: nächstes Gebet / aktive Zeile / Streak-Zahl / Titel.
+            'default' = Theme-Akzentfarbe (Punkt zeigt die aktuelle Akzentfarbe). */}
+        <Text style={styles.sectionLabel}>{t('widgetConfig.accentColor')}</Text>
+        <View style={styles.colorRow}>
+          {WIDGET_TEXT_COLOR_KEYS.map((k: WidgetTextColor) => {
+            const dot = WIDGET_TEXT_COLORS[k] ?? WIDGET_THEMES[resolved.theme].accent;
+            const selected = resolved.accentColor === k;
+            return (
+              <Pressable
+                key={k}
+                onPress={() => apply({ accentColor: k })}
+                style={[styles.colorSwatch, selected && styles.colorSwatchSelected]}
+                accessibilityRole="button"
+                accessibilityLabel={k}
+                accessibilityState={{ selected }}>
+                <View style={[styles.colorDot, { backgroundColor: dot }]}>
+                  {k === 'default' ? (
+                    <Text style={[styles.colorDefaultGlyph, { color: WIDGET_THEMES[resolved.theme].bg }]}>A</Text>
+                  ) : null}
+                </View>
+              </Pressable>
+            );
+          })}
+        </View>
+
+        {/* Schriftgröße des Haupttexts */}
+        <Text style={styles.sectionLabel}>{t('widgetConfig.fontSize')}</Text>
+        <Segmented<WidgetFontScale>
+          options={WIDGET_FONT_SCALE_KEYS.map((k) => ({ value: k, label: t(FONT_SCALE_LABEL_KEY[k]) }))}
+          selected={resolved.fontScale}
+          onSelect={(v) => apply({ fontScale: v })}
+        />
+
+        {/* Ecken / Rundung der Karte */}
+        <Text style={styles.sectionLabel}>{t('widgetConfig.corners')}</Text>
+        <Segmented<WidgetCornerStyle>
+          options={WIDGET_CORNER_STYLE_KEYS.map((k) => ({ value: k, label: t(CORNER_LABEL_KEY[k]) }))}
+          selected={resolved.cornerStyle}
+          onSelect={(v) => apply({ cornerStyle: v })}
+        />
+
+        {/* Zeitformat-Override (nur Widgets mit Uhrzeiten) */}
+        {base === 'SalatiPrayer' || base === 'SalatiCountdown' ? (
+          <>
+            <Text style={styles.sectionLabel}>{t('widgetConfig.timeFormat')}</Text>
+            <Segmented<WidgetTimeFormat>
+              options={(['auto', '24h', '12h'] as WidgetTimeFormat[]).map((k) => ({
+                value: k,
+                label: t(TIME_FORMAT_LABEL_KEY[k]),
+              }))}
+              selected={resolved.timeFormat}
+              onSelect={(v) => apply({ timeFormat: v })}
+            />
+          </>
+        ) : null}
+
         {/* Inhalts-Toggles je Widgettyp */}
         {toggles.length > 0 ? (
           <>
@@ -342,6 +499,21 @@ export function WidgetConfigScreen({ widgetInfo, renderWidget, setResult }: Widg
                 />
               </View>
             ))}
+          </>
+        ) : null}
+
+        {/* Dua-Auswahl (nur Wisdom): täglich fest vs. bei jedem Update zufällig */}
+        {base === 'SalatiWisdom' ? (
+          <>
+            <Text style={styles.sectionLabel}>{t('widgetConfig.duaSelection')}</Text>
+            <Segmented<WidgetDuaSelection>
+              options={(['daily', 'random'] as WidgetDuaSelection[]).map((k) => ({
+                value: k,
+                label: t(DUA_SELECTION_LABEL_KEY[k]),
+              }))}
+              selected={resolved.duaSelection}
+              onSelect={(v) => apply({ duaSelection: v })}
+            />
           </>
         ) : null}
 
@@ -436,6 +608,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   colorDefaultGlyph: { fontSize: 15, fontWeight: '800' },
+  segmentRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
+  segment: {
+    flexGrow: 1,
+    minWidth: 64,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: 'transparent',
+    backgroundColor: '#1c1c20',
+    alignItems: 'center',
+  },
+  segmentOn: { borderColor: '#d4af37', backgroundColor: '#2a2410' },
+  segmentText: { color: '#f7f3eacc', fontSize: 13, fontWeight: '600' },
+  segmentTextOn: { color: '#f7f3ea' },
   toggleRow: {
     flexDirection: 'row',
     alignItems: 'center',

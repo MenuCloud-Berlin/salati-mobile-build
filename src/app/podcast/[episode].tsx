@@ -17,6 +17,7 @@ import {
   Pressable,
   ScrollView,
   StyleSheet,
+  useWindowDimensions,
   View,
   type StyleProp,
   type ViewStyle,
@@ -44,10 +45,6 @@ import { useTranslation } from '@/lib/i18n';
 const SPEEDS = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2] as const;
 const SLEEP_OPTIONS: (number | 'episode')[] = [5, 10, 15, 30, 60, 'episode'];
 const SKIP_SEC = 15;
-// Feste Groesse des Media-Slots (Cover bzw. Transkript). Weiter verkleinert
-// (260 -> 210 -> 160), damit Cover, Titel, Scrubber, Transport UND alle Regler
-// samt Mitlese-Umschalter ohne Scrollen auf eine Handy-Seite passen.
-const COVER_SIZE = 160;
 
 export default function PodcastPlayerScreen() {
   const { episode: episodeParam } = useLocalSearchParams<{ episode: string }>();
@@ -56,6 +53,17 @@ export default function PodcastPlayerScreen() {
   const scheme = useResolvedScheme();
   const colors = Colors[scheme];
   const { player, status, nowPlaying, setNowPlaying } = useSharedPlayer();
+
+  // Vollbild-Player: grosszuegiges, quadratisches Cover statt des alten kompakten
+  // 160er-Kaertchens. Groesse skaliert mit dem Bildschirm (Breite minus Rand,
+  // durch die Hoehe gedeckelt, damit auf kurzen Displays alles ohne Scrollen
+  // passt) und bleibt auf breiten Screens/Tablets an MaxContentWidth gebunden.
+  const { width: winWidth, height: winHeight } = useWindowDimensions();
+  const coverSize = Math.min(
+    winWidth - Spacing.four * 2,
+    MaxContentWidth - Spacing.four * 2,
+    Math.max(220, winHeight * 0.42),
+  );
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['podcast', 'index'],
@@ -348,10 +356,14 @@ export default function PodcastPlayerScreen() {
           </Pressable>
         </View>
 
-        <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
+        {/* Vollbild-Layout: Cover/Transkript fuellen den freien Raum oben,
+            Titel + Steuerung sitzen darunter — ueber die volle Hoehe verteilt
+            (space-between), damit der Player den Bildschirm ausfuellt statt sich
+            zu einem engen Kaertchen zu quetschen. */}
+        <View style={styles.content}>
           {/* Media-Slot: Cover ODER mitlaufendes Transkript teilen sich denselben
-              Platz (Umschalter unten). Statt das Transkript unten anzuhaengen,
-              ersetzt es das Cover — so bleibt der Player kompakt (eine Seite). */}
+              Platz (Umschalter unten). Der Slot waechst (flex) und zentriert das
+              grosse Cover; im Transkript-Modus fuellt das Transkript den Bereich. */}
           <View style={styles.mediaSlot}>
             {showTranscript ? (
               <Transcript
@@ -363,112 +375,120 @@ export default function PodcastPlayerScreen() {
             ) : coverSource ? (
               <Image
                 source={coverSource}
-                style={styles.cover}
+                style={[styles.cover, { width: coverSize, height: coverSize }]}
                 contentFit="cover"
                 transition={200}
                 accessibilityLabel={episode.title}
               />
             ) : (
-              <ThemedView type="backgroundSelected" style={[styles.cover, styles.coverFallback]}>
-                <IconSymbol name="headset" size={64} color={colors.accent} />
+              <ThemedView
+                type="backgroundSelected"
+                style={[styles.cover, styles.coverFallback, { width: coverSize, height: coverSize }]}>
+                <IconSymbol name="headset" size={96} color={colors.accent} />
               </ThemedView>
             )}
           </View>
 
-          <ThemedText type="small" themeColor="accent" style={styles.epNo}>
-            {t('podcast.episodeLabel')} {episode.episode_no}
-          </ThemedText>
-          <ThemedText type="subtitle" style={styles.title} numberOfLines={2}>
-            {episode.title}
-          </ThemedText>
-          {episode.description ? (
-            <ThemedText type="small" themeColor="textSecondary" style={styles.desc} numberOfLines={2}>
-              {episode.description}
+          {/* Titelblock */}
+          <View style={styles.infoBlock}>
+            <ThemedText type="small" themeColor="accent" style={styles.epNo}>
+              {t('podcast.episodeLabel')} {episode.episode_no}
             </ThemedText>
-          ) : null}
-
-          {/* Scrubber */}
-          <View style={styles.scrubBlock}>
-            <Slider
-              value={shownProgress}
-              accessibilityLabel={t('podcast.seek')}
-              onChange={(r) => setSeekPreview(r)}
-              onCommit={(r) => {
-                setSeekPreview(null);
-                if (isThisLoaded && duration > 0) player.seekTo(r * duration);
-              }}
-            />
-            <View style={styles.timeRow}>
-              <ThemedText type="small" themeColor="textSecondary">
-                {formatDuration((seekPreview != null ? seekPreview * duration : position) || 0)}
+            <ThemedText type="subtitle" style={styles.title} numberOfLines={2}>
+              {episode.title}
+            </ThemedText>
+            {episode.description ? (
+              <ThemedText type="small" themeColor="textSecondary" style={styles.desc} numberOfLines={2}>
+                {episode.description}
               </ThemedText>
-              <ThemedText type="small" themeColor="textSecondary">
-                {formatDuration(duration)}
-              </ThemedText>
-            </View>
+            ) : null}
           </View>
 
-          {/* Transport */}
-          <View style={styles.transport}>
-            <CircleButton icon="play-skip-back" size={22} onPress={() => goTo(prev)} disabled={!prev} label={t('podcast.previous')} />
-            <CircleButton icon="play-back" size={24} onPress={() => skip(-SKIP_SEC)} label="-15s" />
-            <Pressable
-              onPress={togglePlay}
-              accessibilityRole="button"
-              accessibilityLabel={status.playing && isThisLoaded ? t('podcast.pause') : t('podcast.play')}
-              style={[styles.playBtn, { backgroundColor: colors.accent }]}>
-              <IconSymbol name={status.playing && isThisLoaded ? 'pause' : 'play'} size={34} color={colors.background} />
-            </Pressable>
-            <CircleButton icon="play-forward" size={24} onPress={() => skip(SKIP_SEC)} label="+15s" />
-            <CircleButton icon="play-skip-forward" size={22} onPress={() => goTo(next)} disabled={!next} label={t('podcast.next')} />
-          </View>
-
-          {/* Sekundaerreihe: Speed schnell, Lautstaerke, Repeat, Sleep */}
-          <View style={styles.controlsRow}>
-            <PressableCard onPress={cycleSpeed} type="backgroundElement" style={styles.pill}>
-              <IconSymbol name="speedometer" size={16} color={colors.accent} />
-              <ThemedText type="smallBold" themeColor="accent">
-                {speed}×
-              </ThemedText>
-            </PressableCard>
-            <Pressable
-              onPress={() => setRepeat((r) => !r)}
-              accessibilityRole="button"
-              accessibilityLabel={t('podcast.repeat')}
-              hitSlop={8}
-              style={styles.iconToggle}>
-              <IconSymbol name="repeat" size={20} color={repeat ? colors.accent : colors.textSecondary} />
-            </Pressable>
-            <Pressable
-              onPress={() => setShowSettings(true)}
-              accessibilityRole="button"
-              accessibilityLabel={t('podcast.sleepTimer')}
-              hitSlop={8}
-              style={styles.iconToggle}>
-              <IconSymbol name="moon" size={19} color={sleep != null ? colors.accent : colors.textSecondary} />
-            </Pressable>
-            <View style={styles.volumeBlock}>
-              <IconSymbol
-                name={volume === 0 ? 'volume-mute' : volume < 0.5 ? 'volume-low' : 'volume-high'}
-                size={18}
-                color={colors.textSecondary}
+          {/* Steuerblock: Scrubber, Transport, Sekundaerregler, Mitlesen-Umschalter */}
+          <View style={styles.bottomBlock}>
+            {/* Scrubber */}
+            <View style={styles.scrubBlock}>
+              <Slider
+                value={shownProgress}
+                accessibilityLabel={t('podcast.seek')}
+                onChange={(r) => setSeekPreview(r)}
+                onCommit={(r) => {
+                  setSeekPreview(null);
+                  if (isThisLoaded && duration > 0) player.seekTo(r * duration);
+                }}
               />
-              <View style={styles.volumeSlider}>
-                <Slider value={volume} accessibilityLabel={t('podcast.volume')} onChange={setVolume} onCommit={setVolume} />
+              <View style={styles.timeRow}>
+                <ThemedText type="small" themeColor="textSecondary">
+                  {formatDuration((seekPreview != null ? seekPreview * duration : position) || 0)}
+                </ThemedText>
+                <ThemedText type="small" themeColor="textSecondary">
+                  {formatDuration(duration)}
+                </ThemedText>
               </View>
             </View>
-          </View>
 
-          {/* Umschalter „Text mitlesen": blendet oben das Cover gegen das
-              synchrone Transkript aus (kein separater Block unten mehr). */}
-          <PressableCard onPress={() => setShowTranscript((s) => !s)} type="backgroundElement" style={styles.transcriptToggle}>
-            <IconSymbol name={showTranscript ? 'image' : 'document-text'} size={18} color={colors.accent} />
-            <ThemedText type="smallBold" themeColor="accent" style={styles.flex}>
-              {showTranscript ? t('podcast.hideTranscript') : t('podcast.showTranscript')}
-            </ThemedText>
-            <IconSymbol name={showTranscript ? 'checkmark-circle' : 'chevron-forward'} size={16} color={colors.textSecondary} />
-          </PressableCard>
-        </ScrollView>
+            {/* Transport */}
+            <View style={styles.transport}>
+              <CircleButton icon="play-skip-back" size={24} onPress={() => goTo(prev)} disabled={!prev} label={t('podcast.previous')} />
+              <CircleButton icon="play-back" size={26} onPress={() => skip(-SKIP_SEC)} label="-15s" />
+              <Pressable
+                onPress={togglePlay}
+                accessibilityRole="button"
+                accessibilityLabel={status.playing && isThisLoaded ? t('podcast.pause') : t('podcast.play')}
+                style={[styles.playBtn, { backgroundColor: colors.accent }]}>
+                <IconSymbol name={status.playing && isThisLoaded ? 'pause' : 'play'} size={38} color={colors.background} />
+              </Pressable>
+              <CircleButton icon="play-forward" size={26} onPress={() => skip(SKIP_SEC)} label="+15s" />
+              <CircleButton icon="play-skip-forward" size={24} onPress={() => goTo(next)} disabled={!next} label={t('podcast.next')} />
+            </View>
+
+            {/* Sekundaerreihe: Speed schnell, Lautstaerke, Repeat, Sleep */}
+            <View style={styles.controlsRow}>
+              <PressableCard onPress={cycleSpeed} type="backgroundElement" style={styles.pill}>
+                <IconSymbol name="speedometer" size={16} color={colors.accent} />
+                <ThemedText type="smallBold" themeColor="accent">
+                  {speed}×
+                </ThemedText>
+              </PressableCard>
+              <Pressable
+                onPress={() => setRepeat((r) => !r)}
+                accessibilityRole="button"
+                accessibilityLabel={t('podcast.repeat')}
+                hitSlop={8}
+                style={styles.iconToggle}>
+                <IconSymbol name="repeat" size={20} color={repeat ? colors.accent : colors.textSecondary} />
+              </Pressable>
+              <Pressable
+                onPress={() => setShowSettings(true)}
+                accessibilityRole="button"
+                accessibilityLabel={t('podcast.sleepTimer')}
+                hitSlop={8}
+                style={styles.iconToggle}>
+                <IconSymbol name="moon" size={19} color={sleep != null ? colors.accent : colors.textSecondary} />
+              </Pressable>
+              <View style={styles.volumeBlock}>
+                <IconSymbol
+                  name={volume === 0 ? 'volume-mute' : volume < 0.5 ? 'volume-low' : 'volume-high'}
+                  size={18}
+                  color={colors.textSecondary}
+                />
+                <View style={styles.volumeSlider}>
+                  <Slider value={volume} accessibilityLabel={t('podcast.volume')} onChange={setVolume} onCommit={setVolume} />
+                </View>
+              </View>
+            </View>
+
+            {/* Umschalter „Text mitlesen": blendet oben das Cover gegen das
+                synchrone Transkript aus (kein separater Block unten mehr). */}
+            <PressableCard onPress={() => setShowTranscript((s) => !s)} type="backgroundElement" style={styles.transcriptToggle}>
+              <IconSymbol name={showTranscript ? 'image' : 'document-text'} size={18} color={colors.accent} />
+              <ThemedText type="smallBold" themeColor="accent" style={styles.flex}>
+                {showTranscript ? t('podcast.hideTranscript') : t('podcast.showTranscript')}
+              </ThemedText>
+              <IconSymbol name={showTranscript ? 'checkmark-circle' : 'chevron-forward'} size={16} color={colors.textSecondary} />
+            </PressableCard>
+          </View>
+        </View>
       </SafeAreaView>
 
       <SettingsSheet
@@ -776,40 +796,45 @@ const styles = StyleSheet.create({
   settingsBtn: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' },
   downloadBtn: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one, height: 40, paddingHorizontal: Spacing.two, borderRadius: 20 },
   downloadPct: { fontSize: 12 },
-  scroll: {
+  // Vollbild-Layout: fuellt die Hoehe zwischen Kopfzeile und unterem Rand und
+  // verteilt Media / Titel / Steuerung ueber die volle Hoehe (space-between).
+  content: {
+    flex: 1,
     paddingHorizontal: Spacing.four,
-    paddingBottom: Spacing.four,
+    paddingBottom: Spacing.two,
     alignSelf: 'center',
     width: '100%',
     maxWidth: MaxContentWidth,
-    alignItems: 'center',
+    justifyContent: 'space-between',
   },
-  // Media-Slot: feste Hoehe, in der sich Cover und Transkript denselben Platz
-  // teilen. Kompakter als das alte 260er-Cover, damit der Player ohne Scrollen
-  // auf eine Seite passt.
-  mediaSlot: { width: '100%', height: COVER_SIZE, alignItems: 'center', justifyContent: 'center', marginTop: Spacing.one },
-  cover: { width: COVER_SIZE, height: COVER_SIZE, borderRadius: 20 },
+  // Media-Slot waechst und fuellt den freien Raum oben; Cover/Transkript werden
+  // darin zentriert. So wirkt der Cover-Bereich gross und prominent statt eng.
+  mediaSlot: { flex: 1, width: '100%', alignItems: 'center', justifyContent: 'center', minHeight: 0 },
+  // Grosses quadratisches Cover — Groesse wird zur Laufzeit (coverSize) gesetzt.
+  cover: { borderRadius: 24 },
   coverFallback: { alignItems: 'center', justifyContent: 'center' },
-  transcriptInSlot: { height: COVER_SIZE, maxHeight: COVER_SIZE, marginTop: 0 },
-  epNo: { marginTop: Spacing.two, textTransform: 'uppercase', letterSpacing: 1 },
-  // Titel kompakt: subtitle (32/44) waere zu hoch fuer eine Seite — auf 22/28
-  // heruntergesetzt, damit Titel + Rest naeher zusammenruecken.
-  title: { textAlign: 'center', marginTop: Spacing.half, fontSize: 22, lineHeight: 28 },
+  // Im Transkript-Modus fuellt das Transkript den kompletten Media-Bereich.
+  transcriptInSlot: { flex: 1, width: '100%', marginTop: 0 },
+  infoBlock: { alignItems: 'center', width: '100%', marginTop: Spacing.three },
+  epNo: { textTransform: 'uppercase', letterSpacing: 1 },
+  // Titel gross und gut lesbar (Vollbild-Player, nicht mehr eng gequetscht).
+  title: { textAlign: 'center', marginTop: Spacing.one, fontSize: 26, lineHeight: 32 },
   desc: { textAlign: 'center', marginTop: Spacing.one, paddingHorizontal: Spacing.two, lineHeight: 20 },
+  bottomBlock: { width: '100%', marginTop: Spacing.three },
   scrubBlock: { width: '100%', marginTop: Spacing.two },
   timeRow: { flexDirection: 'row', justifyContent: 'space-between', marginTop: -Spacing.one },
-  transport: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: Spacing.three, marginTop: Spacing.one },
-  circleBtn: { width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
+  transport: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: Spacing.four, marginTop: Spacing.three },
+  circleBtn: { width: 48, height: 48, borderRadius: 24, alignItems: 'center', justifyContent: 'center' },
   circleBtnDisabled: { opacity: 0.35 },
-  playBtn: { width: 64, height: 64, borderRadius: 32, alignItems: 'center', justifyContent: 'center' },
-  controlsRow: { flexDirection: 'row', alignItems: 'center', gap: Spacing.three, marginTop: Spacing.two, width: '100%' },
+  playBtn: { width: 72, height: 72, borderRadius: 36, alignItems: 'center', justifyContent: 'center' },
+  controlsRow: { flexDirection: 'row', alignItems: 'center', gap: Spacing.three, marginTop: Spacing.four, width: '100%' },
   pill: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one, paddingVertical: Spacing.one, paddingHorizontal: Spacing.three },
   iconToggle: { width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center' },
   volumeBlock: { flex: 1, flexDirection: 'row', alignItems: 'center', gap: Spacing.two },
   volumeSlider: { flex: 1 },
-  transcriptToggle: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two, padding: Spacing.two, marginTop: Spacing.two, width: '100%' },
+  transcriptToggle: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two, padding: Spacing.two, marginTop: Spacing.four, width: '100%' },
   flex: { flex: 1 },
-  transcript: { maxHeight: 400, width: '100%', marginTop: Spacing.two },
+  transcript: { width: '100%', marginTop: Spacing.two },
   deSeg: { marginBottom: Spacing.two, lineHeight: 24 },
   arSeg: { marginBottom: Spacing.two, fontSize: 24, lineHeight: 44, textAlign: 'right', writingDirection: 'rtl' },
   activeSeg: { fontWeight: '700' },

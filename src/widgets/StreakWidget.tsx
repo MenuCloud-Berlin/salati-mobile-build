@@ -8,9 +8,9 @@ import { FlexWidget, TextWidget } from 'react-native-android-widget';
 //
 // Homescreen-Widget "Lernserie": Duolingo-Muster — die Serie sichtbar auf
 // dem Homescreen ist der stärkste Trigger, die Tageslektion zu machen.
-// Zwei Farbthemen wählbar — Begründung/Palette s. PrayerWidget.tsx (gleicher
-// Ansatz: eigener Widget-Eintrag im Picker statt Runtime-Konfiguration).
-import { WIDGET_THEMES, transparentBg, type WidgetTheme } from './widgetTheme';
+// Farbe/Deckkraft/Schriftgröße/Ecken/Inhalt sind PER-WIDGET über die
+// Konfigurations-Activity einstellbar (WidgetConfig).
+import { WIDGET_THEMES, withOpacity, type WidgetTheme } from './widgetTheme';
 
 export type { WidgetTheme };
 
@@ -19,10 +19,20 @@ export interface StreakWidgetProps {
   streakLabel: string;
   todayLine: string;
   theme?: WidgetTheme;
-  /** Halbtransparenter Kartenhintergrund (PER-WIDGET Transparenz-Option). */
-  transparent?: boolean;
+  /** Hintergrund-Deckkraft in Prozent (0..100). Default 100 = voll deckend. */
+  opacity?: number;
+  /** Eckenradius der Karte in px. Default 20. */
+  radius?: number;
+  /** Multiplikator auf die Basis-Schriftgrößen (1 = unverändert). */
+  fontScale?: number;
+  /** Serien-Zahl besonders groß darstellen (default false). */
+  streakLarge?: boolean;
+  /** Label unter der Zahl zeigen (default true). */
+  showStreakLabel?: boolean;
   /** Textfarben-Override (Hex) für den Haupttext; undefined = Theme-Textfarbe. */
   textColor?: `#${string}`;
+  /** Akzentfarben-Override (Hex) für die Serien-Zahl; undefined = Theme-Akzentfarbe. */
+  accentColor?: `#${string}`;
 }
 
 export function StreakWidget({
@@ -30,12 +40,20 @@ export function StreakWidget({
   streakLabel,
   todayLine,
   theme = 'dark',
-  transparent = false,
+  opacity = 100,
+  radius = 20,
+  fontScale = 1,
+  streakLarge = false,
+  showStreakLabel = true,
   textColor,
+  accentColor,
 }: StreakWidgetProps) {
   const c = WIDGET_THEMES[theme];
-  const bg = transparent ? transparentBg(c.bg) : c.bg;
+  const bg = withOpacity(c.bg, opacity);
   const text = textColor ?? c.text;
+  const accent = accentColor ?? c.accent;
+  const fs = (n: number) => Math.round(n * fontScale);
+  const streakSize = fs(streakLarge ? 44 : 30);
   return (
     <FlexWidget
       clickAction="OPEN_APP"
@@ -47,11 +65,13 @@ export function StreakWidget({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: bg,
-        borderRadius: 20,
+        borderRadius: radius,
         padding: 12,
       }}>
-      <TextWidget text={`🔥 ${streak}`} style={{ fontSize: 30, color: c.accent, fontWeight: '700' }} />
-      <TextWidget text={streakLabel} style={{ fontSize: 12, color: text, marginTop: 4 }} />
+      <TextWidget text={`🔥 ${streak}`} style={{ fontSize: streakSize, color: accent, fontWeight: '700' }} />
+      {showStreakLabel ? (
+        <TextWidget text={streakLabel} style={{ fontSize: 12, color: text, marginTop: 4 }} />
+      ) : null}
       <TextWidget text={todayLine} style={{ fontSize: 11, color: c.muted, marginTop: 6 }} />
     </FlexWidget>
   );

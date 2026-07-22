@@ -40,6 +40,7 @@ import {
   whisperModellPfad,
 } from './whisperModel';
 import { WhisperError, WhisperFehler } from './whisperError';
+import { createTranscribeSerializer } from './transcribeSerializer';
 
 // Beide nativen Pakete werden bewusst per require() statt per import geladen
 // und auf selbst geschriebene (gegen die tatsächlichen Quellen verifizierte)
@@ -82,7 +83,10 @@ interface WhisperTranscribeResult {
   isAborted?: boolean;
 }
 interface WhisperTranscribeHandle {
-  stop: () => void;
+  // whisper.rn 0.7.0: stop() ruft nativ whisperAbortTranscribe und ist async
+  // (src/index.ts runTranscription) — gegen die echte Quelle verifiziert, nicht
+  // das frühere synchrone `() => void`. Wird für den Kontext-Cleanup awaited.
+  stop: () => Promise<void>;
   promise: Promise<WhisperTranscribeResult>;
 }
 interface WhisperContext {
@@ -207,6 +211,37 @@ export async function whisperDiagnose(): Promise<WhisperDiagnose> {
 }
 
 let whisperContextPromise: Promise<WhisperContext> | null = null;
+
+// App-weite Serialisierung ALLER Transkriptionen auf dem geteilten Singleton-
+// Kontext. whisper.rn erlaubt pro Kontext nur EINE transcribe() gleichzeitig —
+// ein zweiter Aufruf, solange der vorige Job läuft, wirft nativ „Context is
+// already transcribing" (Gerät-Report 2026-07-22). Genau EIN Serializer für den
+// EINEN Kontext (s. transcribeSerializer.ts). transcribePcm() läuft ausschließlich
+// durch diesen; Live-Ticks nutzen skipIfBusy, Final-Durchläufe reihen sich ein.
+const transcribeSerializer = createTranscribeSerializer();
+// Handle der GERADE laufenden Transkription (für sauberen Abbruch beim Verlassen
+// des Screens). null = kein Lauf aktiv.
+let aktivesHandle: WhisperTranscribeHandle | null = null;
+
+/** True, solange eine Transkription auf dem geteilten Kontext läuft oder eingereiht ist. */
+export function transkriptionLaeuft(): boolean {
+  return transcribeSerializer.istBesetzt();
+}
+
+/**
+ * Bricht eine evtl. laufende Transkription ab und wartet, bis der geteilte
+ * Kontext wieder frei ist. Für Screen-Cleanup (unmount / Vers-Wechsel), damit
+ * der Singleton-Kontext nie „busy" hängen bleibt und der nächste Lauf sofort
+ * starten kann. Wirft nie.
+ */
+export async function transkriptionenAbbrechen(): Promise<void> {
+  try {
+    await aktivesHandle?.stop();
+  } catch {
+    /* stop() ist best-effort — ein Fehler beim Abbrechen darf den Cleanup nicht stoppen */
+  }
+  await transcribeSerializer.leerlauf();
+}
 
 /** Lädt (bei Bedarf herunterladend) das GGML-Modell einmalig; parallele Aufrufe teilen sich das Laden. */
 export function loadWhisperContext(onProgress?: (p: WhisperProgress) => void): Promise<WhisperContext> {
@@ -508,22 +543,51 @@ export async function transcribePcm(
   // 24-s-Fenster ist auf dem Handy zu langsam, die Live-Erkennung würde
   // hinterherhinken → „verliert den Faden"). Der FINALE Bewertungs-Durchlauf
   // bleibt bewusst Beam-5 (höhere Genauigkeit, Latenz dort unkritisch).
-  opts?: { fast?: boolean },
+  //
+  // `skipIfBusy`: für Live-Ticks (Streaming/kontinuierlich). Läuft bereits eine
+  // Transkription auf dem geteilten Kontext, wird DIESER Tick verworfen (liefert
+  // '') statt parallel gestartet — sonst „Context is already transcribing". Die
+  // FINALEN Durchläufe lassen skipIfBusy weg und reihen sich stattdessen ein
+  // (warten auf den letzten Live-Tick), damit ihr Ergebnis nie verloren geht.
+  opts?: { fast?: boolean; skipIfBusy?: boolean },
 ): Promise<string> {
   const path = `${FileSystem.cacheDirectory}${tempFileName}`;
+  let dateiGeschrieben = false;
   try {
-    await writeWavFile(path, float32ToInt16(pcm), SAMPLE_RATE);
-    // Arabisch fest vorgeben (ISO-639-1 'ar') statt 'auto' — das Zielpublikum
-    // rezitiert immer Koran-Arabisch, Sprach-Autodetektion bei kurzen/leisen
-    // Aufnahmen ist unnötig fehleranfällig. temperature 0 = deterministisch.
-    const result = await whisperContext
-      .transcribe(path, {
-        language: 'ar',
-        beamSize: opts?.fast ? 1 : 5,
-        temperature: 0,
-        ...(expectedText ? { prompt: expectedText } : {}),
-      })
-      .promise;
+    // Exklusiv durch den Serializer: nie zwei transcribe() gleichzeitig auf dem
+    // geteilten Kontext (Kern-Fix „already transcribing", s. transcribeSerializer.ts).
+    // WAV-Schreiben passiert INNERHALB der exklusiven Sektion — ein
+    // übersprungener (skipIfBusy) Tick schreibt gar nicht erst.
+    const run = await transcribeSerializer.run(
+      async () => {
+        await writeWavFile(path, float32ToInt16(pcm), SAMPLE_RATE);
+        dateiGeschrieben = true;
+        // Arabisch fest vorgeben (ISO-639-1 'ar') statt 'auto' — das Zielpublikum
+        // rezitiert immer Koran-Arabisch, Sprach-Autodetektion bei kurzen/leisen
+        // Aufnahmen ist unnötig fehleranfällig. temperature 0 = deterministisch.
+        const handle = whisperContext.transcribe(path, {
+          language: 'ar',
+          beamSize: opts?.fast ? 1 : 5,
+          temperature: 0,
+          ...(expectedText ? { prompt: expectedText } : {}),
+        });
+        aktivesHandle = handle;
+        try {
+          return await handle.promise;
+        } finally {
+          // Kontext ist wieder frei — Handle freigeben, damit ein Cleanup-Abbruch
+          // nicht auf ein bereits beendetes Handle zielt.
+          if (aktivesHandle === handle) aktivesHandle = null;
+        }
+      },
+      { skipIfBusy: opts?.skipIfBusy },
+    );
+
+    // Tick übersprungen (Kontext war belegt): keine Aktualisierung — der nächste
+    // Tick folgt. Für den Aufrufer unkritisch (leerer String = „nichts Neues").
+    if (run.skipped) return '';
+
+    const result = run.value;
     // isAborted: die Dekodierung lief nicht durch → Ergebnis unvollständig.
     // Nicht als generischen Fehler tarnen, aber sichtbar loggen (half bisher
     // die Ursachenanalyse zu verschleiern).
@@ -540,7 +604,8 @@ export async function transcribePcm(
     });
     throw new WhisperError(WhisperFehler.transcribe, detail);
   } finally {
-    await FileSystem.deleteAsync(path, { idempotent: true }).catch(() => {});
+    // Nur löschen, wenn tatsächlich geschrieben (übersprungener Tick schrieb nichts).
+    if (dateiGeschrieben) await FileSystem.deleteAsync(path, { idempotent: true }).catch(() => {});
   }
 }
 
