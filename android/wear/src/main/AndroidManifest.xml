@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Wear-OS-App-Manifest fuer die "Naechstes Gebet"-Tile. UNGETESTET (siehe
+  build.gradle-Kopfkommentar) - insbesondere die genaue Berechtigungs-/
+  Feature-Deklaration fuer Data-Layer-Empfang wurde nicht an einem echten
+  Geraet/Emulator verifiziert.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <uses-feature android:name="android.hardware.type.watch" android:required="true"/>
+
+  <!-- companion-required (nicht standalone): die Tile zeigt ausschliesslich
+       Daten, die vom Telefon-Companion (Salati-App, android/app/) via Data
+       Layer API gesendet werden - ohne gekoppeltes Telefon keine Zeiten. -->
+  <uses-permission android:name="com.google.android.permission.PROVIDE_BACKGROUND"/>
+
+  <application
+    android:allowBackup="true"
+    android:icon="@drawable/ic_tile_launcher"
+    android:label="@string/app_name"
+    android:theme="@android:style/Theme.DeviceDefault">
+
+    <!-- Companion-Pflichtangabe: verknuepft diese Wear-App mit der Telefon-
+         App fuer die Play-Store-Bundling-Logik (eine Wear-APK wird nur auf
+         Uhren installiert, die mit einem Telefon mit dieser App-ID gekoppelt
+         sind). -->
+    <meta-data
+      android:name="com.google.android.wearable.standalone"
+      android:value="false"/>
+    <meta-data
+      android:name="com.google.android.gms.version"
+      android:value="@integer/google_play_services_version"/>
+
+    <service
+      android:name=".PrayerTileService"
+      android:exported="true"
+      android:icon="@drawable/ic_tile_launcher"
+      android:label="@string/tile_label"
+      android:permission="com.google.android.wearable.permission.BIND_TILE_PROVIDER">
+      <intent-filter>
+        <action android:name="androidx.wear.tiles.action.BIND_TILE_PROVIDER"/>
+      </intent-filter>
+      <meta-data
+        android:name="androidx.wear.tiles.PREVIEW"
+        android:resource="@drawable/ic_tile_preview"/>
+    </service>
+
+    <!-- Empfaengt die vom Telefon per Wearable.DataClient gesendeten
+         Gebetszeiten (WearSyncModule.kt, Pfad /salati/prayer-times) und
+         speichert sie lokal fuer PrayerTileService (siehe dortigen
+         Kommentar zu SharedPreferences als Zwischenspeicher). -->
+    <service
+      android:name=".PrayerDataListenerService"
+      android:exported="true">
+      <intent-filter>
+        <action android:name="com.google.android.gms.wearable.DATA_CHANGED"/>
+        <data
+          android:scheme="wear"
+          android:host="*"
+          android:pathPrefix="/salati/prayer-times"/>
+      </intent-filter>
+    </service>
+
+  </application>
+</manifest>

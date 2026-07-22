@@ -1,0 +1,366 @@
+[
+  {
+    "letterId": "alif",
+    "arabic": "أَسَد",
+    "translit": "ʾasad",
+    "meaning": {
+      "de": "Löwe",
+      "en": "lion",
+      "tr": "aslan",
+      "ar": "الليث",
+      "es": "león",
+      "fr": "lion"
+    }
+  },
+  {
+    "letterId": "ba",
+    "arabic": "بَيْت",
+    "translit": "bayt",
+    "meaning": {
+      "de": "Haus",
+      "en": "house",
+      "tr": "ev",
+      "ar": "المسكن",
+      "es": "casa",
+      "fr": "maison"
+    }
+  },
+  {
+    "letterId": "ta",
+    "arabic": "تَمْر",
+    "translit": "tamr",
+    "meaning": {
+      "de": "Datteln",
+      "en": "dates",
+      "tr": "hurma",
+      "ar": "ثمر النخل",
+      "es": "dátiles",
+      "fr": "dattes"
+    }
+  },
+  {
+    "letterId": "tha",
+    "arabic": "ثَوْب",
+    "translit": "thawb",
+    "meaning": {
+      "de": "Gewand",
+      "en": "garment",
+      "tr": "elbise",
+      "ar": "اللباس",
+      "es": "vestimenta",
+      "fr": "vêtement"
+    }
+  },
+  {
+    "letterId": "jim",
+    "arabic": "جَمَل",
+    "translit": "jamal",
+    "meaning": {
+      "de": "Kamel",
+      "en": "camel",
+      "tr": "deve",
+      "ar": "البعير",
+      "es": "camello",
+      "fr": "chameau"
+    }
+  },
+  {
+    "letterId": "hha",
+    "arabic": "حَلِيب",
+    "translit": "ḥalīb",
+    "meaning": {
+      "de": "Milch",
+      "en": "milk",
+      "tr": "süt",
+      "ar": "اللبن",
+      "es": "leche",
+      "fr": "lait"
+    }
+  },
+  {
+    "letterId": "kha",
+    "arabic": "خُبْز",
+    "translit": "khubz",
+    "meaning": {
+      "de": "Brot",
+      "en": "bread",
+      "tr": "ekmek",
+      "ar": "الخبز",
+      "es": "pan",
+      "fr": "pain"
+    }
+  },
+  {
+    "letterId": "dal",
+    "arabic": "دَرْس",
+    "translit": "dars",
+    "meaning": {
+      "de": "Lektion",
+      "en": "lesson",
+      "tr": "ders",
+      "ar": "الدرس",
+      "es": "lección",
+      "fr": "leçon"
+    }
+  },
+  {
+    "letterId": "dhal",
+    "arabic": "ذُرَة",
+    "translit": "dhura",
+    "meaning": {
+      "de": "Mais",
+      "en": "corn",
+      "tr": "mısır",
+      "ar": "الحَب",
+      "es": "maíz",
+      "fr": "maïs"
+    }
+  },
+  {
+    "letterId": "ra",
+    "arabic": "رَمَاد",
+    "translit": "ramād",
+    "meaning": {
+      "de": "Asche",
+      "en": "ashes",
+      "tr": "kül",
+      "ar": "الرماد",
+      "es": "cenizas",
+      "fr": "cendres"
+    }
+  },
+  {
+    "letterId": "zay",
+    "arabic": "زَهْرَة",
+    "translit": "zahra",
+    "meaning": {
+      "de": "Blume",
+      "en": "flower",
+      "tr": "çiçek",
+      "ar": "النَّوْر",
+      "es": "flor",
+      "fr": "fleur"
+    }
+  },
+  {
+    "letterId": "sin",
+    "arabic": "سَمَك",
+    "translit": "samak",
+    "meaning": {
+      "de": "Fisch",
+      "en": "fish",
+      "tr": "balık",
+      "ar": "الحوت",
+      "es": "pez",
+      "fr": "poisson"
+    }
+  },
+  {
+    "letterId": "shin",
+    "arabic": "شَمْس",
+    "translit": "shams",
+    "meaning": {
+      "de": "Sonne",
+      "en": "sun",
+      "tr": "güneş",
+      "ar": "الشمس",
+      "es": "sol",
+      "fr": "soleil"
+    }
+  },
+  {
+    "letterId": "sad",
+    "arabic": "صَبَاح",
+    "translit": "ṣabāḥ",
+    "meaning": {
+      "de": "Morgen",
+      "en": "morning",
+      "tr": "sabah",
+      "ar": "الصبح",
+      "es": "mañana",
+      "fr": "matin"
+    }
+  },
+  {
+    "letterId": "dad",
+    "arabic": "ضَيْف",
+    "translit": "ḍayf",
+    "meaning": {
+      "de": "Gast",
+      "en": "guest",
+      "tr": "misafir",
+      "ar": "الزائر",
+      "es": "invitado",
+      "fr": "invité"
+    }
+  },
+  {
+    "letterId": "tta",
+    "arabic": "طَيْر",
+    "translit": "ṭayr",
+    "meaning": {
+      "de": "Vogel",
+      "en": "bird",
+      "tr": "kuş",
+      "ar": "الطائر",
+      "es": "pájaro",
+      "fr": "oiseau"
+    }
+  },
+  {
+    "letterId": "zza",
+    "arabic": "ظَهْر",
+    "translit": "ẓahr",
+    "meaning": {
+      "de": "Rücken",
+      "en": "back",
+      "tr": "sırt",
+      "ar": "الظهر",
+      "es": "espalda",
+      "fr": "dos"
+    }
+  },
+  {
+    "letterId": "ain",
+    "arabic": "عَيْن",
+    "translit": "ʿayn",
+    "meaning": {
+      "de": "Auge",
+      "en": "eye",
+      "tr": "göz",
+      "ar": "الباصرة",
+      "es": "ojo",
+      "fr": "œil"
+    }
+  },
+  {
+    "letterId": "ghain",
+    "arabic": "غَيْم",
+    "translit": "ghaym",
+    "meaning": {
+      "de": "Wolke",
+      "en": "cloud",
+      "tr": "bulut",
+      "ar": "السحاب",
+      "es": "nube",
+      "fr": "nuage"
+    }
+  },
+  {
+    "letterId": "fa",
+    "arabic": "فُرْشَاة",
+    "translit": "furshāh",
+    "meaning": {
+      "de": "Bürste",
+      "en": "brush",
+      "tr": "fırça",
+      "ar": "الفرشاة",
+      "es": "cepillo",
+      "fr": "brosse"
+    }
+  },
+  {
+    "letterId": "qaf",
+    "arabic": "قَلْب",
+    "translit": "qalb",
+    "meaning": {
+      "de": "Herz",
+      "en": "heart",
+      "tr": "kalp",
+      "ar": "الفؤاد",
+      "es": "corazón",
+      "fr": "cœur"
+    }
+  },
+  {
+    "letterId": "kaf",
+    "arabic": "كِتَاب",
+    "translit": "kitāb",
+    "meaning": {
+      "de": "Buch",
+      "en": "book",
+      "tr": "kitap",
+      "ar": "السِّفر",
+      "es": "libro",
+      "fr": "livre"
+    }
+  },
+  {
+    "letterId": "lam",
+    "arabic": "لَيْمُون",
+    "translit": "laymūn",
+    "meaning": {
+      "de": "Zitrone",
+      "en": "lemon",
+      "tr": "limon",
+      "ar": "الليمون",
+      "es": "limón",
+      "fr": "citron"
+    }
+  },
+  {
+    "letterId": "mim",
+    "arabic": "مَاء",
+    "translit": "māʾ",
+    "meaning": {
+      "de": "Wasser",
+      "en": "water",
+      "tr": "su",
+      "ar": "الماء",
+      "es": "agua",
+      "fr": "eau"
+    }
+  },
+  {
+    "letterId": "nun",
+    "arabic": "نَجْم",
+    "translit": "najm",
+    "meaning": {
+      "de": "Stern",
+      "en": "star",
+      "tr": "yıldız",
+      "ar": "الكوكب",
+      "es": "estrella",
+      "fr": "étoile"
+    }
+  },
+  {
+    "letterId": "ha",
+    "arabic": "هَدِيَّة",
+    "translit": "hadiyya",
+    "meaning": {
+      "de": "Geschenk",
+      "en": "gift",
+      "tr": "hediye",
+      "ar": "العطية",
+      "es": "regalo",
+      "fr": "cadeau"
+    }
+  },
+  {
+    "letterId": "waw",
+    "arabic": "وَرْدَة",
+    "translit": "warda",
+    "meaning": {
+      "de": "Rose",
+      "en": "rose",
+      "tr": "gül",
+      "ar": "الورد",
+      "es": "rosa",
+      "fr": "rose"
+    }
+  },
+  {
+    "letterId": "ya",
+    "arabic": "يَد",
+    "translit": "yad",
+    "meaning": {
+      "de": "Hand",
+      "en": "hand",
+      "tr": "el",
+      "ar": "الكف",
+      "es": "mano",
+      "fr": "main"
+    }
+  }
+]

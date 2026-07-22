@@ -1,0 +1,1019 @@
+{
+  "lessons": [
+    {
+      "id": "nikah-01",
+      "kind": "story",
+      "title": {
+        "de": "Der Zweck der Ehe",
+        "en": "The purpose of marriage",
+        "tr": "Evliliğin amacı",
+        "ar": "الغاية من الزواج",
+        "es": "El propósito del matrimonio",
+        "fr": "Le but du mariage"
+      },
+      "source": "Quran 30:21",
+      "story": [
+        {
+          "title": {
+            "de": "Ein Zeichen unter Allahs Zeichen",
+            "en": "A sign among Allah's signs",
+            "tr": "Allah'ın ayetlerinden bir ayet",
+            "ar": "آية من آيات الله",
+            "es": "Un signo entre los signos de Allah",
+            "fr": "Un signe parmi les signes d'Allah"
+          },
+          "text": {
+            "de": "Der Koran beschreibt die Ehe nicht als bloße gesellschaftliche Übereinkunft, sondern als eines der Zeichen Allahs in der Schöpfung: „Und zu Seinen Zeichen gehört, dass Er euch aus euch selbst Gattinnen erschuf, damit ihr Ruhe bei ihnen findet, und Er setzte zwischen euch Liebe und Barmherzigkeit. Darin sind wahrlich Zeichen für Leute, die nachdenken“ (Koran 30:21). Bemerkenswert ist die Reihenfolge: Zuerst wird Ruhe (Sakina) genannt, dann Liebe (Mawadda) und schließlich Barmherzigkeit (Rahma) - drei unterschiedliche, aufeinander aufbauende Ebenen einer gelingenden Beziehung.",
+            "en": "The Quran does not describe marriage as a mere social arrangement, but as one of Allah's signs in creation: “And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy. Indeed in that are signs for a people who give thought” (Quran 30:21). Notable is the order: first tranquility (sakina) is mentioned, then affection (mawaddah), and finally mercy (rahmah) - three distinct, mutually reinforcing layers of a successful relationship.",
+            "tr": "Kur'an, evliliği yalnızca toplumsal bir anlaşma olarak değil, yaratılıştaki Allah'ın ayetlerinden biri olarak tanımlar: “Kendileriyle huzur bulasınız diye sizin için kendi türünüzden eşler yaratması ve aranızda sevgi ve merhamet var etmesi de O'nun ayetlerindendir. Şüphesiz bunda düşünen bir toplum için ibretler vardır” (Kur'an 30:21). Dikkat çekici olan sıralamadır: önce huzur (sekine), sonra sevgi (mevedde), son olarak merhamet (rahmet) zikredilir - başarılı bir ilişkinin birbirini tamamlayan üç farklı katmanı.",
+            "ar": "لا يصف القرآن الزواج مجرد اتفاق اجتماعي، بل آية من آيات الله في الخلق: «وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً إِنَّ فِي ذَلِكَ لَآيَاتٍ لِقَوْمٍ يَتَفَكَّرُونَ» (الروم 21). واللافت هو الترتيب: يُذكر السكن أولًا، ثم المودة، ثم الرحمة أخيرًا - ثلاث طبقات متكاملة لعلاقة ناجحة.",
+            "es": "El Corán no describe el matrimonio como un mero acuerdo social, sino como uno de los signos de Allah en la creación: «Y entre Sus signos está el haber creado para vosotros, de vosotros mismos, cónyuges para que encontréis en ellos sosiego, y puso entre vosotros amor y misericordia. En verdad, en ello hay signos para gente que reflexiona» (Corán 30:21). Es notable el orden: primero se menciona la tranquilidad (sakina), luego el afecto (mawaddah) y finalmente la misericordia (rahmah): tres capas distintas y complementarias de una relación exitosa.",
+            "fr": "Le Coran ne décrit pas le mariage comme un simple arrangement social, mais comme l'un des signes d'Allah dans la création : « Et parmi Ses signes, Il a créé pour vous, de vous-mêmes, des épouses pour que vous viviez en tranquillité avec elles, et Il a mis entre vous de l'affection et de la bonté. Il y a en cela des signes pour des gens qui réfléchissent » (Coran 30:21). L'ordre est remarquable : d'abord la tranquillité (sakina), puis l'affection (mawaddah), et enfin la bonté (rahmah) - trois strates distinctes et complémentaires d'une relation réussie."
+          }
+        },
+        {
+          "title": {
+            "de": "Sakina - die Ruhe",
+            "en": "Sakina - tranquility",
+            "tr": "Sekine - huzur",
+            "ar": "السكن",
+            "es": "Sakina - el sosiego",
+            "fr": "Sakina - la tranquillité"
+          },
+          "text": {
+            "de": "Sakina bezeichnet die innere Ruhe, die zwei Menschen finden, wenn sie einander vertrauen können - ein Gegengewicht zur Unruhe des Alleinseins. Der Koran macht deutlich, dass diese Ruhe kein Zufall, sondern ein bewusst gegebenes Geschenk ist: Der Ehepartner soll ein Ort der Geborgenheit sein, nicht der zusätzlichen Belastung. Dies setzt einen hohen Maßstab für den Umgang miteinander - Streit und Härte widersprechen dem eigentlichen Zweck der Ehe, wie ihn der Koran hier beschreibt.",
+            "en": "Sakina refers to the inner tranquility two people find when they can trust one another - a counterbalance to the restlessness of being alone. The Quran makes clear that this tranquility is no accident but a deliberately given gift: the spouse is meant to be a place of security, not an additional burden. This sets a high standard for how spouses treat one another - conflict and harshness contradict the very purpose of marriage as the Quran describes it here.",
+            "tr": "Sekine, iki insanın birbirine güvenebildiğinde bulduğu iç huzuru ifade eder - yalnızlığın huzursuzluğuna karşı bir denge. Kur'an bu huzurun tesadüf değil, bilinçli verilmiş bir hediye olduğunu açıkça belirtir: eş, ek bir yük değil, güven duyulan bir sığınak olmalıdır. Bu, eşlerin birbirine davranışı için yüksek bir ölçü koyar - kavga ve sertlik, Kur'an'ın burada tarif ettiği evliliğin asıl amacıyla çelişir.",
+            "ar": "السكن هو الطمأنينة الداخلية التي يجدها شخصان حين يثق كل منهما بالآخر - توازن لقلق الوحدة. ويوضح القرآن أن هذا السكن ليس صدفة بل عطية مقصودة: فالزوج ينبغي أن يكون مصدر أمان لا عبئًا إضافيًا. وهذا يضع معيارًا عاليًا لتعامل الزوجين - فالخلاف والقسوة يتعارضان مع الغاية الحقيقية للزواج كما يصفها القرآن هنا.",
+            "es": "El sakina designa la tranquilidad interior que dos personas encuentran cuando pueden confiar la una en la otra: un contrapeso a la inquietud de la soledad. El Corán deja claro que esta tranquilidad no es casualidad, sino un don deliberadamente concedido: el cónyuge debe ser un lugar de seguridad, no una carga adicional. Esto establece un estándar elevado para el trato mutuo: la disputa y la dureza contradicen el propósito mismo del matrimonio tal como lo describe aquí el Corán.",
+            "fr": "Le sakina désigne la tranquillité intérieure que deux personnes trouvent lorsqu'elles peuvent se faire confiance - un contrepoids à l'agitation de la solitude. Le Coran précise que cette tranquillité n'est pas un hasard mais un don délibérément accordé : le conjoint doit être un lieu de sécurité, non un fardeau supplémentaire. Cela fixe une exigence élevée quant à la manière dont les époux se traitent - le conflit et la dureté contredisent le but même du mariage tel que le Coran le décrit ici."
+          }
+        },
+        {
+          "title": {
+            "de": "Mawadda und Rahma - Liebe und Barmherzigkeit",
+            "en": "Mawaddah and rahmah - affection and mercy",
+            "tr": "Mevedde ve rahmet - sevgi ve merhamet",
+            "ar": "المودة والرحمة",
+            "es": "Mawaddah y rahmah - afecto y misericordia",
+            "fr": "Mawaddah et rahmah - affection et bonté"
+          },
+          "text": {
+            "de": "Klassische Gelehrte bemerken, dass Mawadda (leidenschaftliche Zuneigung) häufig am Anfang einer Ehe im Vordergrund steht, während Rahma (reife, geduldige Barmherzigkeit) diejenige Kraft ist, die eine Beziehung durch schwierige Zeiten trägt - etwa bei Krankheit, Alter oder Meinungsverschiedenheiten. Der Koran nennt bewusst beide, weil eine gesunde Ehe beides braucht: die anfängliche Anziehung und die dauerhafte, selbstlose Fürsorge, die auch dann bleibt, wenn die anfängliche Leidenschaft nachlässt.",
+            "en": "Classical scholars note that mawaddah (passionate affection) often stands in the foreground at the start of a marriage, while rahmah (mature, patient mercy) is the force that carries a relationship through difficult times - such as illness, old age, or disagreements. The Quran deliberately names both, because a healthy marriage needs both: the initial attraction and the lasting, selfless care that remains even after the initial passion fades.",
+            "tr": "Klasik alimler, mevveddenin (tutkulu sevgi) genellikle evliliğin başında ön planda olduğunu, rahmetin (olgun, sabırlı merhamet) ise ilişkiyi hastalık, yaşlılık veya anlaşmazlıklar gibi zor zamanlardan taşıyan güç olduğunu belirtir. Kur'an bilinçli olarak ikisini de zikreder, çünkü sağlıklı bir evlilik ikisine de ihtiyaç duyar: başlangıçtaki çekim ve ilk tutku azaldığında bile kalan kalıcı, özverili özen.",
+            "ar": "يلاحظ العلماء الكلاسيكيون أن المودة (المحبة الوجدانية) غالبًا ما تكون بارزة في بداية الزواج، بينما الرحمة (العناية الناضجة الصبورة) هي القوة التي تحمل العلاقة خلال الأوقات الصعبة - كالمرض أو الشيخوخة أو الخلافات. ويذكر القرآن الاثنين معًا عن قصد، لأن الزواج الصحي يحتاج كليهما: الانجذاب الأول والرعاية الدائمة النزيهة التي تبقى حتى بعد أن يخفت الشغف الأول.",
+            "es": "Los eruditos clásicos observan que el mawaddah (afecto apasionado) suele estar en primer plano al inicio de un matrimonio, mientras que el rahmah (misericordia madura y paciente) es la fuerza que sostiene una relación en tiempos difíciles, como la enfermedad, la vejez o los desacuerdos. El Corán menciona deliberadamente ambos, porque un matrimonio sano necesita los dos: la atracción inicial y el cuidado duradero y desinteresado que permanece incluso cuando la pasión inicial disminuye.",
+            "fr": "Les érudits classiques notent que le mawaddah (affection passionnée) est souvent au premier plan au début d'un mariage, tandis que le rahmah (bonté mûre et patiente) est la force qui porte une relation à travers les moments difficiles - comme la maladie, la vieillesse ou les désaccords. Le Coran nomme délibérément les deux, car un mariage sain a besoin des deux : l'attirance initiale et le soin durable et désintéressé qui demeure même lorsque la passion initiale s'estompe."
+          }
+        }
+      ],
+      "storyQuiz": [
+        {
+          "q": {
+            "de": "Welche drei Begriffe nennt Koran 30:21 als Grundlage der Ehe?",
+            "en": "What three terms does Quran 30:21 name as the foundation of marriage?",
+            "tr": "Kur'an 30:21 evliliğin temeli olarak hangi üç kavramı zikreder?",
+            "ar": "ما المصطلحات الثلاثة التي يذكرها القرآن 30:21 أساسًا للزواج؟",
+            "es": "¿Qué tres términos menciona el Corán 30:21 como base del matrimonio?",
+            "fr": "Quels trois termes le Coran 30:21 mentionne-t-il comme fondement du mariage ?"
+          },
+          "options": [
+            {
+              "de": "Sakina (Ruhe), Mawadda (Liebe), Rahma (Barmherzigkeit)",
+              "en": "Sakina (tranquility), mawaddah (affection), rahmah (mercy)",
+              "tr": "Sekine (huzur), mevedde (sevgi), rahmet (merhamet)",
+              "ar": "السكن والمودة والرحمة",
+              "es": "Sakina (sosiego), mawaddah (afecto), rahmah (misericordia)",
+              "fr": "Sakina (tranquillité), mawaddah (affection), rahmah (bonté)"
+            },
+            {
+              "de": "Reichtum, Status, Schönheit",
+              "en": "Wealth, status, beauty",
+              "tr": "Zenginlik, statü, güzellik",
+              "ar": "الثراء والمكانة والجمال",
+              "es": "Riqueza, estatus, belleza",
+              "fr": "Richesse, statut, beauté"
+            },
+            {
+              "de": "Nur gegenseitiger Respekt",
+              "en": "Only mutual respect",
+              "tr": "Sadece karşılıklı saygı",
+              "ar": "الاحترام المتبادل فقط",
+              "es": "Solo respeto mutuo",
+              "fr": "Uniquement le respect mutuel"
+            },
+            {
+              "de": "Der Koran nennt hierzu keine Begriffe",
+              "en": "The Quran names no terms for this",
+              "tr": "Kur'an bu konuda hiçbir kavram zikretmez",
+              "ar": "لا يذكر القرآن أي مصطلحات لذلك",
+              "es": "El Corán no menciona ningún término al respecto",
+              "fr": "Le Coran ne mentionne aucun terme à ce sujet"
+            }
+          ]
+        },
+        {
+          "q": {
+            "de": "Was beschreibt Sakina im Kontext der Ehe?",
+            "en": "What does sakina describe in the context of marriage?",
+            "tr": "Sekine, evlilik bağlamında neyi ifade eder?",
+            "ar": "بماذا يصف السكن في سياق الزواج؟",
+            "es": "¿Qué describe el sakina en el contexto del matrimonio?",
+            "fr": "Que décrit le sakina dans le contexte du mariage ?"
+          },
+          "options": [
+            {
+              "de": "Die innere Ruhe und Geborgenheit beim Partner",
+              "en": "The inner tranquility and security found with a partner",
+              "tr": "Eşte bulunan iç huzur ve güven",
+              "ar": "الطمأنينة الداخلية والأمان لدى الشريك",
+              "es": "La tranquilidad interior y la seguridad hallada en la pareja",
+              "fr": "La tranquillité intérieure et la sécurité trouvées auprès du partenaire"
+            },
+            {
+              "de": "Finanzielle Absicherung",
+              "en": "Financial security",
+              "tr": "Mali güvence",
+              "ar": "الضمان المالي",
+              "es": "La seguridad financiera",
+              "fr": "La sécurité financière"
+            },
+            {
+              "de": "Gesellschaftliches Ansehen",
+              "en": "Social prestige",
+              "tr": "Toplumsal itibar",
+              "ar": "المكانة الاجتماعية",
+              "es": "El prestigio social",
+              "fr": "Le prestige social"
+            },
+            {
+              "de": "Berufliche Zusammenarbeit",
+              "en": "Professional collaboration",
+              "tr": "Mesleki iş birliği",
+              "ar": "التعاون المهني",
+              "es": "La colaboración profesional",
+              "fr": "La collaboration professionnelle"
+            }
+          ]
+        },
+        {
+          "q": {
+            "de": "Wie unterscheiden Gelehrte Mawadda und Rahma?",
+            "en": "How do scholars distinguish mawaddah from rahmah?",
+            "tr": "Alimler mevveddeyi rahmetten nasıl ayırt eder?",
+            "ar": "كيف يميز العلماء بين المودة والرحمة؟",
+            "es": "¿Cómo distinguen los eruditos el mawaddah del rahmah?",
+            "fr": "Comment les érudits distinguent-ils le mawaddah du rahmah ?"
+          },
+          "options": [
+            {
+              "de": "Mawadda ist die anfängliche Leidenschaft, Rahma die dauerhafte, reife Fürsorge",
+              "en": "Mawaddah is the initial passion, rahmah the lasting, mature care",
+              "tr": "Mevedde başlangıçtaki tutku, rahmet ise kalıcı olgun özendir",
+              "ar": "المودة هي الشغف الأول، والرحمة هي العناية الناضجة الدائمة",
+              "es": "El mawaddah es la pasión inicial, el rahmah el cuidado maduro y duradero",
+              "fr": "Le mawaddah est la passion initiale, le rahmah le soin mûr et durable"
+            },
+            {
+              "de": "Es gibt keinen Unterschied zwischen beiden",
+              "en": "There is no difference between the two",
+              "tr": "İkisi arasında hiçbir fark yoktur",
+              "ar": "لا فرق بينهما إطلاقًا",
+              "es": "No hay ninguna diferencia entre ambos",
+              "fr": "Il n'y a aucune différence entre les deux"
+            },
+            {
+              "de": "Mawadda gilt nur für Männer, Rahma nur für Frauen",
+              "en": "Mawaddah applies only to men, rahmah only to women",
+              "tr": "Mevedde sadece erkekler, rahmet sadece kadınlar içindir",
+              "ar": "المودة للرجال فقط والرحمة للنساء فقط",
+              "es": "El mawaddah es solo para hombres, el rahmah solo para mujeres",
+              "fr": "Le mawaddah ne concerne que les hommes, le rahmah que les femmes"
+            },
+            {
+              "de": "Beide beziehen sich ausschließlich auf materielle Fürsorge",
+              "en": "Both refer exclusively to material provision",
+              "tr": "İkisi de yalnızca maddi bakımı ifade eder",
+              "ar": "كلاهما يشير حصرًا إلى الرعاية المادية",
+              "es": "Ambos se refieren exclusivamente al sustento material",
+              "fr": "Les deux ne concernent que le soutien matériel"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nikah-02",
+      "kind": "story",
+      "title": {
+        "de": "Rechte und Pflichten der Ehepartner",
+        "en": "Rights and duties of spouses",
+        "tr": "Eşlerin hakları ve görevleri",
+        "ar": "حقوق الزوجين وواجباتهما",
+        "es": "Derechos y deberes de los cónyuges",
+        "fr": "Droits et devoirs des époux"
+      },
+      "source": "Jami' at-Tirmidhi 3895; Quran 4:19",
+      "story": [
+        {
+          "title": {
+            "de": "Der beste Maßstab: der Umgang mit der eigenen Familie",
+            "en": "The best measure: how one treats one's own family",
+            "tr": "En iyi ölçü: kişinin kendi ailesine davranışı",
+            "ar": "أفضل معيار: التعامل مع الأهل",
+            "es": "El mejor criterio: el trato con la propia familia",
+            "fr": "Le meilleur critère : la façon de traiter sa propre famille"
+          },
+          "text": {
+            "de": "Der Prophet ﷺ machte den Umgang mit dem Ehepartner zu einem direkten Maßstab für den Charakter eines Menschen: „Der Beste von euch ist derjenige, der am besten zu seinen Frauen ist, und ich bin der Beste von euch zu meinen Frauen“ (Jami' at-Tirmidhi 3895). Bemerkenswert ist, dass der Prophet ﷺ hier nicht auf Frömmigkeit im rituellen Sinn oder gesellschaftliches Ansehen verweist, sondern auf das ganz konkrete, alltägliche Verhalten zu Hause - und sich selbst ausdrücklich als Vorbild dafür nennt.",
+            "en": "The Prophet ﷺ made how one treats one's spouse a direct measure of a person's character: “The best of you is the one who is best to his wives, and I am the best of you to my wives” (Jami' at-Tirmidhi 3895). What is notable is that the Prophet ﷺ does not point here to ritual piety or social standing, but to very concrete, everyday behavior at home - and explicitly names himself as the model for it.",
+            "tr": "Peygamber ﷺ, eşe davranışı bir insanın karakterinin doğrudan ölçüsü haline getirdi: “Sizin en hayırlınız, hanımlarına en hayırlı davranandır ve ben, hanımlarıma en hayırlı davranınızım” (Tirmizi 3895). Dikkat çekici olan, Peygamber'in burada ibadet açısından dindarlığa veya toplumsal itibara değil, evdeki çok somut, gündelik davranışa işaret etmesi ve kendisini bunun örneği olarak açıkça göstermesidir.",
+            "ar": "جعل النبي ﷺ التعامل مع الزوجة معيارًا مباشرًا لخُلق الإنسان: «خيركم خيركم لنسائه، وأنا خيركم لنسائي» (جامع الترمذي 3895). واللافت أن النبي ﷺ لا يشير هنا إلى التقوى الشعائرية أو المكانة الاجتماعية، بل إلى السلوك اليومي الملموس في البيت - ويجعل من نفسه صراحةً القدوة في ذلك.",
+            "es": "El Profeta ﷺ convirtió el trato hacia el cónyuge en una medida directa del carácter de una persona: «El mejor de vosotros es quien mejor trata a sus esposas, y yo soy el mejor de vosotros con mis esposas» (Yami' at-Tirmidhi 3895). Es notable que el Profeta ﷺ no señala aquí la piedad ritual ni el estatus social, sino el comportamiento cotidiano muy concreto en el hogar, y se nombra a sí mismo explícitamente como modelo de ello.",
+            "fr": "Le Prophète ﷺ a fait de la manière de traiter son conjoint une mesure directe du caractère d'une personne : « Le meilleur d'entre vous est celui qui est le meilleur envers ses épouses, et je suis le meilleur d'entre vous envers mes épouses » (Jami' at-Tirmidhi 3895). Il est notable que le Prophète ﷺ ne renvoie pas ici à la piété rituelle ou au statut social, mais au comportement très concret et quotidien à la maison - et se désigne explicitement lui-même comme modèle."
+          }
+        },
+        {
+          "title": {
+            "de": "Zusammenleben in Güte",
+            "en": "Living together in kindness",
+            "tr": "İyilikle birlikte yaşamak",
+            "ar": "المعاشرة بالمعروف",
+            "es": "Convivencia en bondad",
+            "fr": "Vivre ensemble dans la bonté"
+          },
+          "text": {
+            "de": "Der Koran fasst die grundlegende Haltung zwischen Ehepartnern in einem einzigen, umfassenden Prinzip zusammen: „Und lebt in Güte mit ihnen zusammen. Und wenn ihr sie nicht mögt, so mag es sein, dass ihr eine Sache nicht mögt, während Allah viel Gutes darin bereithält“ (Koran 4:19). Der arabische Ausdruck ma'ruf bezeichnet dabei nicht irgendein beliebiges Verhalten, sondern das, was in einer Gemeinschaft als gut, fair und ehrenhaft anerkannt ist - der Vers verlangt also aktives, wohlwollendes Handeln, nicht bloß das Unterlassen von Schaden.",
+            "en": "The Quran sums up the fundamental attitude between spouses in a single, comprehensive principle: “And live with them in kindness. For if you dislike them, perhaps you dislike a thing and Allah makes therein much good” (Quran 4:19). The Arabic term ma'ruf does not denote just any behavior, but that which is recognized in a community as good, fair, and honorable - the verse thus demands active, benevolent conduct, not merely the avoidance of harm.",
+            "tr": "Kur'an, eşler arasındaki temel tutumu tek, kapsamlı bir ilkede özetler: “Onlarla iyilikle geçinin. Eğer onlardan hoşlanmıyorsanız, olabilir ki bir şeyden hoşlanmazsınız da Allah onda çok hayır kılar” (Kur'an 4:19). Arapça ma'ruf ifadesi herhangi bir davranışı değil, bir toplulukta iyi, adil ve onurlu kabul edileni ifade eder - ayet böylece sadece zarar vermemeyi değil, aktif ve iyiliksever bir davranışı talep eder.",
+            "ar": "يلخص القرآن الموقف الأساسي بين الزوجين في مبدأ واحد شامل: «وَعَاشِرُوهُنَّ بِالْمَعْرُوفِ فَإِنْ كَرِهْتُمُوهُنَّ فَعَسَى أَنْ تَكْرَهُوا شَيْئًا وَيَجْعَلَ اللَّهُ فِيهِ خَيْرًا كَثِيرًا» (النساء 19). ولا يشير مصطلح المعروف إلى أي سلوك عشوائي، بل إلى ما هو معترف به في المجتمع بأنه حسن وعادل ومشرّف - فالآية تطلب سلوكًا فاعلًا حسن النية، لا مجرد الامتناع عن الأذى.",
+            "es": "El Corán resume la actitud fundamental entre los cónyuges en un único principio integral: «Y convivid con ellas con bondad. Y si os disgustan, puede que os disguste algo en lo que Allah ha puesto mucho bien» (Corán 4:19). El término árabe ma'ruf no designa cualquier comportamiento, sino lo que en una comunidad se reconoce como bueno, justo y honorable: el versículo exige, pues, una conducta activa y benevolente, no solo la ausencia de daño.",
+            "fr": "Le Coran résume l'attitude fondamentale entre époux en un seul principe global : « Et vivez avec elles convenablement. Si vous avez de l'aversion pour elles, il se peut que vous ayez de l'aversion pour une chose où Allah a mis un grand bien » (Coran 4:19). Le terme arabe ma'ruf ne désigne pas n'importe quel comportement, mais ce qui est reconnu dans une communauté comme bon, juste et honorable - le verset exige donc une conduite active et bienveillante, non un simple évitement du tort."
+          }
+        },
+        {
+          "title": {
+            "de": "Gegenseitigkeit statt Einbahnstraße",
+            "en": "Reciprocity, not a one-way street",
+            "tr": "Tek yönlü değil karşılıklılık",
+            "ar": "التبادلية لا اتجاه واحد",
+            "es": "Reciprocidad, no una vía de sentido único",
+            "fr": "Réciprocité, pas à sens unique"
+          },
+          "text": {
+            "de": "Beide bisher genannten Quellen richten sich in der klassischen Auslegung an beide Ehepartner gleichermaßen: Güte, Geduld und gutes Benehmen werden nicht einseitig von einer Seite verlangt, sondern als gemeinsame Verantwortung verstanden. Eine Ehe, in der nur eine Seite Rechte einfordert und die andere nur Pflichten erfüllt, entspricht nicht dem hier beschriebenen Ideal - beide Seiten schulden einander Güte, und beide profitieren von der versprochenen Ruhe und Barmherzigkeit.",
+            "en": "In classical interpretation, both sources mentioned above apply equally to both spouses: kindness, patience, and good conduct are not demanded one-sidedly from one party, but understood as a shared responsibility. A marriage in which only one side claims rights while the other only fulfills duties does not match the ideal described here - both sides owe each other kindness, and both benefit from the promised tranquility and mercy.",
+            "tr": "Klasik yorumda, yukarıda zikredilen her iki kaynak da her iki eşe eşit şekilde uygulanır: iyilik, sabır ve güzel davranış tek taraflı olarak bir taraftan talep edilmez, ortak bir sorumluluk olarak anlaşılır. Yalnızca bir tarafın hak talep ettiği, diğerinin ise yalnızca görev yerine getirdiği bir evlilik burada tarif edilen ideale uymaz - her iki taraf da birbirine iyilik borçludur ve her ikisi de vaat edilen huzur ve merhametten yararlanır.",
+            "ar": "في التفسير الكلاسيكي، ينطبق كلا المصدرين المذكورين أعلاه على الزوجين بالتساوي: فاللطف والصبر وحسن الخلق لا تُطلب من طرف واحد فقط، بل تُفهم كمسؤولية مشتركة. والزواج الذي يطالب فيه طرف واحد بالحقوق بينما يؤدي الآخر الواجبات فقط لا يوافق المثال الموصوف هنا - فكلا الطرفين مدين للآخر باللطف، وكلاهما يستفيد من السكن والرحمة الموعودين.",
+            "es": "En la interpretación clásica, ambas fuentes mencionadas se aplican por igual a los dos cónyuges: la bondad, la paciencia y el buen comportamiento no se exigen unilateralmente a una sola parte, sino que se entienden como una responsabilidad compartida. Un matrimonio en el que solo una parte reclama derechos mientras la otra solo cumple deberes no corresponde al ideal aquí descrito: ambas partes se deben bondad mutuamente, y ambas se benefician de la tranquilidad y misericordia prometidas.",
+            "fr": "Dans l'interprétation classique, les deux sources mentionnées ci-dessus s'appliquent également aux deux époux : la bonté, la patience et le bon comportement ne sont pas exigés unilatéralement d'une seule partie, mais compris comme une responsabilité partagée. Un mariage où une seule partie revendique des droits pendant que l'autre ne fait que remplir des devoirs ne correspond pas à l'idéal décrit ici - les deux parties se doivent mutuellement bonté, et toutes deux bénéficient de la tranquillité et de la bonté promises."
+          }
+        }
+      ],
+      "storyQuiz": [
+        {
+          "q": {
+            "de": "Woran misst der Prophet ﷺ laut Tirmidhi 3895 den Charakter eines Menschen?",
+            "en": "According to Tirmidhi 3895, by what does the Prophet ﷺ measure a person's character?",
+            "tr": "Tirmizi 3895'e göre Peygamber ﷺ bir insanın karakterini neyle ölçer?",
+            "ar": "بم يقيس النبي ﷺ خُلق الإنسان بحسب الترمذي 3895؟",
+            "es": "Según Tirmidhi 3895, ¿con qué mide el Profeta ﷺ el carácter de una persona?",
+            "fr": "Selon Tirmidhi 3895, à quoi le Prophète ﷺ mesure-t-il le caractère d'une personne ?"
+          },
+          "options": [
+            {
+              "de": "Am Umgang mit den eigenen Ehefrauen",
+              "en": "By how one treats one's own wives",
+              "tr": "Kendi hanımlarına davranışıyla",
+              "ar": "بمعاملته لزوجاته",
+              "es": "Por el trato hacia sus propias esposas",
+              "fr": "Par la façon de traiter ses propres épouses"
+            },
+            {
+              "de": "Am gesellschaftlichen Ansehen",
+              "en": "By social standing",
+              "tr": "Toplumsal itibarıyla",
+              "ar": "بمكانته الاجتماعية",
+              "es": "Por su posición social",
+              "fr": "Par le statut social"
+            },
+            {
+              "de": "Am Umfang des rituellen Gebets",
+              "en": "By the extent of ritual prayer",
+              "tr": "Namazın kapsamıyla",
+              "ar": "بمقدار الصلاة الشعائرية",
+              "es": "Por la extensión de la oración ritual",
+              "fr": "Par l'étendue de la prière rituelle"
+            },
+            {
+              "de": "Am beruflichen Erfolg",
+              "en": "By professional success",
+              "tr": "Mesleki başarısıyla",
+              "ar": "بالنجاح المهني",
+              "es": "Por el éxito profesional",
+              "fr": "Par la réussite professionnelle"
+            }
+          ]
+        },
+        {
+          "q": {
+            "de": "Was fordert Koran 4:19 mit dem Ausdruck 'ma'ruf'?",
+            "en": "What does Quran 4:19 demand with the term 'ma'ruf'?",
+            "tr": "Kur'an 4:19 'ma'ruf' ifadesiyle neyi talep eder?",
+            "ar": "بم تطالب الآية 4:19 بلفظ 'المعروف'؟",
+            "es": "¿Qué exige el Corán 4:19 con el término 'ma'ruf'?",
+            "fr": "Que demande le Coran 4:19 avec le terme 'ma'ruf' ?"
+          },
+          "options": [
+            {
+              "de": "Aktives, in der Gemeinschaft als gut anerkanntes Verhalten",
+              "en": "Active behavior recognized as good by the community",
+              "tr": "Toplulukta iyi kabul edilen aktif bir davranış",
+              "ar": "سلوكًا فاعلًا معترفًا به بأنه حسن في المجتمع",
+              "es": "Un comportamiento activo reconocido como bueno por la comunidad",
+              "fr": "Un comportement actif reconnu comme bon par la communauté"
+            },
+            {
+              "de": "Nur das Unterlassen offener Gewalt",
+              "en": "Only the avoidance of overt violence",
+              "tr": "Sadece açık şiddetten kaçınmayı",
+              "ar": "الامتناع عن العنف الصريح فقط",
+              "es": "Solo evitar la violencia manifiesta",
+              "fr": "Uniquement éviter la violence manifeste"
+            },
+            {
+              "de": "Finanzielle Gleichstellung beider Partner",
+              "en": "Financial equality between both partners",
+              "tr": "İki eşin mali eşitliğini",
+              "ar": "المساواة المالية بين الشريكين",
+              "es": "La igualdad financiera entre ambos cónyuges",
+              "fr": "L'égalité financière entre les deux partenaires"
+            },
+            {
+              "de": "Ein rein rechtliches, kein moralisches Prinzip",
+              "en": "A purely legal, not a moral principle",
+              "tr": "Sadece hukuki, ahlaki olmayan bir ilke",
+              "ar": "مبدأ قانونيًا بحتًا لا أخلاقيًا",
+              "es": "Un principio puramente legal, no moral",
+              "fr": "Un principe purement juridique, non moral"
+            }
+          ]
+        },
+        {
+          "q": {
+            "de": "Wie verteilt die klassische Auslegung die Pflicht zu Güte in der Ehe?",
+            "en": "How does classical interpretation distribute the duty of kindness in marriage?",
+            "tr": "Klasik yorum evlilikte iyilik görevini nasıl dağıtır?",
+            "ar": "كيف يوزّع التفسير الكلاسيكي واجب اللطف في الزواج؟",
+            "es": "¿Cómo distribuye la interpretación clásica el deber de bondad en el matrimonio?",
+            "fr": "Comment l'interprétation classique répartit-elle le devoir de bonté dans le mariage ?"
+          },
+          "options": [
+            {
+              "de": "Gleichermaßen auf beide Ehepartner",
+              "en": "Equally on both spouses",
+              "tr": "Her iki eşe eşit şekilde",
+              "ar": "بالتساوي على الزوجين",
+              "es": "Por igual entre ambos cónyuges",
+              "fr": "Également sur les deux époux"
+            },
+            {
+              "de": "Ausschließlich auf den Ehemann",
+              "en": "Exclusively on the husband",
+              "tr": "Sadece kocaya",
+              "ar": "على الزوج حصرًا",
+              "es": "Exclusivamente sobre el esposo",
+              "fr": "Exclusivement sur le mari"
+            },
+            {
+              "de": "Ausschließlich auf die Ehefrau",
+              "en": "Exclusively on the wife",
+              "tr": "Sadece hanıma",
+              "ar": "على الزوجة حصرًا",
+              "es": "Exclusivamente sobre la esposa",
+              "fr": "Exclusivement sur l'épouse"
+            },
+            {
+              "de": "Auf keinen von beiden, da es freiwillig ist",
+              "en": "On neither, since it is voluntary",
+              "tr": "Gönüllü olduğu için ikisine de değil",
+              "ar": "لا على أحد لأنه تطوعي",
+              "es": "Sobre ninguno, ya que es voluntario",
+              "fr": "Sur aucun des deux, car c'est volontaire"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nikah-03",
+      "kind": "story",
+      "title": {
+        "de": "Der Ehevertrag - Nikah",
+        "en": "The marriage contract - nikah",
+        "tr": "Nikah - evlilik akdi",
+        "ar": "عقد النكاح",
+        "es": "El contrato matrimonial - nikah",
+        "fr": "Le contrat de mariage - nikah"
+      },
+      "source": "Quran 4:4; Jami' at-Tirmidhi 1102; Sunan Abi Dawud 2083",
+      "story": [
+        {
+          "title": {
+            "de": "Mahr - ein Recht der Frau, keine Gegenleistung",
+            "en": "Mahr - a right of the woman, not a payment for a service",
+            "tr": "Mehir - kadının hakkı, bir hizmetin karşılığı değil",
+            "ar": "المهر - حق للمرأة لا مقابل خدمة",
+            "es": "Mahr - un derecho de la mujer, no una contraprestación",
+            "fr": "Mahr - un droit de la femme, pas une contrepartie"
+          },
+          "text": {
+            "de": "Der Koran macht die Zahlung des Mahr (Brautgabe) zu einer unmittelbaren Verpflichtung des Mannes gegenüber der Frau: „Und gebt den Frauen ihre Brautgabe als Geschenk. Und wenn sie euch freiwillig etwas davon überlassen, so genießt es als wohlbekömmlich“ (Koran 4:4). Wichtig ist dabei die Formulierung: Der Mahr wird direkt der Frau gegeben, nicht ihrer Familie, und er gehört von diesem Moment an vollständig ihr - sie allein entscheidet, ob sie freiwillig etwas davon abgibt.",
+            "en": "The Quran makes the payment of the mahr (bridal gift) an immediate obligation of the man toward the woman: “And give the women [upon marriage] their bridal gifts graciously. But if they give up willingly to you anything of it, then take it in satisfaction and ease” (Quran 4:4). The wording matters here: the mahr is given directly to the woman, not to her family, and from that moment belongs entirely to her - she alone decides whether to give up any part of it voluntarily.",
+            "tr": "Kur'an, mehrin (nikah bağışı) ödenmesini erkeğin kadına karşı doğrudan bir yükümlülüğü haline getirir: “Kadınlara mehirlerini gönül hoşluğuyla verin. Eğer ondan bir kısmını gönül rızasıyla size bağışlarlarsa, onu afiyetle için” (Kur'an 4:4). Buradaki ifade önemlidir: mehir doğrudan kadına verilir, ailesine değil, ve o andan itibaren tamamen ona aittir - bir kısmını gönüllü olarak vermeyi yalnızca o kararlaştırır.",
+            "ar": "يجعل القرآن دفع المهر واجبًا مباشرًا على الرجل تجاه المرأة: «وَآتُوا النِّسَاءَ صَدُقَاتِهِنَّ نِحْلَةً فَإِنْ طِبْنَ لَكُمْ عَنْ شَيْءٍ مِنْهُ نَفْسًا فَكُلُوهُ هَنِيئًا مَرِيئًا» (النساء 4). والمهم هنا الصيغة: يُعطى المهر مباشرة للمرأة لا لأهلها، ومن تلك اللحظة يصبح ملكًا خالصًا لها - وهي وحدها من تقرر التنازل طوعًا عن جزء منه.",
+            "es": "El Corán convierte el pago del mahr (dote nupcial) en una obligación inmediata del hombre hacia la mujer: «Dad a las mujeres sus dotes como una donación. Y si os cedieran voluntariamente algo de ellas, entonces tomadlo con satisfacción y provecho» (Corán 4:4). La formulación es importante aquí: el mahr se entrega directamente a la mujer, no a su familia, y desde ese momento le pertenece por completo; solo ella decide si cede voluntariamente alguna parte.",
+            "fr": "Le Coran fait du versement du mahr (don nuptial) une obligation immédiate de l'homme envers la femme : « Et donnez aux femmes leur mahr, de bonne grâce. Si de bon gré elles vous en abandonnent quelque chose, disposez-en alors comme bon vous semble » (Coran 4:4). La formulation compte ici : le mahr est remis directement à la femme, non à sa famille, et lui appartient dès lors entièrement - elle seule décide d'en céder volontairement une partie."
+          }
+        },
+        {
+          "title": {
+            "de": "Der Wali - Schutz statt Zwang",
+            "en": "The wali - protection, not coercion",
+            "tr": "Veli - zorlama değil koruma",
+            "ar": "الولي - حماية لا إكراه",
+            "es": "El wali - protección, no coerción",
+            "fr": "Le wali - protection, non contrainte"
+          },
+          "text": {
+            "de": "Der Prophet ﷺ betonte die Bedeutung eines Ehevormunds (Wali) im Heiratsprozess: „Es gibt keine Ehe ohne einen Wali“ (Jami' at-Tirmidhi 1102; Sunan Abi Dawud 2083). Der klassische Sinn dieser Vorschrift ist Schutz, nicht Zwang: Der Wali soll sicherstellen, dass die Ehe sorgfältig geprüft und die Frau nicht übervorteilt wird. Zur genauen Rolle des Wali - etwa ob eine erwachsene Frau ihre Zustimmung auch ohne seine Anwesenheit rechtsgültig geben kann - bestehen unter den Rechtsschulen unterschiedliche, jeweils gut begründete Auffassungen; keine Ehe darf jedoch gegen den Willen der Frau erzwungen werden.",
+            "en": "The Prophet ﷺ emphasized the importance of a marriage guardian (wali) in the marriage process: “There is no marriage without a wali” (Jami' at-Tirmidhi 1102; Sunan Abi Dawud 2083). The classical purpose of this rule is protection, not coercion: the wali is meant to ensure the marriage is carefully vetted and the woman is not taken advantage of. On the exact role of the wali - for instance, whether an adult woman can validly give her own consent without his presence - the legal schools hold different, each well-reasoned views; no marriage, however, may be forced against the woman's will.",
+            "tr": "Peygamber ﷺ, evlilik sürecinde bir velinin önemini vurguladı: “Velisiz nikah olmaz” (Tirmizi 1102; Ebu Davud 2083). Bu hükmün klasik amacı zorlama değil korumadır: veli, evliliğin dikkatle incelenmesini ve kadının aldatılmamasını sağlamalıdır. Velinin tam rolü konusunda - örneğin yetişkin bir kadının onun bulunmadan da geçerli rıza verip veremeyeceği - mezhepler arasında farklı, her biri gerekçeli görüşler vardır; ancak hiçbir nikah kadının rızası dışında zorla yapılamaz.",
+            "ar": "أكد النبي ﷺ أهمية الولي في عملية الزواج: «لا نكاح إلا بولي» (جامع الترمذي 1102؛ سنن أبي داود 2083). والغرض الكلاسيكي من هذا الحكم هو الحماية لا الإكراه: فالولي يضمن أن يُفحص الزواج بعناية وألا تُستغل المرأة. أما بخصوص دور الولي بالتحديد - كإمكانية إعطاء المرأة البالغة موافقتها الصحيحة دون حضوره - فتوجد بين المذاهب آراء مختلفة ومعللة جيدًا؛ لكن لا يجوز إكراه أي امرأة على الزواج ضد إرادتها بأي حال.",
+            "es": "El Profeta ﷺ subrayó la importancia de un tutor matrimonial (wali) en el proceso del matrimonio: «No hay matrimonio sin wali» (Yami' at-Tirmidhi 1102; Sunan Abi Dawud 2083). El propósito clásico de esta norma es la protección, no la coerción: el wali debe asegurar que el matrimonio sea examinado con cuidado y que no se aproveche a la mujer. Sobre el papel exacto del wali -por ejemplo, si una mujer adulta puede dar válidamente su propio consentimiento sin su presencia- las escuelas jurídicas sostienen posturas distintas y bien fundamentadas; sin embargo, ningún matrimonio puede forzarse contra la voluntad de la mujer.",
+            "fr": "Le Prophète ﷺ a souligné l'importance d'un tuteur matrimonial (wali) dans le processus du mariage : « Il n'y a pas de mariage sans wali » (Jami' at-Tirmidhi 1102 ; Sunan Abi Dawud 2083). Le but classique de cette règle est la protection, non la contrainte : le wali doit veiller à ce que le mariage soit soigneusement examiné et que la femme ne soit pas lésée. Sur le rôle exact du wali - par exemple si une femme adulte peut valablement donner son propre consentement sans sa présence - les écoles juridiques ont des positions différentes, chacune bien argumentée ; mais aucun mariage ne peut être imposé contre la volonté de la femme."
+          }
+        },
+        {
+          "title": {
+            "de": "Zeugen und öffentliche Bekanntmachung",
+            "en": "Witnesses and public announcement",
+            "tr": "Şahitler ve ilan",
+            "ar": "الشهود والإعلان",
+            "es": "Testigos y anuncio público",
+            "fr": "Témoins et annonce publique"
+          },
+          "text": {
+            "de": "Neben Mahr und Wali gehört zur klassischen Struktur des Ehevertrags auch die Anwesenheit von Zeugen sowie die öffentliche Bekanntmachung der Ehe - beides dient demselben Ziel wie der Wali: Klarheit und Schutz für beide Seiten. Eine öffentlich bekannte, bezeugte Ehe lässt sich später nicht leugnen und schützt insbesondere die Frau vor der Situation, in der ein Mann die Ehe im Nachhinein abstreitet. Der Ehevertrag ist damit kein bloßes Formular, sondern ein Bündel von Schutzmechanismen, die alle auf Fairness zwischen den Partnern zielen.",
+            "en": "Alongside mahr and wali, the presence of witnesses and the public announcement of the marriage also belong to the classical structure of the marriage contract - both serve the same purpose as the wali: clarity and protection for both sides. A publicly known, witnessed marriage cannot later be denied and especially protects the woman from a situation where a man later disavows the marriage. The marriage contract is thus not a mere formality, but a bundle of protective mechanisms, all aimed at fairness between the partners.",
+            "tr": "Mehir ve veli yanında, şahitlerin bulunması ve evliliğin kamuya duyurulması da nikahın klasik yapısına dahildir - her ikisi de veli ile aynı amaca hizmet eder: her iki taraf için netlik ve koruma. Kamuya duyurulmuş, şahitli bir evlilik daha sonra inkar edilemez ve özellikle kadını, bir erkeğin evliliği sonradan reddettiği bir durumdan korur. Nikah böylece salt bir formalite değil, tarafların arasındaki adaleti hedefleyen bir dizi koruma mekanizmasıdır.",
+            "ar": "إلى جانب المهر والولي، يدخل ضمن البنية الكلاسيكية لعقد الزواج حضور الشهود والإعلان عن الزواج علنًا - وكلاهما يخدم نفس غاية الولي: الوضوح والحماية لكلا الطرفين. فالزواج المعلن الموثق بالشهود لا يمكن إنكاره لاحقًا، ويحمي المرأة خاصة من حالة إنكار الرجل للزواج فيما بعد. فعقد النكاح إذًا ليس مجرد إجراء شكلي، بل حزمة من آليات الحماية تهدف كلها إلى الإنصاف بين الطرفين.",
+            "es": "Junto al mahr y el wali, la presencia de testigos y el anuncio público del matrimonio también forman parte de la estructura clásica del contrato matrimonial: ambos sirven al mismo propósito que el wali, claridad y protección para ambas partes. Un matrimonio conocido públicamente y atestiguado no puede negarse después y protege especialmente a la mujer de una situación en la que un hombre niegue posteriormente el matrimonio. El contrato matrimonial no es, pues, una mera formalidad, sino un conjunto de mecanismos de protección orientados todos a la equidad entre los cónyuges.",
+            "fr": "Outre le mahr et le wali, la présence de témoins et l'annonce publique du mariage font aussi partie de la structure classique du contrat de mariage - les deux servent le même but que le wali : clarté et protection pour les deux parties. Un mariage publiquement connu et attesté par des témoins ne peut être nié par la suite et protège en particulier la femme d'une situation où un homme renierait ultérieurement le mariage. Le contrat de mariage n'est donc pas une simple formalité, mais un ensemble de mécanismes de protection visant tous l'équité entre les partenaires."
+          }
+        }
+      ],
+      "storyQuiz": [
+        {
+          "q": {
+            "de": "Wem gehört der Mahr laut Koran 4:4?",
+            "en": "According to Quran 4:4, to whom does the mahr belong?",
+            "tr": "Kur'an 4:4'e göre mehir kime aittir?",
+            "ar": "لمن يعود المهر بحسب النساء 4؟",
+            "es": "Según el Corán 4:4, ¿a quién pertenece el mahr?",
+            "fr": "Selon le Coran 4:4, à qui appartient le mahr ?"
+          },
+          "options": [
+            {
+              "de": "Vollständig der Frau selbst",
+              "en": "Entirely to the woman herself",
+              "tr": "Tamamen kadının kendisine",
+              "ar": "للمرأة نفسها بالكامل",
+              "es": "Enteramente a la propia mujer",
+              "fr": "Entièrement à la femme elle-même"
+            },
+            {
+              "de": "Der Familie des Ehemannes",
+              "en": "To the husband's family",
+              "tr": "Kocanın ailesine",
+              "ar": "لأسرة الزوج",
+              "es": "A la familia del esposo",
+              "fr": "À la famille du mari"
+            },
+            {
+              "de": "Der Familie der Frau",
+              "en": "To the woman's family",
+              "tr": "Kadının ailesine",
+              "ar": "لأسرة المرأة",
+              "es": "A la familia de la mujer",
+              "fr": "À la famille de la femme"
+            },
+            {
+              "de": "Gemeinsam beiden Ehepartnern",
+              "en": "Jointly to both spouses",
+              "tr": "Ortaklaşa her iki eşe",
+              "ar": "للزوجين معًا",
+              "es": "Conjuntamente a ambos cónyuges",
+              "fr": "Conjointement aux deux époux"
+            }
+          ]
+        },
+        {
+          "q": {
+            "de": "Was ist laut klassischer Auslegung der Zweck des Wali?",
+            "en": "According to classical interpretation, what is the purpose of the wali?",
+            "tr": "Klasik yoruma göre velinin amacı nedir?",
+            "ar": "ما الغرض من الولي بحسب التفسير الكلاسيكي؟",
+            "es": "Según la interpretación clásica, ¿cuál es el propósito del wali?",
+            "fr": "Selon l'interprétation classique, quel est le but du wali ?"
+          },
+          "options": [
+            {
+              "de": "Schutz der Frau, keine Zwangsverheiratung",
+              "en": "Protecting the woman, not forcing marriage",
+              "tr": "Kadını korumak, zorla evlendirmek değil",
+              "ar": "حماية المرأة لا الزواج القسري",
+              "es": "Proteger a la mujer, no forzar el matrimonio",
+              "fr": "Protéger la femme, non forcer le mariage"
+            },
+            {
+              "de": "Sicherstellung finanzieller Vorteile für den Wali",
+              "en": "Ensuring financial benefits for the wali",
+              "tr": "Veli için mali fayda sağlamak",
+              "ar": "ضمان منفعة مالية للولي",
+              "es": "Asegurar beneficios financieros para el wali",
+              "fr": "Assurer des avantages financiers au wali"
+            },
+            {
+              "de": "Kontrolle über das gesamte Eheleben danach",
+              "en": "Controlling the entire married life afterward",
+              "tr": "Sonrasında tüm evlilik hayatını kontrol etmek",
+              "ar": "التحكم في كامل الحياة الزوجية لاحقًا",
+              "es": "Controlar toda la vida matrimonial posterior",
+              "fr": "Contrôler toute la vie conjugale par la suite"
+            },
+            {
+              "de": "Er hat keinerlei erkennbaren Zweck",
+              "en": "It has no recognizable purpose at all",
+              "tr": "Hiçbir belirgin amacı yoktur",
+              "ar": "ليس له أي غرض واضح",
+              "es": "No tiene ningún propósito reconocible",
+              "fr": "Il n'a aucun but reconnaissable"
+            }
+          ]
+        },
+        {
+          "q": {
+            "de": "Welche Rolle spielen Zeugen und öffentliche Bekanntmachung beim Nikah?",
+            "en": "What role do witnesses and public announcement play in the nikah?",
+            "tr": "Nikahda şahitler ve ilan ne rol oynar?",
+            "ar": "ما دور الشهود والإعلان في عقد النكاح؟",
+            "es": "¿Qué papel desempeñan los testigos y el anuncio público en el nikah?",
+            "fr": "Quel rôle jouent les témoins et l'annonce publique dans le nikah ?"
+          },
+          "options": [
+            {
+              "de": "Sie schützen beide Seiten vor späterem Abstreiten der Ehe",
+              "en": "They protect both sides from later denial of the marriage",
+              "tr": "İkisi de evliliğin sonradan inkarına karşı iki tarafı korur",
+              "ar": "يحميان الطرفين من إنكار الزواج لاحقًا",
+              "es": "Protegen a ambas partes de una posterior negación del matrimonio",
+              "fr": "Ils protègent les deux parties d'un déni ultérieur du mariage"
+            },
+            {
+              "de": "Sie sind reine Tradition ohne rechtliche Bedeutung",
+              "en": "They are pure tradition without legal meaning",
+              "tr": "Hukuki anlamı olmayan sadece bir gelenektir",
+              "ar": "مجرد تقليد بلا أي دلالة قانونية",
+              "es": "Son pura tradición sin significado legal",
+              "fr": "Ce n'est qu'une tradition sans portée juridique"
+            },
+            {
+              "de": "Sie dienen nur der Unterhaltung der Gäste",
+              "en": "They serve only to entertain the guests",
+              "tr": "Sadece misafirleri eğlendirmeye hizmet eder",
+              "ar": "تخدم فقط تسلية الضيوف",
+              "es": "Sirven solo para entretener a los invitados",
+              "fr": "Ils ne servent qu'à divertir les invités"
+            },
+            {
+              "de": "Sie sind nur bei der zweiten Ehe erforderlich",
+              "en": "They are only required for a second marriage",
+              "tr": "Sadece ikinci evlilikte gereklidir",
+              "ar": "مطلوبان فقط في الزواج الثاني",
+              "es": "Solo se requieren en un segundo matrimonio",
+              "fr": "Ils ne sont requis que pour un second mariage"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nikah-04",
+      "kind": "story",
+      "title": {
+        "de": "Talaq - Scheidung als geregelter letzter Ausweg",
+        "en": "Talaq - divorce as a regulated last resort",
+        "tr": "Talak - düzenlenmiş son çare olarak boşanma",
+        "ar": "الطلاق - حل أخير منظم",
+        "es": "Talaq - el divorcio como último recurso regulado",
+        "fr": "Talaq - le divorce comme dernier recours réglementé"
+      },
+      "source": "Quran 4:35; 2:228-232; 65:1-2",
+      "story": [
+        {
+          "title": {
+            "de": "Schlichtung vor der Trennung",
+            "en": "Mediation before separation",
+            "tr": "Ayrılıktan önce arabuluculuk",
+            "ar": "الإصلاح قبل الفراق",
+            "es": "Mediación antes de la separación",
+            "fr": "Médiation avant la séparation"
+          },
+          "text": {
+            "de": "Bevor der Koran überhaupt die Trennung anspricht, verlangt er einen konkreten Schritt zur Rettung der Ehe: „Und wenn ihr eine Entzweiung zwischen den beiden befürchtet, dann bestellt einen Schlichter von seinen Angehörigen und einen Schlichter von ihren Angehörigen. Wenn beide Aussöhnung wollen, wird Allah zwischen ihnen Übereinstimmung herbeiführen“ (Koran 4:35). Der Vers setzt also nicht bei der Scheidung an, sondern bei der Familie als vermittelnder Instanz - ein strukturiertes Verfahren, bevor überhaupt über eine Trennung nachgedacht wird.",
+            "en": "Before the Quran even addresses separation, it demands a concrete step to save the marriage: “And if you fear dissension between the two, send an arbitrator from his people and an arbitrator from her people. If they both desire reconciliation, Allah will cause it between them” (Quran 4:35). The verse thus does not start with divorce, but with the family as a mediating body - a structured process before separation is even considered.",
+            "tr": "Kur'an ayrılığa değinmeden önce evliliği kurtarmak için somut bir adım talep eder: “Eğer aralarının açılmasından korkarsanız, erkeğin ailesinden bir hakem ve kadının ailesinden bir hakem gönderin. İkisi de barışmak isterse, Allah aralarında uzlaşma sağlar” (Kur'an 4:35). Ayet böylece boşanmadan değil, arabulucu bir merci olarak aileden başlar - ayrılık düşünülmeden önce yapılandırılmış bir süreç.",
+            "ar": "قبل أن يتناول القرآن الانفصال أصلًا، يطلب خطوة ملموسة لإنقاذ الزواج: «وَإِنْ خِفْتُمْ شِقَاقَ بَيْنِهِمَا فَابْعَثُوا حَكَمًا مِنْ أَهْلِهِ وَحَكَمًا مِنْ أَهْلِهَا إِنْ يُرِيدَا إِصْلَاحًا يُوَفِّقِ اللَّهُ بَيْنَهُمَا» (النساء 35). فالآية إذًا لا تبدأ بالطلاق، بل بالأسرة كجهة وساطة - إجراء منظم قبل التفكير أصلًا في الانفصال.",
+            "es": "Antes de que el Corán aborde siquiera la separación, exige un paso concreto para salvar el matrimonio: «Y si teméis discordia entre ambos, enviad un árbitro de la familia de él y un árbitro de la familia de ella. Si ambos desean la reconciliación, Allah propiciará el acuerdo entre ellos» (Corán 4:35). El versículo no parte, pues, del divorcio, sino de la familia como instancia mediadora: un procedimiento estructurado antes siquiera de considerar una separación.",
+            "fr": "Avant même que le Coran n'aborde la séparation, il exige une étape concrète pour sauver le mariage : « Et si vous craignez une rupture entre les deux, envoyez alors un arbitre de la famille de l'un et un arbitre de la famille de l'autre. Si tous deux veulent la réconciliation, Allah rétablira l'entente entre eux » (Coran 4:35). Le verset ne part donc pas du divorce, mais de la famille comme instance de médiation - une démarche structurée avant même d'envisager une séparation."
+          }
+        },
+        {
+          "title": {
+            "de": "Iddah und die Möglichkeit der Rücknahme",
+            "en": "Iddah and the possibility of revocation",
+            "tr": "İddet ve dönüş imkânı",
+            "ar": "العدة وإمكانية الرجعة",
+            "es": "La iddah y la posibilidad de retractación",
+            "fr": "La iddah et la possibilité de reprise"
+          },
+          "text": {
+            "de": "Falls eine Trennung dennoch unausweichlich ist, sieht der Koran eine Wartezeit (Iddah) von drei Monatszyklen vor, während der eine Versöhnung ausdrücklich weiterhin möglich und erwünscht bleibt: „Und ihre Ehemänner haben während dieser Zeit mehr Anrecht darauf, sie zurückzunehmen, wenn sie eine Aussöhnung wollen“ (Koran 2:228). Diese Frist erfüllt mehrere Zwecke zugleich: Sie verhindert überstürzte, im Zorn getroffene endgültige Entscheidungen, klärt eine mögliche Schwangerschaft und lässt der Familie Zeit, sich neu zu ordnen.",
+            "en": "If separation nonetheless becomes unavoidable, the Quran provides for a waiting period (iddah) of three menstrual cycles, during which reconciliation explicitly remains possible and desired: “And their husbands have more right to take them back in this [period] if they want reconciliation” (Quran 2:228). This period serves several purposes at once: it prevents hasty, anger-driven final decisions, clarifies any possible pregnancy, and gives the family time to reorganize.",
+            "tr": "Ayrılık kaçınılmaz olsa bile, Kur'an üç adet süresi kadar bir bekleme süresi (iddet) öngörür ve bu süre boyunca uzlaşma açıkça mümkün ve arzu edilir kalır: “Eğer barışmak isterlerse, kocaları bu süre içinde onları geri almaya daha çok hak sahibidir” (Kur'an 2:228). Bu süre birkaç amaca aynı anda hizmet eder: aceleci, öfkeyle verilmiş kesin kararları önler, olası bir hamileliği netleştirir ve aileye yeniden düzenlenme zamanı tanır.",
+            "ar": "وإن كان الانفصال أمرًا لا مفر منه، يقرر القرآن فترة انتظار (العدة) مدتها ثلاثة قروء، تبقى خلالها إمكانية الصلح قائمة ومرغوبة صراحةً: «وَبُعُولَتُهُنَّ أَحَقُّ بِرَدِّهِنَّ فِي ذَلِكَ إِنْ أَرَادُوا إِصْلَاحًا» (البقرة 228). وتخدم هذه المهلة عدة أغراض في آن واحد: تمنع قرارات نهائية متسرعة مبنية على الغضب، وتوضح احتمال الحمل، وتمنح الأسرة وقتًا لإعادة الترتيب.",
+            "es": "Si la separación resulta, no obstante, inevitable, el Corán prevé un período de espera (iddah) de tres ciclos menstruales, durante el cual la reconciliación sigue siendo explícitamente posible y deseada: «Y sus esposos tienen más derecho a tomarlas de vuelta durante ese período si desean la reconciliación» (Corán 2:228). Este plazo cumple varios propósitos a la vez: impide decisiones definitivas precipitadas tomadas con enojo, aclara un posible embarazo y da tiempo a la familia para reorganizarse.",
+            "fr": "Si la séparation devient néanmoins inévitable, le Coran prévoit une période d'attente (iddah) de trois cycles menstruels, durant laquelle la réconciliation reste explicitement possible et souhaitée : « Et leurs époux ont plus de droit de les reprendre pendant cette période s'ils désirent la réconciliation » (Coran 2:228). Ce délai remplit plusieurs fonctions à la fois : il empêche des décisions définitives précipitées prises sous le coup de la colère, clarifie une éventuelle grossesse et laisse à la famille le temps de se réorganiser."
+          }
+        },
+        {
+          "title": {
+            "de": "Ein geordnetes, faires Verfahren",
+            "en": "An orderly, fair procedure",
+            "tr": "Düzenli ve adil bir usul",
+            "ar": "إجراء منظم وعادل",
+            "es": "Un procedimiento ordenado y justo",
+            "fr": "Une procédure ordonnée et équitable"
+          },
+          "text": {
+            "de": "Die Sure at-Talaq eröffnet mit klaren Verfahrensregeln: Die Scheidung soll zu einem Zeitpunkt ausgesprochen werden, der die Iddah korrekt beginnen lässt, und „wenn sie ihre festgelegte Frist erreicht haben, so behaltet sie in Güte oder trennt euch von ihnen in Güte, und nehmt zwei gerechte Personen unter euch zu Zeugen“ (Koran 65:2). Auch hier gilt: Selbst im Fall einer Scheidung bleibt Güte die verbindliche Norm, und Zeugen sorgen für Klarheit - Scheidung ist im Islam damit ein geregelter, überprüfbarer Vorgang, kein formloser, willkürlicher Akt.",
+            "en": "Surah at-Talaq opens with clear procedural rules: the divorce should be pronounced at a time that lets the iddah begin correctly, and “when they have [nearly] fulfilled their term, either retain them according to acceptable terms or part with them according to acceptable terms, and bring to witness two just people among you” (Quran 65:2). Here too the rule holds: even in the case of divorce, kindness remains the binding norm, and witnesses ensure clarity - divorce in Islam is thus a regulated, verifiable process, not a formless, arbitrary act.",
+            "tr": "Talak suresi net usul kurallarıyla başlar: boşanma, iddetin doğru başlamasını sağlayan bir zamanda telaffuz edilmeli ve “Bekleme sürelerini tamamladıklarında onları ya iyilikle tutun ya da iyilikle ayrılın ve içinizden adil iki kişiyi şahit tutun” (Kur'an 65:2). Burada da geçerli olan şudur: boşanma durumunda bile iyilik bağlayıcı norm olarak kalır ve şahitler netlik sağlar - İslam'da boşanma böylece düzenlenmiş, denetlenebilir bir süreçtir, biçimsiz keyfi bir eylem değil.",
+            "ar": "تفتتح سورة الطلاق بقواعد إجرائية واضحة: ينبغي أن يقع الطلاق في وقت يتيح للعدة أن تبدأ بشكل صحيح، «فَإِذَا بَلَغْنَ أَجَلَهُنَّ فَأَمْسِكُوهُنَّ بِمَعْرُوفٍ أَوْ فَارِقُوهُنَّ بِمَعْرُوفٍ وَأَشْهِدُوا ذَوَيْ عَدْلٍ مِنْكُمْ» (الطلاق 2). وهنا أيضًا يبقى الأمر ساريًا: حتى في حالة الطلاق يبقى اللطف هو المعيار الملزم، ويضمن الشهود الوضوح - فالطلاق في الإسلام إجراء منظم قابل للتحقق، لا فعل عشوائي بلا شكل.",
+            "es": "La sura At-Talaq comienza con reglas procesales claras: el divorcio debe pronunciarse en un momento que permita a la iddah comenzar correctamente, y «cuando hayan cumplido su plazo, retenedlas con bondad o separaos de ellas con bondad, y tomad como testigos a dos personas justas de entre vosotros» (Corán 65:2). También aquí rige lo mismo: incluso en caso de divorcio, la bondad sigue siendo la norma vinculante, y los testigos garantizan claridad; el divorcio en el islam es así un proceso regulado y verificable, no un acto informal y arbitrario.",
+            "fr": "La sourate At-Talaq s'ouvre sur des règles de procédure claires : le divorce doit être prononcé à un moment qui permette à l'iddah de commencer correctement, et « lorsqu'elles atteignent leur terme, alors retenez-les convenablement ou séparez-vous d'elles convenablement, et prenez deux témoins justes parmi vous » (Coran 65:2). Là aussi, la règle vaut : même en cas de divorce, la bonté reste la norme contraignante, et les témoins garantissent la clarté - le divorce en islam est ainsi un processus réglementé et vérifiable, non un acte informel et arbitraire."
+          }
+        }
+      ],
+      "storyQuiz": [
+        {
+          "q": {
+            "de": "Was verlangt Koran 4:35 vor einer möglichen Trennung?",
+            "en": "What does Quran 4:35 demand before a possible separation?",
+            "tr": "Kur'an 4:35 olası bir ayrılıktan önce neyi talep eder?",
+            "ar": "بماذا يطالب النساء 35 قبل انفصال محتمل؟",
+            "es": "¿Qué exige el Corán 4:35 antes de una posible separación?",
+            "fr": "Que demande le Coran 4:35 avant une éventuelle séparation ?"
+          },
+          "options": [
+            {
+              "de": "Schlichtung durch je einen Vermittler aus beiden Familien",
+              "en": "Mediation by one arbitrator from each family",
+              "tr": "Her iki aileden birer arabulucu ile uzlaşma",
+              "ar": "الإصلاح عبر حكم من كل أسرة",
+              "es": "Mediación mediante un árbitro de cada familia",
+              "fr": "Une médiation par un arbitre de chaque famille"
+            },
+            {
+              "de": "Eine sofortige, automatische Scheidung",
+              "en": "An immediate, automatic divorce",
+              "tr": "Anında otomatik boşanma",
+              "ar": "طلاقًا فوريًا تلقائيًا",
+              "es": "Un divorcio inmediato y automático",
+              "fr": "Un divorce immédiat et automatique"
+            },
+            {
+              "de": "Die Einschaltung eines Gerichts als ersten Schritt",
+              "en": "Involving a court as the first step",
+              "tr": "İlk adım olarak mahkemeye başvurmayı",
+              "ar": "اللجوء إلى المحكمة كخطوة أولى",
+              "es": "Recurrir a un tribunal como primer paso",
+              "fr": "Faire appel à un tribunal comme première étape"
+            },
+            {
+              "de": "Gar nichts, die Trennung erfolgt ohne Verfahren",
+              "en": "Nothing at all, separation happens without process",
+              "tr": "Hiçbir şey, ayrılık usulsüz gerçekleşir",
+              "ar": "لا شيء، فالانفصال يقع دون إجراء",
+              "es": "Nada en absoluto, la separación ocurre sin proceso",
+              "fr": "Rien du tout, la séparation se fait sans procédure"
+            }
+          ]
+        },
+        {
+          "q": {
+            "de": "Wozu dient die Iddah nach Koran 2:228?",
+            "en": "What purpose does the iddah serve according to Quran 2:228?",
+            "tr": "Kur'an 2:228'e göre iddet neye hizmet eder?",
+            "ar": "ما غاية العدة بحسب البقرة 228؟",
+            "es": "Según el Corán 2:228, ¿para qué sirve la iddah?",
+            "fr": "À quoi sert la iddah selon le Coran 2:228 ?"
+          },
+          "options": [
+            {
+              "de": "Sie ermöglicht Versöhnung und klärt eine mögliche Schwangerschaft",
+              "en": "It allows reconciliation and clarifies a possible pregnancy",
+              "tr": "Uzlaşmayı mümkün kılar ve olası hamileliği netleştirir",
+              "ar": "تتيح المصالحة وتوضح احتمال الحمل",
+              "es": "Permite la reconciliación y aclara un posible embarazo",
+              "fr": "Elle permet la réconciliation et clarifie une éventuelle grossesse"
+            },
+            {
+              "de": "Sie dient nur der finanziellen Abwicklung",
+              "en": "It serves only financial settlement",
+              "tr": "Sadece mali tasfiyeye hizmet eder",
+              "ar": "تخدم فقط التسوية المالية",
+              "es": "Sirve solo para la liquidación financiera",
+              "fr": "Elle ne sert qu'au règlement financier"
+            },
+            {
+              "de": "Sie ist eine reine Strafmaßnahme gegen die Frau",
+              "en": "It is a pure punitive measure against the woman",
+              "tr": "Kadına karşı salt bir ceza tedbiridir",
+              "ar": "إجراء عقابي بحت ضد المرأة",
+              "es": "Es una medida puramente punitiva contra la mujer",
+              "fr": "C'est une pure mesure punitive contre la femme"
+            },
+            {
+              "de": "Sie hat keine erkennbare Funktion",
+              "en": "It has no recognizable function",
+              "tr": "Belirgin bir işlevi yoktur",
+              "ar": "ليس لها أي وظيفة واضحة",
+              "es": "No tiene ninguna función reconocible",
+              "fr": "Elle n'a aucune fonction reconnaissable"
+            }
+          ]
+        },
+        {
+          "q": {
+            "de": "Was verlangt Koran 65:2 selbst im Fall einer vollzogenen Trennung?",
+            "en": "What does Quran 65:2 demand even in the case of a completed separation?",
+            "tr": "Kur'an 65:2 gerçekleşmiş bir ayrılık durumunda bile neyi talep eder?",
+            "ar": "بم يطالب الطلاق 2 حتى في حال إتمام الانفصال؟",
+            "es": "¿Qué exige el Corán 65:2 incluso en caso de separación consumada?",
+            "fr": "Que demande le Coran 65:2 même en cas de séparation effective ?"
+          },
+          "options": [
+            {
+              "de": "Güte im Umgang und Zeugen für Klarheit",
+              "en": "Kindness in conduct and witnesses for clarity",
+              "tr": "Davranışta iyilik ve netlik için şahitler",
+              "ar": "اللطف في التعامل وشهودًا للوضوح",
+              "es": "Bondad en el trato y testigos para dar claridad",
+              "fr": "De la bonté dans la conduite et des témoins pour la clarté"
+            },
+            {
+              "de": "Vollständigen Kontaktabbruch ohne jede Regel",
+              "en": "Complete cutoff of contact without any rule",
+              "tr": "Kuralsız tam bir iletişim kesintisi",
+              "ar": "قطع الاتصال تمامًا دون أي قاعدة",
+              "es": "Un corte total de contacto sin ninguna norma",
+              "fr": "Une rupture totale de contact sans aucune règle"
+            },
+            {
+              "de": "Keinerlei Zeugen oder Formalitäten",
+              "en": "No witnesses or formalities whatsoever",
+              "tr": "Hiçbir şahit veya formalite",
+              "ar": "لا شهود ولا إجراءات إطلاقًا",
+              "es": "Ningún testigo ni formalidad en absoluto",
+              "fr": "Aucun témoin ni formalité"
+            },
+            {
+              "de": "Eine automatische finanzielle Strafe gegen den Mann",
+              "en": "An automatic financial penalty against the man",
+              "tr": "Erkeğe karşı otomatik mali ceza",
+              "ar": "عقوبة مالية تلقائية على الرجل",
+              "es": "Una sanción financiera automática contra el hombre",
+              "fr": "Une sanction financière automatique contre l'homme"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nikah-05",
+      "kind": "story",
+      "title": {
+        "de": "Kindererziehung und Familienverantwortung",
+        "en": "Child-rearing and family responsibility",
+        "tr": "Çocuk terbiyesi ve aile sorumluluğu",
+        "ar": "تربية الأبناء ومسؤولية الأسرة",
+        "es": "La crianza de los hijos y la responsabilidad familiar",
+        "fr": "L'éducation des enfants et la responsabilité familiale"
+      },
+      "source": "Sahih al-Bukhari 7138; Sahih Muslim 1829; Quran 66:6",
+      "story": [
+        {
+          "title": {
+            "de": "Jeder ist ein Hirte und verantwortlich für seine Herde",
+            "en": "Everyone is a shepherd, responsible for their flock",
+            "tr": "Herkes bir çobandır ve sürüsünden sorumludur",
+            "ar": "كلكم راعٍ ومسؤول عن رعيته",
+            "es": "Cada uno es un pastor, responsable de su rebaño",
+            "fr": "Chacun est un berger, responsable de son troupeau"
+          },
+          "text": {
+            "de": "Der Prophet ﷺ beschrieb Verantwortung innerhalb der Familie mit einem bekannten Bild: „Jeder von euch ist ein Hirte, und jeder von euch ist verantwortlich für seine Herde. Ein Mann ist Hirte in seiner Familie und verantwortlich für seine Herde, und eine Frau ist Hirtin im Haus ihres Ehemannes und verantwortlich für ihre Herde“ (Sahih al-Bukhari 7138; Sahih Muslim 1829). Entscheidend an diesem Hadith ist, dass Verantwortung hier nicht als Machtposition beschrieben wird, sondern als Fürsorgepflicht - ein Hirte dient dem Wohl der Herde, nicht seinem eigenen Vorteil.",
+            "en": "The Prophet ﷺ described responsibility within the family with a well-known image: “Each of you is a shepherd, and each of you is responsible for his flock. A man is a shepherd in his family and responsible for his flock, and a woman is a shepherdess in her husband's house and responsible for her flock” (Sahih al-Bukhari 7138; Sahih Muslim 1829). What is decisive about this hadith is that responsibility here is not described as a position of power, but as a duty of care - a shepherd serves the wellbeing of the flock, not his own advantage.",
+            "tr": "Peygamber ﷺ, aile içindeki sorumluluğu bilinen bir imgeyle tarif etti: “Her biriniz bir çobansınız ve her biriniz sürünüzden sorumlusunuz. Erkek ailesinde bir çobandır ve sürüsünden sorumludur, kadın da kocasının evinde bir çobandır ve sürüsünden sorumludur” (Sahih Buhari 7138; Sahih Müslim 1829). Bu hadiste belirleyici olan, sorumluluğun burada bir güç konumu olarak değil, bir bakım görevi olarak tarif edilmesidir - çoban kendi çıkarına değil, sürünün iyiliğine hizmet eder.",
+            "ar": "وصف النبي ﷺ المسؤولية داخل الأسرة بصورة معروفة: «كلكم راعٍ وكلكم مسؤول عن رعيته، الرجل راعٍ في أهله وهو مسؤول عن رعيته، والمرأة راعية في بيت زوجها ومسؤولة عن رعيتها» (صحيح البخاري 7138؛ صحيح مسلم 1829). والحاسم في هذا الحديث أن المسؤولية لا تُوصف هنا كمنصب سلطة، بل كواجب رعاية - فالراعي يخدم مصلحة رعيته لا مصلحته الخاصة.",
+            "es": "El Profeta ﷺ describió la responsabilidad dentro de la familia con una imagen bien conocida: «Cada uno de vosotros es un pastor, y cada uno es responsable de su rebaño. El hombre es pastor en su familia y responsable de su rebaño, y la mujer es pastora en la casa de su esposo y responsable de su rebaño» (Sahih al-Bujari 7138; Sahih Muslim 1829). Lo decisivo de este hadiz es que la responsabilidad no se describe aquí como una posición de poder, sino como un deber de cuidado: un pastor sirve al bienestar del rebaño, no a su propio beneficio.",
+            "fr": "Le Prophète ﷺ a décrit la responsabilité au sein de la famille par une image bien connue : « Chacun de vous est un berger, et chacun de vous est responsable de son troupeau. L'homme est berger dans sa famille et responsable de son troupeau, et la femme est bergère dans la maison de son époux et responsable de son troupeau » (Sahih al-Bukhari 7138 ; Sahih Muslim 1829). Ce qui est décisif dans ce hadith, c'est que la responsabilité n'y est pas décrite comme une position de pouvoir, mais comme un devoir de soin - un berger sert le bien-être du troupeau, non son propre avantage."
+          }
+        },
+        {
+          "title": {
+            "de": "Die Familie vor dem Feuer bewahren",
+            "en": "Guarding the family from the Fire",
+            "tr": "Aileyi ateşten korumak",
+            "ar": "وقاية الأسرة من النار",
+            "es": "Proteger a la familia del Fuego",
+            "fr": "Préserver la famille du Feu"
+          },
+          "text": {
+            "de": "Der Koran macht deutlich, dass diese Fürsorge auch die geistige und moralische Erziehung umfasst, nicht nur materielle Versorgung: „O die ihr glaubt, bewahrt euch selbst und eure Familien vor einem Feuer, dessen Brennstoff Menschen und Steine sind“ (Koran 66:6). Der Vers richtet sich an Männer und Frauen gleichermaßen (die Anrede „die ihr glaubt“ schließt beide Geschlechter ein) und macht die religiöse und charakterliche Erziehung der Kinder zu einer gemeinsamen, ernsten Verantwortung beider Elternteile - kein Nebenaspekt, sondern ein zentraler Bestandteil des Familienlebens.",
+            "en": "The Quran makes clear that this care also encompasses spiritual and moral upbringing, not just material provision: “O you who have believed, protect yourselves and your families from a Fire whose fuel is people and stones” (Quran 66:6). The verse addresses men and women alike (the address “you who have believed” includes both genders) and makes the religious and character education of children a shared, serious responsibility of both parents - not a side matter, but a central component of family life.",
+            "tr": "Kur'an, bu özenin sadece maddi bakımı değil, ruhi ve ahlaki terbiyeyi de kapsadığını açıkça belirtir: “Ey iman edenler! Kendinizi ve ailelerinizi, yakıtı insanlar ve taşlar olan bir ateşten koruyun” (Kur'an 66:6). Ayet erkeklere ve kadınlara eşit olarak seslenir (“iman edenler” hitabı her iki cinsiyeti de kapsar) ve çocukların dini ve karakter eğitimini her iki ebeveynin ortak, ciddi bir sorumluluğu haline getirir - ikincil bir konu değil, aile hayatının merkezi bir parçasıdır.",
+            "ar": "يوضح القرآن أن هذه الرعاية تشمل أيضًا التربية الروحية والأخلاقية لا مجرد الإعالة المادية: «يَا أَيُّهَا الَّذِينَ آمَنُوا قُوا أَنْفُسَكُمْ وَأَهْلِيكُمْ نَارًا وَقُودُهَا النَّاسُ وَالْحِجَارَةُ» (التحريم 6). وتخاطب الآية الرجال والنساء على حد سواء (فخطاب «الذين آمنوا» يشمل الجنسين) وتجعل من التربية الدينية والخلقية للأبناء مسؤولية جدية مشتركة بين الوالدين - لا أمرًا هامشيًا بل ركيزة أساسية في حياة الأسرة.",
+            "es": "El Corán deja claro que este cuidado abarca también la formación espiritual y moral, no solo el sustento material: «¡Oh, los que creéis! Protegeos a vosotros mismos y a vuestras familias de un Fuego cuyo combustible son los hombres y las piedras» (Corán 66:6). El versículo se dirige por igual a hombres y mujeres (la apelación «los que creéis» incluye a ambos sexos) y convierte la educación religiosa y moral de los hijos en una responsabilidad seria y compartida de ambos progenitores, no un asunto secundario, sino un componente central de la vida familiar.",
+            "fr": "Le Coran précise que ce soin englobe aussi l'éducation spirituelle et morale, et pas seulement la subsistance matérielle : « Ô vous qui avez cru ! Préservez vos personnes et vos familles d'un Feu dont le combustible sont les gens et les pierres » (Coran 66:6). Le verset s'adresse aux hommes comme aux femmes (l'interpellation « vous qui avez cru » inclut les deux sexes) et fait de l'éducation religieuse et morale des enfants une responsabilité sérieuse et partagée des deux parents - non un aspect secondaire, mais une composante centrale de la vie familiale."
+          }
+        },
+        {
+          "title": {
+            "de": "Erziehung durch Vorbild, nicht nur durch Vorschrift",
+            "en": "Education by example, not only by instruction",
+            "tr": "Emirle değil örnekle terbiye",
+            "ar": "التربية بالقدوة لا بالأمر فقط",
+            "es": "Educación mediante el ejemplo, no solo con mandatos",
+            "fr": "Éducation par l'exemple, pas seulement par la consigne"
+          },
+          "text": {
+            "de": "Aus dem Zusammenspiel dieser beiden Quellen ergibt sich ein klares Bild: Eltern sind zugleich Hirten, die für das Wohlergehen ihrer Kinder sorgen, und Wächter, die sie geistig vor Schaden schützen sollen. Beide Aufgaben lassen sich nicht allein durch Vorschriften erfüllen - Kinder lernen Charakter und Glaubenspraxis in erster Linie durch das, was sie im eigenen Zuhause tatsächlich erleben. Die im vorherigen Kurs behandelten Charaktereigenschaften wie Sidq, Hilm und Sabr sind daher nicht nur persönliche Tugenden, sondern auch das, was Eltern ihren Kindern durch ihr eigenes Verhalten weitergeben.",
+            "en": "The interplay of these two sources yields a clear picture: parents are at once shepherds who tend to their children's wellbeing and guardians who must protect them spiritually from harm. Neither task can be fulfilled by instruction alone - children learn character and religious practice primarily through what they actually experience at home. The character traits covered in the Akhlaq course, such as sidq, hilm, and sabr, are therefore not only personal virtues but also what parents pass on to their children through their own behavior.",
+            "tr": "Bu iki kaynağın etkileşiminden net bir tablo ortaya çıkar: ebeveynler hem çocuklarının iyiliğine bakan çobanlar, hem de onları manevi zarardan koruması gereken bekçilerdir. Her iki görev de sadece kurallarla yerine getirilemez - çocuklar karakteri ve din pratiğini öncelikle kendi evlerinde gerçekten yaşadıklarından öğrenirler. Akhlak kursunda işlenen sıdk, hilm ve sabır gibi karakter özellikleri, bu yüzden sadece kişisel erdemler değil, aynı zamanda ebeveynlerin kendi davranışlarıyla çocuklarına aktardıkları şeylerdir.",
+            "ar": "من تفاعل هذين المصدرين تنشأ صورة واضحة: الوالدان راعيان يهتمان بخير أبنائهما، وحارسان في الوقت نفسه عليهما حمايتهم روحيًا من الضرر. ولا يمكن أداء أي من المهمتين بالأوامر وحدها - فالأطفال يتعلمون الخلق وممارسة الدين أولًا مما يعيشونه فعليًا في بيتهم. لذا فإن سمات الشخصية التي تناولها درس الأخلاق كالصدق والحلم والصبر ليست فضائل شخصية فحسب، بل أيضًا ما ينقله الوالدان لأبنائهما عبر سلوكهما الخاص.",
+            "es": "De la interacción de estas dos fuentes surge un cuadro claro: los padres son a la vez pastores que velan por el bienestar de sus hijos y guardianes que deben protegerlos espiritualmente del daño. Ninguna de las dos tareas puede cumplirse solo con mandatos: los hijos aprenden el carácter y la práctica religiosa sobre todo a través de lo que viven realmente en su propio hogar. Los rasgos de carácter tratados en el curso de Akhlaq, como sidq, hilm y sabr, no son por tanto solo virtudes personales, sino también lo que los padres transmiten a sus hijos mediante su propio comportamiento.",
+            "fr": "De l'interaction de ces deux sources se dégage un tableau clair : les parents sont à la fois des bergers qui veillent au bien-être de leurs enfants et des gardiens qui doivent les protéger spirituellement du tort. Aucune des deux tâches ne peut s'accomplir par la seule consigne - les enfants apprennent le caractère et la pratique religieuse d'abord à travers ce qu'ils vivent réellement chez eux. Les traits de caractère abordés dans le cours Akhlaq, comme le sidq, le hilm et le sabr, ne sont donc pas seulement des vertus personnelles, mais aussi ce que les parents transmettent à leurs enfants par leur propre comportement."
+          }
+        }
+      ],
+      "storyQuiz": [
+        {
+          "q": {
+            "de": "Wie beschreibt der Hirten-Hadith (Bukhari 7138) Verantwortung in der Familie?",
+            "en": "How does the shepherd hadith (Bukhari 7138) describe responsibility in the family?",
+            "tr": "Çoban hadisi (Buhari 7138) ailedeki sorumluluğu nasıl tarif eder?",
+            "ar": "كيف يصف حديث الراعي (البخاري 7138) المسؤولية في الأسرة؟",
+            "es": "¿Cómo describe el hadiz del pastor (Bujari 7138) la responsabilidad en la familia?",
+            "fr": "Comment le hadith du berger (Bukhari 7138) décrit-il la responsabilité dans la famille ?"
+          },
+          "options": [
+            {
+              "de": "Als Fürsorgepflicht, nicht als Machtposition",
+              "en": "As a duty of care, not a position of power",
+              "tr": "Bir güç konumu değil bakım görevi olarak",
+              "ar": "كواجب رعاية لا كمنصب سلطة",
+              "es": "Como un deber de cuidado, no como una posición de poder",
+              "fr": "Comme un devoir de soin, non comme une position de pouvoir"
+            },
+            {
+              "de": "Als reines Recht ohne jede Pflicht",
+              "en": "As a pure right without any duty",
+              "tr": "Hiçbir görevi olmayan salt bir hak olarak",
+              "ar": "كحق بحت بلا أي واجب",
+              "es": "Como un derecho puro sin ningún deber",
+              "fr": "Comme un droit pur sans aucun devoir"
+            },
+            {
+              "de": "Als Aufgabe, die nur den Mann betrifft",
+              "en": "As a task concerning only the man",
+              "tr": "Sadece erkeği ilgilendiren bir görev olarak",
+              "ar": "كمهمة تخص الرجل فقط",
+              "es": "Como una tarea que concierne solo al hombre",
+              "fr": "Comme une tâche ne concernant que l'homme"
+            },
+            {
+              "de": "Als etwas, das mit der Heirat endet",
+              "en": "As something that ends with marriage",
+              "tr": "Evlilikle sona eren bir şey olarak",
+              "ar": "كأمر ينتهي بالزواج",
+              "es": "Como algo que termina con el matrimonio",
+              "fr": "Comme quelque chose qui prend fin avec le mariage"
+            }
+          ]
+        },
+        {
+          "q": {
+            "de": "Wen spricht Koran 66:6 zur Bewahrung der Familie an?",
+            "en": "Whom does Quran 66:6 address regarding the protection of the family?",
+            "tr": "Kur'an 66:6 aileyi koruma konusunda kime seslenir?",
+            "ar": "لمن يخاطب التحريم 6 في وقاية الأسرة؟",
+            "es": "¿A quién se dirige el Corán 66:6 respecto a la protección de la familia?",
+            "fr": "À qui le Coran 66:6 s'adresse-t-il concernant la protection de la famille ?"
+          },
+          "options": [
+            {
+              "de": "An Männer und Frauen gemeinsam",
+              "en": "Men and women together",
+              "tr": "Erkeklere ve kadınlara birlikte",
+              "ar": "إلى الرجال والنساء معًا",
+              "es": "A hombres y mujeres por igual",
+              "fr": "Aux hommes et aux femmes ensemble"
+            },
+            {
+              "de": "Ausschließlich an die Väter",
+              "en": "Exclusively at fathers",
+              "tr": "Sadece babalara",
+              "ar": "إلى الآباء حصرًا",
+              "es": "Exclusivamente a los padres",
+              "fr": "Exclusivement aux pères"
+            },
+            {
+              "de": "Ausschließlich an die Mütter",
+              "en": "Exclusively at mothers",
+              "tr": "Sadece annelere",
+              "ar": "إلى الأمهات حصرًا",
+              "es": "Exclusivamente a las madres",
+              "fr": "Exclusivement aux mères"
+            },
+            {
+              "de": "An religiöse Gelehrte allein",
+              "en": "At religious scholars alone",
+              "tr": "Sadece din alimlerine",
+              "ar": "إلى العلماء وحدهم",
+              "es": "Solo a los eruditos religiosos",
+              "fr": "Aux seuls savants religieux"
+            }
+          ]
+        },
+        {
+          "q": {
+            "de": "Wodurch lernen Kinder laut dieser Lektion Charakter und Glaubenspraxis am meisten?",
+            "en": "According to this lesson, through what do children mainly learn character and religious practice?",
+            "tr": "Bu derse göre çocuklar karakteri ve din pratiğini en çok neyle öğrenir?",
+            "ar": "بم يتعلم الأطفال الخلق وممارسة الدين غالبًا بحسب هذا الدرس؟",
+            "es": "Según esta lección, ¿mediante qué aprenden los hijos sobre todo el carácter y la práctica religiosa?",
+            "fr": "Selon cette leçon, par quoi les enfants apprennent-ils surtout le caractère et la pratique religieuse ?"
+          },
+          "options": [
+            {
+              "de": "Durch das tatsächliche Vorbild und Verhalten der Eltern zu Hause",
+              "en": "Through the actual example and behavior of parents at home",
+              "tr": "Ebeveynlerin evdeki gerçek örneği ve davranışıyla",
+              "ar": "بالقدوة والسلوك الفعلي للوالدين في البيت",
+              "es": "Mediante el ejemplo real y el comportamiento de los padres en casa",
+              "fr": "Par l'exemple réel et le comportement des parents à la maison"
+            },
+            {
+              "de": "Ausschließlich durch formalen Religionsunterricht",
+              "en": "Exclusively through formal religious instruction",
+              "tr": "Sadece resmi din eğitimiyle",
+              "ar": "بالتعليم الديني الرسمي فقط",
+              "es": "Exclusivamente mediante la enseñanza religiosa formal",
+              "fr": "Exclusivement par l'enseignement religieux formel"
+            },
+            {
+              "de": "Nur durch das Auswendiglernen von Regeln",
+              "en": "Only through memorizing rules",
+              "tr": "Sadece kuralları ezberleyerek",
+              "ar": "بحفظ القواعد فقط",
+              "es": "Solo memorizando reglas",
+              "fr": "Uniquement en mémorisant des règles"
+            },
+            {
+              "de": "Kinder lernen Charakter laut diesem Text gar nicht von den Eltern",
+              "en": "According to this text, children do not learn character from parents at all",
+              "tr": "Bu metne göre çocuklar karakteri ebeveynlerden hiç öğrenmez",
+              "ar": "لا يتعلم الأطفال الخلق من الوالدين إطلاقًا بحسب هذا النص",
+              "es": "Según este texto, los hijos no aprenden el carácter de los padres en absoluto",
+              "fr": "Selon ce texte, les enfants n'apprennent pas du tout le caractère de leurs parents"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

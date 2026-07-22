@@ -1,0 +1,443 @@
+// Native Variante des "Präzisions-Modus" (On-Device-Whisper) — Gegenstück zu
+// whisperCheck.web.ts (transformers.js/WASM im Browser). Gleiches Prinzip,
+// andere Runtime: whisper.rn (React Native Binding von whisper.cpp) statt
+// transformers.js, GGML-Modell statt ONNX.
+//
+// Modell-Wahl (siehe whisperModel.ts für die volle Begründung): Anders als
+// die Web-Version nutzt dies NICHT das Koran-Finetune tarteel-ai/
+// whisper-base-ar-quran (dafür existiert keine fertige GGML-Konvertierung,
+// und eine eigene Konvertierung ist ein eigenständiger Offline-Asset-Schritt,
+// hier nicht blind gebaut) — sondern das offizielle generische mehrsprachige
+// whisper.cpp-"base"-Modell (q5_1-quantisiert). Ehrlich benannt: dadurch
+// etwas ungenauer bei tajwid-spezifischen Ausspracheformen als die
+// Web-Version, aber für reine Wort-Erkennung funktionsfähig.
+//
+// Aufnahme-Architektur: whisper.rn selbst bietet für Mikrofon-Aufnahmen nur
+// den RealtimeTranscriber-Pfad (braucht zusätzlich eine VAD und ist auf
+// kontinuierliches Slicing ausgelegt) — für "einmal aufnehmen, am Ende
+// transkribieren" (wie MediaRecorder im Web) reicht das nicht direkt. Daher
+// hier direkt @fugood/react-native-audio-pcm-stream (liefert rohe 16-Bit-PCM-
+// Chunks als Base64 über ein 'data'-Event, plattformübergreifend), die
+// Sample-Sammlung + WAV-Kodierung passiert selbst (siehe encodeWav/writeWavFile
+// unten) — exakt das gleiche Prinzip wie MediaRecorder→decodeAudioData im Web,
+// nur dass wir hier den PCM-Puffer direkt bekommen statt ihn zu dekodieren.
+//
+// WICHTIG (ehrlich, siehe Abschluss-Bericht): NICHT auf einem echten
+// Android/iOS-Build verifiziert (kein Android-SDK auf diesem Rechner
+// installiert) — nur gegen die whisper.rn-/audio-pcm-stream-Quellen auf
+// GitHub geprüft (Native-Modul-Quellcode gelesen, um die tatsächliche
+// stop()/on('data')-Semantik zu verifizieren, da die mitgelieferten
+// TypeScript-Typen dort teilweise irreführend sind — siehe die
+// declare-module-Ambient-Deklaration weiter unten für Details).
+
+import { Platform } from 'react-native';
+import * as FileSystem from 'expo-file-system/legacy';
+import { requestRecordingPermissionsAsync } from 'expo-audio';
+import {
+  istWhisperModellHeruntergeladen,
+  whisperModellHerunterladen,
+  whisperModellPfad,
+} from './whisperModel';
+
+// Beide nativen Pakete werden bewusst per require() statt per import geladen
+// und auf selbst geschriebene (gegen die tatsächlichen Quellen verifizierte)
+// Interfaces gecastet — nicht aus Stil-Vorliebe, sondern weil beide
+// mitgelieferten Typ-Auflösungen für DIESES Projekt (Expo-SDK-57-
+// tsconfig.base mit `moduleResolution:"bundler"` + `customConditions:
+// ["react-native"]`) nachweislich kaputt sind:
+//
+// 1) whisper.rn@0.7.0: package.json "exports" listet je Subpath die
+//    Bedingung "react-native" VOR "types" → tsc lädt (wegen der
+//    customConditions-Einstellung) die ROHE TS-Quelle (src/index.ts) statt
+//    der vorkompilierten lib/typescript/*.d.ts. Diese Quelle setzt eine
+//    RN-eigene Build-Umgebung voraus (u. a. den globalen `global`-Typ ohne
+//    Ambient-Deklaration) und lässt sich außerhalb von whisper.rns eigenem
+//    tsconfig nicht typprüfen (TS2304 "Cannot find name 'global'", live
+//    reproduziert 2026-07-20). Es gibt auch KEINEN "."-Export-Eintrag, ein
+//    bare `import ... from 'whisper.rn'` scheitert daher zusätzlich an der
+//    Modulauflösung selbst (TS2307) — sowohl in tsc als auch in Metro
+//    (unstable_enablePackageExports ist in dieser Metro-Version Default-true).
+// 2) @fugood/react-native-audio-pcm-stream: mitgelieferte .d.ts deklariert
+//    den FALSCHEN Modulnamen "react-native-live-audio-stream" (Upstream-Fork-
+//    Rest) UND ist sachlich falsch (`stop: () => Promise<string>`,
+//    `wavFile`-Option) — gegen den echten nativen Quellcode (Android
+//    RNLiveAudioStreamModule.java, iOS RNLiveAudioStream.m, GitHub geprüft
+//    2026-07-20) falsifiziert: `stop()` ist dort ein reines `void`-
+//    @ReactMethod, `wavFile` wird auf keiner Plattform gelesen. Deshalb baut
+//    startPcmCapture() unten die WAV-Datei selbst statt sich auf
+//    `wavFile`/`stop()`-Rückgabewerte zu verlassen.
+//
+// require() lässt tsc beide Pakete komplett ungeprüft (liefert `any`) — die
+// Casts unten sind die einzige Typ-Quelle, jeweils gegen die echte API
+// verifiziert (whisper.rn: src/NativeRNWhisper.ts; audio-pcm-stream: android/
+// RNLiveAudioStreamModule.java + ios/RNLiveAudioStream.m).
+interface WhisperTranscribeResult {
+  result: string;
+}
+interface WhisperTranscribeHandle {
+  stop: () => void;
+  promise: Promise<WhisperTranscribeResult>;
+}
+interface WhisperContext {
+  transcribe: (
+    filePathOrBase64: string,
+    options?: {
+      language?: string;
+      // Genauigkeit: Beam-Search statt Greedy-Dekodierung. whisper.rn/whisper.cpp
+      // unterstützt beides — beamSize>0 aktiviert die (deutlich genauere, etwas
+      // langsamere) Strahlsuche. temperature 0 = deterministisch.
+      beamSize?: number;
+      bestOf?: number;
+      temperature?: number;
+      // Conditioning: der erwartete Ayah-Text als Prior. whisper.cpp nutzt den
+      // Prompt als vorangestellten Kontext, sodass die Dekodierung stark auf
+      // die korrekten Koran-Wörter/Diakritika gezogen wird (Tarteel-Prinzip).
+      // Steigert die Erkennung korrekter Rezitation deutlich; s.
+      // transcribePcm(expectedText).
+      prompt?: string;
+    },
+  ) => WhisperTranscribeHandle;
+}
+interface WhisperModule {
+  initWhisper: (options: { filePath: string }) => Promise<WhisperContext>;
+}
+interface AudioPcmStreamOptions {
+  sampleRate: number;
+  channels: 1 | 2;
+  bitsPerSample: 8 | 16;
+  bufferSize?: number;
+}
+interface AudioPcmStreamSubscription {
+  remove: () => void;
+}
+interface AudioPcmStream {
+  init: (options: AudioPcmStreamOptions) => Promise<void>;
+  start: () => void;
+  stop: () => void;
+  on: (event: 'data', callback: (base64Chunk: string) => void) => AudioPcmStreamSubscription;
+}
+// eslint-disable-next-line @typescript-eslint/no-require-imports -- s.o., bewusster Bypass kaputter Typ-Auflösung
+const { initWhisper } = require('whisper.rn/index') as WhisperModule;
+// eslint-disable-next-line @typescript-eslint/no-require-imports -- s.o., bewusster Bypass kaputter Typ-Auflösung
+const AudioRecordModule = require('@fugood/react-native-audio-pcm-stream').default as AudioPcmStream;
+
+export type WhisperProgress = { status: 'downloading'; percent: number } | { status: 'ready' };
+
+export interface WhisperRecorder {
+  /** Beendet die Aufnahme und liefert Transkript-Varianten (Original + beschleunigt). */
+  stop: () => Promise<string[]>;
+  /** Bricht ab, ohne zu transkribieren. */
+  cancel: () => void;
+}
+
+export const SAMPLE_RATE = 16000;
+const MAX_RECORDING_MS = 45000;
+const BASE64_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+
+/**
+ * Native Plattform (iOS/Android) mit gelinktem whisper.rn-Modul — anders als
+ * beim Web-Pendant (das echte Browser-API-Verfügbarkeit prüft) hängt "geht
+ * das technisch" hier nicht vom Modell-Download ab: Download+Laden passiert
+ * transparent beim ersten startWhisperRecording()-Aufruf (Fortschritt über
+ * onProgress, exakt wie loadWhisper() im Web). Würde whisperSupported() statt
+ * dessen "Modell bereits heruntergeladen" bedeuten, könnte der Mikro-Button
+ * (dessen Sichtbarkeit in app/hifz/[surah].tsx von whisperSupported()
+ * abhängt) vor dem allerersten Download nie erscheinen — ein Deadlock, aus
+ * dem die Funktion nie hätte starten können. Ersetzt den früheren
+ * permanenten `return false`-Stub durch ein echtes Capability-Signal.
+ */
+export function whisperSupported(): boolean {
+  return Platform.OS === 'ios' || Platform.OS === 'android';
+}
+
+let whisperContextPromise: Promise<WhisperContext> | null = null;
+
+/** Lädt (bei Bedarf herunterladend) das GGML-Modell einmalig; parallele Aufrufe teilen sich das Laden. */
+export function loadWhisperContext(onProgress?: (p: WhisperProgress) => void): Promise<WhisperContext> {
+  if (!whisperContextPromise) {
+    whisperContextPromise = (async () => {
+      if (!(await istWhisperModellHeruntergeladen())) {
+        await whisperModellHerunterladen((p) =>
+          onProgress?.({ status: 'downloading', percent: Math.round(p.anteil * 100) }),
+        );
+      }
+      const ctx = await initWhisper({ filePath: whisperModellPfad() });
+      onProgress?.({ status: 'ready' });
+      return ctx;
+    })().catch((e) => {
+      whisperContextPromise = null; // nächster Versuch darf neu laden
+      throw e;
+    });
+  }
+  return whisperContextPromise;
+}
+
+// ---------------------------------------------------------------------------
+// Roh-PCM-Hilfsfunktionen (byteweise Base64, KEIN UTF-8-Text — die
+// UTF-8-sichere Kodierung in features/sync/base64.ts ist für Sync-Codes
+// gedacht und würde Audio-Binärdaten korrumpieren, siehe deren Kopfkommentar).
+// ---------------------------------------------------------------------------
+
+function base64ToBytes(b64: string): Uint8Array {
+  const out = new Uint8Array(Math.ceil((b64.length * 3) / 4));
+  let outIdx = 0;
+  let buffer = 0;
+  let bits = 0;
+  for (let i = 0; i < b64.length; i++) {
+    const c = b64.charCodeAt(i);
+    const idx = BASE64_CHARS.indexOf(b64[i]);
+    if (c === 61 /* '=' */ || idx === -1) continue;
+    buffer = (buffer << 6) | idx;
+    bits += 6;
+    if (bits >= 8) {
+      bits -= 8;
+      out[outIdx++] = (buffer >> bits) & 0xff;
+    }
+  }
+  return out.subarray(0, outIdx);
+}
+
+function bytesToBase64(bytes: Uint8Array): string {
+  let result = '';
+  for (let i = 0; i < bytes.length; i += 3) {
+    const b0 = bytes[i];
+    const b1 = bytes[i + 1];
+    const b2 = bytes[i + 2];
+    const chunk = (b0 << 16) | ((b1 ?? 0) << 8) | (b2 ?? 0);
+    result += BASE64_CHARS[(chunk >> 18) & 0x3f];
+    result += BASE64_CHARS[(chunk >> 12) & 0x3f];
+    result += b1 !== undefined ? BASE64_CHARS[(chunk >> 6) & 0x3f] : '=';
+    result += b2 !== undefined ? BASE64_CHARS[chunk & 0x3f] : '=';
+  }
+  return result;
+}
+
+function concatBytes(chunks: Uint8Array[]): Uint8Array {
+  const total = chunks.reduce((n, c) => n + c.length, 0);
+  const out = new Uint8Array(total);
+  let offset = 0;
+  for (const c of chunks) {
+    out.set(c, offset);
+    offset += c.length;
+  }
+  // Auf gerade Byte-Länge kappen (16-Bit-Samples brauchen Paare) — ein
+  // einzelnes überzähliges Byte an einer Chunk-Grenze wird verworfen.
+  return out.subarray(0, total - (total % 2));
+}
+
+function bytesToInt16(bytes: Uint8Array): Int16Array {
+  // Little-Endian auf beiden Plattformen (Android AudioRecord.read() und iOS
+  // AudioQueue mit linearem PCM ohne BigEndian-Flag) — Quellcode beider
+  // Native-Module geprüft, siehe Kommentar oben.
+  const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+  const out = new Int16Array(bytes.length / 2);
+  for (let i = 0; i < out.length; i++) out[i] = view.getInt16(i * 2, true);
+  return out;
+}
+
+function int16ToFloat32(pcm: Int16Array): Float32Array {
+  const out = new Float32Array(pcm.length);
+  for (let i = 0; i < pcm.length; i++) out[i] = pcm[i] / 0x8000;
+  return out;
+}
+
+function float32ToInt16(pcm: Float32Array): Int16Array {
+  const out = new Int16Array(pcm.length);
+  for (let i = 0; i < pcm.length; i++) {
+    const s = Math.max(-1, Math.min(1, pcm[i]));
+    out[i] = s < 0 ? s * 0x8000 : s * 0x7fff;
+  }
+  return out;
+}
+
+/** Stille am Anfang/Ende abschneiden — Pendant zu trimSilence() in whisperCheck.web.ts. */
+export function trimSilence(pcm: Float32Array, threshold = 0.01, sampleRate = SAMPLE_RATE): Float32Array {
+  const pad = Math.floor(sampleRate * 0.2);
+  let start = 0;
+  while (start < pcm.length && Math.abs(pcm[start]) < threshold) start++;
+  let end = pcm.length - 1;
+  while (end > start && Math.abs(pcm[end]) < threshold) end--;
+  if (start >= end) return pcm;
+  return pcm.subarray(Math.max(0, start - pad), Math.min(pcm.length, end + pad));
+}
+
+/** Lineares Resampling auf ein Tempo-Vielfaches — Pendant zu speedUp() in whisperCheck.web.ts. */
+export function speedUp(pcm: Float32Array, factor: number): Float32Array {
+  const outLen = Math.max(1, Math.floor(pcm.length / factor));
+  const out = new Float32Array(outLen);
+  for (let i = 0; i < outLen; i++) {
+    const pos = i * factor;
+    const i0 = Math.floor(pos);
+    const frac = pos - i0;
+    out[i] = pcm[i0] * (1 - frac) + (pcm[i0 + 1] ?? pcm[i0]) * frac;
+  }
+  return out;
+}
+
+/** Baut eine minimale 16-Bit-Mono-WAV-Datei (44-Byte-RIFF-Header + PCM-Daten). */
+function encodeWav(samples: Int16Array, sampleRate: number): Uint8Array {
+  const byteLength = samples.length * 2;
+  const buffer = new ArrayBuffer(44 + byteLength);
+  const view = new DataView(buffer);
+  const writeStr = (offset: number, s: string) => {
+    for (let i = 0; i < s.length; i++) view.setUint8(offset + i, s.charCodeAt(i));
+  };
+  writeStr(0, 'RIFF');
+  view.setUint32(4, 36 + byteLength, true);
+  writeStr(8, 'WAVE');
+  writeStr(12, 'fmt ');
+  view.setUint32(16, 16, true); // PCM-Chunk-Größe
+  view.setUint16(20, 1, true); // Audio-Format = PCM
+  view.setUint16(22, 1, true); // Kanäle = mono
+  view.setUint32(24, sampleRate, true);
+  view.setUint32(28, sampleRate * 2, true); // Byte-Rate
+  view.setUint16(32, 2, true); // Block-Align
+  view.setUint16(34, 16, true); // Bits pro Sample
+  writeStr(36, 'data');
+  view.setUint32(40, byteLength, true);
+  new Int16Array(buffer, 44).set(samples);
+  return new Uint8Array(buffer);
+}
+
+async function writeWavFile(path: string, samples: Int16Array, sampleRate: number): Promise<void> {
+  const wavBytes = encodeWav(samples, sampleRate);
+  await FileSystem.writeAsStringAsync(path, bytesToBase64(wavBytes), {
+    encoding: FileSystem.EncodingType.Base64,
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Roh-PCM-Aufnahme — von speech.ts (fast mode) wiederverwendet, siehe dort.
+// ---------------------------------------------------------------------------
+
+export interface PcmCapture {
+  /** Beendet die native Aufnahme (Event-Listener wird entfernt) und liefert die gesammelten PCM16-Samples. */
+  stopCapture: () => Int16Array;
+  /** Liefert die BISHER gesammelten Samples, OHNE die Aufnahme zu beenden (für Live-/Zwischen-Transkription). */
+  snapshot: () => Int16Array;
+}
+
+/**
+ * Startet die rohe Mikrofon-Aufnahme (16 kHz/16-Bit/mono). Wirft
+ * 'whisper_permission_denied', wenn die Mikrofon-Berechtigung fehlt.
+ */
+export async function startPcmCapture(onChunk?: (pcm: Int16Array) => void): Promise<PcmCapture> {
+  const permission = await requestRecordingPermissionsAsync();
+  if (!permission.granted) throw new Error('whisper_permission_denied');
+
+  await AudioRecordModule.init({ sampleRate: SAMPLE_RATE, channels: 1, bitsPerSample: 16 });
+  const chunks: Uint8Array[] = [];
+  const subscription = AudioRecordModule.on('data', (b64: string) => {
+    const bytes = base64ToBytes(b64);
+    chunks.push(bytes);
+    if (onChunk && bytes.length >= 2) onChunk(bytesToInt16(bytes.subarray(0, bytes.length - (bytes.length % 2))));
+  });
+  AudioRecordModule.start();
+
+  let stopped = false;
+  return {
+    stopCapture: () => {
+      if (!stopped) {
+        stopped = true;
+        AudioRecordModule.stop();
+        subscription.remove();
+      }
+      return bytesToInt16(concatBytes(chunks));
+    },
+    // Kopie der bisher gesammelten Chunks (Aufnahme läuft weiter). concatBytes
+    // kappt auf gerade Byte-Länge, sodass jederzeit ein valides PCM16 entsteht.
+    snapshot: () => bytesToInt16(concatBytes(chunks)),
+  };
+}
+
+/**
+ * Transkribiert Float32-PCM-Samples (16 kHz mono) über das geladene
+ * Whisper-Modell.
+ *
+ * `expectedText` (der erwartete Ayah-Text) wird als `prompt` mitgegeben —
+ * Tarteel-Prinzip: das Modell kennt den Kontext und zieht die Dekodierung auf
+ * die korrekten Koran-Wörter/Diakritika. Das hebt die Erkennung korrekter
+ * Rezitation massiv (User-Report: "erkennt kaum meine Worte"). Die
+ * Fehlererkennung bleibt intakt, weil der Abgleich (alignWords in
+ * similarity.ts) das ERKANNTE gegen das erwartete Wort prüft — der Prompt ist
+ * ein weicher Prior, kein Zwang: falsch Rezitiertes wird weiter falsch
+ * transkribiert. Ohne expectedText (Modus ohne Zielvers) wie bisher ohne Prompt.
+ */
+export async function transcribePcm(
+  pcm: Float32Array,
+  whisperContext: WhisperContext,
+  tempFileName: string,
+  expectedText?: string,
+): Promise<string> {
+  const path = `${FileSystem.cacheDirectory}${tempFileName}`;
+  try {
+    await writeWavFile(path, float32ToInt16(pcm), SAMPLE_RATE);
+    // Arabisch fest vorgeben (ISO-639-1 'ar') statt 'auto' — das Zielpublikum
+    // rezitiert immer Koran-Arabisch, Sprach-Autodetektion bei kurzen/leisen
+    // Aufnahmen ist unnötig fehleranfällig. beamSize 5 + temperature 0:
+    // genauere, deterministische Erkennung als der Greedy-Default.
+    const { promise } = whisperContext.transcribe(path, {
+      language: 'ar',
+      beamSize: 5,
+      temperature: 0,
+      ...(expectedText ? { prompt: expectedText } : {}),
+    });
+    const { result } = await promise;
+    return result?.trim() ?? '';
+  } finally {
+    await FileSystem.deleteAsync(path, { idempotent: true }).catch(() => {});
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Öffentliches Interface — identisch zu whisperCheck.web.ts.
+// ---------------------------------------------------------------------------
+
+/** Startet eine Mikrofon-Aufnahme; stop() transkribiert lokal per Whisper (Original + beschleunigte Variante). */
+export async function startWhisperRecording(
+  onProgress?: (p: WhisperProgress) => void,
+): Promise<WhisperRecorder> {
+  // Modell parallel zum Sprechen laden/aufwärmen — exakt wie im Web.
+  const contextReady = loadWhisperContext(onProgress);
+  const capture = await startPcmCapture();
+
+  let cancelled = false;
+  let finishPromise: Promise<string[]> | null = null;
+
+  async function finish(): Promise<string[]> {
+    clearTimeout(safety);
+    const pcm16 = capture.stopCapture();
+    if (cancelled) return [];
+    const float32 = int16ToFloat32(pcm16);
+    const trimmed = trimSilence(float32);
+    const whisperContext = await contextReady;
+    if (cancelled) return [];
+    // NUR EIN Transkriptions-Pass (früher zusätzlich eine 1,5x-beschleunigte
+    // Variante) — der zweite Pass verdoppelte die spürbare Wartezeit nach dem
+    // Sprechen, ohne dass er mit dem Koran-Finetune-Modell (whisperModel.ts)
+    // noch nennenswert bessere Treffer brachte. speedUp() bleibt exportiert
+    // (Web-Pfad + Tests) und kann als gezielter Zweitversuch reaktiviert
+    // werden, falls ein Ergebnis unter einem Schwellwert liegt.
+    const text = await transcribePcm(trimmed, whisperContext, 'hifz-rec-0.wav');
+    return text ? [text] : [];
+  }
+
+  // Memoisiert: egal ob der Sicherheits-Timeout oder stop()/cancel() zuerst
+  // greift, alle Aufrufer bekommen dasselbe (einzige) Ergebnis der Aufnahme.
+  function getFinishPromise(): Promise<string[]> {
+    if (!finishPromise) finishPromise = finish();
+    return finishPromise;
+  }
+
+  const safety = setTimeout(() => {
+    getFinishPromise().catch(() => {});
+  }, MAX_RECORDING_MS);
+
+  return {
+    cancel: () => {
+      cancelled = true;
+      getFinishPromise().catch(() => {});
+    },
+    stop: getFinishPromise,
+  };
+}

@@ -1,0 +1,2164 @@
+{
+  "nav": {
+    "prayerTimes": "Namaz",
+    "qibla": "Kıble",
+    "quran": "Kur'an",
+    "calendar": "Takvim",
+    "duas": "Dualar",
+    "settings": "Ayarlar",
+    "more": "Daha Fazla",
+    "hadith": "Hadisler",
+    "mosques": "Camiler",
+    "learn": "Kur'an okumayı öğren",
+    "quiz": "Alıştırma ve Quiz",
+    "hifz": "Ezberleme",
+    "tasbih": "Tesbih",
+    "guides": "Namaz ve İbadet",
+    "wisdom": "Hikmetler",
+    "tracker": "Namaz takibi",
+    "khatmah": "Hatim planı",
+    "names": "Esmâü'l-Hüsnâ",
+    "fasting": "Oruç",
+    "zakat": "Zekât hesaplayıcı",
+    "zakatFitr": "Fitre hesaplayıcı",
+    "mirath": "Miras hesaplayıcı",
+    "hijriConverter": "Tarih Çevirici",
+    "halal": "Yakındaki helal",
+    "halalScanner": "Helal Tarayıcı",
+    "study": "İlim",
+    "sync": "Senkron.",
+    "home": "Ana sayfa",
+    "impressum": "Yasal Bildirim",
+    "datenschutz": "Gizlilik Politikası",
+    "agb": "Kullanım Koşulları",
+    "changelog": "Yenilikler",
+    "radio": "Kur'an Radyosu",
+    "themes": "Konulu Ayetler",
+    "achievements": "Rozetler",
+    "journeys": "Günlük Planlar",
+    "search": "Ara",
+    "gettingStarted": "İlk Adımlar",
+    "lernen": "Learn"
+  },
+  "common": {
+    "loading": "Yükleniyor…",
+    "error": "Bir şeyler ters gitti.",
+    "offline": "Çevrimdışı - son kaydedilen veriler gösteriliyor.",
+    "retry": "Tekrar dene",
+    "done": "Tamam",
+    "cancel": "İptal",
+    "save": "Kaydet",
+    "reset": "Sıfırla",
+    "recommended": "Önerilen",
+    "search": "Ara…",
+    "locating": "Konum belirleniyor…",
+    "useLocation": "Mevcut konumu kullan",
+    "refresh": "Yenile",
+    "dismiss": "Kapat",
+    "credit": "Domenic Moran tarafından geliştirildi",
+    "new": "New"
+  },
+  "quran": {
+    "surahs": "Sureler",
+    "juz": "Cüz",
+    "juzItem": "Cüz",
+    "verse": "Ayet",
+    "verses": "ayet",
+    "searchPlaceholder": "Sure ara…",
+    "continueReading": "Okumaya devam et",
+    "recentlyRead": "Son okunanlar",
+    "bookmarks": "Yer imleri",
+    "noBookmarks": "Henüz yer imi yok - okuyucuda bir ayetin yanındaki ⊕ simgesine dokun.",
+    "listError": "Sure listesi yüklenemedi.",
+    "loadError": "Sure yüklenemedi.",
+    "playSurah": "Sureyi dinle",
+    "pause": "Duraklat",
+    "playbackSpeed": "Oynatma hızı",
+    "chooseReciter": "Kâri seç",
+    "chooseTranslation": "Meal seç",
+    "tafsir": "Tefsir",
+    "chooseTafsir": "Tefsir seç",
+    "notePlaceholder": "Bu ayetle ilgili kendi notun …",
+    "noteLabel": "Notum",
+    "transliteration": "Çeviriyazı",
+    "isolatedLetters": "Ayrı harfler",
+    "tajweed": "Tecvid renkleri",
+    "tajweedLegend": {
+      "ghunnah": "Gunne (genizsi ses)",
+      "idgham": "İdgam (katma)",
+      "ikhafa": "İhfa (gizleme)",
+      "iqlab": "İklab (dönüştürme)",
+      "qalqalah": "Kalkale (yankı sesi)",
+      "madd": "Med (uzatma)",
+      "silent": "Sessiz harfler"
+    },
+    "wordInfo": {
+      "title": "Kelime bilgisi",
+      "translationLabel": "Anlam",
+      "translationLanguageNote": "Kelime kelime anlamlar şu anda yalnızca İngilizce olarak sunuluyor.",
+      "pronunciationLabel": "Neden böyle okunuyor?",
+      "lettersLabel": "Harfler",
+      "rootNote": "Kök bilgisi gösterilmiyor - güvenilir bir kaynak yok.",
+      "noData": "Bu kelime için şu anda veri yok. İnternet bağlantını kontrol et.",
+      "rules": {
+        "ghunnah": "Gunne: yaklaşık iki elif miktarınca genizden çıkan bir ses.",
+        "idghamGhunnah": "Gunneli idgam: harf, kendinden sonraki nun/mimle genizden ses çıkararak birleşir.",
+        "idghamNoGhunnah": "Gunnesiz idgam: harf, kendinden sonrakiyle genizden ses çıkarmadan tamamen birleşir.",
+        "ikhafa": "İhfa: nun/tenvin ne tam açık ne de tam idgamlı, gizlenerek okunur.",
+        "iqlab": "İklab: nun/tenvin, be harfinden önce mim sesine dönüştürülür.",
+        "qalqalah": "Kalkale: ق ط ب ج د harfleri sakin olduğunda, özellikle kelime sonunda durulduğunda, kısa bir yankı sesi çıkarır.",
+        "madd": "Med: kurala göre 2 ila 6 elif miktarınca uzatılan ses.",
+        "sunLetter": "Şemsî harf kuralı: elif lamdaki lam okunmaz, kendinden sonraki harf şeddeli okunur.",
+        "hamzatWasl": "Vasl hemzesi: yalnızca söze başlarken okunur, cümle içinde okunurken atlanır.",
+        "silentLetter": "Sessiz harf: yazılır ama okunmaz."
+      }
+    },
+    "wordByWord": "Kelime kelime",
+    "offline": "Çevrimdışı",
+    "download": "İndir",
+    "searchAyahs": "Ayet Ara",
+    "searchAyahsPlaceholder": "Bir kelime veya konu girin…",
+    "searchResultsCount": "{count} sonuç",
+    "searchNoResults": "\"{query}\" için sonuç bulunamadı.",
+    "searchError": "Arama başarısız oldu.",
+    "searchArabicNote": "Arapça arama, metindeki tam kelimeyle eşleşir - türetilmiş biçimler (örn. \"اصبر\" yerine \"صبر\") ayrı sonuç sayılır.",
+    "loadMore": "Daha fazla yükle",
+    "tafsirCount": "{count} tefsir",
+    "tafsirMultiHint": "Aynı anda en fazla 3 seçilebilir - açmak/kapatmak için dokunun.",
+    "viewSettings": "Görünüm ve oynatma",
+    "rangeTitle": "Bölüm çal",
+    "rangeFrom": "Ayetten",
+    "rangeTo": "Ayete",
+    "rangeLoop": "Tekrarla",
+    "rangePlay": "Bölümü çal",
+    "rangeSelectSurah": "Sure seç",
+    "rangeCrossSurahHint": "Oynatma birden fazla sureyi kapsıyor.",
+    "focusMode": "Odak modu",
+    "beginnerMode": "Okumayı öğren",
+    "focusExit": "Odak modundan çık",
+    "sepia": "Sepya",
+    "mushafTitle": "Mushaf",
+    "mushafPage": "Sayfa",
+    "mushafUthmani": "Osmânî",
+    "mushafIndopak": "İndoPak",
+    "mushafGoTo": "Git",
+    "mushafNext": "Sonraki sayfa",
+    "mushafPrev": "Önceki sayfa",
+    "mushafOpen": "Mushaf görünümü",
+    "pageMode": "Sayfa modu",
+    "mushafDesc": "Basılı mushaf gibi sayfa sayfa oku",
+    "shareImage": "Görsel olarak paylaş",
+    "reciteCheck": "Ezberden okumayı kontrol et",
+    "labelAll": "Tümü",
+    "labels": {
+      "favorite": "Favoriler",
+      "memorize": "Ezber",
+      "reflect": "Tefekkür"
+    },
+    "searchInSurah": "Bu surede ara …",
+    "searchNext": "Sonraki eşleşme",
+    "copyVerse": "Ayeti kopyala",
+    "mushafWordInfo": "Kelime bilgisi",
+    "followAlong": "Takip et",
+    "translation": "Çeviri",
+    "fontSize": "Yazı boyutu",
+    "mushafPlayAyah": "Ayeti dinle",
+    "khatmahGoTo": "Bugünün sayfasına git",
+    "secondTranslation": "İkinci meal",
+    "chooseSecondTranslation": "İkinci meali seç",
+    "tajweedPracticeHint": "Bu sayfadaki tüm örnekleri kısaca vurgulamak için bir kurala dokunun.",
+    "mushafPlayPage": "Sayfayı oynat",
+    "history": {
+      "title": "Geçmiş",
+      "empty": "Henüz okunan ayet yok - son okuduğun sureler burada görünecek.",
+      "justNow": "Az önce",
+      "minutesAgo": "{n} dk önce",
+      "hoursAgo": "{n} sa önce",
+      "yesterday": "Dün",
+      "daysAgo": "{n} gün önce"
+    },
+    "tafsirMore": "Devamını göster",
+    "tafsirLess": "Daha az göster",
+    "sajdaTitle": "Secde ayeti",
+    "sajdaHintObligatory": "Yaygın görüşe göre bu noktada secde vaciptir.",
+    "sajdaHintRecommended": "Bu ayet okunurken secde yapılması tavsiye edilir.",
+    "compareReciters": "Kârileri karşılaştır",
+    "compareHint": "{verse} ayetini iki kâri ile art arda çalar.",
+    "compareReciterA": "Kâri A",
+    "compareReciterB": "Kâri B",
+    "comparePlay": "A → B çal",
+    "compareStageA": "Kâri A …",
+    "compareStageB": "Kâri B …",
+    "compareLoadError": "Ses yüklenemedi.",
+    "chooseReciterA": "Kâri A seç",
+    "chooseReciterB": "Kâri B seç"
+  },
+  "hadith": {
+    "languagesNote": "Arapça, İngilizce ve Türkçe olarak mevcut",
+    "loadError": "Koleksiyon yüklenemedi.",
+    "backToBooks": "Bölümlere dön",
+    "itemLoadError": "Hadis yüklenemedi.",
+    "reference": "Kitap {book}, Hadis {hadith}",
+    "today": "Günün hadisi",
+    "todaySource": "Nevevî 40, No. {n}",
+    "searchTitle": "Hadis Arama",
+    "searchAllHint": "13 koleksiyonun tamamında arar - en az 3 karakter",
+    "searchPlaceholder": "Arama terimi …",
+    "searchedProgress": "{x}/{y} koleksiyon arandı",
+    "resultsCount": "{n} sonuç",
+    "noResults": "Sonuç bulunamadı",
+    "shareText": "Hadisi paylaş",
+    "shareImage": "Görsel olarak paylaş"
+  },
+  "search": {
+    "title": "Arama",
+    "placeholder": "Kur'an, Hadis, dua, kurslar …",
+    "hint": "En az 2 karakter girin",
+    "noResults": "\"{query}\" için sonuç yok",
+    "sectionQuran": "Kur'an",
+    "sectionHadith": "Hadis",
+    "sectionDuas": "Dualar",
+    "sectionCourses": "Kurslar",
+    "moreDesc": "Kur'an, Hadis, dua ve kursları aynı anda ara"
+  },
+  "share": {
+    "action": "Paylaş",
+    "dialogTitle": "Görsel olarak paylaş",
+    "linkFooter": "Salati uygulamasından paylaşıldı",
+    "linkCopiedHint": "Bağlantı panoya kopyalandı – paylaşırken yapıştırın",
+    "courseComplete": {
+      "cardTitle": "Kurs tamamlandı!",
+      "cardSubtitle": "{n} ders tamamlandı",
+      "shareCta": "Başarını paylaş"
+    }
+  },
+  "duas": {
+    "offlineNote": "Tamamen çevrimdışı kullanılabilir",
+    "countOne": "1 dua",
+    "countMany": "{n} dua"
+  },
+  "learn": {
+    "title": "Kur'an okumayı öğren",
+    "subtitle": "Alfabeden ilk sureye - adım adım",
+    "locked": "Kilitli - önce bir önceki dersi tamamla",
+    "start": "Başla",
+    "back": "Geri",
+    "next": "İleri",
+    "startQuiz": "Teste başla",
+    "passed": "Geçtin! Sonraki dersin kilidi açıldı.",
+    "failed": "Geçmek için en az %70 gerekli - tekrar dene.",
+    "retry": "Tekrar dene",
+    "backToCourse": "Kursa dön",
+    "phaseRead": "Okumayı öğren",
+    "deepenCta": "Diğer ilim kursları",
+    "deepenCtaDesc": "İlim bölümünde inanç, tarih, fıkıh ve lehçeler",
+    "lessonTitles": {
+      "letters-1": "Alfabe 1 · ا ب ت ث",
+      "letters-2": "Alfabe 2 · ج ح خ د",
+      "letters-3": "Alfabe 3 · ذ ر ز س",
+      "letters-4": "Alfabe 4 · ش ص ض ط",
+      "letters-5": "Alfabe 5 · ظ ع غ ف",
+      "letters-6": "Alfabe 6 · ق ك ل م",
+      "letters-7": "Alfabe 7 · ن ه و ي",
+      "similar": "Benzer harfleri ayırt etme",
+      "forms-1": "Harf biçimleri 1",
+      "forms-2": "Harf biçimleri 2",
+      "forms-3": "Harf biçimleri 3",
+      "fatha": "Fetha - a sesi",
+      "kasra": "Kesra - i sesi",
+      "damma": "Damme - u sesi",
+      "tanwin": "Tenvin - an, in, un",
+      "sukun": "Sükûn - harekesiz",
+      "shadda": "Şedde - çift okuma",
+      "madd": "Uzun sesliler (Med)",
+      "hamza-extras": "Hemze ve özel işaretler",
+      "sun-moon": "Şemsî ve kamerî harfler",
+      "words-1": "İlk kelimeleri okuma",
+      "words-2": "Kur'an'dan kelimeler",
+      "reading-fatiha": "Fâtiha'yı okuma",
+      "reading-ikhlas": "İhlâs'ı okuma",
+      "vocab-1": "Kur'an Kelime Hazinesi 1",
+      "vocab-2": "Kur'an Kelime Hazinesi 2",
+      "vocab-3": "Kur'an Kelime Hazinesi 3",
+      "vocab-4": "Kur'an Kelime Hazinesi 4",
+      "vocab-5": "Kur'an Kelime Hazinesi 5",
+      "vocab-6": "Kur'an Kelime Hazinesi 6",
+      "vocab-7": "Kur'an Kelime Hazinesi 7",
+      "vocab-8": "Kur'an Kelime Hazinesi 8",
+      "vocab-9": "Kur'an Kelime Hazinesi 9",
+      "vocab-10": "Kur'an Kelime Hazinesi 10",
+      "vocab-11": "Kur'an Kelime Hazinesi 11",
+      "reading-fatiha-deep": "Fatiha - Kelime Kelime",
+      "salah-words-1": "Namaz Kelimeleri: Tekbir ve Açılış",
+      "salah-words-2": "Namaz Kelimeleri: Rükû ve Secde",
+      "salah-words-3": "Namaz Kelimeleri: Teşehhüd ve Salavat",
+      "salah-words-4": "Namaz Kelimeleri: Selam ve Kapanış",
+      "reading-falaq": "Okuma: Felak Suresi",
+      "reading-nas": "Okuma: Nâs Suresi"
+    },
+    "concepts": {
+      "similar": "Birçok Arap harfi aynı temel şekli paylaşır (ör. \"diş\" ب ت ث) ve yalnızca üstteki veya alttaki noktaların sayısı ve yeriyle ayrılır. Bir nokta fazla ya da eksik olması tamamen farklı bir harf ortaya çıkarır - baştan itibaren dikkatli bakmakta fayda var.",
+      "forms": "Arap harfleri bitişik yazılır, el yazısı gibi. Kelimedeki konumuna göre harfin şekli değişir: tek başına, kelime başında, ortasında ve sonunda - her zaman sağdan sola okunur ve yazılır.",
+      "nonConnector": "Bazı harfler (ör. ا د ذ ر ز و) yalnızca kendinden önceki harfe bağlanır, sonrakine değil. Böyle bir harften sonra kelimedeki sıradaki harf yine tek başına ya da baş biçiminde başlar - bunu kelimede küçük bir boşluk olarak görebilirsin.",
+      "fatha": "Fetha (ـَ) harfin ÜSTÜNE konan küçük eğik bir çizgidir ve kısa a sesi verir, ör. بَ = ba. Kur'an'da en sık görülen harekedir.",
+      "kasra": "Kesra (ـِ) harfin ALTINA konan küçük eğik bir çizgidir ve kısa i sesi verir, ör. بِ = bi.",
+      "damma": "Damme (ـُ) harfin ÜSTÜNE konan küçük و şeklinde bir işarettir ve kısa u sesi verir, ör. بُ = bu.",
+      "tanwinFatha": "Tenvin, kelimenin belirsiz olduğunu gösteren çift harekeli bir bitiştir (Türkçedeki \"bir\" gibi). Kelime sonundaki çift fetha (ـً) -an gibi okunur, ör. كِتَابًا (kitāban) = \"bir kitap\".",
+      "tanwinKasra": "Kelime sonundaki çift kesra (ـٍ) -in gibi okunur ve yine belirsizliği gösterir, ör. خَيْرٍ (khayrin) = \"bir hayırdan\".",
+      "tanwinDamma": "Kelime sonundaki çift damme (ـٌ) -un gibi okunur ve belirsizliği gösterir, ör. نُورٌ (nūrun) = \"bir nur\".",
+      "sukun": "Sükûn (harfin üstündeki küçük daire ـْ) harekesizlik demektir - harf harekesiz okunur ve heceyi kapatır, ör. قَدْ (qad).",
+      "shadda": "Şedde (harfin üstündeki küçük w işareti ـّ) harfi ikiler: harf vurgulu ve uzunca okunur, ör. رَبَّ (rabba), raba değil.",
+      "maddAlif": "Fethadan sonra gelen elif (ا) a sesini yaklaşık iki katına uzatır: â, ör. قَالَ (qāla). Bu uzatma doğru tilavetin (tecvid) temel bir parçasıdır.",
+      "maddWaw": "Dammeden sonra gelen vav (و) u sesini yaklaşık iki katına uzatır: û, ör. نُور (nūr).",
+      "maddYa": "Kesradan sonra gelen ye (ي) i sesini yaklaşık iki katına uzatır: î, ör. دِين (dīn).",
+      "hamza": "Hemze (ء) gırtlak sesidir - Türkçede \"sa'at\" kelimesindeki kesintiye benzer. Tek başına veya bir taşıyıcı (elif, vav, ye) üzerinde bulunabilir.",
+      "hamzaAlif": "Hemze elifin üstündeyse (أ) kelime başında a/u sesi gelir, elifin altındaysa (إ) i sesi gelir.",
+      "taMarbuta": "Tâ-i merbûta (ة) yalnızca kelime sonunda, genellikle dişil kelimelerde bulunur. Durakta a gibi, sonraki kelimeyle bağlantıda at gibi okunur.",
+      "alifMaqsura": "Elif-i maksûre (ى) noktasız ye gibi görünür ama sıradan bir elif gibi uzun â olarak okunur - ye sesiyle karıştırma.",
+      "lamAlif": "Lâm (ل) ve elif (ا) kendine özgü bir bağ oluşturarak لا (lâ) şeklinde birleşir - iki harf iç içe yazılır ve bu birleşim çok sık karşımıza çıkar (ör. \"hayır/değil\" anlamındaki lâ kelimesinde).",
+      "sunLetters": "14 tane şemsî harf vardır: ت ث د ذ ر ز س ش ص ض ط ظ ل ن. Bunlardan biri 'el-' takısından sonra gelince L tamamen ona kaynaşır ve ikilenir (şedde) - L hiç okunmaz. Örnek: el-şems, eş-şems olur; el-nûr, en-nûr olur.",
+      "moonLetters": "Geri kalan 14 harf kamerî harflerdir: ء ب ج ح خ ع غ ف ق ك م ه و ي. Bunlardan önce 'el-' takısının L'si net biçimde duyulur, kaynaşma olmaz. Örnekler: el-kamer, el-kitâb, el-beyt.",
+      "wordByWordRecap": "Şimdi ayetin tamamını tek seferde oku - az önce tek tek öğrendiğin kelimeler bir araya gelerek tam cümleyi oluşturuyor."
+    },
+    "quiz": {
+      "nameOfLetter": "Bu harfin adı nedir?",
+      "glyphOfLetter": "Bu ada hangi harf aittir?",
+      "formInitial": "Bu harf kelime başında nasıl görünür?",
+      "formMedial": "Bu harf kelime ortasında nasıl görünür?",
+      "formFinal": "Bu harf kelime sonunda nasıl görünür?",
+      "readSyllable": "Bu nasıl okunur?",
+      "readWord": "Bu kelime nasıl okunur?",
+      "readAyah": "Bu ayet nasıl okunur?",
+      "meaningOfWord": "Bu kelime ne anlama gelir?",
+      "soundOfLetter": "Bu hangi harf? (dinle)"
+    },
+    "tapToListen": "Dinlemek için dokun",
+    "contentFallbackNotice": "Henüz dilinize çevrilmedi – İngilizce gösteriliyor.",
+    "placementCta": "Seviye tespit testi",
+    "placementCtaDesc": "Harfleri veya daha fazlasını zaten biliyor musun? Doğrudan ileriden başla",
+    "practicePronunciation": "Telaffuz alıştırması",
+    "listening": "Dinleniyor…",
+    "pronunciationGood": "Güzel telaffuz!",
+    "pronunciationRetry": "Tekrar dene",
+    "placementRepeatCta": "Bilgi testi",
+    "placementRepeatDesc": "Tüm kilometre taşı sorularını yeniden çöz - ilerlemen her zaman korunur",
+    "easeVerse": {
+      "arabic": "وَلَقَدْ يَسَّرْنَا الْقُرْآنَ لِلذِّكْرِ فَهَلْ مِن مُّدَّكِرٍ",
+      "title": "Kur'an öğrenmesi kolaydır",
+      "translation": "Andolsun, Biz Kur'an'ı öğüt alınsın diye kolaylaştırdık. Fakat öğüt alan var mı?",
+      "reference": "Kamer Suresi (54), Ayet 17 – 22, 32 ve 40'ta da tekrarlanır",
+      "explanation": "İbn Kesir açıklıyor: Allah, samimi çaba gösteren herkes için Kur'an'ı okumayı, ezberlemeyi ve anlamayı yaşına veya diline bakmaksızın kolaylaştırmıştır. Sadece ilk adımı atmak ve biraz gayret göstermek yeterlidir."
+    },
+    "nextLesson": "Sonraki ders",
+    "podcastIntro": "Podcast for this phase",
+    "podcastOptional": "Optional — listen first or start right away"
+  },
+  "practice": {
+    "title": "Alıştırma ve Quiz",
+    "subtitle": "Ne çalışmak istediğini seç - en iyi skor ve seriyle, oyun gibi",
+    "streakDays": "günlük seri",
+    "streakJokerUsed": "joker kullanıldı",
+    "playAgain": "Tekrar oyna",
+    "backToHub": "Genel bakışa dön",
+    "bestStreak": "En iyi seri",
+    "quiz": {
+      "connectsLeft": "Bu harf sola (sonraki harfe) bağlanır mı?",
+      "whichNonConnector": "Hangi harf sola BAĞLANMAZ?",
+      "isSunLetter": "Bu bir şemsî harf mi?"
+    },
+    "modes": {
+      "letters": {
+        "title": "Harf quizi",
+        "desc": "28 harfin adları ve şekilleri"
+      },
+      "forms": {
+        "title": "Biçim quizi",
+        "desc": "Baş, orta ve son biçimleri tanı"
+      },
+      "connections": {
+        "title": "Bağlantı quizi",
+        "desc": "Hangi harfler bağlanır?"
+      },
+      "harakat": {
+        "title": "Hareke quizi",
+        "desc": "Fetha, kesra ve damme ile heceleri oku"
+      },
+      "words": {
+        "title": "Kelime quizi",
+        "desc": "Kurstaki gerçek kelimeleri oku"
+      },
+      "rules": {
+        "title": "Kural quizi",
+        "desc": "Şemsî/kamerî harfler ve uzun sesliler"
+      },
+      "knowledge": {
+        "title": "İslami bilgi",
+        "desc": "Şartlar, namazlar, bayramlar ve daha fazlası"
+      },
+      "quran": {
+        "title": "Kur'an quizi",
+        "desc": "Sureler, ayetler ve Kur'an bilgileri"
+      },
+      "mix": {
+        "title": "Karışık",
+        "desc": "Tüm alanlardan rastgele sorular"
+      },
+      "seerah": {
+        "title": "Siyer Testi",
+        "desc": "Hz. Muhammed'in (sav) hayatı ve biyografisi"
+      },
+      "sahaba": {
+        "title": "Sahabe Testi",
+        "desc": "Sahabeler, Peygamberimizin ﷺ hanımları ve dört büyük imam"
+      },
+      "akhlaq": {
+        "title": "Ahlak Testi",
+        "desc": "Sıdk, hilm, sabır, ihlas, tevazu, emanet, rahmet, hayâ ve adalet - Kur'an ve Sünnet'ten karakter özellikleri"
+      },
+      "nikah": {
+        "title": "Evlilik ve Aile Testi",
+        "desc": "Evliliğin amacı, haklar, nikah akdi, talak ve çocuk terbiyesi"
+      },
+      "dialects": {
+        "title": "Lehçe Testi",
+        "desc": "Mağrip, Levanten, Körfez ve Mısır lehçelerinden günlük ifadeler"
+      }
+    },
+    "puzzle": {
+      "title": "Cümle yapbozu",
+      "desc": "Kelimeleri sırala",
+      "hint": "Kelimeleri doğru sıraya koy",
+      "empty": "Aşağıdaki kelimelere dokun",
+      "next": "Devam"
+    },
+    "matchingGame": {
+      "title": "Eşleştirme",
+      "desc": "Kelime & okunuş",
+      "hint": "Her kelimeyi okunuşuyla eşleştir",
+      "points": "puan"
+    },
+    "listen": {
+      "title": "Dinle ve seç",
+      "desc": "Duyduğun kelimeyi seç",
+      "hint": "Dinle ve okunuşu yaz",
+      "play": "Dinle",
+      "placeholder": "Okunuşu yaz …",
+      "check": "Kontrol et",
+      "unavailableReading": "Bu alıştırma ses gerektirir ve alıştırma türü okumaya ayarlıyken gizlenir."
+    },
+    "mistakes": {
+      "title": "Hatalarım",
+      "desc": "Yanlışları tekrar et",
+      "empty": "Açık hata yok - harika!",
+      "clearedHint": "Doğru cevaplanan sorular listeden çıkarıldı."
+    },
+    "intro": {
+      "gotIt": "Anladım, başlayalım!",
+      "whatLabel": "Ne yapacaksın",
+      "whyLabel": "Neden işe yarar",
+      "reopenA11y": "Açıklamayı tekrar göster",
+      "quizMode": {
+        "title": "Quiz",
+        "what": "3-4 seçenekli bir soru görürsün ve doğru olanına dokunursun. Yanlış cevap otomatik olarak Hatalarım listene eklenir.",
+        "why": "Bir cevabı aktif olarak hatırlamaya çalışmak, sadece okumaktan çok daha kalıcıdır - nerede eksiğin olduğunu hemen görürsün."
+      },
+      "puzzle": {
+        "title": "Cümle yapbozu",
+        "what": "Arapça bir cümle tek tek kelimelere karıştırılmış halde önünde durur. Kelimeleri doğru sırayla dokunarak cümleyi yeniden kur.",
+        "why": "Arapça cümle dizilimi çoğu zaman Türkçeden farklı kurallar izler. Sırayı kendin kurunca dil bilgisi, sadece okumaktan çok daha kalıcı öğrenilir."
+      },
+      "matching": {
+        "title": "Eşleri bul",
+        "what": "Solda Arapça kelimeler, sağda karışık sırayla okunuşları durur. Önce soldan bir kelimeye, sonra sağdan eşleşen okunuşuna dokun.",
+        "why": "Bilinçli eşleştirme, Arapça yazıyı doğrudan sesiyle bağlamayı öğretir - okunuşa bakmadan akıcı okumanın temel becerisi budur."
+      },
+      "listen": {
+        "title": "Dinle ve seç",
+        "what": "Arapça bir kelimeyi veya heceyi dinler ve duyduğun kelimeyi 3-4 Arapça seçenek arasından seçersin.",
+        "why": "Arapçada Türkçede olmayan sesler var. Yalnızca dinleyip kendin tekrar üreterek kulağını bu farklara alıştırırsın - sadece okumak yetmez."
+      },
+      "duel": {
+        "title": "Quiz düellosu",
+        "what": "Aynı sorularla karşı karşıya gelirsiniz: ya bir cihazda sırayla oynarsınız, ya da her biriniz kendi zamanında - turunu oynar, kodu bir arkadaşına gönderirsin, o da kodu yükleyip puanını geçmeye çalışır.",
+        "why": "Rekabet, aslında bilmen gereken bilgiyi tekrar etmeye motive eder - kod modu, aynı anda vaktiniz olmasa bile çalışır."
+      },
+      "mistakes": {
+        "title": "Hatalarım",
+        "what": "Bir quizde yanlış cevapladığın her soru otomatik olarak burada tekrar karşına çıkar. Doğru cevaplarsan listeden kalkar.",
+        "why": "Bilgi, henüz oturmamış eksikler tam olarak tekrar edildiğinde en iyi şekilde kalıcı olur - her şeyi rastgele tekrar etmek yerine."
+      },
+      "placement": {
+        "title": "Seviye tespit testi",
+        "what": "Kursun art arda gelen kilometre taşları için kısa soru blokları cevaplarsın. Bir bloğu geçersen otomatik olarak sonrakine geçilir - geçemediğin ilk blokta test biter.",
+        "why": "Böylece birkaç dakikada gerçek bilgi seviyeni bulursun - 1. dersten başlayıp zaten bildiklerinle vakit kaybetmek yerine."
+      },
+      "write": {
+        "title": "Yazma alıştırması",
+        "what": "Gösterilen harfi ezberden parmağınla çiz - şablon bu sırada gizlidir. Ancak “Karşılaştır”a dokunduğunda gerçek şekil, çiziminin üzerine yarı saydam biner.",
+        "why": "Görünür bir şablonu takip etmek pek kalıcı olmaz, çünkü beynin hiçbir şeyi hatırlamasına gerek kalmaz. Ancak hafızadan hatırlamak - ve sonra dürüstçe karşılaştırmak - harf şeklinin gerçekten oturmasını sağlar."
+      }
+    },
+    "correctAnswerLabel": "Doğru cevap",
+    "wrongListTitle": "Yanlış cevaplananlar"
+  },
+  "hifz": {
+    "title": "Ezberleme",
+    "subtitle": "Ayet ayet: dinle, gizle, oku, işaretle",
+    "searchNoResults": "\"{query}\" için sure bulunamadı.",
+    "memorized": "ezberlendi",
+    "tapToReveal": "Göstermek için dokun",
+    "listen": "Dinle",
+    "reveal": "Göster",
+    "hide": "Gizle",
+    "micCheck": "Oku",
+    "autoMarked": "Otomatik olarak \"Biliyorum\" işaretlendi",
+    "reciteFromReaderHint": "Bu ayeti ezberden okuyuşunu kontrol etmek için \"Oku\"ya dokun.",
+    "listening": "Dinliyorum…",
+    "micError": "Konuşma tanıma kullanılamıyor veya iptal edildi.",
+    "stillLearning": "Hâlâ çalışıyorum",
+    "gotIt": "Ezberledim",
+    "grade": {
+      "excellent": "Mükemmel!",
+      "good": "İyi - neredeyse kusursuz",
+      "retry": "Tekrar çalış"
+    },
+    "micMissedHint": "İşaretli kelimeler tanınmadı - bir sonraki denemede onları özellikle net söyle.",
+    "micNote": "Kontrol kelimeleri karşılaştırır. İnce tecvid ayrıntılarını (med uzunluğu, ğunne) değerlendiremez - bunun için bir hoca gerekir.",
+    "modeFast": "Hızlı (tarayıcı)",
+    "modePrecise": "Hassas (cihaz içi model)",
+    "stopRecording": "Durdur ve değerlendir",
+    "transcribing": "Değerlendiriliyor …",
+    "modelDownload": "Model bir defalık indiriliyor: %{p}",
+    "letterTips": {
+      "qaf": "ق küçük dilden, derinden gelir - ك'ten daha kalındır",
+      "kaf": "ك dilin arkasından daha önden gelir - ق'tan daha incedir",
+      "hha": "ح boğazın ortasından sürtünmesiz, sıkıştırılmış bir nefestir",
+      "kha": "خ damağın arkasında sürter - Almanca 'Bach'taki ch gibi",
+      "ha": "ه 'hava'daki gibi hafif bir h'dir",
+      "ain": "ع sıkıştırılmış bir boğaz sesidir - boğaz duyulur şekilde daralır",
+      "hamza": "ء kısa bir ses kesintisidir (hemze)",
+      "dhal": "ذ yumuşak bir peltek s'dir (dil dişlerde), İngilizce 'this' gibi",
+      "zay": "ز 'roza'daki gibi titreşimli bir z'dir",
+      "zza": "ظ, ذ'nin kalın karşılığıdır - dil dişlerde, ağız dolgun",
+      "sin": "س ince, keskin bir s'dir",
+      "sad": "ص kalın, dolgun bir s'dir - ağzın arkası dolar",
+      "ta": "ت üst dişlerde hafif bir t'dir",
+      "tta": "ط kalın, dolgun bir t'dir",
+      "dal": "د üst dişlerde hafif bir d'dir",
+      "dad": "ض dilin yanından azı dişlerinden gelir - kalın ve dolgun",
+      "ghain": "غ Fransızca r gibi damaktan gelen bir sestir"
+    },
+    "nearLabel": "şöyle duyuldu:",
+    "expectedLabel": "Beklenen",
+    "recognizedLabel": "Tanındı",
+    "closestGuessLabel": "En yakın tahmin (belirsiz)",
+    "notRecognizedLabel": "Kaydınızda tanınmadı",
+    "youSaid": "Şunu söylediniz: \"{transcript}\"",
+    "tapWordHint": "Neyin tanındığını görmek için vurgulanan kelimeye dokunun",
+    "gapTestCta": "Alıştırma modu (sessiz)",
+    "gapTest": {
+      "title": "Ezber Testi",
+      "noKnownVerses": "Henüz \"Biliyorum\" olarak işaretlenmiş ayet yok - önce birkaç ayet öğren, sonra burada sessizce kendini sınayabilirsin.",
+      "backCta": "Sureye dön",
+      "progressLabel": "Ayet {current} / {total}",
+      "tapGapHint": "Kelimeyi görmek için boşluğa dokun",
+      "revealWordA11y": "Kelimeyi göster",
+      "correctBtn": "Doğru hatırladım",
+      "retryBtn": "Tekrar çalışmalıyım",
+      "summaryTitle": "Test turu tamamlandı",
+      "summaryResult": "{total} ayetten {correct} tanesini doğru hatırladın",
+      "restartCta": "Yeniden başla",
+      "doneCta": "Bitti"
+    },
+    "modelNeededHint": "Önce konuşma modelini indir. İndirme arka planda devam eder — bu ekrandan çıkabilirsin.",
+    "surahRecite": {
+      "cta": "Tüm sureyi oku",
+      "intro": "Başlat ve tüm sureyi kesintisiz oku — ayetler tanındıkça açılır.",
+      "start": "Okumayı başlat",
+      "stop": "Durdur"
+    }
+  },
+  "tasbih": {
+    "title": "Tesbih",
+    "today": "Bugün toplam",
+    "tapHint": "Saymak için daireye dokun",
+    "addCustom": "Kendi zikrin",
+    "customTextPlaceholder": "Zikir metni",
+    "customTargetPlaceholder": "Hedef (adet)",
+    "deleteCustom": "Kendi zikrini sil",
+    "dailyGoal": "Günlük hedef",
+    "customGoal": "Kendi hedefin",
+    "customGoalPlaceholder": "Hedef (adet)",
+    "history": "Geçmiş (7 gün)",
+    "afterSalahCta": "Namazdan sonra zikir (33/33/34)"
+  },
+  "guides": {
+    "title": "Namaz ve İbadet",
+    "subtitle": "Adım adım: abdest, gusül, namaz, rekâtlar, vitir ve daha fazlası",
+    "steps": "adım"
+  },
+  "wisdom": {
+    "title": "Hikmetler",
+    "today": "Günün hikmeti",
+    "share": "Paylaş"
+  },
+  "settings": {
+    "groups": {
+      "prayer": "Namaz ve Hesaplama",
+      "notifications": "Bildirimler ve Hatırlatıcılar",
+      "quran": "Kur'an ve Tilavet",
+      "language": "Dil ve Görünüm",
+      "learning": "Öğrenme ve Alıştırma",
+      "data": "Depolama ve Veriler",
+      "about": "Hakkında ve Yasal"
+    },
+    "location": "Konum",
+    "current": "Şu an",
+    "useMyLocation": "Mevcut konumumu kullan",
+    "locating": "Konum alınıyor…",
+    "searchCity": "Şehir ara…",
+    "savedLocations": {
+      "title": "Kayıtlı konumlar",
+      "namePlaceholder": "İsim (ör. Ev, İş)…",
+      "saveCurrent": "Mevcut konumu kaydet",
+      "delete": "Kayıtlı konumu sil"
+    },
+    "method": "Hesaplama yöntemi",
+    "asrSchool": "İkindi mezhebi",
+    "language": "Dil",
+    "hadithLanguage": "Hadis dili",
+    "timeFormat": "Saat biçimi",
+    "format24": "24 saat (14:30)",
+    "format12": "12 saat (2:30 PM)",
+    "fontSize": "Kur'an yazı boyutu",
+    "fontSmall": "Küçük",
+    "fontMedium": "Orta",
+    "fontLarge": "Büyük",
+    "fontXLarge": "Çok büyük",
+    "appearance": "Görünüm",
+    "themeAuto": "Otomatik (sistem ayarı)",
+    "themeLight": "Açık",
+    "themeDark": "Koyu",
+    "notifications": "Namaz bildirimleri",
+    "resetDefaults": "Varsayılanlara sıfırla",
+    "asrEarlier": "Erken (Şafiî/Malikî/Hanbelî - standart)",
+    "asrLater": "Geç (Hanefî)",
+    "iqama": {
+      "title": "Kamet vakti",
+      "enable": "Kamet vaktini göster",
+      "enableHint": "Ezan vaktinin yanında cemaat namazının (kamet) hesaplanan vaktini gösterir.",
+      "offsetHint": "Ezandan sonraki süre, dakika cinsinden - her namaz için ayrı ayarlanabilir.",
+      "minutesShort": "dk"
+    },
+    "pace": {
+      "title": "Günlük zaman bütçesi",
+      "min10": "Günde 10 dk · 1 ders, kısa tekrar",
+      "min20": "Günde 20 dk · 2 ders (önerilen)",
+      "min45": "Günde 45 dk · 5 ders",
+      "min90": "Günde 1,5 saat · 10 ders",
+      "min240": "Günde 4 saat · azami tempo (25 ders)",
+      "freeUnlock": "Tüm dersleri aç",
+      "freeUnlockHint": "Sırasız öğren - ileri seviye için"
+    },
+    "display": {
+      "title": "GÖRÜNÜM",
+      "transliteration": "Transliterasyonu göster",
+      "transliterationHint": "Kelime ve kelime bilgisinde Latin harfli okunuşu göster/gizle",
+      "isolatedLetters": "İzole harf biçimini göster",
+      "isolatedLettersHint": "Kelimeleri ayrıca ayrı, bağlantısız harflerle de göster - ezberlemek için"
+    },
+    "reviewReminder": {
+      "title": "Tekrar Hatırlatması",
+      "enable": "Günlük hatırlatma",
+      "hint": "Tekrarlar vadesi geldiğinde seçilen saatte yerel hatırlatma (sadece uygulama, web değil)",
+      "hour9": "Sabah · 09:00",
+      "hour14": "Öğlen · 14:00",
+      "hour18": "Akşam · 18:00",
+      "hour21": "Geç akşam · 21:00"
+    },
+    "verseOfDay": {
+      "title": "Günün Ayeti/Hadisi",
+      "enable": "Günlük hatırlatma",
+      "hint": "Seçilen saatte bilinen bir ayet veya hadis, her gün yeni (sadece uygulama, web değil)"
+    },
+    "jumuah": {
+      "title": "Cuma Hatırlatması",
+      "enable": "Cuma günü hatırlatması",
+      "hint": "Cuma namazından önce Kehf sûresine dair bir not içeren hatırlatma (sadece uygulama, web değil)"
+    },
+    "sunnah": {
+      "title": "Sünnet Namazları",
+      "duha": "Duha namazı",
+      "duhaHint": "Sabah, güneş doğduktan kısa süre sonra hatırlatma",
+      "tahajjud": "Teheccüd",
+      "tahajjudHint": "Gecenin geç saatlerinde, fecirden önce hatırlatma",
+      "witr": "Vitir namazı",
+      "witrHint": "Yatsıdan sonra, uyumadan önce hatırlatma"
+    },
+    "preAdhan": {
+      "title": "Ezandan Önce Hatırlatma",
+      "enable": "Namaz vaktinden önce ek hatırlatma",
+      "hint": "Her etkin namazdan X dakika önce hatırlatma, örn. abdest almak veya camiye gitmek için",
+      "minutes": "{n} dk. önce"
+    },
+    "weeklySummary": {
+      "title": "Haftalık özet",
+      "enable": "Haftalık hatırlatma",
+      "hint": "Derslerin ve namazların kısa özeti, her pazar akşamı saat 20:00'de (yalnızca uygulama, web değil)"
+    },
+    "notificationsOverview": {
+      "navLabel": "Bildirimler",
+      "navHint": "Tüm hatırlatmaları tek yerden yönet",
+      "title": "Bildirimler",
+      "subtitle": "Uygulamadaki tüm hatırlatmaların genel görünümü - değişiklikler ilgili hatırlatmaya hemen uygulanır.",
+      "groupPrayerTimes": "Namaz vakitleri",
+      "groupQuran": "Kur'an ve bilgi",
+      "groupOther": "Diğer",
+      "prayerHint": "Namaz vaktinde hatırlatma",
+      "journeyTitle": "Ayet yolculuğu hatırlatması",
+      "journeyHint": "Bir ayet yolculuğu aktifken otomatik olarak açılır - ayrı bir anahtar gerekmez",
+      "zakatManageLink": "Zekât vadesini yönet"
+    },
+    "dashboard": {
+      "navLabel": "Pano",
+      "navHint": "Ana ekran kartlarının sırasını ve görünürlüğünü ayarla"
+    },
+    "widgets": {
+      "title": "Ana ekran widget'ları",
+      "hint": "Ana ekrana uzun basıp Salati'yi ekle: namaz vakitleri, günün duası ve seri her biri koyu ve açık renk temasıyla seçilebilir.",
+      "perWidgetHint": "İpucu: Yerleştirilmiş bir widget'a uzun basıp Yapılandır'a dokunarak o widget'ın rengini ve içeriğini ayrı ayrı ayarlayın."
+    },
+    "support": {
+      "title": "Destek",
+      "copyReport": "Hata raporunu kopyala",
+      "copyReportHint": "Son kaydedilen hataları metin olarak kopyalar - cihazda kalır, otomatik gönderilmez",
+      "copied": "Kopyalandı",
+      "replayOnboarding": "Tanıtımı tekrar oynat"
+    },
+    "backup": {
+      "title": "İlerlemeyi yedekle",
+      "hint": "Hesap yok, bulut yok - ilerlemen bu cihazda yerel olarak kalır. Cihaz veya uygulama değişikliğinde geri yükleyebilmek için bir dosya olarak dışa aktar.",
+      "exportButton": "İlerlemeyi dışa aktar",
+      "exportError": "Dışa aktarma başarısız oldu. Lütfen tekrar deneyin.",
+      "importButton": "İlerlemeyi içe aktar",
+      "importConfirmTitle": "İlerleme içe aktarılsın mı?",
+      "importConfirmBody": "Bu, bu cihazdaki mevcut ders ilerlemeni, hıfız ilerlemeni ve yer imlerini değiştirecek. Bu işlem geri alınamaz.",
+      "importConfirmAction": "Üzerine yaz",
+      "importSuccess": "İlerleme içe aktarıldı.",
+      "importInvalidFile": "Bu dosya geçerli bir Salati ilerleme yedeği değil.",
+      "importUnsupportedVersion": "Bu yedek daha yeni bir uygulama sürümüyle oluşturulmuş ve burada içe aktarılamıyor.",
+      "importError": "İçe aktarma başarısız oldu. Lütfen dosyayı kontrol edin.",
+      "downloadedRecitersNote": "Daha önce indirilen hafızlar: {list} - gerekirse tekrar indir.",
+      "goToDownloads": "Hafız indirmelerine git"
+    },
+    "legal": "Yasal",
+    "legalFeedback": "Geri bildirim ver / hata bildir",
+    "legalFeedbackSubject": "Salati Feedback",
+    "legalVersion": "Uygulama sürümü",
+    "exercise": {
+      "title": "Tercih edilen alıştırma türü",
+      "mixed": "Karışık (önerilen)",
+      "audio": "Daha çok dinleme alıştırması",
+      "reading": "Daha çok okuma alıştırması",
+      "speech": "Konuşma alıştırmaları (mikrofon)",
+      "speechHint": "Şu anda sesli konuşamıyorsan kapat - alıştırmalar mikrofonsuz devam eder."
+    },
+    "notifPrefs": {
+      "sound": "Ses",
+      "soundHint": "Bildirimde zil sesi çal",
+      "vibrate": "Titreşim",
+      "vibrateHint": "Bildirim gelince titret",
+      "headsUp": "Diğer uygulamaların üstünde göster",
+      "headsUpHint": "Bildirim anında öne çıkar (Android)",
+      "ongoingCountdown": "Sıradaki namazı sürekli göster",
+      "ongoingCountdownHint": "Kapatılamayan, sıradaki namaz vaktini gösteren bildirim (Android)",
+      "liveActivity": "Kilit ekranında Live Activity",
+      "liveActivityHint": "Kilit ekranında ve Dynamic Island'da sıradaki namazı gösterir (iOS)"
+    },
+    "adhkar": {
+      "title": "Zikir hatırlatıcıları",
+      "morning": "Sabah zikirleri",
+      "morningHint": "Sabah zikirleri için günlük hatırlatma",
+      "evening": "Akşam zikirleri",
+      "eveningHint": "Akşam zikirleri için günlük hatırlatma"
+    },
+    "offlinePack": {
+      "title": "Çevrimdışı",
+      "download": "Tam çevrimdışı paket",
+      "hint": "114 surenin tamamını (metin + meal) çevrimdışı için indir",
+      "done": "Tüm sureler çevrimdışı kullanılabilir"
+    },
+    "reciterAudioPack": {
+      "title": "Hafız sesi",
+      "hint": "{reciter} tarafından okunan tüm sureleri indir — uçak modu veya zayıf çekim için pratik.",
+      "download": "Tüm hafızı indir",
+      "resume": "Hafıza devam et ({n}/114 indirildi)",
+      "done": "Hafızın tamamı çevrimdışı kullanılabilir",
+      "progress": "{n} / {total} sure",
+      "confirmTitle": "Hafızın tamamı indirilsin mi?",
+      "confirmBody": "114 surenin tamamı, hafıza göre birkaç yüz MB yer kaplayabilir. İndirme sırayla (paralel değil) yapılır ve istediğin an iptal edilebilir.",
+      "startAction": "İndir",
+      "partialTitle": "Kısmen indirildi",
+      "partialBody": "{n} sure indirilemedi (örn. ağ hatası). Kalanları tamamlamak için tekrar başlat.",
+      "chooseReciter": "İndirilecek hafızı seç",
+      "downloadedTitle": "İndirilen hafızlar",
+      "noDownloads": "Henüz indirilmiş hafız paketi yok.",
+      "packStatus": "{n}/114 sure",
+      "packComplete": "Tamamlandı",
+      "deleteAction": "Sil",
+      "deleteConfirmTitle": "Hafız paketi silinsin mi?",
+      "deleteConfirmBody": "{reciter} tarafından indirilen tüm sureler bu cihazdan kaldırılacak."
+    },
+    "storage": {
+      "title": "Depolamayı yönet",
+      "openHint": "Okuyucu sesleri, yapay zeka modelleri ve önbellek bir bakışta",
+      "subtitle": "Salati'nin bu cihazda kullandığı depolama alanına genel bakış.",
+      "total": "Toplam kullanılan",
+      "loading": "Hesaplanıyor…",
+      "unsupported": "Depolama yönetimi bu platformda kullanılamıyor.",
+      "reciterAudio": {
+        "title": "Okuyucu sesi",
+        "empty": "Henüz okuyucu indirmesi yok."
+      },
+      "kiModel": {
+        "title": "Salati yapay zeka modeli",
+        "notDownloaded": "İndirilmedi"
+      },
+      "whisperModel": {
+        "title": "Konuşma tanıma (Hıfz hassasiyet modu)",
+        "notDownloaded": "İndirilmedi",
+        "delete": "Modeli sil",
+        "deleteConfirm": "Model gerçekten silinsin mi? İndirme ({size}) bir sonraki hassasiyet kontrolünde yeniden başlatılmalıdır.",
+        "download": "İndir"
+      },
+      "cache": {
+        "title": "Önbellek",
+        "hint": "Çevrimdışı kullanım için önbelleğe alınmış metinler/çeviriler ve kalan geçici dosyalar.",
+        "clear": "Önbelleği temizle",
+        "clearConfirmTitle": "Önbellek temizlensin mi?",
+        "clearConfirmBody": "Önbelleğe alınmış sureler/çeviriler kaldırılır ve gerektiğinde yeniden yüklenir. Okuyucu sesi ve yapay zeka modeli indirmeleri BUNDAN ETKİLENMEZ.",
+        "clearAction": "Temizle"
+      },
+      "offlineQuran": {
+        "title": "Çevrimdışı Kur'an (metin + çeviri)",
+        "hint": "Çevrimdışı kullanım için yüklenen surelerin metni ve çevirisi. Önbelleği temizlediğinizde kaldırılır.",
+        "empty": "Henüz çevrimdışı yüklenmiş sure yok.",
+        "surahs": "114 sureden {n} tanesi"
+      }
+    },
+    "appIcon": {
+      "title": "Uygulama simgesi ve adı",
+      "hint": "Ana ekran için alternatif bir simge seç (yalnızca Android).",
+      "iosHint": "Simge ve isim seçimi bu sürümde iOS'ta kullanılamıyor — uygulama adı iOS'ta çalışma zamanında değiştirilemez (Apple kısıtlaması).",
+      "variantDefault": "Salati (varsayılan)",
+      "variantEmerald": "Salati (zümrüt)",
+      "variantSalatibox": "Salatibox"
+    },
+    "lateNotif": {
+      "title": "Bildirim geç mi geliyor?",
+      "hint": "Android pil tasarrufu için alarmları dakikalarca geciktirir. İki ayar bunu düzeltir:",
+      "exactAlarm": "1. Alarmlara ve hatırlatıcılara izin ver (Salati seç)",
+      "battery": "2. Salati için pil optimizasyonunu kapat",
+      "notGranted": "Şu anda izin verilmemiş — gecikmeleri önlemek için lütfen aşağıdan etkinleştirin.",
+      "batteryPromptTitle": "Pil optimizasyonu kapatılsın mı?",
+      "batteryPromptBody": "Namaz vakti hatırlatmalarının zamanında gelmesi için Salati'nin cihazının pil optimizasyonundan hariç tutulması gerekir.",
+      "batteryPromptLater": "Daha sonra",
+      "batteryPromptOpen": "Ayarları aç"
+    },
+    "azan": {
+      "title": "Ezan",
+      "hint": "Namaz vakitleri ekranında dinlemek için tam bir ezan seç - sistem bildirimleri teknik nedenlerle kısa bir standart tonda kalır.",
+      "systemDefault": "Standart ton (tam ezan yok)",
+      "option": "Ezan {n}",
+      "preview": "Dinle"
+    },
+    "travel": {
+      "title": "Yolculuk modu",
+      "enable": "Yolculukta Kasr uyarısı",
+      "enableHint": "Ev adresinden 85 km'den fazla uzaklaştığında Kasr ve Cem hakkında bir uyarı gösterir.",
+      "setHome": "Mevcut konumu ev olarak ayarla",
+      "home": "Ev konumu: {location}"
+    },
+    "udhiyah": {
+      "title": "Udhiyye hatırlatması",
+      "enable": "Kurban Bayramı'ndan önce hatırlat",
+      "hint": "Kurban Bayramı'ndan birkaç gün önce kurbanlığını (udhiyye) ayarlaman için tek seferlik hatırlatma (yalnızca uygulama, web değil)"
+    },
+    "recitationModel": {
+      "title": "Okuma modeli",
+      "base": "Standart – her telefon",
+      "turbo": "Hızlı ve isabetli – güçlü telefon",
+      "hint": "Daha büyük model daha isabetli tanır ama daha fazla depolama/RAM gerektirir. Seçilen model bir sonraki okumanızda indirilir (Wi-Fi önerilir)."
+    }
+  },
+  "tracker": {
+    "title": "Namaz takibi",
+    "subtitle": "5 vakti işaretle ve seri oluştur",
+    "today": "Bugün",
+    "week": "Son 7 gün",
+    "streakDays": "gün üst üste",
+    "shareStats": "İstatistiği görsel olarak paylaş",
+    "qada": {
+      "title": "Kaza sayacı (namazlar)",
+      "desc": "Her vakit için kaç kaza namazın kaldığını gir ve kıldıkça azalt. Tamamen manuel - günlük takipten hesaplanmaz.",
+      "none": "Bekleyen kaza namazı yok",
+      "decrease": "Bir azalt",
+      "increase": "Bir artır",
+      "total": "Toplam: {n}"
+    },
+    "streakDayOne": "gün üst üste",
+    "taraweeh": {
+      "title": "Teravih takibi",
+      "desc": "Bu gece kaç rekat teravih kıldığını gir.",
+      "tonight": "Bu gece",
+      "decrease": "İki azalt",
+      "increase": "İki artır",
+      "summary": "{nights} gece kılındı · toplam {total} rekat"
+    }
+  },
+  "fasting": {
+    "title": "Oruç",
+    "total": "Toplam oruç günü",
+    "suhoor": "Sahur bitişi",
+    "iftar": "İftar",
+    "untilSuhoorEnd": "Sahur bitimine kalan",
+    "untilIftar": "İftara kalan",
+    "afterIftar": "Bugünün orucu tamamlandı",
+    "fastedToday": "Bugün oruç tuttum",
+    "markToday": "Bugün oruç tuttun mu? İşaretlemek için dokun",
+    "recommended": "Tavsiye edilen oruç günleri",
+    "recommendedText": "Ramazan (farz) · Pazartesi ve Perşembe · eyyâm-ı bîd (her hicrî ayın 13–15'i) · Arefe günü · Aşure.",
+    "qada": {
+      "title": "Kaza sayacı",
+      "desc": "Kaç Ramazan gününü hâlâ kaza etmen gerektiğini gir, tuttukça buradan geri say. Tamamen manuel - günlük takibinden otomatik hesaplanmaz.",
+      "decrease": "Bir gün kaza edildi",
+      "increase": "Bir gün ekle",
+      "owed": "Hâlâ {n} gün kaza borcun var",
+      "doneAll": "Kaza borcun yok"
+    },
+    "ramadanCard": {
+      "heading": "Ramazan"
+    }
+  },
+  "khatmah": {
+    "title": "Hatim planı",
+    "subtitle": "Kur'an'ın tamamı kendi hızında - gün sayısını seç",
+    "days": "gün",
+    "day": "Gün",
+    "behind": "gün geride",
+    "read": "Oku",
+    "newPlan": "Yeni plan başlat",
+    "customLabel": "Veya kendi gün sayın (1-365):",
+    "behindOne": "gün geride"
+  },
+  "zakat": {
+    "title": "Zekât hesaplayıcı",
+    "subtitle": "Nisabı aşan zekâta tabi mal için %2,5",
+    "cash": "Nakit ve hesaplar",
+    "gold": "Altın (değer)",
+    "silver": "Gümüş (değer)",
+    "business": "Ticari mal/varlık",
+    "debts": "Düşülebilir borçlar",
+    "goldPrice": "Gram altın fiyatı (güncel)",
+    "currencyLabel": "Para birimi",
+    "base": "Matrah",
+    "nisab": "Nisap",
+    "due": "Zekât",
+    "belowNisab": "Nisabın altında - zekât gerekmez.",
+    "note": "Basitleştirilmiş hesap (nisap 85 g altın). Özel durumlar için ehline danış.",
+    "reminder": {
+      "title": "Yıllık hatırlatma",
+      "desc": "Zekât, malın nisaba ulaştığı tarihten itibaren tam bir hicrî yıl sonra farz olur - eşiğe ulaştığın tarihi ayarla.",
+      "setToday": "Tarihi bugün olarak ayarla",
+      "due": "Sıradaki hatırlatma: {date}",
+      "noAnchor": "Henüz tarih ayarlanmadı."
+    },
+    "goldPriceRef": "≈ {price} {currency}/g kullan (Temmuz 2026 itibarıyla - güncel kuru kontrol edin)",
+    "goldPriceLive": "≈ {price} {currency}/g kullan (canlı kur, {date})",
+    "priceMissing": "Zekâtın gerekip gerekmediğini hesaplamak için altın fiyatını girin.",
+    "fitrLinkTitle": "Fitre (Zakat al-Fitr) hesaplayıcı",
+    "fitrLinkDesc": "Ramazan sonunda hane üyesi başına düşen, bağımsız bir yükümlülük"
+  },
+  "zakatFitr": {
+    "title": "Fitre (Zakat al-Fitr)",
+    "subtitle": "Ramazan sonunda kişi başına sabit tutar - mal zekâtından bağımsız",
+    "intro": "Fitre (Zakat al-Fitr), yukarıdaki mal zekâtından bağımsız, ayrı bir yükümlülüktür. Hane üyesi başına sabit bir tutardır ve bayram namazından önce verilir.",
+    "disclaimer": "Kişi başına düşen tutar ülkeye ve mezhebe göre değişir (yaklaşık 2,5-3 kg temel gıda maddesinin karşılığı). Emin değilseniz yerel camiinize danışın.",
+    "householdSize": "Hanedeki kişi sayısı",
+    "amountPerPerson": "Kişi başına tutar",
+    "amountMissing": "Toplamı hesaplamak için kişi başına bir tutar girin.",
+    "total": "Toplam tutar"
+  },
+  "names": {
+    "title": "Esmâü'l-Hüsnâ",
+    "subtitle": "99 güzel isim - dinlemek için dokun",
+    "learn": "Öğren",
+    "quizPrompt": "Bu ismin anlamı nedir?",
+    "quizResult": "Tur bitti - her turda 10 yeni rastgele soru sorulur."
+  },
+  "halal": {
+    "title": "Yakındaki helal",
+    "osmNote": "Veri: © OpenStreetMap (eksik olabilir)",
+    "empty": "5 km içinde helal mekân bulunamadı - OSM verisi burada eksik olabilir."
+  },
+  "scanner": {
+    "title": "Helal Tarayıcı",
+    "subtitle": "Barkodu tarayarak içindekileri bilinen helal/haram işaretleriyle karşılaştırın.",
+    "scanPrompt": "Kamerayı barkoda doğrultun",
+    "manualEntryLabel": "Barkod numarası",
+    "manualEntryPlaceholder": "ör. 4008400123456",
+    "checkButton": "Ürünü kontrol et",
+    "scanAgain": "Başka bir ürün tara",
+    "loading": "Ürün aranıyor…",
+    "notFound": "Ürün Open Food Facts veritabanında bulunamadı.",
+    "fetchError": "Ürün verisi yüklenemedi. Bağlantını kontrol edip tekrar dene.",
+    "webNotice": "Kamerayla barkod tarama mobil uygulamada kullanılabilir. Web'de lütfen barkodu elle gir.",
+    "grantPermission": "Kameraya izin ver",
+    "cameraPermissionDenied": "Kamera izni reddedildi. Barkod taramak için cihaz ayarlarından izin ver.",
+    "matchedIngredientsTitle": "Eşleşen içindekiler",
+    "productNameFallback": "Bilinmeyen ürün",
+    "barcodeLabel": "Barkod: {code}",
+    "statuses": {
+      "halal": "Sakıncasız",
+      "haram": "Haram",
+      "mashbooh": "Şüpheli (Müşbûh)",
+      "unknown": "Bilinmiyor"
+    },
+    "statusHints": {
+      "halal": "Mevcut verilerde işaretli bir madde bulunamadı.",
+      "haram": "Açıkça caiz olmayan bir madde içeriyor.",
+      "mashbooh": "Dini açıdan tartışmalı - şüphe varsa kaynağını araştır.",
+      "unknown": "Yeterli veri yok."
+    },
+    "reasons": {
+      "alcohol": "Alkol/etanol içeriyor - sadece aroma taşıyıcısı olarak kullanılsa bile caiz değildir.",
+      "pork": "Domuz veya domuz türevi içeriyor (ör. jelatin, domuz yağı, domuz kaynaklı maya/enzim).",
+      "gelatinUnknownOrigin": "Hayvansal kaynağı belirtilmemiş jelatin - sığır, balık veya domuzdan gelebilir.",
+      "animalRennetUnknown": "Helal kesim kanıtı olmayan hayvansal maya (peynir mayası) içeriyor.",
+      "carmine": "Karmin/koşenil (E120) - böceklerden elde edilen kırmızı boya, alimler arasında tartışmalı.",
+      "lCysteine": "L-sistein (E920) - genellikle tüy veya saçtan elde edilir, kaynağı genelde belirtilmez.",
+      "monoDiglycerides": "Mono-/digliseritler (E471) veya benzer emülgatörler - hayvansal mı bitkisel mi olduğu genelde belirsiz.",
+      "vanillaExtractAlcohol": "Vanilya özütü genellikle çözücü olarak alkolle üretilir.",
+      "halalCertified": "Açıkça helal sertifikalı olarak belirtilmiş."
+    },
+    "disclaimerTitle": "Resmi bir sertifikasyon değildir",
+    "disclaimerBody": "Bu tarayıcı resmi bir helal denetimi DEĞİLDİR. Sonuç, halka açık içindekiler verisinin (Open Food Facts) bilinen terimler listesiyle otomatik karşılaştırılmasına dayanır - hatalı olabilir ve resmi bir sertifikasyonun yerini tutmaz. Senin için önemli ürünlerde kaynağını kendin doğrula veya üreticiyle iletişime geç."
+  },
+  "prayer": {
+    "loading": "Namaz vakitleri yükleniyor…",
+    "unavailable": "Namaz vakitleri şu anda kullanılamıyor (çevrimdışı, önbellek yok).",
+    "next": "Sonraki namaz",
+    "timeLeft": "{time} kaldı",
+    "icsExport": "Takvim dışa aktar (.ics)",
+    "playAzan": "Ezanı çal",
+    "weekView": "Haftalık görünüm",
+    "travel": {
+      "banner": "Yolculukta · Evden {km} km uzakta",
+      "qasrTitle": "Kasr ve Cem",
+      "qasrDesc": "Yolcuyken Öğle, İkindi ve Yatsı namazlarını 2 rekâta kısaltabilirsin (Kasr) ve Öğle'yi İkindi ile ya da Akşam'ı Yatsı ile birleştirebilirsin (Cem)."
+    },
+    "sunrise": "Güneş (doğuş)",
+    "iqama": "Kamet"
+  },
+  "prayerWeek": {
+    "title": "Haftalık görünüm",
+    "subtitle": "Önümüzdeki 7 gün için tüm 5 vakit namaz saati",
+    "loading": "Haftalık vakitler yükleniyor…",
+    "unavailable": "Haftalık vakitler şu anda kullanılamıyor (çevrimdışı ve önbellek yok).",
+    "locationHint": "{location} için — hesaplama yöntemi/İkindi mezhebi ayarlardaki gibi."
+  },
+  "dashboard": {
+    "reorder": {
+      "title": "Panoyu özelleştir",
+      "subtitle": "Ana ekran kartlarının sırasını ve görünürlüğünü belirle – sonraki namaz kartı ve namaz vakitleri tablosu her zaman görünür kalır.",
+      "locked": "Her zaman görünür",
+      "moveUp": "Yukarı taşı",
+      "moveDown": "Aşağı taşı",
+      "reset": "Varsayılan sırayı geri yükle"
+    },
+    "cards": {
+      "hero": "Sonraki namaz",
+      "ramadanCard": "Ramazan geri sayımı",
+      "travelBanner": "Yolculuk modu bildirimi",
+      "prayerTable": "Namaz vakitleri tablosu"
+    }
+  },
+  "qibla": {
+    "noMagnetometer": "Bu cihazda manyetometre bulunamadı - yön yalnızca Kâbe açısına dayanır, cihaz yönüne değil.",
+    "bearingInfo": "Bulunduğun yerden Kâbe yönü",
+    "locationFailed": "Konum belirlenemedi - son kaydedilen konum kullanılıyor.",
+    "north": "K",
+    "east": "D",
+    "south": "G",
+    "west": "B",
+    "enableCompass": "Pusulayı etkinleştir",
+    "dir": {
+      "n": "kuzey",
+      "no": "kuzeydoğu",
+      "o": "doğu",
+      "so": "güneydoğu",
+      "s": "güney",
+      "sw": "güneybatı",
+      "w": "batı",
+      "nw": "kuzeybatı"
+    },
+    "deviceHeading": "Cihaz yönü: {deg}°",
+    "aligned": "Yön doğru - Kâbe'ye bakıyorsun",
+    "calibrateHint": "Yön yanlış mı? Pusulayı kalibre et: telefonu birkaç kez 8 çizerek hareket ettir, metal/mıknatıstan uzak dur.",
+    "accuracyDisclaimer": "Yön, cihazının manyetometre verilerine dayanır ve yakındaki metal veya elektronik cihazlar nedeniyle hafifçe sapabilir.",
+    "distanceKm": "Kâbe'ye {km} km"
+  },
+  "calendar": {
+    "offlineNotice": "Çevrimdışı - Hicri tarihler yerel olarak hesaplanır ve resmi tarihten ±1 gün farklı olabilir.",
+    "sightingNotice": "Hesaplanmış tarihler - yerel hilal gözlem tarihi farklı olabilir.",
+    "weekdays": {
+      "mo": "Pzt",
+      "tu": "Sal",
+      "we": "Çar",
+      "th": "Per",
+      "fr": "Cum",
+      "sa": "Cmt",
+      "su": "Paz"
+    },
+    "months": {
+      "1": "Ocak",
+      "2": "Şubat",
+      "3": "Mart",
+      "4": "Nisan",
+      "5": "Mayıs",
+      "6": "Haziran",
+      "7": "Temmuz",
+      "8": "Ağustos",
+      "9": "Eylül",
+      "10": "Ekim",
+      "11": "Kasım",
+      "12": "Aralık"
+    },
+    "holidaysThisMonth": "Bu ayki özel günler",
+    "hijriSuffix": "H.",
+    "days": {
+      "newYear": "Hicrî yılbaşı (1 Muharrem)",
+      "ashura": "Aşure günü (10 Muharrem)",
+      "mawlid": "Mevlid Kandili (12 Rebiülevvel)",
+      "miraj": "Miraç Kandili (27 Recep)",
+      "ramadanStart": "Ramazan başlangıcı",
+      "laylatAlQadr": "Kadir Gecesi (çoğunlukla 27. gece)",
+      "eidFitr": "Ramazan Bayramı (1. gün)",
+      "arafah": "Arefe günü (9 Zilhicce)",
+      "eidAdha": "Kurban Bayramı (1. gün)"
+    }
+  },
+  "hijriConverter": {
+    "title": "Hicri Tarih Çevirici",
+    "subtitle": "Miladi ve Hicri takvim arasında istediğin tarihi çevir.",
+    "modeGregorianToHijri": "Miladi → Hicri",
+    "modeHijriToGregorian": "Hicri → Miladi",
+    "gregorianDate": "Miladi tarih",
+    "hijriDate": "Hicri tarih",
+    "day": "Gün",
+    "month": "Ay",
+    "year": "Yıl",
+    "result": "Sonuç",
+    "loading": "Hesaplanıyor …",
+    "offlineNotice": "Çevrimdışı - yerel olarak hesaplandı, 1 güne kadar sapma olabilir.",
+    "disclaimer": "Hicri tarihler hilal gözlem yöntemine bağlıdır ve bölgeye göre 1 gün farklılık gösterebilir."
+  },
+  "mosques": {
+    "title": "Camiler",
+    "loadError": "Camiler yüklenemedi.",
+    "empty": "{km} km içinde cami bulunamadı.",
+    "osmNote": "Konum verileri © OpenStreetMap katkıcıları - eksik veya güncel olmayabilir.",
+    "openRoute": "Yol tarifi aç",
+    "kmAway": "{km} km uzaklıkta",
+    "map": "Harita",
+    "list": "Liste",
+    "mapError": "Harita yüklenemedi. Liste görünümünü kullanın.",
+    "offlineCached": "İnternet bağlantısı yok — son yüklenen camiler gösteriliyor."
+  },
+  "a11y": {
+    "close": "Kapat",
+    "back": "Geri",
+    "playAudio": "Dinle",
+    "addBookmark": "Yer imi ekle",
+    "removeBookmark": "Yer imini kaldır",
+    "share": "Ayeti paylaş",
+    "noteAyah": "Ayete not ekle",
+    "bookmarks": "Yer imleri",
+    "previousMonth": "Önceki ay",
+    "nextMonth": "Sonraki ay",
+    "markDone": "Tamamlandı olarak işaretle",
+    "markNotDone": "İşareti kaldır",
+    "search": "Ara",
+    "decrease": "Azalt",
+    "increase": "Artır"
+  },
+  "study": {
+    "title": "İlim",
+    "subtitle": "Kaynak gösterilen yapılandırılmış kurslar - adım adım, quizli",
+    "source": "Kaynak",
+    "sections": {
+      "quranArabic": "Kur'an Arapçasını derinleştir",
+      "islamicStudies": "İnanç ve Tarih",
+      "bonus": "Bonus"
+    },
+    "reorder": {
+      "cta": "Sırayı düzenle",
+      "ctaDesc": "Kurslarının hangi sırayla görüneceğini kendin belirle",
+      "title": "Kurs sırası",
+      "subtitle": "Kategoriler aynı kalır – kursları her kategori içinde yeniden sırala",
+      "moveUp": "Yukarı taşı",
+      "moveDown": "Aşağı taşı",
+      "reset": "Varsayılan sırayı geri yükle"
+    },
+    "placementCtaDesc": "Bu konuyu zaten biliyor musun? Doğrudan ileriden başla",
+    "courses": {
+      "tajwid": {
+        "title": "Tecvid - Kıraat Kuralları",
+        "desc": "Nun-u sakine, kalkale, med çeşitleri, vakf - ayet sesli"
+      },
+      "aqida": {
+        "title": "Akide - İmanın Temelleri",
+        "desc": "İmanın altı şartı, anlaşılır anlatım"
+      },
+      "seerah": {
+        "title": "Siyer - Peygamberimizin ﷺ Hayatı",
+        "desc": "Mekke'den Medine'ye kronolojik"
+      },
+      "prophets": {
+        "title": "Peygamber Kıssaları",
+        "desc": "Âdem'den İsa'ya - Kur'an delilleriyle"
+      },
+      "sahaba": {
+        "title": "Sahabeler & Alimler",
+        "desc": "Ebu Bekir, Ömer, Osman, Ali, Hatice, Bilal, Aişe, Fatıma, Selman-ı Farisi + dört büyük imam - kaynaklı biyografiler (13 ders)"
+      },
+      "akhlaq": {
+        "title": "Ahlak - Karakter ve Erdemler",
+        "desc": "Sıdk, Hilm, Sabır, İhlas, Tevazu, Emanet, Rahmet, Hayâ, Adalet - peygamberî karakter özellikleri, Kur'an ve Sünnet'ten kaynaklı (9 ders)"
+      },
+      "nikah": {
+        "title": "Evlilik ve Aile Fıkhı",
+        "desc": "Evliliğin amacı, eşlerin hak ve görevleri, nikah akdi, düzenlenmiş son çare olarak talak, çocuk terbiyesi - Kur'an ve Sünnet'ten kaynaklı (5 ders)"
+      },
+      "nawawi40": {
+        "title": "40 Hadis (Nevevî)",
+        "desc": "42 temel hadis (Nevevî + İbn Recep), açıklamalı, tamamen çevrimdışı"
+      },
+      "grammar": {
+        "title": "Kur’an Grameri",
+        "desc": "Nahiv temel kursu + derinleşme: Kur'an cümle yapısını anlama (16 ders)"
+      },
+      "amau": {
+        "title": "Günlük Arapça",
+        "desc": "869 kelime ve günlük cümle: 786 kelimenin ve 168 günlük cümlenin tamamı, 54 derste"
+      },
+      "madinah": {
+        "title": "Medine Arapçası",
+        "desc": "Klasik kurs (Dr. V. Abdur Rahim): Kitap 1-4 tamamlandı (83 ders, 872 kelime)"
+      },
+      "dialects": {
+        "title": "Arap Lehçeleri",
+        "desc": "Mağrip, Levanten, Körfez, Mısır - Fasih Arapça ile karşılaştırmalı dört büyük konuşma lehçesi (28 ders: selamlaşma, sayılar, sorular, aile, yemek, duygular, deyimler)"
+      }
+    },
+    "dialects": {
+      "reorderTitle": "Lehçe gruplarının sırası",
+      "groups": {
+        "maghrebi": "Mağrip",
+        "levantine": "Levanten",
+        "gulf": "Körfez",
+        "egyptian": "Mısır"
+      },
+      "moveUp": "Yukarı taşı",
+      "moveDown": "Aşağı taşı"
+    },
+    "todayGoal": "Bugün: {x}/{y} ders tamamlandı",
+    "streak": "{n} günlük seri",
+    "weeklyReview": {
+      "cta": "Haftalık Özet",
+      "ctaDesc": "Bu hafta rakamlarla",
+      "title": "Haftalık Özetin",
+      "subtitle": "Son 7 günde öğrendiklerin",
+      "lessons": "Ders",
+      "questions": "Cevaplanan soru",
+      "best": "En iyi sonuç",
+      "streak": "Günlük seri",
+      "empty": "Bu hafta henüz bir şey öğrenmedin - şimdi başla!",
+      "shareImage": "Görsel olarak paylaş"
+    },
+    "streakOne": "1 günlük seri"
+  },
+  "review": {
+    "title": "Tekrar",
+    "emptyTitle": "Tekrar yok",
+    "emptyText": "Her şey taze. Dersleri tamamla - tekrarlar doğru zamanda burada görünür.",
+    "passed": "Harika! Aralıklar uzuyor - öğrendiklerin kalıcı.",
+    "failed": "Sorun değil - bu konular daha erken tekrar gelecek.",
+    "due": "bekliyor",
+    "start": "Şimdi tekrar et"
+  },
+  "exam": {
+    "title": "Bitirme Sınavı",
+    "passed": "Geçtin! Bu kursu tamamladın.",
+    "failed": "Henüz geçemedin (%80 gerekli). Dersleri tekrar edip yeniden dene.",
+    "locked": "Önce tüm dersleri tamamla",
+    "start": "Sınava başla",
+    "done": "Sınav geçildi"
+  },
+  "weak": {
+    "title": "Zayıf noktaları çalış",
+    "emptyTitle": "Zayıf nokta yok",
+    "emptyText": "Son zamanlarda yanlış cevapladığın bir şey yok. Böyle devam!",
+    "passed": "Hatalardan öğrendin - gerçek ilerleme budur.",
+    "failed": "Devam et - bu konular burada kalacak.",
+    "suggest": "Son yanlış cevapların - şimdi çalış"
+  },
+  "write": {
+    "title": "Yazma alıştırması",
+    "subtitle": "Harfi ezberden çiz, sonra şablonla karşılaştır - adını da dinle",
+    "clear": "Temizle",
+    "hit": "Oldu",
+    "next": "Devam",
+    "compare": "Karşılaştır",
+    "drawFromMemory": "Ezberden çiz - şablon ancak karşılaştırırken görünür.",
+    "hint": "Çizgini yarı saydam şablonla karşılaştır ve dürüstçe değerlendir - “Devam” ile sonraki harfe geç."
+  },
+  "landing": {
+    "title": "Salati",
+    "tagline": "Namaz, Kur'an ve bilgi için yol arkadaşın",
+    "subtitle": "Namaz vakitleri, kıble, kıraatli Kur'an, dualar, hadisler, cami bulucu ve tam bir öğrenme yolu - çevrimdışı çalışır, reklamsız, takipsiz.",
+    "ctaTry": "Kur'an okuyucusunu dene",
+    "ctaStudy": "Öğrenme yolunu keşfet",
+    "featuresTitle": "İhtiyacın olan her şey",
+    "f1Title": "Namaz vakitleri ve kıble",
+    "f1Desc": "Konumuna göre hassas vakitler, Kâbe pusulası",
+    "f2Title": "Kur'an",
+    "f2Desc": "Tüm kâriler ve meâller, yer imleri, cüz gezinme",
+    "f3Title": "Kur'an okumayı öğren",
+    "f3Desc": "Alfabeden ilk surelere 42 ders, sesli",
+    "f4Title": "Studium",
+    "f4Desc": "Akideden gramere 12 kurs - seviye tespit testiyle",
+    "f5Title": "Dualar ve hadisler",
+    "f5Desc": "47 dua, kaynaklı 13 hadis koleksiyonu",
+    "f6Title": "Cami bulucu",
+    "f6Desc": "Yakınındaki camiler ve mescitler",
+    "f7Title": "Quiz ve tesbih",
+    "f7Desc": "14 quiz modu, hedefli ve günlük istatistikli zikirmatik",
+    "f8Title": "Özel ve çevrimdışı",
+    "f8Desc": "Takip yok, reklam yok, hesap gerekmiyor",
+    "screenshotsTitle": "Uygulamadan bir bakış",
+    "storeTitle": "Mağazalarda yakında",
+    "storeSoon": "Yakında",
+    "storeAvailable": "Şimdi kullanılabilir",
+    "footer": "Salati - tek uygulamada namaz, Kur'an ve ilim.",
+    "apkButton": "Android APK indir (beta)",
+    "apkHint": "Mağazasız doğrudan kurulum - Android bilinmeyen kaynaklara izin isteyecektir.",
+    "apkDownloading": "İndiriliyor … %{p}",
+    "trust1Title": "%100 ücretsiz",
+    "trust1Desc": "Tüm özellikler, sonsuza dek. Abonelik yok, ödeme duvarı yok.",
+    "trust2Title": "Reklamsız, izlemesiz",
+    "trust2Desc": "Hesap gerekmez. Verilerin sende kalır.",
+    "trust3Title": "Yapay zekâ cihazında çalışır",
+    "trust3Desc": "Tilavet kontrolü kaydını doğrudan cihazında işler - asla dışarı çıkmaz.",
+    "trust4Title": "Çevrimdışı kullanılabilir",
+    "trust4Desc": "Bir kez yüklendi mi hep yanında: Kur’an, kurslar, dualar - internetsiz bile.",
+    "ctaKi": "Salati YZ (beta)",
+    "faqTitle": "Sık sorulan sorular",
+    "faq1Q": "Salati gerçekten ücretsiz mi?",
+    "faq1A": "Evet, tamamen. Tüm özellikler abonelik, uygulama içi satın alma ve reklam olmadan kullanılabilir. Premium sürüm yok - gördüğünüz her şey uygulamanın tamamıdır.",
+    "faq2Q": "Verilerim izleniyor mu?",
+    "faq2A": "Hayır. Salati hesap gerektirmez, reklam veya analiz SDK'sı içermez ve bize hiçbir kullanım verisi göndermez. Ayarlar, yer imleri ve öğrenme ilerlemesi cihazınızda kalır.",
+    "faq3Q": "Uygulama çevrimdışı çalışıyor mu?",
+    "faq3A": "Temel içerikler evet: Kur'an, kurslar, dualar ve hadisler bir kez yüklendikten sonra çevrimdışı çalışır. İnternet yalnızca ilk oynatmada tilavet sesi, cami bulucu ve namaz vakitlerinin güncellenmesi gibi şeyler için gerekir.",
+    "faq4Q": "Salati hangi dilleri destekliyor?",
+    "faq4A": "14 dil: Almanca, İngilizce, Türkçe, Arapça, İspanyolca, Fransızca, Endonezce, Malayca, Rusça, Urduca, Farsça, Bengalce, Svahili ve Peştuca.",
+    "faq5Q": "Namaz vakitleri nereden geliyor ve hangi hesaplama yöntemleri var?",
+    "faq5A": "Vakitler, konumunuz için AlAdhan API'si üzerinden hesaplanır. 13 hesaplama yöntemi arasından seçim yapabilir (Diyanet, Muslim World League, ISNA, Ümmü'l-Kura dahil) ve ikindi için erken vakit ile Hanefi vakti arasında geçiş yapabilirsiniz.",
+    "faq6Q": "İçerikler ve kaynaklar nereden geliyor?",
+    "faq6A": "Kur'an metni, çeviriler ve tilavetler yerleşik açık kaynaklardan gelir (alquran.cloud, quran.com, islamic.network). Dualar ve hadisler kaynak bilgisi taşır, kurs metinleri editoryal olarak incelenmiştir. Salati alimlerin yerini tutmaz - önemli sorular için lütfen ehil bir kişiye danışın.",
+    "faq7Q": "Uygulama iOS ve Android için var mı?",
+    "faq7A": "Android: APK'yı doğrudan bu sayfadan indirebilirsiniz (beta). App Store ve Google Play başvuruları devam ediyor. Salati ayrıca her modern tarayıcıda çalışır.",
+    "faq8Q": "Salati Yapay Zeka nedir, sorularım gizli kalır mı?",
+    "faq8A": "Salati Yapay Zeka, soruları yalnızca Kur'an, 40 Nevevî Hadisi, doğrulanmış dualar ve Salati kurs metinlerinden yanıtlar. Dil modeli tamamen tarayıcınızda yerel olarak çalışır - sorularınız cihazınızdan çıkmaz ve hiçbir sunucuya gönderilmez."
+  },
+  "placement": {
+    "title": "Seviye Tespit Testi",
+    "step": "Kilometre taşı {n}/{total}",
+    "recommendation": "Buradan başlamanı öneririz - öncesindeki her şey geçilmiş sayılır.",
+    "confirm": "Buradan başla"
+  },
+  "mirath": {
+    "title": "Miras Hesaplayıcı (Mirath)",
+    "subtitle": "Nisa Suresi 4:11-12/176'ya göre eş, ebeveyn, çocuklar ve öz kardeşler için sabit miras payları",
+    "deceasedGender": "Vefat edenin cinsiyeti",
+    "genderMale": "Erkek",
+    "genderFemale": "Kadın",
+    "hasWife": "Hayatta kalan hanım(lar)",
+    "hasHusband": "Hayatta kalan koca",
+    "wivesCount": "Hanım sayısı",
+    "sons": "Oğullar",
+    "daughters": "Kızlar",
+    "fatherAlive": "Baba hayatta",
+    "motherAlive": "Anne hayatta",
+    "fullBrothers": "Öz erkek kardeşler (aynı ebeveyn)",
+    "fullSisters": "Öz kız kardeşler (aynı ebeveyn)",
+    "resultTitle": "Miras payları",
+    "noHeirs": "Lütfen en az bir mirasçı belirtin.",
+    "husband": "Koca",
+    "wife": "Hanım(lar)",
+    "father": "Baba",
+    "mother": "Anne",
+    "son": "Oğul(lar)",
+    "daughter": "Kız(lar)",
+    "brother": "Erkek kardeş(ler)",
+    "sister": "Kız kardeş(ler)",
+    "gharrawaynNote": "“Garrâveyn” özel durumu uygulandı: anne, eş payından sonra kalanın 1/3'ünü alır (alimlerin çoğunluk görüşü).",
+    "awlNote": "Avl uygulandı: sabit paylar toplamı tüm mirastan fazla çıktı ve orantılı olarak azaltıldı (Raşid halifelerden beri kabul edilen bir uygulama).",
+    "unresolvedNote": "Çözülmemiş kalan - bu mirasçı durumu için alimler arasında farklı görüşler vardır (örn. reddiye veya diğer akrabalar). Lütfen yetkin bir alime danışın.",
+    "disclaimer": "Basitleştirilmiş hesaplayıcı: sadece eş, ebeveyn, çocuklar ve öz kardeşleri kapsar. Torunlar, üvey kardeşler, büyükanne/büyükbaba ve özel durumlar MODELLENMEMİŞTİR. Gerçek bir miras taksimi için her zaman İslam miras hukukunda yetkin bir kişiye danışın."
+  },
+  "sync": {
+    "title": "İlerlemeyi Aktar",
+    "intro": "Öğrenme ilerlemeni, yer imlerini ve istatistiklerini başka bir cihaza veya tarayıcıya taşı - hesap veya sunucu gerekmez. Senin kendinin aktaracağın bir kod oluşturulur (örneğin bir nota veya kendine gönderdiğin bir mesaja).",
+    "exportTitle": "Kod oluştur",
+    "exportButton": "Kod oluştur",
+    "exportHint": "Bu kodu kopyala ve diğer cihazına taşı - notlar uygulaması, kendine mesaj veya e-posta ile.",
+    "copyButton": "Kopyala",
+    "copied": "Kopyalandı!",
+    "importTitle": "Kodu yapıştır",
+    "importPlaceholder": "Kodu buraya yapıştır…",
+    "importButton": "Uygula",
+    "importSuccess": "İlerleme geri yüklendi! Her yerde güncellenmesi için uygulamayı yeniden başlat.",
+    "importError": "Bu kod geçersiz veya bozuk."
+  },
+  "impressum": {
+    "title": "Yasal Bildirim",
+    "subtitle": "§ 5 TMG (Alman Telemedya Kanunu) uyarınca bilgiler",
+    "providerSection": "Hizmet Sağlayıcı",
+    "company": "Şirket",
+    "companyValue": "Salatibox",
+    "owner": "Sahibi",
+    "ownerValue": "Domenic Moran",
+    "address": "Adres",
+    "addressValue": "Heidelberger Str. 36\n12059 Berlin\nAlmanya",
+    "contactSection": "İletişim",
+    "phone": "Telefon",
+    "email": "E-posta",
+    "website": "Web sitesi",
+    "taxSection": "Vergi Bilgileri",
+    "smallBusiness": "Küçük işletme",
+    "smallBusinessValue": "Alman KDV Kanunu § 19 (Kleinunternehmerregelung) uyarınca KDV alınmamaktadır.",
+    "vatId": "KDV Kimlik No",
+    "responsibleSection": "İçerikten Sorumlu",
+    "responsibleText": "§ 18(2) MStV uyarınca sorumlu: Domenic Moran, Heidelberger Str. 36, 12059 Berlin, Almanya.",
+    "disputeSection": "Uyuşmazlık Çözümü",
+    "disputeEuText": "Avrupa Komisyonu, çevrim içi uyuşmazlık çözümü (ODR) için bir platform sunmaktadır: https://ec.europa.eu/consumers/odr/",
+    "disputeVsbgText": "Bir tüketici hakem heyeti önünde uyuşmazlık çözüm sürecine katılmaya istekli veya yükümlü değiliz.",
+    "liabilitySection": "Sorumluluk Reddi",
+    "liabilityContentTitle": "İçerik sorumluluğu",
+    "liabilityContentText": "Hizmet sağlayıcı olarak, § 7(1) TMG uyarınca bu uygulamadaki kendi içeriklerimizden genel yasalar çerçevesinde sorumluyuz. Ancak §§ 8-10 TMG uyarınca, iletilen veya kaydedilen üçüncü taraf bilgilerini izlemekle ya da hukuka aykırı faaliyete işaret eden durumları araştırmakla yükümlü değiliz. Bu tür hukuk ihlallerinden haberdar olduğumuzda ilgili içeriği derhal kaldırırız.",
+    "liabilityLinksTitle": "Harici veri kaynakları sorumluluğu",
+    "liabilityLinksText": "Bu uygulama Kur'an, hadis ve cami verilerini harici, herkese açık kaynaklardan yükler (bkz. Gizlilik Politikası). Bu üçüncü taraf içeriklerinin doğruluğundan ilgili sağlayıcılar sorumludur; bunları elimizden geldiğince gözden geçiriyoruz ancak her değişikliği sürekli denetleyemeyiz.",
+    "copyrightTitle": "Telif Hakkı",
+    "copyrightText": "Uygulama işletmecileri tarafından oluşturulan içerikler Alman telif hakkı hukukuna tabidir. Çoğaltma, düzenleme, dağıtma ve telif hakkı kapsamını aşan her türlü kullanım yazılı izin gerektirir."
+  },
+  "datenschutz": {
+    "title": "Gizlilik Politikası",
+    "subtitle": "GDPR Madde 13 uyarınca bilgiler",
+    "intro": "Bu uygulama mümkün olduğunca az kişisel veri işler. Kullanıcı hesabı, reklam, izleme ve analiz yazılımı yoktur - tüm öğrenme verileri ve ayarlar yalnızca cihazınızda saklanır.",
+    "controllerSection": "Veri Sorumlusu",
+    "controllerText": "Domenic Moran, Heidelberger Str. 36, 12059 Berlin, Almanya. İletişim bilgileri için Yasal Bildirim'e bakın.",
+    "locationSection": "Konum Verileri",
+    "locationText": "Namaz vakitleri, kıble yönü ve cami bulucu için uygulama konumunuzu isteğe bağlı olarak sorar (yalnızca \"uygulamayı kullanırken\"). Cami bulucu için koordinatlarınız, yakındaki camileri bulmak amacıyla herkese açık OpenStreetMap Overpass hizmetine gönderilir - sizinle kişisel olarak başka hiçbir şekilde ilişkilendirilmez. Konum erişimini her zaman reddedebilir ve bunun yerine bir şehir adı girebilirsiniz (bu durumda arama metniniz herkese açık OpenStreetMap Nominatim hizmetine gönderilir).",
+    "notificationsSection": "Bildirimler",
+    "notificationsText": "Namaz vakti hatırlatmaları yalnızca cihazınızda yerel olarak planlanır - bir push sunucusu yoktur; bize veya üçüncü taraflara hiçbir aktarım yapılmaz.",
+    "externalApisSection": "Harici Veri Kaynakları",
+    "externalApisText": "Uygulama; Kur'an metnini, mealleri, tilavet seslerini, tefsiri ve hadisleri herkese açık, kimlik doğrulamasız API'lerden yükler (api.alquran.cloud, api.quran.com, cdn.jsdelivr.net, audio.qurancdn.com dahil). Her internet isteğinde olduğu gibi, IP adresiniz teknik olarak ilgili sağlayıcıya iletilir - bunun ötesinde hiçbir veri işlemiyoruz.",
+    "storageSection": "Yerel Depolama",
+    "storageText": "Öğrenme ilerlemesi, yer imleri, istatistikler ve ayarlar yalnızca cihazınızda (web sürümünde tarayıcı depolamasında) saklanır. Bu verileri alan veya depolayan kendi sunucumuz yoktur.",
+    "syncSection": "Cihazlar Arası Aktarım",
+    "syncText": "\"İlerleme aktar\" özelliği, kodu yalnızca cihazınızda oluşturur. Bu kodu kendiniz aktarırsınız (örn. bir not veya kendinize mesaj yoluyla) - bu kodu hiçbir zaman almayız, görmeyiz veya saklamayız.",
+    "rightsSection": "Haklarınız",
+    "rightsText": "Kendi sunucularımızda kişisel veri saklamadığımız için, ilgili kişi haklarının çoğu (GDPR Madde 15-21 kapsamında erişim, silme, düzeltme) teknik olarak konusuz kalır - hakkınızda tuttuğumuz hiçbir şey yoktur. Sorularınız için Yasal Bildirim'deki iletişim bilgilerinden bize ulaşabilirsiniz.",
+    "cookiesSection": "Çerezler ve İzleme",
+    "cookiesText": "Bu uygulama ve web sürümü; çerez, analiz yazılımı (örn. Google Analytics) veya reklam ağı kullanmaz.",
+    "changesSection": "Bu Politikadaki Değişiklikler",
+    "changesText": "Uygulamadaki veri işleme değiştiğinde bu gizlilik politikasını güncelleriz. Güncel sürüme her zaman uygulama içinden ulaşabilirsiniz."
+  },
+  "agb": {
+    "title": "Kullanım Koşulları",
+    "subtitle": "Uygulamanın kullanımına ilişkin genel şartlar",
+    "intro": "Bu uygulamayı kullanarak aşağıdaki kullanım koşullarını kabul etmiş olursunuz. Bu koşullar, Yasal Bildirim ve Gizlilik Politikası'nı tamamlar.",
+    "scopeSection": "Kapsam",
+    "scopeText": "Bu kullanım koşulları, Salati (Salatibox) uygulamasının iOS, Android ve web üzerinden özel kişiler tarafından kullanımı için geçerlidir.",
+    "freeUseSection": "Ücretsiz Kullanım",
+    "freeUseText": "Uygulama tamamen ücretsiz olarak kullanılabilir. Kullanıcı hesabı gerekmez, uygulama içi satın alma, abonelik veya reklam bulunmaz.",
+    "religiousContentSection": "Dini İçerikler",
+    "religiousContentText": "Namaz vakti hesaplamaları, Kur'an çevirileri, tefsir ve hadisler, bilgimiz dahilinde ve kabul görmüş hesaplama yöntemleri ile kaynaklar kullanılarak sunulur - ancak mutlak dini veya akademik doğruluk garantisi verilmez. Özellikle ayrıntılı dini konularda emin olmadığınız durumlarda yerel alimlere veya bulunduğunuz yerdeki camiye danışmanızı öneririz.",
+    "externalSourcesSection": "Harici Veri Kaynakları ve Kullanılabilirlik",
+    "externalSourcesText": "Kur'an metinleri, kıraatler, hadisler, harita verileri ve konum hizmetleri kısmen harici, herkese açık üçüncü taraf hizmetlerinden sağlanır (bkz. Gizlilik Politikası). Bunların kullanılabilirliği, eksiksizliği veya doğruluğu için garanti vermiyoruz; uygulamanın kesintisiz çalışacağını her zaman garanti edemeyiz.",
+    "personalUseSection": "Kişisel Kullanım",
+    "personalUseText": "İndirilen içerikler - kıraat ses kayıtları, Kur'an metinleri ve çeviriler gibi - yalnızca kişisel, ticari olmayan amaçlarla kullanılabilir. İlgili hak sahipleri açıkça izin vermedikçe yeniden dağıtım, kamuya açık hale getirme veya ticari kullanım yasaktır.",
+    "liabilitySection": "Sorumluluk Sınırlaması",
+    "liabilityText": "Kasıt ve ağır ihmalden sınırsız olarak, ayrıca Alman Ürün Sorumluluğu Kanunu hükümleri uyarınca sorumluyuz. Hafif ihmal durumunda yalnızca esaslı sözleşme yükümlülüklerinin ihlali halinde ve sözleşmeye özgü öngörülebilir zararla sınırlı olarak sorumluyuz. Uygulama ücretsiz sunulduğundan, bunun ötesindeki her türlü sorumluluk hariç tutulmuştur.",
+    "changesSection": "Bu Koşullardaki Değişiklikler",
+    "changesText": "Uygulamanın işlevleri veya hukuki durum değiştiğinde bu kullanım koşullarını gerektiğinde güncelleriz. Güncel sürüm her zaman uygulama içinde erişilebilir.",
+    "lawSection": "Uygulanacak Hukuk",
+    "lawText": "Yasal olarak izin verilen ölçüde, Milletlerarası Mal Satımına İlişkin Sözleşmeler Hakkında Birleşmiş Milletler Antlaşması hariç olmak üzere Alman hukuku geçerlidir."
+  },
+  "changelog": {
+    "title": "Yenilikler",
+    "subtitle": "Salati'deki tüm yeni özellikler, iyileştirmeler ve hata düzeltmeleri bir bakışta.",
+    "versionLabel": "Sürüm {version}",
+    "latest": "Güncel sürüm",
+    "typeFeature": "Yeni özellikler",
+    "typeImprovement": "İyileştirmeler",
+    "typeFix": "Hata düzeltmeleri",
+    "footer": "Salati'yi kullandığın için teşekkürler."
+  },
+  "more": {
+    "sections": {
+      "learning": "Öğrenme ve İlim",
+      "practice": "Namaz ve Günlük Hayat",
+      "tools": "Araçlar",
+      "app": "Uygulama"
+    },
+    "kiDesc": "Kur’an ve dualara sor - %100 cihazında çalışır"
+  },
+  "radio": {
+    "title": "Kur'an Radyosu",
+    "subtitle": "7/24 tilavet yayınları - çalmak için dokun",
+    "live": "CANLI"
+  },
+  "widgets": {
+    "qibla": "Kıble",
+    "remaining": "{t} içinde",
+    "themeTitle": "Widget rengi",
+    "themeHint": "Yerleştirilen tüm widget’lara bir sonraki yenilemede uygulanır.",
+    "theme_dark": "Koyu",
+    "theme_light": "Açık",
+    "theme_transparent": "Şeffaf",
+    "theme_black": "Siyah",
+    "theme_white": "Beyaz",
+    "theme_purple": "Mor",
+    "theme_orange": "Turuncu",
+    "nextPrayer": "Sonraki namaz",
+    "offline": "Çevrimdışı - uygulamayı aç",
+    "duaOfDay": "Günün duası",
+    "streakLabel": "günlük öğrenme serisi",
+    "todayLessons": "Bugün: {n} ders"
+  },
+  "prayers": {
+    "fajr": "Sabah",
+    "dhuhr": "Öğle",
+    "asr": "İkindi",
+    "maghrib": "Akşam",
+    "isha": "Yatsı"
+  },
+  "duel": {
+    "title": "Bilgi düellosu",
+    "subtitle": "2 oyuncu, 1 cihaz - kim daha çok biliyor?",
+    "player1": "1. Oyuncu",
+    "player2": "2. Oyuncu",
+    "turn": "Sıra: {p}",
+    "winner": "{p} kazandı!",
+    "tie": "Berabere!",
+    "rematch": "Rövanş",
+    "modeLocal": "1 cihaz",
+    "modeAsync": "Kodla",
+    "you": "Sen",
+    "opponent": "Rakip",
+    "asyncIntro": "Turunu oyna ve kodu bir arkadaşına gönder – ya da onun kodunu girip puanını geçmeye çalış.",
+    "asyncStart": "Yeni düello başlat",
+    "asyncImport": "Kod gir",
+    "asyncImportPlaceholder": "Düello kodunu yapıştır…",
+    "asyncImportButton": "Soruları yükle",
+    "asyncCodeHint": "Bu kodu rakibine gönder (sohbet, e-posta …). O kodu girer ve puanını geçmeye çalışır.",
+    "asyncYourScore": "Senin puanın",
+    "asyncYouWin": "Kazandın!",
+    "asyncOpponentWin": "Rakibin kazandı!",
+    "asyncNewDuel": "Yeni düello",
+    "asyncBack": "Geri"
+  },
+  "achievements": {
+    "title": "Rozetler",
+    "subtitle": "Salati'de ulaştığın kilometre taşları - tamamen yerel, hesap gerekmez.",
+    "badges": {
+      "first-lesson": {
+        "title": "İlk Adım",
+        "desc": "\"Kur'an okumayı öğren\" bölümünde ilk dersini tamamladın."
+      },
+      "first-surah": {
+        "title": "İlk Sure",
+        "desc": "Tam bir sureyi okuma alıştırması olarak tamamladın (Fâtiha, İhlâs, Felak veya Nâs)."
+      },
+      "bookmark-first": {
+        "title": "Kaydedildi",
+        "desc": "Kur'an'da ilk yer imini ekledin."
+      },
+      "streak-7": {
+        "title": "Bir Hafta Kararlılık",
+        "desc": "7 gün üst üste alıştırma yaptın."
+      },
+      "prayer-week": {
+        "title": "Tam Hafta",
+        "desc": "Takipte 7 gün üst üste 5 vaktin tamamını işaretledin."
+      },
+      "hifz-10": {
+        "title": "10 Ayet",
+        "desc": "Ezberde 10 ayeti \"biliyorum\" olarak işaretledin."
+      },
+      "quiz-25": {
+        "title": "Alıştırma Tutkunu",
+        "desc": "25 alıştırma turu tamamladın."
+      },
+      "course-complete": {
+        "title": "İlk Kurs",
+        "desc": "Bir İlim kursunu tamamen bitirdin."
+      },
+      "grammar-complete": {
+        "title": "Gramer Temelleri",
+        "desc": "Gramer kursunu tamamen bitirdin."
+      },
+      "tajwid-complete": {
+        "title": "Tecvid Kuralları",
+        "desc": "Tecvid kursunu tamamen bitirdin."
+      },
+      "khatmah-complete": {
+        "title": "Hatim",
+        "desc": "Bir hatim okuma planını sonuna kadar sürdürdün."
+      },
+      "streak-30": {
+        "title": "Bir Ay Kararlılık",
+        "desc": "30 gün üst üste alıştırma yaptın."
+      },
+      "hifz-50": {
+        "title": "50 Ayet",
+        "desc": "Ezberde 50 ayeti \"biliyorum\" olarak işaretledin."
+      },
+      "curriculum-complete": {
+        "title": "Kur'an Okumayı Öğrendin",
+        "desc": "\"Kur'an okumayı öğren\" kursunun tamamını bitirdin."
+      },
+      "streak-100": {
+        "title": "100 Gün",
+        "desc": "100 gün üst üste alıştırma yaptın - dikkat çekici bir azim."
+      },
+      "note-first": {
+        "title": "İlk Not",
+        "desc": "Bir ayete ilk kişisel notunu yazdın."
+      },
+      "hifz-explorer": {
+        "title": "Hıfız Kâşifi",
+        "desc": "3 farklı surede ezberlemeye başladın."
+      },
+      "bookmark-collections": {
+        "title": "Küratör",
+        "desc": "Yer imlerini 3 koleksiyonun tamamına ayırdın (Favoriler, Ezber, Tefekkür)."
+      },
+      "offline-audio": {
+        "title": "Çevrimdışı Hazır",
+        "desc": "3 surenin tilavetini çevrimdışı dinlemek için indirdin."
+      },
+      "fasting-tracker": {
+        "title": "Oruç Takibi",
+        "desc": "Oruç takibinde 10 tutulan günü işaretledin."
+      },
+      "surah-explorer": {
+        "title": "Sure Kâşifi",
+        "desc": "10 farklı surede okumaya devam ettin."
+      },
+      "review-master": {
+        "title": "Tekrar Ustası",
+        "desc": "Bir dersi tekrar sisteminde en üst seviyeye taşıdın."
+      }
+    },
+    "fresh": "Yeni"
+  },
+  "themes": {
+    "title": "Konulu Ayetler",
+    "subtitle": "Hayat konularına göre derlenmiş ayet koleksiyonları - üzerinde düşünmek ve tekrar dönmek için.",
+    "versesCount": "ayet",
+    "collections": {
+      "patience": {
+        "title": "Sabır",
+        "intro": "Kur'an'da sabır edilgen bir katlanma değildir - namaz, tevekkül ve mükâfat vaadiyle bağlantılı aktif bir tutumdur. Bu ayetler sabrın iç güçle ne kadar yakından bağlantılı olduğunu gösterir."
+      },
+      "gratitude": {
+        "title": "Şükür",
+        "intro": "Kur'an'daki şükür bakış açısını değiştirir: her şey mükemmel olduğu için değil, iyiliği fark etmenin kendisi Allah'a yakınlığın bir biçimi olduğu için. Bu ayetler daha dikkatli bakmaya davet eder."
+      },
+      "worry": {
+        "title": "Korku ve Endişe",
+        "intro": "Endişeler büyüdüğünde Kur'an tekrar tekrar gelecek olan kolaylıktan ve Allah'ı anmakla huzur bulan kalplerden söz eder. Bu ayetler zihnin gürültülü olduğu anlar içindir."
+      },
+      "family": {
+        "title": "Aile",
+        "intro": "Ebeveynler, çocuklar, eşler - Kur'an aileyi sadece bir görev değil, merhamet ve karşılıklı sorumluluk yeri olarak tanımlar. Bu ayetler ailenin İslam'da neden bu kadar önemli olduğunu açıklar."
+      },
+      "forgiveness": {
+        "title": "Af",
+        "intro": "Kur'an'da af bir zayıflık değil, en yüce erdemlerden biridir - hem Allah'tan dilenen af hem de başkalarına bahşedilen af. Bu ayetler her iki yönü de gösterir."
+      },
+      "hope": {
+        "title": "Umut ve Tevekkül",
+        "intro": "Kur'an'da Allah'a güvenmek hiçbir şey yapmamak anlamına gelmez - en iyi çabadan sonra bırakabilmek demektir, zorluğun ardından kolaylık geleceği vaadiyle. Bu ayetler zor dönemlerden geçmene yardımcı olur."
+      }
+    }
+  },
+  "journeys": {
+    "title": "Günlük Planlar",
+    "subtitle": "Tek bir konu etrafında derlenmiş ayet yolculukları - gün be gün.",
+    "tabCollections": "Koleksiyonlar",
+    "tabJourneys": "Günlük Planlar",
+    "days": "gün",
+    "day": "Gün",
+    "start": "Planı başlat",
+    "newPlan": "Yeni plan başlat",
+    "progress": "İlerleme",
+    "behind": "gün geride",
+    "complete": "Yolculuk tamamlandı",
+    "markDone": "Tamamlandı olarak işaretle",
+    "versesOfDay": "Günün ayet(ler)i",
+    "reflection": "Tefekkür",
+    "read": "Oku",
+    "reminder": "Günlük hatırlatma",
+    "items": {
+      "selfDiscovery": {
+        "title": "Kendini Keşif",
+        "subtitle": "Anlam, nefis ve kendi yönün üzerine durup düşünmek için on gün.",
+        "days": {
+          "0": {
+            "title": "Neden buradasın?",
+            "text": "Kur'an anlam sorusuna doğrudan cevap verir: insan, Yaratıcısına kulluk etmek için yaratılmıştır. Bu bir kafes değil, bir pusuladır - diğer her şeyin yerine oturduğu sabit bir nokta."
+          },
+          "1": {
+            "title": "Nefsin ikisini de bilir",
+            "text": "İçinde hem yanlışı hem doğruyu tanıma yeteneği yaratılmıştır. Kendini keşif, bu iç sesi bastırmak yerine ciddiye almakla başlar."
+          },
+          "2": {
+            "title": "Çevrende ve içinde ayetler",
+            "text": "Kur'an sadece dış dünyaya değil, seni de bir idrak yeri olarak işaret eder. Bazen cevap daha çok bilgi değil, daha dikkatli bakmaktır - içe doğru."
+          },
+          "3": {
+            "title": "Ayna olarak sınav",
+            "text": "Zor zamanlar Kur'an'da tesadüf değildir - imanı, ve nefsi, gerçek kılan şeyin parçasıdır. Şu an seni zorlayan şey, aslında kim olduğunu da gösterir."
+          },
+          "4": {
+            "title": "Rabbine doğru yol alıyorsun",
+            "text": "Bu ayet hayatı hareket olarak tanımlar, durgunluk olarak değil: çaba ile, ama net bir hedefe doğru yoldasın. Burada kendini keşif 'varmak' değil, yönü bilmektir."
+          },
+          "5": {
+            "title": "Sonunda gerçekten önemli olan",
+            "text": "Hesap gününde ne mal ne de statü fayda verir - sadece samimi bir kalp. Neyin uğruna gerçekten çabalamaya değdiğine dair rahatsız edici ama özgürleştirici bir hatırlatma."
+          },
+          "6": {
+            "title": "Hidayet talebi",
+            "text": "Fatiha'daki bu kısa talep, var olan en dürüst kendini keşif sorularından biridir: 'ben kimim' değil, 'nereye gitmeliyim'. Onu her gün tekrarlamak pusulayı doğru tutar."
+          },
+          "7": {
+            "title": "Ölçülü olmak",
+            "text": "Ne savurgan ne cimri olmak, burada samimi kimselerin bir özelliği olarak anlatılır. Kendini keşifte de olgunluk çoğu zaman uçlarda değil, dengede bulunur."
+          },
+          "8": {
+            "title": "Nefsin arınması",
+            "text": "Başarı burada dış şeylerle değil, kendi nefsine nasıl davrandığınla ölçülür - onu arındırıyor musun, yoksa bozulmaya mı bırakıyorsun? Her gün yeniden verilen, çok kişisel bir karar."
+          },
+          "9": {
+            "title": "Düşündüğünden daha yakın",
+            "text": "Bu yolculuk uzaklıkla değil, yakınlıkla biter: Allah sana bazen kendine olduğundan daha yakındır. Kur'an'da kendini keşif, Allah'tan uzaklaştırmaz - doğrudan O'na geri götürür."
+          }
+        }
+      },
+      "sabrJourney": {
+        "title": "Sabır Yolculuğu",
+        "subtitle": "Sabrın gerektiği yedi gün, yedi durum - günlük hayattan krize kadar.",
+        "days": {
+          "0": {
+            "title": "Kurtaran dört şey",
+            "text": "Bu kısa sure, insanı kayıptan koruyan şeyi özetler: iman, salih ameller - ve birbirini hem hakka hem sabra teşvik etmek. Burada sabır özel bir mesele değil, toplulukları taşıyan bir şeydir."
+          },
+          "1": {
+            "title": "Kötülüğü iyilikle karşılamak",
+            "text": "Sabırlı kalan biri, düşmanlığı bile gerçek bir yakınlığa dönüştürebilir - sabrın en zorlu biçimlerinden biri. Kur'an bunu açıkça sadece birkaç kişiye verilen bir özellik olarak adlandırır."
+          },
+          "2": {
+            "title": "Kayıpta sabır",
+            "text": "Korku, açlık, mal veya sevilen kişi kaybı - Kur'an burada bunlara karşı dokunulmazlık değil, bunlarla yüzleşmek için bir tutum vaat eder: 'Biz Allah'a aitiz ve O'na döneceğiz.'"
+          },
+          "3": {
+            "title": "Sabır zayıflık değildir",
+            "text": "İntikam yerine sabrı seçmek, burada açıkça daha iyi yol olarak anlatılır - sadece kendi gücünle değil, bizzat Allah tarafından taşınarak. Bu, her şeyi tek başına omuzlama baskısını kaldırır."
+          },
+          "4": {
+            "title": "Sabır ve zikir",
+            "text": "Sabır burada sabah akşam namaz ve hamd ile yan yana durur. Sabrın nadiren tek başına taşındığının bir hatırlatması - her gün yenilenen Allah'a bağlılıktan beslenir."
+          },
+          "5": {
+            "title": "Sabır ve şükür",
+            "text": "Durulan bir rüzgar gibi sükunet, burada hem sabredebilen hem şükredebilenler için bir işaret olarak anlatılır. İkisi, ilk bakışta göründüğünden daha yakından bağlıdır."
+          },
+          "6": {
+            "title": "Geriye kalan",
+            "text": "Sahip olduğun her şey geçer - Allah katında olan kalıcıdır. Bu sure yolculuğu bir vaatle bitirir: sabır unutulmaz, yaptığının en güzeliyle ödüllendirilir."
+          }
+        }
+      },
+      "gratitudeJourney": {
+        "title": "Şükür",
+        "subtitle": "Bakışını bilinçli olarak zaten var olana çevirmek için beş gün.",
+        "days": {
+          "0": {
+            "title": "Sayılamayan nimetler",
+            "text": "Hayatındaki her nimeti tek tek saymaya kalksan, sonuna varamazsın. Şükre giden ilk adım basittir: zaten var olana gerçekten bakmak."
+          },
+          "1": {
+            "title": "Şükredebilmeyi istemek",
+            "text": "Hz. Süleyman bile şükredebilmeyi bizzat Allah'tan istedi - demek ki şükür onun için otomatik bir hal değil, uğrunda çabalanan bir şeydi. Bu, kendini mükemmelleştirme baskısını kaldırır."
+          },
+          "2": {
+            "title": "Eylem olarak şükür",
+            "text": "Davud ailesine 'şükür duyun' değil, 'şükürle çalışın' denir. Şükür burada sadece kalpte değil, ellerin yaptığında görülür."
+          },
+          "3": {
+            "title": "Hangi nimeti yalanlarsın?",
+            "text": "Bu ayet Rahman suresinde 30'dan fazla kez tekrarlanır - neredeyse uyandırmayı amaçlayan bir nakarat gibi. Bugün kendine somut olarak sor: son zamanlarda hangi nimeti sıradan saydın?"
+          },
+          "4": {
+            "title": "Şükür artırır",
+            "text": "Doğrudan etkisi olan bir vaat: şükreden kişiye daha fazlası verilir. Bir ödül sistemi olarak değil, şükür zaten var olana gözünü açtığı ve ondan daha fazlasını görünür kıldığı için."
+          }
+        }
+      },
+      "newBeginning": {
+        "title": "Yeni Başlangıç",
+        "subtitle": "Yeniden baştan başlamak isteyen herkes için yedi gün.",
+        "days": {
+          "0": {
+            "title": "İlk adım: tevbe",
+            "text": "Kur'an'da samimi tevbe, açıkça bir şeyin sonu değil başlangıcıdır. Yeni bir başlangıcın ilk adımı nadiren gösterişlidir - o sadece şudur: dürüstçe geri dönmek."
+          },
+          "1": {
+            "title": "Asla umutsuzluğa kapılma",
+            "text": "Arkanda ne kadar çok şey olursa olsun: bu ayet Allah'ın rahmetinden umut kesmeyi açıkça yasaklar. Hiçbir hata, yeni bir başlangıcı imkansız kılacak kadar büyük değildir."
+          },
+          "2": {
+            "title": "Çok geç olmadan",
+            "text": "Bir öncekinin doğrudan devamı: tevbe burada aktif bir hareket olarak anlatılır - Allah'a doğru, hem de şimdi, bir gün değil. Yeni başlangıç kendiliğinden olan bir hal değil, bir fiildir."
+          },
+          "3": {
+            "title": "Değişim içinde başlar",
+            "text": "Dış şartlar değişmeden önce, içeride bir şeyin hareket etmesi gerekir. Bu ayet gerçek değişimin sorumluluğunu - ve imkanını - doğrudan senin ellerine bırakır."
+          },
+          "4": {
+            "title": "Kötüden iyi doğar",
+            "text": "Tevbe eden, iman eden ve salih amel işleyenlere Allah burada dikkat çekici bir şey vaat eder: geçmiş hatalar sadece bağışlanmakla kalmaz, iyi amellere dönüştürülür. Geçmişin seni tanımlamak zorunda değil."
+          },
+          "5": {
+            "title": "İç genişlik talebi",
+            "text": "Musa, Firavun'un önüne çıkmadan önce çok kişisel bir şey istedi: genişleyen bir gönül, kolaylaştırılan bir görev. Senin yeni başlangıcın da anında mükemmellikle değil, bu talep ile başlayabilir."
+          },
+          "6": {
+            "title": "Taşıyan bir bağışlanma",
+            "text": "Bu vaat çemberi tamamlar: tevbe eden, iman eden, iyilik yapan ve yolunda kalan, kendisini taşıyan bir bağışlanma bulur. Yeni başlangıç tek bir an değil, her gün yeniden seçtiğin bir yöndür."
+          }
+        }
+      },
+      "ramadanPrep": {
+        "title": "Ramazan Hazırlığı",
+        "subtitle": "Ay gelmeden önce kalbi ve alışkanlıkları hazırlamak için on gün.",
+        "days": {
+          "0": {
+            "title": "Neden oruç tutuyoruz",
+            "text": "Oruç, bizden önceki müminlere ve bize tek bir hedefle farz kılındı: takva, Allah'ı unutmayan uyanık bir kalp. Ramazan bir diyet değil, ruh için bir eğitimdir. Bugün kendine sor: Bu ay sende neyi değiştirsin?"
+          },
+          "1": {
+            "title": "Sadece sayılı günler",
+            "text": "Kur'an oruçtan 'sayılı günler' diye söz eder. Ay başlamadan önce uzun görünür, bittiğinde ise şaşırtıcı derecede kısa. Bu günler elinden kayıp gitmesin diye şimdi küçük ve gerçekçi bir hedef belirle."
+          },
+          "2": {
+            "title": "Kur'an ayı",
+            "text": "Ramazan, Kur'an onda indirildiği için şereflidir; oruç ve Kitap birbirine aittir. Günde sadece birkaç ayet bile olsa, ne zaman ve ne kadar okuyacağını bugün planla."
+          },
+          "3": {
+            "title": "O yakındır",
+            "text": "Oruç ayetlerinin tam ortasında Allah şöyle buyurur: Ben yakınım, dua edene cevap veririm. Ramazan bir dua ayıdır. Gerçekten istemek istediğin şeylerin küçük bir listesini yapmaya başla."
+          },
+          "4": {
+            "title": "Bir ömre bedel bir gece",
+            "text": "Kadir Gecesi bin aydan hayırlıdır. Hangi gece olduğunu kimse kesin bilmez ve mesele de tam olarak budur: aranmak ister. Şimdiden hazırlanan, son on gecede hazırlıksız kalmaz."
+          },
+          "5": {
+            "title": "Doğru azığı hazırla",
+            "text": "Her yolculuk için azık hazırlarsın; Kur'an ise en hayırlı azığın takva olduğunu söyler. Oruç günü boşaltır ki asıl olan görünür olsun. Bu ay hangi alışkanlığı geride bırakmak istediğini düşün."
+          },
+          "6": {
+            "title": "Geceler için antrenman",
+            "text": "Gece kalkmak zordur ve Kur'an bunu açıkça söyler: Gece saatleri daha derin iz bırakır. Saatlere ihtiyacın yok; bu gece birkaç dakikalık fazladan namazla başla ve oradan büyüt."
+          },
+          "7": {
+            "title": "Vermek katlanır",
+            "text": "Tek bir tane yedi yüz taneye dönüşür: Kur'an vermeyi böyle anlatır. Ramazan'da cömertlik yan bir uğraş değil, orucun parçasıdır. Küçük ve düzenli bile olsa, ne vereceğine bugün karar ver."
+          },
+          "8": {
+            "title": "Kolaylaştırıldı",
+            "text": "Allah, Kur'an'ı öğüt almak için kolaylaştırdığını söyler ve ardından sorar: Öğüt alan yok mu? Bu davet kişiseldir. Seviyen ne olursa olsun, Kitap bu ay senin ulaşabileceğin yerdedir."
+          },
+          "9": {
+            "title": "Şimdi koşmaya başla",
+            "text": "Kur'an, bağışlanmaya ve genişliği göklerle yer kadar olan bir cennete doğru yarışmaktan söz eder. Ramazan, yılın yarış pistidir. İlk orucu bekleme: Bugün başla ve aya zaten hareket halindeyken gir."
+          }
+        }
+      },
+      "griefLoss": {
+        "title": "Yas ve Kayıp",
+        "subtitle": "Yas tutan bir kalp için yedi gün sessiz teselli.",
+        "days": {
+          "0": {
+            "title": "Biz O'na aitiz",
+            "text": "'Biz Allah'a aitiz ve O'na döneceğiz': Bu sözler bir kalıp değil, yaslanılacak bir hakikattir. Hemen sonraki ayet, sabredenlere rahmet ve bereket vaat eder. Yasın görülüyor ve boşa gitmiyor."
+          },
+          "1": {
+            "title": "Kolaylık zorlukla birliktedir",
+            "text": "Ayet, kolaylığın zorluktan sonra geldiğini değil, onunla birlikte olduğunu söyler ve bunu iki kez söyler. En ağır günlerde bile nefes aldıran anlar vardır: uyku, güzel bir söz, seni gülümseten bir hatıra. Onları suçluluk duymadan fark etmene izin ver."
+          },
+          "2": {
+            "title": "Herkesin yürüdüğü yol",
+            "text": "Her nefis ölümü tadacaktır; kimse istisna değildir ve kimse hedef alınmış değildir. Kaybettiğin insan, hepimizin yürüyeceği bir yoldan geçti. Kur'an'da ölüm bir son değil, bir dönüştür."
+          },
+          "3": {
+            "title": "Geriye kalan",
+            "text": "Yeryüzündeki her şey yok olur; celal ve ikram sahibi Rabbinin yüzü ise kalır. Kayıp, sağlam görünen şeyleri sarstığında bu ayet değişmeyen Bir'i gösterir. Senden alınamayacak olana tutun."
+          },
+          "4": {
+            "title": "Kalbe huzur",
+            "text": "'Bilin ki kalpler ancak Allah'ı anmakla huzur bulur.' Yas göğsü daraltır; zikir onu yavaşça ve şefkatle gevşetir. Bugün birkaç dakikalık sessiz zikir küçük bir şey değildir."
+          },
+          "5": {
+            "title": "O'na her şeyi anlat",
+            "text": "Bir peygamber olan Yakub, oğlu için ağladı ve şöyle dedi: Ben kederimi ve hüznümü yalnız Allah'a arz ediyorum. Yas tutmak iman eksikliği değildir. Bütün yükü, onu taşıyabilecek Olan'a getir."
+          },
+          "6": {
+            "title": "Mutmain nefis",
+            "text": "'Ey huzura eren nefis! Razı olmuş ve razı olunmuş olarak Rabbine dön.' Bu ayetler bir umut kapısıdır; önden giden için ve senin için. Allah'tan ona ve bir gün sana bu yumuşak dönüşü nasip etmesini iste."
+          }
+        }
+      },
+      "examTime": {
+        "title": "Sınav Zamanı",
+        "subtitle": "Ders çalışma ve sınavlar için yedi gün odak, sükunet ve tevekkül.",
+        "days": {
+          "0": {
+            "title": "Daha fazlasını iste",
+            "text": "'Rabbim, ilmimi artır' Peygamber'e istemesi emredilen tek artıştır. Bu kısa duayı her çalışma seansının parçası yap. İlim yalnızca toplanmaz, aynı zamanda bahşedilir."
+          },
+          "1": {
+            "title": "Taşıyabileceğinden fazlası değil",
+            "text": "Allah hiçbir nefse gücünün üstünde yük yüklemez. Önündeki sınav bu vaadin kapsamındadır. Bugün yapabildiğini yap ve 'bu senin için çok fazla' diyen sese karşı çık."
+          },
+          "2": {
+            "title": "Bir iş, sonra diğeri",
+            "text": "'Bir işi bitirince kalk, diğerine koyul ve yalnız Rabbine yönel.' Ayetler sakin bir ritmi anlatır: Bir şeyi tamamla, sonra diğerine geç. Odaklı bloklar halinde çalış ve molalar gerçekten mola olsun."
+          },
+          "3": {
+            "title": "Bilmek değerlidir",
+            "text": "'Hiç bilenlerle bilmeyenler bir olur mu?' Kur'an öğrenmeyi bir angarya değil, bir şeref olarak görür. Şu an gösterdiğin çaba, not ne olursa olsun kendi başına değerlidir."
+          },
+          "4": {
+            "title": "Derecelerle yükseltilir",
+            "text": "Allah, iman edenleri ve kendilerine ilim verilenleri derecelerle yükseltir. Dürüstçe yapılan öğrenme bir ibadet biçimidir. Besmele ile başla; çalışman bir testteki puandan fazlası olur."
+          },
+          "5": {
+            "title": "Karar ver, sonra tevekkül et",
+            "text": "'Karar verdiğinde artık Allah'a tevekkül et.' Tevekkül hazırlığın yerine geçmez, onu taçlandırır. Elinden geldiğince hazırlan, sonra sakin bir kalple gir: Üzerine düşeni yaptın."
+          },
+          "6": {
+            "title": "O yeter",
+            "text": "Kim Allah'a tevekkül ederse, O ona yeter. Sonucu O'na teslim ettiğinde artık onu yalnız taşımazsın. İçeri gir, elinden gelenin en iyisini yap ve neticeyi onu güzel takdir Eden'e bırak."
+          }
+        }
+      },
+      "rizqWork": {
+        "title": "Rızık ve İş",
+        "subtitle": "Rızık, helal kazanç ve Rezzak'a güven üzerine yedi gün.",
+        "days": {
+          "0": {
+            "title": "Rızkın yazılmıştır",
+            "text": "Yeryüzünde rızkı Allah'a ait olmayan hiçbir canlı yoktur; serçeninki de seninki de. Bu, çabayı iptal etmez; ondan paniği alır. Bugün, sana ait olanın kaybolabileceği korkusu olmadan çalış."
+          },
+          "1": {
+            "title": "Namaz, sonra dağılın",
+            "text": "'Namaz bitince yeryüzüne dağılın ve Allah'ın lütfundan arayın.' İş ve ibadet rakip değildir; ayet ikisini tek cümlede birleştirir. İş günü içinde namazlarını koru ve günün düzenini onlar kursun."
+          },
+          "2": {
+            "title": "Yeryüzünde yürü",
+            "text": "Allah yeryüzünü kullanışlı kıldı: 'Onun omuzlarında yürüyün ve O'nun rızkından yiyin.' Rızık aramak planın bizzat parçasıdır. Dışarı çık, kapıları çal, öğren: Senden hareket beklenir."
+          },
+          "3": {
+            "title": "İstiğfar kapılar açar",
+            "text": "Nuh kavmine dedi ki: Bağışlanma dileyin; O da yağmur, mal ve evlat gönderir. Kur'an istiğfarı rızıkla en somut şekilde ilişkilendirir. Her şey tıkanmış hissettirdiğinde başlanacak yer burasıdır."
+          },
+          "4": {
+            "title": "Helal ve temiz",
+            "text": "'Yeryüzündeki helal ve temiz olandan yiyin.' Nasıl kazandığın, ne kadar kazandığın kadar önemlidir. Temiz olan küçük bir gelir, temiz olmayan büyük bir gelirden daha sağlam bir temeldir."
+          },
+          "5": {
+            "title": "İki dünya",
+            "text": "Allah'ın sana verdikleriyle ahiret yurdunu ara ve dünyadan nasibini unutma. Ayet hırsa izin verir ve ona yön verir. Çok çalış, senin olanın tadını çıkar ve varış noktasını gözden kaçırma."
+          },
+          "6": {
+            "title": "Verdiğin geri gelir",
+            "text": "'Her ne infak ederseniz O, yerine yenisini verir; O, rızık verenlerin en hayırlısıdır.' Vermek rızkı küçültmez, onu davet eder. Ne kadar mütevazı olursa olsun kazancından vermeyi alışkanlık yap ve vaade güven."
+          }
+        }
+      }
+    },
+    "behindOne": "gün geride",
+    "continuePlan": "Devam et",
+    "activeSection": "Aktif",
+    "allSection": "Tüm planlar"
+  },
+  "ki": {
+    "title": "Salati Yapay Zeka",
+    "subtitle": "Yalnızca Kur'an, 40 Nevevî Hadisi, doğrulanmış dualar ve Salati kurs metinlerinden yanıt verir - %100 cihazınızda çalışır.",
+    "aiDisclosure": "Yapay zeka tarafından üretilen yanıt - fetva veya alim görüşü değildir.",
+    "webOnlyNote": "Yerel yapay zeka yalnızca uygulamada kullanılabilir. Tarayıcı sürümünü kullanın.",
+    "openWebVersion": "Tarayıcı sürümünü aç",
+    "downloadTitle": "Tek seferlik indirme",
+    "downloadDesc": "Yapay zeka yanıtları için bir dil modelinin ({size}) indirilip cihazınızda yerel olarak saklanması gerekir. Yalnızca bir kez gerekli - sonrasında her şey çevrimdışı çalışır.",
+    "wifiHint": "En iyisi Wi-Fi üzerinden indirmek - dosya büyük.",
+    "downloadButton": "Modeli indir",
+    "downloading": "İndiriliyor …",
+    "loadingModel": "Yapay zeka yükleniyor …",
+    "ready": "Yapay zeka hazır - her şey yerel olarak çalışıyor, hiçbir veri cihazınızdan çıkmıyor.",
+    "downloadError": "İndirme başarısız oldu. Bağlantınızı kontrol edip tekrar deneyin.",
+    "retry": "Tekrar dene",
+    "deleteModel": "Modeli sil",
+    "deleteModelConfirm": "Model gerçekten silinsin mi? Daha sonra indirme ({size}) tekrar yapılmalı.",
+    "inputPlaceholder": "Sorunuz …",
+    "send": "Sor",
+    "sourcesLabel": "Kaynaklar",
+    "noAnswer": "Bu konuda yerel kaynaklarımda bir şey bulamadım. Güvenilir bir yanıt için lütfen bir alime danışın.",
+    "clearHistory": "Geçmişi temizle",
+    "welcome": "Selam! Bana bir soru sor - Kur'an, 40 Nevevî Hadisi, doğrulanmış dualar ve Salati kurs metinlerinden uygun bölümleri bulup yalnızca bunlara dayanarak yanıt vereceğim."
+  },
+  "onboarding": {
+    "skip": "Atla",
+    "next": "Devam",
+    "later": "Daha sonra",
+    "welcomeTitle": "Salati'ye hoş geldiniz",
+    "welcomeTagline": "Namaz vakitleri, Kur'an, kıble ve dersler tek uygulamada.",
+    "welcomePrivacy": "Hesap yok, takip yok - her şey cihazınızda kalır.",
+    "locationTitle": "Konumunuz",
+    "locationHint": "Doğru namaz vakitleri için Salati'nin konumunuza ihtiyacı var. Konum belirlemeyi kullanın veya şehrinizi arayın.",
+    "methodTitle": "Hesaplama yöntemi",
+    "methodHint": "Bölgenizde veya cemaatinizde kullanılan yöntemi seçin. Ayarlardan istediğiniz zaman değiştirebilirsiniz.",
+    "notifTitle": "Namaz bildirimleri",
+    "notifHint": "Her namaz vaktinde bir hatırlatma alın. Bunu Ayarlardan istediğiniz zaman değiştirebilirsiniz.",
+    "notifEnable": "Bildirimleri aç",
+    "continue": "Devam et",
+    "newToIslam": "İslam'a mı yeni girdin? İlk adımlarını gör",
+    "offlineTitle": "Çevrimdışı kullanılabilir yap",
+    "offlineHint": "Okuma kontrolü ve yapay zeka internetsiz çalışsın diye modelleri şimdi indir. Tümü isteğe bağlı.",
+    "offlineSpeech": "Konuşma modeli (okuma kontrolü)",
+    "offlineAi": "Yapay zeka modeli (soru & cevap)",
+    "offlineReady": "İndirildi",
+    "offlineLater": "Bunu istediğin zaman Ayarlar’dan yapabilirsin.",
+    "done": "Bitti"
+  },
+  "dhikrAfterSalah": {
+    "title": "Namazdan Sonra Zikir",
+    "subtitle": "33x SubhanAllah, 33x Elhamdülillah, 34x Allahu Ekber",
+    "tapHint": "Saymak için daireye dokun",
+    "totalProgress": "Toplam: {count} / {total}",
+    "completeTitle": "Ma şa Allah!",
+    "completeSubtitle": "Namazdan sonraki zikir dizisini tamamladın.",
+    "restartCta": "Yeniden başla",
+    "doneCta": "Bitti"
+  },
+  "gettingStarted": {
+    "title": "İlk Adımlar",
+    "subtitle": "İslam'a yeni mi girdin ya da az önce Kelime-i Şehadet mi getirdin? İşte anlamlı bir sırayla ilk adımların.",
+    "cta": "Başla",
+    "steps": {
+      "shahada": {
+        "title": "Kelime-i Şehadeti anla",
+        "desc": "Şehadetin anlamı - Aqida temel kursunda anlatılıyor"
+      },
+      "wudu": {
+        "title": "Abdesti öğren",
+        "desc": "Adım adım abdest, duasıyla birlikte"
+      },
+      "howToPray": {
+        "title": "İlk namazını öğren",
+        "desc": "Namazın sırası ve duruşları"
+      },
+      "prayerTimes": {
+        "title": "Namaz vakitlerini ayarla",
+        "desc": "Konumunu, hesaplama yöntemini ve hatırlatıcılarını belirle"
+      },
+      "duas": {
+        "title": "Temel dualar",
+        "desc": "Günlük hayat, uyku ve daha fazlası için dualar"
+      },
+      "alphabet": {
+        "title": "Arap alfabesini öğren",
+        "desc": "Kur'an okumaya giden ilk adımların"
+      }
+    }
+  },
+  "prayAlong": {
+    "customize": "Görünümü özelleştir",
+    "fontSize": "Yazı boyutu",
+    "show": "Göster",
+    "showTranslation": "Çeviri",
+    "showArabic": "Arapça",
+    "showNotes": "Açıklamalar",
+    "arrangement": "Düzen",
+    "translitFirst": "Önce okunuş",
+    "arabicFirst": "Önce Arapça"
+  },
+  "learnToPray": {
+    "title": "Namaz kılmayı öğren",
+    "subtitle": "Sakince öğren – her adım için Arapça, okunuş ve anlam.",
+    "intro": "Adım adım nasıl namaz kılınır. Acele etme: Her adımda Arapça metin, Latin harfli okunuş ve anlamı gösterilir. Dinlemek için Arapça metne dokun. Namaz sırasında eşlik etmek için „Namaza eşlik et\" bölümünü kullan.",
+    "pickPrompt": "Hangi namazı öğrenmek istersin?",
+    "surahsTitle": "İki kısa sure",
+    "surahsSubtitle": "İhlâs ve Kevser – ilk ezberlenen surelerdir."
+  },
+  "widgetConfig": {
+    "title": "Widget'ı ayarla",
+    "typeCountdown": "Geri sayım",
+    "typeStreak": "Öğrenme serisi",
+    "color": "Renk",
+    "transparent": "Şeffaf arka plan",
+    "content": "İçerik",
+    "showCoords": "Konumu göster",
+    "showNextTime": "Sonraki namaz vaktini göster",
+    "showTranslation": "Çeviriyi göster",
+    "showDistance": "Mesafeyi göster",
+    "cancel": "İptal",
+    "done": "Bitti",
+    "previewHint": "Değişiklikler yalnızca bu widget için geçerlidir. Ana ekranda bir widget'a uzun basarak ayrı ayrı ayarlayın."
+  },
+  "podcast": {
+    "title": "Language of the Qur’an",
+    "subtitle": "Understand Arabic — in 15 episodes",
+    "heroDesc": "The podcast: the grammar of the Qur’an, episode by episode.",
+    "empty": "Coming soon.",
+    "episodeLabel": "Episode",
+    "play": "Play",
+    "pause": "Pause",
+    "seek": "Position",
+    "volume": "Volume",
+    "previous": "Previous episode",
+    "next": "Next episode",
+    "showTranscript": "Read along",
+    "hideTranscript": "Hide transcript"
+  },
+  "lernen": {
+    "learnDesc": "2000+ interactive lessons — step by step.",
+    "hifzDesc": "Memorize the Qur’an, with speech recognition.",
+    "more": "More learning"
+  }
+}

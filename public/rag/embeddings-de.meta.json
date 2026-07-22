@@ -1,0 +1,8 @@
+{
+  "v": 1,
+  "model": "Xenova/multilingual-e5-small",
+  "dim": 384,
+  "quant": "int8",
+  "count": 6643,
+  "letzteId": "k-nawawi40-nawawi-42-2"
+}

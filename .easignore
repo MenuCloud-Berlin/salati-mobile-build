@@ -1,0 +1,11 @@
+# Ersetzt .gitignore für den EAS-Upload — Web-only-Assets fliegen raus,
+# der Native-Build braucht weder die APK-Teile noch das 102MB-Whisper-Modell.
+node_modules
+.expo
+dist
+web-build
+.playwright-mcp
+public/salati.apk.part*
+public/models
+*.log
+.DS_Store

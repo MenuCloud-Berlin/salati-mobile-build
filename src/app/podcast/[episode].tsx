@@ -1,0 +1,638 @@
+// Podcast-Voll-Player (Spotify/YouTube-Niveau): unscharfer Cover-Hintergrund,
+// Cover, Scrubber, Play/Pause, ±15 s, Folge vor/zurueck, Schnell-Geschwindigkeit,
+// Lautstaerke, sowie ein Einstellungs-Sheet (Geschwindigkeitsliste, Sleeptimer,
+// Wiederholen, Autoplay). Transkript zum Mitlesen mit synchron mitlaufendem
+// Highlight (Zeitmarken aus der Vertonung) + Autoscroll. Nutzt den App-weiten
+// Shared-Player (usePlayer.ts) -> Hintergrund-Wiedergabe + Lockscreen sind
+// bereits geloest; der globale Mini-Player uebernimmt beim Verlassen.
+import { setAudioModeAsync } from 'expo-audio';
+import { Image } from 'expo-image';
+import { router, useLocalSearchParams } from 'expo-router';
+import { useQuery } from '@tanstack/react-query';
+import { useEffect, useRef, useState } from 'react';
+import { Modal, Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+import { IconSymbol, type IconName } from '@/components/ui/icon-symbol';
+import { PressableCard } from '@/components/ui/pressable-card';
+import { ThemedActivityIndicator } from '@/components/themed-activity-indicator';
+import { ThemedText } from '@/components/themed-text';
+import { ThemedView } from '@/components/themed-view';
+import { ArabicFont, BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import {
+  fetchPodcastIndex,
+  formatDuration,
+  type PodcastEpisode,
+  type TranscriptSegment,
+} from '@/features/podcast/data';
+import { Slider } from '@/features/podcast/slider';
+import { useSharedPlayer } from '@/features/quran/usePlayer';
+import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
+import { useTranslation } from '@/lib/i18n';
+
+const SPEEDS = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2] as const;
+const SLEEP_OPTIONS: (number | 'episode')[] = [5, 10, 15, 30, 60, 'episode'];
+const SKIP_SEC = 15;
+
+export default function PodcastPlayerScreen() {
+  const { episode: episodeParam } = useLocalSearchParams<{ episode: string }>();
+  const episodeNo = Number(episodeParam);
+  const { t } = useTranslation();
+  const scheme = useResolvedScheme();
+  const colors = Colors[scheme];
+  const { player, status, nowPlaying, setNowPlaying } = useSharedPlayer();
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['podcast', 'index'],
+    queryFn: fetchPodcastIndex,
+    staleTime: 60 * 60 * 1000,
+  });
+
+  const episodes = data?.episodes ?? [];
+  const episode = episodes.find((e) => e.episode_no === episodeNo);
+  const idx = episodes.findIndex((e) => e.episode_no === episodeNo);
+  const prev = idx > 0 ? episodes[idx - 1] : undefined;
+  const next = idx >= 0 && idx < episodes.length - 1 ? episodes[idx + 1] : undefined;
+
+  const nowTitle = episode ? `${episode.episode_no}. ${episode.title}` : '';
+  const isThisLoaded = nowPlaying?.title === nowTitle;
+
+  const [speed, setSpeed] = useState(1);
+  const [volume, setVolume] = useState(1);
+  const [showTranscript, setShowTranscript] = useState(false);
+  const [seekPreview, setSeekPreview] = useState<number | null>(null);
+  const [showSettings, setShowSettings] = useState(false);
+  const [repeat, setRepeat] = useState(false);
+  const [autoplay, setAutoplay] = useState(true);
+  const [sleep, setSleep] = useState<number | 'episode' | null>(null);
+
+  const duration = status.duration || episode?.duration_sec || 0;
+  const position = status.currentTime || 0;
+  const progress = duration > 0 ? position / duration : 0;
+
+  // Refs, damit der didJustFinish-Effekt keine veralteten Werte sieht.
+  // Sync im Effekt (nicht im Render-Body — react-hooks/refs).
+  const repeatRef = useRef(repeat);
+  const autoplayRef = useRef(autoplay);
+  const sleepRef = useRef(sleep);
+  const nextRef = useRef(next);
+  useEffect(() => {
+    repeatRef.current = repeat;
+    autoplayRef.current = autoplay;
+    sleepRef.current = sleep;
+    nextRef.current = next;
+  });
+
+  function configureBackground() {
+    if (Platform.OS === 'web') return;
+    setAudioModeAsync({
+      shouldPlayInBackground: true,
+      playsInSilentMode: true,
+      interruptionMode: 'doNotMix',
+    }).catch(() => {});
+    player.setActiveForLockScreen(true, { title: nowTitle });
+  }
+
+  function loadAndPlay() {
+    if (!episode) return;
+    player.replace(episode.audio_url);
+    player.setPlaybackRate(speed);
+    configureBackground();
+    player.play();
+    setNowPlaying({ title: nowTitle });
+  }
+
+  // Lautstaerke reaktiv anwenden: expo-audio bietet dafuer nur die Property
+  // (kein setVolume), und nach replace() steht sie wieder auf 1.0 — daher an
+  // isThisLoaded gekoppelt. Effekt ist die korrekte Seiteneffekt-Stelle.
+  useEffect(() => {
+    if (!isThisLoaded) return;
+    // eslint-disable-next-line react-hooks/immutability
+    player.volume = volume;
+  }, [volume, isThisLoaded, player]);
+
+  // Ende-der-Folge: Wiederholen, Autoplay naechste Folge oder Sleeptimer
+  // "bis Ende der Folge". didJustFinish wird im Render erkannt (kein setState
+  // im Effekt-Body, gleiches Muster wie radio.tsx/useComparePlayer) und ueber
+  // einen Zaehler an den ausfuehrenden Effekt weitergereicht.
+  const [lastFinish, setLastFinish] = useState(false);
+  const [finishTick, setFinishTick] = useState(0);
+  if (status.didJustFinish !== lastFinish) {
+    setLastFinish(status.didJustFinish);
+    if (status.didJustFinish && isThisLoaded) setFinishTick((n) => n + 1);
+  }
+  useEffect(() => {
+    if (finishTick === 0) return;
+    if (sleepRef.current === 'episode') return; // am Ende stehen bleiben
+    if (repeatRef.current) {
+      player.seekTo(0);
+      player.play();
+    } else if (autoplayRef.current && nextRef.current) {
+      router.replace({ pathname: '/podcast/[episode]', params: { episode: nextRef.current.episode_no } });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [finishTick]);
+
+  // Sleeptimer (Minuten): pausiert nach Ablauf. 'episode' wird oben behandelt.
+  const sleepTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => {
+    if (sleepTimeoutRef.current) {
+      clearTimeout(sleepTimeoutRef.current);
+      sleepTimeoutRef.current = null;
+    }
+    if (typeof sleep === 'number') {
+      sleepTimeoutRef.current = setTimeout(() => player.pause(), sleep * 60_000);
+    }
+    return () => {
+      if (sleepTimeoutRef.current) clearTimeout(sleepTimeoutRef.current);
+    };
+  }, [sleep, player]);
+
+  function togglePlay() {
+    if (!episode) return;
+    if (!isThisLoaded) {
+      loadAndPlay();
+      return;
+    }
+    if (status.playing) player.pause();
+    else {
+      configureBackground();
+      player.play();
+    }
+  }
+
+  function skip(delta: number) {
+    if (!isThisLoaded) return;
+    player.seekTo(Math.max(0, Math.min(duration, position + delta)));
+  }
+
+  function applySpeed(s: number) {
+    setSpeed(s);
+    if (isThisLoaded) player.setPlaybackRate(s);
+  }
+
+  function cycleSpeed() {
+    const i = SPEEDS.indexOf(speed as (typeof SPEEDS)[number]);
+    applySpeed(SPEEDS[(i + 1) % SPEEDS.length]);
+  }
+
+  function goTo(ep?: PodcastEpisode) {
+    if (ep) router.replace({ pathname: '/podcast/[episode]', params: { episode: ep.episode_no } });
+  }
+
+  if (isLoading) {
+    return (
+      <ThemedView style={styles.container}>
+        <SafeAreaView style={[styles.safeArea, styles.center]}>
+          <ThemedActivityIndicator />
+        </SafeAreaView>
+      </ThemedView>
+    );
+  }
+
+  if (isError || !episode) {
+    return (
+      <ThemedView style={styles.container}>
+        <SafeAreaView style={[styles.safeArea, styles.center]}>
+          <ThemedText type="small" themeColor="textSecondary">
+            {t('common.error')}
+          </ThemedText>
+        </SafeAreaView>
+      </ThemedView>
+    );
+  }
+
+  const shownProgress = seekPreview ?? progress;
+
+  return (
+    <ThemedView style={styles.container}>
+      {/* Unscharfer Cover-Hintergrund (Spotify-Optik) */}
+      {episode.cover_url ? (
+        <Image
+          source={episode.cover_url}
+          style={styles.bgImage}
+          contentFit="cover"
+          blurRadius={Platform.OS === 'web' ? 60 : 40}
+          accessibilityLabel=""
+        />
+      ) : null}
+      <View style={[styles.bgOverlay, { backgroundColor: colors.background, opacity: 0.82 }]} />
+
+      <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
+        {/* Kopfzeile: Settings rechts */}
+        <View style={styles.topBar}>
+          <Pressable
+            onPress={() => setShowSettings(true)}
+            accessibilityRole="button"
+            accessibilityLabel={t('podcast.settings')}
+            hitSlop={10}
+            style={styles.settingsBtn}>
+            <IconSymbol name="options" size={22} color={colors.text} />
+          </Pressable>
+        </View>
+
+        <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
+          {episode.cover_url ? (
+            <Image
+              source={episode.cover_url}
+              style={styles.cover}
+              contentFit="cover"
+              transition={200}
+              accessibilityLabel={episode.title}
+            />
+          ) : (
+            <ThemedView type="backgroundSelected" style={[styles.cover, styles.coverFallback]}>
+              <IconSymbol name="headset" size={64} color={colors.accent} />
+            </ThemedView>
+          )}
+
+          <ThemedText type="small" themeColor="accent" style={styles.epNo}>
+            {t('podcast.episodeLabel')} {episode.episode_no}
+          </ThemedText>
+          <ThemedText type="title" style={styles.title}>
+            {episode.title}
+          </ThemedText>
+          {episode.description ? (
+            <ThemedText type="small" themeColor="textSecondary" style={styles.desc}>
+              {episode.description}
+            </ThemedText>
+          ) : null}
+
+          {/* Scrubber */}
+          <View style={styles.scrubBlock}>
+            <Slider
+              value={shownProgress}
+              accessibilityLabel={t('podcast.seek')}
+              onChange={(r) => setSeekPreview(r)}
+              onCommit={(r) => {
+                setSeekPreview(null);
+                if (isThisLoaded && duration > 0) player.seekTo(r * duration);
+              }}
+            />
+            <View style={styles.timeRow}>
+              <ThemedText type="small" themeColor="textSecondary">
+                {formatDuration((seekPreview != null ? seekPreview * duration : position) || 0)}
+              </ThemedText>
+              <ThemedText type="small" themeColor="textSecondary">
+                {formatDuration(duration)}
+              </ThemedText>
+            </View>
+          </View>
+
+          {/* Transport */}
+          <View style={styles.transport}>
+            <CircleButton icon="play-skip-back" size={22} onPress={() => goTo(prev)} disabled={!prev} label={t('podcast.previous')} />
+            <CircleButton icon="play-back" size={24} onPress={() => skip(-SKIP_SEC)} label="-15s" />
+            <Pressable
+              onPress={togglePlay}
+              accessibilityRole="button"
+              accessibilityLabel={status.playing && isThisLoaded ? t('podcast.pause') : t('podcast.play')}
+              style={[styles.playBtn, { backgroundColor: colors.accent }]}>
+              <IconSymbol name={status.playing && isThisLoaded ? 'pause' : 'play'} size={34} color={colors.background} />
+            </Pressable>
+            <CircleButton icon="play-forward" size={24} onPress={() => skip(SKIP_SEC)} label="+15s" />
+            <CircleButton icon="play-skip-forward" size={22} onPress={() => goTo(next)} disabled={!next} label={t('podcast.next')} />
+          </View>
+
+          {/* Sekundaerreihe: Speed schnell, Lautstaerke, Repeat, Sleep */}
+          <View style={styles.controlsRow}>
+            <PressableCard onPress={cycleSpeed} type="backgroundElement" style={styles.pill}>
+              <IconSymbol name="speedometer" size={16} color={colors.accent} />
+              <ThemedText type="smallBold" themeColor="accent">
+                {speed}×
+              </ThemedText>
+            </PressableCard>
+            <Pressable
+              onPress={() => setRepeat((r) => !r)}
+              accessibilityRole="button"
+              accessibilityLabel={t('podcast.repeat')}
+              hitSlop={8}
+              style={styles.iconToggle}>
+              <IconSymbol name="repeat" size={20} color={repeat ? colors.accent : colors.textSecondary} />
+            </Pressable>
+            <Pressable
+              onPress={() => setShowSettings(true)}
+              accessibilityRole="button"
+              accessibilityLabel={t('podcast.sleepTimer')}
+              hitSlop={8}
+              style={styles.iconToggle}>
+              <IconSymbol name="moon" size={19} color={sleep != null ? colors.accent : colors.textSecondary} />
+            </Pressable>
+            <View style={styles.volumeBlock}>
+              <IconSymbol
+                name={volume === 0 ? 'volume-mute' : volume < 0.5 ? 'volume-low' : 'volume-high'}
+                size={18}
+                color={colors.textSecondary}
+              />
+              <View style={styles.volumeSlider}>
+                <Slider value={volume} accessibilityLabel={t('podcast.volume')} onChange={setVolume} onCommit={setVolume} />
+              </View>
+            </View>
+          </View>
+
+          {/* Transkript */}
+          <PressableCard onPress={() => setShowTranscript((s) => !s)} type="backgroundElement" style={styles.transcriptToggle}>
+            <IconSymbol name="document-text" size={18} color={colors.accent} />
+            <ThemedText type="smallBold" themeColor="accent" style={styles.flex}>
+              {showTranscript ? t('podcast.hideTranscript') : t('podcast.showTranscript')}
+            </ThemedText>
+            <IconSymbol name={showTranscript ? 'chevron-up' : 'chevron-down'} size={16} color={colors.textSecondary} />
+          </PressableCard>
+
+          {showTranscript && (
+            <Transcript segments={episode.transcript} positionMs={position * 1000} active={isThisLoaded && status.playing} />
+          )}
+        </ScrollView>
+      </SafeAreaView>
+
+      <SettingsSheet
+        visible={showSettings}
+        onClose={() => setShowSettings(false)}
+        speed={speed}
+        onSpeed={applySpeed}
+        sleep={sleep}
+        onSleep={setSleep}
+        repeat={repeat}
+        onRepeat={setRepeat}
+        autoplay={autoplay}
+        onAutoplay={setAutoplay}
+      />
+    </ThemedView>
+  );
+}
+
+function CircleButton({
+  icon,
+  size,
+  onPress,
+  disabled,
+  label,
+}: {
+  icon: IconName;
+  size: number;
+  onPress: () => void;
+  disabled?: boolean;
+  label?: string;
+}) {
+  const scheme = useResolvedScheme();
+  const colors = Colors[scheme];
+  return (
+    <Pressable
+      onPress={onPress}
+      disabled={disabled}
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      hitSlop={8}
+      style={[styles.circleBtn, disabled && styles.circleBtnDisabled]}>
+      <IconSymbol name={icon} size={size} color={disabled ? colors.textSecondary : colors.text} />
+    </Pressable>
+  );
+}
+
+function SettingsSheet({
+  visible,
+  onClose,
+  speed,
+  onSpeed,
+  sleep,
+  onSleep,
+  repeat,
+  onRepeat,
+  autoplay,
+  onAutoplay,
+}: {
+  visible: boolean;
+  onClose: () => void;
+  speed: number;
+  onSpeed: (s: number) => void;
+  sleep: number | 'episode' | null;
+  onSleep: (s: number | 'episode' | null) => void;
+  repeat: boolean;
+  onRepeat: (r: boolean) => void;
+  autoplay: boolean;
+  onAutoplay: (a: boolean) => void;
+}) {
+  const { t } = useTranslation();
+  const scheme = useResolvedScheme();
+  const colors = Colors[scheme];
+
+  return (
+    <Modal visible={visible} transparent animationType="slide" onRequestClose={onClose}>
+      <Pressable style={styles.backdrop} onPress={onClose} />
+      <ThemedView type="backgroundElement" style={styles.sheet}>
+        <View style={styles.sheetHandle} />
+        <ScrollView contentContainerStyle={styles.sheetContent} showsVerticalScrollIndicator={false}>
+          <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sheetLabel}>
+            {t('podcast.speed')}
+          </ThemedText>
+          <View style={styles.chipRow}>
+            {SPEEDS.map((s) => (
+              <Chip key={s} active={speed === s} label={`${s}×`} onPress={() => onSpeed(s)} />
+            ))}
+          </View>
+
+          <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sheetLabel}>
+            {t('podcast.sleepTimer')}
+          </ThemedText>
+          <View style={styles.chipRow}>
+            <Chip active={sleep == null} label={t('podcast.off')} onPress={() => onSleep(null)} />
+            {SLEEP_OPTIONS.map((s) => (
+              <Chip
+                key={String(s)}
+                active={sleep === s}
+                label={s === 'episode' ? t('podcast.endOfEpisode') : `${s} min`}
+                onPress={() => onSleep(s)}
+              />
+            ))}
+          </View>
+
+          <ToggleRow icon="repeat" label={t('podcast.repeat')} value={repeat} onToggle={() => onRepeat(!repeat)} />
+          <ToggleRow
+            icon="play-forward-circle"
+            label={t('podcast.autoplay')}
+            value={autoplay}
+            onToggle={() => onAutoplay(!autoplay)}
+          />
+
+          <Pressable onPress={onClose} style={[styles.doneBtn, { backgroundColor: colors.accent }]}>
+            <ThemedText type="smallBold" style={{ color: colors.background }}>
+              {t('common.done')}
+            </ThemedText>
+          </Pressable>
+        </ScrollView>
+      </ThemedView>
+    </Modal>
+  );
+}
+
+function Chip({ active, label, onPress }: { active: boolean; label: string; onPress: () => void }) {
+  const scheme = useResolvedScheme();
+  const colors = Colors[scheme];
+  return (
+    <Pressable
+      onPress={onPress}
+      style={[
+        styles.chip,
+        { backgroundColor: active ? colors.accent : colors.backgroundSelected },
+      ]}>
+      <ThemedText type="small" style={{ color: active ? colors.background : colors.text }}>
+        {label}
+      </ThemedText>
+    </Pressable>
+  );
+}
+
+function ToggleRow({
+  icon,
+  label,
+  value,
+  onToggle,
+}: {
+  icon: IconName;
+  label: string;
+  value: boolean;
+  onToggle: () => void;
+}) {
+  const scheme = useResolvedScheme();
+  const colors = Colors[scheme];
+  return (
+    <Pressable onPress={onToggle} style={styles.toggleRow} accessibilityRole="switch" accessibilityState={{ checked: value }}>
+      <IconSymbol name={icon} size={20} color={value ? colors.accent : colors.textSecondary} />
+      <ThemedText type="default" style={styles.flex}>
+        {label}
+      </ThemedText>
+      <View
+        style={[
+          styles.switchTrack,
+          { backgroundColor: value ? colors.accent : colors.backgroundSelected },
+        ]}>
+        <View style={[styles.switchThumb, { backgroundColor: colors.background, alignSelf: value ? 'flex-end' : 'flex-start' }]} />
+      </View>
+    </Pressable>
+  );
+}
+
+/** Mitlese-Transkript mit synchronem Highlight + Autoscroll (bei Zeitmarken). */
+function Transcript({
+  segments,
+  positionMs,
+  active,
+}: {
+  segments: TranscriptSegment[];
+  positionMs: number;
+  active: boolean;
+}) {
+  const scheme = useResolvedScheme();
+  const colors = Colors[scheme];
+  const hasTimings = segments.some((s) => typeof s.start_ms === 'number');
+  const activeIndex =
+    hasTimings && active
+      ? segments.findIndex(
+          (s) =>
+            typeof s.start_ms === 'number' &&
+            positionMs >= s.start_ms &&
+            (s.end_ms == null || positionMs < s.end_ms),
+        )
+      : -1;
+
+  const scrollRef = useRef<ScrollView>(null);
+  const offsetsRef = useRef<number[]>([]);
+  const lastScrolled = useRef(-1);
+
+  useEffect(() => {
+    if (activeIndex >= 0 && activeIndex !== lastScrolled.current) {
+      lastScrolled.current = activeIndex;
+      const y = offsetsRef.current[activeIndex];
+      if (typeof y === 'number') scrollRef.current?.scrollTo({ y: Math.max(0, y - 70), animated: true });
+    }
+  }, [activeIndex]);
+
+  return (
+    <ScrollView ref={scrollRef} style={styles.transcript} nestedScrollEnabled showsVerticalScrollIndicator={false}>
+      {segments.map((seg, i) => {
+        const isActive = i === activeIndex;
+        if (seg.type === 'ar') {
+          return (
+            <ThemedText
+              key={i}
+              onLayout={(e) => (offsetsRef.current[i] = e.nativeEvent.layout.y)}
+              style={[styles.arSeg, { fontFamily: ArabicFont, color: isActive ? colors.accent : colors.text }]}>
+              {seg.text}
+            </ThemedText>
+          );
+        }
+        return (
+          <ThemedText
+            key={i}
+            type="default"
+            onLayout={(e) => (offsetsRef.current[i] = e.nativeEvent.layout.y)}
+            themeColor={isActive ? 'accent' : 'text'}
+            style={[styles.deSeg, isActive && styles.activeSeg]}>
+            {seg.text}
+          </ThemedText>
+        );
+      })}
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1 },
+  bgImage: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, width: '100%', height: '100%' },
+  bgOverlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 },
+  safeArea: { flex: 1, paddingTop: Spacing.two + BackChipInset },
+  center: { alignItems: 'center', justifyContent: 'center' },
+  topBar: { flexDirection: 'row', justifyContent: 'flex-end', paddingHorizontal: Spacing.four },
+  settingsBtn: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' },
+  scroll: {
+    paddingHorizontal: Spacing.four,
+    paddingBottom: Spacing.six,
+    alignSelf: 'center',
+    width: '100%',
+    maxWidth: MaxContentWidth,
+    alignItems: 'center',
+  },
+  cover: { width: 260, height: 260, borderRadius: 28, marginTop: Spacing.one },
+  coverFallback: { alignItems: 'center', justifyContent: 'center' },
+  epNo: { marginTop: Spacing.four, textTransform: 'uppercase', letterSpacing: 1 },
+  title: { textAlign: 'center', marginTop: Spacing.one },
+  desc: { textAlign: 'center', marginTop: Spacing.two, paddingHorizontal: Spacing.two, lineHeight: 20 },
+  scrubBlock: { width: '100%', marginTop: Spacing.four },
+  timeRow: { flexDirection: 'row', justifyContent: 'space-between', marginTop: -Spacing.one },
+  transport: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: Spacing.three, marginTop: Spacing.two },
+  circleBtn: { width: 48, height: 48, borderRadius: 24, alignItems: 'center', justifyContent: 'center' },
+  circleBtnDisabled: { opacity: 0.35 },
+  playBtn: { width: 72, height: 72, borderRadius: 36, alignItems: 'center', justifyContent: 'center' },
+  controlsRow: { flexDirection: 'row', alignItems: 'center', gap: Spacing.three, marginTop: Spacing.four, width: '100%' },
+  pill: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one, paddingVertical: Spacing.two, paddingHorizontal: Spacing.three },
+  iconToggle: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' },
+  volumeBlock: { flex: 1, flexDirection: 'row', alignItems: 'center', gap: Spacing.two },
+  volumeSlider: { flex: 1 },
+  transcriptToggle: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two, padding: Spacing.three, marginTop: Spacing.four, width: '100%' },
+  flex: { flex: 1 },
+  transcript: { maxHeight: 400, width: '100%', marginTop: Spacing.two },
+  deSeg: { marginBottom: Spacing.two, lineHeight: 24 },
+  arSeg: { marginBottom: Spacing.two, fontSize: 24, lineHeight: 44, textAlign: 'right', writingDirection: 'rtl' },
+  activeSeg: { fontWeight: '700' },
+  // Settings-Sheet
+  backdrop: { flex: 1, backgroundColor: 'rgba(0,0,0,0.5)' },
+  sheet: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    maxHeight: '80%',
+    paddingBottom: Spacing.five,
+  },
+  sheetHandle: { alignSelf: 'center', width: 40, height: 4, borderRadius: 2, backgroundColor: 'rgba(128,128,128,0.4)', marginTop: Spacing.two },
+  sheetContent: { padding: Spacing.four, gap: Spacing.two, alignSelf: 'center', width: '100%', maxWidth: MaxContentWidth },
+  sheetLabel: { textTransform: 'uppercase', letterSpacing: 1, marginTop: Spacing.two },
+  chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.two },
+  chip: { paddingVertical: Spacing.two, paddingHorizontal: Spacing.three, borderRadius: 999, minWidth: 52, alignItems: 'center' },
+  toggleRow: { flexDirection: 'row', alignItems: 'center', gap: Spacing.three, paddingVertical: Spacing.three, marginTop: Spacing.one },
+  switchTrack: { width: 44, height: 26, borderRadius: 13, padding: 3, justifyContent: 'center' },
+  switchThumb: { width: 20, height: 20, borderRadius: 10 },
+  doneBtn: { marginTop: Spacing.four, paddingVertical: Spacing.three, borderRadius: 999, alignItems: 'center' },
+});

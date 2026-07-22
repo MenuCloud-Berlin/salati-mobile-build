@@ -1,0 +1,3084 @@
+{
+  "lessons": [
+    {
+      "id": "dialects-01",
+      "kind": "vocab",
+      "title": {
+        "de": "Maghrebinisch (Darija) - Marokko, Algerien, Tunesien",
+        "en": "Maghrebi (Darija) - Morocco, Algeria, Tunisia",
+        "tr": "Mağrip lehçesi (Darija) - Fas, Cezayir, Tunus",
+        "ar": "الدارجة المغاربية - المغرب والجزائر وتونس",
+        "es": "Magrebí (Darija) - Marruecos, Argelia, Túnez",
+        "fr": "Maghrébin (Darija) - Maroc, Algérie, Tunisie"
+      },
+      "vocabWords": [
+        {
+          "arabic": "لاباس؟",
+          "translit": "labas?",
+          "meaning": {
+            "de": "Wie geht's? (wörtlich „kein Schaden“ - die häufigste Grußfrage in Darija)",
+            "en": "How are you? (literally “no harm” - the most common greeting question in Darija)",
+            "tr": "Nasılsın? (kelimenin tam anlamıyla “zarar yok” - Darija'da en yaygın selamlama sorusu)",
+            "ar": "كيف حالك؟ (حرفيًا «لا بأس» - أشيع سؤال تحية في الدارجة)",
+            "es": "¿Cómo estás? (literalmente «sin daño» - la pregunta de saludo más común en darija)",
+            "fr": "Comment ça va ? (littéralement « pas de mal » - la question de salutation la plus courante en darija)"
+          }
+        },
+        {
+          "arabic": "بخير",
+          "translit": "bikhir",
+          "meaning": {
+            "de": "Gut, mir geht's gut (übliche Antwort auf labas?)",
+            "en": "Good, I'm fine (the usual reply to labas?)",
+            "tr": "İyiyim (labas?'a verilen yaygın cevap)",
+            "ar": "بخير، أنا بخير (الرد المعتاد على لاباس؟)",
+            "es": "Bien, estoy bien (la respuesta habitual a labas?)",
+            "fr": "Bien, ça va (la réponse habituelle à labas ?)"
+          }
+        },
+        {
+          "arabic": "بسلامة",
+          "translit": "bslama",
+          "meaning": {
+            "de": "Auf Wiedersehen (wörtlich „geh in Frieden“)",
+            "en": "Goodbye (literally “go in peace”)",
+            "tr": "Hoşça kal (kelimenin tam anlamıyla “selametle git”)",
+            "ar": "إلى اللقاء (حرفيًا «اذهب بسلام»)",
+            "es": "Adiós (literalmente «ve en paz»)",
+            "fr": "Au revoir (littéralement « va en paix »)"
+          }
+        },
+        {
+          "arabic": "شكرا بزاف",
+          "translit": "shukran bezzaf",
+          "meaning": {
+            "de": "Vielen Dank (bezzaf = „sehr/viel“, ein typisches Darija-Wort)",
+            "en": "Thank you very much (bezzaf = “very/a lot”, a typical Darija word)",
+            "tr": "Çok teşekkürler (bezzaf = “çok”, tipik bir Darija kelimesi)",
+            "ar": "شكرًا جزيلًا (بزاف تعني «كثيرًا»، وهي كلمة دارجية نموذجية)",
+            "es": "Muchas gracias (bezzaf = «muy/mucho», una palabra típica del darija)",
+            "fr": "Merci beaucoup (bezzaf = « très/beaucoup », un mot typique du darija)"
+          }
+        },
+        {
+          "arabic": "مزيان",
+          "translit": "mezyan",
+          "meaning": {
+            "de": "Gut, schön (allgemeines Lob-/Zustimmungswort)",
+            "en": "Good, nice (a general word of praise or agreement)",
+            "tr": "İyi, güzel (genel bir övgü/onay kelimesi)",
+            "ar": "جيد، حسن (كلمة استحسان أو موافقة عامة)",
+            "es": "Bueno, bonito (una palabra general de elogio o acuerdo)",
+            "fr": "Bon, joli (un mot général d'éloge ou d'accord)"
+          }
+        },
+        {
+          "arabic": "منين نتا؟",
+          "translit": "mnin nta?",
+          "meaning": {
+            "de": "Woher kommst du? (im Hocharabisch: min ayna anta - Darija verkürzt und verschleift Vokale stark)",
+            "en": "Where are you from? (in MSA: min ayna anta - Darija strongly shortens and elides vowels)",
+            "tr": "Nerelisin? (Fasih Arapçada: min ayna anta - Darija ünlüleri güçlü şekilde kısaltır ve düşürür)",
+            "ar": "من أين أنت؟ (بالفصحى: من أين أنت - تختصر الدارجة الحروف الصوتية بشدة)",
+            "es": "¿De dónde eres? (en árabe estándar: min ayna anta - el darija acorta y elide fuertemente las vocales)",
+            "fr": "D'où viens-tu ? (en arabe standard : min ayna anta - le darija raccourcit et élide fortement les voyelles)"
+          }
+        },
+        {
+          "arabic": "واخا",
+          "translit": "wakha",
+          "meaning": {
+            "de": "Okay, einverstanden",
+            "en": "Okay, agreed",
+            "tr": "Tamam, kabul",
+            "ar": "حسنًا، موافق",
+            "es": "Vale, de acuerdo",
+            "fr": "D'accord, entendu"
+          }
+        },
+        {
+          "arabic": "بزاف",
+          "translit": "bezzaf",
+          "meaning": {
+            "de": "Viel, sehr (eines der bekanntesten Darija-Wörter überhaupt)",
+            "en": "A lot, very (one of the most well-known Darija words of all)",
+            "tr": "Çok (Darija'nın en tanınmış kelimelerinden biri)",
+            "ar": "كثيرًا، جدًا (من أشهر كلمات الدارجة على الإطلاق)",
+            "es": "Mucho, muy (una de las palabras más conocidas del darija)",
+            "fr": "Beaucoup, très (l'un des mots les plus connus du darija)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-maghrebi-numbers",
+      "kind": "vocab",
+      "title": {
+        "de": "Maghrebinisch - Zahlen & Uhrzeit-Grundlagen",
+        "en": "Maghrebi - Numbers & Basic Time Expressions",
+        "tr": "Mağrip lehçesi - Sayılar ve Temel Zaman İfadeleri",
+        "ar": "الدارجة المغاربية - الأرقام وأساسيات الوقت",
+        "es": "Magrebí - Números y expresiones básicas de tiempo",
+        "fr": "Maghrébin - Nombres et expressions de temps de base"
+      },
+      "vocabWords": [
+        {
+          "arabic": "واحد",
+          "translit": "wahed",
+          "meaning": {
+            "de": "Eins (1) - die Grundzahl, aus der viele Ableitungen wie „waḥidi“ (allein) entstehen",
+            "en": "One (1) - the base number that many derivations like “waḥidi” (alone) come from",
+            "tr": "Bir (1) - “waḥidi” (yalnız) gibi birçok türevin kaynaklandığı temel sayı",
+            "ar": "واحد (1) - الرقم الأساسي الذي تشتق منه كلمات مثل «وحيدي» (لوحدي)",
+            "es": "Uno (1) - el número base del que derivan palabras como «waḥidi» (solo)",
+            "fr": "Un (1) - le nombre de base dont dérivent des mots comme « waḥidi » (seul)"
+          }
+        },
+        {
+          "arabic": "جوج",
+          "translit": "jouj",
+          "meaning": {
+            "de": "Zwei (2) - im Hocharabisch ithnan, Darija ersetzt es fast immer durch das eigene Wort jouj",
+            "en": "Two (2) - in MSA ithnan, Darija almost always uses its own word jouj instead",
+            "tr": "İki (2) - Fasih Arapçada ithnan, Darija bunun yerine neredeyse her zaman kendi kelimesi jouj’u kullanır",
+            "ar": "اثنان (2) - بالفصحى اثنان، لكن الدارجة تستخدم دائمًا تقريبًا كلمتها الخاصة جوج",
+            "es": "Dos (2) - en árabe estándar ithnan, el darija casi siempre usa su propia palabra jouj",
+            "fr": "Deux (2) - en arabe standard ithnan, le darija utilise presque toujours son propre mot jouj"
+          }
+        },
+        {
+          "arabic": "تلاتة",
+          "translit": "tlata",
+          "meaning": {
+            "de": "Drei (3)",
+            "en": "Three (3)",
+            "tr": "Üç (3)",
+            "ar": "ثلاثة (3)",
+            "es": "Tres (3)",
+            "fr": "Trois (3)"
+          }
+        },
+        {
+          "arabic": "ربعة",
+          "translit": "rab3a",
+          "meaning": {
+            "de": "Vier (4)",
+            "en": "Four (4)",
+            "tr": "Dört (4)",
+            "ar": "أربعة (4)",
+            "es": "Cuatro (4)",
+            "fr": "Quatre (4)"
+          }
+        },
+        {
+          "arabic": "خمسة",
+          "translit": "khamsa",
+          "meaning": {
+            "de": "Fünf (5) - auch als Handzeichen gegen den bösen Blick bekannt (khamsa-Symbol)",
+            "en": "Five (5) - also known as a hand-shaped symbol against the evil eye (the khamsa)",
+            "tr": "Beş (5) - nazara karşı el şeklindeki bir sembol olarak da bilinir (khamsa)",
+            "ar": "خمسة (5) - معروفة أيضًا كرمز على شكل يد ضد العين (الخمسة)",
+            "es": "Cinco (5) - también conocido como símbolo en forma de mano contra el mal de ojo (la khamsa)",
+            "fr": "Cinq (5) - aussi connu comme symbole en forme de main contre le mauvais œil (la khamsa)"
+          }
+        },
+        {
+          "arabic": "عشرة",
+          "translit": "âchra",
+          "meaning": {
+            "de": "Zehn (10)",
+            "en": "Ten (10)",
+            "tr": "On (10)",
+            "ar": "عشرة (10)",
+            "es": "Diez (10)",
+            "fr": "Dix (10)"
+          }
+        },
+        {
+          "arabic": "دابا",
+          "translit": "daba",
+          "meaning": {
+            "de": "Jetzt (im Hocharabisch: al-an - daba ist eines der meistgenutzten Wörter im Darija-Alltag)",
+            "en": "Now (in MSA: al-an - daba is one of the most-used words in everyday Darija)",
+            "tr": "Şimdi (Fasih Arapçada: el-an - daba, günlük Darija’da en çok kullanılan kelimelerden biridir)",
+            "ar": "الآن (بالفصحى: الآن - دابا من أكثر الكلمات استخدامًا في الدارجة اليومية)",
+            "es": "Ahora (en árabe estándar: al-an - daba es una de las palabras más usadas en el darija cotidiano)",
+            "fr": "Maintenant (en arabe standard : al-an - daba est l’un des mots les plus utilisés dans le darija quotidien)"
+          }
+        },
+        {
+          "arabic": "غدا",
+          "translit": "ghedda",
+          "meaning": {
+            "de": "Morgen (der nächste Tag)",
+            "en": "Tomorrow (the next day)",
+            "tr": "Yarın (bir sonraki gün)",
+            "ar": "غدًا (اليوم التالي)",
+            "es": "Mañana (el día siguiente)",
+            "fr": "Demain (le jour suivant)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-maghrebi-questions",
+      "kind": "vocab",
+      "title": {
+        "de": "Maghrebinisch - Fragewörter & Alltagsfragen",
+        "en": "Maghrebi - Question Words & Everyday Questions",
+        "tr": "Mağrip lehçesi - Soru Kelimeleri ve Günlük Sorular",
+        "ar": "الدارجة المغاربية - أدوات الاستفهام والأسئلة اليومية",
+        "es": "Magrebí - Palabras interrogativas y preguntas cotidianas",
+        "fr": "Maghrébin - Mots interrogatifs et questions du quotidien"
+      },
+      "vocabWords": [
+        {
+          "arabic": "فين؟",
+          "translit": "fin?",
+          "meaning": {
+            "de": "Wo? (im Hocharabisch: ayna)",
+            "en": "Where? (in MSA: ayna)",
+            "tr": "Nerede? (Fasih Arapçada: ayna)",
+            "ar": "أين؟ (بالفصحى: أين)",
+            "es": "¿Dónde? (en árabe estándar: ayna)",
+            "fr": "Où ? (en arabe standard : ayna)"
+          }
+        },
+        {
+          "arabic": "فوقاش؟",
+          "translit": "fuqash?",
+          "meaning": {
+            "de": "Wann? (im Hocharabisch: mata)",
+            "en": "When? (in MSA: mata)",
+            "tr": "Ne zaman? (Fasih Arapçada: mata)",
+            "ar": "متى؟ (بالفصحى: متى)",
+            "es": "¿Cuándo? (en árabe estándar: mata)",
+            "fr": "Quand ? (en arabe standard : mata)"
+          }
+        },
+        {
+          "arabic": "علاش؟",
+          "translit": "âlach?",
+          "meaning": {
+            "de": "Warum? (im Hocharabisch: limadha)",
+            "en": "Why? (in MSA: limadha)",
+            "tr": "Neden? (Fasih Arapçada: limadha)",
+            "ar": "لماذا؟ (بالفصحى: لماذا)",
+            "es": "¿Por qué? (en árabe estándar: limadha)",
+            "fr": "Pourquoi ? (en arabe standard : limadha)"
+          }
+        },
+        {
+          "arabic": "كيفاش؟",
+          "translit": "kifach?",
+          "meaning": {
+            "de": "Wie? (im Hocharabisch: kayfa - kifach ist die typische Darija-Verschleifung davon)",
+            "en": "How? (in MSA: kayfa - kifach is the typical Darija slurring of it)",
+            "tr": "Nasıl? (Fasih Arapçada: kayfa - kifach bunun tipik Darija ağız değişimidir)",
+            "ar": "كيف؟ (بالفصحى: كيف - كيفاش هو التحوير الدارجي المعتاد)",
+            "es": "¿Cómo? (en árabe estándar: kayfa - kifach es la típica variación darija de esta palabra)",
+            "fr": "Comment ? (en arabe standard : kayfa - kifach en est la déformation darija typique)"
+          }
+        },
+        {
+          "arabic": "شكون؟",
+          "translit": "chkoun?",
+          "meaning": {
+            "de": "Wer? (im Hocharabisch: man)",
+            "en": "Who? (in MSA: man)",
+            "tr": "Kim? (Fasih Arapçada: man)",
+            "ar": "من؟ (بالفصحى: من)",
+            "es": "¿Quién? (en árabe estándar: man)",
+            "fr": "Qui ? (en arabe standard : man)"
+          }
+        },
+        {
+          "arabic": "أشنو؟",
+          "translit": "achnu?",
+          "meaning": {
+            "de": "Was? (im Hocharabisch: madha - achnu wird oft zu ach verkürzt)",
+            "en": "What? (in MSA: madha - achnu is often shortened to ach)",
+            "tr": "Ne? (Fasih Arapçada: madha - achnu genellikle ach’a kısaltılır)",
+            "ar": "ماذا؟ (بالفصحى: ماذا - كثيرًا ما تُختصر آشنو إلى آش)",
+            "es": "¿Qué? (en árabe estándar: madha - achnu se abrevia a menudo a ach)",
+            "fr": "Quoi ? (en arabe standard : madha - achnu se raccourcit souvent en ach)"
+          }
+        },
+        {
+          "arabic": "بشحال هادا؟",
+          "translit": "bshhal hada?",
+          "meaning": {
+            "de": "Wie viel kostet das? - unverzichtbar beim Feilschen auf dem Souk",
+            "en": "How much does that cost? - essential for bargaining at the souk",
+            "tr": "Bu ne kadar? - çarşıda pazarlık için vazgeçilmez",
+            "ar": "بشحال هذا؟ (كم ثمن هذا؟) - لا غنى عنها للمساومة في السوق",
+            "es": "¿Cuánto cuesta esto? - imprescindible para regatear en el zoco",
+            "fr": "Combien ça coûte ? - indispensable pour marchander au souk"
+          }
+        },
+        {
+          "arabic": "واش؟",
+          "translit": "wach?",
+          "meaning": {
+            "de": "Fragepartikel am Satzanfang für Ja/Nein-Fragen (z. B. „wach nta bkhir?“ = „geht es dir gut?“)",
+            "en": "Question particle placed at the start of a sentence for yes/no questions (e.g. “wach nta bkhir?” = “are you well?”)",
+            "tr": "Evet/hayır sorularında cümle başına gelen soru edatı (örn. “wach nta bkhir?” = “iyi misin?”)",
+            "ar": "أداة استفهام تُوضع في بداية الجملة لأسئلة نعم/لا (مثال: «واش نتا بخير؟» أي «هل أنت بخير؟»)",
+            "es": "Partícula interrogativa al inicio de la frase para preguntas de sí/no (p. ej. «wach nta bkhir?» = «¿estás bien?»)",
+            "fr": "Particule interrogative en début de phrase pour les questions oui/non (ex. « wach nta bkhir ? » = « vas-tu bien ? »)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-maghrebi-family",
+      "kind": "vocab",
+      "title": {
+        "de": "Maghrebinisch - Familie & Beziehungen",
+        "en": "Maghrebi - Family & Relationships",
+        "tr": "Mağrip lehçesi - Aile ve İlişkiler",
+        "ar": "الدارجة المغاربية - العائلة والعلاقات",
+        "es": "Magrebí - Familia y relaciones",
+        "fr": "Maghrébin - Famille et relations"
+      },
+      "vocabWords": [
+        {
+          "arabic": "بابا",
+          "translit": "baba",
+          "meaning": {
+            "de": "Papa, Vater",
+            "en": "Dad, father",
+            "tr": "Baba",
+            "ar": "بابا (الأب)",
+            "es": "Papá, padre",
+            "fr": "Papa, père"
+          }
+        },
+        {
+          "arabic": "ماما",
+          "translit": "mmi",
+          "meaning": {
+            "de": "Mama, Mutter",
+            "en": "Mom, mother",
+            "tr": "Anne",
+            "ar": "ماما (الأم)",
+            "es": "Mamá, madre",
+            "fr": "Maman, mère"
+          }
+        },
+        {
+          "arabic": "خويا",
+          "translit": "khouya",
+          "meaning": {
+            "de": "Mein Bruder",
+            "en": "My brother",
+            "tr": "Kardeşim (erkek)",
+            "ar": "أخويا (أخي)",
+            "es": "Mi hermano",
+            "fr": "Mon frère"
+          }
+        },
+        {
+          "arabic": "ختي",
+          "translit": "khti",
+          "meaning": {
+            "de": "Meine Schwester",
+            "en": "My sister",
+            "tr": "Kız kardeşim",
+            "ar": "ختي (أختي)",
+            "es": "Mi hermana",
+            "fr": "Ma sœur"
+          }
+        },
+        {
+          "arabic": "ولدي",
+          "translit": "weldi",
+          "meaning": {
+            "de": "Mein Sohn (auch allgemein liebevoll für „mein Kind“ verwendet)",
+            "en": "My son (also used affectionately in general for “my child”)",
+            "tr": "Oğlum (genel olarak sevgiyle “çocuğum” anlamında da kullanılır)",
+            "ar": "ولدي (ابني - تُستخدم أيضًا بمحبة بمعنى «يا ولدي» بشكل عام)",
+            "es": "Mi hijo (también se usa cariñosamente en general como «mi niño»)",
+            "fr": "Mon fils (aussi utilisé affectueusement de façon générale pour « mon enfant »)"
+          }
+        },
+        {
+          "arabic": "بنتي",
+          "translit": "bnti",
+          "meaning": {
+            "de": "Meine Tochter",
+            "en": "My daughter",
+            "tr": "Kızım",
+            "ar": "بنتي (ابنتي)",
+            "es": "Mi hija",
+            "fr": "Ma fille"
+          }
+        },
+        {
+          "arabic": "جدي",
+          "translit": "jeddi",
+          "meaning": {
+            "de": "Mein Großvater",
+            "en": "My grandfather",
+            "tr": "Dedem",
+            "ar": "جدي",
+            "es": "Mi abuelo",
+            "fr": "Mon grand-père"
+          }
+        },
+        {
+          "arabic": "جدتي",
+          "translit": "jedati",
+          "meaning": {
+            "de": "Meine Großmutter (in manchen Regionen auch „lalla“ als respektvolle Anrede)",
+            "en": "My grandmother (in some regions also “lalla” as a respectful form of address)",
+            "tr": "Büyükannem (bazı bölgelerde saygılı hitap olarak “lalla” da kullanılır)",
+            "ar": "جدتي (تُستخدم في بعض المناطق أيضًا «لالة» كنداء احترام)",
+            "es": "Mi abuela (en algunas regiones también «lalla» como forma respetuosa de dirigirse a ella)",
+            "fr": "Ma grand-mère (dans certaines régions aussi « lalla » comme appellation respectueuse)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-maghrebi-food",
+      "kind": "vocab",
+      "title": {
+        "de": "Maghrebinisch - Essen, Trinken & Markt",
+        "en": "Maghrebi - Food, Drink & Market",
+        "tr": "Mağrip lehçesi - Yiyecek, İçecek ve Çarşı",
+        "ar": "الدارجة المغاربية - الطعام والشراب والسوق",
+        "es": "Magrebí - Comida, bebida y mercado",
+        "fr": "Maghrébin - Nourriture, boisson et marché"
+      },
+      "vocabWords": [
+        {
+          "arabic": "خبز",
+          "translit": "khobz",
+          "meaning": {
+            "de": "Brot",
+            "en": "Bread",
+            "tr": "Ekmek",
+            "ar": "خبز",
+            "es": "Pan",
+            "fr": "Pain"
+          }
+        },
+        {
+          "arabic": "أتاي",
+          "translit": "atay",
+          "meaning": {
+            "de": "Minztee - Nationalgetränk Marokkos, wird traditionell mit viel Zucker und aus großer Höhe eingeschenkt",
+            "en": "Mint tea - Morocco’s national drink, traditionally poured with lots of sugar and from a height",
+            "tr": "Nane çayı - Fas’ın milli içeceği, geleneksel olarak bol şekerle ve yüksekten dökülerek servis edilir",
+            "ar": "أتاي (شاي بالنعناع) - المشروب الوطني للمغرب، يُقدَّم تقليديًا بسكر كثير ويُصَبّ من ارتفاع",
+            "es": "Té de menta - la bebida nacional de Marruecos, tradicionalmente servido con mucho azúcar y vertido desde lo alto",
+            "fr": "Thé à la menthe - la boisson nationale du Maroc, traditionnellement servi très sucré et versé de haut"
+          }
+        },
+        {
+          "arabic": "حليب",
+          "translit": "hlib",
+          "meaning": {
+            "de": "Milch",
+            "en": "Milk",
+            "tr": "Süt",
+            "ar": "حليب",
+            "es": "Leche",
+            "fr": "Lait"
+          }
+        },
+        {
+          "arabic": "ما",
+          "translit": "ma",
+          "meaning": {
+            "de": "Wasser (im Hocharabisch: ma' - fast identisch)",
+            "en": "Water (in MSA: ma' - nearly identical)",
+            "tr": "Su (Fasih Arapçada: ma' - neredeyse aynı)",
+            "ar": "ماء (بالفصحى: ماء - شبه مطابقة)",
+            "es": "Agua (en árabe estándar: ma' - casi idéntico)",
+            "fr": "Eau (en arabe standard : ma' - presque identique)"
+          }
+        },
+        {
+          "arabic": "سوق",
+          "translit": "souq",
+          "meaning": {
+            "de": "Markt, Basar",
+            "en": "Market, bazaar",
+            "tr": "Çarşı, pazar",
+            "ar": "سوق",
+            "es": "Mercado, zoco",
+            "fr": "Marché, souk"
+          }
+        },
+        {
+          "arabic": "غالي",
+          "translit": "ghali",
+          "meaning": {
+            "de": "Teuer",
+            "en": "Expensive",
+            "tr": "Pahalı",
+            "ar": "غالي",
+            "es": "Caro",
+            "fr": "Cher"
+          }
+        },
+        {
+          "arabic": "رخيص",
+          "translit": "rkhis",
+          "meaning": {
+            "de": "Billig, günstig",
+            "en": "Cheap, inexpensive",
+            "tr": "Ucuz",
+            "ar": "رخيص",
+            "es": "Barato",
+            "fr": "Bon marché"
+          }
+        },
+        {
+          "arabic": "بغيت",
+          "translit": "bghit",
+          "meaning": {
+            "de": "Ich möchte, ich will (Grundform des Verbs „wollen“, sehr häufig genutzt)",
+            "en": "I want, I would like (base form of the verb “to want”, used very often)",
+            "tr": "İstiyorum (“istemek” fiilinin çok sık kullanılan temel şekli)",
+            "ar": "بغيت (أريد) - صيغة أساسية لفعل «أراد»، تُستخدم كثيرًا",
+            "es": "Quiero, me gustaría (forma básica del verbo «querer», muy usada)",
+            "fr": "Je veux, je voudrais (forme de base du verbe « vouloir », très utilisée)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-maghrebi-feelings",
+      "kind": "vocab",
+      "title": {
+        "de": "Maghrebinisch - Gefühle, Ja & Nein",
+        "en": "Maghrebi - Feelings, Yes & No",
+        "tr": "Mağrip lehçesi - Duygular, Evet ve Hayır",
+        "ar": "الدارجة المغاربية - المشاعر، نعم ولا",
+        "es": "Magrebí - Sentimientos, sí y no",
+        "fr": "Maghrébin - Sentiments, oui et non"
+      },
+      "vocabWords": [
+        {
+          "arabic": "إيه",
+          "translit": "iyeh",
+          "meaning": {
+            "de": "Ja (informelle Alltagsform)",
+            "en": "Yes (informal everyday form)",
+            "tr": "Evet (günlük gayriresmî biçim)",
+            "ar": "إيه (نعم - صيغة يومية غير رسمية)",
+            "es": "Sí (forma informal cotidiana)",
+            "fr": "Oui (forme informelle du quotidien)"
+          }
+        },
+        {
+          "arabic": "لا",
+          "translit": "la",
+          "meaning": {
+            "de": "Nein",
+            "en": "No",
+            "tr": "Hayır",
+            "ar": "لا",
+            "es": "No",
+            "fr": "Non"
+          }
+        },
+        {
+          "arabic": "فرحان",
+          "translit": "farhan",
+          "meaning": {
+            "de": "Glücklich, froh",
+            "en": "Happy, glad",
+            "tr": "Mutlu",
+            "ar": "فرحان",
+            "es": "Feliz, contento",
+            "fr": "Heureux, content"
+          }
+        },
+        {
+          "arabic": "زعفان",
+          "translit": "za3fan",
+          "meaning": {
+            "de": "Wütend, verärgert",
+            "en": "Angry, upset",
+            "tr": "Kızgın, öfkeli",
+            "ar": "زعفان (غاضب)",
+            "es": "Enfadado, molesto",
+            "fr": "En colère, contrarié"
+          }
+        },
+        {
+          "arabic": "خايف",
+          "translit": "khayef",
+          "meaning": {
+            "de": "Ängstlich, hat Angst",
+            "en": "Afraid, scared",
+            "tr": "Korkmuş",
+            "ar": "خايف",
+            "es": "Asustado, tiene miedo",
+            "fr": "Effrayé, a peur"
+          }
+        },
+        {
+          "arabic": "تعبان",
+          "translit": "te3ban",
+          "meaning": {
+            "de": "Müde, erschöpft",
+            "en": "Tired, exhausted",
+            "tr": "Yorgun",
+            "ar": "تعبان",
+            "es": "Cansado, agotado",
+            "fr": "Fatigué, épuisé"
+          }
+        },
+        {
+          "arabic": "مريض",
+          "translit": "mrid",
+          "meaning": {
+            "de": "Krank",
+            "en": "Sick, ill",
+            "tr": "Hasta",
+            "ar": "مريض",
+            "es": "Enfermo",
+            "fr": "Malade"
+          }
+        },
+        {
+          "arabic": "الحمد لله",
+          "translit": "lhamdolillah",
+          "meaning": {
+            "de": "Gott sei Dank, alles Lob gebührt Gott - die häufigste Antwort auf „wie geht’s?“, egal wie es tatsächlich geht",
+            "en": "Thank God, all praise is due to God - the most common reply to “how are you?”, regardless of how things actually are",
+            "tr": "Allah’a şükür, hamd Allah’a mahsustur - durum ne olursa olsun “nasılsın?”a verilen en yaygın cevap",
+            "ar": "الحمد لله - الرد الأكثر شيوعًا على «كيف حالك؟» مهما كانت الحال",
+            "es": "Gracias a Dios, toda alabanza es de Dios - la respuesta más común a «¿cómo estás?», sea cual sea la situación real",
+            "fr": "Dieu merci, toute louange est due à Dieu - la réponse la plus courante à « comment ça va ? », quelle que soit la situation réelle"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-maghrebi-idioms",
+      "kind": "vocab",
+      "title": {
+        "de": "Maghrebinisch - Redewendungen & typische Ausdrücke",
+        "en": "Maghrebi - Expressions & Characteristic Phrases",
+        "tr": "Mağrip lehçesi - Deyimler ve Karakteristik İfadeler",
+        "ar": "الدارجة المغاربية - التعابير والعبارات المميزة",
+        "es": "Magrebí - Expresiones y frases características",
+        "fr": "Maghrébin - Expressions et tournures caractéristiques"
+      },
+      "vocabWords": [
+        {
+          "arabic": "صافي",
+          "translit": "safi",
+          "meaning": {
+            "de": "Genug, fertig, Schluss - ein Allzweckwort, das ein Gespräch, eine Handlung oder eine Diskussion beendet",
+            "en": "Enough, done, that’s it - an all-purpose word that ends a conversation, an action, or a discussion",
+            "tr": "Yeter, bitti, tamam - bir konuşmayı, eylemi veya tartışmayı sonlandıran çok amaçlı bir kelime",
+            "ar": "صافي (يكفي، انتهى) - كلمة متعددة الاستخدامات تُنهي حديثًا أو فعلًا أو نقاشًا",
+            "es": "Suficiente, ya está, se acabó - una palabra multiuso que cierra una conversación, una acción o una discusión",
+            "fr": "Ça suffit, c’est fini, terminé - un mot passe-partout qui clôt une conversation, une action ou une discussion"
+          }
+        },
+        {
+          "arabic": "دابا دابا",
+          "translit": "daba daba",
+          "meaning": {
+            "de": "Sofort, genau jetzt (Verdopplung von daba = jetzt, verstärkt die Dringlichkeit)",
+            "en": "Right now, immediately (reduplication of daba = now, intensifies the urgency)",
+            "tr": "Hemen şimdi (daba = şimdi kelimesinin tekrarı, aciliyeti vurgular)",
+            "ar": "دابا دابا (فورًا، الآن تمامًا) - تكرار «دابا» (الآن) لتعزيز الإلحاح",
+            "es": "Ahora mismo, de inmediato (reduplicación de daba = ahora, refuerza la urgencia)",
+            "fr": "Tout de suite, immédiatement (redoublement de daba = maintenant, renforce l’urgence)"
+          }
+        },
+        {
+          "arabic": "نشاء الله",
+          "translit": "nchallah",
+          "meaning": {
+            "de": "So Gott will, hoffentlich (im Hocharabisch: in sha'a Allah)",
+            "en": "God willing, hopefully (in MSA: in sha'a Allah)",
+            "tr": "Allah izin verirse, inşallah (Fasih Arapçada: in sha'a Allah)",
+            "ar": "نشاء الله (بالفصحى: إن شاء الله)",
+            "es": "Si Dios quiere, con suerte (en árabe estándar: in sha'a Allah)",
+            "fr": "Si Dieu le veut, avec un peu de chance (en arabe standard : in sha'a Allah)"
+          }
+        },
+        {
+          "arabic": "كاين بزاف",
+          "translit": "kayn bezzaf",
+          "meaning": {
+            "de": "Es gibt reichlich, davon gibt es viel (kayn = „es gibt“ + bezzaf = „viel“, eines der bekanntesten Darija-Wörter)",
+            "en": "There’s plenty, there’s a lot of it (kayn = “there is” + bezzaf = “a lot”, one of the best-known Darija words)",
+            "tr": "Bol miktarda var (kayn = “var” + bezzaf = “çok”, Darija’nın en tanınmış kelimelerinden biri)",
+            "ar": "كاين بزاف (يوجد الكثير) - كاين تعني «يوجد» وبزاف «كثيرًا»، من أشهر كلمات الدارجة",
+            "es": "Hay de sobra, hay mucho (kayn = «hay» + bezzaf = «mucho», una de las palabras más conocidas del darija)",
+            "fr": "Il y en a beaucoup, il y en a plein (kayn = « il y a » + bezzaf = « beaucoup », l’un des mots les plus connus du darija)"
+          }
+        },
+        {
+          "arabic": "الله يهنيك",
+          "translit": "allah ihennik",
+          "meaning": {
+            "de": "Möge Gott dir Wohlergehen schenken - ein häufiger Segenswunsch, z. B. als Dank oder Abschiedsgruß",
+            "en": "May God grant you well-being - a common blessing, e.g. as thanks or a farewell wish",
+            "tr": "Allah sana huzur versin - genellikle teşekkür veya veda dileği olarak kullanılan yaygın bir dua",
+            "ar": "الله يهنيك - دعاء شائع، يُقال مثلًا كشكر أو عند الوداع",
+            "es": "Que Dios te conceda bienestar - una bendición común, p. ej. como agradecimiento o despedida",
+            "fr": "Que Dieu t’accorde le bien-être - une bénédiction courante, dite par exemple en remerciement ou en guise d’adieu"
+          }
+        },
+        {
+          "arabic": "ما كاينش مشكل",
+          "translit": "ma kaynch mushkil",
+          "meaning": {
+            "de": "Kein Problem, es gibt kein Problem (Verneinung von kayn = „es gibt“)",
+            "en": "No problem, there’s no problem (negation of kayn = “there is”)",
+            "tr": "Sorun yok, hiç sorun yok (kayn = “var” kelimesinin olumsuzu)",
+            "ar": "ما كاينش مشكل (لا توجد مشكلة) - نفي كاين (يوجد)",
+            "es": "No hay problema, no existe ningún problema (negación de kayn = «hay»)",
+            "fr": "Pas de problème, il n’y a aucun problème (négation de kayn = « il y a »)"
+          }
+        },
+        {
+          "arabic": "بحال بحال",
+          "translit": "bhal bhal",
+          "meaning": {
+            "de": "Genau gleich, das Gleiche (wörtliche Verdopplung von bhal = „wie“)",
+            "en": "Exactly the same, the same thing (literal reduplication of bhal = “like”)",
+            "tr": "Tıpatıp aynı (bhal = “gibi” kelimesinin tekrarı)",
+            "ar": "بحال بحال (نفس الشيء تمامًا) - تكرار حرفي لكلمة بحال (مثل)",
+            "es": "Exactamente igual, lo mismo (reduplicación literal de bhal = «como»)",
+            "fr": "Exactement pareil, la même chose (redoublement littéral de bhal = « comme »)"
+          }
+        },
+        {
+          "arabic": "آي واه",
+          "translit": "ay wah",
+          "meaning": {
+            "de": "Na klar, aber sicher (verstärkte Zustimmung, umgangssprachlicher als ein einfaches „ja“)",
+            "en": "Sure thing, of course (an emphatic yes, more colloquial than a plain “yes”)",
+            "tr": "Elbette, tabii ki (basit bir “evet”ten daha samimi, vurgulu bir onay)",
+            "ar": "آي واه (بالتأكيد، طبعًا) - موافقة مؤكدة، أكثر عامية من «نعم» البسيطة",
+            "es": "Claro que sí, por supuesto (una afirmación enfática, más coloquial que un simple «sí»)",
+            "fr": "Bien sûr, évidemment (une affirmation appuyée, plus familière qu’un simple « oui »)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-02",
+      "kind": "vocab",
+      "title": {
+        "de": "Levantinisch (Schami) - Syrien, Libanon, Jordanien, Palästina",
+        "en": "Levantine (Shami) - Syria, Lebanon, Jordan, Palestine",
+        "tr": "Levanten lehçesi (Şami) - Suriye, Lübnan, Ürdün, Filistin",
+        "ar": "الشامية - سوريا ولبنان والأردن وفلسطين",
+        "es": "Levantino (Shami) - Siria, Líbano, Jordania, Palestina",
+        "fr": "Levantin (Chami) - Syrie, Liban, Jordanie, Palestine"
+      },
+      "vocabWords": [
+        {
+          "arabic": "كيفك؟",
+          "translit": "kifak? / kifek?",
+          "meaning": {
+            "de": "Wie geht's? (kifak zu einem Mann, kifek zu einer Frau)",
+            "en": "How are you? (kifak to a man, kifek to a woman)",
+            "tr": "Nasılsın? (erkeğe kifak, kadına kifek)",
+            "ar": "كيف حالك؟ (كيفك للرجل، كيفك بكسر الكاف للمرأة)",
+            "es": "¿Cómo estás? (kifak a un hombre, kifek a una mujer)",
+            "fr": "Comment vas-tu ? (kifak à un homme, kifek à une femme)"
+          }
+        },
+        {
+          "arabic": "منيح",
+          "translit": "mnih",
+          "meaning": {
+            "de": "Gut (übliche Antwort auf kifak?, passt sich Geschlecht/Zahl an)",
+            "en": "Good (the usual reply to kifak?, agrees with gender/number)",
+            "tr": "İyi (kifak?'a verilen yaygın cevap, cinsiyete/sayıya göre değişir)",
+            "ar": "جيد (الرد المعتاد على كيفك؟، يتوافق مع الجنس والعدد)",
+            "es": "Bien (la respuesta habitual a kifak?, concuerda con género/número)",
+            "fr": "Bien (la réponse habituelle à kifak ?, s'accorde en genre/nombre)"
+          }
+        },
+        {
+          "arabic": "شو إسمك؟",
+          "translit": "shu ismak?",
+          "meaning": {
+            "de": "Wie heißt du? (shu = „was“, ein Fragewort typisch für Levantinisch, das man in Ägypten oder Nordafrika so nicht hört)",
+            "en": "What's your name? (shu = “what”, a question word typical of Levantine, not heard this way in Egypt or North Africa)",
+            "tr": "Adın ne? (shu = “ne”, Levanten lehçesine özgü bir soru kelimesi, Mısır veya Kuzey Afrika'da bu şekilde duyulmaz)",
+            "ar": "شو اسمك؟ (شو تعني «ماذا»، وهي كلمة استفهام شامية مميزة لا تُسمع بهذا الشكل في مصر أو شمال أفريقيا)",
+            "es": "¿Cómo te llamas? (shu = «qué», una palabra interrogativa típica del levantino, que no se oye así en Egipto o el norte de África)",
+            "fr": "Comment t'appelles-tu ? (shu = « quoi », un mot interrogatif typique du levantin, qu'on n'entend pas ainsi en Égypte ou en Afrique du Nord)"
+          }
+        },
+        {
+          "arabic": "يلا",
+          "translit": "yalla",
+          "meaning": {
+            "de": "Los geht's / beeil dich - eine Zusammenziehung aus „ya Allah“ (oh Gott), im ganzen arabischen Raum verbreitet",
+            "en": "Let's go / hurry up - a contraction of “ya Allah” (oh God), used across the whole Arab world",
+            "tr": "Hadi / acele et - “ya Allah” (ey Allah)'ın kısaltması, tüm Arap dünyasında yaygın",
+            "ar": "يلا (هيا / أسرع) - اختصار «يا الله»، منتشر في كل العالم العربي",
+            "es": "Vamos / date prisa - una contracción de «ya Allah» (oh Dios), usada en todo el mundo árabe",
+            "fr": "Allons-y / dépêche-toi - une contraction de « ya Allah » (ô Dieu), utilisée dans tout le monde arabe"
+          }
+        },
+        {
+          "arabic": "تسلم",
+          "translit": "tislam",
+          "meaning": {
+            "de": "Danke (wörtlich „mögest du unversehrt/gesegnet bleiben“ - Dankesform für eine Gefälligkeit)",
+            "en": "Thank you (literally “may you remain safe/blessed” - a form of thanks for a favor)",
+            "tr": "Teşekkürler (kelimenin tam anlamıyla “sağ salim/mübarek kal” - bir iyilik için teşekkür şekli)",
+            "ar": "تسلم (حرفيًا «سلمت يداك» - صيغة شكر على معروف)",
+            "es": "Gracias (literalmente «que permanezcas a salvo/bendecido» - una forma de agradecer un favor)",
+            "fr": "Merci (littéralement « puisses-tu rester sain et sauf/béni » - une façon de remercier pour une faveur)"
+          }
+        },
+        {
+          "arabic": "مبسوط",
+          "translit": "mabsout",
+          "meaning": {
+            "de": "Glücklich, zufrieden",
+            "en": "Happy, content",
+            "tr": "Mutlu, memnun",
+            "ar": "مبسوط (سعيد، راضٍ)",
+            "es": "Feliz, contento",
+            "fr": "Heureux, content"
+          }
+        },
+        {
+          "arabic": "شو أخبارك؟",
+          "translit": "shu akhbarak?",
+          "meaning": {
+            "de": "Was gibt's Neues? / Wie geht's? (wörtlich „was sind deine Nachrichten“)",
+            "en": "What's new? / How are you? (literally “what are your news”)",
+            "tr": "Ne haber? (kelimenin tam anlamıyla “haberlerin ne”)",
+            "ar": "شو أخبارك؟ (ما الجديد؟ - حرفيًا «ما أخبارك»)",
+            "es": "¿Qué hay de nuevo? / ¿Cómo estás? (literalmente «cuáles son tus noticias»)",
+            "fr": "Quoi de neuf ? / Comment vas-tu ? (littéralement « quelles sont tes nouvelles »)"
+          }
+        },
+        {
+          "arabic": "هلق",
+          "translit": "halla'",
+          "meaning": {
+            "de": "Jetzt (im Hocharabisch: al-an)",
+            "en": "Now (in MSA: al-an)",
+            "tr": "Şimdi (Fasih Arapçada: el-an)",
+            "ar": "الآن (بالفصحى: الآن)",
+            "es": "Ahora (en árabe estándar: al-an)",
+            "fr": "Maintenant (en arabe standard : al-an)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-levantine-numbers",
+      "kind": "vocab",
+      "title": {
+        "de": "Levantinisch - Zahlen & Uhrzeit-Grundlagen",
+        "en": "Levantine - Numbers & Basic Time Expressions",
+        "tr": "Levanten lehçesi - Sayılar ve Temel Zaman İfadeleri",
+        "ar": "الشامية - الأرقام وأساسيات الوقت",
+        "es": "Levantino - Números y expresiones básicas de tiempo",
+        "fr": "Levantin - Nombres et expressions de temps de base"
+      },
+      "vocabWords": [
+        {
+          "arabic": "واحد",
+          "translit": "wahad",
+          "meaning": {
+            "de": "Eins (1)",
+            "en": "One (1)",
+            "tr": "Bir (1)",
+            "ar": "واحد (1)",
+            "es": "Uno (1)",
+            "fr": "Un (1)"
+          }
+        },
+        {
+          "arabic": "تنين",
+          "translit": "tnein",
+          "meaning": {
+            "de": "Zwei (2)",
+            "en": "Two (2)",
+            "tr": "İki (2)",
+            "ar": "اثنين (2)",
+            "es": "Dos (2)",
+            "fr": "Deux (2)"
+          }
+        },
+        {
+          "arabic": "تلاتة",
+          "translit": "tlete",
+          "meaning": {
+            "de": "Drei (3)",
+            "en": "Three (3)",
+            "tr": "Üç (3)",
+            "ar": "تلاتة (3)",
+            "es": "Tres (3)",
+            "fr": "Trois (3)"
+          }
+        },
+        {
+          "arabic": "أربعة",
+          "translit": "arba3a",
+          "meaning": {
+            "de": "Vier (4)",
+            "en": "Four (4)",
+            "tr": "Dört (4)",
+            "ar": "أربعة (4)",
+            "es": "Cuatro (4)",
+            "fr": "Quatre (4)"
+          }
+        },
+        {
+          "arabic": "خمسة",
+          "translit": "khamse",
+          "meaning": {
+            "de": "Fünf (5)",
+            "en": "Five (5)",
+            "tr": "Beş (5)",
+            "ar": "خمسة (5)",
+            "es": "Cinco (5)",
+            "fr": "Cinq (5)"
+          }
+        },
+        {
+          "arabic": "عشرة",
+          "translit": "3ashra",
+          "meaning": {
+            "de": "Zehn (10)",
+            "en": "Ten (10)",
+            "tr": "On (10)",
+            "ar": "عشرة (10)",
+            "es": "Diez (10)",
+            "fr": "Dix (10)"
+          }
+        },
+        {
+          "arabic": "اليوم",
+          "translit": "elyom",
+          "meaning": {
+            "de": "Heute",
+            "en": "Today",
+            "tr": "Bugün",
+            "ar": "اليوم",
+            "es": "Hoy",
+            "fr": "Aujourd’hui"
+          }
+        },
+        {
+          "arabic": "بكرة",
+          "translit": "bukra",
+          "meaning": {
+            "de": "Morgen (der nächste Tag)",
+            "en": "Tomorrow (the next day)",
+            "tr": "Yarın",
+            "ar": "بكرة (غدًا)",
+            "es": "Mañana (el día siguiente)",
+            "fr": "Demain (le jour suivant)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-levantine-questions",
+      "kind": "vocab",
+      "title": {
+        "de": "Levantinisch - Fragewörter & Alltagsfragen",
+        "en": "Levantine - Question Words & Everyday Questions",
+        "tr": "Levanten lehçesi - Soru Kelimeleri ve Günlük Sorular",
+        "ar": "الشامية - أدوات الاستفهام والأسئلة اليومية",
+        "es": "Levantino - Palabras interrogativas y preguntas cotidianas",
+        "fr": "Levantin - Mots interrogatifs et questions du quotidien"
+      },
+      "vocabWords": [
+        {
+          "arabic": "وين؟",
+          "translit": "wein?",
+          "meaning": {
+            "de": "Wo? (im Hocharabisch: ayna)",
+            "en": "Where? (in MSA: ayna)",
+            "tr": "Nerede? (Fasih Arapçada: ayna)",
+            "ar": "وين؟ (بالفصحى: أين)",
+            "es": "¿Dónde? (en árabe estándar: ayna)",
+            "fr": "Où ? (en arabe standard : ayna)"
+          }
+        },
+        {
+          "arabic": "إيمتى؟",
+          "translit": "imte?",
+          "meaning": {
+            "de": "Wann?",
+            "en": "When?",
+            "tr": "Ne zaman?",
+            "ar": "إيمتى؟ (متى؟)",
+            "es": "¿Cuándo?",
+            "fr": "Quand ?"
+          }
+        },
+        {
+          "arabic": "ليش؟",
+          "translit": "lesh?",
+          "meaning": {
+            "de": "Warum? (im Hocharabisch: limadha)",
+            "en": "Why? (in MSA: limadha)",
+            "tr": "Neden?",
+            "ar": "ليش؟ (لماذا؟)",
+            "es": "¿Por qué?",
+            "fr": "Pourquoi ?"
+          }
+        },
+        {
+          "arabic": "كيف؟",
+          "translit": "kif?",
+          "meaning": {
+            "de": "Wie? (Basiswort, aus dem auch kifak/kifek gebildet wird)",
+            "en": "How? (the base word that kifak/kifek are built from)",
+            "tr": "Nasıl? (kifak/kifek’in de türetildiği temel kelime)",
+            "ar": "كيف؟ (الكلمة الأساسية التي تُشتق منها كيفك/كيفك)",
+            "es": "¿Cómo? (la palabra base de la que también se forman kifak/kifek)",
+            "fr": "Comment ? (le mot de base dont dérivent aussi kifak/kifek)"
+          }
+        },
+        {
+          "arabic": "مين؟",
+          "translit": "miin?",
+          "meaning": {
+            "de": "Wer?",
+            "en": "Who?",
+            "tr": "Kim?",
+            "ar": "مين؟ (من؟)",
+            "es": "¿Quién?",
+            "fr": "Qui ?"
+          }
+        },
+        {
+          "arabic": "شو؟",
+          "translit": "shu?",
+          "meaning": {
+            "de": "Was? (das charakteristischste Fragewort des Levantinischen)",
+            "en": "What? (the most characteristic question word of Levantine)",
+            "tr": "Ne? (Levanten lehçesinin en karakteristik soru kelimesi)",
+            "ar": "شو؟ (ماذا؟) - أكثر أدوات الاستفهام تميزًا في الشامية",
+            "es": "¿Qué? (la palabra interrogativa más característica del levantino)",
+            "fr": "Quoi ? (le mot interrogatif le plus caractéristique du levantin)"
+          }
+        },
+        {
+          "arabic": "قديش؟",
+          "translit": "addesh?",
+          "meaning": {
+            "de": "Wie viel, wie viel kostet das?",
+            "en": "How much, how much does that cost?",
+            "tr": "Ne kadar, bu ne kadar?",
+            "ar": "قديش؟ (كم؟ بكم؟)",
+            "es": "¿Cuánto, cuánto cuesta eso?",
+            "fr": "Combien, combien ça coûte ?"
+          }
+        },
+        {
+          "arabic": "في",
+          "translit": "fi",
+          "meaning": {
+            "de": "Es gibt, gibt es …? (existenzielle Frage-/Aussagepartikel, z. B. „fi mai?“ = „gibt es Wasser?“)",
+            "en": "There is, is there …? (existential particle for questions/statements, e.g. “fi mai?” = “is there water?”)",
+            "tr": "Var, … var mı? (varlık bildiren soru/ifade edatı, örn. “fi mai?” = “su var mı?”)",
+            "ar": "في (يوجد، هل يوجد …؟) - أداة وجودية للسؤال أو الإخبار، مثل «في مي؟» أي «هل يوجد ماء؟»",
+            "es": "Hay, ¿hay …? (partícula existencial para preguntas/afirmaciones, p. ej. «fi mai?» = «¿hay agua?»)",
+            "fr": "Il y a, y a-t-il … ? (particule existentielle pour questions/affirmations, ex. « fi mai ? » = « y a-t-il de l’eau ? »)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-levantine-family",
+      "kind": "vocab",
+      "title": {
+        "de": "Levantinisch - Familie & Beziehungen",
+        "en": "Levantine - Family & Relationships",
+        "tr": "Levanten lehçesi - Aile ve İlişkiler",
+        "ar": "الشامية - العائلة والعلاقات",
+        "es": "Levantino - Familia y relaciones",
+        "fr": "Levantin - Famille et relations"
+      },
+      "vocabWords": [
+        {
+          "arabic": "بابا",
+          "translit": "baba",
+          "meaning": {
+            "de": "Papa, Vater",
+            "en": "Dad, father",
+            "tr": "Baba",
+            "ar": "بابا (الأب)",
+            "es": "Papá, padre",
+            "fr": "Papa, père"
+          }
+        },
+        {
+          "arabic": "يمّا",
+          "translit": "yumma",
+          "meaning": {
+            "de": "Mama, Mutter",
+            "en": "Mom, mother",
+            "tr": "Anne",
+            "ar": "يمّا (الأم)",
+            "es": "Mamá, madre",
+            "fr": "Maman, mère"
+          }
+        },
+        {
+          "arabic": "خيّي",
+          "translit": "khayye",
+          "meaning": {
+            "de": "Mein Bruder (auch liebevolle Anrede unter Freunden)",
+            "en": "My brother (also an affectionate way to address a close friend)",
+            "tr": "Kardeşim (yakın arkadaşlar arasında sevgi ifadesi olarak da kullanılır)",
+            "ar": "خيّي (أخي - تُستخدم أيضًا بمحبة بين الأصدقاء المقربين)",
+            "es": "Mi hermano (también una forma cariñosa de dirigirse a un amigo cercano)",
+            "fr": "Mon frère (aussi une façon affectueuse de s’adresser à un ami proche)"
+          }
+        },
+        {
+          "arabic": "أختي",
+          "translit": "ukhti",
+          "meaning": {
+            "de": "Meine Schwester",
+            "en": "My sister",
+            "tr": "Kız kardeşim",
+            "ar": "أختي",
+            "es": "Mi hermana",
+            "fr": "Ma sœur"
+          }
+        },
+        {
+          "arabic": "ابني",
+          "translit": "ibni",
+          "meaning": {
+            "de": "Mein Sohn",
+            "en": "My son",
+            "tr": "Oğlum",
+            "ar": "ابني",
+            "es": "Mi hijo",
+            "fr": "Mon fils"
+          }
+        },
+        {
+          "arabic": "بنتي",
+          "translit": "binti",
+          "meaning": {
+            "de": "Meine Tochter",
+            "en": "My daughter",
+            "tr": "Kızım",
+            "ar": "بنتي",
+            "es": "Mi hija",
+            "fr": "Ma fille"
+          }
+        },
+        {
+          "arabic": "جدو",
+          "translit": "jiddo",
+          "meaning": {
+            "de": "Mein Großvater",
+            "en": "My grandfather",
+            "tr": "Dedem",
+            "ar": "جدو",
+            "es": "Mi abuelo",
+            "fr": "Mon grand-père"
+          }
+        },
+        {
+          "arabic": "تيتا",
+          "translit": "teta",
+          "meaning": {
+            "de": "Meine Großmutter - eines der bekanntesten und liebevollsten Wörter des Levantinischen",
+            "en": "My grandmother - one of the best-known and most affectionate words in Levantine",
+            "tr": "Büyükannem - Levanten lehçesinin en tanınmış ve en sevgi dolu kelimelerinden biri",
+            "ar": "تيتا (جدتي) - من أشهر الكلمات وأكثرها حنانًا في اللهجة الشامية",
+            "es": "Mi abuela - una de las palabras más conocidas y cariñosas del levantino",
+            "fr": "Ma grand-mère - l’un des mots les plus connus et les plus affectueux du levantin"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-levantine-food",
+      "kind": "vocab",
+      "title": {
+        "de": "Levantinisch - Essen, Trinken & Markt",
+        "en": "Levantine - Food, Drink & Market",
+        "tr": "Levanten lehçesi - Yiyecek, İçecek ve Çarşı",
+        "ar": "الشامية - الطعام والشراب والسوق",
+        "es": "Levantino - Comida, bebida y mercado",
+        "fr": "Levantin - Nourriture, boisson et marché"
+      },
+      "vocabWords": [
+        {
+          "arabic": "خبز",
+          "translit": "khobz",
+          "meaning": {
+            "de": "Brot",
+            "en": "Bread",
+            "tr": "Ekmek",
+            "ar": "خبز",
+            "es": "Pan",
+            "fr": "Pain"
+          }
+        },
+        {
+          "arabic": "ميّ",
+          "translit": "mayy",
+          "meaning": {
+            "de": "Wasser",
+            "en": "Water",
+            "tr": "Su",
+            "ar": "ميّ (ماء)",
+            "es": "Agua",
+            "fr": "Eau"
+          }
+        },
+        {
+          "arabic": "حمّص",
+          "translit": "hummus",
+          "meaning": {
+            "de": "Kichererbsenpüree mit Tahin - eines der bekanntesten levantinischen Gerichte weltweit",
+            "en": "Chickpea and tahini dip - one of the most famous Levantine dishes worldwide",
+            "tr": "Tahinli nohut ezmesi - dünya çapında en tanınmış Levanten yemeklerinden biri",
+            "ar": "حمّص - من أشهر الأطباق الشامية في العالم",
+            "es": "Puré de garbanzos con tahini - uno de los platos levantinos más famosos del mundo",
+            "fr": "Purée de pois chiches au tahini - l’un des plats levantins les plus connus au monde"
+          }
+        },
+        {
+          "arabic": "لبنة",
+          "translit": "labaneh",
+          "meaning": {
+            "de": "Abgetropfter Joghurt-Frischkäse, klassisches Frühstücksgericht",
+            "en": "Strained yoghurt cheese, a classic breakfast dish",
+            "tr": "Süzme yoğurt peyniri, klasik bir kahvaltı yemeği",
+            "ar": "لبنة - جبنة لبن مصفّى، طبق فطور تقليدي",
+            "es": "Queso de yogur colado, un plato clásico de desayuno",
+            "fr": "Fromage de yaourt égoutté, un plat de petit-déjeuner classique"
+          }
+        },
+        {
+          "arabic": "سوق",
+          "translit": "souq",
+          "meaning": {
+            "de": "Markt, Basar",
+            "en": "Market, bazaar",
+            "tr": "Çarşı, pazar",
+            "ar": "سوق",
+            "es": "Mercado, zoco",
+            "fr": "Marché, souk"
+          }
+        },
+        {
+          "arabic": "غالي",
+          "translit": "ghali",
+          "meaning": {
+            "de": "Teuer",
+            "en": "Expensive",
+            "tr": "Pahalı",
+            "ar": "غالي",
+            "es": "Caro",
+            "fr": "Cher"
+          }
+        },
+        {
+          "arabic": "رخيص",
+          "translit": "rkhis",
+          "meaning": {
+            "de": "Billig, günstig",
+            "en": "Cheap, inexpensive",
+            "tr": "Ucuz",
+            "ar": "رخيص",
+            "es": "Barato",
+            "fr": "Bon marché"
+          }
+        },
+        {
+          "arabic": "بدّي",
+          "translit": "baddi",
+          "meaning": {
+            "de": "Ich möchte, ich will (Grundform von „wollen“, aus bidd + Personalendung)",
+            "en": "I want, I would like (base form of “to want”, from bidd + personal ending)",
+            "tr": "İstiyorum (“istemek”in bidd + kişi eki’nden oluşan temel şekli)",
+            "ar": "بدّي (أريد) - من بدّ + لاحقة الضمير",
+            "es": "Quiero, me gustaría (forma básica de «querer», de bidd + terminación personal)",
+            "fr": "Je veux, je voudrais (forme de base de « vouloir », de bidd + terminaison personnelle)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-levantine-feelings",
+      "kind": "vocab",
+      "title": {
+        "de": "Levantinisch - Gefühle, Ja & Nein",
+        "en": "Levantine - Feelings, Yes & No",
+        "tr": "Levanten lehçesi - Duygular, Evet ve Hayır",
+        "ar": "الشامية - المشاعر، نعم ولا",
+        "es": "Levantino - Sentimientos, sí y no",
+        "fr": "Levantin - Sentiments, oui et non"
+      },
+      "vocabWords": [
+        {
+          "arabic": "نعم",
+          "translit": "na3am",
+          "meaning": {
+            "de": "Ja",
+            "en": "Yes",
+            "tr": "Evet",
+            "ar": "نعم",
+            "es": "Sí",
+            "fr": "Oui"
+          }
+        },
+        {
+          "arabic": "لأ",
+          "translit": "la'",
+          "meaning": {
+            "de": "Nein",
+            "en": "No",
+            "tr": "Hayır",
+            "ar": "لأ",
+            "es": "No",
+            "fr": "Non"
+          }
+        },
+        {
+          "arabic": "فرحان",
+          "translit": "farhan",
+          "meaning": {
+            "de": "Glücklich, froh",
+            "en": "Happy, glad",
+            "tr": "Mutlu",
+            "ar": "فرحان",
+            "es": "Feliz, contento",
+            "fr": "Heureux, content"
+          }
+        },
+        {
+          "arabic": "زعلان",
+          "translit": "za3lan",
+          "meaning": {
+            "de": "Traurig, verärgert, gekränkt",
+            "en": "Sad, upset, hurt",
+            "tr": "Üzgün, kırgın",
+            "ar": "زعلان",
+            "es": "Triste, disgustado, dolido",
+            "fr": "Triste, contrarié, vexé"
+          }
+        },
+        {
+          "arabic": "تعبان",
+          "translit": "ta3ban",
+          "meaning": {
+            "de": "Müde, erschöpft",
+            "en": "Tired, exhausted",
+            "tr": "Yorgun",
+            "ar": "تعبان",
+            "es": "Cansado, agotado",
+            "fr": "Fatigué, épuisé"
+          }
+        },
+        {
+          "arabic": "خايف",
+          "translit": "khayef",
+          "meaning": {
+            "de": "Ängstlich, hat Angst",
+            "en": "Afraid, scared",
+            "tr": "Korkmuş",
+            "ar": "خايف",
+            "es": "Asustado",
+            "fr": "Effrayé, a peur"
+          }
+        },
+        {
+          "arabic": "مريض",
+          "translit": "mareed",
+          "meaning": {
+            "de": "Krank",
+            "en": "Sick, ill",
+            "tr": "Hasta",
+            "ar": "مريض",
+            "es": "Enfermo",
+            "fr": "Malade"
+          }
+        },
+        {
+          "arabic": "الحمد لله",
+          "translit": "alhamdulillah",
+          "meaning": {
+            "de": "Gott sei Dank, alles Lob gebührt Gott - die häufigste Antwort auf „kifak?“",
+            "en": "Thank God, all praise is due to God - the most common reply to “kifak?”",
+            "tr": "Allah’a şükür - “kifak?”a verilen en yaygın cevap",
+            "ar": "الحمد لله - الرد الأكثر شيوعًا على «كيفك؟»",
+            "es": "Gracias a Dios - la respuesta más común a «kifak?»",
+            "fr": "Dieu merci - la réponse la plus courante à « kifak ? »"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-levantine-idioms",
+      "kind": "vocab",
+      "title": {
+        "de": "Levantinisch - Redewendungen & typische Ausdrücke",
+        "en": "Levantine - Expressions & Characteristic Phrases",
+        "tr": "Levanten lehçesi - Deyimler ve Karakteristik İfadeler",
+        "ar": "الشامية - التعابير والعبارات المميزة",
+        "es": "Levantino - Expresiones y frases características",
+        "fr": "Levantin - Expressions et tournures caractéristiques"
+      },
+      "vocabWords": [
+        {
+          "arabic": "خلص",
+          "translit": "khalas",
+          "meaning": {
+            "de": "Genug, fertig, Schluss - eines der meistgenutzten Allzweckwörter im Levantinischen",
+            "en": "Enough, done, that’s it - one of the most-used all-purpose words in Levantine",
+            "tr": "Yeter, bitti - Levanten lehçesinde en çok kullanılan çok amaçlı kelimelerden biri",
+            "ar": "خلص (يكفي، انتهى) - من أكثر الكلمات متعددة الاستخدامات في الشامية",
+            "es": "Suficiente, se acabó - una de las palabras multiuso más usadas en levantino",
+            "fr": "Ça suffit, c’est fini - l’un des mots passe-partout les plus utilisés en levantin"
+          }
+        },
+        {
+          "arabic": "إن شاء الله",
+          "translit": "insha'allah",
+          "meaning": {
+            "de": "So Gott will, hoffentlich",
+            "en": "God willing, hopefully",
+            "tr": "Allah izin verirse, inşallah",
+            "ar": "إن شاء الله",
+            "es": "Si Dios quiere",
+            "fr": "Si Dieu le veut"
+          }
+        },
+        {
+          "arabic": "ماشاء الله",
+          "translit": "mashallah",
+          "meaning": {
+            "de": "Was Gott gewollt hat - Ausdruck der Bewunderung, gesagt bei etwas Schönem, um es vor dem bösen Blick zu schützen",
+            "en": "What God has willed - an expression of admiration said about something good, meant to ward off the evil eye",
+            "tr": "Allah’ın dilediği - güzel bir şey karşısında söylenen, nazardan korumayı amaçlayan bir hayranlık ifadesi",
+            "ar": "ماشاء الله - تعبير عن الإعجاب يُقال عند رؤية شيء جميل لدرء العين",
+            "es": "Lo que Dios ha querido - expresión de admiración dicha ante algo bueno, para protegerlo del mal de ojo",
+            "fr": "Ce que Dieu a voulu - expression d’admiration dite devant quelque chose de beau, pour le protéger du mauvais œil"
+          }
+        },
+        {
+          "arabic": "والله",
+          "translit": "wallah",
+          "meaning": {
+            "de": "Bei Gott, ich schwöre - Betonungswort, das in fast jedem Satz zur Bekräftigung eingesetzt werden kann",
+            "en": "By God, I swear - an emphasis word that can be inserted into almost any sentence for stress",
+            "tr": "Vallahi, yemin ederim - hemen her cümlede vurgu için kullanılabilen bir kelime",
+            "ar": "والله (أقسم بالله) - كلمة تأكيد يمكن إدراجها في أي جملة تقريبًا",
+            "es": "Por Dios, lo juro - una palabra de énfasis que se puede insertar en casi cualquier frase",
+            "fr": "Par Dieu, je le jure - un mot d’insistance que l’on peut glisser dans presque toutes les phrases"
+          }
+        },
+        {
+          "arabic": "على راسي",
+          "translit": "3ala rasi",
+          "meaning": {
+            "de": "Auf meinem Kopf - bildliche Redewendung für „sehr gerne“, wenn man um einen Gefallen gebeten wird",
+            "en": "On my head - a figurative expression meaning “gladly, of course” when asked for a favor",
+            "tr": "Başım üstüne - bir iyilik istendiğinde “seve seve, tabii ki” anlamına gelen mecazi bir ifade",
+            "ar": "على راسي - تعبير مجازي بمعنى «بكل سرور» عند طلب معروف",
+            "es": "Sobre mi cabeza - expresión figurada que significa «con mucho gusto» al pedir un favor",
+            "fr": "Sur ma tête - expression imagée signifiant « avec plaisir » lorsqu’on demande une faveur"
+          }
+        },
+        {
+          "arabic": "أهلا وسهلا",
+          "translit": "ahlan wa sahlan",
+          "meaning": {
+            "de": "Herzlich willkommen - die klassische Begrüßungsformel für Gäste, im ganzen arabischen Raum verstanden",
+            "en": "Warm welcome - the classic greeting formula for guests, understood across the whole Arab world",
+            "tr": "Hoş geldin - misafirler için klasik selamlama formülü, tüm Arap dünyasında anlaşılır",
+            "ar": "أهلًا وسهلًا - صيغة الترحيب الكلاسيكية بالضيوف، مفهومة في كل العالم العربي",
+            "es": "Bienvenido cordialmente - la fórmula de saludo clásica para invitados, entendida en todo el mundo árabe",
+            "fr": "Bienvenue chaleureusement - la formule d’accueil classique pour les invités, comprise dans tout le monde arabe"
+          }
+        },
+        {
+          "arabic": "صحتين",
+          "translit": "sahtein",
+          "meaning": {
+            "de": "Guten Appetit, wörtlich „doppelte Gesundheit“ - wird nach dem Essen als Segenswunsch gesagt",
+            "en": "Enjoy your meal, literally “double health” - said after eating as a blessing",
+            "tr": "Afiyet olsun, kelimenin tam anlamıyla “çifte sağlık” - yemekten sonra bir dilek olarak söylenir",
+            "ar": "صحتين - حرفيًا «صحة مضاعفة» - تُقال بعد الأكل كدعاء بالعافية",
+            "es": "Buen provecho, literalmente «doble salud» - se dice después de comer como bendición",
+            "fr": "Bon appétit, littéralement « double santé » - se dit après le repas comme un souhait de bien-être"
+          }
+        },
+        {
+          "arabic": "تشرفنا",
+          "translit": "btcharrafna",
+          "meaning": {
+            "de": "Es ist mir eine Ehre, es freut mich (Sie kennenzulernen) - höfliche Antwort bei einer Vorstellung",
+            "en": "It’s an honor, pleased to meet you - a polite reply when being introduced",
+            "tr": "Bu bir şeref, tanıştığımıza memnun oldum - tanıştırılırken verilen kibar bir cevap",
+            "ar": "تشرفنا - رد مهذب عند التعارف",
+            "es": "Es un honor, encantado de conocerle - una respuesta cortés al ser presentado",
+            "fr": "C’est un honneur, ravi de vous rencontrer - une réponse polie lors d’une présentation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-03",
+      "kind": "vocab",
+      "title": {
+        "de": "Golf-Arabisch (Khaliji) - Saudi-Arabien, VAE, Kuwait, Katar, Bahrain, Oman",
+        "en": "Gulf Arabic (Khaleeji) - Saudi Arabia, UAE, Kuwait, Qatar, Bahrain, Oman",
+        "tr": "Körfez Arapçası (Halici) - Suudi Arabistan, BAE, Kuveyt, Katar, Bahreyn, Umman",
+        "ar": "الخليجية - السعودية والإمارات والكويت وقطر والبحرين وعُمان",
+        "es": "Árabe del Golfo (Jaliji) - Arabia Saudí, EAU, Kuwait, Catar, Baréin, Omán",
+        "fr": "Arabe du Golfe (Khaliji) - Arabie saoudite, EAU, Koweït, Qatar, Bahreïn, Oman"
+      },
+      "vocabWords": [
+        {
+          "arabic": "شلونك؟",
+          "translit": "shlonak? / shlonich?",
+          "meaning": {
+            "de": "Wie geht's? (wörtlich „welche Farbe hast du“ - shlonak zu einem Mann, shlonich zu einer Frau)",
+            "en": "How are you? (literally “what color are you” - shlonak to a man, shlonich to a woman)",
+            "tr": "Nasılsın? (kelimenin tam anlamıyla “ne renksin” - erkeğe shlonak, kadına shlonich)",
+            "ar": "شلونك؟ (حرفيًا «أي لون أنت» - للرجل شلونك، للمرأة شلونچ)",
+            "es": "¿Cómo estás? (literalmente «de qué color eres» - shlonak a un hombre, shlonich a una mujer)",
+            "fr": "Comment vas-tu ? (littéralement « de quelle couleur es-tu » - shlonak à un homme, shlonich à une femme)"
+          }
+        },
+        {
+          "arabic": "زين",
+          "translit": "zain",
+          "meaning": {
+            "de": "Gut, in Ordnung (allgemeines Zustimmungs-/Lobwort, sehr charakteristisch für den Golf)",
+            "en": "Good, fine (a general word of agreement/praise, very characteristic of the Gulf)",
+            "tr": "İyi, tamam (genel bir onay/övgü kelimesi, Körfez'e çok özgü)",
+            "ar": "زين (جيد، حسن - كلمة موافقة/استحسان عامة، مميزة للخليج)",
+            "es": "Bien, de acuerdo (una palabra general de aprobación/elogio, muy característica del Golfo)",
+            "fr": "Bien, d'accord (un mot général d'approbation/d'éloge, très caractéristique du Golfe)"
+          }
+        },
+        {
+          "arabic": "مشكور",
+          "translit": "mashkoor",
+          "meaning": {
+            "de": "Danke (Antwortform von „danken“, neben dem allgemeinarabischen shukran auch im Golf sehr gebräuchlich)",
+            "en": "Thank you (a response form of “to thank”, also very common in the Gulf alongside the pan-Arabic shukran)",
+            "tr": "Teşekkürler (Körfez'de genel Arapça shukran'ın yanında çok yaygın kullanılan bir teşekkür biçimi)",
+            "ar": "مشكور (شكرًا - شائعة في الخليج إلى جانب شكرًا الفصيحة)",
+            "es": "Gracias (una forma de agradecer, muy común también en el Golfo junto al panárabe shukran)",
+            "fr": "Merci (une forme de remerciement, très courante aussi dans le Golfe à côté du panarabe shukran)"
+          }
+        },
+        {
+          "arabic": "وايد",
+          "translit": "wayed",
+          "meaning": {
+            "de": "Sehr, viel - ein sehr charakteristisches Golf-Wort (entspricht bezzaf im Maghrebinischen oder ketir im Levantinischen)",
+            "en": "Very, a lot - a very characteristic Gulf word (equivalent to bezzaf in Maghrebi or ketir in Levantine)",
+            "tr": "Çok - Körfez'e çok özgü bir kelime (Mağrip'teki bezzaf veya Levanten'deki ketir'e karşılık gelir)",
+            "ar": "وايد (كثيرًا - كلمة خليجية مميزة، تقابل بزاف في المغاربية أو كتير في الشامية)",
+            "es": "Muy, mucho - una palabra muy característica del Golfo (equivalente a bezzaf en magrebí o ketir en levantino)",
+            "fr": "Très, beaucoup - un mot très caractéristique du Golfe (équivalent à bezzaf en maghrébin ou ketir en levantin)"
+          }
+        },
+        {
+          "arabic": "شنو؟",
+          "translit": "shnu?",
+          "meaning": {
+            "de": "Was? (im Hocharabisch: madha/ma)",
+            "en": "What? (in MSA: madha/ma)",
+            "tr": "Ne? (Fasih Arapçada: madha/ma)",
+            "ar": "شنو؟ (ماذا؟ - بالفصحى: ماذا)",
+            "es": "¿Qué? (en árabe estándar: madha/ma)",
+            "fr": "Quoi ? (en arabe standard : madha/ma)"
+          }
+        },
+        {
+          "arabic": "الحين",
+          "translit": "al-hin",
+          "meaning": {
+            "de": "Jetzt",
+            "en": "Now",
+            "tr": "Şimdi",
+            "ar": "الحين (الآن)",
+            "es": "Ahora",
+            "fr": "Maintenant"
+          }
+        },
+        {
+          "arabic": "يلا",
+          "translit": "yalla",
+          "meaning": {
+            "de": "Los / komm schon - auch im Golf verbreitet, wie im ganzen arabischen Raum",
+            "en": "Let's go / come on - also common in the Gulf, as across the whole Arab world",
+            "tr": "Hadi - Körfez'de de tüm Arap dünyasında olduğu gibi yaygın",
+            "ar": "يلا (هيا - شائعة في الخليج كما في كل العالم العربي)",
+            "es": "Vamos / venga - también común en el Golfo, como en todo el mundo árabe",
+            "fr": "Allons-y / allez - également courant dans le Golfe, comme dans tout le monde arabe"
+          }
+        },
+        {
+          "arabic": "زين والله",
+          "translit": "zain wallah",
+          "meaning": {
+            "de": "Wirklich gut, ehrlich gesagt gut (wallah = „bei Gott“, ein Betonungswort in fast jedem arabischen Dialekt)",
+            "en": "Really good, honestly good (wallah = “by God”, an emphasis word in nearly every Arabic dialect)",
+            "tr": "Gerçekten iyi (wallah = “vallahi”, hemen her Arap lehçesinde bir vurgu kelimesi)",
+            "ar": "زين والله (جيد فعلًا - والله كلمة تأكيد شائعة في كل اللهجات تقريبًا)",
+            "es": "Realmente bueno, sinceramente bueno (wallah = «por Dios», una palabra de énfasis en casi todos los dialectos árabes)",
+            "fr": "Vraiment bien, sincèrement bien (wallah = « par Dieu », un mot d'insistance dans presque tous les dialectes arabes)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-gulf-numbers",
+      "kind": "vocab",
+      "title": {
+        "de": "Golf-Arabisch - Zahlen & Uhrzeit-Grundlagen",
+        "en": "Gulf Arabic - Numbers & Basic Time Expressions",
+        "tr": "Körfez Arapçası - Sayılar ve Temel Zaman İfadeleri",
+        "ar": "الخليجية - الأرقام وأساسيات الوقت",
+        "es": "Árabe del Golfo - Números y expresiones básicas de tiempo",
+        "fr": "Arabe du Golfe - Nombres et expressions de temps de base"
+      },
+      "vocabWords": [
+        {
+          "arabic": "واحد",
+          "translit": "wahid",
+          "meaning": {
+            "de": "Eins (1)",
+            "en": "One (1)",
+            "tr": "Bir (1)",
+            "ar": "واحد (1)",
+            "es": "Uno (1)",
+            "fr": "Un (1)"
+          }
+        },
+        {
+          "arabic": "اثنين",
+          "translit": "ithnain",
+          "meaning": {
+            "de": "Zwei (2)",
+            "en": "Two (2)",
+            "tr": "İki (2)",
+            "ar": "اثنين (2)",
+            "es": "Dos (2)",
+            "fr": "Deux (2)"
+          }
+        },
+        {
+          "arabic": "ثلاث",
+          "translit": "thalath",
+          "meaning": {
+            "de": "Drei (3)",
+            "en": "Three (3)",
+            "tr": "Üç (3)",
+            "ar": "ثلاث (3)",
+            "es": "Tres (3)",
+            "fr": "Trois (3)"
+          }
+        },
+        {
+          "arabic": "أربع",
+          "translit": "arba3",
+          "meaning": {
+            "de": "Vier (4)",
+            "en": "Four (4)",
+            "tr": "Dört (4)",
+            "ar": "أربع (4)",
+            "es": "Cuatro (4)",
+            "fr": "Quatre (4)"
+          }
+        },
+        {
+          "arabic": "خمس",
+          "translit": "khams",
+          "meaning": {
+            "de": "Fünf (5)",
+            "en": "Five (5)",
+            "tr": "Beş (5)",
+            "ar": "خمس (5)",
+            "es": "Cinco (5)",
+            "fr": "Cinq (5)"
+          }
+        },
+        {
+          "arabic": "عشر",
+          "translit": "3ashr",
+          "meaning": {
+            "de": "Zehn (10)",
+            "en": "Ten (10)",
+            "tr": "On (10)",
+            "ar": "عشر (10)",
+            "es": "Diez (10)",
+            "fr": "Dix (10)"
+          }
+        },
+        {
+          "arabic": "اليوم",
+          "translit": "al-yoom",
+          "meaning": {
+            "de": "Heute",
+            "en": "Today",
+            "tr": "Bugün",
+            "ar": "اليوم",
+            "es": "Hoy",
+            "fr": "Aujourd’hui"
+          }
+        },
+        {
+          "arabic": "باچر",
+          "translit": "bachir",
+          "meaning": {
+            "de": "Morgen - Aussprache und genaue Bedeutung variieren leicht zwischen den Golfstaaten",
+            "en": "Tomorrow - pronunciation and exact meaning vary slightly between Gulf countries",
+            "tr": "Yarın - telaffuz ve tam anlam Körfez ülkeleri arasında hafifçe değişir",
+            "ar": "باچر (غدًا) - يختلف النطق والمعنى الدقيق قليلًا بين دول الخليج",
+            "es": "Mañana - la pronunciación y el significado exacto varían ligeramente entre los países del Golfo",
+            "fr": "Demain - la prononciation et le sens exact varient légèrement selon les pays du Golfe"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-gulf-questions",
+      "kind": "vocab",
+      "title": {
+        "de": "Golf-Arabisch - Fragewörter & Alltagsfragen",
+        "en": "Gulf Arabic - Question Words & Everyday Questions",
+        "tr": "Körfez Arapçası - Soru Kelimeleri ve Günlük Sorular",
+        "ar": "الخليجية - أدوات الاستفهام والأسئلة اليومية",
+        "es": "Árabe del Golfo - Palabras interrogativas y preguntas cotidianas",
+        "fr": "Arabe du Golfe - Mots interrogatifs et questions du quotidien"
+      },
+      "vocabWords": [
+        {
+          "arabic": "وين؟",
+          "translit": "wain?",
+          "meaning": {
+            "de": "Wo?",
+            "en": "Where?",
+            "tr": "Nerede?",
+            "ar": "وين؟ (أين؟)",
+            "es": "¿Dónde?",
+            "fr": "Où ?"
+          }
+        },
+        {
+          "arabic": "متى؟",
+          "translit": "mita?",
+          "meaning": {
+            "de": "Wann?",
+            "en": "When?",
+            "tr": "Ne zaman?",
+            "ar": "متى؟",
+            "es": "¿Cuándo?",
+            "fr": "Quand ?"
+          }
+        },
+        {
+          "arabic": "ليش؟",
+          "translit": "leish?",
+          "meaning": {
+            "de": "Warum?",
+            "en": "Why?",
+            "tr": "Neden?",
+            "ar": "ليش؟ (لماذا؟)",
+            "es": "¿Por qué?",
+            "fr": "Pourquoi ?"
+          }
+        },
+        {
+          "arabic": "منو؟",
+          "translit": "minu?",
+          "meaning": {
+            "de": "Wer?",
+            "en": "Who?",
+            "tr": "Kim?",
+            "ar": "منو؟ (من؟)",
+            "es": "¿Quién?",
+            "fr": "Qui ?"
+          }
+        },
+        {
+          "arabic": "جم؟",
+          "translit": "cham?",
+          "meaning": {
+            "de": "Wie viel, wie viele - ein sehr charakteristisches Golf-Wort für Mengen und Preise",
+            "en": "How much, how many - a very characteristic Gulf word for quantities and prices",
+            "tr": "Ne kadar, kaç tane - miktar ve fiyatlar için çok karakteristik bir Körfez kelimesi",
+            "ar": "جم؟ (كم؟) - كلمة خليجية مميزة جدًا للكميات والأسعار",
+            "es": "Cuánto, cuántos - una palabra muy característica del Golfo para cantidades y precios",
+            "fr": "Combien - un mot très caractéristique du Golfe pour les quantités et les prix"
+          }
+        },
+        {
+          "arabic": "في",
+          "translit": "fi",
+          "meaning": {
+            "de": "Es gibt, gibt es …?",
+            "en": "There is, is there …?",
+            "tr": "Var, … var mı?",
+            "ar": "في (يوجد، هل يوجد …؟)",
+            "es": "Hay, ¿hay …?",
+            "fr": "Il y a, y a-t-il … ?"
+          }
+        },
+        {
+          "arabic": "هني",
+          "translit": "heni",
+          "meaning": {
+            "de": "Hier",
+            "en": "Here",
+            "tr": "Burada",
+            "ar": "هني (هنا)",
+            "es": "Aquí",
+            "fr": "Ici"
+          }
+        },
+        {
+          "arabic": "هناك",
+          "translit": "hnak",
+          "meaning": {
+            "de": "Dort, drüben",
+            "en": "There, over there",
+            "tr": "Orada",
+            "ar": "هناك",
+            "es": "Allí, allá",
+            "fr": "Là-bas"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-gulf-family",
+      "kind": "vocab",
+      "title": {
+        "de": "Golf-Arabisch - Familie & Beziehungen",
+        "en": "Gulf Arabic - Family & Relationships",
+        "tr": "Körfez Arapçası - Aile ve İlişkiler",
+        "ar": "الخليجية - العائلة والعلاقات",
+        "es": "Árabe del Golfo - Familia y relaciones",
+        "fr": "Arabe du Golfe - Famille et relations"
+      },
+      "vocabWords": [
+        {
+          "arabic": "أبوي",
+          "translit": "abuy",
+          "meaning": {
+            "de": "Mein Vater",
+            "en": "My father",
+            "tr": "Babam",
+            "ar": "أبوي",
+            "es": "Mi padre",
+            "fr": "Mon père"
+          }
+        },
+        {
+          "arabic": "أمي",
+          "translit": "ummi",
+          "meaning": {
+            "de": "Meine Mutter",
+            "en": "My mother",
+            "tr": "Annem",
+            "ar": "أمي",
+            "es": "Mi madre",
+            "fr": "Ma mère"
+          }
+        },
+        {
+          "arabic": "أخوي",
+          "translit": "akhuy",
+          "meaning": {
+            "de": "Mein Bruder",
+            "en": "My brother",
+            "tr": "Kardeşim",
+            "ar": "أخوي",
+            "es": "Mi hermano",
+            "fr": "Mon frère"
+          }
+        },
+        {
+          "arabic": "اختي",
+          "translit": "ikhti",
+          "meaning": {
+            "de": "Meine Schwester",
+            "en": "My sister",
+            "tr": "Kız kardeşim",
+            "ar": "اختي",
+            "es": "Mi hermana",
+            "fr": "Ma sœur"
+          }
+        },
+        {
+          "arabic": "يدّي",
+          "translit": "yiddi",
+          "meaning": {
+            "de": "Mein Großvater - im Golf-Arabischen wird das j (wie im Hocharabisch jadd) oft zu y, ein bekanntes Lautmerkmal der Region",
+            "en": "My grandfather - in Gulf Arabic the j sound (as in MSA jadd) often shifts to y, a well-known feature of the region",
+            "tr": "Büyükbabam - Körfez Arapçasında j sesi (Fasih Arapçadaki jadd gibi) genellikle y’ye dönüşür, bölgenin bilinen bir ses özelliğidir",
+            "ar": "يدّي (جدي) - في الخليجية يتحول صوت الجيم غالبًا إلى ياء، وهي سمة صوتية معروفة في المنطقة",
+            "es": "Mi abuelo - en árabe del Golfo el sonido j (como en el estándar jadd) suele convertirse en y, un rasgo fonético conocido de la región",
+            "fr": "Mon grand-père - en arabe du Golfe, le son j (comme dans jadd en arabe standard) devient souvent y, un trait phonétique bien connu de la région"
+          }
+        },
+        {
+          "arabic": "يدتي",
+          "translit": "yiddati",
+          "meaning": {
+            "de": "Meine Großmutter (gleicher j→y-Lautwandel wie bei yiddi)",
+            "en": "My grandmother (same j→y sound shift as in yiddi)",
+            "tr": "Büyükannem (yiddi’deki aynı j→y ses değişimi)",
+            "ar": "يدتي (جدتي) - نفس التحول الصوتي من الجيم إلى الياء كما في يدّي",
+            "es": "Mi abuela (el mismo cambio fonético j→y que en yiddi)",
+            "fr": "Ma grand-mère (le même changement phonétique j→y que dans yiddi)"
+          }
+        },
+        {
+          "arabic": "خالتي",
+          "translit": "khalti",
+          "meaning": {
+            "de": "Meine Tante mütterlicherseits - im arabischen Familiensystem klar von der väterlichen Tante unterschieden",
+            "en": "My maternal aunt - clearly distinguished from the paternal aunt in the Arabic family system",
+            "tr": "Teyzem (anne tarafından) - Arap aile sisteminde baba tarafındaki halaya göre net şekilde ayrılır",
+            "ar": "خالتي - تختلف بوضوح عن العمة في نظام العائلة العربي",
+            "es": "Mi tía materna - claramente distinguida de la tía paterna en el sistema familiar árabe",
+            "fr": "Ma tante maternelle - clairement distinguée de la tante paternelle dans le système familial arabe"
+          }
+        },
+        {
+          "arabic": "عمي",
+          "translit": "3ammi",
+          "meaning": {
+            "de": "Mein Onkel väterlicherseits",
+            "en": "My paternal uncle",
+            "tr": "Amcam (baba tarafından)",
+            "ar": "عمي",
+            "es": "Mi tío paterno",
+            "fr": "Mon oncle paternel"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-gulf-food",
+      "kind": "vocab",
+      "title": {
+        "de": "Golf-Arabisch - Essen, Trinken & Markt",
+        "en": "Gulf Arabic - Food, Drink & Market",
+        "tr": "Körfez Arapçası - Yiyecek, İçecek ve Çarşı",
+        "ar": "الخليجية - الطعام والشراب والسوق",
+        "es": "Árabe del Golfo - Comida, bebida y mercado",
+        "fr": "Arabe du Golfe - Nourriture, boisson et marché"
+      },
+      "vocabWords": [
+        {
+          "arabic": "خبز",
+          "translit": "khubz",
+          "meaning": {
+            "de": "Brot",
+            "en": "Bread",
+            "tr": "Ekmek",
+            "ar": "خبز",
+            "es": "Pan",
+            "fr": "Pain"
+          }
+        },
+        {
+          "arabic": "ماي",
+          "translit": "mai",
+          "meaning": {
+            "de": "Wasser",
+            "en": "Water",
+            "tr": "Su",
+            "ar": "ماي (ماء)",
+            "es": "Agua",
+            "fr": "Eau"
+          }
+        },
+        {
+          "arabic": "قهوة",
+          "translit": "gahwa",
+          "meaning": {
+            "de": "Kaffee - im Golf wird das q (wie im Hocharabisch qahwa) oft zu g, ebenfalls ein bekanntes Lautmerkmal der Region; die traditionelle Gulf-Kaffeezeremonie mit Kardamom ist fester Bestandteil der Gastfreundschaft",
+            "en": "Coffee - in the Gulf the q sound (as in MSA qahwa) often shifts to g, another well-known feature of the region; the traditional cardamom coffee ceremony is a core part of Gulf hospitality",
+            "tr": "Kahve - Körfez’de q sesi (Fasih Arapçadaki qahwa gibi) genellikle g’ye dönüşür, bölgenin bir başka bilinen ses özelliği; geleneksel kakuleli kahve töreni Körfez misafirperverliğinin ayrılmaz bir parçasıdır",
+            "ar": "قهوة تُنطق «gahwa» - يتحول صوت القاف غالبًا إلى الجيم القاهرية (g)، سمة صوتية معروفة أخرى في المنطقة؛ طقوس القهوة الخليجية بالهيل جزء أساسي من الضيافة",
+            "es": "Café - en el Golfo el sonido q (como en el estándar qahwa) suele convertirse en g, otro rasgo fonético conocido de la región; la ceremonia tradicional del café con cardamomo es parte esencial de la hospitalidad del Golfo",
+            "fr": "Café - dans le Golfe, le son q (comme dans qahwa en arabe standard) devient souvent g, un autre trait phonétique bien connu de la région ; la cérémonie traditionnelle du café à la cardamome fait partie intégrante de l’hospitalité du Golfe"
+          }
+        },
+        {
+          "arabic": "تمر",
+          "translit": "tamur",
+          "meaning": {
+            "de": "Datteln - traditionell zusammen mit Kaffee als erstes Zeichen der Gastfreundschaft serviert",
+            "en": "Dates - traditionally served together with coffee as the first gesture of hospitality",
+            "tr": "Hurma - geleneksel olarak misafirperverliğin ilk işareti olarak kahveyle birlikte ikram edilir",
+            "ar": "تمر - يُقدَّم تقليديًا مع القهوة كأول علامة على الضيافة",
+            "es": "Dátiles - tradicionalmente servidos junto con el café como primer gesto de hospitalidad",
+            "fr": "Dattes - traditionnellement servies avec le café comme premier geste d’hospitalité"
+          }
+        },
+        {
+          "arabic": "سوق",
+          "translit": "souq",
+          "meaning": {
+            "de": "Markt, Basar",
+            "en": "Market, bazaar",
+            "tr": "Çarşı, pazar",
+            "ar": "سوق",
+            "es": "Mercado, zoco",
+            "fr": "Marché, souk"
+          }
+        },
+        {
+          "arabic": "غالي",
+          "translit": "ghali",
+          "meaning": {
+            "de": "Teuer",
+            "en": "Expensive",
+            "tr": "Pahalı",
+            "ar": "غالي",
+            "es": "Caro",
+            "fr": "Cher"
+          }
+        },
+        {
+          "arabic": "رخيص",
+          "translit": "rakhees",
+          "meaning": {
+            "de": "Billig, günstig",
+            "en": "Cheap, inexpensive",
+            "tr": "Ucuz",
+            "ar": "رخيص",
+            "es": "Barato",
+            "fr": "Bon marché"
+          }
+        },
+        {
+          "arabic": "أبي",
+          "translit": "abi",
+          "meaning": {
+            "de": "Ich möchte, ich will - eine für den Golf typische Form von „wollen“, anders als in anderen Dialekten",
+            "en": "I want, I would like - a form of “to want” typical of the Gulf, different from other dialects",
+            "tr": "İstiyorum - diğer lehçelerden farklı, Körfez’e özgü bir “istemek” biçimi",
+            "ar": "أبي (أريد) - صيغة خليجية مميزة لفعل «أراد»، مختلفة عن اللهجات الأخرى",
+            "es": "Quiero, me gustaría - una forma de «querer» típica del Golfo, distinta de otros dialectos",
+            "fr": "Je veux, je voudrais - une forme de « vouloir » typique du Golfe, différente des autres dialectes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-gulf-feelings",
+      "kind": "vocab",
+      "title": {
+        "de": "Golf-Arabisch - Gefühle, Ja & Nein",
+        "en": "Gulf Arabic - Feelings, Yes & No",
+        "tr": "Körfez Arapçası - Duygular, Evet ve Hayır",
+        "ar": "الخليجية - المشاعر، نعم ولا",
+        "es": "Árabe del Golfo - Sentimientos, sí y no",
+        "fr": "Arabe du Golfe - Sentiments, oui et non"
+      },
+      "vocabWords": [
+        {
+          "arabic": "إي",
+          "translit": "ee",
+          "meaning": {
+            "de": "Ja (sehr informelle Alltagsform, unter Freunden/Familie gebräuchlich)",
+            "en": "Yes (a very informal everyday form, common among friends/family)",
+            "tr": "Evet (çok gayriresmî, arkadaşlar/aile arasında yaygın günlük biçim)",
+            "ar": "إي (نعم - صيغة يومية غير رسمية جدًا، شائعة بين الأصدقاء والعائلة)",
+            "es": "Sí (una forma cotidiana muy informal, común entre amigos/familia)",
+            "fr": "Oui (une forme très familière du quotidien, courante entre amis/en famille)"
+          }
+        },
+        {
+          "arabic": "لا",
+          "translit": "la",
+          "meaning": {
+            "de": "Nein",
+            "en": "No",
+            "tr": "Hayır",
+            "ar": "لا",
+            "es": "No",
+            "fr": "Non"
+          }
+        },
+        {
+          "arabic": "فرحان",
+          "translit": "farhan",
+          "meaning": {
+            "de": "Glücklich, froh",
+            "en": "Happy, glad",
+            "tr": "Mutlu",
+            "ar": "فرحان",
+            "es": "Feliz, contento",
+            "fr": "Heureux, content"
+          }
+        },
+        {
+          "arabic": "زعلان",
+          "translit": "za3lan",
+          "meaning": {
+            "de": "Traurig, verärgert",
+            "en": "Sad, upset",
+            "tr": "Üzgün",
+            "ar": "زعلان",
+            "es": "Triste, disgustado",
+            "fr": "Triste, contrarié"
+          }
+        },
+        {
+          "arabic": "تعبان",
+          "translit": "ta3ban",
+          "meaning": {
+            "de": "Müde, erschöpft",
+            "en": "Tired, exhausted",
+            "tr": "Yorgun",
+            "ar": "تعبان",
+            "es": "Cansado, agotado",
+            "fr": "Fatigué, épuisé"
+          }
+        },
+        {
+          "arabic": "خايف",
+          "translit": "khayef",
+          "meaning": {
+            "de": "Ängstlich, hat Angst",
+            "en": "Afraid, scared",
+            "tr": "Korkmuş",
+            "ar": "خايف",
+            "es": "Asustado",
+            "fr": "Effrayé, a peur"
+          }
+        },
+        {
+          "arabic": "مريض",
+          "translit": "mariidh",
+          "meaning": {
+            "de": "Krank",
+            "en": "Sick, ill",
+            "tr": "Hasta",
+            "ar": "مريض",
+            "es": "Enfermo",
+            "fr": "Malade"
+          }
+        },
+        {
+          "arabic": "الحمد لله",
+          "translit": "alhamdulillah",
+          "meaning": {
+            "de": "Gott sei Dank, alles Lob gebührt Gott",
+            "en": "Thank God, all praise is due to God",
+            "tr": "Allah’a şükür",
+            "ar": "الحمد لله",
+            "es": "Gracias a Dios",
+            "fr": "Dieu merci"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-gulf-idioms",
+      "kind": "vocab",
+      "title": {
+        "de": "Golf-Arabisch - Redewendungen & typische Ausdrücke",
+        "en": "Gulf Arabic - Expressions & Characteristic Phrases",
+        "tr": "Körfez Arapçası - Deyimler ve Karakteristik İfadeler",
+        "ar": "الخليجية - التعابير والعبارات المميزة",
+        "es": "Árabe del Golfo - Expresiones y frases características",
+        "fr": "Arabe du Golfe - Expressions et tournures caractéristiques"
+      },
+      "vocabWords": [
+        {
+          "arabic": "أبشر",
+          "translit": "abshir",
+          "meaning": {
+            "de": "Betrachte es als erledigt, sofort - eine typische Golf-Antwort auf eine Bitte, Ausdruck von Gastfreundschaft und Hilfsbereitschaft",
+            "en": "Consider it done, right away - a typical Gulf reply to a request, expressing hospitality and eagerness to help",
+            "tr": "Hemen hallolur, merak etme - bir isteğe verilen tipik Körfez cevabı, misafirperverlik ve yardımseverliği ifade eder",
+            "ar": "أبشر - رد خليجي نموذجي على طلب، يعبّر عن الضيافة والاستعداد للمساعدة",
+            "es": "Considéralo hecho, enseguida - una respuesta típica del Golfo ante una petición, expresa hospitalidad y disposición a ayudar",
+            "fr": "Considère que c’est fait, tout de suite - une réponse typique du Golfe à une demande, exprimant l’hospitalité et l’empressement à aider"
+          }
+        },
+        {
+          "arabic": "الله يعافيك",
+          "translit": "allah y3afeek",
+          "meaning": {
+            "de": "Möge Gott dir Wohlergehen schenken - höfliche Formel, um jemanden um etwas zu bitten oder sich für seine Mühe zu bedanken",
+            "en": "May God grant you wellness - a polite formula used to ask someone for something or to thank them for their effort",
+            "tr": "Allah sana afiyet versin - birinden bir şey istemek veya emeği için teşekkür etmek amacıyla kullanılan kibar bir kalıp",
+            "ar": "الله يعافيك - صيغة مهذبة تُستخدم لطلب شيء من أحد أو شكره على مجهوده",
+            "es": "Que Dios te dé bienestar - una fórmula cortés usada para pedirle algo a alguien o agradecerle su esfuerzo",
+            "fr": "Que Dieu t’accorde le bien-être - une formule polie utilisée pour demander quelque chose à quelqu’un ou le remercier pour son effort"
+          }
+        },
+        {
+          "arabic": "إن شاء الله",
+          "translit": "inshallah",
+          "meaning": {
+            "de": "So Gott will, hoffentlich",
+            "en": "God willing, hopefully",
+            "tr": "Allah izin verirse, inşallah",
+            "ar": "إن شاء الله",
+            "es": "Si Dios quiere",
+            "fr": "Si Dieu le veut"
+          }
+        },
+        {
+          "arabic": "ماشاء الله",
+          "translit": "mashallah",
+          "meaning": {
+            "de": "Was Gott gewollt hat - Ausdruck der Bewunderung, schützt vor dem bösen Blick",
+            "en": "What God has willed - an expression of admiration, wards off the evil eye",
+            "tr": "Allah’ın dilediği - hayranlık ifadesi, nazardan korur",
+            "ar": "ماشاء الله - تعبير عن الإعجاب، يقي من العين",
+            "es": "Lo que Dios ha querido - expresión de admiración, protege del mal de ojo",
+            "fr": "Ce que Dieu a voulu - expression d’admiration, protège du mauvais œil"
+          }
+        },
+        {
+          "arabic": "خلاص",
+          "translit": "khalas",
+          "meaning": {
+            "de": "Genug, fertig, Schluss - auch im Golf ein häufig genutztes Allzweckwort",
+            "en": "Enough, done, that’s it - also a frequently used all-purpose word in the Gulf",
+            "tr": "Yeter, bitti - Körfez’de de sık kullanılan çok amaçlı bir kelime",
+            "ar": "خلاص (يكفي، انتهى) - كلمة متعددة الاستخدامات شائعة في الخليج أيضًا",
+            "es": "Suficiente, se acabó - también una palabra multiuso muy usada en el Golfo",
+            "fr": "Ça suffit, c’est fini - aussi un mot passe-partout très utilisé dans le Golfe"
+          }
+        },
+        {
+          "arabic": "حياك الله",
+          "translit": "7ayyakallah",
+          "meaning": {
+            "de": "Gott erhalte dich am Leben/gesund - herzlicher Willkommens- oder Dankesgruß",
+            "en": "May God keep you alive/well - a warm welcoming or thanking greeting",
+            "tr": "Allah seni sağ/sağlıklı tutsun - sıcak bir hoş geldin veya teşekkür ifadesi",
+            "ar": "حياك الله - تحية ترحيب أو شكر حارة",
+            "es": "Que Dios te mantenga con vida/salud - un cálido saludo de bienvenida o agradecimiento",
+            "fr": "Que Dieu te garde en vie/en bonne santé - une salutation chaleureuse de bienvenue ou de remerciement"
+          }
+        },
+        {
+          "arabic": "مع السلامة",
+          "translit": "ma3a al-salama",
+          "meaning": {
+            "de": "Auf Wiedersehen, wörtlich „mit Sicherheit/Frieden“ - die klassische Abschiedsformel",
+            "en": "Goodbye, literally “with safety/peace” - the classic farewell formula",
+            "tr": "Hoşça kal, kelimenin tam anlamıyla “esenlikle” - klasik veda kalıbı",
+            "ar": "مع السلامة - صيغة الوداع الكلاسيكية، حرفيًا «مع السلامة»",
+            "es": "Adiós, literalmente «con la paz/seguridad» - la fórmula de despedida clásica",
+            "fr": "Au revoir, littéralement « avec la paix/sécurité » - la formule d’adieu classique"
+          }
+        },
+        {
+          "arabic": "والله",
+          "translit": "wallah",
+          "meaning": {
+            "de": "Bei Gott, ich schwöre - Betonungswort, das ständig als Füllwort in Sätzen verwendet wird",
+            "en": "By God, I swear - an emphasis word constantly used as a filler in sentences",
+            "tr": "Vallahi - cümlelerde sürekli dolgu kelimesi olarak kullanılan bir vurgu kelimesi",
+            "ar": "والله - كلمة تأكيد تُستخدم باستمرار كحشو في الجمل",
+            "es": "Por Dios, lo juro - una palabra de énfasis usada constantemente como muletilla",
+            "fr": "Par Dieu, je le jure - un mot d’insistance constamment utilisé comme mot de remplissage"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-04",
+      "kind": "vocab",
+      "title": {
+        "de": "Ägyptisch (Masri) - Ägypten",
+        "en": "Egyptian (Masri) - Egypt",
+        "tr": "Mısır lehçesi (Masri) - Mısır",
+        "ar": "المصرية - مصر",
+        "es": "Egipcio (Masri) - Egipto",
+        "fr": "Égyptien (Masri) - Égypte"
+      },
+      "vocabWords": [
+        {
+          "arabic": "إزيك؟",
+          "translit": "izzayak? / izzayik?",
+          "meaning": {
+            "de": "Wie geht's? (izzayak zu einem Mann, izzayik zu einer Frau) - die bekannteste Grußformel des Ägyptisch-Arabischen, u. a. durch Ägyptens große Film- und Musikindustrie im ganzen arabischen Raum bekannt",
+            "en": "How are you? (izzayak to a man, izzayik to a woman) - the best-known greeting of Egyptian Arabic, widely known across the Arab world thanks to Egypt's large film and music industry",
+            "tr": "Nasılsın? (erkeğe izzayak, kadına izzayik) - Mısır Arapçasının en tanınmış selamlaşma sözü, Mısır'ın büyük film ve müzik endüstrisi sayesinde tüm Arap dünyasında bilinir",
+            "ar": "إزيك؟ (للرجل إزيك، للمرأة إزيك بصيغة المؤنث) - أشهر تحية في العامية المصرية، معروفة في كل العالم العربي بفضل صناعة السينما والموسيقى المصرية الكبيرة",
+            "es": "¿Cómo estás? (izzayak a un hombre, izzayik a una mujer) - el saludo más conocido del árabe egipcio, ampliamente reconocido en todo el mundo árabe gracias a la gran industria cinematográfica y musical de Egipto",
+            "fr": "Comment vas-tu ? (izzayak à un homme, izzayik à une femme) - la salutation la plus connue de l'arabe égyptien, largement reconnue dans tout le monde arabe grâce à la grande industrie cinématographique et musicale égyptienne"
+          }
+        },
+        {
+          "arabic": "كويس",
+          "translit": "kwayyes / kwayyesa",
+          "meaning": {
+            "de": "Gut (kwayyes männlich, kwayyesa weiblich) - übliche Antwort auf izzayak?",
+            "en": "Good (kwayyes masculine, kwayyesa feminine) - the usual reply to izzayak?",
+            "tr": "İyi (eril kwayyes, dişil kwayyesa) - izzayak?'a verilen yaygın cevap",
+            "ar": "كويس (مذكر)، كويسة (مؤنث) - الرد المعتاد على إزيك؟",
+            "es": "Bien (kwayyes masculino, kwayyesa femenino) - la respuesta habitual a izzayak?",
+            "fr": "Bien (kwayyes masculin, kwayyesa féminin) - la réponse habituelle à izzayak ?"
+          }
+        },
+        {
+          "arabic": "معلش",
+          "translit": "ma'lesh",
+          "meaning": {
+            "de": "Macht nichts, kein Problem, tut mir leid - ein extrem häufiges, typisch ägyptisches Trostwort für kleine Missgeschicke",
+            "en": "Never mind, no problem, sorry - an extremely common, typically Egyptian word of comfort for small mishaps",
+            "tr": "Zararı yok, önemli değil, üzgünüm - küçük aksilikler için son derece yaygın, tipik Mısır tesellisi kelimesi",
+            "ar": "معلش (لا بأس، لا يهم، آسف) - كلمة تعزية مصرية شائعة جدًا للمواقف الصغيرة",
+            "es": "No pasa nada, no hay problema, lo siento - una palabra de consuelo extremadamente común y típicamente egipcia para pequeños contratiempos",
+            "fr": "Ce n'est rien, pas de problème, désolé - un mot de réconfort extrêmement courant et typiquement égyptien pour les petits contretemps"
+          }
+        },
+        {
+          "arabic": "مفيش مشكلة",
+          "translit": "mafeesh mushkila",
+          "meaning": {
+            "de": "Kein Problem (wörtlich „es gibt kein Problem“)",
+            "en": "No problem (literally “there is no problem”)",
+            "tr": "Sorun yok (kelimenin tam anlamıyla “problem yok”)",
+            "ar": "مفيش مشكلة (لا توجد مشكلة)",
+            "es": "No hay problema (literalmente «no hay ningún problema»)",
+            "fr": "Pas de problème (littéralement « il n'y a pas de problème »)"
+          }
+        },
+        {
+          "arabic": "إيه أخبارك؟",
+          "translit": "eh akhbarak?",
+          "meaning": {
+            "de": "Was gibt's Neues? (eh = „was“, ein sehr ägyptisch-typisches Fragewort)",
+            "en": "What's new? (eh = “what”, a very typically Egyptian question word)",
+            "tr": "Ne haber? (eh = “ne”, çok tipik bir Mısır soru kelimesi)",
+            "ar": "إيه أخبارك؟ (ما الجديد؟ - إيه كلمة استفهام مصرية مميزة)",
+            "es": "¿Qué hay de nuevo? (eh = «qué», una palabra interrogativa muy típicamente egipcia)",
+            "fr": "Quoi de neuf ? (eh = « quoi », un mot interrogatif très typiquement égyptien)"
+          }
+        },
+        {
+          "arabic": "دلوقتي",
+          "translit": "delwa'ti",
+          "meaning": {
+            "de": "Jetzt",
+            "en": "Now",
+            "tr": "Şimdi",
+            "ar": "دلوقتي (الآن)",
+            "es": "Ahora",
+            "fr": "Maintenant"
+          }
+        },
+        {
+          "arabic": "إزاي؟",
+          "translit": "ezzay?",
+          "meaning": {
+            "de": "Wie? (auch Teil von izzayak - „wie geht es dir“ ist wörtlich „wie [ist] dein Zustand“)",
+            "en": "How? (also part of izzayak - “how are you” is literally “how [is] your state”)",
+            "tr": "Nasıl? (izzayak'ın da bir parçası - “nasılsın” kelimenin tam anlamıyla “halin nasıl”)",
+            "ar": "إزاي؟ (كيف؟ - وهي أيضًا جزء من إزيك، أي حرفيًا «كيف حالك»)",
+            "es": "¿Cómo? (también parte de izzayak - «cómo estás» es literalmente «cómo [está] tu estado»)",
+            "fr": "Comment ? (fait aussi partie de izzayak - « comment vas-tu » signifie littéralement « comment [est] ton état »)"
+          }
+        },
+        {
+          "arabic": "يعني",
+          "translit": "ya'ni",
+          "meaning": {
+            "de": "Das heißt, sozusagen - ein Füllwort, das in ägyptischem Alltagsarabisch extrem häufig verwendet wird",
+            "en": "That is to say, kind of - a filler word used extremely often in everyday Egyptian Arabic",
+            "tr": "Yani, demek istiyorum - günlük Mısır Arapçasında son derece sık kullanılan bir dolgu kelimesi",
+            "ar": "يعني (أي، بمعنى) - كلمة حشو تُستخدم بكثرة في العامية المصرية اليومية",
+            "es": "Es decir, o sea - una muletilla usada con muchísima frecuencia en el árabe egipcio cotidiano",
+            "fr": "C'est-à-dire, en quelque sorte - un mot de remplissage utilisé très fréquemment dans l'arabe égyptien quotidien"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-egyptian-numbers",
+      "kind": "vocab",
+      "title": {
+        "de": "Ägyptisch - Zahlen & Uhrzeit-Grundlagen",
+        "en": "Egyptian - Numbers & Basic Time Expressions",
+        "tr": "Mısır lehçesi - Sayılar ve Temel Zaman İfadeleri",
+        "ar": "المصرية - الأرقام وأساسيات الوقت",
+        "es": "Egipcio - Números y expresiones básicas de tiempo",
+        "fr": "Égyptien - Nombres et expressions de temps de base"
+      },
+      "vocabWords": [
+        {
+          "arabic": "واحد",
+          "translit": "wahed",
+          "meaning": {
+            "de": "Eins (1)",
+            "en": "One (1)",
+            "tr": "Bir (1)",
+            "ar": "واحد (1)",
+            "es": "Uno (1)",
+            "fr": "Un (1)"
+          }
+        },
+        {
+          "arabic": "اتنين",
+          "translit": "itnein",
+          "meaning": {
+            "de": "Zwei (2)",
+            "en": "Two (2)",
+            "tr": "İki (2)",
+            "ar": "اتنين (2)",
+            "es": "Dos (2)",
+            "fr": "Deux (2)"
+          }
+        },
+        {
+          "arabic": "تلاتة",
+          "translit": "talata",
+          "meaning": {
+            "de": "Drei (3)",
+            "en": "Three (3)",
+            "tr": "Üç (3)",
+            "ar": "تلاتة (3)",
+            "es": "Tres (3)",
+            "fr": "Trois (3)"
+          }
+        },
+        {
+          "arabic": "أربعة",
+          "translit": "arba3a",
+          "meaning": {
+            "de": "Vier (4)",
+            "en": "Four (4)",
+            "tr": "Dört (4)",
+            "ar": "أربعة (4)",
+            "es": "Cuatro (4)",
+            "fr": "Quatre (4)"
+          }
+        },
+        {
+          "arabic": "خمسة",
+          "translit": "khamsa",
+          "meaning": {
+            "de": "Fünf (5)",
+            "en": "Five (5)",
+            "tr": "Beş (5)",
+            "ar": "خمسة (5)",
+            "es": "Cinco (5)",
+            "fr": "Cinq (5)"
+          }
+        },
+        {
+          "arabic": "عشرة",
+          "translit": "3ashara",
+          "meaning": {
+            "de": "Zehn (10)",
+            "en": "Ten (10)",
+            "tr": "On (10)",
+            "ar": "عشرة (10)",
+            "es": "Diez (10)",
+            "fr": "Dix (10)"
+          }
+        },
+        {
+          "arabic": "النهارده",
+          "translit": "innaharda",
+          "meaning": {
+            "de": "Heute",
+            "en": "Today",
+            "tr": "Bugün",
+            "ar": "النهارده (اليوم)",
+            "es": "Hoy",
+            "fr": "Aujourd’hui"
+          }
+        },
+        {
+          "arabic": "بكرة",
+          "translit": "bukra",
+          "meaning": {
+            "de": "Morgen (der nächste Tag)",
+            "en": "Tomorrow (the next day)",
+            "tr": "Yarın",
+            "ar": "بكرة (غدًا)",
+            "es": "Mañana (el día siguiente)",
+            "fr": "Demain (le jour suivant)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-egyptian-questions",
+      "kind": "vocab",
+      "title": {
+        "de": "Ägyptisch - Fragewörter & Alltagsfragen",
+        "en": "Egyptian - Question Words & Everyday Questions",
+        "tr": "Mısır lehçesi - Soru Kelimeleri ve Günlük Sorular",
+        "ar": "المصرية - أدوات الاستفهام والأسئلة اليومية",
+        "es": "Egipcio - Palabras interrogativas y preguntas cotidianas",
+        "fr": "Égyptien - Mots interrogatifs et questions du quotidien"
+      },
+      "vocabWords": [
+        {
+          "arabic": "فين؟",
+          "translit": "fein?",
+          "meaning": {
+            "de": "Wo?",
+            "en": "Where?",
+            "tr": "Nerede?",
+            "ar": "فين؟ (أين؟)",
+            "es": "¿Dónde?",
+            "fr": "Où ?"
+          }
+        },
+        {
+          "arabic": "امتى؟",
+          "translit": "imta?",
+          "meaning": {
+            "de": "Wann?",
+            "en": "When?",
+            "tr": "Ne zaman?",
+            "ar": "امتى؟ (متى؟)",
+            "es": "¿Cuándo?",
+            "fr": "Quand ?"
+          }
+        },
+        {
+          "arabic": "ليه؟",
+          "translit": "leih?",
+          "meaning": {
+            "de": "Warum?",
+            "en": "Why?",
+            "tr": "Neden?",
+            "ar": "ليه؟ (لماذا؟)",
+            "es": "¿Por qué?",
+            "fr": "Pourquoi ?"
+          }
+        },
+        {
+          "arabic": "مين؟",
+          "translit": "meen?",
+          "meaning": {
+            "de": "Wer?",
+            "en": "Who?",
+            "tr": "Kim?",
+            "ar": "مين؟ (من؟)",
+            "es": "¿Quién?",
+            "fr": "Qui ?"
+          }
+        },
+        {
+          "arabic": "بكام؟",
+          "translit": "bikam?",
+          "meaning": {
+            "de": "Wie viel kostet das? - der Klassiker beim Einkaufen auf dem ägyptischen Markt",
+            "en": "How much does that cost? - the classic phrase for shopping at an Egyptian market",
+            "tr": "Bu ne kadar? - Mısır çarşısında alışverişin klasik ifadesi",
+            "ar": "بكام؟ (كم ثمن هذا؟) - العبارة الكلاسيكية للتسوق في السوق المصري",
+            "es": "¿Cuánto cuesta esto? - la frase clásica para comprar en un mercado egipcio",
+            "fr": "Combien ça coûte ? - la phrase classique pour faire ses courses au marché égyptien"
+          }
+        },
+        {
+          "arabic": "فيه",
+          "translit": "feeh",
+          "meaning": {
+            "de": "Es gibt, gibt es …?",
+            "en": "There is, is there …?",
+            "tr": "Var, … var mı?",
+            "ar": "فيه (يوجد، هل يوجد …؟)",
+            "es": "Hay, ¿hay …?",
+            "fr": "Il y a, y a-t-il … ?"
+          }
+        },
+        {
+          "arabic": "هنا",
+          "translit": "hena",
+          "meaning": {
+            "de": "Hier",
+            "en": "Here",
+            "tr": "Burada",
+            "ar": "هنا",
+            "es": "Aquí",
+            "fr": "Ici"
+          }
+        },
+        {
+          "arabic": "هناك",
+          "translit": "henak",
+          "meaning": {
+            "de": "Dort, drüben",
+            "en": "There, over there",
+            "tr": "Orada",
+            "ar": "هناك",
+            "es": "Allí, allá",
+            "fr": "Là-bas"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-egyptian-family",
+      "kind": "vocab",
+      "title": {
+        "de": "Ägyptisch - Familie & Beziehungen",
+        "en": "Egyptian - Family & Relationships",
+        "tr": "Mısır lehçesi - Aile ve İlişkiler",
+        "ar": "المصرية - العائلة والعلاقات",
+        "es": "Egipcio - Familia y relaciones",
+        "fr": "Égyptien - Famille et relations"
+      },
+      "vocabWords": [
+        {
+          "arabic": "بابا",
+          "translit": "baba",
+          "meaning": {
+            "de": "Papa, Vater",
+            "en": "Dad, father",
+            "tr": "Baba",
+            "ar": "بابا (الأب)",
+            "es": "Papá, padre",
+            "fr": "Papa, père"
+          }
+        },
+        {
+          "arabic": "ماما",
+          "translit": "mama",
+          "meaning": {
+            "de": "Mama, Mutter",
+            "en": "Mom, mother",
+            "tr": "Anne",
+            "ar": "ماما (الأم)",
+            "es": "Mamá, madre",
+            "fr": "Maman, mère"
+          }
+        },
+        {
+          "arabic": "أخويا",
+          "translit": "akhoya",
+          "meaning": {
+            "de": "Mein Bruder",
+            "en": "My brother",
+            "tr": "Kardeşim",
+            "ar": "اخويا (أخي)",
+            "es": "Mi hermano",
+            "fr": "Mon frère"
+          }
+        },
+        {
+          "arabic": "اختي",
+          "translit": "ukhti",
+          "meaning": {
+            "de": "Meine Schwester",
+            "en": "My sister",
+            "tr": "Kız kardeşim",
+            "ar": "اختي",
+            "es": "Mi hermana",
+            "fr": "Ma sœur"
+          }
+        },
+        {
+          "arabic": "ابني",
+          "translit": "ibni",
+          "meaning": {
+            "de": "Mein Sohn",
+            "en": "My son",
+            "tr": "Oğlum",
+            "ar": "ابني",
+            "es": "Mi hijo",
+            "fr": "Mon fils"
+          }
+        },
+        {
+          "arabic": "بنتي",
+          "translit": "binti",
+          "meaning": {
+            "de": "Meine Tochter",
+            "en": "My daughter",
+            "tr": "Kızım",
+            "ar": "بنتي",
+            "es": "Mi hija",
+            "fr": "Ma fille"
+          }
+        },
+        {
+          "arabic": "جدو",
+          "translit": "geddo",
+          "meaning": {
+            "de": "Mein Großvater",
+            "en": "My grandfather",
+            "tr": "Dedem",
+            "ar": "جدو",
+            "es": "Mi abuelo",
+            "fr": "Mon grand-père"
+          }
+        },
+        {
+          "arabic": "تيتا",
+          "translit": "teta",
+          "meaning": {
+            "de": "Meine Großmutter - eines der herzlichsten und meistgenutzten Familienwörter im Ägyptisch-Arabischen",
+            "en": "My grandmother - one of the warmest and most-used family words in Egyptian Arabic",
+            "tr": "Büyükannem - Mısır Arapçasında en sıcak ve en çok kullanılan aile kelimelerinden biri",
+            "ar": "تيتا (جدتي) - من أكثر كلمات العائلة دفئًا واستخدامًا في العامية المصرية",
+            "es": "Mi abuela - una de las palabras familiares más cálidas y usadas en árabe egipcio",
+            "fr": "Ma grand-mère - l’un des mots de famille les plus chaleureux et les plus utilisés en arabe égyptien"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-egyptian-food",
+      "kind": "vocab",
+      "title": {
+        "de": "Ägyptisch - Essen, Trinken & Markt",
+        "en": "Egyptian - Food, Drink & Market",
+        "tr": "Mısır lehçesi - Yiyecek, İçecek ve Çarşı",
+        "ar": "المصرية - الطعام والشراب والسوق",
+        "es": "Egipcio - Comida, bebida y mercado",
+        "fr": "Égyptien - Nourriture, boisson et marché"
+      },
+      "vocabWords": [
+        {
+          "arabic": "عيش",
+          "translit": "3eish",
+          "meaning": {
+            "de": "Brot - wörtlich „Leben“; einzigartig im Ägyptisch-Arabischen, wo dieses Wort Hocharabisch khubz vollständig ersetzt",
+            "en": "Bread - literally “life”; unique to Egyptian Arabic, where this word completely replaces MSA khubz",
+            "tr": "Ekmek - kelimenin tam anlamıyla “hayat”; Fasih Arapçadaki khubz’un yerini tamamen alan, Mısır Arapçasına özgü bir kelime",
+            "ar": "عيش (خبز) - حرفيًا «حياة»؛ كلمة فريدة في العامية المصرية تحل محل خبز الفصحى تمامًا",
+            "es": "Pan - literalmente «vida»; único del árabe egipcio, donde esta palabra sustituye por completo al khubz del árabe estándar",
+            "fr": "Pain - littéralement « vie » ; unique à l’arabe égyptien, où ce mot remplace entièrement le khubz de l’arabe standard"
+          }
+        },
+        {
+          "arabic": "ميه",
+          "translit": "mayya",
+          "meaning": {
+            "de": "Wasser",
+            "en": "Water",
+            "tr": "Su",
+            "ar": "مية (ماء)",
+            "es": "Agua",
+            "fr": "Eau"
+          }
+        },
+        {
+          "arabic": "قهوة",
+          "translit": "ahwa",
+          "meaning": {
+            "de": "Kaffee - im Ägyptisch-Arabischen wird das q (wie im Hocharabisch qahwa) oft zu einem Knacklaut, hier ganz weggelassen: ahwa",
+            "en": "Coffee - in Egyptian Arabic the q sound (as in MSA qahwa) often becomes a glottal stop, dropped entirely here: ahwa",
+            "tr": "Kahve - Mısır Arapçasında q sesi (Fasih Arapçadaki qahwa gibi) genellikle gırtlaksı bir sese dönüşür, burada tamamen düşer: ahwa",
+            "ar": "قهوة تُنطق «أهوة» - يتحول صوت القاف في العامية المصرية غالبًا إلى همزة، وهنا يُحذف تمامًا",
+            "es": "Café - en árabe egipcio el sonido q (como en el estándar qahwa) suele convertirse en una oclusión glotal, aquí omitida por completo: ahwa",
+            "fr": "Café - en arabe égyptien, le son q (comme dans qahwa en arabe standard) devient souvent un coup de glotte, ici totalement omis : ahwa"
+          }
+        },
+        {
+          "arabic": "سوق",
+          "translit": "souq",
+          "meaning": {
+            "de": "Markt, Basar",
+            "en": "Market, bazaar",
+            "tr": "Çarşı, pazar",
+            "ar": "سوق",
+            "es": "Mercado, zoco",
+            "fr": "Marché, souk"
+          }
+        },
+        {
+          "arabic": "غالي",
+          "translit": "ghali",
+          "meaning": {
+            "de": "Teuer",
+            "en": "Expensive",
+            "tr": "Pahalı",
+            "ar": "غالي",
+            "es": "Caro",
+            "fr": "Cher"
+          }
+        },
+        {
+          "arabic": "رخيص",
+          "translit": "rekhees",
+          "meaning": {
+            "de": "Billig, günstig",
+            "en": "Cheap, inexpensive",
+            "tr": "Ucuz",
+            "ar": "رخيص",
+            "es": "Barato",
+            "fr": "Bon marché"
+          }
+        },
+        {
+          "arabic": "عايز",
+          "translit": "3ayez",
+          "meaning": {
+            "de": "Ich möchte, ich will (männliche Form; weiblich: 3ayza) - eine für Ägyptisch typische Verlaufsform von „wollen“",
+            "en": "I want, I would like (masculine form; feminine: 3ayza) - a form of “to want” typical of Egyptian Arabic",
+            "tr": "İstiyorum (eril biçim; dişil: 3ayza) - Mısır Arapçasına özgü bir “istemek” biçimi",
+            "ar": "عايز (أريد - للمذكر، والمؤنث عايزة) - صيغة مميزة للعامية المصرية لفعل «أراد»",
+            "es": "Quiero, me gustaría (forma masculina; femenina: 3ayza) - una forma de «querer» típica del árabe egipcio",
+            "fr": "Je veux, je voudrais (forme masculine ; féminin : 3ayza) - une forme de « vouloir » typique de l’arabe égyptien"
+          }
+        },
+        {
+          "arabic": "فول",
+          "translit": "foul",
+          "meaning": {
+            "de": "Saubohnen-Eintopf - das klassische ägyptische Frühstück, oft mit Öl, Zitrone und Brot gegessen",
+            "en": "Fava bean stew - the classic Egyptian breakfast, often eaten with oil, lemon, and bread",
+            "tr": "Bakla yemeği - klasik Mısır kahvaltısı, genellikle zeytinyağı, limon ve ekmekle yenir",
+            "ar": "فول - الفطور المصري الكلاسيكي، يُؤكل غالبًا بالزيت والليمون والعيش",
+            "es": "Guiso de habas - el desayuno egipcio clásico, a menudo comido con aceite, limón y pan",
+            "fr": "Ragoût de fèves - le petit-déjeuner égyptien classique, souvent mangé avec de l’huile, du citron et du pain"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-egyptian-feelings",
+      "kind": "vocab",
+      "title": {
+        "de": "Ägyptisch - Gefühle, Ja & Nein",
+        "en": "Egyptian - Feelings, Yes & No",
+        "tr": "Mısır lehçesi - Duygular, Evet ve Hayır",
+        "ar": "المصرية - المشاعر، نعم ولا",
+        "es": "Egipcio - Sentimientos, sí y no",
+        "fr": "Égyptien - Sentiments, oui et non"
+      },
+      "vocabWords": [
+        {
+          "arabic": "أيوة",
+          "translit": "aywa",
+          "meaning": {
+            "de": "Ja - die bekannteste ägyptische Form von „ja“, im gesamten arabischen Raum durch Filme und Musik verbreitet",
+            "en": "Yes - the best-known Egyptian form of “yes”, spread across the whole Arab world through film and music",
+            "tr": "Evet - Mısır’ın en tanınmış “evet” biçimi, film ve müzik yoluyla tüm Arap dünyasına yayılmıştır",
+            "ar": "أيوة (نعم) - أشهر صيغة مصرية لـ«نعم»، انتشرت في كل العالم العربي عبر السينما والموسيقى",
+            "es": "Sí - la forma egipcia de «sí» más conocida, difundida por todo el mundo árabe a través del cine y la música",
+            "fr": "Oui - la forme égyptienne de « oui » la plus connue, répandue dans tout le monde arabe grâce au cinéma et à la musique"
+          }
+        },
+        {
+          "arabic": "لأ",
+          "translit": "la'",
+          "meaning": {
+            "de": "Nein",
+            "en": "No",
+            "tr": "Hayır",
+            "ar": "لأ",
+            "es": "No",
+            "fr": "Non"
+          }
+        },
+        {
+          "arabic": "فرحان",
+          "translit": "farhan",
+          "meaning": {
+            "de": "Glücklich, froh",
+            "en": "Happy, glad",
+            "tr": "Mutlu",
+            "ar": "فرحان",
+            "es": "Feliz, contento",
+            "fr": "Heureux, content"
+          }
+        },
+        {
+          "arabic": "زعلان",
+          "translit": "za3lan",
+          "meaning": {
+            "de": "Traurig, verärgert",
+            "en": "Sad, upset",
+            "tr": "Üzgün",
+            "ar": "زعلان",
+            "es": "Triste, disgustado",
+            "fr": "Triste, contrarié"
+          }
+        },
+        {
+          "arabic": "تعبان",
+          "translit": "ta3ban",
+          "meaning": {
+            "de": "Müde, erschöpft",
+            "en": "Tired, exhausted",
+            "tr": "Yorgun",
+            "ar": "تعبان",
+            "es": "Cansado, agotado",
+            "fr": "Fatigué, épuisé"
+          }
+        },
+        {
+          "arabic": "خايف",
+          "translit": "khayef",
+          "meaning": {
+            "de": "Ängstlich, hat Angst",
+            "en": "Afraid, scared",
+            "tr": "Korkmuş",
+            "ar": "خايف",
+            "es": "Asustado",
+            "fr": "Effrayé, a peur"
+          }
+        },
+        {
+          "arabic": "عيان",
+          "translit": "3ayyan",
+          "meaning": {
+            "de": "Krank",
+            "en": "Sick, ill",
+            "tr": "Hasta",
+            "ar": "عيان",
+            "es": "Enfermo",
+            "fr": "Malade"
+          }
+        },
+        {
+          "arabic": "الحمد لله",
+          "translit": "alhamdulillah",
+          "meaning": {
+            "de": "Gott sei Dank, alles Lob gebührt Gott",
+            "en": "Thank God, all praise is due to God",
+            "tr": "Allah’a şükür",
+            "ar": "الحمد لله",
+            "es": "Gracias a Dios",
+            "fr": "Dieu merci"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dialects-egyptian-idioms",
+      "kind": "vocab",
+      "title": {
+        "de": "Ägyptisch - Redewendungen & typische Ausdrücke",
+        "en": "Egyptian - Expressions & Characteristic Phrases",
+        "tr": "Mısır lehçesi - Deyimler ve Karakteristik İfadeler",
+        "ar": "المصرية - التعابير والعبارات المميزة",
+        "es": "Egipcio - Expresiones y frases características",
+        "fr": "Égyptien - Expressions et tournures caractéristiques"
+      },
+      "vocabWords": [
+        {
+          "arabic": "يلا",
+          "translit": "yalla",
+          "meaning": {
+            "de": "Los geht’s, beeil dich - auch im Ägyptisch-Arabischen sehr gebräuchlich, wie im ganzen arabischen Raum",
+            "en": "Let’s go, hurry up - also very common in Egyptian Arabic, as across the whole Arab world",
+            "tr": "Hadi, acele et - Mısır Arapçasında da tüm Arap dünyasında olduğu gibi çok yaygın",
+            "ar": "يلا (هيا، أسرع) - شائعة جدًا في العامية المصرية أيضًا، كما في كل العالم العربي",
+            "es": "Vamos, date prisa - también muy común en árabe egipcio, como en todo el mundo árabe",
+            "fr": "Allons-y, dépêche-toi - également très courant en arabe égyptien, comme dans tout le monde arabe"
+          }
+        },
+        {
+          "arabic": "خلاص",
+          "translit": "khalas",
+          "meaning": {
+            "de": "Genug, fertig, Schluss - ein häufiges Allzweckwort",
+            "en": "Enough, done, that’s it - a frequently used all-purpose word",
+            "tr": "Yeter, bitti - sık kullanılan çok amaçlı bir kelime",
+            "ar": "خلاص (يكفي، انتهى) - كلمة متعددة الاستخدامات شائعة",
+            "es": "Suficiente, se acabó - una palabra multiuso muy usada",
+            "fr": "Ça suffit, c’est fini - un mot passe-partout très utilisé"
+          }
+        },
+        {
+          "arabic": "إن شاء الله",
+          "translit": "insha'allah",
+          "meaning": {
+            "de": "So Gott will, hoffentlich",
+            "en": "God willing, hopefully",
+            "tr": "Allah izin verirse, inşallah",
+            "ar": "إن شاء الله",
+            "es": "Si Dios quiere",
+            "fr": "Si Dieu le veut"
+          }
+        },
+        {
+          "arabic": "ماشاء الله",
+          "translit": "mashallah",
+          "meaning": {
+            "de": "Was Gott gewollt hat - Ausdruck der Bewunderung, schützt vor dem bösen Blick",
+            "en": "What God has willed - an expression of admiration, wards off the evil eye",
+            "tr": "Allah’ın dilediği - hayranlık ifadesi, nazardan korur",
+            "ar": "ماشاء الله - تعبير عن الإعجاب، يقي من العين",
+            "es": "Lo que Dios ha querido - expresión de admiración, protege del mal de ojo",
+            "fr": "Ce que Dieu a voulu - expression d’admiration, protège du mauvais œil"
+          }
+        },
+        {
+          "arabic": "واللاهي",
+          "translit": "wallahi",
+          "meaning": {
+            "de": "Ich schwöre bei Gott - ägyptische Aussprachevariante von wallah, mit zusätzlichem betonten i am Ende",
+            "en": "I swear by God - the Egyptian pronunciation variant of wallah, with an extra stressed i at the end",
+            "tr": "Vallahi - wallah’ın sonunda vurgulu bir i ile söylenen Mısır telaffuz varyantı",
+            "ar": "والله (واللاهي) - نطق مصري لكلمة والله مع ياء مشددة في النهاية",
+            "es": "Lo juro por Dios - la variante de pronunciación egipcia de wallah, con una i acentuada añadida al final",
+            "fr": "Je le jure par Dieu - la variante de prononciation égyptienne de wallah, avec un i accentué ajouté à la fin"
+          }
+        },
+        {
+          "arabic": "حبيبي",
+          "translit": "habibi",
+          "meaning": {
+            "de": "Mein Lieber, Schatz - liebevolle Anrede, die im Ägyptisch-Arabischen extrem häufig auch außerhalb von Liebesbeziehungen verwendet wird (Freunde, Familie, sogar Fremde)",
+            "en": "My dear, sweetheart - an affectionate term of address used extremely often in Egyptian Arabic even outside romantic relationships (friends, family, even strangers)",
+            "tr": "Canım, sevgilim - Mısır Arapçasında romantik ilişkiler dışında da (arkadaşlar, aile, hatta yabancılar) son derece sık kullanılan sevgi dolu bir hitap",
+            "ar": "حبيبي - نداء عاطفي يُستخدم بكثرة في العامية المصرية حتى خارج العلاقات الرومانسية (الأصدقاء، العائلة، وحتى الغرباء)",
+            "es": "Mi querido, cariño - un término de cariño usado con muchísima frecuencia en árabe egipcio incluso fuera de relaciones románticas (amigos, familia, incluso desconocidos)",
+            "fr": "Mon cher, chéri - un terme affectueux utilisé très fréquemment en arabe égyptien même en dehors des relations amoureuses (amis, famille, voire inconnus)"
+          }
+        },
+        {
+          "arabic": "جامد",
+          "translit": "gamed",
+          "meaning": {
+            "de": "Stark, cool, beeindruckend - modernes ägyptisches Slangwort für alles, was gut oder beeindruckend ist",
+            "en": "Strong, cool, impressive - a modern Egyptian slang word for anything good or impressive",
+            "tr": "Güçlü, harika, etkileyici - iyi veya etkileyici olan her şey için kullanılan modern Mısır argosu",
+            "ar": "جامد (قوي، رائع) - كلمة عامية مصرية حديثة تُقال عن كل ما هو جيد أو مثير للإعجاب",
+            "es": "Fuerte, genial, impresionante - una palabra de argot egipcio moderno para todo lo que es bueno o impresionante",
+            "fr": "Fort, cool, impressionnant - un mot d’argot égyptien moderne pour tout ce qui est bien ou impressionnant"
+          }
+        },
+        {
+          "arabic": "طب",
+          "translit": "tab",
+          "meaning": {
+            "de": "Also, na gut, okay dann - sehr häufiges Füllwort im ägyptischen Gesprächsfluss, Kurzform von tayyib",
+            "en": "So, alright, okay then - a very common filler word in Egyptian conversation, short for tayyib",
+            "tr": "O halde, tamam öyleyse - Mısır konuşma diline çok yerleşmiş bir dolgu kelimesi, tayyib’in kısaltması",
+            "ar": "طب (إذن، حسنًا) - كلمة حشو شائعة جدًا في الحوار المصري، اختصار لكلمة طيب",
+            "es": "Entonces, bueno, vale - una muletilla muy común en la conversación egipcia, forma corta de tayyib",
+            "fr": "Alors, bon, d’accord - un mot de remplissage très courant dans la conversation égyptienne, forme courte de tayyib"
+          }
+        }
+      ]
+    }
+  ]
+}

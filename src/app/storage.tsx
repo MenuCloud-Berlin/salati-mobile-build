@@ -1,0 +1,468 @@
+import { useCallback, useEffect, useState } from 'react';
+import { Alert, Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+import { ThemedActivityIndicator } from '@/components/themed-activity-indicator';
+import { ThemedText } from '@/components/themed-text';
+import { ThemedView } from '@/components/themed-view';
+import { IconSymbol, type IconName } from '@/components/ui/icon-symbol';
+import { BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import {
+  MODELL_GROESSE_BYTES,
+  aktuelleModellGroesse,
+  clearAppCache,
+  deleteKiModel,
+  deleteWhisperModel,
+  formatBytes,
+  getStorageOverview,
+  type StorageOverview,
+} from '@/features/settings/storage';
+import { whisperDownloadLaeuft, whisperModellHerunterladen } from '@/features/hifz/whisperModel';
+import { deleteFullMushafAudio } from '@/features/quran/offline-audio';
+import { editionDisplayName } from '@/features/quran/EditionPicker';
+import { useAudioEditions } from '@/features/quran/hooks';
+import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
+import { useTranslation } from '@/lib/i18n';
+import { isRtlLocale } from '@/lib/locale-detect';
+
+// Zentrale Speicherverwaltung: Übersicht über alle lokalen Speicherverbraucher
+// (Rezitator-Audio, KI-Modelle, Cache) mit gezielten Lösch-Aktionen. Bewusst
+// eine eigene Sub-Seite statt Teil von settings.tsx (das ist mit >1400 Zeilen
+// bereits sehr groß) - erreichbar über einen neuen Eintrag dort. Lösch-Logik
+// für Rezitator-Audio/Modelle liegt weiterhin in offline-audio.ts/model.ts/
+// whisperModel.ts, hier nur Größenberechnung (features/settings/storage.ts)
+// + UI, die diese bestehenden Funktionen aufruft.
+
+export default function StorageScreen() {
+  const { t, locale } = useTranslation();
+  const rtl = isRtlLocale(locale);
+  const scheme = useResolvedScheme();
+  const colors = Colors[scheme];
+  const { data: audioEditions } = useAudioEditions();
+
+  const [overview, setOverview] = useState<StorageOverview | null>(null);
+  const [busy, setBusy] = useState<string | null>(null);
+  // Download-Fortschritt fürs Whisper-Modell (0..100), null = kein Download.
+  const [whisperDlPct, setWhisperDlPct] = useState<number | null>(null);
+
+  const refresh = useCallback(async () => {
+    setOverview(await getStorageOverview());
+  }, []);
+
+  // Direktes .then() im Effekt-Body statt refresh() aufzurufen (obwohl
+  // funktional identisch) - React-Compiler-Lint meldet sonst "setState
+  // synchronously within an effect", weil es refresh() bis zum setOverview
+  // hinein verfolgt. Gleiches Muster wie die bestehenden Lade-Effekte in
+  // app/settings.tsx (z. B. countDownloadedSurahs/listDownloadedReciters).
+  useEffect(() => {
+    let cancelled = false;
+    getStorageOverview().then((o) => {
+      if (!cancelled) setOverview(o);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  function reciterName(reciter: string): string {
+    const edition = audioEditions?.find((e) => e.identifier === reciter);
+    return edition ? editionDisplayName(edition) : reciter;
+  }
+
+  function confirmDeleteReciter(reciter: string) {
+    const name = reciterName(reciter);
+    Alert.alert(
+      t('settings.reciterAudioPack.deleteConfirmTitle'),
+      t('settings.reciterAudioPack.deleteConfirmBody').replace('{reciter}', name),
+      [
+        { text: t('common.cancel'), style: 'cancel' },
+        {
+          text: t('settings.reciterAudioPack.deleteAction'),
+          style: 'destructive',
+          onPress: async () => {
+            setBusy(`reciter:${reciter}`);
+            await deleteFullMushafAudio(reciter);
+            await refresh();
+            setBusy(null);
+          },
+        },
+      ],
+    );
+  }
+
+  function confirmDeleteKiModel() {
+    const size = formatBytes(MODELL_GROESSE_BYTES);
+    Alert.alert(t('ki.deleteModel'), t('ki.deleteModelConfirm').replace('{size}', size), [
+      { text: t('common.cancel'), style: 'cancel' },
+      {
+        text: t('ki.deleteModel'),
+        style: 'destructive',
+        onPress: async () => {
+          setBusy('kiModel');
+          await deleteKiModel();
+          await refresh();
+          setBusy(null);
+        },
+      },
+    ]);
+  }
+
+  function confirmDeleteWhisperModel() {
+    const size = formatBytes(aktuelleModellGroesse());
+    Alert.alert(t('settings.storage.whisperModel.delete'), t('settings.storage.whisperModel.deleteConfirm').replace('{size}', size), [
+      { text: t('common.cancel'), style: 'cancel' },
+      {
+        text: t('settings.storage.whisperModel.delete'),
+        style: 'destructive',
+        onPress: async () => {
+          setBusy('whisperModel');
+          await deleteWhisperModel();
+          await refresh();
+          setBusy(null);
+        },
+      },
+    ]);
+  }
+
+  // Modell VORAB aus den Einstellungen laden (User-Wunsch): bisher startete der
+  // Download erst beim ersten Aufnehmen in der Aufsage-Übung. Lädt das aktuell
+  // gewählte Modell (base/turbo, s. settings.recitationModel).
+  async function downloadWhisperModel() {
+    setBusy('whisperModel');
+    setWhisperDlPct(0);
+    try {
+      await whisperModellHerunterladen((p) => setWhisperDlPct(Math.round(p.anteil * 100)));
+      await refresh();
+    } catch {
+      Alert.alert(t('settings.storage.whisperModel.title'), t('hifz.micError'));
+    } finally {
+      setWhisperDlPct(null);
+      setBusy(null);
+    }
+  }
+
+  // Läuft schon ein Download (z. B. auf einem anderen Screen gestartet), beim
+  // Betreten des Speicher-Screens automatisch wieder anzeigen — der Download
+  // wird NICHT neu gestartet (Singleton), nur mit-beobachtet.
+  useEffect(() => {
+    if (!whisperDownloadLaeuft()) return;
+    // Microtask, um synchrones setState im Effekt-Body zu vermeiden
+    // (React-Compiler-Lint); downloadWhisperModel joint den Singleton und
+    // bekommt den aktuellen Fortschritt sofort per Callback.
+    void Promise.resolve().then(() => downloadWhisperModel());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  function confirmClearCache() {
+    Alert.alert(t('settings.storage.cache.clearConfirmTitle'), t('settings.storage.cache.clearConfirmBody'), [
+      { text: t('common.cancel'), style: 'cancel' },
+      {
+        text: t('settings.storage.cache.clearAction'),
+        style: 'destructive',
+        onPress: async () => {
+          setBusy('cache');
+          await clearAppCache();
+          await refresh();
+          setBusy(null);
+        },
+      },
+    ]);
+  }
+
+  return (
+    <ThemedView style={styles.container}>
+      <SafeAreaView style={styles.safeArea}>
+        <ScrollView contentContainerStyle={styles.scroll}>
+          <ThemedText type="title" style={styles.title}>
+            {t('settings.storage.title')}
+          </ThemedText>
+          <ThemedText type="small" themeColor="textSecondary" style={styles.subtitle}>
+            {t('settings.storage.subtitle')}
+          </ThemedText>
+
+          {overview === null && (
+            <View style={styles.centerBox}>
+              <ThemedActivityIndicator />
+              <ThemedText type="small" themeColor="textSecondary" style={styles.loadingLabel}>
+                {t('settings.storage.loading')}
+              </ThemedText>
+            </View>
+          )}
+
+          {overview !== null && !overview.supported && (
+            <ThemedView type="backgroundElement" style={styles.card}>
+              <ThemedText type="small" themeColor="textSecondary">
+                {t('settings.storage.unsupported')}
+              </ThemedText>
+            </ThemedView>
+          )}
+
+          {overview !== null && overview.supported && (
+            <>
+              <ThemedView type="backgroundElement" style={styles.totalCard}>
+                <ThemedText type="small" themeColor="textSecondary">
+                  {t('settings.storage.total')}
+                </ThemedText>
+                <ThemedText type="title" style={styles.totalValue}>
+                  {formatBytes(overview.totalBytes)}
+                </ThemedText>
+              </ThemedView>
+
+              <Section label={t('settings.storage.reciterAudio.title')} icon="download-outline">
+                {overview.reciterAudio.reciters.length === 0 ? (
+                  <ThemedText type="small" themeColor="textSecondary" style={styles.emptyHint}>
+                    {t('settings.storage.reciterAudio.empty')}
+                  </ThemedText>
+                ) : (
+                  overview.reciterAudio.reciters.map((pack) => (
+                    <View key={pack.reciter} style={[styles.itemRow, rtl && styles.itemRowRtl]}>
+                      <View style={styles.itemLabel}>
+                        <ThemedText type="default" style={rtl && styles.rtlText}>
+                          {reciterName(pack.reciter)}
+                        </ThemedText>
+                        <ThemedText type="small" themeColor="textSecondary" style={rtl && styles.rtlText}>
+                          {formatBytes(pack.bytes)} ·{' '}
+                          {t('settings.reciterAudioPack.packStatus').replace('{n}', String(pack.surahCount))}
+                        </ThemedText>
+                      </View>
+                      <DeleteButton
+                        busy={busy === `reciter:${pack.reciter}`}
+                        onPress={() => confirmDeleteReciter(pack.reciter)}
+                        color={colors.accent}
+                        label={t('settings.reciterAudioPack.deleteAction')}
+                      />
+                    </View>
+                  ))
+                )}
+              </Section>
+
+              <Section label={t('settings.storage.offlineQuran.title')} icon="book-outline">
+                <ThemedText type="small" themeColor="textSecondary" style={styles.emptyHint}>
+                  {t('settings.storage.offlineQuran.hint')}
+                </ThemedText>
+                <View style={[styles.itemRow, rtl && styles.itemRowRtl]}>
+                  <View style={styles.itemLabel}>
+                    <ThemedText type="default" style={rtl && styles.rtlText}>
+                      {overview.offlineQuran.surahCount === 0
+                        ? t('settings.storage.offlineQuran.empty')
+                        : formatBytes(overview.offlineQuran.bytes)}
+                    </ThemedText>
+                    {overview.offlineQuran.surahCount > 0 && (
+                      <ThemedText type="small" themeColor="textSecondary" style={rtl && styles.rtlText}>
+                        {t('settings.storage.offlineQuran.surahs').replace(
+                          '{n}',
+                          String(overview.offlineQuran.surahCount),
+                        )}
+                      </ThemedText>
+                    )}
+                  </View>
+                </View>
+              </Section>
+
+              <Section label={t('settings.storage.kiModel.title')} icon="chatbubble-ellipses-outline">
+                <View style={[styles.itemRow, rtl && styles.itemRowRtl]}>
+                  <View style={styles.itemLabel}>
+                    <ThemedText type="default" style={rtl && styles.rtlText}>
+                      {t('settings.storage.kiModel.title')}
+                    </ThemedText>
+                    <ThemedText type="small" themeColor="textSecondary" style={rtl && styles.rtlText}>
+                      {overview.kiModel.downloaded
+                        ? formatBytes(overview.kiModel.bytes)
+                        : t('settings.storage.kiModel.notDownloaded')}
+                    </ThemedText>
+                  </View>
+                  {overview.kiModel.downloaded && (
+                    <DeleteButton
+                      busy={busy === 'kiModel'}
+                      onPress={confirmDeleteKiModel}
+                      color={colors.accent}
+                      label={t('ki.deleteModel')}
+                    />
+                  )}
+                </View>
+              </Section>
+
+              <Section label={t('settings.storage.whisperModel.title')} icon="mic-outline">
+                <View style={[styles.itemRow, rtl && styles.itemRowRtl]}>
+                  <View style={styles.itemLabel}>
+                    <ThemedText type="default" style={rtl && styles.rtlText}>
+                      {t('settings.storage.whisperModel.title')}
+                    </ThemedText>
+                    <ThemedText type="small" themeColor="textSecondary" style={rtl && styles.rtlText}>
+                      {overview.whisperModel.downloaded
+                        ? formatBytes(overview.whisperModel.bytes)
+                        : whisperDlPct !== null
+                          ? `${t('hifz.modelDownload').replace('{p}', String(whisperDlPct))}`
+                          : `${t('settings.storage.whisperModel.notDownloaded')} · ${formatBytes(aktuelleModellGroesse())}`}
+                    </ThemedText>
+                  </View>
+                  {overview.whisperModel.downloaded ? (
+                    <DeleteButton
+                      busy={busy === 'whisperModel'}
+                      onPress={confirmDeleteWhisperModel}
+                      color={colors.accent}
+                      label={t('settings.storage.whisperModel.delete')}
+                    />
+                  ) : (
+                    <Pressable
+                      onPress={downloadWhisperModel}
+                      disabled={busy === 'whisperModel'}
+                      accessibilityRole="button"
+                      accessibilityLabel={t('settings.storage.whisperModel.download')}
+                      style={({ pressed }) => [Platform.OS === 'web' ? styles.pressableWeb : undefined, pressed && styles.pressed]}>
+                      <ThemedView type="backgroundSelected" style={styles.clearChip}>
+                        {busy === 'whisperModel' ? (
+                          <ThemedActivityIndicator size="small" />
+                        ) : (
+                          <>
+                            <IconSymbol name="download-outline" size={14} color={colors.accent} />
+                            <ThemedText type="smallBold" themeColor="accent">
+                              {t('settings.storage.whisperModel.download')}
+                            </ThemedText>
+                          </>
+                        )}
+                      </ThemedView>
+                    </Pressable>
+                  )}
+                </View>
+              </Section>
+
+              <Section label={t('settings.storage.cache.title')} icon="layers-outline">
+                <ThemedText type="small" themeColor="textSecondary" style={styles.emptyHint}>
+                  {t('settings.storage.cache.hint')}
+                </ThemedText>
+                <View style={[styles.itemRow, rtl && styles.itemRowRtl]}>
+                  <View style={styles.itemLabel}>
+                    <ThemedText type="default" style={rtl && styles.rtlText}>
+                      {formatBytes(overview.cache.bytes)}
+                    </ThemedText>
+                  </View>
+                  <Pressable
+                    onPress={confirmClearCache}
+                    disabled={busy === 'cache'}
+                    accessibilityRole="button"
+                    accessibilityLabel={t('settings.storage.cache.clear')}
+                    style={({ pressed }) => [Platform.OS === 'web' ? styles.pressableWeb : undefined, pressed && styles.pressed]}>
+                    <ThemedView type="backgroundSelected" style={styles.clearChip}>
+                      {busy === 'cache' ? (
+                        <ThemedActivityIndicator size="small" />
+                      ) : (
+                        <>
+                          <IconSymbol name="trash-outline" size={14} color={colors.accent} />
+                          <ThemedText type="smallBold" themeColor="accent">
+                            {t('settings.storage.cache.clear')}
+                          </ThemedText>
+                        </>
+                      )}
+                    </ThemedView>
+                  </Pressable>
+                </View>
+              </Section>
+            </>
+          )}
+        </ScrollView>
+      </SafeAreaView>
+    </ThemedView>
+  );
+}
+
+function DeleteButton({
+  onPress,
+  busy,
+  color,
+  label,
+}: {
+  onPress: () => void;
+  busy: boolean;
+  color: string;
+  label: string;
+}) {
+  return (
+    <Pressable
+      onPress={onPress}
+      disabled={busy}
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      style={({ pressed }) => [Platform.OS === 'web' ? styles.pressableWeb : undefined, pressed && styles.pressed]}>
+      <ThemedView type="backgroundSelected" style={styles.iconChip}>
+        {busy ? <ThemedActivityIndicator size="small" /> : <IconSymbol name="trash-outline" size={16} color={color} />}
+      </ThemedView>
+    </Pressable>
+  );
+}
+
+function Section({ label, icon, children }: { label: string; icon: IconName; children: React.ReactNode }) {
+  const scheme = useResolvedScheme();
+  const colors = Colors[scheme];
+  return (
+    <View style={styles.section}>
+      <View style={styles.sectionHeader}>
+        <ThemedView type="backgroundElement" style={styles.sectionIconBadge}>
+          <IconSymbol name={icon} size={13} color={colors.accent} />
+        </ThemedView>
+        <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sectionLabel}>
+          {label.toUpperCase()}
+        </ThemedText>
+      </View>
+      <ThemedView type="backgroundElement" style={styles.sectionBody}>
+        {children}
+      </ThemedView>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1 },
+  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  scroll: {
+    paddingHorizontal: Spacing.three,
+    paddingBottom: Spacing.six,
+    gap: Spacing.three,
+    alignSelf: 'center',
+    width: '100%',
+    maxWidth: MaxContentWidth,
+  },
+  title: { textAlign: 'center', marginBottom: Spacing.half },
+  subtitle: { textAlign: 'center', marginBottom: Spacing.two },
+  centerBox: { alignItems: 'center', justifyContent: 'center', gap: Spacing.two, paddingVertical: Spacing.six },
+  loadingLabel: {},
+  card: { padding: Spacing.four, borderRadius: 20 },
+  totalCard: { padding: Spacing.four, borderRadius: 20, alignItems: 'center', gap: Spacing.one },
+  totalValue: { fontSize: 34, lineHeight: 40 },
+  section: { gap: Spacing.one },
+  sectionHeader: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one },
+  sectionIconBadge: { width: 20, height: 20, borderRadius: 7, alignItems: 'center', justifyContent: 'center' },
+  sectionLabel: { letterSpacing: 0.5 },
+  sectionBody: {
+    borderRadius: Spacing.three,
+    overflow: 'hidden',
+    padding: Spacing.three,
+    gap: Spacing.two,
+    ...Platform.select({
+      web: { boxShadow: '0 1px 3px rgba(11,11,13,0.06), 0 1px 2px rgba(11,11,13,0.08)' },
+      default: {
+        shadowColor: '#0b0b0d',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.08,
+        shadowRadius: 4,
+        elevation: 2,
+      },
+    }),
+  },
+  emptyHint: {},
+  itemRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: Spacing.two },
+  itemRowRtl: { flexDirection: 'row-reverse' },
+  itemLabel: { flex: 1, gap: 2 },
+  rtlText: { textAlign: 'right' },
+  iconChip: { width: 32, height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center' },
+  clearChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.one,
+    paddingVertical: Spacing.one,
+    paddingHorizontal: Spacing.three,
+    borderRadius: 999,
+  },
+  pressed: { opacity: 0.6 },
+  pressableWeb: { cursor: 'pointer' },
+});

@@ -1,0 +1,327 @@
+{
+  "note": "Eigene kuratierte Sammlung im Geist von Dunya-Erinnerungsbüchern - ausschließlich belegte Quellen (Koran, Hadith mit Nummer, klassischen Gelehrten zugeschrieben). Kein 1:1-Inhalt aus urheberrechtlich geschützten Büchern.",
+  "entries": [
+    {
+      "id": "hearts-rest",
+      "arabic": "أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ",
+      "text": {
+        "de": "Wahrlich, im Gedenken Allahs finden die Herzen Ruhe.",
+        "en": "Verily, in the remembrance of Allah do hearts find rest.",
+        "tr": "Bilesiniz ki kalpler ancak Allah'ı anmakla huzur bulur.",
+        "ar": "ألا بذكر الله تطمئن القلوب.",
+        "es": "En verdad, en el recuerdo de Allah encuentran los corazones sosiego.",
+        "fr": "En vérité, c'est par le rappel d'Allah que les cœurs trouvent l'apaisement."
+      },
+      "source": "Quran 13:28"
+    },
+    {
+      "id": "ease-with-hardship",
+      "arabic": "إِنَّ مَعَ الْعُسْرِ يُسْرًا",
+      "text": {
+        "de": "Wahrlich, mit der Erschwernis kommt Erleichterung.",
+        "en": "Indeed, with hardship comes ease.",
+        "tr": "Şüphesiz zorlukla beraber bir kolaylık vardır.",
+        "ar": "إن مع العسر يسرًا.",
+        "es": "En verdad, con la dificultad viene el alivio.",
+        "fr": "En vérité, à côté de l'épreuve vient l'aisance."
+      },
+      "source": "Quran 94:6"
+    },
+    {
+      "id": "no-burden",
+      "arabic": "لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا",
+      "text": {
+        "de": "Allah erlegt keiner Seele mehr auf, als sie tragen kann.",
+        "en": "Allah does not burden a soul with more than it can bear.",
+        "tr": "Allah hiç kimseye gücünün yeteceğinden fazlasını yüklemez.",
+        "ar": "لا يكلف الله نفسًا إلا وسعها.",
+        "es": "Allah no impone a un alma más de lo que puede soportar.",
+        "fr": "Allah n'impose à une âme que ce qu'elle peut supporter."
+      },
+      "source": "Quran 2:286"
+    },
+    {
+      "id": "despair-not",
+      "arabic": "لَا تَقْنَطُوا مِن رَّحْمَةِ اللَّهِ",
+      "text": {
+        "de": "Verzweifelt nicht an der Barmherzigkeit Allahs - Er vergibt alle Sünden.",
+        "en": "Do not despair of the mercy of Allah - He forgives all sins.",
+        "tr": "Allah'ın rahmetinden ümit kesmeyin - O bütün günahları bağışlar.",
+        "ar": "لا تقنطوا من رحمة الله - إنه يغفر الذنوب جميعًا.",
+        "es": "No desesperéis de la misericordia de Allah - Él perdona todos los pecados.",
+        "fr": "Ne désespérez pas de la miséricorde d'Allah - Il pardonne tous les péchés."
+      },
+      "source": "Quran 39:53"
+    },
+    {
+      "id": "maybe-you-hate",
+      "arabic": "وَعَسَىٰ أَن تَكْرَهُوا شَيْئًا وَهُوَ خَيْرٌ لَّكُمْ",
+      "text": {
+        "de": "Vielleicht ist euch etwas zuwider, obwohl es gut für euch ist - und vielleicht liebt ihr etwas, obwohl es schlecht für euch ist. Allah weiß, ihr aber wisst nicht.",
+        "en": "Perhaps you dislike a thing that is good for you, and love a thing that is bad for you. Allah knows, and you do not know.",
+        "tr": "Hoşlanmadığınız bir şey sizin için hayırlı, sevdiğiniz bir şey de sizin için şer olabilir. Allah bilir, siz bilmezsiniz.",
+        "ar": "وعسى أن تكرهوا شيئًا وهو خير لكم وعسى أن تحبوا شيئًا وهو شر لكم - والله يعلم وأنتم لا تعلمون.",
+        "es": "Quizá os desagrade algo que en realidad es bueno para vosotros, y quizá améis algo que en realidad es malo para vosotros. Allah sabe, y vosotros no sabéis.",
+        "fr": "Il se peut que vous détestiez une chose alors qu'elle est un bien pour vous, et que vous aimiez une chose alors qu'elle est un mal pour vous. Allah sait, et vous ne savez pas."
+      },
+      "source": "Quran 2:216"
+    },
+    {
+      "id": "tawakkul",
+      "arabic": "وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ",
+      "text": {
+        "de": "Wer auf Allah vertraut, dem genügt Er.",
+        "en": "Whoever puts their trust in Allah - He is sufficient for them.",
+        "tr": "Kim Allah'a tevekkül ederse, O ona yeter.",
+        "ar": "ومن يتوكل على الله فهو حسبه.",
+        "es": "Quien confía en Allah, Él le basta.",
+        "fr": "Quiconque place sa confiance en Allah, Il lui suffit."
+      },
+      "source": "Quran 65:3"
+    },
+    {
+      "id": "remember-me",
+      "arabic": "فَاذْكُرُونِي أَذْكُرْكُمْ",
+      "text": {
+        "de": "Gedenkt Meiner, so gedenke Ich euer.",
+        "en": "Remember Me, and I will remember you.",
+        "tr": "Beni anın ki ben de sizi anayım.",
+        "ar": "فاذكروني أذكركم.",
+        "es": "Recordadme, y Yo os recordaré.",
+        "fr": "Souvenez-vous de Moi, et Je me souviendrai de vous."
+      },
+      "source": "Quran 2:152"
+    },
+    {
+      "id": "grieve-not",
+      "arabic": "وَلَا تَهِنُوا وَلَا تَحْزَنُوا",
+      "text": {
+        "de": "Werdet nicht schwach und trauert nicht - ihr werdet die Oberhand behalten, wenn ihr gläubig seid.",
+        "en": "Do not weaken and do not grieve - you will be superior if you are believers.",
+        "tr": "Gevşemeyin, üzülmeyin - eğer inanıyorsanız üstün olan sizsiniz.",
+        "ar": "ولا تهنوا ولا تحزنوا وأنتم الأعلون إن كنتم مؤمنين.",
+        "es": "No os debilitéis ni os entristezcáis - seréis los vencedores, si sois creyentes.",
+        "fr": "Ne faiblissez pas et ne vous attristez pas - vous aurez le dessus, si vous êtes croyants."
+      },
+      "source": "Quran 3:139"
+    },
+    {
+      "id": "with-allah-near",
+      "arabic": "وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ",
+      "text": {
+        "de": "Und wenn dich Meine Diener nach Mir fragen: Ich bin nah. Ich erhöre den Ruf des Rufenden, wenn er Mich ruft.",
+        "en": "When My servants ask you about Me - I am near. I answer the call of the caller when he calls upon Me.",
+        "tr": "Kullarım sana beni sorduklarında: Ben yakınım. Bana dua edenin duasına karşılık veririm.",
+        "ar": "وإذا سألك عبادي عني فإني قريب، أجيب دعوة الداع إذا دعان.",
+        "es": "Y cuando Mis siervos te pregunten por Mí: Yo estoy cerca. Respondo la súplica del que suplica cuando Me invoca.",
+        "fr": "Et lorsque Mes serviteurs t'interrogent à Mon sujet : Je suis proche. Je réponds à l'appel de celui qui M'invoque quand il M'appelle."
+      },
+      "source": "Quran 2:186"
+    },
+    {
+      "id": "believer-affair",
+      "text": {
+        "de": "Erstaunlich ist die Angelegenheit des Gläubigen: Alles ist gut für ihn. Trifft ihn Freude, dankt er - das ist gut für ihn. Trifft ihn Leid, ist er standhaft - auch das ist gut für ihn.",
+        "en": "Amazing is the affair of the believer: everything is good for him. If joy reaches him, he is grateful - and that is good for him. If harm reaches him, he is patient - and that too is good for him.",
+        "tr": "Müminin işi ne hayret vericidir: Her hâli onun için hayırlıdır. Sevinirse şükreder, bu onun için hayırdır. Sıkıntıya düşerse sabreder, bu da onun için hayırdır.",
+        "ar": "عجبًا لأمر المؤمن، إن أمره كله خير: إن أصابته سراء شكر فكان خيرًا له، وإن أصابته ضراء صبر فكان خيرًا له.",
+        "es": "Es asombroso el caso del creyente: todo es bueno para él. Si le llega una alegría, agradece - y eso es bueno para él. Si le llega una desgracia, es paciente - y eso también es bueno para él.",
+        "fr": "Étonnante est l'affaire du croyant : tout est un bien pour lui. Si une joie l'atteint, il est reconnaissant - et c'est un bien pour lui. Si un malheur l'atteint, il est patient - et c'est aussi un bien pour lui."
+      },
+      "source": "Sahih Muslim 2999"
+    },
+    {
+      "id": "stranger",
+      "text": {
+        "de": "Sei in dieser Welt, als wärst du ein Fremder oder ein Reisender.",
+        "en": "Be in this world as if you were a stranger or a traveller.",
+        "tr": "Dünyada bir garip yahut bir yolcu gibi ol.",
+        "ar": "كن في الدنيا كأنك غريب أو عابر سبيل.",
+        "es": "Vive en este mundo como si fueras un extraño o un viajero.",
+        "fr": "Sois dans ce monde comme si tu étais un étranger ou un voyageur."
+      },
+      "source": "Sahih al-Bukhari 6416"
+    },
+    {
+      "id": "dunya-shade",
+      "text": {
+        "de": "Was habe ich mit dieser Welt zu schaffen? Ich bin in ihr nur wie ein Reiter, der im Schatten eines Baumes rastet und dann weiterzieht.",
+        "en": "What do I have to do with this world? I am only like a rider who rests in the shade of a tree, then moves on.",
+        "tr": "Benim dünya ile ne işim var? Ben ancak bir ağacın gölgesinde dinlenip sonra yoluna devam eden bir yolcu gibiyim.",
+        "ar": "ما لي وللدنيا؟ ما أنا في الدنيا إلا كراكب استظل تحت شجرة ثم راح وتركها.",
+        "es": "¿Qué tengo yo que ver con este mundo? En él no soy más que un jinete que descansa a la sombra de un árbol y luego sigue su camino.",
+        "fr": "Qu'ai-je à faire de ce monde ? Je n'y suis que comme un cavalier qui se repose à l'ombre d'un arbre, puis reprend sa route."
+      },
+      "source": "Jami at-Tirmidhi 2377"
+    },
+    {
+      "id": "richness",
+      "text": {
+        "de": "Reichtum besteht nicht in vielen Gütern - wahrer Reichtum ist der Reichtum der Seele.",
+        "en": "Wealth is not in having many possessions - true wealth is the richness of the soul.",
+        "tr": "Zenginlik mal çokluğu değildir; asıl zenginlik gönül zenginliğidir.",
+        "ar": "ليس الغنى عن كثرة العرض، ولكن الغنى غنى النفس.",
+        "es": "La riqueza no consiste en tener muchos bienes - la verdadera riqueza es la riqueza del alma.",
+        "fr": "La richesse ne réside pas dans l'abondance des biens - la vraie richesse est celle de l'âme."
+      },
+      "source": "Sahih al-Bukhari 6446"
+    },
+    {
+      "id": "strong-one",
+      "text": {
+        "de": "Der Starke ist nicht der, der andere im Ringen besiegt. Der Starke ist der, der sich im Zorn beherrscht.",
+        "en": "The strong one is not the one who overcomes others in wrestling. The strong one is the one who controls himself when angry.",
+        "tr": "Güçlü, insanları güreşte yenen değildir. Asıl güçlü, öfke anında kendine hâkim olandır.",
+        "ar": "ليس الشديد بالصرعة، إنما الشديد الذي يملك نفسه عند الغضب.",
+        "es": "El fuerte no es el que vence a otros en la lucha. El fuerte es el que se domina a sí mismo cuando está enfadado.",
+        "fr": "Le fort n'est pas celui qui terrasse les autres à la lutte. Le fort est celui qui se maîtrise lorsqu'il est en colère."
+      },
+      "source": "Sahih al-Bukhari 6114"
+    },
+    {
+      "id": "smile-charity",
+      "text": {
+        "de": "Dein Lächeln im Angesicht deines Bruders ist eine Sadaqa.",
+        "en": "Your smile in the face of your brother is charity.",
+        "tr": "Kardeşine tebessüm etmen sadakadır.",
+        "ar": "تبسمك في وجه أخيك لك صدقة.",
+        "es": "Tu sonrisa ante tu hermano es una sadaqa.",
+        "fr": "Ton sourire envers ton frère est une aumône (sadaqa)."
+      },
+      "source": "Jami at-Tirmidhi 1956"
+    },
+    {
+      "id": "hearts-deeds",
+      "text": {
+        "de": "Allah schaut nicht auf eure Körper und nicht auf eure Gestalt - Er schaut auf eure Herzen und eure Taten.",
+        "en": "Allah does not look at your bodies or your appearance - He looks at your hearts and your deeds.",
+        "tr": "Allah sizin bedenlerinize ve suretlerinize bakmaz; kalplerinize ve amellerinize bakar.",
+        "ar": "إن الله لا ينظر إلى أجسادكم ولا إلى صوركم، ولكن ينظر إلى قلوبكم وأعمالكم.",
+        "es": "Allah no mira vuestros cuerpos ni vuestra apariencia - mira vuestros corazones y vuestras obras.",
+        "fr": "Allah ne regarde ni vos corps ni votre apparence - Il regarde vos cœurs et vos actes."
+      },
+      "source": "Sahih Muslim 2564"
+    },
+    {
+      "id": "brother-love",
+      "text": {
+        "de": "Keiner von euch glaubt (vollkommen), bis er für seinen Bruder liebt, was er für sich selbst liebt.",
+        "en": "None of you truly believes until he loves for his brother what he loves for himself.",
+        "tr": "Sizden biriniz kendisi için sevdiğini kardeşi için de sevmedikçe (gerçek anlamda) iman etmiş olmaz.",
+        "ar": "لا يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه.",
+        "es": "Ninguno de vosotros cree (verdaderamente) hasta que ama para su hermano lo que ama para sí mismo.",
+        "fr": "Nul d'entre vous ne croit (véritablement) tant qu'il n'aime pas pour son frère ce qu'il aime pour lui-même."
+      },
+      "source": "Sahih al-Bukhari 13"
+    },
+    {
+      "id": "intentions",
+      "text": {
+        "de": "Die Taten werden nur nach den Absichten bewertet - und jedem gebührt, was er beabsichtigt hat.",
+        "en": "Deeds are judged only by intentions - and everyone will get what they intended.",
+        "tr": "Ameller ancak niyetlere göredir - herkese niyet ettiği vardır.",
+        "ar": "إنما الأعمال بالنيات، وإنما لكل امرئ ما نوى.",
+        "es": "Las acciones se valoran solo según las intenciones, y a cada uno le corresponde lo que pretendía.",
+        "fr": "Les actes ne valent que par les intentions, et chacun n'aura que ce qu'il a eu l'intention de faire."
+      },
+      "source": "Sahih al-Bukhari 1"
+    },
+    {
+      "id": "five-before-five",
+      "text": {
+        "de": "Nutze fünf, bevor fünf kommen: deine Jugend vor dem Alter, deine Gesundheit vor der Krankheit, deinen Reichtum vor der Armut, deine freie Zeit vor der Beschäftigung und dein Leben vor dem Tod.",
+        "en": "Take advantage of five before five: your youth before old age, your health before illness, your wealth before poverty, your free time before busyness, and your life before death.",
+        "tr": "Beş şey gelmeden önce beş şeyin kıymetini bil: İhtiyarlıktan önce gençliğin, hastalıktan önce sağlığın, fakirlikten önce zenginliğin, meşguliyetten önce boş vaktin ve ölümden önce hayatın.",
+        "ar": "اغتنم خمسًا قبل خمس: شبابك قبل هرمك، وصحتك قبل سقمك، وغناك قبل فقرك، وفراغك قبل شغلك، وحياتك قبل موتك.",
+        "es": "Aprovecha cinco cosas antes de otras cinco: tu juventud antes de la vejez, tu salud antes de la enfermedad, tu riqueza antes de la pobreza, tu tiempo libre antes de tus ocupaciones y tu vida antes de tu muerte.",
+        "fr": "Profite de cinq choses avant cinq autres : ta jeunesse avant ta vieillesse, ta santé avant ta maladie, ta richesse avant ta pauvreté, ton temps libre avant tes occupations et ta vie avant ta mort."
+      },
+      "source": "Al-Hakim, al-Mustadrak 7846"
+    },
+    {
+      "id": "best-people",
+      "text": {
+        "de": "Die besten Menschen sind die, die den Menschen am meisten nützen.",
+        "en": "The best of people are those who are most beneficial to people.",
+        "tr": "İnsanların en hayırlısı, insanlara en faydalı olandır.",
+        "ar": "خير الناس أنفعهم للناس.",
+        "es": "Las mejores personas son las que más benefician a los demás.",
+        "fr": "Les meilleures personnes sont celles qui sont les plus utiles aux autres."
+      },
+      "source": "At-Tabarani (Hasan)"
+    },
+    {
+      "id": "days-hasan",
+      "text": {
+        "de": "O Sohn Adams! Du bist nur eine Anzahl von Tagen - geht ein Tag, geht ein Teil von dir.",
+        "en": "O son of Adam! You are but a number of days - whenever a day passes, a part of you passes with it.",
+        "tr": "Ey Âdemoğlu! Sen ancak sayılı günlersin - bir gün geçince senin bir parçan da geçmiş olur.",
+        "ar": "يا ابن آدم، إنما أنت أيام، إذا ذهب يوم ذهب بعضك.",
+        "es": "¡Oh hijo de Adán! No eres más que un número de días - cuando pasa un día, pasa una parte de ti.",
+        "fr": "Ô fils d'Adam ! Tu n'es qu'un nombre de jours - lorsqu'un jour passe, une partie de toi passe avec lui."
+      },
+      "source": "Hasan al-Basri zugeschrieben"
+    },
+    {
+      "id": "account-umar",
+      "text": {
+        "de": "Rechnet mit euch selbst ab, bevor mit euch abgerechnet wird - und wägt eure Taten, bevor sie für euch gewogen werden.",
+        "en": "Hold yourselves to account before you are held to account - and weigh your deeds before they are weighed for you.",
+        "tr": "Hesaba çekilmeden önce kendinizi hesaba çekin; ameller tartılmadan önce onları kendiniz tartın.",
+        "ar": "حاسبوا أنفسكم قبل أن تحاسبوا، وزنوا أعمالكم قبل أن توزن عليكم.",
+        "es": "Rendíos cuentas a vosotros mismos antes de que os las pidan - y pesad vuestras obras antes de que sean pesadas por vosotros.",
+        "fr": "Demandez-vous des comptes à vous-mêmes avant qu'on ne vous en demande - et pesez vos actes avant qu'ils ne soient pesés pour vous."
+      },
+      "source": "Umar ibn al-Khattab zugeschrieben"
+    },
+    {
+      "id": "heart-rest-ibnqayyim",
+      "text": {
+        "de": "Im Herzen ist eine Leere, die nichts füllt außer der Nähe zu Allah.",
+        "en": "In the heart there is a void that nothing can fill except closeness to Allah.",
+        "tr": "Kalpte öyle bir boşluk vardır ki onu Allah'a yakınlıktan başka hiçbir şey dolduramaz.",
+        "ar": "في القلب فاقة لا يسدها إلا الإقبال على الله.",
+        "es": "En el corazón hay un vacío que nada llena excepto la cercanía a Allah.",
+        "fr": "Il y a dans le cœur un vide que rien ne comble, si ce n'est la proximité d'Allah."
+      },
+      "source": "Ibn al-Qayyim zugeschrieben (Madarij as-Salikin)"
+    },
+    {
+      "id": "dunya-bridge",
+      "text": {
+        "de": "Diese Welt ist eine Brücke - überquere sie, aber baue nicht auf ihr.",
+        "en": "This world is a bridge - cross it, but do not build upon it.",
+        "tr": "Dünya bir köprüdür - üzerinden geç, ama üzerine bina kurma.",
+        "ar": "الدنيا قنطرة فاعبروها ولا تعمروها.",
+        "es": "Este mundo es un puente - atraviésalo, pero no construyas sobre él.",
+        "fr": "Ce monde est un pont - traverse-le, mais ne construis pas dessus."
+      },
+      "source": "Isa (as) zugeschrieben, überliefert bei al-Ghazali (Ihya)"
+    },
+    {
+      "id": "patience-light",
+      "text": {
+        "de": "Das Gebet ist Licht, die Sadaqa ist ein Beweis und die Geduld ist ein Leuchten.",
+        "en": "Prayer is light, charity is proof, and patience is illumination.",
+        "tr": "Namaz nurdur, sadaka delildir, sabır ise aydınlıktır.",
+        "ar": "الصلاة نور، والصدقة برهان، والصبر ضياء.",
+        "es": "La oración es luz, la sadaqa es una prueba y la paciencia es un resplandor.",
+        "fr": "La prière est lumière, l'aumône est une preuve, et la patience est une clarté."
+      },
+      "source": "Sahih Muslim 223"
+    },
+    {
+      "id": "allah-with-patient",
+      "arabic": "إِنَّ اللَّهَ مَعَ الصَّابِرِينَ",
+      "text": {
+        "de": "Wahrlich, Allah ist mit den Geduldigen.",
+        "en": "Indeed, Allah is with the patient.",
+        "tr": "Şüphesiz Allah sabredenlerle beraberdir.",
+        "ar": "إن الله مع الصابرين.",
+        "es": "En verdad, Allah está con los pacientes.",
+        "fr": "En vérité, Allah est avec les patients."
+      },
+      "source": "Quran 2:153"
+    }
+  ]
+}
