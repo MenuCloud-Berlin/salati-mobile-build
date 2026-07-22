@@ -10,6 +10,11 @@ import { FlexWidget, TextWidget } from 'react-native-android-widget';
 // dem Homescreen ist der stärkste Trigger, die Tageslektion zu machen.
 // Farbe/Deckkraft/Schriftgröße/Ecken/Inhalt sind PER-WIDGET über die
 // Konfigurations-Activity einstellbar (WidgetConfig).
+//
+// GRÖSSEN-ADAPTIV (size-Prop, s. widgetLayout.ts): bei flacher Höhe (~1 Zelle)
+// stehen Serien-Zahl und Tageszeile nebeneinander in einer Reihe (Label
+// entfällt); sonst das zentrierte Standard-Layout. Breite skaliert die Schrift.
+import { heightBucket, widthScale, type WidgetSize } from './widgetLayout';
 import { cardGradient, hairline, WIDGET_THEMES, type WidgetTheme } from './widgetTheme';
 
 export type { WidgetTheme };
@@ -33,6 +38,8 @@ export interface StreakWidgetProps {
   textColor?: `#${string}`;
   /** Akzentfarben-Override (Hex) für die Serien-Zahl; undefined = Theme-Akzentfarbe. */
   accentColor?: `#${string}`;
+  /** Aktuelle Widget-Größe in DP (aus WidgetInfo) für das adaptive Layout. */
+  size?: WidgetSize;
 }
 
 export function StreakWidget({
@@ -47,12 +54,48 @@ export function StreakWidget({
   showStreakLabel = true,
   textColor,
   accentColor,
+  size,
 }: StreakWidgetProps) {
   const c = WIDGET_THEMES[theme];
   const text = textColor ?? c.text;
   const accent = accentColor ?? c.accent;
-  const fs = (n: number) => Math.round(n * fontScale);
+  const auto = widthScale(size?.width);
+  const fs = (n: number) => Math.round(n * fontScale * auto);
   const streakSize = fs(streakLarge ? 44 : 30);
+
+  // compact (~1 Zelle hoch): Serien-Zahl + Tageszeile nebeneinander, Label weg.
+  if (heightBucket(size?.height) === 'compact') {
+    return (
+      <FlexWidget
+        clickAction="OPEN_APP"
+        style={{
+          flex: 1,
+          width: 'match_parent',
+          height: 'match_parent',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          backgroundGradient: cardGradient(theme, opacity),
+          borderRadius: radius,
+          borderWidth: 1,
+          borderColor: hairline(theme),
+          paddingHorizontal: 14,
+          paddingVertical: 8,
+        }}>
+        <TextWidget
+          text={`🔥 ${streak}`}
+          style={{ fontSize: fs(26), color: accent, fontWeight: '700', letterSpacing: 0.2 }}
+        />
+        <TextWidget
+          text={todayLine}
+          truncate="END"
+          maxLines={1}
+          style={{ fontSize: fs(12), color: c.muted }}
+        />
+      </FlexWidget>
+    );
+  }
+
   return (
     <FlexWidget
       clickAction="OPEN_APP"

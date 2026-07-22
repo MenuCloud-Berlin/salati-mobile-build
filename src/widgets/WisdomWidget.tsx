@@ -2,6 +2,7 @@
 
 import { FlexWidget, TextWidget } from 'react-native-android-widget';
 
+import { heightBucket, widthScale, type WidgetSize } from './widgetLayout';
 import { cardGradient, hairline, WIDGET_THEMES, type WidgetTheme } from './widgetTheme';
 
 // "use no memo" oben: siehe Kommentar in PrayerWidget.tsx (React-Compiler
@@ -12,6 +13,11 @@ import { cardGradient, hairline, WIDGET_THEMES, type WidgetTheme } from './widge
 // geprüften Duas der App (Hisnul-Muslim-Kern-Set) — komplett offline, keine
 // API nötig. Farbe/Deckkraft/Schriftgröße/Ecken/Inhalt sind PER-WIDGET über
 // die Konfigurations-Activity einstellbar (WidgetConfig).
+//
+// GRÖSSEN-ADAPTIV (size-Prop, s. widgetLayout.ts): die Zeilenanzahl (maxLines)
+// von arabischem Text/Übersetzung schrumpft mit der Höhe, statt den Text unten
+// abzuschneiden — 'tall' zeigt alles (inkl. Quelle), 'compact' nur EINE
+// Kern-Zeile (arabischer Text, sonst Übersetzung). Breite skaliert die Schrift.
 export type { WidgetTheme };
 
 export interface WisdomWidgetProps {
@@ -37,6 +43,8 @@ export interface WisdomWidgetProps {
   textColor?: `#${string}`;
   /** Akzentfarben-Override (Hex) für den Titel; undefined = Theme-Akzentfarbe. */
   accentColor?: `#${string}`;
+  /** Aktuelle Widget-Größe in DP (aus WidgetInfo) für das adaptive Layout. */
+  size?: WidgetSize;
 }
 
 export function WisdomWidget({
@@ -53,11 +61,23 @@ export function WisdomWidget({
   showSource = false,
   textColor,
   accentColor,
+  size,
 }: WisdomWidgetProps) {
   const c = WIDGET_THEMES[theme];
   const text = textColor ?? c.text;
   const accent = accentColor ?? c.accent;
-  const fs = (n: number) => Math.round(n * fontScale);
+  const auto = widthScale(size?.width);
+  const fs = (n: number) => Math.round(n * fontScale * auto);
+  const bucket = heightBucket(size?.height);
+  // Zeilen-Budget je Höhe: 'tall' voll, 'medium' knapper, 'compact' nur eine
+  // Kern-Zeile. Bei 'compact' zeigen wir NUR den arabischen Text (bzw. die
+  // Übersetzung, wenn Arabisch aus ist), damit nichts unten abschneidet.
+  const arabicLines = bucket === 'tall' ? 2 : 1;
+  const translationLines = bucket === 'tall' ? 3 : bucket === 'medium' ? 2 : 1;
+  const showArabicLine = showArabic;
+  // In compact nur eine Zeile: Übersetzung nur, wenn Arabisch nicht gezeigt wird.
+  const showTranslationLine = showTranslation && (bucket !== 'compact' || !showArabicLine);
+  const showSourceLine = showSource && bucket === 'tall';
   return (
     <FlexWidget
       clickAction="OPEN_APP"
@@ -66,25 +86,28 @@ export function WisdomWidget({
         width: 'match_parent',
         height: 'match_parent',
         flexDirection: 'column',
+        justifyContent: bucket === 'compact' ? 'center' : 'flex-start',
         backgroundGradient: cardGradient(theme, opacity),
         borderRadius: radius,
         borderWidth: 1,
         borderColor: hairline(theme),
-        padding: 14,
+        padding: bucket === 'compact' ? 12 : 14,
       }}>
-      <TextWidget text={title} style={{ fontSize: 11, color: accent, fontWeight: '600', letterSpacing: 0.3 }} />
-      {showArabic ? (
+      {bucket !== 'compact' ? (
+        <TextWidget text={title} truncate="END" maxLines={1} style={{ fontSize: 11, color: accent, fontWeight: '600', letterSpacing: 0.3 }} />
+      ) : null}
+      {showArabicLine ? (
         <TextWidget
           text={arabic}
           truncate="END"
-          maxLines={2}
-          style={{ fontSize: fs(17), color: text, marginTop: 6, marginBottom: 6 }}
+          maxLines={arabicLines}
+          style={{ fontSize: fs(17), color: text, marginTop: bucket === 'compact' ? 0 : 6, marginBottom: bucket === 'compact' ? 0 : 6 }}
         />
       ) : null}
-      {showTranslation ? (
-        <TextWidget text={translation} truncate="END" maxLines={3} style={{ fontSize: fs(12), color: c.muted }} />
+      {showTranslationLine ? (
+        <TextWidget text={translation} truncate="END" maxLines={translationLines} style={{ fontSize: fs(12), color: c.muted }} />
       ) : null}
-      {showSource && source ? (
+      {showSourceLine && source ? (
         <TextWidget text={source} truncate="END" maxLines={1} style={{ fontSize: 10, color: c.muted, marginTop: 6 }} />
       ) : null}
     </FlexWidget>

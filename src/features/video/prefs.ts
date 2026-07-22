@@ -15,7 +15,7 @@ export interface VideoPrefs {
   speed: number;
 }
 
-const DEFAULTS: VideoPrefs = { autoplay: true, background: false, speed: 1 };
+const DEFAULTS: VideoPrefs = { autoplay: false, background: false, speed: 1 };
 
 let cache: VideoPrefs = DEFAULTS;
 let loaded = false;

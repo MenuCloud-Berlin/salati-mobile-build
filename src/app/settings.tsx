@@ -3,7 +3,7 @@ import Constants from 'expo-constants';
 import * as DocumentPicker from 'expo-document-picker';
 import { router } from 'expo-router';
 import * as Sharing from 'expo-sharing';
-import { createContext, useContext, useEffect, useRef, useState } from 'react';
+import { Children, createContext, Fragment, useContext, useEffect, useRef, useState } from 'react';
 import { Alert, Linking, Platform, Pressable, ScrollView, StyleSheet, TextInput, View } from 'react-native';
 
 import { SwitchRow } from '@/components/settings/switch-row';
@@ -22,7 +22,8 @@ import { EmptyState } from '@/components/empty-state';
 import { ThemedActivityIndicator } from '@/components/themed-activity-indicator';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { Colors, MaxContentWidth, Spacing } from '@/constants/theme';
 import { RECITATION_MODELS } from '@/features/hifz/whisperModel';
 import { useDeviceLocation } from '@/features/location/useDeviceLocation';
 import { nominatimResultToLocation, searchCity, type NominatimResult } from '@/features/location/nominatim';
@@ -625,13 +626,10 @@ export default function SettingsScreen() {
 
   return (
     <SettingsFilterContext.Provider value={filterVisible}>
-    <ThemedView style={styles.container}>
+    <ThemedView type="groupedBackground" style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
+        <ScreenHeader title={t('nav.settings')} variant="modal" align="left" />
         <ScrollView ref={scrollRef} contentContainerStyle={styles.scroll}>
-          <ThemedText type="title" style={styles.title}>
-            {t('nav.settings')}
-          </ThemedText>
-
           <SettingsSearchBar value={search} onChangeText={setSearch} />
 
           {noResults && (
@@ -1729,10 +1727,9 @@ function GroupHeader({ label, rtl }: { label: string; rtl: boolean }) {
   if (!visible) return null;
   return (
     <View style={[styles.groupHeader, rtl && styles.groupHeaderRtl]}>
-      <ThemedText type="smallBold" style={[styles.groupHeaderText, rtl && styles.rtlText]}>
+      <ThemedText type="small" themeColor="textSecondary" style={[styles.groupHeaderText, rtl && styles.rtlText]}>
         {label.toUpperCase()}
       </ThemedText>
-      <View style={styles.groupHeaderRule} />
     </View>
   );
 }
@@ -1756,21 +1753,31 @@ function Section({
   // Sektion selbst statt am (früheren) `gap` des ScrollView-Containers.
   const visible = useSectionVisible(label);
   if (!visible) return null;
+  // iOS-„insetGrouped": eingerückte Trenner NUR zwischen den Zeilen einer Gruppe
+  // (nicht unter dem letzten Element). Statt jede Zeile ihren eigenen unteren
+  // Rand zeichnen zu lassen (der auch nach der letzten Zeile stünde), fügt die
+  // Sektion die Trenner selbst zwischen die direkten Kinder ein.
+  const items = Children.toArray(children);
   return (
     <View style={styles.section}>
       <View style={[styles.sectionHeader, rtl && styles.sectionHeaderRtl]}>
-        <ThemedView type="backgroundElement" style={styles.sectionIconBadge}>
+        <ThemedView type="backgroundSelected" style={styles.sectionIconBadge}>
           <IconSymbol name={icon} size={13} color={colors.accent} />
         </ThemedView>
         <ThemedText
-          type="smallBold"
+          type="small"
           themeColor="textSecondary"
           style={[styles.sectionLabel, rtl && styles.rtlText]}>
           {label.toUpperCase()}
         </ThemedText>
       </View>
       <ThemedView type="backgroundElement" style={styles.sectionBody}>
-        {children}
+        {items.map((child, i) => (
+          <Fragment key={i}>
+            {child}
+            {i < items.length - 1 ? <View style={[styles.rowDivider, rtl && styles.rowDividerRtl]} /> : null}
+          </Fragment>
+        ))}
       </ThemedView>
     </View>
   );
@@ -1796,7 +1803,11 @@ function Row({
   return (
     <Pressable
       onPress={onPress}
-      style={({ pressed }) => [Platform.OS === 'web' ? styles.pressableWeb : undefined, pressed && styles.rowPressed]}>
+      style={({ pressed }) => [
+        styles.rowPressable,
+        Platform.OS === 'web' ? styles.pressableWeb : undefined,
+        pressed && styles.rowPressed,
+      ]}>
       <View style={[styles.row, rtl && styles.rowRtl]}>
         <ThemedText
           type={selected ? 'smallBold' : 'default'}
@@ -1882,75 +1893,72 @@ const styles = StyleSheet.create({
   },
   pressed: { opacity: 0.6 },
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
   // Kein `gap` mehr: bei aktiver Suche rendern gefilterte Sektionen zu `null`,
   // ihr AnimatedListItem-Wrapper bliebe aber ein Flex-Kind und `gap` würde
   // leere Lücken erzeugen. Abstände liegen daher an den Elementen selbst
   // (section.marginBottom, groupHeader.marginTop/Bottom, title.marginBottom).
-  scroll: { paddingHorizontal: Spacing.three, paddingBottom: Spacing.six, alignSelf: 'center', width: '100%', maxWidth: MaxContentWidth, },
-  title: { textAlign: 'center', marginBottom: Spacing.two },
+  scroll: { paddingHorizontal: Spacing.three, paddingTop: Spacing.two, paddingBottom: Spacing.six, alignSelf: 'center', width: '100%', maxWidth: MaxContentWidth, },
   // Beschriftete Gruppen-Überschrift statt namenloser Hairline: ordnet die
   // ~30 Sektionen in wenige scanbare Themenblöcke ein (Gebet / Benachrichtigungen
   // / Koran / Sprache / Lernen / Speicher / Über). Der Titel steht als eigene
   // Hierarchie-Ebene ÜBER den Sektions-Labels; eine dünne Linie füllt den Rest
   // der Zeile als ruhiges Trenn-Signal.
+  // iOS-Gruppen-Überschrift: klein, großbuchstabig, dezent-grau, links über der
+  // Karte (keine große fette Zeile + Trennlinie mehr — das wirkte un-Apple).
   groupHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: Spacing.three,
     marginTop: Spacing.four,
     marginBottom: Spacing.one,
-    paddingHorizontal: Spacing.one,
+    paddingHorizontal: Spacing.four,
   },
   groupHeaderRtl: { flexDirection: 'row-reverse' },
   groupHeaderText: {
-    fontSize: 18,
-    lineHeight: 24,
-    fontWeight: 800,
-    letterSpacing: 0.4,
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: 700,
+    letterSpacing: 0.6,
   },
-  groupHeaderRule: {
-    flex: 1,
-    height: StyleSheet.hairlineWidth,
-    backgroundColor: 'rgba(128,124,116,0.35)',
-  },
-  section: { gap: Spacing.one, marginBottom: Spacing.three },
-  sectionHeader: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one },
+  section: { gap: Spacing.one, marginBottom: Spacing.four },
+  sectionHeader: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one + 2, paddingHorizontal: Spacing.four },
   sectionHeaderRtl: { flexDirection: 'row-reverse' },
   sectionIconBadge: {
     width: 20,
     height: 20,
-    borderRadius: 7,
+    borderRadius: 6,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  sectionLabel: { letterSpacing: 0.5 },
+  sectionLabel: { letterSpacing: 0.5, fontSize: 13 },
+  // iOS-„insetGrouped"-Karte: abgerundet, ohne Schatten, nur ein feiner Rahmen
+  // zur Abgrenzung vom (etwas dunkleren) Gruppen-Hintergrund.
   sectionBody: {
     borderRadius: Spacing.three,
     overflow: 'hidden',
-    ...Platform.select({
-      web: { boxShadow: '0 1px 3px rgba(11,11,13,0.06), 0 1px 2px rgba(11,11,13,0.08)' },
-      default: {
-        shadowColor: '#0b0b0d',
-        shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.08,
-        shadowRadius: 4,
-        elevation: 2,
-      },
-    }),
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: 'rgba(128,124,116,0.22)',
   },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: Spacing.three,
+    minHeight: 44,
+    paddingVertical: Spacing.two + 3,
     paddingHorizontal: Spacing.three,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgba(128,124,116,0.35)',
   },
+  rowPressable: {},
+  // Eingerückter Trenner (iOS): beginnt erst nach dem linken Zeilen-Inset,
+  // wird von der Sektion NUR zwischen Zeilen gezeichnet (nicht nach der letzten).
+  rowDivider: {
+    height: StyleSheet.hairlineWidth,
+    marginLeft: Spacing.three,
+    backgroundColor: 'rgba(128,124,116,0.30)',
+  },
+  rowDividerRtl: { marginLeft: 0, marginRight: Spacing.three },
   rowRtl: { flexDirection: 'row-reverse' },
   rowLabel: { flex: 1 },
-  rowPressed: { opacity: 0.6 },
+  rowPressed: { opacity: 0.5 },
   iconSwatch: {
     width: 16,
     height: 16,
@@ -1964,10 +1972,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    minHeight: 44,
     paddingVertical: Spacing.two,
     paddingHorizontal: Spacing.three,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgba(128,124,116,0.35)',
   },
   switchRowRtl: { flexDirection: 'row-reverse' },
   modelPicker: {

@@ -11,7 +11,8 @@ import { AnimatedListItem } from '@/components/ui/animated-list-item';
 import { ThemedActivityIndicator } from '@/components/themed-activity-indicator';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, MaxContentWidth, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { MaxContentWidth, Spacing } from '@/constants/theme';
 import { formatHHMM, PRAYERS } from '@/features/prayer-times/next-prayer';
 import { useWeekTimings } from '@/features/prayer-times/hooks';
 import { buildWeekRows } from '@/features/prayer-times/week';
@@ -33,9 +34,7 @@ export default function PrayerTimesWeekScreen() {
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <AnimatedListItem index={0}>
-          <ThemedText type="title" style={styles.title}>
-            {t('prayerWeek.title')}
-          </ThemedText>
+          <ScreenHeader title={t('prayerWeek.title')} />
           <ThemedText type="small" themeColor="textSecondary" style={styles.subtitle}>
             {t('prayerWeek.subtitle')}
           </ThemedText>
@@ -111,7 +110,7 @@ export default function PrayerTimesWeekScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
   title: { textAlign: 'center' },
   subtitle: { textAlign: 'center', marginTop: Spacing.one, marginBottom: Spacing.three, paddingHorizontal: Spacing.four },
   center: { alignItems: 'center', paddingVertical: Spacing.five },

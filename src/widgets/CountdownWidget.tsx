@@ -2,6 +2,7 @@
 
 import { FlexWidget, TextWidget } from 'react-native-android-widget';
 
+import { heightBucket, widthScale, type WidgetSize } from './widgetLayout';
 import { cardGradient, hairline, tint, WIDGET_THEMES, type WidgetTheme } from './widgetTheme';
 
 // "use no memo" oben: siehe Kommentar in PrayerWidget.tsx (React-Compiler
@@ -13,6 +14,11 @@ import { cardGradient, hairline, tint, WIDGET_THEMES, type WidgetTheme } from '.
 // (z. B. "in 2h 15m"). Das Widget tickt NICHT sekündlich (Android aktualisiert
 // Widgets höchstens alle 30 Min, updatePeriodMillis); die Restzeit ist der
 // Stand des letzten Updates — deshalb bewusst "in Xh Ym", kein Live-Timer.
+//
+// GRÖSSEN-ADAPTIV (size-Prop, s. widgetLayout.ts): bei flacher Höhe (~1 Zelle)
+// wird alles in EINE Zeile gelegt (Name + Uhrzeit links, Restzeit-Pille rechts);
+// sonst das zentrierte Standard-Layout. Die Breite skaliert die Schrift
+// proportional herunter, damit nichts überläuft.
 export type { WidgetTheme };
 
 export interface CountdownWidgetProps {
@@ -36,6 +42,8 @@ export interface CountdownWidgetProps {
   textColor?: `#${string}`;
   /** Akzentfarben-Override (Hex); undefined = Theme-Akzentfarbe. */
   accentColor?: `#${string}`;
+  /** Aktuelle Widget-Größe in DP (aus WidgetInfo) für das adaptive Layout. */
+  size?: WidgetSize;
 }
 
 export function CountdownWidget({
@@ -51,11 +59,60 @@ export function CountdownWidget({
   showNextTime = true,
   textColor,
   accentColor,
+  size,
 }: CountdownWidgetProps) {
   const c = WIDGET_THEMES[theme];
   const text = textColor ?? c.text;
   const accent = accentColor ?? c.accent;
-  const fs = (n: number) => Math.round(n * fontScale);
+  const auto = widthScale(size?.width);
+  const fs = (n: number) => Math.round(n * fontScale * auto);
+
+  // compact (~1 Zelle hoch): alles in eine Zeile — Name + Uhrzeit links,
+  // Restzeit-Pille rechts. Titel entfällt, um Höhe zu sparen.
+  if (heightBucket(size?.height) === 'compact') {
+    return (
+      <FlexWidget
+        clickAction="OPEN_APP"
+        style={{
+          flex: 1,
+          width: 'match_parent',
+          height: 'match_parent',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          backgroundGradient: cardGradient(theme, opacity),
+          borderRadius: radius,
+          borderWidth: 1,
+          borderColor: hairline(theme),
+          paddingHorizontal: 14,
+          paddingVertical: 8,
+        }}>
+        <FlexWidget style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
+          <TextWidget
+            text={nextName}
+            truncate="END"
+            maxLines={1}
+            style={{ fontSize: fs(18), color: accent, fontWeight: '700', letterSpacing: 0.2 }}
+          />
+          {showNextTime && nextTime ? (
+            <TextWidget text={`  ${nextTime}`} style={{ fontSize: fs(18), color: text, fontWeight: '700' }} />
+          ) : null}
+        </FlexWidget>
+        {remaining && (!size || size.width >= 150) ? (
+          <FlexWidget
+            style={{ backgroundColor: tint(accent, 0.16), borderRadius: 999, paddingHorizontal: 10, paddingVertical: 3 }}>
+            <TextWidget
+              text={remaining}
+              truncate="END"
+              maxLines={1}
+              style={{ fontSize: fs(12), color: accent, fontWeight: '600', letterSpacing: 0.2 }}
+            />
+          </FlexWidget>
+        ) : null}
+      </FlexWidget>
+    );
+  }
+
   return (
     <FlexWidget
       clickAction="OPEN_APP"

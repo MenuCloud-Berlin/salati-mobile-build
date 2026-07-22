@@ -18,7 +18,8 @@ import { IconSymbol, type IconName } from '@/components/ui/icon-symbol';
 import { PressableCard } from '@/components/ui/pressable-card';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { Colors, MaxContentWidth, Spacing } from '@/constants/theme';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
 import { useTranslation } from '@/lib/i18n';
 
@@ -34,7 +35,7 @@ const STEPS: Step[] = [
   { id: 'shahada', icon: 'ribbon-outline', href: '/study/aqida' },
   { id: 'wudu', icon: 'water', href: { pathname: '/guides/[guide]', params: { guide: 'wudu' } } },
   { id: 'howToPray', icon: 'body', href: { pathname: '/guides/[guide]', params: { guide: 'how-to-pray' } } },
-  { id: 'prayerTimes', icon: 'time-outline', href: '/onboarding' },
+  { id: 'prayerTimes', icon: 'time-outline', href: { pathname: '/onboarding', params: { mode: 'location' } } },
   { id: 'duas', icon: 'hand-left', href: '/duas' },
   { id: 'alphabet', icon: 'language', href: '/learn' },
 ];
@@ -47,9 +48,7 @@ export default function GettingStartedScreen() {
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <ThemedText type="title" style={styles.title}>
-          {t('gettingStarted.title')}
-        </ThemedText>
+        <ScreenHeader title={t('gettingStarted.title')} />
         <ThemedText type="small" themeColor="textSecondary" style={styles.subtitle}>
           {t('gettingStarted.subtitle')}
         </ThemedText>
@@ -82,7 +81,7 @@ export default function GettingStartedScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
   title: { textAlign: 'center' },
   subtitle: { textAlign: 'center', marginBottom: Spacing.three, paddingHorizontal: Spacing.four },
   list: { paddingHorizontal: Spacing.three, gap: Spacing.two, paddingBottom: Spacing.five, alignSelf: 'center', width: '100%', maxWidth: MaxContentWidth },

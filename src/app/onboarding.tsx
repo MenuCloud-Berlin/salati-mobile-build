@@ -1,11 +1,15 @@
-// Erststart-Onboarding (nur nativ, Audit C2): 4 skippbare Schritte —
-// Willkommen, Standort, Berechnungsmethode + Asr-Schule, Benachrichtigungen.
+// Erststart-Onboarding (nur nativ, Audit C2): 5 skippbare Schritte —
+// Willkommen, Standort, Berechnungsmethode + Asr-Schule, Benachrichtigungen,
+// Offline-Download (STEP_COUNT=5).
+// Mit `?mode=location` läuft NUR der Standort-Schritt als fokussiertes
+// Standort-Setup (aus getting-started.tsx) und kehrt danach per „Zurück" dorthin
+// zurück — statt den kompletten Erststart-Flow neu zu starten (Audit 2026-07-22).
 // Web zeigt diesen Flow nie (Landingpage übernimmt dort das Onboarding);
 // die Weiche sitzt im nativen Home-Tab ((tabs)/index.tsx) + features/onboarding/flag.ts.
 // Alle gewählten Werte laufen über den bestehenden Settings-Store — keine
 // Parallel-Persistenz.
 import { Image } from 'expo-image';
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
 import { Platform, Pressable, ScrollView, StyleSheet, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -48,7 +52,12 @@ export default function OnboardingScreen() {
   const colors = Colors[scheme];
   const { requestLocation, loading: locLoading } = useDeviceLocation();
 
-  const [step, setStep] = useState(0);
+  // Fokussiertes Standort-Setup (aus getting-started.tsx): nur der Standort-
+  // Schritt, danach zurück statt zur Startseite (Audit 2026-07-22).
+  const { mode } = useLocalSearchParams<{ mode?: string }>();
+  const locationOnly = mode === 'location';
+
+  const [step, setStep] = useState(locationOnly ? 1 : 0);
   const [cityQuery, setCityQuery] = useState('');
   const [cityResults, setCityResults] = useState<NominatimResult[]>([]);
   const [citySearching, setCitySearching] = useState(false);
@@ -98,10 +107,21 @@ export default function OnboardingScreen() {
   }
 
   function finish() {
+    // Standort-Setup-Modus: Onboarding ist längst abgeschlossen, nur zurück
+    // zur aufrufenden Seite (getting-started) statt zur Startseite.
+    if (locationOnly) {
+      router.back();
+      return;
+    }
     markOnboardingDone().finally(() => router.replace('/'));
   }
 
   function next() {
+    // Im Standort-Setup-Modus beendet „Weiter" nach dem Standort-Schritt direkt.
+    if (locationOnly) {
+      router.back();
+      return;
+    }
     if (step >= STEP_COUNT - 1) {
       finish();
       return;
@@ -370,17 +390,19 @@ export default function OnboardingScreen() {
         </ScrollView>
 
         <View style={styles.footer}>
-          <View style={styles.dots}>
-            {Array.from({ length: STEP_COUNT }, (_, i) => (
-              <View
-                key={i}
-                style={[
-                  styles.dot,
-                  { backgroundColor: i === step ? colors.accent : colors.backgroundSelected },
-                ]}
-              />
-            ))}
-          </View>
+          {!locationOnly && (
+            <View style={styles.dots}>
+              {Array.from({ length: STEP_COUNT }, (_, i) => (
+                <View
+                  key={i}
+                  style={[
+                    styles.dot,
+                    { backgroundColor: i === step ? colors.accent : colors.backgroundSelected },
+                  ]}
+                />
+              ))}
+            </View>
+          )}
           <Pressable
             onPress={step === 3 ? enableNotifications : next}
             accessibilityRole="button"

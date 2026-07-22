@@ -7,6 +7,7 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { ThemedActivityIndicator } from '@/components/themed-activity-indicator';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { ScreenHeader } from '@/components/screen-header';
 import { Colors, MaxContentWidth, Spacing } from '@/constants/theme';
 import { useHijriMonth } from '@/features/calendar/hooks';
 import { islamicDayKeys } from '@/features/calendar/islamicDays';
@@ -95,9 +96,7 @@ export default function CalendarScreen() {
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <AnimatedListItem index={0}>
-          <ThemedText type="title" style={styles.title}>
-            {t('nav.calendar')}
-          </ThemedText>
+          <ScreenHeader title={t('nav.calendar')} />
         </AnimatedListItem>
 
         {isError && (

@@ -1,0 +1,136 @@
+name: iOS Release IPA
+
+# Baut die signierte App-Store-IPA auf einem KOSTENLOSEN macOS-Runner
+# (öffentliches Repo = unbegrenzte Minuten, auch macOS). Ersetzt den kosten-
+# pflichtigen EAS-iOS-Build. Signing kommt ausschließlich aus verschlüsselten
+# Actions-Secrets (Dist-Zertifikat .p12 + 4 Provisioning-Profile). 4 Targets:
+# App (de.salatibox.de), Widget (.widget), Watch (.watch), Watch-Komplikation
+# (.watch.clock). Manuell ausgelöst (workflow_dispatch), da macOS-Runs länger
+# dauern und nicht bei jedem Push nötig sind.
+
+on:
+  workflow_dispatch:
+
+env:
+  TEAM_ID: ZKG548NGDR
+
+jobs:
+  build-ios:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: pnpm installieren
+        run: npm install -g pnpm@10.33.0
+
+      - name: pnpm install (wendet whisper.rn-Patch an)
+        run: pnpm install --no-frozen-lockfile
+
+      - name: whisper.rn iOS-SDK-Fix (vtool, wie EAS-Post-Install-Hook)
+        run: bash scripts/fix-whisper-rn-ios-sdk.sh || echo "Fix-Skript-Warnung ignoriert"
+
+      - name: Xcode-Version wählen
+        run: sudo xcode-select -s /Applications/Xcode_15.4.app || true
+
+      - name: expo prebuild (iOS-Projekt generieren)
+        run: npx expo prebuild -p ios --no-install
+
+      - name: CocoaPods installieren
+        working-directory: ios
+        run: pod install --repo-update
+
+      - name: Signing einrichten (Keychain + Zertifikat + Profile)
+        env:
+          P12_BASE64: ${{ secrets.IOS_DIST_P12_BASE64 }}
+          P12_PASSWORD: ${{ secrets.IOS_DIST_P12_PASSWORD }}
+          KEYCHAIN_PASSWORD: ${{ secrets.IOS_KEYCHAIN_PASSWORD }}
+          PROF_MAIN: ${{ secrets.IOS_PROFILE_MAIN }}
+          PROF_WIDGET: ${{ secrets.IOS_PROFILE_WIDGET }}
+          PROF_WATCH: ${{ secrets.IOS_PROFILE_WATCH }}
+          PROF_COMPLICATION: ${{ secrets.IOS_PROFILE_COMPLICATION }}
+        run: |
+          set -e
+          KC="$RUNNER_TEMP/salati.keychain-db"
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KC"
+          security set-keychain-settings -lut 21600 "$KC"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KC"
+          # Zertifikat importieren
+          echo "$P12_BASE64" | base64 -d > "$RUNNER_TEMP/dist.p12"
+          security import "$RUNNER_TEMP/dist.p12" -k "$KC" -P "$P12_PASSWORD" -T /usr/bin/codesign -T /usr/bin/security
+          security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$KEYCHAIN_PASSWORD" "$KC" >/dev/null
+          # Keychain in die Suchliste
+          security list-keychains -d user -s "$KC" $(security list-keychains -d user | sed s/\"//g)
+          security default-keychain -s "$KC"
+          # Provisioning-Profile installieren (Xcode matcht per Bundle-ID)
+          PROF_DIR="$HOME/Library/MobileDevice/Provisioning Profiles"
+          mkdir -p "$PROF_DIR"
+          i=0
+          for P in "$PROF_MAIN" "$PROF_WIDGET" "$PROF_WATCH" "$PROF_COMPLICATION"; do
+            echo "$P" | base64 -d > "$PROF_DIR/salati_$i.mobileprovision"
+            i=$((i+1))
+          done
+          ls -la "$PROF_DIR"
+
+      - name: exportOptions.plist schreiben
+        run: |
+          cat > "$RUNNER_TEMP/exportOptions.plist" <<'PLIST'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key><string>app-store</string>
+            <key>signingStyle</key><string>manual</string>
+            <key>teamID</key><string>ZKG548NGDR</string>
+            <key>uploadSymbols</key><true/>
+            <key>provisioningProfiles</key>
+            <dict>
+              <key>de.salatibox.de</key><string>Salati AppStore v3 2026-07-19</string>
+              <key>de.salatibox.de.widget</key><string>Salati Widget AppStore v2 2026-07-19</string>
+              <key>de.salatibox.de.watch</key><string>Salati Watch AppStore 2026-07-19</string>
+              <key>de.salatibox.de.watch.clock</key><string>Salati Watch Clock AppStore v2 2026-07-19</string>
+            </dict>
+          </dict>
+          </plist>
+          PLIST
+
+      - name: Archiv bauen (xcodebuild archive, manuell signiert)
+        working-directory: ios
+        run: |
+          set -o pipefail
+          xcodebuild archive \
+            -workspace Salati.xcworkspace \
+            -scheme Salati \
+            -configuration Release \
+            -archivePath "$RUNNER_TEMP/Salati.xcarchive" \
+            -destination "generic/platform=iOS" \
+            CODE_SIGN_STYLE=Manual \
+            DEVELOPMENT_TEAM=ZKG548NGDR \
+            -allowProvisioningUpdates \
+            | xcpretty || xcodebuild archive \
+            -workspace Salati.xcworkspace \
+            -scheme Salati \
+            -configuration Release \
+            -archivePath "$RUNNER_TEMP/Salati.xcarchive" \
+            -destination "generic/platform=iOS" \
+            CODE_SIGN_STYLE=Manual \
+            DEVELOPMENT_TEAM=ZKG548NGDR \
+            -allowProvisioningUpdates
+
+      - name: IPA exportieren
+        run: |
+          xcodebuild -exportArchive \
+            -archivePath "$RUNNER_TEMP/Salati.xcarchive" \
+            -exportPath "$RUNNER_TEMP/export" \
+            -exportOptionsPlist "$RUNNER_TEMP/exportOptions.plist"
+          ls -la "$RUNNER_TEMP/export"
+
+      - name: IPA als Artefakt hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: salati-release-ipa
+          path: ${{ runner.temp }}/export/*.ipa
+          if-no-files-found: error

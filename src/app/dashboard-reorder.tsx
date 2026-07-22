@@ -13,7 +13,8 @@ import { IconSymbol, type IconName } from '@/components/ui/icon-symbol';
 import { ThemedSwitch } from '@/components/ui/themed-switch';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { Colors, MaxContentWidth, Spacing } from '@/constants/theme';
 import {
   DASHBOARD_CARD_IDS,
   DASHBOARD_LOCKED_CARDS,
@@ -56,9 +57,7 @@ export default function DashboardReorderScreen() {
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <ThemedText type="title" style={styles.title}>
-          {t('dashboard.reorder.title')}
-        </ThemedText>
+        <ScreenHeader title={t('dashboard.reorder.title')} variant="modal" />
         <ThemedText type="small" themeColor="textSecondary" style={styles.subtitle}>
           {t('dashboard.reorder.subtitle')}
         </ThemedText>
@@ -122,7 +121,7 @@ export default function DashboardReorderScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
   title: { textAlign: 'center' },
   subtitle: { textAlign: 'center', paddingHorizontal: Spacing.four, marginBottom: Spacing.two },
   list: {

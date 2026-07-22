@@ -59,6 +59,7 @@
     "new": "New"
   },
   "quran": {
+    "surahN": "Sura {n}",
     "surahs": "Suras",
     "juz": "Juz'",
     "juzItem": "Juz'",
@@ -211,6 +212,7 @@
     "shareImage": "Compartir como imagen"
   },
   "search": {
+    "globalTitle": "Búsqueda global",
     "title": "Buscar",
     "placeholder": "Corán, Hadiz, súplicas, cursos…",
     "hint": "Introduce al menos 2 caracteres",

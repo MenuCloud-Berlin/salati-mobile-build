@@ -3,7 +3,10 @@
 // und Hifz verdienen Aufmerksamkeit). Oben eine Hero-Karte fuer den Podcast,
 // darunter zwei grosse Karten (Lern-App, Hifz) und ein Raster der uebrigen
 // Lernwerkzeuge.
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useQuery } from '@tanstack/react-query';
 import { router } from 'expo-router';
+import { useCallback, useEffect, useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -14,15 +17,27 @@ import { PressableCard } from '@/components/ui/pressable-card';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { fetchVideoIndex } from '@/features/video/data';
+import { useReelsIndex } from '@/features/reels/data';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
 import { useTranslation } from '@/lib/i18n';
 
-// Medien-Karten unter der Podcast-Hero: Lernvideos + Kurz-Reels. Der Reels-
-// Screen wird separat gebaut; hier nur der Einstieg.
+// „NEU"-Badges bekommen eine Dismiss-Logik (Audit 2026-07-22): nach dem ersten
+// Besuch der jeweiligen Sektion ausblenden, statt dauerhaft zu leuchten und so
+// ihre Signalwirkung zu verlieren. Persistiert je Sektion in AsyncStorage.
+const NEW_SEEN = {
+  podcast: 'salati.newSeen.podcast',
+  videos: 'salati.newSeen.videos',
+  reels: 'salati.newSeen.reels',
+} as const;
+
+// Medien-Karten unter der Podcast-Hero: Lernvideos + Kurz-Reels. Werden NUR
+// gezeigt, wenn tatsächlich Inhalte vorhanden sind (Audit 2026-07-22): sonst
+// führte eine prominente NEU-Karte in einen „kommt bald"-Leerzustand.
 const MEDIA = [
-  { href: '/videos', icon: 'videocam', titleKey: 'video.title', descKey: 'video.heroDesc' },
-  { href: '/reels', icon: 'film', titleKey: 'video.reelsTitle', descKey: 'video.reelsDesc' },
-] as const satisfies readonly { href: string; icon: IconName; titleKey: string; descKey: string }[];
+  { href: '/videos', icon: 'videocam', titleKey: 'video.title', descKey: 'video.heroDesc', seenKey: NEW_SEEN.videos },
+  { href: '/reels', icon: 'film', titleKey: 'video.reelsTitle', descKey: 'video.reelsDesc', seenKey: NEW_SEEN.reels },
+] as const satisfies readonly { href: string; icon: IconName; titleKey: string; descKey: string; seenKey: string }[];
 
 const FEATURED = [
   {
@@ -54,6 +69,39 @@ export default function LernenScreen() {
   const scheme = useResolvedScheme();
   const colors = Colors[scheme];
 
+  // Echte Inhalts-Verfügbarkeit (react-query teilt den Cache mit den Ziel-
+  // Screens — kein Doppel-Fetch). Leere/„noch nicht produziert"-Indizes liefern
+  // eine leere Liste, dann wird die Karte samt NEU-Badge ausgeblendet.
+  const { data: reelsData } = useReelsIndex();
+  const { data: videoData } = useQuery({
+    queryKey: ['video', 'index'],
+    queryFn: fetchVideoIndex,
+    staleTime: 60 * 60 * 1000,
+  });
+  const hasContent: Record<string, boolean> = {
+    '/videos': (videoData?.episodes?.length ?? 0) > 0,
+    '/reels': (reelsData?.reels?.length ?? 0) > 0,
+  };
+  const media = MEDIA.filter((m) => hasContent[m.href]);
+
+  // NEU-Badge-Dismiss: gesehene Sektionen aus AsyncStorage laden; beim Öffnen
+  // einer Sektion sofort als gesehen markieren.
+  const [seen, setSeen] = useState<Record<string, boolean>>({});
+  useEffect(() => {
+    AsyncStorage.multiGet(Object.values(NEW_SEEN))
+      .then((pairs) => {
+        const next: Record<string, boolean> = {};
+        for (const [k, v] of pairs) if (v) next[k] = true;
+        setSeen(next);
+      })
+      .catch(() => {});
+  }, []);
+  const openAndMarkSeen = useCallback((href: string, seenKey: string) => {
+    setSeen((prev) => (prev[seenKey] ? prev : { ...prev, [seenKey]: true }));
+    AsyncStorage.setItem(seenKey, '1').catch(() => {});
+    router.push(href);
+  }, []);
+
   let itemIndex = 0;
 
   return (
@@ -67,20 +115,22 @@ export default function LernenScreen() {
           {/* Hero: Podcast */}
           <AnimatedListItem index={itemIndex++}>
             <PressableCard
-              onPress={() => router.push('/podcast')}
+              onPress={() => openAndMarkSeen('/podcast', NEW_SEEN.podcast)}
               type="backgroundSelected"
               style={styles.hero}>
               <View style={[styles.heroIcon, { backgroundColor: colors.accent }]}>
-                <IconSymbol name="headset" size={30} color={colors.background} />
+                <IconSymbol name="headset" size={28} color={colors.background} />
               </View>
               <View style={styles.heroText}>
                 <View style={styles.heroTitleRow}>
                   <ThemedText type="subtitle">{t('podcast.title')}</ThemedText>
-                  <View style={[styles.badge, { backgroundColor: colors.accent }]}>
-                    <ThemedText type="small" style={{ color: colors.background, fontSize: 11 }}>
-                      {t('common.new')}
-                    </ThemedText>
-                  </View>
+                  {!seen[NEW_SEEN.podcast] && (
+                    <View style={[styles.badge, { backgroundColor: colors.accent }]}>
+                      <ThemedText type="small" style={{ color: colors.background, fontSize: 11 }}>
+                        {t('common.new')}
+                      </ThemedText>
+                    </View>
+                  )}
                 </View>
                 <ThemedText type="small" themeColor="textSecondary">
                   {t('podcast.heroDesc')}
@@ -90,32 +140,37 @@ export default function LernenScreen() {
             </PressableCard>
           </AnimatedListItem>
 
-          {/* Medien: Videos + Reels (unter der Podcast-Hero) */}
-          <View style={styles.featuredGrid}>
-            {MEDIA.map((item) => (
-              <AnimatedListItem key={item.href} index={itemIndex++} style={styles.featuredItem}>
-                <PressableCard
-                  onPress={() => router.push(item.href)}
-                  type="backgroundElement"
-                  style={styles.featuredCard}>
-                  <View style={styles.mediaTitleRow}>
-                    <ThemedView type="backgroundSelected" style={styles.featuredIcon}>
-                      <IconSymbol name={item.icon} size={22} color={colors.accent} />
-                    </ThemedView>
-                    <View style={[styles.badge, { backgroundColor: colors.accent }]}>
-                      <ThemedText type="small" style={{ color: colors.background, fontSize: 11 }}>
-                        {t('common.new')}
-                      </ThemedText>
+          {/* Medien: Videos + Reels — nur mit echtem Inhalt (kein „kommt bald"-
+              Sackgassen-Einstieg mehr). NEU-Badge verschwindet nach 1. Besuch. */}
+          {media.length > 0 && (
+            <View style={styles.featuredGrid}>
+              {media.map((item) => (
+                <AnimatedListItem key={item.href} index={itemIndex++} style={styles.featuredItem}>
+                  <PressableCard
+                    onPress={() => openAndMarkSeen(item.href, item.seenKey)}
+                    type="backgroundElement"
+                    style={styles.featuredCard}>
+                    <View style={styles.mediaTitleRow}>
+                      <ThemedView type="backgroundSelected" style={styles.featuredIcon}>
+                        <IconSymbol name={item.icon} size={22} color={colors.accent} />
+                      </ThemedView>
+                      {!seen[item.seenKey] && (
+                        <View style={[styles.badge, { backgroundColor: colors.accent }]}>
+                          <ThemedText type="small" style={{ color: colors.background, fontSize: 11 }}>
+                            {t('common.new')}
+                          </ThemedText>
+                        </View>
+                      )}
                     </View>
-                  </View>
-                  <ThemedText type="smallBold">{t(item.titleKey)}</ThemedText>
-                  <ThemedText type="small" themeColor="textSecondary" numberOfLines={2}>
-                    {t(item.descKey)}
-                  </ThemedText>
-                </PressableCard>
-              </AnimatedListItem>
-            ))}
-          </View>
+                    <ThemedText type="smallBold">{t(item.titleKey)}</ThemedText>
+                    <ThemedText type="small" themeColor="textSecondary" numberOfLines={2}>
+                      {t(item.descKey)}
+                    </ThemedText>
+                  </PressableCard>
+                </AnimatedListItem>
+              ))}
+            </View>
+          )}
 
           {/* Featured: Lern-App + Hifz */}
           <View style={styles.featuredGrid}>

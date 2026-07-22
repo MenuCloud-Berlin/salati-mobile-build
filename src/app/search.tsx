@@ -203,7 +203,7 @@ export default function GlobalSearchScreen() {
                           }
                           style={styles.resultCard}>
                           <ThemedText type="small" themeColor="accent">
-                            {meta?.englishName ?? `Sure ${item.surah}`} · {t('quran.verse')} {item.ayah}
+                            {meta?.englishName ?? t('quran.surahN').replace('{n}', String(item.surah))} · {t('quran.verse')} {item.ayah}
                           </ThemedText>
                           <ThemedText type="default" numberOfLines={1} style={styles.arabicSmall}>
                             {item.arabicText}

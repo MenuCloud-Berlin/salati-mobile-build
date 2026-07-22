@@ -9,7 +9,8 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { PressableCard } from '@/components/ui/pressable-card';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, Brand, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { Brand, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
 import {
   PLAN_OPTIONS,
   completedDays,
@@ -40,9 +41,7 @@ export default function KhatmahScreen() {
     return (
       <ThemedView style={styles.container}>
         <SafeAreaView style={styles.safeArea}>
-          <ThemedText type="title" style={styles.title}>
-            {t('khatmah.title')}
-          </ThemedText>
+          <ScreenHeader title={t('khatmah.title')} />
           <ThemedText type="small" themeColor="textSecondary" style={styles.subtitle}>
             {t('khatmah.subtitle')}
           </ThemedText>
@@ -196,7 +195,7 @@ export default function KhatmahScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
   title: { textAlign: 'center' },
   subtitle: { textAlign: 'center', marginBottom: Spacing.three, paddingHorizontal: Spacing.four },
   options: {

@@ -59,6 +59,7 @@
     "new": "New"
   },
   "quran": {
+    "surahN": "Sura {n}",
     "surahs": "Sura",
     "juz": "Juzuu",
     "juzItem": "Juzuu",
@@ -211,6 +212,7 @@
     "shareImage": "Shiriki kama picha"
   },
   "search": {
+    "globalTitle": "Utafutaji wa jumla",
     "title": "Tafuta",
     "placeholder": "Qur’an, Hadithi, dua, kozi…",
     "hint": "Weka angalau herufi 2",

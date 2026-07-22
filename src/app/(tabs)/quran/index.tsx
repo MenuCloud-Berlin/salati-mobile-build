@@ -103,7 +103,7 @@ export default function QuranScreen() {
                 ]}>
                 <ThemedView type="backgroundElement" style={styles.historyChip}>
                   <ThemedText type="small">
-                    {surahs?.find((s) => s.number === h.surah)?.englishName ?? `Sure ${h.surah}`} {h.surah}:{h.ayah}
+                    {surahs?.find((s) => s.number === h.surah)?.englishName ?? t('quran.surahN').replace('{n}', String(h.surah))} {h.surah}:{h.ayah}
                   </ThemedText>
                 </ThemedView>
               </Pressable>
@@ -244,7 +244,7 @@ export default function QuranScreen() {
                         {t('quran.juzItem')} {item.juz}
                       </ThemedText>
                       <ThemedText type="small" themeColor="textSecondary">
-                        {startSurah?.englishName ?? `Sure ${item.surah}`} · {t('quran.verse')}{' '}
+                        {startSurah?.englishName ?? t('quran.surahN').replace('{n}', String(item.surah))} · {t('quran.verse')}{' '}
                         {item.ayah}
                       </ThemedText>
                     </View>

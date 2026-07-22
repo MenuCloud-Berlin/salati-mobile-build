@@ -21,7 +21,15 @@
             "tr": "Nasılsın? (kelimenin tam anlamıyla “zarar yok” - Darija'da en yaygın selamlama sorusu)",
             "ar": "كيف حالك؟ (حرفيًا «لا بأس» - أشيع سؤال تحية في الدارجة)",
             "es": "¿Cómo estás? (literalmente «sin daño» - la pregunta de saludo más común en darija)",
-            "fr": "Comment ça va ? (littéralement « pas de mal » - la question de salutation la plus courante en darija)"
+            "fr": "Comment ça va ? (littéralement « pas de mal » - la question de salutation la plus courante en darija)",
+            "id": "Apa kabar? (harfiah ‘tidak ada bahaya’ - pertanyaan sapaan paling umum dalam Darija)",
+            "bn": "কেমন আছেন? (আক্ষরিক অর্থে ‘কোনো ক্ষতি নেই’ - দারিজায় সবচেয়ে প্রচলিত অভিবাদনের প্রশ্ন)",
+            "fa": "حال شما چطور است؟ (به معنای تحت‌اللفظی «هیچ آسیبی نیست» - رایج‌ترین جملهٔ احوال‌پرسی در داریجه)",
+            "ms": "Apa khabar? (secara harfiah ‘tiada bahaya’ - soalan sapaan paling lazim dalam Darija)",
+            "ur": "آپ کیسے ہیں؟ (لفظی طور پر «کوئی نقصان نہیں» - داریجہ میں سب سے عام سلام کا جملہ)",
+            "sw": "Habari yako? (kwa maana halisi ‘hakuna madhara’ - swali la salamu linalotumika zaidi katika Darija)",
+            "ru": "Как дела? (буквально «нет вреда» - самый частый вопрос-приветствие в дарижа)",
+            "ps": "څنګه یې؟ (لغوي معنا «هیڅ زیان نشته» - په داریجه کې تر ټولو عام د سلام پوښتنه)"
           }
         },
         {
@@ -33,7 +41,15 @@
             "tr": "İyiyim (labas?'a verilen yaygın cevap)",
             "ar": "بخير، أنا بخير (الرد المعتاد على لاباس؟)",
             "es": "Bien, estoy bien (la respuesta habitual a labas?)",
-            "fr": "Bien, ça va (la réponse habituelle à labas ?)"
+            "fr": "Bien, ça va (la réponse habituelle à labas ?)",
+            "id": "Baik, saya baik-baik saja (jawaban umum untuk labas?)",
+            "bn": "ভালো, আমি ভালো আছি (labas?-এর সাধারণ উত্তর)",
+            "fa": "خوبم، حالم خوب است (پاسخ معمول به labas؟)",
+            "ms": "Baik, saya sihat (jawapan lazim kepada labas?)",
+            "ur": "ٹھیک ہوں، میں ٹھیک ہوں (labas? کا عام جواب)",
+            "sw": "Nzuri, niko salama (jibu la kawaida kwa labas?)",
+            "ru": "Хорошо, у меня всё хорошо (обычный ответ на labas?)",
+            "ps": "ښه یم، زه ښه یم (د labas؟ عام ځواب)"
           }
         },
         {
@@ -45,7 +61,15 @@
             "tr": "Hoşça kal (kelimenin tam anlamıyla “selametle git”)",
             "ar": "إلى اللقاء (حرفيًا «اذهب بسلام»)",
             "es": "Adiós (literalmente «ve en paz»)",
-            "fr": "Au revoir (littéralement « va en paix »)"
+            "fr": "Au revoir (littéralement « va en paix »)",
+            "id": "Selamat tinggal (harfiah ‘pergilah dengan damai’)",
+            "bn": "বিদায় (আক্ষরিক অর্থে ‘শান্তিতে যাও’)",
+            "fa": "خداحافظ (به معنای تحت‌اللفظی «به سلامت برو»)",
+            "ms": "Selamat tinggal (secara harfiah ‘pergilah dengan aman’)",
+            "ur": "خدا حافظ (لفظی طور پر «سلامتی سے جاؤ»)",
+            "sw": "Kwaheri (kwa maana halisi ‘nenda kwa amani’)",
+            "ru": "До свидания (буквально «иди с миром»)",
+            "ps": "خدای پامان (لغوي معنا «په سلامتۍ لاړ شه»)"
           }
         },
         {
@@ -57,7 +81,15 @@
             "tr": "Çok teşekkürler (bezzaf = “çok”, tipik bir Darija kelimesi)",
             "ar": "شكرًا جزيلًا (بزاف تعني «كثيرًا»، وهي كلمة دارجية نموذجية)",
             "es": "Muchas gracias (bezzaf = «muy/mucho», una palabra típica del darija)",
-            "fr": "Merci beaucoup (bezzaf = « très/beaucoup », un mot typique du darija)"
+            "fr": "Merci beaucoup (bezzaf = « très/beaucoup », un mot typique du darija)",
+            "id": "Terima kasih banyak (bezzaf = ‘sangat/banyak’, kata khas Darija)",
+            "bn": "অনেক ধন্যবাদ (bezzaf = ‘খুব/অনেক’, দারিজার একটি বৈশিষ্ট্যপূর্ণ শব্দ)",
+            "fa": "خیلی ممنون (bezzaf = «خیلی/زیاد»، یک واژهٔ نمونهٔ داریجه)",
+            "ms": "Terima kasih banyak-banyak (bezzaf = ‘sangat/banyak’, perkataan khas Darija)",
+            "ur": "بہت شکریہ (bezzaf = «بہت/زیادہ»، داریجہ کا ایک خاص لفظ)",
+            "sw": "Asante sana (bezzaf = ‘sana/nyingi’, neno la kawaida la Darija)",
+            "ru": "Большое спасибо (bezzaf = «очень/много», типичное слово дарижа)",
+            "ps": "ډېره مننه (bezzaf = «ډېر/زیات»، د داریجه یوه ځانګړې کلمه)"
           }
         },
         {
@@ -69,7 +101,15 @@
             "tr": "İyi, güzel (genel bir övgü/onay kelimesi)",
             "ar": "جيد، حسن (كلمة استحسان أو موافقة عامة)",
             "es": "Bueno, bonito (una palabra general de elogio o acuerdo)",
-            "fr": "Bon, joli (un mot général d'éloge ou d'accord)"
+            "fr": "Bon, joli (un mot général d'éloge ou d'accord)",
+            "id": "Bagus, baik (kata umum untuk pujian atau persetujuan)",
+            "bn": "ভালো, চমৎকার (প্রশংসা বা সম্মতির সাধারণ শব্দ)",
+            "fa": "خوب، عالی (واژه‌ای عمومی برای تحسین یا موافقت)",
+            "ms": "Bagus, baik (perkataan umum untuk pujian atau persetujuan)",
+            "ur": "اچھا، عمدہ (تعریف یا اتفاق کا عام لفظ)",
+            "sw": "Nzuri, vizuri (neno la jumla la sifa au kukubali)",
+            "ru": "Хорошо, отлично (общее слово похвалы или согласия)",
+            "ps": "ښه، عالي (د ستاینې یا موافقې عمومي کلمه)"
           }
         },
         {
@@ -81,7 +121,15 @@
             "tr": "Nerelisin? (Fasih Arapçada: min ayna anta - Darija ünlüleri güçlü şekilde kısaltır ve düşürür)",
             "ar": "من أين أنت؟ (بالفصحى: من أين أنت - تختصر الدارجة الحروف الصوتية بشدة)",
             "es": "¿De dónde eres? (en árabe estándar: min ayna anta - el darija acorta y elide fuertemente las vocales)",
-            "fr": "D'où viens-tu ? (en arabe standard : min ayna anta - le darija raccourcit et élide fortement les voyelles)"
+            "fr": "D'où viens-tu ? (en arabe standard : min ayna anta - le darija raccourcit et élide fortement les voyelles)",
+            "id": "Dari mana asalmu? (dalam bahasa Arab baku: min ayna anta - Darija sangat memperpendek dan menghilangkan vokal)",
+            "bn": "তুমি কোথা থেকে এসেছ? (প্রমিত আরবিতে: min ayna anta - দারিজা স্বরধ্বনি জোরালোভাবে সংক্ষিপ্ত ও লোপ করে)",
+            "fa": "اهل کجا هستی؟ (در عربی فصیح: min ayna anta - داریجه مصوت‌ها را به‌شدت کوتاه و حذف می‌کند)",
+            "ms": "Dari mana asal kamu? (dalam bahasa Arab baku: min ayna anta - Darija sangat memendekkan dan menggugurkan vokal)",
+            "ur": "تم کہاں سے ہو؟ (فصیح عربی میں: min ayna anta - داریجہ حرفِ علت کو بہت مختصر اور حذف کر دیتا ہے)",
+            "sw": "Unatoka wapi? (kwa Kiarabu sanifu: min ayna anta - Darija hufupisha na kudondosha irabu sana)",
+            "ru": "Откуда ты? (в литературном арабском: min ayna anta - дарижа сильно сокращает и опускает гласные)",
+            "ps": "ته د کوم ځای یې؟ (په فصیح عربي کې: min ayna anta - داریجه غږلرونکي په کلکه لنډوي او غورځوي)"
           }
         },
         {
@@ -93,7 +141,15 @@
             "tr": "Tamam, kabul",
             "ar": "حسنًا، موافق",
             "es": "Vale, de acuerdo",
-            "fr": "D'accord, entendu"
+            "fr": "D'accord, entendu",
+            "id": "Oke, setuju",
+            "bn": "ঠিক আছে, রাজি",
+            "fa": "باشه، موافقم",
+            "ms": "Okey, setuju",
+            "ur": "ٹھیک ہے، منظور",
+            "sw": "Sawa, nakubali",
+            "ru": "Хорошо, согласен",
+            "ps": "ښه، منم"
           }
         },
         {
@@ -105,7 +161,15 @@
             "tr": "Çok (Darija'nın en tanınmış kelimelerinden biri)",
             "ar": "كثيرًا، جدًا (من أشهر كلمات الدارجة على الإطلاق)",
             "es": "Mucho, muy (una de las palabras más conocidas del darija)",
-            "fr": "Beaucoup, très (l'un des mots les plus connus du darija)"
+            "fr": "Beaucoup, très (l'un des mots les plus connus du darija)",
+            "id": "Banyak, sangat (salah satu kata Darija yang paling terkenal)",
+            "bn": "অনেক, খুব (দারিজার সবচেয়ে পরিচিত শব্দগুলোর একটি)",
+            "fa": "خیلی، زیاد (یکی از مشهورترین واژه‌های داریجه)",
+            "ms": "Banyak, sangat (salah satu perkataan Darija paling terkenal)",
+            "ur": "بہت، زیادہ (داریجہ کے سب سے مشہور الفاظ میں سے ایک)",
+            "sw": "Nyingi, sana (mojawapo ya maneno maarufu zaidi ya Darija)",
+            "ru": "Много, очень (одно из самых известных слов дарижа)",
+            "ps": "ډېر، زیات (د داریجه یو له تر ټولو مشهورو کلمو څخه)"
           }
         }
       ]
@@ -131,7 +195,15 @@
             "tr": "Bir (1) - “waḥidi” (yalnız) gibi birçok türevin kaynaklandığı temel sayı",
             "ar": "واحد (1) - الرقم الأساسي الذي تشتق منه كلمات مثل «وحيدي» (لوحدي)",
             "es": "Uno (1) - el número base del que derivan palabras como «waḥidi» (solo)",
-            "fr": "Un (1) - le nombre de base dont dérivent des mots comme « waḥidi » (seul)"
+            "fr": "Un (1) - le nombre de base dont dérivent des mots comme « waḥidi » (seul)",
+            "id": "Satu (1) - angka dasar yang menjadi asal banyak turunan seperti ‘waḥidi’ (sendirian)",
+            "bn": "এক (1) - মূল সংখ্যা, যা থেকে ‘waḥidi’ (একা) মতো অনেক শব্দ এসেছে",
+            "fa": "یک (1) - عدد پایه که مشتقات زیادی مانند «waḥidi» (تنها) از آن ساخته می‌شود",
+            "ms": "Satu (1) - nombor asas yang menjadi punca banyak terbitan seperti ‘waḥidi’ (bersendirian)",
+            "ur": "ایک (1) - بنیادی عدد جس سے ‘waḥidi’ (اکیلا) جیسے کئی الفاظ بنتے ہیں",
+            "sw": "Moja (1) - namba ya msingi ambayo maneno mengi kama ‘waḥidi’ (peke yake) yanatokana nayo",
+            "ru": "Один (1) - базовое число, от которого происходят многие производные, например ‘waḥidi’ (в одиночку)",
+            "ps": "یو (1) - بنسټیز شمېر چې ډېرې مشتقې لکه «waḥidi» (یوازې) ترې جوړېږي"
           }
         },
         {
@@ -143,7 +215,15 @@
             "tr": "İki (2) - Fasih Arapçada ithnan, Darija bunun yerine neredeyse her zaman kendi kelimesi jouj’u kullanır",
             "ar": "اثنان (2) - بالفصحى اثنان، لكن الدارجة تستخدم دائمًا تقريبًا كلمتها الخاصة جوج",
             "es": "Dos (2) - en árabe estándar ithnan, el darija casi siempre usa su propia palabra jouj",
-            "fr": "Deux (2) - en arabe standard ithnan, le darija utilise presque toujours son propre mot jouj"
+            "fr": "Deux (2) - en arabe standard ithnan, le darija utilise presque toujours son propre mot jouj",
+            "id": "Dua (2) - dalam bahasa Arab baku ithnan, Darija hampir selalu memakai kata sendiri jouj",
+            "bn": "দুই (2) - প্রমিত আরবিতে ithnan, দারিজা প্রায় সবসময় নিজস্ব শব্দ jouj ব্যবহার করে",
+            "fa": "دو (2) - در عربی فصیح ithnan، اما داریجه تقریباً همیشه واژهٔ خودش jouj را به کار می‌برد",
+            "ms": "Dua (2) - dalam bahasa Arab baku ithnan, Darija hampir selalu menggunakan perkataan sendiri jouj",
+            "ur": "دو (2) - فصیح عربی میں ithnan، مگر داریجہ تقریباً ہمیشہ اپنا لفظ jouj استعمال کرتا ہے",
+            "sw": "Mbili (2) - kwa Kiarabu sanifu ithnan, lakini Darija hutumia karibu kila mara neno lake jouj",
+            "ru": "Два (2) - в литературном арабском ithnan, но дарижа почти всегда использует собственное слово jouj",
+            "ps": "دوه (2) - په فصیح عربي کې ithnan، خو داریجه نږدې تل خپله کلمه jouj کاروي"
           }
         },
         {
@@ -155,7 +235,15 @@
             "tr": "Üç (3)",
             "ar": "ثلاثة (3)",
             "es": "Tres (3)",
-            "fr": "Trois (3)"
+            "fr": "Trois (3)",
+            "id": "Tiga (3)",
+            "bn": "তিন (3)",
+            "fa": "سه (3)",
+            "ms": "Tiga (3)",
+            "ur": "تین (3)",
+            "sw": "Tatu (3)",
+            "ru": "Три (3)",
+            "ps": "درې (3)"
           }
         },
         {
@@ -167,7 +255,15 @@
             "tr": "Dört (4)",
             "ar": "أربعة (4)",
             "es": "Cuatro (4)",
-            "fr": "Quatre (4)"
+            "fr": "Quatre (4)",
+            "id": "Empat (4)",
+            "bn": "চার (4)",
+            "fa": "چهار (4)",
+            "ms": "Empat (4)",
+            "ur": "چار (4)",
+            "sw": "Nne (4)",
+            "ru": "Четыре (4)",
+            "ps": "څلور (4)"
           }
         },
         {
@@ -179,7 +275,15 @@
             "tr": "Beş (5) - nazara karşı el şeklindeki bir sembol olarak da bilinir (khamsa)",
             "ar": "خمسة (5) - معروفة أيضًا كرمز على شكل يد ضد العين (الخمسة)",
             "es": "Cinco (5) - también conocido como símbolo en forma de mano contra el mal de ojo (la khamsa)",
-            "fr": "Cinq (5) - aussi connu comme symbole en forme de main contre le mauvais œil (la khamsa)"
+            "fr": "Cinq (5) - aussi connu comme symbole en forme de main contre le mauvais œil (la khamsa)",
+            "id": "Lima (5) - juga dikenal sebagai simbol berbentuk tangan penangkal mata jahat (khamsa)",
+            "bn": "পাঁচ (5) - কুদৃষ্টি থেকে রক্ষার হাত-আকৃতির প্রতীক হিসেবেও পরিচিত (khamsa)",
+            "fa": "پنج (5) - همچنین به‌عنوان نماد دست‌مانند در برابر چشم‌زخم شناخته می‌شود (khamsa)",
+            "ms": "Lima (5) - juga dikenali sebagai simbol berbentuk tangan penangkal mata jahat (khamsa)",
+            "ur": "پانچ (5) - نظرِ بد سے بچاؤ کے لیے ہاتھ کی شکل والی علامت کے طور پر بھی معروف (khamsa)",
+            "sw": "Tano (5) - pia hujulikana kama alama yenye umbo la mkono ya kukinga jicho baya (khamsa)",
+            "ru": "Пять (5) - также известна как символ в форме ладони против сглаза (хамса)",
+            "ps": "پنځه (5) - د بد نظر پر وړاندې د لاس په بڼه د سمبول په توګه هم پېژندل کېږي (khamsa)"
           }
         },
         {
@@ -191,7 +295,15 @@
             "tr": "On (10)",
             "ar": "عشرة (10)",
             "es": "Diez (10)",
-            "fr": "Dix (10)"
+            "fr": "Dix (10)",
+            "id": "Sepuluh (10)",
+            "bn": "দশ (10)",
+            "fa": "ده (10)",
+            "ms": "Sepuluh (10)",
+            "ur": "دس (10)",
+            "sw": "Kumi (10)",
+            "ru": "Десять (10)",
+            "ps": "لس (10)"
           }
         },
         {
@@ -203,7 +315,15 @@
             "tr": "Şimdi (Fasih Arapçada: el-an - daba, günlük Darija’da en çok kullanılan kelimelerden biridir)",
             "ar": "الآن (بالفصحى: الآن - دابا من أكثر الكلمات استخدامًا في الدارجة اليومية)",
             "es": "Ahora (en árabe estándar: al-an - daba es una de las palabras más usadas en el darija cotidiano)",
-            "fr": "Maintenant (en arabe standard : al-an - daba est l’un des mots les plus utilisés dans le darija quotidien)"
+            "fr": "Maintenant (en arabe standard : al-an - daba est l’un des mots les plus utilisés dans le darija quotidien)",
+            "id": "Sekarang (dalam bahasa Arab baku: al-an - daba salah satu kata paling sering dipakai dalam Darija sehari-hari)",
+            "bn": "এখন (প্রমিত আরবিতে: al-an - daba দৈনন্দিন দারিজায় সবচেয়ে বেশি ব্যবহৃত শব্দগুলোর একটি)",
+            "fa": "الان (در عربی فصیح: al-an - daba یکی از پرکاربردترین واژه‌ها در داریجهٔ روزمره است)",
+            "ms": "Sekarang (dalam bahasa Arab baku: al-an - daba salah satu perkataan paling kerap digunakan dalam Darija harian)",
+            "ur": "اب (فصیح عربی میں: al-an - daba روزمرہ داریجہ میں سب سے زیادہ استعمال ہونے والے الفاظ میں سے ایک)",
+            "sw": "Sasa (kwa Kiarabu sanifu: al-an - daba ni mojawapo ya maneno yanayotumika zaidi katika Darija ya kila siku)",
+            "ru": "Сейчас (в литературном арабском: al-an - daba одно из самых употребляемых слов в повседневном дарижа)",
+            "ps": "اوس (په فصیح عربي کې: al-an - daba په ورځني داریجه کې تر ټولو ډېر کارېدونکو کلمو څخه یوه ده)"
           }
         },
         {
@@ -215,7 +335,15 @@
             "tr": "Yarın (bir sonraki gün)",
             "ar": "غدًا (اليوم التالي)",
             "es": "Mañana (el día siguiente)",
-            "fr": "Demain (le jour suivant)"
+            "fr": "Demain (le jour suivant)",
+            "id": "Besok (hari berikutnya)",
+            "bn": "আগামীকাল (পরের দিন)",
+            "fa": "فردا (روز بعد)",
+            "ms": "Esok (hari berikutnya)",
+            "ur": "کل (اگلا دن)",
+            "sw": "Kesho (siku inayofuata)",
+            "ru": "Завтра (следующий день)",
+            "ps": "سبا (بله ورځ)"
           }
         }
       ]
@@ -241,7 +369,15 @@
             "tr": "Nerede? (Fasih Arapçada: ayna)",
             "ar": "أين؟ (بالفصحى: أين)",
             "es": "¿Dónde? (en árabe estándar: ayna)",
-            "fr": "Où ? (en arabe standard : ayna)"
+            "fr": "Où ? (en arabe standard : ayna)",
+            "id": "Di mana? (dalam bahasa Arab baku: ayna)",
+            "bn": "কোথায়? (প্রমিত আরবিতে: ayna)",
+            "fa": "کجا؟ (در عربی فصیح: ayna)",
+            "ms": "Di mana? (dalam bahasa Arab baku: ayna)",
+            "ur": "کہاں؟ (فصیح عربی میں: ayna)",
+            "sw": "Wapi? (kwa Kiarabu sanifu: ayna)",
+            "ru": "Где? (в литературном арабском: ayna)",
+            "ps": "چېرته؟ (په فصیح عربي کې: ayna)"
           }
         },
         {
@@ -253,7 +389,15 @@
             "tr": "Ne zaman? (Fasih Arapçada: mata)",
             "ar": "متى؟ (بالفصحى: متى)",
             "es": "¿Cuándo? (en árabe estándar: mata)",
-            "fr": "Quand ? (en arabe standard : mata)"
+            "fr": "Quand ? (en arabe standard : mata)",
+            "id": "Kapan? (dalam bahasa Arab baku: mata)",
+            "bn": "কখন? (প্রমিত আরবিতে: mata)",
+            "fa": "کِی؟ (در عربی فصیح: mata)",
+            "ms": "Bila? (dalam bahasa Arab baku: mata)",
+            "ur": "کب؟ (فصیح عربی میں: mata)",
+            "sw": "Lini? (kwa Kiarabu sanifu: mata)",
+            "ru": "Когда? (в литературном арабском: mata)",
+            "ps": "کله؟ (په فصیح عربي کې: mata)"
           }
         },
         {
@@ -265,7 +409,15 @@
             "tr": "Neden? (Fasih Arapçada: limadha)",
             "ar": "لماذا؟ (بالفصحى: لماذا)",
             "es": "¿Por qué? (en árabe estándar: limadha)",
-            "fr": "Pourquoi ? (en arabe standard : limadha)"
+            "fr": "Pourquoi ? (en arabe standard : limadha)",
+            "id": "Mengapa? (dalam bahasa Arab baku: limadha)",
+            "bn": "কেন? (প্রমিত আরবিতে: limadha)",
+            "fa": "چرا؟ (در عربی فصیح: limadha)",
+            "ms": "Mengapa? (dalam bahasa Arab baku: limadha)",
+            "ur": "کیوں؟ (فصیح عربی میں: limadha)",
+            "sw": "Kwa nini? (kwa Kiarabu sanifu: limadha)",
+            "ru": "Почему? (в литературном арабском: limadha)",
+            "ps": "ولې؟ (په فصیح عربي کې: limadha)"
           }
         },
         {
@@ -277,7 +429,15 @@
             "tr": "Nasıl? (Fasih Arapçada: kayfa - kifach bunun tipik Darija ağız değişimidir)",
             "ar": "كيف؟ (بالفصحى: كيف - كيفاش هو التحوير الدارجي المعتاد)",
             "es": "¿Cómo? (en árabe estándar: kayfa - kifach es la típica variación darija de esta palabra)",
-            "fr": "Comment ? (en arabe standard : kayfa - kifach en est la déformation darija typique)"
+            "fr": "Comment ? (en arabe standard : kayfa - kifach en est la déformation darija typique)",
+            "id": "Bagaimana? (dalam bahasa Arab baku: kayfa - kifach adalah pelafalan Darija yang khas darinya)",
+            "bn": "কীভাবে? (প্রমিত আরবিতে: kayfa - kifach হলো এর সাধারণ দারিজা উচ্চারণ)",
+            "fa": "چطور؟ (در عربی فصیح: kayfa - kifach تلفظ نمونهٔ داریجه از آن است)",
+            "ms": "Bagaimana? (dalam bahasa Arab baku: kayfa - kifach ialah sebutan Darija yang khas daripadanya)",
+            "ur": "کیسے؟ (فصیح عربی میں: kayfa - kifach اس کی مخصوص داریجہ ادائیگی ہے)",
+            "sw": "Vipi? (kwa Kiarabu sanifu: kayfa - kifach ni matamshi ya kawaida ya Darija ya neno hilo)",
+            "ru": "Как? (в литературном арабском: kayfa - kifach - типичное дарижское произношение)",
+            "ps": "څنګه؟ (په فصیح عربي کې: kayfa - kifach یې د داریجه ځانګړی تلفظ دی)"
           }
         },
         {
@@ -289,7 +449,15 @@
             "tr": "Kim? (Fasih Arapçada: man)",
             "ar": "من؟ (بالفصحى: من)",
             "es": "¿Quién? (en árabe estándar: man)",
-            "fr": "Qui ? (en arabe standard : man)"
+            "fr": "Qui ? (en arabe standard : man)",
+            "id": "Siapa? (dalam bahasa Arab baku: man)",
+            "bn": "কে? (প্রমিত আরবিতে: man)",
+            "fa": "چه کسی؟ (در عربی فصیح: man)",
+            "ms": "Siapa? (dalam bahasa Arab baku: man)",
+            "ur": "کون؟ (فصیح عربی میں: man)",
+            "sw": "Nani? (kwa Kiarabu sanifu: man)",
+            "ru": "Кто? (в литературном арабском: man)",
+            "ps": "څوک؟ (په فصیح عربي کې: man)"
           }
         },
         {
@@ -301,7 +469,15 @@
             "tr": "Ne? (Fasih Arapçada: madha - achnu genellikle ach’a kısaltılır)",
             "ar": "ماذا؟ (بالفصحى: ماذا - كثيرًا ما تُختصر آشنو إلى آش)",
             "es": "¿Qué? (en árabe estándar: madha - achnu se abrevia a menudo a ach)",
-            "fr": "Quoi ? (en arabe standard : madha - achnu se raccourcit souvent en ach)"
+            "fr": "Quoi ? (en arabe standard : madha - achnu se raccourcit souvent en ach)",
+            "id": "Apa? (dalam bahasa Arab baku: madha - achnu sering dipendekkan menjadi ach)",
+            "bn": "কী? (প্রমিত আরবিতে: madha - achnu প্রায়ই সংক্ষেপে ach হয়ে যায়)",
+            "fa": "چه؟ (در عربی فصیح: madha - achnu اغلب به ach کوتاه می‌شود)",
+            "ms": "Apa? (dalam bahasa Arab baku: madha - achnu sering dipendekkan menjadi ach)",
+            "ur": "کیا؟ (فصیح عربی میں: madha - achnu اکثر مختصر ہو کر ach ہو جاتا ہے)",
+            "sw": "Nini? (kwa Kiarabu sanifu: madha - achnu mara nyingi hufupishwa kuwa ach)",
+            "ru": "Что? (в литературном арабском: madha - achnu часто сокращается до ach)",
+            "ps": "څه؟ (په فصیح عربي کې: madha - achnu ډېری وخت په ach لنډېږي)"
           }
         },
         {
@@ -313,7 +489,15 @@
             "tr": "Bu ne kadar? - çarşıda pazarlık için vazgeçilmez",
             "ar": "بشحال هذا؟ (كم ثمن هذا؟) - لا غنى عنها للمساومة في السوق",
             "es": "¿Cuánto cuesta esto? - imprescindible para regatear en el zoco",
-            "fr": "Combien ça coûte ? - indispensable pour marchander au souk"
+            "fr": "Combien ça coûte ? - indispensable pour marchander au souk",
+            "id": "Berapa harganya? - penting untuk menawar di souk",
+            "bn": "এটার দাম কত? - সুকে দর-কষাকষির জন্য অপরিহার্য",
+            "fa": "این چند است؟ - برای چانه‌زدن در بازار (سوق) ضروری است",
+            "ms": "Berapa harganya? - penting untuk tawar-menawar di souk",
+            "ur": "یہ کتنے کا ہے؟ - سوق میں مول تول کے لیے ناگزیر",
+            "sw": "Hii ni bei gani? - muhimu kwa kupatana bei sokoni (souk)",
+            "ru": "Сколько это стоит? - незаменимо для торга на рынке (souk)",
+            "ps": "دا څو دی؟ - په سوق (بازار) کې د بیه اخیستلو لپاره اړین"
           }
         },
         {
@@ -325,7 +509,15 @@
             "tr": "Evet/hayır sorularında cümle başına gelen soru edatı (örn. “wach nta bkhir?” = “iyi misin?”)",
             "ar": "أداة استفهام تُوضع في بداية الجملة لأسئلة نعم/لا (مثال: «واش نتا بخير؟» أي «هل أنت بخير؟»)",
             "es": "Partícula interrogativa al inicio de la frase para preguntas de sí/no (p. ej. «wach nta bkhir?» = «¿estás bien?»)",
-            "fr": "Particule interrogative en début de phrase pour les questions oui/non (ex. « wach nta bkhir ? » = « vas-tu bien ? »)"
+            "fr": "Particule interrogative en début de phrase pour les questions oui/non (ex. « wach nta bkhir ? » = « vas-tu bien ? »)",
+            "id": "Partikel tanya di awal kalimat untuk pertanyaan ya/tidak (mis. ‘wach nta bkhir?’ = ‘apakah kamu baik-baik saja?’)",
+            "bn": "হ্যাঁ/না প্রশ্নের জন্য বাক্যের শুরুতে বসা প্রশ্নসূচক শব্দ (যেমন ‘wach nta bkhir?’ = ‘তুমি কি ভালো আছ?’)",
+            "fa": "ادات پرسشی که در آغاز جمله برای پرسش‌های بله/خیر می‌آید (مثلاً «wach nta bkhir?» = «حالت خوب است؟»)",
+            "ms": "Partikel tanya di awal ayat untuk soalan ya/tidak (cth. ‘wach nta bkhir?’ = ‘adakah kamu sihat?’)",
+            "ur": "ہاں/نہیں سوالات کے لیے جملے کے آغاز میں آنے والا سوالیہ لفظ (مثلاً ‘wach nta bkhir?’ = ‘کیا تم ٹھیک ہو؟’)",
+            "sw": "Kihusishi cha kuuliza mwanzoni mwa sentensi kwa maswali ya ndiyo/hapana (mf. ‘wach nta bkhir?’ = ‘je, uko salama?’)",
+            "ru": "Вопросительная частица в начале предложения для вопросов да/нет (напр. ‘wach nta bkhir?’ = ‘ты в порядке?’)",
+            "ps": "د هو/نه پوښتنو لپاره د جملې په پیل کې راتلونکې پوښتنیزه توری (لکه «wach nta bkhir?» = «ته ښه یې؟»)"
           }
         }
       ]
@@ -351,7 +543,15 @@
             "tr": "Baba",
             "ar": "بابا (الأب)",
             "es": "Papá, padre",
-            "fr": "Papa, père"
+            "fr": "Papa, père",
+            "id": "Papa, ayah",
+            "bn": "বাবা, পিতা",
+            "fa": "بابا، پدر",
+            "ms": "Ayah, bapa",
+            "ur": "ابّا، والد",
+            "sw": "Baba",
+            "ru": "Папа, отец",
+            "ps": "پلار، بابا"
           }
         },
         {
@@ -363,7 +563,15 @@
             "tr": "Anne",
             "ar": "ماما (الأم)",
             "es": "Mamá, madre",
-            "fr": "Maman, mère"
+            "fr": "Maman, mère",
+            "id": "Mama, ibu",
+            "bn": "মা, জননী",
+            "fa": "مامان، مادر",
+            "ms": "Emak, ibu",
+            "ur": "امّاں، والدہ",
+            "sw": "Mama",
+            "ru": "Мама, мать",
+            "ps": "مور، مامي"
           }
         },
         {
@@ -375,7 +583,15 @@
             "tr": "Kardeşim (erkek)",
             "ar": "أخويا (أخي)",
             "es": "Mi hermano",
-            "fr": "Mon frère"
+            "fr": "Mon frère",
+            "id": "Saudara laki-lakiku",
+            "bn": "আমার ভাই",
+            "fa": "برادرم",
+            "ms": "Abang/adik lelaki saya",
+            "ur": "میرا بھائی",
+            "sw": "Kaka/ndugu yangu wa kiume",
+            "ru": "Мой брат",
+            "ps": "زما ورور"
           }
         },
         {
@@ -387,7 +603,15 @@
             "tr": "Kız kardeşim",
             "ar": "ختي (أختي)",
             "es": "Mi hermana",
-            "fr": "Ma sœur"
+            "fr": "Ma sœur",
+            "id": "Saudara perempuanku",
+            "bn": "আমার বোন",
+            "fa": "خواهرم",
+            "ms": "Kakak/adik perempuan saya",
+            "ur": "میری بہن",
+            "sw": "Dada yangu",
+            "ru": "Моя сестра",
+            "ps": "زما خور"
           }
         },
         {
@@ -399,7 +623,15 @@
             "tr": "Oğlum (genel olarak sevgiyle “çocuğum” anlamında da kullanılır)",
             "ar": "ولدي (ابني - تُستخدم أيضًا بمحبة بمعنى «يا ولدي» بشكل عام)",
             "es": "Mi hijo (también se usa cariñosamente en general como «mi niño»)",
-            "fr": "Mon fils (aussi utilisé affectueusement de façon générale pour « mon enfant »)"
+            "fr": "Mon fils (aussi utilisé affectueusement de façon générale pour « mon enfant »)",
+            "id": "Anak laki-lakiku (juga dipakai penuh kasih untuk ‘anakku’ secara umum)",
+            "bn": "আমার ছেলে (স্নেহভরে সাধারণভাবে ‘আমার সন্তান’ অর্থেও ব্যবহৃত)",
+            "fa": "پسرم (به‌طور کلی با محبت برای «فرزندم» هم به کار می‌رود)",
+            "ms": "Anak lelaki saya (juga digunakan dengan mesra untuk ‘anak saya’ secara umum)",
+            "ur": "میرا بیٹا (پیار سے عمومی طور پر ‘میرا بچہ’ کے لیے بھی استعمال ہوتا ہے)",
+            "sw": "Mwanangu wa kiume (pia hutumika kwa mapenzi kwa maana ya jumla ya ‘mtoto wangu’)",
+            "ru": "Мой сын (также ласково используется в общем значении «мой ребёнок»)",
+            "ps": "زما زوی (په مینه سره په عمومي توګه د «زما بچي» لپاره هم کارېږي)"
           }
         },
         {
@@ -411,7 +643,15 @@
             "tr": "Kızım",
             "ar": "بنتي (ابنتي)",
             "es": "Mi hija",
-            "fr": "Ma fille"
+            "fr": "Ma fille",
+            "id": "Anak perempuanku",
+            "bn": "আমার মেয়ে",
+            "fa": "دخترم",
+            "ms": "Anak perempuan saya",
+            "ur": "میری بیٹی",
+            "sw": "Binti yangu",
+            "ru": "Моя дочь",
+            "ps": "زما لور"
           }
         },
         {
@@ -423,7 +663,15 @@
             "tr": "Dedem",
             "ar": "جدي",
             "es": "Mi abuelo",
-            "fr": "Mon grand-père"
+            "fr": "Mon grand-père",
+            "id": "Kakekku",
+            "bn": "আমার দাদা/নানা",
+            "fa": "پدربزرگم",
+            "ms": "Datuk saya",
+            "ur": "میرا دادا/نانا",
+            "sw": "Babu yangu",
+            "ru": "Мой дедушка",
+            "ps": "زما نیکه"
           }
         },
         {
@@ -435,7 +683,15 @@
             "tr": "Büyükannem (bazı bölgelerde saygılı hitap olarak “lalla” da kullanılır)",
             "ar": "جدتي (تُستخدم في بعض المناطق أيضًا «لالة» كنداء احترام)",
             "es": "Mi abuela (en algunas regiones también «lalla» como forma respetuosa de dirigirse a ella)",
-            "fr": "Ma grand-mère (dans certaines régions aussi « lalla » comme appellation respectueuse)"
+            "fr": "Ma grand-mère (dans certaines régions aussi « lalla » comme appellation respectueuse)",
+            "id": "Nenekku (di beberapa daerah juga ‘lalla’ sebagai sapaan hormat)",
+            "bn": "আমার দাদি/নানি (কিছু অঞ্চলে সম্মানসূচক সম্বোধন হিসেবে ‘lalla’ও বলা হয়)",
+            "fa": "مادربزرگم (در برخی مناطق «lalla» هم به‌عنوان خطاب محترمانه)",
+            "ms": "Nenek saya (di sesetengah kawasan juga ‘lalla’ sebagai panggilan hormat)",
+            "ur": "میری دادی/نانی (کچھ علاقوں میں احترام سے ‘lalla’ بھی کہا جاتا ہے)",
+            "sw": "Bibi yangu (katika baadhi ya maeneo pia ‘lalla’ kama namna ya heshima ya kumwita)",
+            "ru": "Моя бабушка (в некоторых регионах также ‘lalla’ как уважительное обращение)",
+            "ps": "زما انا (په ځینو سیمو کې د درناوي د خطاب په توګه «lalla» هم)"
           }
         }
       ]
@@ -461,7 +717,15 @@
             "tr": "Ekmek",
             "ar": "خبز",
             "es": "Pan",
-            "fr": "Pain"
+            "fr": "Pain",
+            "id": "Roti",
+            "bn": "রুটি",
+            "fa": "نان",
+            "ms": "Roti",
+            "ur": "روٹی",
+            "sw": "Mkate",
+            "ru": "Хлеб",
+            "ps": "ډوډۍ"
           }
         },
         {
@@ -473,7 +737,15 @@
             "tr": "Nane çayı - Fas’ın milli içeceği, geleneksel olarak bol şekerle ve yüksekten dökülerek servis edilir",
             "ar": "أتاي (شاي بالنعناع) - المشروب الوطني للمغرب، يُقدَّم تقليديًا بسكر كثير ويُصَبّ من ارتفاع",
             "es": "Té de menta - la bebida nacional de Marruecos, tradicionalmente servido con mucho azúcar y vertido desde lo alto",
-            "fr": "Thé à la menthe - la boisson nationale du Maroc, traditionnellement servi très sucré et versé de haut"
+            "fr": "Thé à la menthe - la boisson nationale du Maroc, traditionnellement servi très sucré et versé de haut",
+            "id": "Teh mint - minuman nasional Maroko, secara tradisional dituang dengan banyak gula dan dari ketinggian",
+            "bn": "পুদিনা চা - মরক্কোর জাতীয় পানীয়, ঐতিহ্যগতভাবে প্রচুর চিনি দিয়ে উঁচু থেকে ঢালা হয়",
+            "fa": "چای نعناع - نوشیدنی ملی مراکش، به‌طور سنتی با شکر فراوان و از ارتفاع ریخته می‌شود",
+            "ms": "Teh pudina - minuman kebangsaan Maghribi, secara tradisi dituang dengan banyak gula dan dari ketinggian",
+            "ur": "پودینے کی چائے - مراکش کا قومی مشروب، روایتی طور پر بہت ساری چینی کے ساتھ اونچائی سے ڈالی جاتی ہے",
+            "sw": "Chai ya mnanaa - kinywaji cha kitaifa cha Moroko, kwa desturi humiminwa na sukari nyingi kutoka juu",
+            "ru": "Мятный чай - национальный напиток Марокко, традиционно наливается с большим количеством сахара и с высоты",
+            "ps": "د نعناع چای - د مراکش ملي څښاک، په دودیز ډول د ډېرې بورې سره او له لوړوالي څخه اچول کېږي"
           }
         },
         {
@@ -485,7 +757,15 @@
             "tr": "Süt",
             "ar": "حليب",
             "es": "Leche",
-            "fr": "Lait"
+            "fr": "Lait",
+            "id": "Susu",
+            "bn": "দুধ",
+            "fa": "شیر",
+            "ms": "Susu",
+            "ur": "دودھ",
+            "sw": "Maziwa",
+            "ru": "Молоко",
+            "ps": "شیدې"
           }
         },
         {
@@ -497,7 +777,15 @@
             "tr": "Su (Fasih Arapçada: ma' - neredeyse aynı)",
             "ar": "ماء (بالفصحى: ماء - شبه مطابقة)",
             "es": "Agua (en árabe estándar: ma' - casi idéntico)",
-            "fr": "Eau (en arabe standard : ma' - presque identique)"
+            "fr": "Eau (en arabe standard : ma' - presque identique)",
+            "id": "Air (dalam bahasa Arab baku: ma’ - hampir sama)",
+            "bn": "পানি (প্রমিত আরবিতে: ma’ - প্রায় অভিন্ন)",
+            "fa": "آب (در عربی فصیح: ma’ - تقریباً یکسان)",
+            "ms": "Air (dalam bahasa Arab baku: ma’ - hampir sama)",
+            "ur": "پانی (فصیح عربی میں: ma’ - تقریباً یکساں)",
+            "sw": "Maji (kwa Kiarabu sanifu: ma’ - karibu sawa kabisa)",
+            "ru": "Вода (в литературном арабском: ma’ - почти идентично)",
+            "ps": "اوبه (په فصیح عربي کې: ma’ - نږدې ورته)"
           }
         },
         {
@@ -509,7 +797,15 @@
             "tr": "Çarşı, pazar",
             "ar": "سوق",
             "es": "Mercado, zoco",
-            "fr": "Marché, souk"
+            "fr": "Marché, souk",
+            "id": "Pasar, bazar",
+            "bn": "বাজার",
+            "fa": "بازار",
+            "ms": "Pasar, bazar",
+            "ur": "بازار",
+            "sw": "Soko",
+            "ru": "Рынок, базар",
+            "ps": "بازار"
           }
         },
         {
@@ -521,7 +817,15 @@
             "tr": "Pahalı",
             "ar": "غالي",
             "es": "Caro",
-            "fr": "Cher"
+            "fr": "Cher",
+            "id": "Mahal",
+            "bn": "দামি",
+            "fa": "گران",
+            "ms": "Mahal",
+            "ur": "مہنگا",
+            "sw": "Ghali",
+            "ru": "Дорогой",
+            "ps": "ګران"
           }
         },
         {
@@ -533,7 +837,15 @@
             "tr": "Ucuz",
             "ar": "رخيص",
             "es": "Barato",
-            "fr": "Bon marché"
+            "fr": "Bon marché",
+            "id": "Murah",
+            "bn": "সস্তা",
+            "fa": "ارزان",
+            "ms": "Murah",
+            "ur": "سستا",
+            "sw": "Rahisi",
+            "ru": "Дешёвый",
+            "ps": "ارزان"
           }
         },
         {
@@ -545,7 +857,15 @@
             "tr": "İstiyorum (“istemek” fiilinin çok sık kullanılan temel şekli)",
             "ar": "بغيت (أريد) - صيغة أساسية لفعل «أراد»، تُستخدم كثيرًا",
             "es": "Quiero, me gustaría (forma básica del verbo «querer», muy usada)",
-            "fr": "Je veux, je voudrais (forme de base du verbe « vouloir », très utilisée)"
+            "fr": "Je veux, je voudrais (forme de base du verbe « vouloir », très utilisée)",
+            "id": "Saya mau, saya ingin (bentuk dasar kata kerja ‘ingin’, sangat sering dipakai)",
+            "bn": "আমি চাই (‘চাওয়া’ ক্রিয়ার মূল রূপ, খুব বেশি ব্যবহৃত)",
+            "fa": "می‌خواهم (شکل پایهٔ فعل «خواستن»، بسیار پرکاربرد)",
+            "ms": "Saya mahu, saya ingin (bentuk asas kata kerja ‘mahu’, sangat kerap digunakan)",
+            "ur": "میں چاہتا ہوں (فعل ‘چاہنا’ کی بنیادی شکل، بہت زیادہ استعمال ہوتی ہے)",
+            "sw": "Nataka (umbo la msingi la kitenzi ‘kutaka’, hutumika mara nyingi sana)",
+            "ru": "Я хочу, мне бы хотелось (базовая форма глагола «хотеть», очень употребительна)",
+            "ps": "زه غواړم (د «غوښتل» فعل بنسټیزه بڼه، ډېر کارېږي)"
           }
         }
       ]
@@ -571,7 +891,15 @@
             "tr": "Evet (günlük gayriresmî biçim)",
             "ar": "إيه (نعم - صيغة يومية غير رسمية)",
             "es": "Sí (forma informal cotidiana)",
-            "fr": "Oui (forme informelle du quotidien)"
+            "fr": "Oui (forme informelle du quotidien)",
+            "id": "Ya (bentuk sehari-hari yang santai)",
+            "bn": "হ্যাঁ (অনানুষ্ঠানিক দৈনন্দিন রূপ)",
+            "fa": "بله (شکل غیررسمی و روزمره)",
+            "ms": "Ya (bentuk harian tidak formal)",
+            "ur": "ہاں (غیررسمی روزمرہ صورت)",
+            "sw": "Ndiyo (namna isiyo rasmi ya kila siku)",
+            "ru": "Да (неформальная разговорная форма)",
+            "ps": "هو (غیررسمي ورځنۍ بڼه)"
           }
         },
         {
@@ -583,7 +911,15 @@
             "tr": "Hayır",
             "ar": "لا",
             "es": "No",
-            "fr": "Non"
+            "fr": "Non",
+            "id": "Tidak",
+            "bn": "না",
+            "fa": "نه",
+            "ms": "Tidak",
+            "ur": "نہیں",
+            "sw": "Hapana",
+            "ru": "Нет",
+            "ps": "نه"
           }
         },
         {
@@ -595,7 +931,15 @@
             "tr": "Mutlu",
             "ar": "فرحان",
             "es": "Feliz, contento",
-            "fr": "Heureux, content"
+            "fr": "Heureux, content",
+            "id": "Bahagia, senang",
+            "bn": "খুশি, আনন্দিত",
+            "fa": "خوشحال، شاد",
+            "ms": "Gembira, senang",
+            "ur": "خوش، مسرور",
+            "sw": "Mwenye furaha, kufurahi",
+            "ru": "Счастливый, радостный",
+            "ps": "خوښ، خوشحاله"
           }
         },
         {
@@ -607,7 +951,15 @@
             "tr": "Kızgın, öfkeli",
             "ar": "زعفان (غاضب)",
             "es": "Enfadado, molesto",
-            "fr": "En colère, contrarié"
+            "fr": "En colère, contrarié",
+            "id": "Marah, kesal",
+            "bn": "রাগান্বিত, বিরক্ত",
+            "fa": "عصبانی، ناراحت",
+            "ms": "Marah, kesal",
+            "ur": "غصے میں، ناراض",
+            "sw": "Mwenye hasira, kukasirika",
+            "ru": "Злой, раздражённый",
+            "ps": "غوسه، خپه"
           }
         },
         {
@@ -619,7 +971,15 @@
             "tr": "Korkmuş",
             "ar": "خايف",
             "es": "Asustado, tiene miedo",
-            "fr": "Effrayé, a peur"
+            "fr": "Effrayé, a peur",
+            "id": "Takut, ketakutan",
+            "bn": "ভীত, ভয় পাচ্ছে",
+            "fa": "ترسیده، هراسان",
+            "ms": "Takut",
+            "ur": "خوفزدہ، ڈرا ہوا",
+            "sw": "Mwenye hofu, kuogopa",
+            "ru": "Испуганный, боится",
+            "ps": "ویریدلی، وارخطا"
           }
         },
         {
@@ -631,7 +991,15 @@
             "tr": "Yorgun",
             "ar": "تعبان",
             "es": "Cansado, agotado",
-            "fr": "Fatigué, épuisé"
+            "fr": "Fatigué, épuisé",
+            "id": "Lelah, capai",
+            "bn": "ক্লান্ত, অবসন্ন",
+            "fa": "خسته، فرسوده",
+            "ms": "Letih, penat",
+            "ur": "تھکا ہوا، نڈھال",
+            "sw": "Mchovu, kuchoka",
+            "ru": "Уставший, измотанный",
+            "ps": "ستړی، ستومانه"
           }
         },
         {
@@ -643,7 +1011,15 @@
             "tr": "Hasta",
             "ar": "مريض",
             "es": "Enfermo",
-            "fr": "Malade"
+            "fr": "Malade",
+            "id": "Sakit",
+            "bn": "অসুস্থ",
+            "fa": "بیمار، مریض",
+            "ms": "Sakit",
+            "ur": "بیمار",
+            "sw": "Mgonjwa",
+            "ru": "Больной",
+            "ps": "ناروغ، مریض"
           }
         },
         {
@@ -655,7 +1031,15 @@
             "tr": "Allah’a şükür, hamd Allah’a mahsustur - durum ne olursa olsun “nasılsın?”a verilen en yaygın cevap",
             "ar": "الحمد لله - الرد الأكثر شيوعًا على «كيف حالك؟» مهما كانت الحال",
             "es": "Gracias a Dios, toda alabanza es de Dios - la respuesta más común a «¿cómo estás?», sea cual sea la situación real",
-            "fr": "Dieu merci, toute louange est due à Dieu - la réponse la plus courante à « comment ça va ? », quelle que soit la situation réelle"
+            "fr": "Dieu merci, toute louange est due à Dieu - la réponse la plus courante à « comment ça va ? », quelle que soit la situation réelle",
+            "id": "Segala puji bagi Allah - jawaban paling umum untuk ‘apa kabar?’, tak peduli keadaan sebenarnya",
+            "bn": "আলহামদুলিল্লাহ, সমস্ত প্রশংসা আল্লাহর - ‘কেমন আছেন?’-এর সবচেয়ে সাধারণ উত্তর, প্রকৃত অবস্থা যেমনই হোক",
+            "fa": "خدا را شکر، همهٔ ستایش‌ها از آنِ خداست - رایج‌ترین پاسخ به «حالت چطور است؟»، فارغ از اینکه اوضاع واقعاً چگونه است",
+            "ms": "Segala puji bagi Allah - jawapan paling lazim kepada ‘apa khabar?’, tidak kira keadaan sebenar",
+            "ur": "الحمد للہ، تمام تعریف اللہ کے لیے ہے - ‘کیسے ہو؟’ کا سب سے عام جواب، چاہے حالات جیسے بھی ہوں",
+            "sw": "Alhamdulillah, sifa zote ni za Mwenyezi Mungu - jibu la kawaida zaidi kwa ‘habari yako?’, bila kujali hali halisi ilivyo",
+            "ru": "Слава Богу, вся хвала Аллаху - самый частый ответ на «как дела?», независимо от того, как обстоят дела на самом деле",
+            "ps": "الحمد لله، ټوله ستاینه د الله ده - د «څنګه یې؟» تر ټولو عام ځواب، پرته له دې چې حالات په حقیقت کې څنګه وي"
           }
         }
       ]
@@ -681,7 +1065,15 @@
             "tr": "Yeter, bitti, tamam - bir konuşmayı, eylemi veya tartışmayı sonlandıran çok amaçlı bir kelime",
             "ar": "صافي (يكفي، انتهى) - كلمة متعددة الاستخدامات تُنهي حديثًا أو فعلًا أو نقاشًا",
             "es": "Suficiente, ya está, se acabó - una palabra multiuso que cierra una conversación, una acción o una discusión",
-            "fr": "Ça suffit, c’est fini, terminé - un mot passe-partout qui clôt une conversation, une action ou une discussion"
+            "fr": "Ça suffit, c’est fini, terminé - un mot passe-partout qui clôt une conversation, une action ou une discussion",
+            "id": "Cukup, selesai, sudah - kata serbaguna untuk mengakhiri percakapan, tindakan, atau diskusi",
+            "bn": "যথেষ্ট, শেষ, ব্যস - কথোপকথন, কাজ বা আলোচনা শেষ করার সর্বজনীন শব্দ",
+            "fa": "کافی است، تمام شد، همین - واژه‌ای همه‌کاره که به گفتگو، کار یا بحث پایان می‌دهد",
+            "ms": "Cukup, selesai, itu sahaja - perkataan serba guna yang menamatkan perbualan, tindakan, atau perbincangan",
+            "ur": "بس، ختم، ہو گیا - ہر کام کا لفظ جو گفتگو، عمل یا بحث کو ختم کر دیتا ہے",
+            "sw": "Basi, imekwisha, ndio hiyo - neno la matumizi yote linalomaliza mazungumzo, tendo, au mjadala",
+            "ru": "Хватит, всё, готово - универсальное слово, завершающее разговор, действие или спор",
+            "ps": "بس، پای ته ورسید، همدا - یوه هر اړخیزه کلمه چې خبرې، کار یا بحث پای ته رسوي"
           }
         },
         {
@@ -693,7 +1085,15 @@
             "tr": "Hemen şimdi (daba = şimdi kelimesinin tekrarı, aciliyeti vurgular)",
             "ar": "دابا دابا (فورًا، الآن تمامًا) - تكرار «دابا» (الآن) لتعزيز الإلحاح",
             "es": "Ahora mismo, de inmediato (reduplicación de daba = ahora, refuerza la urgencia)",
-            "fr": "Tout de suite, immédiatement (redoublement de daba = maintenant, renforce l’urgence)"
+            "fr": "Tout de suite, immédiatement (redoublement de daba = maintenant, renforce l’urgence)",
+            "id": "Sekarang juga, segera (pengulangan daba = sekarang, memperkuat kemendesakan)",
+            "bn": "এখনই, তৎক্ষণাৎ (daba = এখন-এর পুনরাবৃত্তি, জরুরি ভাব জোরালো করে)",
+            "fa": "همین الان، فوری (تکرار daba = الان، فوریت را تشدید می‌کند)",
+            "ms": "Sekarang juga, serta-merta (pengulangan daba = sekarang, menguatkan kesegeraan)",
+            "ur": "ابھی، فوراً (daba = اب کی تکرار، جو فوری پن کو بڑھا دیتی ہے)",
+            "sw": "Sasa hivi, mara moja (kurudia daba = sasa, huongeza uharaka)",
+            "ru": "Прямо сейчас, немедленно (удвоение daba = сейчас, усиливает срочность)",
+            "ps": "همدا اوس، سمدلاسه (د daba = اوس تکرار، بیړه پیاوړې کوي)"
           }
         },
         {
@@ -705,7 +1105,15 @@
             "tr": "Allah izin verirse, inşallah (Fasih Arapçada: in sha'a Allah)",
             "ar": "نشاء الله (بالفصحى: إن شاء الله)",
             "es": "Si Dios quiere, con suerte (en árabe estándar: in sha'a Allah)",
-            "fr": "Si Dieu le veut, avec un peu de chance (en arabe standard : in sha'a Allah)"
+            "fr": "Si Dieu le veut, avec un peu de chance (en arabe standard : in sha'a Allah)",
+            "id": "Insya Allah, semoga (dalam bahasa Arab baku: in sha’a Allah)",
+            "bn": "ইনশাআল্লাহ, আশা করি (প্রমিত আরবিতে: in sha’a Allah)",
+            "fa": "ان‌شاءالله، امیدوارم (در عربی فصیح: in sha’a Allah)",
+            "ms": "Insya-Allah, moga-moga (dalam bahasa Arab baku: in sha’a Allah)",
+            "ur": "ان شاء اللہ، امید ہے (فصیح عربی میں: in sha’a Allah)",
+            "sw": "Inshallah, tunatumaini (kwa Kiarabu sanifu: in sha’a Allah)",
+            "ru": "Если Бог даст, надеюсь (в литературном арабском: in sha’a Allah)",
+            "ps": "ان شاء الله، هیله ده (په فصیح عربي کې: in sha’a Allah)"
           }
         },
         {
@@ -717,7 +1125,15 @@
             "tr": "Bol miktarda var (kayn = “var” + bezzaf = “çok”, Darija’nın en tanınmış kelimelerinden biri)",
             "ar": "كاين بزاف (يوجد الكثير) - كاين تعني «يوجد» وبزاف «كثيرًا»، من أشهر كلمات الدارجة",
             "es": "Hay de sobra, hay mucho (kayn = «hay» + bezzaf = «mucho», una de las palabras más conocidas del darija)",
-            "fr": "Il y en a beaucoup, il y en a plein (kayn = « il y a » + bezzaf = « beaucoup », l’un des mots les plus connus du darija)"
+            "fr": "Il y en a beaucoup, il y en a plein (kayn = « il y a » + bezzaf = « beaucoup », l’un des mots les plus connus du darija)",
+            "id": "Ada banyak, tersedia melimpah (kayn = ‘ada’ + bezzaf = ‘banyak’, salah satu kata Darija paling terkenal)",
+            "bn": "প্রচুর আছে, অনেক আছে (kayn = ‘আছে’ + bezzaf = ‘অনেক’, দারিজার সবচেয়ে পরিচিত শব্দগুলোর একটি)",
+            "fa": "فراوان است، زیاد وجود دارد (kayn = «هست» + bezzaf = «زیاد»، از مشهورترین واژه‌های داریجه)",
+            "ms": "Ada banyak, banyak tersedia (kayn = ‘ada’ + bezzaf = ‘banyak’, salah satu perkataan Darija paling terkenal)",
+            "ur": "بہت ہے، کثرت سے موجود ہے (kayn = ‘ہے’ + bezzaf = ‘بہت’، داریجہ کے مشہور ترین الفاظ میں سے)",
+            "sw": "Kuna nyingi, ipo tele (kayn = ‘kuna’ + bezzaf = ‘nyingi’, mojawapo ya maneno maarufu zaidi ya Darija)",
+            "ru": "Много есть, полно (kayn = «есть» + bezzaf = «много», одно из самых известных слов дарижа)",
+            "ps": "ډېر شته، پریمانه شته (kayn = «شته» + bezzaf = «ډېر»، د داریجه له مشهورو کلمو څخه)"
           }
         },
         {
@@ -729,7 +1145,15 @@
             "tr": "Allah sana huzur versin - genellikle teşekkür veya veda dileği olarak kullanılan yaygın bir dua",
             "ar": "الله يهنيك - دعاء شائع، يُقال مثلًا كشكر أو عند الوداع",
             "es": "Que Dios te conceda bienestar - una bendición común, p. ej. como agradecimiento o despedida",
-            "fr": "Que Dieu t’accorde le bien-être - une bénédiction courante, dite par exemple en remerciement ou en guise d’adieu"
+            "fr": "Que Dieu t’accorde le bien-être - une bénédiction courante, dite par exemple en remerciement ou en guise d’adieu",
+            "id": "Semoga Allah memberimu kesejahteraan - doa yang umum, mis. sebagai ucapan terima kasih atau salam perpisahan",
+            "bn": "আল্লাহ তোমাকে কল্যাণ দান করুন - একটি সাধারণ দোয়া, যেমন ধন্যবাদ বা বিদায়ের শুভকামনা হিসেবে",
+            "fa": "خدا به تو آسایش دهد - دعایی رایج، مثلاً به‌عنوان تشکر یا آرزوی خداحافظی",
+            "ms": "Semoga Allah mengurniakan kamu kesejahteraan - doa yang lazim, cth. sebagai ucapan terima kasih atau selamat tinggal",
+            "ur": "اللہ تمہیں خیر و عافیت دے - ایک عام دعا، مثلاً شکریے یا الوداع کے موقع پر",
+            "sw": "Mungu akujaalie hali njema - dua ya kawaida, mf. kama shukrani au kuaga",
+            "ru": "Пусть Бог дарует тебе благополучие - распространённое благословение, напр. как благодарность или прощание",
+            "ps": "خدای دې تا ته سوکالي درکړي - یوه عامه دعا، لکه د مننې یا د خدای پامانۍ لپاره"
           }
         },
         {
@@ -741,7 +1165,15 @@
             "tr": "Sorun yok, hiç sorun yok (kayn = “var” kelimesinin olumsuzu)",
             "ar": "ما كاينش مشكل (لا توجد مشكلة) - نفي كاين (يوجد)",
             "es": "No hay problema, no existe ningún problema (negación de kayn = «hay»)",
-            "fr": "Pas de problème, il n’y a aucun problème (négation de kayn = « il y a »)"
+            "fr": "Pas de problème, il n’y a aucun problème (négation de kayn = « il y a »)",
+            "id": "Tidak masalah, tidak ada masalah (bentuk negasi dari kayn = ‘ada’)",
+            "bn": "কোনো সমস্যা নেই (kayn = ‘আছে’-এর নেতিবাচক রূপ)",
+            "fa": "مشکلی نیست، مشکلی وجود ندارد (نفی kayn = «هست»)",
+            "ms": "Tiada masalah, tidak ada masalah (bentuk negatif kayn = ‘ada’)",
+            "ur": "کوئی مسئلہ نہیں، کوئی مشکل نہیں (kayn = ‘ہے’ کی نفی)",
+            "sw": "Hakuna tatizo, hakuna shida (ukanushaji wa kayn = ‘kuna’)",
+            "ru": "Нет проблем, никаких проблем (отрицание kayn = «есть»)",
+            "ps": "کومه ستونزه نشته، مشکل نشته (د kayn = «شته» نفي)"
           }
         },
         {
@@ -753,7 +1185,15 @@
             "tr": "Tıpatıp aynı (bhal = “gibi” kelimesinin tekrarı)",
             "ar": "بحال بحال (نفس الشيء تمامًا) - تكرار حرفي لكلمة بحال (مثل)",
             "es": "Exactamente igual, lo mismo (reduplicación literal de bhal = «como»)",
-            "fr": "Exactement pareil, la même chose (redoublement littéral de bhal = « comme »)"
+            "fr": "Exactement pareil, la même chose (redoublement littéral de bhal = « comme »)",
+            "id": "Persis sama, hal yang sama (pengulangan harfiah bhal = ‘seperti’)",
+            "bn": "একদম একই, একই জিনিস (bhal = ‘মতো’-এর আক্ষরিক পুনরাবৃত্তি)",
+            "fa": "دقیقاً یکسان، همان چیز (تکرار تحت‌اللفظی bhal = «مثل»)",
+            "ms": "Sama sahaja, benda yang sama (pengulangan harfiah bhal = ‘seperti’)",
+            "ur": "بالکل ایک جیسا، وہی چیز (bhal = ‘جیسا’ کی لفظی تکرار)",
+            "sw": "Sawa kabisa, kitu kile kile (kurudia halisi kwa bhal = ‘kama’)",
+            "ru": "Точно такое же, то же самое (буквальное удвоение bhal = «как»)",
+            "ps": "دقیقاً یو شان، هماغه شی (د bhal = «لکه» لغوي تکرار)"
           }
         },
         {
@@ -765,7 +1205,15 @@
             "tr": "Elbette, tabii ki (basit bir “evet”ten daha samimi, vurgulu bir onay)",
             "ar": "آي واه (بالتأكيد، طبعًا) - موافقة مؤكدة، أكثر عامية من «نعم» البسيطة",
             "es": "Claro que sí, por supuesto (una afirmación enfática, más coloquial que un simple «sí»)",
-            "fr": "Bien sûr, évidemment (une affirmation appuyée, plus familière qu’un simple « oui »)"
+            "fr": "Bien sûr, évidemment (une affirmation appuyée, plus familière qu’un simple « oui »)",
+            "id": "Tentu saja, pasti (ya yang tegas, lebih santai daripada ‘ya’ biasa)",
+            "bn": "নিশ্চয়ই, অবশ্যই (জোরালো হ্যাঁ, সাধারণ ‘হ্যাঁ’-এর চেয়ে বেশি কথ্য)",
+            "fa": "حتماً، البته (بلهٔ تأکیدی، عامیانه‌تر از «بله»ی ساده)",
+            "ms": "Sudah tentu, mestilah (ya yang tegas, lebih kolokial daripada ‘ya’ biasa)",
+            "ur": "بالکل، ضرور (زوردار ہاں، سادہ ‘ہاں’ سے زیادہ بول چال والا)",
+            "sw": "Bila shaka, hakika (ndiyo ya msisitizo, ya mazungumzo zaidi kuliko ‘ndiyo’ ya kawaida)",
+            "ru": "Конечно, разумеется (эмоциональное «да», более разговорное, чем простое «да»)",
+            "ps": "خامخا، البته (ټینګاریز هو، د ساده «هو» په پرتله خبري‌زه)"
           }
         }
       ]
@@ -791,7 +1239,15 @@
             "tr": "Nasılsın? (erkeğe kifak, kadına kifek)",
             "ar": "كيف حالك؟ (كيفك للرجل، كيفك بكسر الكاف للمرأة)",
             "es": "¿Cómo estás? (kifak a un hombre, kifek a una mujer)",
-            "fr": "Comment vas-tu ? (kifak à un homme, kifek à une femme)"
+            "fr": "Comment vas-tu ? (kifak à un homme, kifek à une femme)",
+            "id": "Apa kabar? (kifak untuk laki-laki, kifek untuk perempuan)",
+            "bn": "কেমন আছেন? (পুরুষকে kifak, নারীকে kifek)",
+            "fa": "حالت چطور است؟ (kifak به مرد، kifek به زن)",
+            "ms": "Apa khabar? (kifak kepada lelaki, kifek kepada perempuan)",
+            "ur": "آپ کیسے ہیں؟ (مرد کو kifak، عورت کو kifek)",
+            "sw": "Habari yako? (kifak kwa mwanaume, kifek kwa mwanamke)",
+            "ru": "Как дела? (kifak - мужчине, kifek - женщине)",
+            "ps": "څنګه یې؟ (kifak نر ته، kifek ښځې ته)"
           }
         },
         {
@@ -803,7 +1259,15 @@
             "tr": "İyi (kifak?'a verilen yaygın cevap, cinsiyete/sayıya göre değişir)",
             "ar": "جيد (الرد المعتاد على كيفك؟، يتوافق مع الجنس والعدد)",
             "es": "Bien (la respuesta habitual a kifak?, concuerda con género/número)",
-            "fr": "Bien (la réponse habituelle à kifak ?, s'accorde en genre/nombre)"
+            "fr": "Bien (la réponse habituelle à kifak ?, s'accorde en genre/nombre)",
+            "id": "Baik (jawaban umum untuk kifak?, menyesuaikan gender/jumlah)",
+            "bn": "ভালো (kifak?-এর সাধারণ উত্তর, লিঙ্গ/সংখ্যা অনুসারে পরিবর্তিত হয়)",
+            "fa": "خوب (پاسخ معمول به kifak؟، با جنسیت/شمار مطابقت می‌کند)",
+            "ms": "Baik (jawapan lazim kepada kifak?, menyesuaikan jantina/bilangan)",
+            "ur": "ٹھیک (kifak? کا عام جواب، جنس/تعداد کے مطابق بدلتا ہے)",
+            "sw": "Nzuri (jibu la kawaida kwa kifak?, hulingana na jinsia/idadi)",
+            "ru": "Хорошо (обычный ответ на kifak?, согласуется с родом/числом)",
+            "ps": "ښه (د kifak؟ عام ځواب، له جنس/شمېر سره سمون خوري)"
           }
         },
         {
@@ -815,7 +1279,15 @@
             "tr": "Adın ne? (shu = “ne”, Levanten lehçesine özgü bir soru kelimesi, Mısır veya Kuzey Afrika'da bu şekilde duyulmaz)",
             "ar": "شو اسمك؟ (شو تعني «ماذا»، وهي كلمة استفهام شامية مميزة لا تُسمع بهذا الشكل في مصر أو شمال أفريقيا)",
             "es": "¿Cómo te llamas? (shu = «qué», una palabra interrogativa típica del levantino, que no se oye así en Egipto o el norte de África)",
-            "fr": "Comment t'appelles-tu ? (shu = « quoi », un mot interrogatif typique du levantin, qu'on n'entend pas ainsi en Égypte ou en Afrique du Nord)"
+            "fr": "Comment t'appelles-tu ? (shu = « quoi », un mot interrogatif typique du levantin, qu'on n'entend pas ainsi en Égypte ou en Afrique du Nord)",
+            "id": "Siapa namamu? (shu = ‘apa’, kata tanya khas Levantin, tidak terdengar begini di Mesir atau Afrika Utara)",
+            "bn": "তোমার নাম কী? (shu = ‘কী’, লেভান্তীয় ভাষার বৈশিষ্ট্যপূর্ণ প্রশ্নবোধক, মিশর বা উত্তর আফ্রিকায় এভাবে শোনা যায় না)",
+            "fa": "اسمت چیست؟ (shu = «چه»، واژهٔ پرسشی نمونهٔ لهجهٔ شامی، در مصر یا شمال آفریقا این‌گونه شنیده نمی‌شود)",
+            "ms": "Siapa nama kamu? (shu = ‘apa’, kata tanya khas Levant, tidak didengar begini di Mesir atau Afrika Utara)",
+            "ur": "تمہارا نام کیا ہے؟ (shu = ‘کیا’، شامی لہجے کا خاص سوالیہ لفظ، مصر یا شمالی افریقہ میں یوں نہیں سنا جاتا)",
+            "sw": "Jina lako nani? (shu = ‘nini’, neno la kuuliza la kawaida la Kilevanti, halisikiki hivi Misri au Afrika Kaskazini)",
+            "ru": "Как тебя зовут? (shu = «что», вопросительное слово, характерное для левантийского, в Египте или Северной Африке так не говорят)",
+            "ps": "ستا نوم څه دی؟ (shu = «څه»، د شامي لهجې ځانګړې پوښتنیزه کلمه، په مصر یا شمالي افریقا کې په دې ډول نه اورېدل کېږي)"
           }
         },
         {
@@ -827,7 +1299,15 @@
             "tr": "Hadi / acele et - “ya Allah” (ey Allah)'ın kısaltması, tüm Arap dünyasında yaygın",
             "ar": "يلا (هيا / أسرع) - اختصار «يا الله»، منتشر في كل العالم العربي",
             "es": "Vamos / date prisa - una contracción de «ya Allah» (oh Dios), usada en todo el mundo árabe",
-            "fr": "Allons-y / dépêche-toi - une contraction de « ya Allah » (ô Dieu), utilisée dans tout le monde arabe"
+            "fr": "Allons-y / dépêche-toi - une contraction de « ya Allah » (ô Dieu), utilisée dans tout le monde arabe",
+            "id": "Ayo / cepatlah - singkatan dari ‘ya Allah’ (ya Tuhan), dipakai di seluruh dunia Arab",
+            "bn": "চলো / তাড়াতাড়ি করো - ‘ya Allah’ (হে আল্লাহ)-এর সংক্ষিপ্ত রূপ, সমগ্র আরব বিশ্বে ব্যবহৃত",
+            "fa": "بزن بریم / زودباش - کوتاه‌شدهٔ «ya Allah» (ای خدا)، در سراسر جهان عرب کاربرد دارد",
+            "ms": "Jom / cepatlah - singkatan daripada ‘ya Allah’ (wahai Tuhan), digunakan di seluruh dunia Arab",
+            "ur": "چلو / جلدی کرو - ‘ya Allah’ (اے اللہ) کا مختصر، پورے عرب دنیا میں مستعمل",
+            "sw": "Twende / harakisha - ufupisho wa ‘ya Allah’ (ee Mungu), hutumika kote katika ulimwengu wa Kiarabu",
+            "ru": "Пошли / поторопись - сокращение от «ya Allah» (о Боже), используется во всём арабском мире",
+            "ps": "ځه لاړ شو / ژر کوه - د «ya Allah» (ای خدایه) لنډه بڼه، په ټوله عربي نړۍ کې کارېږي"
           }
         },
         {
@@ -839,7 +1319,15 @@
             "tr": "Teşekkürler (kelimenin tam anlamıyla “sağ salim/mübarek kal” - bir iyilik için teşekkür şekli)",
             "ar": "تسلم (حرفيًا «سلمت يداك» - صيغة شكر على معروف)",
             "es": "Gracias (literalmente «que permanezcas a salvo/bendecido» - una forma de agradecer un favor)",
-            "fr": "Merci (littéralement « puisses-tu rester sain et sauf/béni » - une façon de remercier pour une faveur)"
+            "fr": "Merci (littéralement « puisses-tu rester sain et sauf/béni » - une façon de remercier pour une faveur)",
+            "id": "Terima kasih (harfiah ‘semoga kamu tetap selamat/diberkati’ - ungkapan terima kasih atas kebaikan)",
+            "bn": "ধন্যবাদ (আক্ষরিক অর্থে ‘তুমি নিরাপদ/আশীর্বাদপ্রাপ্ত থাকো’ - কোনো উপকারের জন্য কৃতজ্ঞতার রূপ)",
+            "fa": "ممنون (به معنای تحت‌اللفظی «سالم/برکت‌یافته بمانی» - نوعی تشکر برای یک لطف)",
+            "ms": "Terima kasih (secara harfiah ‘semoga kamu kekal selamat/diberkati’ - ungkapan terima kasih atas sesuatu kebaikan)",
+            "ur": "شکریہ (لفظی طور پر ‘تم سلامت/بابرکت رہو’ - کسی احسان پر شکر کی ایک صورت)",
+            "sw": "Asante (kwa maana halisi ‘ubaki salama/umebarikiwa’ - namna ya kushukuru kwa hisani)",
+            "ru": "Спасибо (буквально «оставайся невредимым/благословенным» - форма благодарности за услугу)",
+            "ps": "مننه (لغوي معنا «روغ/بختور پاتې شې» - د یوې ښېګڼې لپاره د مننې یوه بڼه)"
           }
         },
         {
@@ -851,7 +1339,15 @@
             "tr": "Mutlu, memnun",
             "ar": "مبسوط (سعيد، راضٍ)",
             "es": "Feliz, contento",
-            "fr": "Heureux, content"
+            "fr": "Heureux, content",
+            "id": "Bahagia, puas",
+            "bn": "খুশি, সন্তুষ্ট",
+            "fa": "خوشحال، راضی",
+            "ms": "Gembira, berpuas hati",
+            "ur": "خوش، مطمئن",
+            "sw": "Mwenye furaha, kuridhika",
+            "ru": "Счастливый, довольный",
+            "ps": "خوښ، راضي"
           }
         },
         {
@@ -863,7 +1359,15 @@
             "tr": "Ne haber? (kelimenin tam anlamıyla “haberlerin ne”)",
             "ar": "شو أخبارك؟ (ما الجديد؟ - حرفيًا «ما أخبارك»)",
             "es": "¿Qué hay de nuevo? / ¿Cómo estás? (literalmente «cuáles son tus noticias»)",
-            "fr": "Quoi de neuf ? / Comment vas-tu ? (littéralement « quelles sont tes nouvelles »)"
+            "fr": "Quoi de neuf ? / Comment vas-tu ? (littéralement « quelles sont tes nouvelles »)",
+            "id": "Ada kabar apa? / Apa kabar? (harfiah ‘apa beritamu’)",
+            "bn": "নতুন কী খবর? / কেমন আছ? (আক্ষরিক অর্থে ‘তোমার খবর কী’)",
+            "fa": "چه خبر؟ / حالت چطور است؟ (به معنای تحت‌اللفظی «خبرهایت چیست»)",
+            "ms": "Apa cerita? / Apa khabar? (secara harfiah ‘apa berita kamu’)",
+            "ur": "کیا حال چال؟ / کیسے ہو؟ (لفظی طور پر ‘تمہاری خبریں کیا ہیں’)",
+            "sw": "Kuna habari gani? / Habari yako? (kwa maana halisi ‘habari zako ni nini’)",
+            "ru": "Что нового? / Как дела? (буквально «какие у тебя новости»)",
+            "ps": "څه خبر دي؟ / څنګه یې؟ (لغوي معنا «ستا خبرونه څه دي»)"
           }
         },
         {
@@ -875,7 +1379,15 @@
             "tr": "Şimdi (Fasih Arapçada: el-an)",
             "ar": "الآن (بالفصحى: الآن)",
             "es": "Ahora (en árabe estándar: al-an)",
-            "fr": "Maintenant (en arabe standard : al-an)"
+            "fr": "Maintenant (en arabe standard : al-an)",
+            "id": "Sekarang (dalam bahasa Arab baku: al-an)",
+            "bn": "এখন (প্রমিত আরবিতে: al-an)",
+            "fa": "الان (در عربی فصیح: al-an)",
+            "ms": "Sekarang (dalam bahasa Arab baku: al-an)",
+            "ur": "اب (فصیح عربی میں: al-an)",
+            "sw": "Sasa (kwa Kiarabu sanifu: al-an)",
+            "ru": "Сейчас (в литературном арабском: al-an)",
+            "ps": "اوس (په فصیح عربي کې: al-an)"
           }
         }
       ]
@@ -901,7 +1413,15 @@
             "tr": "Bir (1)",
             "ar": "واحد (1)",
             "es": "Uno (1)",
-            "fr": "Un (1)"
+            "fr": "Un (1)",
+            "id": "Satu (1)",
+            "bn": "এক (1)",
+            "fa": "یک (1)",
+            "ms": "Satu (1)",
+            "ur": "ایک (1)",
+            "sw": "Moja (1)",
+            "ru": "Один (1)",
+            "ps": "یو (1)"
           }
         },
         {
@@ -913,7 +1433,15 @@
             "tr": "İki (2)",
             "ar": "اثنين (2)",
             "es": "Dos (2)",
-            "fr": "Deux (2)"
+            "fr": "Deux (2)",
+            "id": "Dua (2)",
+            "bn": "দুই (2)",
+            "fa": "دو (2)",
+            "ms": "Dua (2)",
+            "ur": "دو (2)",
+            "sw": "Mbili (2)",
+            "ru": "Два (2)",
+            "ps": "دوه (2)"
           }
         },
         {
@@ -925,7 +1453,15 @@
             "tr": "Üç (3)",
             "ar": "تلاتة (3)",
             "es": "Tres (3)",
-            "fr": "Trois (3)"
+            "fr": "Trois (3)",
+            "id": "Tiga (3)",
+            "bn": "তিন (3)",
+            "fa": "سه (3)",
+            "ms": "Tiga (3)",
+            "ur": "تین (3)",
+            "sw": "Tatu (3)",
+            "ru": "Три (3)",
+            "ps": "درې (3)"
           }
         },
         {
@@ -937,7 +1473,15 @@
             "tr": "Dört (4)",
             "ar": "أربعة (4)",
             "es": "Cuatro (4)",
-            "fr": "Quatre (4)"
+            "fr": "Quatre (4)",
+            "id": "Empat (4)",
+            "bn": "চার (4)",
+            "fa": "چهار (4)",
+            "ms": "Empat (4)",
+            "ur": "چار (4)",
+            "sw": "Nne (4)",
+            "ru": "Четыре (4)",
+            "ps": "څلور (4)"
           }
         },
         {
@@ -949,7 +1493,15 @@
             "tr": "Beş (5)",
             "ar": "خمسة (5)",
             "es": "Cinco (5)",
-            "fr": "Cinq (5)"
+            "fr": "Cinq (5)",
+            "id": "Lima (5)",
+            "bn": "পাঁচ (5)",
+            "fa": "پنج (5)",
+            "ms": "Lima (5)",
+            "ur": "پانچ (5)",
+            "sw": "Tano (5)",
+            "ru": "Пять (5)",
+            "ps": "پنځه (5)"
           }
         },
         {
@@ -961,7 +1513,15 @@
             "tr": "On (10)",
             "ar": "عشرة (10)",
             "es": "Diez (10)",
-            "fr": "Dix (10)"
+            "fr": "Dix (10)",
+            "id": "Sepuluh (10)",
+            "bn": "দশ (10)",
+            "fa": "ده (10)",
+            "ms": "Sepuluh (10)",
+            "ur": "دس (10)",
+            "sw": "Kumi (10)",
+            "ru": "Десять (10)",
+            "ps": "لس (10)"
           }
         },
         {
@@ -973,7 +1533,15 @@
             "tr": "Bugün",
             "ar": "اليوم",
             "es": "Hoy",
-            "fr": "Aujourd’hui"
+            "fr": "Aujourd’hui",
+            "id": "Hari ini",
+            "bn": "আজ",
+            "fa": "امروز",
+            "ms": "Hari ini",
+            "ur": "آج",
+            "sw": "Leo",
+            "ru": "Сегодня",
+            "ps": "نن"
           }
         },
         {
@@ -985,7 +1553,15 @@
             "tr": "Yarın",
             "ar": "بكرة (غدًا)",
             "es": "Mañana (el día siguiente)",
-            "fr": "Demain (le jour suivant)"
+            "fr": "Demain (le jour suivant)",
+            "id": "Besok (hari berikutnya)",
+            "bn": "আগামীকাল (পরের দিন)",
+            "fa": "فردا (روز بعد)",
+            "ms": "Esok (hari berikutnya)",
+            "ur": "کل (اگلا دن)",
+            "sw": "Kesho (siku inayofuata)",
+            "ru": "Завтра (следующий день)",
+            "ps": "سبا (بله ورځ)"
           }
         }
       ]
@@ -1011,7 +1587,15 @@
             "tr": "Nerede? (Fasih Arapçada: ayna)",
             "ar": "وين؟ (بالفصحى: أين)",
             "es": "¿Dónde? (en árabe estándar: ayna)",
-            "fr": "Où ? (en arabe standard : ayna)"
+            "fr": "Où ? (en arabe standard : ayna)",
+            "id": "Di mana?",
+            "bn": "কোথায়?",
+            "fa": "کجا؟",
+            "ms": "Di mana?",
+            "ur": "کہاں؟",
+            "sw": "Wapi?",
+            "ru": "Где?",
+            "ps": "چېرته؟"
           }
         },
         {
@@ -1023,7 +1607,15 @@
             "tr": "Ne zaman?",
             "ar": "إيمتى؟ (متى؟)",
             "es": "¿Cuándo?",
-            "fr": "Quand ?"
+            "fr": "Quand ?",
+            "id": "Kapan?",
+            "bn": "কখন?",
+            "fa": "کِی؟",
+            "ms": "Bila?",
+            "ur": "کب؟",
+            "sw": "Lini?",
+            "ru": "Когда?",
+            "ps": "کله؟"
           }
         },
         {
@@ -1035,7 +1627,15 @@
             "tr": "Neden?",
             "ar": "ليش؟ (لماذا؟)",
             "es": "¿Por qué?",
-            "fr": "Pourquoi ?"
+            "fr": "Pourquoi ?",
+            "id": "Mengapa? (dalam bahasa Arab baku: limadha)",
+            "bn": "কেন? (প্রমিত আরবিতে: limadha)",
+            "fa": "چرا؟ (در عربی فصیح: limadha)",
+            "ms": "Mengapa? (dalam bahasa Arab baku: limadha)",
+            "ur": "کیوں؟ (فصیح عربی میں: limadha)",
+            "sw": "Kwa nini? (kwa Kiarabu sanifu: limadha)",
+            "ru": "Почему? (в литературном арабском: limadha)",
+            "ps": "ولې؟ (په فصیح عربي کې: limadha)"
           }
         },
         {
@@ -1047,7 +1647,15 @@
             "tr": "Nasıl? (kifak/kifek’in de türetildiği temel kelime)",
             "ar": "كيف؟ (الكلمة الأساسية التي تُشتق منها كيفك/كيفك)",
             "es": "¿Cómo? (la palabra base de la que también se forman kifak/kifek)",
-            "fr": "Comment ? (le mot de base dont dérivent aussi kifak/kifek)"
+            "fr": "Comment ? (le mot de base dont dérivent aussi kifak/kifek)",
+            "id": "Bagaimana? (kata dasar pembentuk kifak/kifek)",
+            "bn": "কীভাবে? (kifak/kifek যে মূল শব্দ থেকে গঠিত)",
+            "fa": "چطور؟ (واژهٔ پایه‌ای که kifak/kifek از آن ساخته می‌شود)",
+            "ms": "Bagaimana? (perkataan asas yang membentuk kifak/kifek)",
+            "ur": "کیسے؟ (بنیادی لفظ جس سے kifak/kifek بنتے ہیں)",
+            "sw": "Vipi? (neno la msingi ambalo kifak/kifek hutokana nalo)",
+            "ru": "Как? (базовое слово, от которого образованы kifak/kifek)",
+            "ps": "څنګه؟ (هغه بنسټیزه کلمه چې kifak/kifek ترې جوړېږي)"
           }
         },
         {
@@ -1059,7 +1667,15 @@
             "tr": "Kim?",
             "ar": "مين؟ (من؟)",
             "es": "¿Quién?",
-            "fr": "Qui ?"
+            "fr": "Qui ?",
+            "id": "Siapa?",
+            "bn": "কে?",
+            "fa": "چه کسی؟",
+            "ms": "Siapa?",
+            "ur": "کون؟",
+            "sw": "Nani?",
+            "ru": "Кто?",
+            "ps": "څوک؟"
           }
         },
         {
@@ -1071,7 +1687,15 @@
             "tr": "Ne? (Levanten lehçesinin en karakteristik soru kelimesi)",
             "ar": "شو؟ (ماذا؟) - أكثر أدوات الاستفهام تميزًا في الشامية",
             "es": "¿Qué? (la palabra interrogativa más característica del levantino)",
-            "fr": "Quoi ? (le mot interrogatif le plus caractéristique du levantin)"
+            "fr": "Quoi ? (le mot interrogatif le plus caractéristique du levantin)",
+            "id": "Apa? (kata tanya paling khas dari dialek Levantin)",
+            "bn": "কী? (লেভান্তীয় ভাষার সবচেয়ে বৈশিষ্ট্যপূর্ণ প্রশ্নবোধক শব্দ)",
+            "fa": "چه؟ (شاخص‌ترین واژهٔ پرسشی لهجهٔ شامی)",
+            "ms": "Apa? (kata tanya paling khas dialek Levant)",
+            "ur": "کیا؟ (شامی لہجے کا سب سے مخصوص سوالیہ لفظ)",
+            "sw": "Nini? (neno la kuuliza lenye sifa bainifu zaidi la Kilevanti)",
+            "ru": "Что? (самое характерное вопросительное слово левантийского)",
+            "ps": "څه؟ (د شامي لهجې تر ټولو ځانګړې پوښتنیزه کلمه)"
           }
         },
         {
@@ -1083,7 +1707,15 @@
             "tr": "Ne kadar, bu ne kadar?",
             "ar": "قديش؟ (كم؟ بكم؟)",
             "es": "¿Cuánto, cuánto cuesta eso?",
-            "fr": "Combien, combien ça coûte ?"
+            "fr": "Combien, combien ça coûte ?",
+            "id": "Berapa, berapa harganya?",
+            "bn": "কত, এটার দাম কত?",
+            "fa": "چند، این چند است؟",
+            "ms": "Berapa, berapa harganya?",
+            "ur": "کتنا، یہ کتنے کا ہے؟",
+            "sw": "Ngapi, hii ni bei gani?",
+            "ru": "Сколько, сколько это стоит?",
+            "ps": "څومره، دا څو دی؟"
           }
         },
         {
@@ -1095,7 +1727,15 @@
             "tr": "Var, … var mı? (varlık bildiren soru/ifade edatı, örn. “fi mai?” = “su var mı?”)",
             "ar": "في (يوجد، هل يوجد …؟) - أداة وجودية للسؤال أو الإخبار، مثل «في مي؟» أي «هل يوجد ماء؟»",
             "es": "Hay, ¿hay …? (partícula existencial para preguntas/afirmaciones, p. ej. «fi mai?» = «¿hay agua?»)",
-            "fr": "Il y a, y a-t-il … ? (particule existentielle pour questions/affirmations, ex. « fi mai ? » = « y a-t-il de l’eau ? »)"
+            "fr": "Il y a, y a-t-il … ? (particule existentielle pour questions/affirmations, ex. « fi mai ? » = « y a-t-il de l’eau ? »)",
+            "id": "Ada, apakah ada …? (partikel eksistensial untuk pertanyaan/pernyataan, mis. ‘fi mai?’ = ‘apakah ada air?’)",
+            "bn": "আছে, আছে কি …? (অস্তিত্ববাচক শব্দ, প্রশ্ন/বিবৃতির জন্য, যেমন ‘fi mai?’ = ‘পানি আছে?’)",
+            "fa": "هست، آیا هست …؟ (ادات وجودی برای پرسش/خبر، مثلاً «fi mai?» = «آب هست؟»)",
+            "ms": "Ada, adakah …? (partikel wujud untuk soalan/pernyataan, cth. ‘fi mai?’ = ‘ada air?’)",
+            "ur": "ہے، کیا ہے …؟ (وجود ظاہر کرنے والا لفظ، سوال/بیان کے لیے، مثلاً ‘fi mai?’ = ‘پانی ہے؟’)",
+            "sw": "Kuna, je, kuna …? (kihusishi cha kuwepo kwa maswali/kauli, mf. ‘fi mai?’ = ‘kuna maji?’)",
+            "ru": "Есть, есть ли …? (частица наличия для вопросов/утверждений, напр. ‘fi mai?’ = ‘есть вода?’)",
+            "ps": "شته، آیا شته …؟ (د پوښتنو/خبرو لپاره د شتون توری، لکه «fi mai?» = «اوبه شته؟»)"
           }
         }
       ]
@@ -1121,7 +1761,15 @@
             "tr": "Baba",
             "ar": "بابا (الأب)",
             "es": "Papá, padre",
-            "fr": "Papa, père"
+            "fr": "Papa, père",
+            "id": "Papa, ayah",
+            "bn": "বাবা, পিতা",
+            "fa": "بابا، پدر",
+            "ms": "Ayah, bapa",
+            "ur": "ابّا، والد",
+            "sw": "Baba",
+            "ru": "Папа, отец",
+            "ps": "پلار، بابا"
           }
         },
         {
@@ -1133,7 +1781,15 @@
             "tr": "Anne",
             "ar": "يمّا (الأم)",
             "es": "Mamá, madre",
-            "fr": "Maman, mère"
+            "fr": "Maman, mère",
+            "id": "Mama, ibu",
+            "bn": "মা, জননী",
+            "fa": "مامان، مادر",
+            "ms": "Emak, ibu",
+            "ur": "امّاں، والدہ",
+            "sw": "Mama",
+            "ru": "Мама, мать",
+            "ps": "مور، مامي"
           }
         },
         {
@@ -1145,7 +1801,15 @@
             "tr": "Kardeşim (yakın arkadaşlar arasında sevgi ifadesi olarak da kullanılır)",
             "ar": "خيّي (أخي - تُستخدم أيضًا بمحبة بين الأصدقاء المقربين)",
             "es": "Mi hermano (también una forma cariñosa de dirigirse a un amigo cercano)",
-            "fr": "Mon frère (aussi une façon affectueuse de s’adresser à un ami proche)"
+            "fr": "Mon frère (aussi une façon affectueuse de s’adresser à un ami proche)",
+            "id": "Saudara laki-lakiku (juga sapaan akrab untuk teman dekat)",
+            "bn": "আমার ভাই (ঘনিষ্ঠ বন্ধুকে স্নেহভরে সম্বোধনেও ব্যবহৃত)",
+            "fa": "برادرم (خطابی صمیمی برای دوست نزدیک هم هست)",
+            "ms": "Abang/adik lelaki saya (juga panggilan mesra untuk kawan rapat)",
+            "ur": "میرا بھائی (قریبی دوست کو پیار سے پکارنے کے لیے بھی)",
+            "sw": "Ndugu yangu wa kiume (pia namna ya kirafiki ya kumwita rafiki wa karibu)",
+            "ru": "Мой брат (также ласковое обращение к близкому другу)",
+            "ps": "زما ورور (د نږدې ملګري لپاره د مینې خطاب هم)"
           }
         },
         {
@@ -1157,7 +1821,15 @@
             "tr": "Kız kardeşim",
             "ar": "أختي",
             "es": "Mi hermana",
-            "fr": "Ma sœur"
+            "fr": "Ma sœur",
+            "id": "Saudara perempuanku",
+            "bn": "আমার বোন",
+            "fa": "خواهرم",
+            "ms": "Kakak/adik perempuan saya",
+            "ur": "میری بہن",
+            "sw": "Dada yangu",
+            "ru": "Моя сестра",
+            "ps": "زما خور"
           }
         },
         {
@@ -1169,7 +1841,15 @@
             "tr": "Oğlum",
             "ar": "ابني",
             "es": "Mi hijo",
-            "fr": "Mon fils"
+            "fr": "Mon fils",
+            "id": "Anak laki-lakiku",
+            "bn": "আমার ছেলে",
+            "fa": "پسرم",
+            "ms": "Anak lelaki saya",
+            "ur": "میرا بیٹا",
+            "sw": "Mwanangu wa kiume",
+            "ru": "Мой сын",
+            "ps": "زما زوی"
           }
         },
         {
@@ -1181,7 +1861,15 @@
             "tr": "Kızım",
             "ar": "بنتي",
             "es": "Mi hija",
-            "fr": "Ma fille"
+            "fr": "Ma fille",
+            "id": "Anak perempuanku",
+            "bn": "আমার মেয়ে",
+            "fa": "دخترم",
+            "ms": "Anak perempuan saya",
+            "ur": "میری بیٹی",
+            "sw": "Binti yangu",
+            "ru": "Моя дочь",
+            "ps": "زما لور"
           }
         },
         {
@@ -1193,7 +1881,15 @@
             "tr": "Dedem",
             "ar": "جدو",
             "es": "Mi abuelo",
-            "fr": "Mon grand-père"
+            "fr": "Mon grand-père",
+            "id": "Kakekku",
+            "bn": "আমার দাদা/নানা",
+            "fa": "پدربزرگم",
+            "ms": "Datuk saya",
+            "ur": "میرا دادا/نانا",
+            "sw": "Babu yangu",
+            "ru": "Мой дедушка",
+            "ps": "زما نیکه"
           }
         },
         {
@@ -1205,7 +1901,15 @@
             "tr": "Büyükannem - Levanten lehçesinin en tanınmış ve en sevgi dolu kelimelerinden biri",
             "ar": "تيتا (جدتي) - من أشهر الكلمات وأكثرها حنانًا في اللهجة الشامية",
             "es": "Mi abuela - una de las palabras más conocidas y cariñosas del levantino",
-            "fr": "Ma grand-mère - l’un des mots les plus connus et les plus affectueux du levantin"
+            "fr": "Ma grand-mère - l’un des mots les plus connus et les plus affectueux du levantin",
+            "id": "Nenekku - salah satu kata paling terkenal dan penuh kasih dalam dialek Levantin",
+            "bn": "আমার দাদি/নানি - লেভান্তীয় ভাষার সবচেয়ে পরিচিত ও স্নেহময় শব্দগুলোর একটি",
+            "fa": "مادربزرگم - یکی از مشهورترین و صمیمی‌ترین واژه‌های لهجهٔ شامی",
+            "ms": "Nenek saya - salah satu perkataan paling terkenal dan mesra dalam dialek Levant",
+            "ur": "میری دادی/نانی - شامی لہجے کے سب سے معروف اور پیار بھرے الفاظ میں سے ایک",
+            "sw": "Bibi yangu - mojawapo ya maneno maarufu na yenye mapenzi zaidi katika Kilevanti",
+            "ru": "Моя бабушка - одно из самых известных и нежных слов левантийского",
+            "ps": "زما انا - د شامي لهجې له مشهورو او مینه‌ناکو کلمو څخه یوه"
           }
         }
       ]
@@ -1231,7 +1935,15 @@
             "tr": "Ekmek",
             "ar": "خبز",
             "es": "Pan",
-            "fr": "Pain"
+            "fr": "Pain",
+            "id": "Roti",
+            "bn": "রুটি",
+            "fa": "نان",
+            "ms": "Roti",
+            "ur": "روٹی",
+            "sw": "Mkate",
+            "ru": "Хлеб",
+            "ps": "ډوډۍ"
           }
         },
         {
@@ -1243,7 +1955,15 @@
             "tr": "Su",
             "ar": "ميّ (ماء)",
             "es": "Agua",
-            "fr": "Eau"
+            "fr": "Eau",
+            "id": "Air",
+            "bn": "পানি",
+            "fa": "آب",
+            "ms": "Air",
+            "ur": "پانی",
+            "sw": "Maji",
+            "ru": "Вода",
+            "ps": "اوبه"
           }
         },
         {
@@ -1255,7 +1975,15 @@
             "tr": "Tahinli nohut ezmesi - dünya çapında en tanınmış Levanten yemeklerinden biri",
             "ar": "حمّص - من أشهر الأطباق الشامية في العالم",
             "es": "Puré de garbanzos con tahini - uno de los platos levantinos más famosos del mundo",
-            "fr": "Purée de pois chiches au tahini - l’un des plats levantins les plus connus au monde"
+            "fr": "Purée de pois chiches au tahini - l’un des plats levantins les plus connus au monde",
+            "id": "Pasta buncis (kacang arab) dengan tahini - salah satu hidangan Levantin paling terkenal di dunia",
+            "bn": "ছোলা ও তাহিনির মিশ্রণ - বিশ্বজুড়ে সবচেয়ে বিখ্যাত লেভান্তীয় খাবারগুলোর একটি",
+            "fa": "خمیر نخود با کنجد (طحینه) - یکی از مشهورترین غذاهای شامی در سراسر جهان",
+            "ms": "Kisar kacang kuda dengan tahini - salah satu hidangan Levant paling terkenal di dunia",
+            "ur": "چنے اور تِل کے پیسٹ کا مکس - دنیا بھر میں شامی کھانوں میں سب سے مشہور",
+            "sw": "Mseto wa dengu (chickpea) na tahini - mojawapo ya vyakula maarufu zaidi vya Kilevanti duniani",
+            "ru": "Паста из нута с тахини - одно из самых известных левантийских блюд в мире",
+            "ps": "د نخود او د کنجد د معجونه (طحینه) ترکیب - په ټوله نړۍ کې د شامي خواړو له مشهورو څخه یو"
           }
         },
         {
@@ -1267,7 +1995,15 @@
             "tr": "Süzme yoğurt peyniri, klasik bir kahvaltı yemeği",
             "ar": "لبنة - جبنة لبن مصفّى، طبق فطور تقليدي",
             "es": "Queso de yogur colado, un plato clásico de desayuno",
-            "fr": "Fromage de yaourt égoutté, un plat de petit-déjeuner classique"
+            "fr": "Fromage de yaourt égoutté, un plat de petit-déjeuner classique",
+            "id": "Keju yogurt yang ditiriskan, hidangan sarapan klasik",
+            "bn": "ছেঁকে নেওয়া দইয়ের পনির, একটি ক্লাসিক নাশতার খাবার",
+            "fa": "پنیر ماستِ آبگرفته، یک صبحانهٔ کلاسیک",
+            "ms": "Keju yogurt yang ditoskan, hidangan sarapan klasik",
+            "ur": "چھنا ہوا دہی کا پنیر، ایک روایتی ناشتے کی ڈش",
+            "sw": "Jibini la mtindi uliochujwa, chakula cha asubuhi cha kienyeji",
+            "ru": "Сыр из процеженного йогурта, классическое блюдо на завтрак",
+            "ps": "د چڼل شوي مستو پنیر، یو کلاسيک د سهار خواړه"
           }
         },
         {
@@ -1279,7 +2015,15 @@
             "tr": "Çarşı, pazar",
             "ar": "سوق",
             "es": "Mercado, zoco",
-            "fr": "Marché, souk"
+            "fr": "Marché, souk",
+            "id": "Pasar, bazar",
+            "bn": "বাজার",
+            "fa": "بازار",
+            "ms": "Pasar, bazar",
+            "ur": "بازار",
+            "sw": "Soko",
+            "ru": "Рынок, базар",
+            "ps": "بازار"
           }
         },
         {
@@ -1291,7 +2035,15 @@
             "tr": "Pahalı",
             "ar": "غالي",
             "es": "Caro",
-            "fr": "Cher"
+            "fr": "Cher",
+            "id": "Mahal",
+            "bn": "দামি",
+            "fa": "گران",
+            "ms": "Mahal",
+            "ur": "مہنگا",
+            "sw": "Ghali",
+            "ru": "Дорогой",
+            "ps": "ګران"
           }
         },
         {
@@ -1303,7 +2055,15 @@
             "tr": "Ucuz",
             "ar": "رخيص",
             "es": "Barato",
-            "fr": "Bon marché"
+            "fr": "Bon marché",
+            "id": "Murah",
+            "bn": "সস্তা",
+            "fa": "ارزان",
+            "ms": "Murah",
+            "ur": "سستا",
+            "sw": "Rahisi",
+            "ru": "Дешёвый",
+            "ps": "ارزان"
           }
         },
         {
@@ -1315,7 +2075,15 @@
             "tr": "İstiyorum (“istemek”in bidd + kişi eki’nden oluşan temel şekli)",
             "ar": "بدّي (أريد) - من بدّ + لاحقة الضمير",
             "es": "Quiero, me gustaría (forma básica de «querer», de bidd + terminación personal)",
-            "fr": "Je veux, je voudrais (forme de base de « vouloir », de bidd + terminaison personnelle)"
+            "fr": "Je veux, je voudrais (forme de base de « vouloir », de bidd + terminaison personnelle)",
+            "id": "Saya mau, saya ingin (bentuk dasar ‘ingin’, dari bidd + akhiran persona)",
+            "bn": "আমি চাই (‘চাওয়া’-র মূল রূপ, bidd + ব্যক্তিবাচক প্রত্যয় থেকে)",
+            "fa": "می‌خواهم (شکل پایهٔ «خواستن»، از bidd + پایانهٔ شخصی)",
+            "ms": "Saya mahu, saya ingin (bentuk asas ‘mahu’, daripada bidd + akhiran diri)",
+            "ur": "میں چاہتا ہوں (‘چاہنا’ کی بنیادی شکل، bidd + ضمیری لاحقے سے)",
+            "sw": "Nataka (umbo la msingi la ‘kutaka’, kutoka bidd + kiambishi cha nafsi)",
+            "ru": "Я хочу, мне бы хотелось (базовая форма «хотеть», от bidd + личное окончание)",
+            "ps": "زه غواړم (د «غوښتل» بنسټیزه بڼه، له bidd + شخصي پای څخه)"
           }
         }
       ]
@@ -1341,7 +2109,15 @@
             "tr": "Evet",
             "ar": "نعم",
             "es": "Sí",
-            "fr": "Oui"
+            "fr": "Oui",
+            "id": "Ya",
+            "bn": "হ্যাঁ",
+            "fa": "بله",
+            "ms": "Ya",
+            "ur": "ہاں",
+            "sw": "Ndiyo",
+            "ru": "Да",
+            "ps": "هو"
           }
         },
         {
@@ -1353,7 +2129,15 @@
             "tr": "Hayır",
             "ar": "لأ",
             "es": "No",
-            "fr": "Non"
+            "fr": "Non",
+            "id": "Tidak",
+            "bn": "না",
+            "fa": "نه",
+            "ms": "Tidak",
+            "ur": "نہیں",
+            "sw": "Hapana",
+            "ru": "Нет",
+            "ps": "نه"
           }
         },
         {
@@ -1365,7 +2149,15 @@
             "tr": "Mutlu",
             "ar": "فرحان",
             "es": "Feliz, contento",
-            "fr": "Heureux, content"
+            "fr": "Heureux, content",
+            "id": "Bahagia, senang",
+            "bn": "খুশি, আনন্দিত",
+            "fa": "خوشحال، شاد",
+            "ms": "Gembira, senang",
+            "ur": "خوش، مسرور",
+            "sw": "Mwenye furaha, kufurahi",
+            "ru": "Счастливый, радостный",
+            "ps": "خوښ، خوشحاله"
           }
         },
         {
@@ -1377,7 +2169,15 @@
             "tr": "Üzgün, kırgın",
             "ar": "زعلان",
             "es": "Triste, disgustado, dolido",
-            "fr": "Triste, contrarié, vexé"
+            "fr": "Triste, contrarié, vexé",
+            "id": "Sedih, kesal, tersinggung",
+            "bn": "দুঃখিত, বিরক্ত, আহত",
+            "fa": "غمگین، ناراحت، دلخور",
+            "ms": "Sedih, kecil hati, terguris",
+            "ur": "اداس، ناراض، رنجیدہ",
+            "sw": "Mwenye huzuni, kuudhika, kuumizwa moyo",
+            "ru": "Грустный, расстроенный, обиженный",
+            "ps": "خپه، خواشینی، زړه‌بوږنی"
           }
         },
         {
@@ -1389,7 +2189,15 @@
             "tr": "Yorgun",
             "ar": "تعبان",
             "es": "Cansado, agotado",
-            "fr": "Fatigué, épuisé"
+            "fr": "Fatigué, épuisé",
+            "id": "Lelah, capai",
+            "bn": "ক্লান্ত, অবসন্ন",
+            "fa": "خسته، فرسوده",
+            "ms": "Letih, penat",
+            "ur": "تھکا ہوا، نڈھال",
+            "sw": "Mchovu, kuchoka",
+            "ru": "Уставший, измотанный",
+            "ps": "ستړی، ستومانه"
           }
         },
         {
@@ -1401,7 +2209,15 @@
             "tr": "Korkmuş",
             "ar": "خايف",
             "es": "Asustado",
-            "fr": "Effrayé, a peur"
+            "fr": "Effrayé, a peur",
+            "id": "Takut, ketakutan",
+            "bn": "ভীত, ভয় পাচ্ছে",
+            "fa": "ترسیده، هراسان",
+            "ms": "Takut",
+            "ur": "خوفزدہ، ڈرا ہوا",
+            "sw": "Mwenye hofu, kuogopa",
+            "ru": "Испуганный, боится",
+            "ps": "ویریدلی، وارخطا"
           }
         },
         {
@@ -1413,7 +2229,15 @@
             "tr": "Hasta",
             "ar": "مريض",
             "es": "Enfermo",
-            "fr": "Malade"
+            "fr": "Malade",
+            "id": "Sakit",
+            "bn": "অসুস্থ",
+            "fa": "بیمار، مریض",
+            "ms": "Sakit",
+            "ur": "بیمار",
+            "sw": "Mgonjwa",
+            "ru": "Больной",
+            "ps": "ناروغ، مریض"
           }
         },
         {
@@ -1425,7 +2249,15 @@
             "tr": "Allah’a şükür - “kifak?”a verilen en yaygın cevap",
             "ar": "الحمد لله - الرد الأكثر شيوعًا على «كيفك؟»",
             "es": "Gracias a Dios - la respuesta más común a «kifak?»",
-            "fr": "Dieu merci - la réponse la plus courante à « kifak ? »"
+            "fr": "Dieu merci - la réponse la plus courante à « kifak ? »",
+            "id": "Segala puji bagi Allah - jawaban paling umum untuk ‘kifak?’",
+            "bn": "আলহামদুলিল্লাহ, সমস্ত প্রশংসা আল্লাহর - ‘kifak?’-এর সবচেয়ে সাধারণ উত্তর",
+            "fa": "خدا را شکر، همهٔ ستایش‌ها از آنِ خداست - رایج‌ترین پاسخ به «kifak؟»",
+            "ms": "Segala puji bagi Allah - jawapan paling lazim kepada ‘kifak?’",
+            "ur": "الحمد للہ، تمام تعریف اللہ کے لیے - ‘kifak?’ کا سب سے عام جواب",
+            "sw": "Alhamdulillah, sifa zote ni za Mwenyezi Mungu - jibu la kawaida zaidi kwa ‘kifak?’",
+            "ru": "Слава Богу, вся хвала Аллаху - самый частый ответ на «kifak?»",
+            "ps": "الحمد لله، ټوله ستاینه د الله ده - د «kifak؟» تر ټولو عام ځواب"
           }
         }
       ]
@@ -1451,7 +2283,15 @@
             "tr": "Yeter, bitti - Levanten lehçesinde en çok kullanılan çok amaçlı kelimelerden biri",
             "ar": "خلص (يكفي، انتهى) - من أكثر الكلمات متعددة الاستخدامات في الشامية",
             "es": "Suficiente, se acabó - una de las palabras multiuso más usadas en levantino",
-            "fr": "Ça suffit, c’est fini - l’un des mots passe-partout les plus utilisés en levantin"
+            "fr": "Ça suffit, c’est fini - l’un des mots passe-partout les plus utilisés en levantin",
+            "id": "Cukup, selesai, sudah - salah satu kata serbaguna paling sering dipakai dalam dialek Levantin",
+            "bn": "যথেষ্ট, শেষ, ব্যস - লেভান্তীয় ভাষায় সবচেয়ে বেশি ব্যবহৃত সর্বজনীন শব্দগুলোর একটি",
+            "fa": "کافی است، تمام شد، همین - یکی از پرکاربردترین واژه‌های همه‌کارهٔ لهجهٔ شامی",
+            "ms": "Cukup, selesai, itu sahaja - salah satu perkataan serba guna paling kerap digunakan dalam dialek Levant",
+            "ur": "بس، ختم، ہو گیا - شامی لہجے میں سب سے زیادہ استعمال ہونے والے ہمہ گیر الفاظ میں سے",
+            "sw": "Basi, imekwisha, ndio hiyo - mojawapo ya maneno ya matumizi yote yanayotumika zaidi katika Kilevanti",
+            "ru": "Хватит, всё, готово - одно из самых употребляемых универсальных слов левантийского",
+            "ps": "بس، پای ته ورسید، همدا - په شامي لهجه کې د تر ټولو ډېرو کارېدونکو هر اړخیزو کلمو څخه یوه"
           }
         },
         {
@@ -1463,7 +2303,15 @@
             "tr": "Allah izin verirse, inşallah",
             "ar": "إن شاء الله",
             "es": "Si Dios quiere",
-            "fr": "Si Dieu le veut"
+            "fr": "Si Dieu le veut",
+            "id": "Insya Allah, semoga",
+            "bn": "ইনশাআল্লাহ, আশা করি",
+            "fa": "ان‌شاءالله، امیدوارم",
+            "ms": "Insya-Allah, moga-moga",
+            "ur": "ان شاء اللہ، امید ہے",
+            "sw": "Inshallah, tunatumaini",
+            "ru": "Если Бог даст, надеюсь",
+            "ps": "ان شاء الله، هیله ده"
           }
         },
         {
@@ -1475,7 +2323,15 @@
             "tr": "Allah’ın dilediği - güzel bir şey karşısında söylenen, nazardan korumayı amaçlayan bir hayranlık ifadesi",
             "ar": "ماشاء الله - تعبير عن الإعجاب يُقال عند رؤية شيء جميل لدرء العين",
             "es": "Lo que Dios ha querido - expresión de admiración dicha ante algo bueno, para protegerlo del mal de ojo",
-            "fr": "Ce que Dieu a voulu - expression d’admiration dite devant quelque chose de beau, pour le protéger du mauvais œil"
+            "fr": "Ce que Dieu a voulu - expression d’admiration dite devant quelque chose de beau, pour le protéger du mauvais œil",
+            "id": "Masya Allah - ungkapan kagum atas sesuatu yang baik, untuk menangkal mata jahat",
+            "bn": "মাশাআল্লাহ - সুন্দর কিছু দেখে প্রশংসার প্রকাশ, কুদৃষ্টি থেকে রক্ষার জন্য",
+            "fa": "ماشاءالله - ابراز تحسین در برابر چیزی خوب، برای دورکردن چشم‌زخم",
+            "ms": "Masya-Allah - ungkapan kagum terhadap sesuatu yang baik, untuk menangkal mata jahat",
+            "ur": "ماشاء اللہ - کسی اچھی چیز پر تعریف کا اظہار، نظرِ بد سے بچانے کے لیے",
+            "sw": "Mashallah - kauli ya kustaajabia jambo zuri, ili kuepusha jicho baya",
+            "ru": "Машаллах - выражение восхищения чем-то хорошим, чтобы отвести сглаз",
+            "ps": "ماشاء الله - د یو ښه شي په اړه د ستاینې څرګندونه، د بد نظر د لرې کولو لپاره"
           }
         },
         {
@@ -1487,7 +2343,15 @@
             "tr": "Vallahi, yemin ederim - hemen her cümlede vurgu için kullanılabilen bir kelime",
             "ar": "والله (أقسم بالله) - كلمة تأكيد يمكن إدراجها في أي جملة تقريبًا",
             "es": "Por Dios, lo juro - una palabra de énfasis que se puede insertar en casi cualquier frase",
-            "fr": "Par Dieu, je le jure - un mot d’insistance que l’on peut glisser dans presque toutes les phrases"
+            "fr": "Par Dieu, je le jure - un mot d’insistance que l’on peut glisser dans presque toutes les phrases",
+            "id": "Demi Allah, sumpah - kata penekan yang bisa disisipkan ke hampir setiap kalimat",
+            "bn": "আল্লাহর কসম - জোর দেওয়ার শব্দ, যা প্রায় যেকোনো বাক্যে যোগ করা যায়",
+            "fa": "به خدا، قسم می‌خورم - واژهٔ تأکیدی که تقریباً در هر جمله‌ای می‌آید",
+            "ms": "Demi Allah, aku bersumpah - kata penegas yang boleh diselitkan ke hampir mana-mana ayat",
+            "ur": "خدا کی قسم - زور دینے کا لفظ جو تقریباً ہر جملے میں ڈالا جا سکتا ہے",
+            "sw": "Wallahi, naapa - neno la msisitizo linaloweza kuwekwa katika karibu kila sentensi",
+            "ru": "Клянусь Богом - слово-усилитель, которое можно вставить почти в любое предложение",
+            "ps": "په خدای قسم - د ټینګار کلمه چې نږدې په هره جمله کې راتلی شي"
           }
         },
         {
@@ -1499,7 +2363,15 @@
             "tr": "Başım üstüne - bir iyilik istendiğinde “seve seve, tabii ki” anlamına gelen mecazi bir ifade",
             "ar": "على راسي - تعبير مجازي بمعنى «بكل سرور» عند طلب معروف",
             "es": "Sobre mi cabeza - expresión figurada que significa «con mucho gusto» al pedir un favor",
-            "fr": "Sur ma tête - expression imagée signifiant « avec plaisir » lorsqu’on demande une faveur"
+            "fr": "Sur ma tête - expression imagée signifiant « avec plaisir » lorsqu’on demande une faveur",
+            "id": "Di atas kepalaku - ungkapan kiasan yang berarti ‘dengan senang hati, tentu’ saat dimintai tolong",
+            "bn": "আমার মাথায় - রূপক অভিব্যক্তি, যার অর্থ ‘সানন্দে, অবশ্যই’, যখন কোনো অনুগ্রহ চাওয়া হয়",
+            "fa": "روی سرم - عبارتی تصویری به معنای «با کمال میل، حتماً» هنگام درخواستِ لطف",
+            "ms": "Di atas kepalaku - ungkapan kiasan bermaksud ‘dengan senang hati, sudah tentu’ apabila diminta pertolongan",
+            "ur": "میرے سر پر (سر آنکھوں پر) - ایک علامتی محاورہ جس کا مطلب ‘بخوشی، ضرور’ ہے جب کوئی کام کہا جائے",
+            "sw": "Juu ya kichwa changu - usemi wa kitamathali maana yake ‘kwa furaha, bila shaka’ unapoombwa msaada",
+            "ru": "На моей голове - образное выражение, означающее «с удовольствием, конечно», когда просят об услуге",
+            "ps": "زما پر سر - یو انځوریز اصطلاح چې معنا یې «په خوښۍ سره، خامخا» ده کله چې د مرستې غوښتنه وشي"
           }
         },
         {
@@ -1511,7 +2383,15 @@
             "tr": "Hoş geldin - misafirler için klasik selamlama formülü, tüm Arap dünyasında anlaşılır",
             "ar": "أهلًا وسهلًا - صيغة الترحيب الكلاسيكية بالضيوف، مفهومة في كل العالم العربي",
             "es": "Bienvenido cordialmente - la fórmula de saludo clásica para invitados, entendida en todo el mundo árabe",
-            "fr": "Bienvenue chaleureusement - la formule d’accueil classique pour les invités, comprise dans tout le monde arabe"
+            "fr": "Bienvenue chaleureusement - la formule d’accueil classique pour les invités, comprise dans tout le monde arabe",
+            "id": "Selamat datang dengan hangat - formula sambutan klasik untuk tamu, dipahami di seluruh dunia Arab",
+            "bn": "উষ্ণ স্বাগতম - অতিথিদের জন্য ক্লাসিক অভ্যর্থনার বাক্য, সমগ্র আরব বিশ্বে বোধগম্য",
+            "fa": "خوش‌آمد گرم - عبارت کلاسیک خوشامدگویی به مهمانان، در سراسر جهان عرب فهمیده می‌شود",
+            "ms": "Selamat datang yang mesra - ungkapan sambutan klasik untuk tetamu, difahami di seluruh dunia Arab",
+            "ur": "پُرتپاک خوش آمدید - مہمانوں کے لیے روایتی استقبالیہ کلمہ، پورے عرب دنیا میں سمجھا جاتا ہے",
+            "sw": "Karibu sana - kauli ya kawaida ya kuwakaribisha wageni, inayoeleweka kote katika ulimwengu wa Kiarabu",
+            "ru": "Добро пожаловать - классическая формула приветствия гостей, понятная во всём арабском мире",
+            "ps": "ښه راغلاست - د مېلمنو لپاره کلاسيکه هرکلي جمله، په ټوله عربي نړۍ کې پوهېدل کېږي"
           }
         },
         {
@@ -1523,7 +2403,15 @@
             "tr": "Afiyet olsun, kelimenin tam anlamıyla “çifte sağlık” - yemekten sonra bir dilek olarak söylenir",
             "ar": "صحتين - حرفيًا «صحة مضاعفة» - تُقال بعد الأكل كدعاء بالعافية",
             "es": "Buen provecho, literalmente «doble salud» - se dice después de comer como bendición",
-            "fr": "Bon appétit, littéralement « double santé » - se dit après le repas comme un souhait de bien-être"
+            "fr": "Bon appétit, littéralement « double santé » - se dit après le repas comme un souhait de bien-être",
+            "id": "Selamat menikmati, harfiah ‘kesehatan ganda’ - diucapkan setelah makan sebagai doa",
+            "bn": "খাবার উপভোগ করুন, আক্ষরিক অর্থে ‘দ্বিগুণ স্বাস্থ্য’ - খাওয়ার পর দোয়া হিসেবে বলা হয়",
+            "fa": "نوش جان، به معنای تحت‌اللفظی «دو برابر سلامتی» - پس از غذا به‌عنوان دعا گفته می‌شود",
+            "ms": "Selamat menjamu selera, secara harfiah ‘kesihatan berganda’ - diucapkan selepas makan sebagai doa",
+            "ur": "کھانا مبارک، لفظی طور پر ‘دوگنی صحت’ - کھانے کے بعد دعا کے طور پر کہا جاتا ہے",
+            "sw": "Ufurahie chakula chako, kwa maana halisi ‘afya mara mbili’ - husemwa baada ya kula kama baraka",
+            "ru": "Приятного аппетита, буквально «двойное здоровье» - говорится после еды как благословение",
+            "ps": "نوش جان، لغوي معنا «دوه چنده روغتیا» - د خوړلو وروسته د دعا په توګه ویل کېږي"
           }
         },
         {
@@ -1535,7 +2423,15 @@
             "tr": "Bu bir şeref, tanıştığımıza memnun oldum - tanıştırılırken verilen kibar bir cevap",
             "ar": "تشرفنا - رد مهذب عند التعارف",
             "es": "Es un honor, encantado de conocerle - una respuesta cortés al ser presentado",
-            "fr": "C’est un honneur, ravi de vous rencontrer - une réponse polie lors d’une présentation"
+            "fr": "C’est un honneur, ravi de vous rencontrer - une réponse polie lors d’une présentation",
+            "id": "Suatu kehormatan, senang berkenalan - jawaban sopan saat diperkenalkan",
+            "bn": "এটা সম্মানের, আপনার সাথে পরিচিত হয়ে খুশি - পরিচয়ের সময় বিনয়ী উত্তর",
+            "fa": "باعث افتخار است، از آشنایی خوشوقتم - پاسخی مؤدبانه هنگام معرفی",
+            "ms": "Suatu penghormatan, gembira berkenalan - jawapan sopan ketika diperkenalkan",
+            "ur": "یہ باعثِ عزت ہے، آپ سے مل کر خوشی ہوئی - تعارف کے وقت مہذب جواب",
+            "sw": "Ni heshima, nafurahi kukutana nawe - jibu la adabu unapotambulishwa",
+            "ru": "Это честь, приятно познакомиться - вежливый ответ при знакомстве",
+            "ps": "دا د ویاړ خبره ده، ستاسو په پېژندلو خوشحاله یم - د پېژندنې پر مهال د ادب ځواب"
           }
         }
       ]
@@ -1561,7 +2457,15 @@
             "tr": "Nasılsın? (kelimenin tam anlamıyla “ne renksin” - erkeğe shlonak, kadına shlonich)",
             "ar": "شلونك؟ (حرفيًا «أي لون أنت» - للرجل شلونك، للمرأة شلونچ)",
             "es": "¿Cómo estás? (literalmente «de qué color eres» - shlonak a un hombre, shlonich a una mujer)",
-            "fr": "Comment vas-tu ? (littéralement « de quelle couleur es-tu » - shlonak à un homme, shlonich à une femme)"
+            "fr": "Comment vas-tu ? (littéralement « de quelle couleur es-tu » - shlonak à un homme, shlonich à une femme)",
+            "id": "Apa kabar? (harfiah ‘apa warnamu’ - shlonak untuk laki-laki, shlonich untuk perempuan)",
+            "bn": "কেমন আছেন? (আক্ষরিক অর্থে ‘তোমার রং কী’ - পুরুষকে shlonak, নারীকে shlonich)",
+            "fa": "حالت چطور است؟ (به معنای تحت‌اللفظی «چه رنگی هستی» - shlonak به مرد، shlonich به زن)",
+            "ms": "Apa khabar? (secara harfiah ‘apa warna kamu’ - shlonak kepada lelaki, shlonich kepada perempuan)",
+            "ur": "آپ کیسے ہیں؟ (لفظی طور پر ‘تمہارا رنگ کیا ہے’ - مرد کو shlonak، عورت کو shlonich)",
+            "sw": "Habari yako? (kwa maana halisi ‘rangi yako ni ipi’ - shlonak kwa mwanaume, shlonich kwa mwanamke)",
+            "ru": "Как дела? (буквально «какого ты цвета» - shlonak мужчине, shlonich женщине)",
+            "ps": "څنګه یې؟ (لغوي معنا «څه رنګ یې» - shlonak نر ته، shlonich ښځې ته)"
           }
         },
         {
@@ -1573,7 +2477,15 @@
             "tr": "İyi, tamam (genel bir onay/övgü kelimesi, Körfez'e çok özgü)",
             "ar": "زين (جيد، حسن - كلمة موافقة/استحسان عامة، مميزة للخليج)",
             "es": "Bien, de acuerdo (una palabra general de aprobación/elogio, muy característica del Golfo)",
-            "fr": "Bien, d'accord (un mot général d'approbation/d'éloge, très caractéristique du Golfe)"
+            "fr": "Bien, d'accord (un mot général d'approbation/d'éloge, très caractéristique du Golfe)",
+            "id": "Bagus, baik (kata umum untuk persetujuan/pujian, sangat khas Teluk)",
+            "bn": "ভালো, ঠিক আছে (সম্মতি/প্রশংসার সাধারণ শব্দ, উপসাগরীয় অঞ্চলের খুব বৈশিষ্ট্যপূর্ণ)",
+            "fa": "خوب، مناسب (واژه‌ای عمومی برای موافقت/تحسین، بسیار نمونهٔ لهجهٔ خلیج)",
+            "ms": "Bagus, elok (perkataan umum untuk persetujuan/pujian, sangat khas Teluk)",
+            "ur": "اچھا، ٹھیک (اتفاق/تعریف کا عام لفظ، خلیجی لہجے کا خاص)",
+            "sw": "Nzuri, sawa (neno la jumla la kukubali/kusifu, lenye sifa bainifu ya Ghuba)",
+            "ru": "Хорошо, нормально (общее слово согласия/похвалы, очень характерное для Залива)",
+            "ps": "ښه، سم (د موافقې/ستاینې عمومي کلمه، د خلیج ډېره ځانګړې)"
           }
         },
         {
@@ -1585,7 +2497,15 @@
             "tr": "Teşekkürler (Körfez'de genel Arapça shukran'ın yanında çok yaygın kullanılan bir teşekkür biçimi)",
             "ar": "مشكور (شكرًا - شائعة في الخليج إلى جانب شكرًا الفصيحة)",
             "es": "Gracias (una forma de agradecer, muy común también en el Golfo junto al panárabe shukran)",
-            "fr": "Merci (une forme de remerciement, très courante aussi dans le Golfe à côté du panarabe shukran)"
+            "fr": "Merci (une forme de remerciement, très courante aussi dans le Golfe à côté du panarabe shukran)",
+            "id": "Terima kasih (bentuk respons dari ‘berterima kasih’, juga sangat umum di Teluk selain shukran yang pan-Arab)",
+            "bn": "ধন্যবাদ (‘ধন্যবাদ দেওয়া’-র একটি রূপ, প্যান-আরব shukran ছাড়াও উপসাগরীয় অঞ্চলে খুব প্রচলিত)",
+            "fa": "ممنون (شکلی از «تشکر کردن»، در خلیج علاوه بر shukranِ عمومی عرب بسیار رایج است)",
+            "ms": "Terima kasih (bentuk respons daripada ‘berterima kasih’, juga sangat lazim di Teluk selain shukran yang merentas Arab)",
+            "ur": "شکریہ (‘شکر ادا کرنا’ کی ایک صورت، عام عربی shukran کے علاوہ خلیج میں بھی بہت رائج)",
+            "sw": "Asante (namna ya kujibu ya ‘kushukuru’, pia ni ya kawaida sana Ghuba pamoja na shukran ya Kiarabu kwa jumla)",
+            "ru": "Спасибо (ответная форма от «благодарить», также очень распространена в Заливе наряду с общеарабским shukran)",
+            "ps": "مننه (د «مننه کول» یوه بڼه، په خلیج کې د ټول‌عربي shukran تر څنګ هم ډېره عامه)"
           }
         },
         {
@@ -1597,7 +2517,15 @@
             "tr": "Çok - Körfez'e çok özgü bir kelime (Mağrip'teki bezzaf veya Levanten'deki ketir'e karşılık gelir)",
             "ar": "وايد (كثيرًا - كلمة خليجية مميزة، تقابل بزاف في المغاربية أو كتير في الشامية)",
             "es": "Muy, mucho - una palabra muy característica del Golfo (equivalente a bezzaf en magrebí o ketir en levantino)",
-            "fr": "Très, beaucoup - un mot très caractéristique du Golfe (équivalent à bezzaf en maghrébin ou ketir en levantin)"
+            "fr": "Très, beaucoup - un mot très caractéristique du Golfe (équivalent à bezzaf en maghrébin ou ketir en levantin)",
+            "id": "Sangat, banyak - kata Teluk yang sangat khas (setara dengan bezzaf di Maghribi atau ketir di Levantin)",
+            "bn": "খুব, অনেক - উপসাগরীয় অঞ্চলের খুব বৈশিষ্ট্যপূর্ণ শব্দ (মাগরেবিতে bezzaf বা লেভান্তীয়তে ketir-এর সমতুল্য)",
+            "fa": "خیلی، زیاد - واژه‌ای بسیار نمونهٔ خلیج (معادل bezzaf در مغربی یا ketir در شامی)",
+            "ms": "Sangat, banyak - perkataan Teluk yang sangat khas (setara dengan bezzaf dalam Maghribi atau ketir dalam Levant)",
+            "ur": "بہت، زیادہ - خلیجی لہجے کا نہایت خاص لفظ (مغربی میں bezzaf یا شامی میں ketir کے مساوی)",
+            "sw": "Sana, nyingi - neno lenye sifa bainifu sana la Ghuba (sawa na bezzaf katika Maghribi au ketir katika Kilevanti)",
+            "ru": "Очень, много - очень характерное слово Залива (аналог bezzaf в магрибском или ketir в левантийском)",
+            "ps": "ډېر، زیات - د خلیج یوه ډېره ځانګړې کلمه (د مغربي bezzaf یا شامي ketir سره برابره)"
           }
         },
         {
@@ -1609,7 +2537,15 @@
             "tr": "Ne? (Fasih Arapçada: madha/ma)",
             "ar": "شنو؟ (ماذا؟ - بالفصحى: ماذا)",
             "es": "¿Qué? (en árabe estándar: madha/ma)",
-            "fr": "Quoi ? (en arabe standard : madha/ma)"
+            "fr": "Quoi ? (en arabe standard : madha/ma)",
+            "id": "Apa? (dalam bahasa Arab baku: madha/ma)",
+            "bn": "কী? (প্রমিত আরবিতে: madha/ma)",
+            "fa": "چه؟ (در عربی فصیح: madha/ma)",
+            "ms": "Apa? (dalam bahasa Arab baku: madha/ma)",
+            "ur": "کیا؟ (فصیح عربی میں: madha/ma)",
+            "sw": "Nini? (kwa Kiarabu sanifu: madha/ma)",
+            "ru": "Что? (в литературном арабском: madha/ma)",
+            "ps": "څه؟ (په فصیح عربي کې: madha/ma)"
           }
         },
         {
@@ -1621,7 +2557,15 @@
             "tr": "Şimdi",
             "ar": "الحين (الآن)",
             "es": "Ahora",
-            "fr": "Maintenant"
+            "fr": "Maintenant",
+            "id": "Sekarang",
+            "bn": "এখন",
+            "fa": "الان",
+            "ms": "Sekarang",
+            "ur": "اب",
+            "sw": "Sasa",
+            "ru": "Сейчас",
+            "ps": "اوس"
           }
         },
         {
@@ -1633,7 +2577,15 @@
             "tr": "Hadi - Körfez'de de tüm Arap dünyasında olduğu gibi yaygın",
             "ar": "يلا (هيا - شائعة في الخليج كما في كل العالم العربي)",
             "es": "Vamos / venga - también común en el Golfo, como en todo el mundo árabe",
-            "fr": "Allons-y / allez - également courant dans le Golfe, comme dans tout le monde arabe"
+            "fr": "Allons-y / allez - également courant dans le Golfe, comme dans tout le monde arabe",
+            "id": "Ayo / cepatlah - juga umum di Teluk, seperti di seluruh dunia Arab",
+            "bn": "চলো / এসো - উপসাগরীয় অঞ্চলেও প্রচলিত, সমগ্র আরব বিশ্বের মতোই",
+            "fa": "بزن بریم / زودباش - در خلیج هم رایج است، مانند سراسر جهان عرب",
+            "ms": "Jom / ayuh - juga lazim di Teluk, seperti di seluruh dunia Arab",
+            "ur": "چلو / آؤ - خلیج میں بھی عام، پورے عرب دنیا کی طرح",
+            "sw": "Twende / haya - pia ni ya kawaida Ghuba, kama kote katika ulimwengu wa Kiarabu",
+            "ru": "Пошли / давай - также распространено в Заливе, как и во всём арабском мире",
+            "ps": "ځه لاړ شو / راځه - په خلیج کې هم عام دی، لکه په ټوله عربي نړۍ کې"
           }
         },
         {
@@ -1645,7 +2597,15 @@
             "tr": "Gerçekten iyi (wallah = “vallahi”, hemen her Arap lehçesinde bir vurgu kelimesi)",
             "ar": "زين والله (جيد فعلًا - والله كلمة تأكيد شائعة في كل اللهجات تقريبًا)",
             "es": "Realmente bueno, sinceramente bueno (wallah = «por Dios», una palabra de énfasis en casi todos los dialectos árabes)",
-            "fr": "Vraiment bien, sincèrement bien (wallah = « par Dieu », un mot d'insistance dans presque tous les dialectes arabes)"
+            "fr": "Vraiment bien, sincèrement bien (wallah = « par Dieu », un mot d'insistance dans presque tous les dialectes arabes)",
+            "id": "Benar-benar bagus, sungguh bagus (wallah = ‘demi Allah’, kata penekan di hampir setiap dialek Arab)",
+            "bn": "সত্যিই ভালো, সত্যি বলছি ভালো (wallah = ‘আল্লাহর কসম’, প্রায় প্রতিটি আরবি উপভাষায় জোর দেওয়ার শব্দ)",
+            "fa": "واقعاً خوب، به‌راستی خوب (wallah = «به خدا»، واژهٔ تأکیدی در تقریباً هر لهجهٔ عربی)",
+            "ms": "Betul-betul bagus, sungguh bagus (wallah = ‘demi Allah’, kata penegas dalam hampir setiap dialek Arab)",
+            "ur": "واقعی اچھا، سچ میں اچھا (wallah = ‘خدا کی قسم’، تقریباً ہر عربی لہجے میں زور دینے کا لفظ)",
+            "sw": "Nzuri kweli, kwa kweli nzuri (wallah = ‘wallahi’, neno la msisitizo katika karibu kila lahaja ya Kiarabu)",
+            "ru": "Действительно хорошо, честно хорошо (wallah = «клянусь Богом», слово-усилитель почти в каждом арабском диалекте)",
+            "ps": "واقعاً ښه، رښتیا ښه (wallah = «په خدای قسم»، نږدې په هره عربي لهجه کې د ټینګار کلمه)"
           }
         }
       ]
@@ -1671,7 +2631,15 @@
             "tr": "Bir (1)",
             "ar": "واحد (1)",
             "es": "Uno (1)",
-            "fr": "Un (1)"
+            "fr": "Un (1)",
+            "id": "Satu (1)",
+            "bn": "এক (1)",
+            "fa": "یک (1)",
+            "ms": "Satu (1)",
+            "ur": "ایک (1)",
+            "sw": "Moja (1)",
+            "ru": "Один (1)",
+            "ps": "یو (1)"
           }
         },
         {
@@ -1683,7 +2651,15 @@
             "tr": "İki (2)",
             "ar": "اثنين (2)",
             "es": "Dos (2)",
-            "fr": "Deux (2)"
+            "fr": "Deux (2)",
+            "id": "Dua (2)",
+            "bn": "দুই (2)",
+            "fa": "دو (2)",
+            "ms": "Dua (2)",
+            "ur": "دو (2)",
+            "sw": "Mbili (2)",
+            "ru": "Два (2)",
+            "ps": "دوه (2)"
           }
         },
         {
@@ -1695,7 +2671,15 @@
             "tr": "Üç (3)",
             "ar": "ثلاث (3)",
             "es": "Tres (3)",
-            "fr": "Trois (3)"
+            "fr": "Trois (3)",
+            "id": "Tiga (3)",
+            "bn": "তিন (3)",
+            "fa": "سه (3)",
+            "ms": "Tiga (3)",
+            "ur": "تین (3)",
+            "sw": "Tatu (3)",
+            "ru": "Три (3)",
+            "ps": "درې (3)"
           }
         },
         {
@@ -1707,7 +2691,15 @@
             "tr": "Dört (4)",
             "ar": "أربع (4)",
             "es": "Cuatro (4)",
-            "fr": "Quatre (4)"
+            "fr": "Quatre (4)",
+            "id": "Empat (4)",
+            "bn": "চার (4)",
+            "fa": "چهار (4)",
+            "ms": "Empat (4)",
+            "ur": "چار (4)",
+            "sw": "Nne (4)",
+            "ru": "Четыре (4)",
+            "ps": "څلور (4)"
           }
         },
         {
@@ -1719,7 +2711,15 @@
             "tr": "Beş (5)",
             "ar": "خمس (5)",
             "es": "Cinco (5)",
-            "fr": "Cinq (5)"
+            "fr": "Cinq (5)",
+            "id": "Lima (5)",
+            "bn": "পাঁচ (5)",
+            "fa": "پنج (5)",
+            "ms": "Lima (5)",
+            "ur": "پانچ (5)",
+            "sw": "Tano (5)",
+            "ru": "Пять (5)",
+            "ps": "پنځه (5)"
           }
         },
         {
@@ -1731,7 +2731,15 @@
             "tr": "On (10)",
             "ar": "عشر (10)",
             "es": "Diez (10)",
-            "fr": "Dix (10)"
+            "fr": "Dix (10)",
+            "id": "Sepuluh (10)",
+            "bn": "দশ (10)",
+            "fa": "ده (10)",
+            "ms": "Sepuluh (10)",
+            "ur": "دس (10)",
+            "sw": "Kumi (10)",
+            "ru": "Десять (10)",
+            "ps": "لس (10)"
           }
         },
         {
@@ -1743,7 +2751,15 @@
             "tr": "Bugün",
             "ar": "اليوم",
             "es": "Hoy",
-            "fr": "Aujourd’hui"
+            "fr": "Aujourd’hui",
+            "id": "Hari ini",
+            "bn": "আজ",
+            "fa": "امروز",
+            "ms": "Hari ini",
+            "ur": "آج",
+            "sw": "Leo",
+            "ru": "Сегодня",
+            "ps": "نن"
           }
         },
         {
@@ -1755,7 +2771,15 @@
             "tr": "Yarın - telaffuz ve tam anlam Körfez ülkeleri arasında hafifçe değişir",
             "ar": "باچر (غدًا) - يختلف النطق والمعنى الدقيق قليلًا بين دول الخليج",
             "es": "Mañana - la pronunciación y el significado exacto varían ligeramente entre los países del Golfo",
-            "fr": "Demain - la prononciation et le sens exact varient légèrement selon les pays du Golfe"
+            "fr": "Demain - la prononciation et le sens exact varient légèrement selon les pays du Golfe",
+            "id": "Besok - pelafalan dan makna persisnya sedikit berbeda antarnegara Teluk",
+            "bn": "আগামীকাল - উচ্চারণ ও সঠিক অর্থ উপসাগরীয় দেশগুলোর মধ্যে সামান্য ভিন্ন হয়",
+            "fa": "فردا - تلفظ و معنای دقیق آن میان کشورهای خلیج کمی متفاوت است",
+            "ms": "Esok - sebutan dan makna tepatnya berbeza sedikit antara negara Teluk",
+            "ur": "کل - تلفظ اور صحیح مطلب خلیجی ممالک کے درمیان تھوڑا مختلف ہے",
+            "sw": "Kesho - matamshi na maana kamili hutofautiana kidogo kati ya nchi za Ghuba",
+            "ru": "Завтра - произношение и точное значение немного различаются в странах Залива",
+            "ps": "سبا - تلفظ او دقیقه معنا یې د خلیج د هېوادونو ترمنځ لږ توپیر لري"
           }
         }
       ]
@@ -1781,7 +2805,15 @@
             "tr": "Nerede?",
             "ar": "وين؟ (أين؟)",
             "es": "¿Dónde?",
-            "fr": "Où ?"
+            "fr": "Où ?",
+            "id": "Di mana?",
+            "bn": "কোথায়?",
+            "fa": "کجا؟",
+            "ms": "Di mana?",
+            "ur": "کہاں؟",
+            "sw": "Wapi?",
+            "ru": "Где?",
+            "ps": "چېرته؟"
           }
         },
         {
@@ -1793,7 +2825,15 @@
             "tr": "Ne zaman?",
             "ar": "متى؟",
             "es": "¿Cuándo?",
-            "fr": "Quand ?"
+            "fr": "Quand ?",
+            "id": "Kapan?",
+            "bn": "কখন?",
+            "fa": "کِی؟",
+            "ms": "Bila?",
+            "ur": "کب؟",
+            "sw": "Lini?",
+            "ru": "Когда?",
+            "ps": "کله؟"
           }
         },
         {
@@ -1805,7 +2845,15 @@
             "tr": "Neden?",
             "ar": "ليش؟ (لماذا؟)",
             "es": "¿Por qué?",
-            "fr": "Pourquoi ?"
+            "fr": "Pourquoi ?",
+            "id": "Mengapa?",
+            "bn": "কেন?",
+            "fa": "چرا؟",
+            "ms": "Mengapa?",
+            "ur": "کیوں؟",
+            "sw": "Kwa nini?",
+            "ru": "Почему?",
+            "ps": "ولې؟"
           }
         },
         {
@@ -1817,7 +2865,15 @@
             "tr": "Kim?",
             "ar": "منو؟ (من؟)",
             "es": "¿Quién?",
-            "fr": "Qui ?"
+            "fr": "Qui ?",
+            "id": "Siapa?",
+            "bn": "কে?",
+            "fa": "چه کسی؟",
+            "ms": "Siapa?",
+            "ur": "کون؟",
+            "sw": "Nani?",
+            "ru": "Кто?",
+            "ps": "څوک؟"
           }
         },
         {
@@ -1829,7 +2885,15 @@
             "tr": "Ne kadar, kaç tane - miktar ve fiyatlar için çok karakteristik bir Körfez kelimesi",
             "ar": "جم؟ (كم؟) - كلمة خليجية مميزة جدًا للكميات والأسعار",
             "es": "Cuánto, cuántos - una palabra muy característica del Golfo para cantidades y precios",
-            "fr": "Combien - un mot très caractéristique du Golfe pour les quantités et les prix"
+            "fr": "Combien - un mot très caractéristique du Golfe pour les quantités et les prix",
+            "id": "Berapa, berapa banyak - kata Teluk yang sangat khas untuk jumlah dan harga",
+            "bn": "কত, কতগুলো - পরিমাণ ও দামের জন্য উপসাগরীয় অঞ্চলের খুব বৈশিষ্ট্যপূর্ণ শব্দ",
+            "fa": "چند، چند تا - واژه‌ای بسیار نمونهٔ خلیج برای مقدار و قیمت",
+            "ms": "Berapa, berapa banyak - perkataan Teluk yang sangat khas untuk kuantiti dan harga",
+            "ur": "کتنا، کتنے - مقدار اور قیمت کے لیے خلیجی لہجے کا نہایت خاص لفظ",
+            "sw": "Ngapi, kiasi gani - neno lenye sifa bainifu sana la Ghuba kwa idadi na bei",
+            "ru": "Сколько - очень характерное слово Залива для количества и цен",
+            "ps": "څومره، څو - د اندازې او بیو لپاره د خلیج یوه ډېره ځانګړې کلمه"
           }
         },
         {
@@ -1841,7 +2905,15 @@
             "tr": "Var, … var mı?",
             "ar": "في (يوجد، هل يوجد …؟)",
             "es": "Hay, ¿hay …?",
-            "fr": "Il y a, y a-t-il … ?"
+            "fr": "Il y a, y a-t-il … ?",
+            "id": "Ada, apakah ada …?",
+            "bn": "আছে, আছে কি …?",
+            "fa": "هست، آیا هست …؟",
+            "ms": "Ada, adakah …?",
+            "ur": "ہے، کیا ہے …؟",
+            "sw": "Kuna, je, kuna …?",
+            "ru": "Есть, есть ли …?",
+            "ps": "شته، آیا شته …؟"
           }
         },
         {
@@ -1853,7 +2925,15 @@
             "tr": "Burada",
             "ar": "هني (هنا)",
             "es": "Aquí",
-            "fr": "Ici"
+            "fr": "Ici",
+            "id": "Di sini",
+            "bn": "এখানে",
+            "fa": "اینجا",
+            "ms": "Di sini",
+            "ur": "یہاں",
+            "sw": "Hapa",
+            "ru": "Здесь",
+            "ps": "دلته"
           }
         },
         {
@@ -1865,7 +2945,15 @@
             "tr": "Orada",
             "ar": "هناك",
             "es": "Allí, allá",
-            "fr": "Là-bas"
+            "fr": "Là-bas",
+            "id": "Di sana, di seberang sana",
+            "bn": "সেখানে, ওখানে",
+            "fa": "آنجا، آن‌طرف",
+            "ms": "Di sana, di sebelah sana",
+            "ur": "وہاں، اُس طرف",
+            "sw": "Pale, kule",
+            "ru": "Там, вон там",
+            "ps": "هلته، هغه خوا"
           }
         }
       ]
@@ -1891,7 +2979,15 @@
             "tr": "Babam",
             "ar": "أبوي",
             "es": "Mi padre",
-            "fr": "Mon père"
+            "fr": "Mon père",
+            "id": "Ayahku",
+            "bn": "আমার বাবা",
+            "fa": "پدرم",
+            "ms": "Ayah saya",
+            "ur": "میرا والد",
+            "sw": "Baba yangu",
+            "ru": "Мой отец",
+            "ps": "زما پلار"
           }
         },
         {
@@ -1903,7 +2999,15 @@
             "tr": "Annem",
             "ar": "أمي",
             "es": "Mi madre",
-            "fr": "Ma mère"
+            "fr": "Ma mère",
+            "id": "Ibuku",
+            "bn": "আমার মা",
+            "fa": "مادرم",
+            "ms": "Ibu saya",
+            "ur": "میری والدہ",
+            "sw": "Mama yangu",
+            "ru": "Моя мать",
+            "ps": "زما مور"
           }
         },
         {
@@ -1915,7 +3019,15 @@
             "tr": "Kardeşim",
             "ar": "أخوي",
             "es": "Mi hermano",
-            "fr": "Mon frère"
+            "fr": "Mon frère",
+            "id": "Saudara laki-lakiku",
+            "bn": "আমার ভাই",
+            "fa": "برادرم",
+            "ms": "Abang/adik lelaki saya",
+            "ur": "میرا بھائی",
+            "sw": "Kaka/ndugu yangu wa kiume",
+            "ru": "Мой брат",
+            "ps": "زما ورور"
           }
         },
         {
@@ -1927,7 +3039,15 @@
             "tr": "Kız kardeşim",
             "ar": "اختي",
             "es": "Mi hermana",
-            "fr": "Ma sœur"
+            "fr": "Ma sœur",
+            "id": "Saudara perempuanku",
+            "bn": "আমার বোন",
+            "fa": "خواهرم",
+            "ms": "Kakak/adik perempuan saya",
+            "ur": "میری بہن",
+            "sw": "Dada yangu",
+            "ru": "Моя сестра",
+            "ps": "زما خور"
           }
         },
         {
@@ -1939,7 +3059,15 @@
             "tr": "Büyükbabam - Körfez Arapçasında j sesi (Fasih Arapçadaki jadd gibi) genellikle y’ye dönüşür, bölgenin bilinen bir ses özelliğidir",
             "ar": "يدّي (جدي) - في الخليجية يتحول صوت الجيم غالبًا إلى ياء، وهي سمة صوتية معروفة في المنطقة",
             "es": "Mi abuelo - en árabe del Golfo el sonido j (como en el estándar jadd) suele convertirse en y, un rasgo fonético conocido de la región",
-            "fr": "Mon grand-père - en arabe du Golfe, le son j (comme dans jadd en arabe standard) devient souvent y, un trait phonétique bien connu de la région"
+            "fr": "Mon grand-père - en arabe du Golfe, le son j (comme dans jadd en arabe standard) devient souvent y, un trait phonétique bien connu de la région",
+            "id": "Kakekku - dalam bahasa Arab Teluk bunyi j (seperti pada jadd baku) sering berubah menjadi y, ciri khas daerah ini",
+            "bn": "আমার দাদা/নানা - উপসাগরীয় আরবিতে j ধ্বনি (প্রমিত jadd-এর মতো) প্রায়ই y-তে পরিণত হয়, এ অঞ্চলের সুপরিচিত বৈশিষ্ট্য",
+            "fa": "پدربزرگم - در عربی خلیج صدای j (مانند jaddِ فصیح) اغلب به y تبدیل می‌شود، ویژگی شناخته‌شدهٔ این منطقه",
+            "ms": "Datuk saya - dalam bahasa Arab Teluk bunyi j (seperti jadd baku) sering bertukar menjadi y, ciri terkenal rantau ini",
+            "ur": "میرا دادا/نانا - خلیجی عربی میں j کی آواز (فصیح jadd کی طرح) اکثر y میں بدل جاتی ہے، اس خطے کی معروف خصوصیت",
+            "sw": "Babu yangu - katika Kiarabu cha Ghuba sauti ya j (kama jadd sanifu) mara nyingi hubadilika kuwa y, sifa maarufu ya eneo hili",
+            "ru": "Мой дедушка - в арабском Залива звук j (как в jadd) часто переходит в y, известная особенность региона",
+            "ps": "زما نیکه - په خلیجي عربي کې د j غږ (لکه فصیح jadd) ډېری وخت y ته بدلېږي، د دې سیمې پېژندل شوې ځانګړتیا"
           }
         },
         {
@@ -1951,7 +3079,15 @@
             "tr": "Büyükannem (yiddi’deki aynı j→y ses değişimi)",
             "ar": "يدتي (جدتي) - نفس التحول الصوتي من الجيم إلى الياء كما في يدّي",
             "es": "Mi abuela (el mismo cambio fonético j→y que en yiddi)",
-            "fr": "Ma grand-mère (le même changement phonétique j→y que dans yiddi)"
+            "fr": "Ma grand-mère (le même changement phonétique j→y que dans yiddi)",
+            "id": "Nenekku (perubahan bunyi j→y yang sama seperti pada yiddi)",
+            "bn": "আমার দাদি/নানি (yiddi-র মতোই একই j→y ধ্বনি পরিবর্তন)",
+            "fa": "مادربزرگم (همان تبدیل صدای j→y مانند yiddi)",
+            "ms": "Nenek saya (perubahan bunyi j→y yang sama seperti yiddi)",
+            "ur": "میری دادی/نانی (yiddi کی طرح وہی j→y آواز کی تبدیلی)",
+            "sw": "Bibi yangu (mabadiliko yale yale ya sauti j→y kama katika yiddi)",
+            "ru": "Моя бабушка (тот же переход звука j→y, что и в yiddi)",
+            "ps": "زما انا (لکه yiddi هماغه د j→y غږ بدلون)"
           }
         },
         {
@@ -1963,7 +3099,15 @@
             "tr": "Teyzem (anne tarafından) - Arap aile sisteminde baba tarafındaki halaya göre net şekilde ayrılır",
             "ar": "خالتي - تختلف بوضوح عن العمة في نظام العائلة العربي",
             "es": "Mi tía materna - claramente distinguida de la tía paterna en el sistema familiar árabe",
-            "fr": "Ma tante maternelle - clairement distinguée de la tante paternelle dans le système familial arabe"
+            "fr": "Ma tante maternelle - clairement distinguée de la tante paternelle dans le système familial arabe",
+            "id": "Bibiku dari pihak ibu - dalam sistem keluarga Arab jelas dibedakan dari bibi dari pihak ayah",
+            "bn": "আমার খালা (মায়ের বোন) - আরবি পরিবার-ব্যবস্থায় ফুফু থেকে স্পষ্টভাবে আলাদা",
+            "fa": "خاله‌ام - در نظام خانوادگی عرب به‌روشنی از عمه (خواهر پدر) متمایز است",
+            "ms": "Emak saudara sebelah ibu saya - dalam sistem keluarga Arab jelas dibezakan daripada emak saudara sebelah bapa",
+            "ur": "میری خالہ - عربی خاندانی نظام میں پھوپھی سے واضح طور پر الگ",
+            "sw": "Mama yangu mdogo wa upande wa mama - katika mfumo wa familia wa Kiarabu hutofautishwa wazi na shangazi wa upande wa baba",
+            "ru": "Моя тётя по матери - в арабской системе родства чётко отличается от тёти по отцу",
+            "ps": "زما خاله (د مور خور) - د عربي کورنۍ په نظام کې د پلار له خور (عمه) څخه په څرګنده توپیر لري"
           }
         },
         {
@@ -1975,7 +3119,15 @@
             "tr": "Amcam (baba tarafından)",
             "ar": "عمي",
             "es": "Mi tío paterno",
-            "fr": "Mon oncle paternel"
+            "fr": "Mon oncle paternel",
+            "id": "Pamanku dari pihak ayah",
+            "bn": "আমার চাচা (বাবার ভাই)",
+            "fa": "عمویم (برادر پدر)",
+            "ms": "Bapa saudara sebelah bapa saya",
+            "ur": "میرا چچا (والد کا بھائی)",
+            "sw": "Amu yangu (ndugu wa baba)",
+            "ru": "Мой дядя по отцу",
+            "ps": "زما اکا (د پلار ورور)"
           }
         }
       ]
@@ -2001,7 +3153,15 @@
             "tr": "Ekmek",
             "ar": "خبز",
             "es": "Pan",
-            "fr": "Pain"
+            "fr": "Pain",
+            "id": "Roti",
+            "bn": "রুটি",
+            "fa": "نان",
+            "ms": "Roti",
+            "ur": "روٹی",
+            "sw": "Mkate",
+            "ru": "Хлеб",
+            "ps": "ډوډۍ"
           }
         },
         {
@@ -2013,7 +3173,15 @@
             "tr": "Su",
             "ar": "ماي (ماء)",
             "es": "Agua",
-            "fr": "Eau"
+            "fr": "Eau",
+            "id": "Air",
+            "bn": "পানি",
+            "fa": "آب",
+            "ms": "Air",
+            "ur": "پانی",
+            "sw": "Maji",
+            "ru": "Вода",
+            "ps": "اوبه"
           }
         },
         {
@@ -2025,7 +3193,15 @@
             "tr": "Kahve - Körfez’de q sesi (Fasih Arapçadaki qahwa gibi) genellikle g’ye dönüşür, bölgenin bir başka bilinen ses özelliği; geleneksel kakuleli kahve töreni Körfez misafirperverliğinin ayrılmaz bir parçasıdır",
             "ar": "قهوة تُنطق «gahwa» - يتحول صوت القاف غالبًا إلى الجيم القاهرية (g)، سمة صوتية معروفة أخرى في المنطقة؛ طقوس القهوة الخليجية بالهيل جزء أساسي من الضيافة",
             "es": "Café - en el Golfo el sonido q (como en el estándar qahwa) suele convertirse en g, otro rasgo fonético conocido de la región; la ceremonia tradicional del café con cardamomo es parte esencial de la hospitalidad del Golfo",
-            "fr": "Café - dans le Golfe, le son q (comme dans qahwa en arabe standard) devient souvent g, un autre trait phonétique bien connu de la région ; la cérémonie traditionnelle du café à la cardamome fait partie intégrante de l’hospitalité du Golfe"
+            "fr": "Café - dans le Golfe, le son q (comme dans qahwa en arabe standard) devient souvent g, un autre trait phonétique bien connu de la région ; la cérémonie traditionnelle du café à la cardamome fait partie intégrante de l’hospitalité du Golfe",
+            "id": "Kopi - di Teluk bunyi q (seperti pada qahwa baku) sering berubah menjadi g, ciri terkenal daerah ini; upacara kopi kapulaga tradisional adalah bagian inti keramahan Teluk",
+            "bn": "কফি - উপসাগরীয় অঞ্চলে q ধ্বনি (প্রমিত qahwa-র মতো) প্রায়ই g-তে পরিণত হয়, এ অঞ্চলের আরেকটি সুপরিচিত বৈশিষ্ট্য; এলাচ দেওয়া ঐতিহ্যবাহী কফি অনুষ্ঠান উপসাগরীয় আতিথেয়তার একটি মূল অংশ",
+            "fa": "قهوه - در خلیج صدای q (مانند qahwaِ فصیح) اغلب به g تبدیل می‌شود، ویژگی شناخته‌شدهٔ دیگر منطقه؛ آیین سنتی قهوه با هل بخشی اصلی از مهمان‌نوازی خلیج است",
+            "ms": "Kopi - di Teluk bunyi q (seperti qahwa baku) sering bertukar menjadi g, satu lagi ciri terkenal rantau ini; upacara kopi berkapulaga tradisional ialah teras keramahan Teluk",
+            "ur": "کافی/قہوہ - خلیج میں q کی آواز (فصیح qahwa کی طرح) اکثر g میں بدل جاتی ہے، خطے کی ایک اور معروف خصوصیت؛ الائچی والی روایتی قہوہ کی رسم خلیجی مہمان نوازی کا بنیادی حصہ ہے",
+            "sw": "Kahawa - Ghuba sauti ya q (kama qahwa sanifu) mara nyingi hubadilika kuwa g, sifa nyingine maarufu ya eneo hili; sherehe ya jadi ya kahawa yenye iliki ni sehemu muhimu ya ukarimu wa Ghuba",
+            "ru": "Кофе - в Заливе звук q (как в qahwa) часто переходит в g, ещё одна известная особенность региона; традиционная церемония кофе с кардамоном - основа гостеприимства Залива",
+            "ps": "قهوه - په خلیج کې د q غږ (لکه فصیح qahwa) ډېری وخت g ته بدلېږي، د سیمې بله پېژندل شوې ځانګړتیا؛ د هېل سره د دودیزې قهوې مراسم د خلیج د مېلمه‌پالنې بنسټیزه برخه ده"
           }
         },
         {
@@ -2037,7 +3213,15 @@
             "tr": "Hurma - geleneksel olarak misafirperverliğin ilk işareti olarak kahveyle birlikte ikram edilir",
             "ar": "تمر - يُقدَّم تقليديًا مع القهوة كأول علامة على الضيافة",
             "es": "Dátiles - tradicionalmente servidos junto con el café como primer gesto de hospitalidad",
-            "fr": "Dattes - traditionnellement servies avec le café comme premier geste d’hospitalité"
+            "fr": "Dattes - traditionnellement servies avec le café comme premier geste d’hospitalité",
+            "id": "Kurma - secara tradisional disajikan bersama kopi sebagai isyarat pertama keramahan",
+            "bn": "খেজুর - ঐতিহ্যগতভাবে কফির সাথে আতিথেয়তার প্রথম নিদর্শন হিসেবে পরিবেশন করা হয়",
+            "fa": "خرما - به‌طور سنتی همراه با قهوه به‌عنوان نخستین نشانهٔ مهمان‌نوازی سرو می‌شود",
+            "ms": "Kurma - secara tradisi dihidangkan bersama kopi sebagai isyarat pertama keramahan",
+            "ur": "کھجور - روایتی طور پر قہوے کے ساتھ مہمان نوازی کے پہلے اظہار کے طور پر پیش کی جاتی ہے",
+            "sw": "Tende - kwa desturi hutolewa pamoja na kahawa kama ishara ya kwanza ya ukarimu",
+            "ru": "Финики - традиционно подаются вместе с кофе как первый жест гостеприимства",
+            "ps": "خرما - په دودیز ډول د قهوې سره د مېلمه‌پالنې د لومړي نښې په توګه وړاندې کېږي"
           }
         },
         {
@@ -2049,7 +3233,15 @@
             "tr": "Çarşı, pazar",
             "ar": "سوق",
             "es": "Mercado, zoco",
-            "fr": "Marché, souk"
+            "fr": "Marché, souk",
+            "id": "Pasar, bazar",
+            "bn": "বাজার",
+            "fa": "بازار",
+            "ms": "Pasar, bazar",
+            "ur": "بازار",
+            "sw": "Soko",
+            "ru": "Рынок, базар",
+            "ps": "بازار"
           }
         },
         {
@@ -2061,7 +3253,15 @@
             "tr": "Pahalı",
             "ar": "غالي",
             "es": "Caro",
-            "fr": "Cher"
+            "fr": "Cher",
+            "id": "Mahal",
+            "bn": "দামি",
+            "fa": "گران",
+            "ms": "Mahal",
+            "ur": "مہنگا",
+            "sw": "Ghali",
+            "ru": "Дорогой",
+            "ps": "ګران"
           }
         },
         {
@@ -2073,7 +3273,15 @@
             "tr": "Ucuz",
             "ar": "رخيص",
             "es": "Barato",
-            "fr": "Bon marché"
+            "fr": "Bon marché",
+            "id": "Murah",
+            "bn": "সস্তা",
+            "fa": "ارزان",
+            "ms": "Murah",
+            "ur": "سستا",
+            "sw": "Rahisi",
+            "ru": "Дешёвый",
+            "ps": "ارزان"
           }
         },
         {
@@ -2085,7 +3293,15 @@
             "tr": "İstiyorum - diğer lehçelerden farklı, Körfez’e özgü bir “istemek” biçimi",
             "ar": "أبي (أريد) - صيغة خليجية مميزة لفعل «أراد»، مختلفة عن اللهجات الأخرى",
             "es": "Quiero, me gustaría - una forma de «querer» típica del Golfo, distinta de otros dialectos",
-            "fr": "Je veux, je voudrais - une forme de « vouloir » typique du Golfe, différente des autres dialectes"
+            "fr": "Je veux, je voudrais - une forme de « vouloir » typique du Golfe, différente des autres dialectes",
+            "id": "Saya mau, saya ingin - bentuk ‘ingin’ yang khas Teluk, berbeda dari dialek lain",
+            "bn": "আমি চাই - উপসাগরীয় অঞ্চলের বৈশিষ্ট্যপূর্ণ ‘চাওয়া’-র রূপ, অন্য উপভাষা থেকে ভিন্ন",
+            "fa": "می‌خواهم - شکلی از «خواستن» که نمونهٔ خلیج است و با لهجه‌های دیگر فرق دارد",
+            "ms": "Saya mahu - bentuk ‘mahu’ yang khas Teluk, berbeza daripada dialek lain",
+            "ur": "میں چاہتا ہوں - خلیج کے لیے مخصوص ‘چاہنا’ کی صورت، دوسرے لہجوں سے مختلف",
+            "sw": "Nataka - umbo la ‘kutaka’ lenye sifa ya Ghuba, tofauti na lahaja nyingine",
+            "ru": "Я хочу - форма «хотеть», типичная для Залива, отличается от других диалектов",
+            "ps": "زه غواړم - د «غوښتل» یوه بڼه چې د خلیج ځانګړې ده، له نورو لهجو سره توپیر لري"
           }
         }
       ]
@@ -2111,7 +3327,15 @@
             "tr": "Evet (çok gayriresmî, arkadaşlar/aile arasında yaygın günlük biçim)",
             "ar": "إي (نعم - صيغة يومية غير رسمية جدًا، شائعة بين الأصدقاء والعائلة)",
             "es": "Sí (una forma cotidiana muy informal, común entre amigos/familia)",
-            "fr": "Oui (une forme très familière du quotidien, courante entre amis/en famille)"
+            "fr": "Oui (une forme très familière du quotidien, courante entre amis/en famille)",
+            "id": "Ya (bentuk sehari-hari yang sangat santai, umum di antara teman/keluarga)",
+            "bn": "হ্যাঁ (খুব অনানুষ্ঠানিক দৈনন্দিন রূপ, বন্ধু/পরিবারের মধ্যে প্রচলিত)",
+            "fa": "بله (شکلی بسیار غیررسمی و روزمره، رایج میان دوستان/خانواده)",
+            "ms": "Ya (bentuk harian yang sangat tidak formal, lazim antara kawan/keluarga)",
+            "ur": "ہاں (بہت غیررسمی روزمرہ صورت، دوستوں/گھر والوں میں عام)",
+            "sw": "Ndiyo (namna isiyo rasmi kabisa ya kila siku, ya kawaida kati ya marafiki/familia)",
+            "ru": "Да (очень неформальная разговорная форма, распространена среди друзей/семьи)",
+            "ps": "هو (ډېره غیررسمي ورځنۍ بڼه، د ملګرو/کورنۍ ترمنځ عامه)"
           }
         },
         {
@@ -2123,7 +3347,15 @@
             "tr": "Hayır",
             "ar": "لا",
             "es": "No",
-            "fr": "Non"
+            "fr": "Non",
+            "id": "Tidak",
+            "bn": "না",
+            "fa": "نه",
+            "ms": "Tidak",
+            "ur": "نہیں",
+            "sw": "Hapana",
+            "ru": "Нет",
+            "ps": "نه"
           }
         },
         {
@@ -2135,7 +3367,15 @@
             "tr": "Mutlu",
             "ar": "فرحان",
             "es": "Feliz, contento",
-            "fr": "Heureux, content"
+            "fr": "Heureux, content",
+            "id": "Bahagia, senang",
+            "bn": "খুশি, আনন্দিত",
+            "fa": "خوشحال، شاد",
+            "ms": "Gembira, senang",
+            "ur": "خوش، مسرور",
+            "sw": "Mwenye furaha, kufurahi",
+            "ru": "Счастливый, радостный",
+            "ps": "خوښ، خوشحاله"
           }
         },
         {
@@ -2147,7 +3387,15 @@
             "tr": "Üzgün",
             "ar": "زعلان",
             "es": "Triste, disgustado",
-            "fr": "Triste, contrarié"
+            "fr": "Triste, contrarié",
+            "id": "Sedih, kesal",
+            "bn": "দুঃখিত, বিরক্ত",
+            "fa": "غمگین، ناراحت",
+            "ms": "Sedih, kecil hati",
+            "ur": "اداس، ناراض",
+            "sw": "Mwenye huzuni, kuudhika",
+            "ru": "Грустный, расстроенный",
+            "ps": "خپه، خواشینی"
           }
         },
         {
@@ -2159,7 +3407,15 @@
             "tr": "Yorgun",
             "ar": "تعبان",
             "es": "Cansado, agotado",
-            "fr": "Fatigué, épuisé"
+            "fr": "Fatigué, épuisé",
+            "id": "Lelah, capai",
+            "bn": "ক্লান্ত, অবসন্ন",
+            "fa": "خسته، فرسوده",
+            "ms": "Letih, penat",
+            "ur": "تھکا ہوا، نڈھال",
+            "sw": "Mchovu, kuchoka",
+            "ru": "Уставший, измотанный",
+            "ps": "ستړی، ستومانه"
           }
         },
         {
@@ -2171,7 +3427,15 @@
             "tr": "Korkmuş",
             "ar": "خايف",
             "es": "Asustado",
-            "fr": "Effrayé, a peur"
+            "fr": "Effrayé, a peur",
+            "id": "Takut, ketakutan",
+            "bn": "ভীত, ভয় পাচ্ছে",
+            "fa": "ترسیده، هراسان",
+            "ms": "Takut",
+            "ur": "خوفزدہ، ڈرا ہوا",
+            "sw": "Mwenye hofu, kuogopa",
+            "ru": "Испуганный, боится",
+            "ps": "ویریدلی، وارخطا"
           }
         },
         {
@@ -2183,7 +3447,15 @@
             "tr": "Hasta",
             "ar": "مريض",
             "es": "Enfermo",
-            "fr": "Malade"
+            "fr": "Malade",
+            "id": "Sakit",
+            "bn": "অসুস্থ",
+            "fa": "بیمار، مریض",
+            "ms": "Sakit",
+            "ur": "بیمار",
+            "sw": "Mgonjwa",
+            "ru": "Больной",
+            "ps": "ناروغ، مریض"
           }
         },
         {
@@ -2195,7 +3467,15 @@
             "tr": "Allah’a şükür",
             "ar": "الحمد لله",
             "es": "Gracias a Dios",
-            "fr": "Dieu merci"
+            "fr": "Dieu merci",
+            "id": "Segala puji bagi Allah",
+            "bn": "আলহামদুলিল্লাহ, সমস্ত প্রশংসা আল্লাহর",
+            "fa": "خدا را شکر، همهٔ ستایش‌ها از آنِ خداست",
+            "ms": "Segala puji bagi Allah",
+            "ur": "الحمد للہ، تمام تعریف اللہ کے لیے",
+            "sw": "Alhamdulillah, sifa zote ni za Mwenyezi Mungu",
+            "ru": "Слава Богу, вся хвала Аллаху",
+            "ps": "الحمد لله، ټوله ستاینه د الله ده"
           }
         }
       ]
@@ -2221,7 +3501,15 @@
             "tr": "Hemen hallolur, merak etme - bir isteğe verilen tipik Körfez cevabı, misafirperverlik ve yardımseverliği ifade eder",
             "ar": "أبشر - رد خليجي نموذجي على طلب، يعبّر عن الضيافة والاستعداد للمساعدة",
             "es": "Considéralo hecho, enseguida - una respuesta típica del Golfo ante una petición, expresa hospitalidad y disposición a ayudar",
-            "fr": "Considère que c’est fait, tout de suite - une réponse typique du Golfe à une demande, exprimant l’hospitalité et l’empressement à aider"
+            "fr": "Considère que c’est fait, tout de suite - une réponse typique du Golfe à une demande, exprimant l’hospitalité et l’empressement à aider",
+            "id": "Anggap sudah beres, segera - jawaban khas Teluk atas permintaan, menunjukkan keramahan dan kesediaan membantu",
+            "bn": "ধরে নিন হয়ে গেছে, এখনই - অনুরোধের একটি সাধারণ উপসাগরীয় উত্তর, আতিথেয়তা ও সাহায্যের আগ্রহ প্রকাশ করে",
+            "fa": "روی چشم، همین الان - پاسخی نمونهٔ خلیج به یک درخواست، بیانگر مهمان‌نوازی و اشتیاق به کمک",
+            "ms": "Anggap sudah selesai, serta-merta - jawapan khas Teluk kepada permintaan, menzahirkan keramahan dan kesediaan membantu",
+            "ur": "سمجھو ہو گیا، ابھی - کسی درخواست پر خلیج کا خاص جواب، مہمان نوازی اور مدد کے شوق کا اظہار",
+            "sw": "Hesabu imefanyika, sasa hivi - jibu la kawaida la Ghuba kwa ombi, linaloonyesha ukarimu na hamu ya kusaidia",
+            "ru": "Считай, что сделано, сейчас же - типичный ответ Залива на просьбу, выражающий гостеприимство и готовность помочь",
+            "ps": "ګڼه چې وشو، همدا اوس - د یوې غوښتنې ته د خلیج یو ځانګړی ځواب، د مېلمه‌پالنې او د مرستې د لیوالتیا څرګندوی"
           }
         },
         {
@@ -2233,7 +3521,15 @@
             "tr": "Allah sana afiyet versin - birinden bir şey istemek veya emeği için teşekkür etmek amacıyla kullanılan kibar bir kalıp",
             "ar": "الله يعافيك - صيغة مهذبة تُستخدم لطلب شيء من أحد أو شكره على مجهوده",
             "es": "Que Dios te dé bienestar - una fórmula cortés usada para pedirle algo a alguien o agradecerle su esfuerzo",
-            "fr": "Que Dieu t’accorde le bien-être - une formule polie utilisée pour demander quelque chose à quelqu’un ou le remercier pour son effort"
+            "fr": "Que Dieu t’accorde le bien-être - une formule polie utilisée pour demander quelque chose à quelqu’un ou le remercier pour son effort",
+            "id": "Semoga Allah memberimu kesehatan - formula sopan untuk meminta sesuatu atau berterima kasih atas usaha seseorang",
+            "bn": "আল্লাহ তোমাকে সুস্থতা দান করুন - কারও কাছে কিছু চাওয়ার বা তার প্রচেষ্টার জন্য ধন্যবাদ দেওয়ার বিনয়ী বাক্য",
+            "fa": "خدا به تو سلامتی دهد - عبارتی مؤدبانه برای درخواست چیزی از کسی یا تشکر از زحمت او",
+            "ms": "Semoga Allah mengurniakan kamu kesihatan - ungkapan sopan untuk meminta sesuatu atau berterima kasih atas usaha seseorang",
+            "ur": "اللہ تمہیں عافیت دے - کسی سے کچھ مانگنے یا اس کی کوشش پر شکریہ ادا کرنے کا مہذب کلمہ",
+            "sw": "Mungu akupe afya - kauli ya adabu inayotumika kumwomba mtu jambo au kumshukuru kwa juhudi zake",
+            "ru": "Пусть Бог дарует тебе здоровье - вежливая формула, чтобы попросить о чём-то или поблагодарить за старание",
+            "ps": "خدای دې تا ته روغتیا درکړي - یوه مؤدبه جمله چې له چا څخه د یو څه غوښتلو یا د هغه د زحمت د مننې لپاره کارېږي"
           }
         },
         {
@@ -2245,7 +3541,15 @@
             "tr": "Allah izin verirse, inşallah",
             "ar": "إن شاء الله",
             "es": "Si Dios quiere",
-            "fr": "Si Dieu le veut"
+            "fr": "Si Dieu le veut",
+            "id": "Insya Allah, semoga",
+            "bn": "ইনশাআল্লাহ, আশা করি",
+            "fa": "ان‌شاءالله، امیدوارم",
+            "ms": "Insya-Allah, moga-moga",
+            "ur": "ان شاء اللہ، امید ہے",
+            "sw": "Inshallah, tunatumaini",
+            "ru": "Если Бог даст, надеюсь",
+            "ps": "ان شاء الله، هیله ده"
           }
         },
         {
@@ -2257,7 +3561,15 @@
             "tr": "Allah’ın dilediği - hayranlık ifadesi, nazardan korur",
             "ar": "ماشاء الله - تعبير عن الإعجاب، يقي من العين",
             "es": "Lo que Dios ha querido - expresión de admiración, protege del mal de ojo",
-            "fr": "Ce que Dieu a voulu - expression d’admiration, protège du mauvais œil"
+            "fr": "Ce que Dieu a voulu - expression d’admiration, protège du mauvais œil",
+            "id": "Masya Allah - ungkapan kagum, menangkal mata jahat",
+            "bn": "মাশাআল্লাহ - প্রশংসার প্রকাশ, কুদৃষ্টি প্রতিরোধ করে",
+            "fa": "ماشاءالله - ابراز تحسین، چشم‌زخم را دور می‌کند",
+            "ms": "Masya-Allah - ungkapan kagum, menangkal mata jahat",
+            "ur": "ماشاء اللہ - تعریف کا اظہار، نظرِ بد کو دور کرتا ہے",
+            "sw": "Mashallah - kauli ya kustaajabia, huepusha jicho baya",
+            "ru": "Машаллах - выражение восхищения, отводит сглаз",
+            "ps": "ماشاء الله - د ستاینې څرګندونه، بد نظر لرې کوي"
           }
         },
         {
@@ -2269,7 +3581,15 @@
             "tr": "Yeter, bitti - Körfez’de de sık kullanılan çok amaçlı bir kelime",
             "ar": "خلاص (يكفي، انتهى) - كلمة متعددة الاستخدامات شائعة في الخليج أيضًا",
             "es": "Suficiente, se acabó - también una palabra multiuso muy usada en el Golfo",
-            "fr": "Ça suffit, c’est fini - aussi un mot passe-partout très utilisé dans le Golfe"
+            "fr": "Ça suffit, c’est fini - aussi un mot passe-partout très utilisé dans le Golfe",
+            "id": "Cukup, selesai, sudah - juga kata serbaguna yang sering dipakai di Teluk",
+            "bn": "যথেষ্ট, শেষ, ব্যস - উপসাগরীয় অঞ্চলেও একটি প্রায়শই ব্যবহৃত সর্বজনীন শব্দ",
+            "fa": "کافی است، تمام شد، همین - در خلیج هم واژه‌ای همه‌کاره و پرکاربرد است",
+            "ms": "Cukup, selesai, itu sahaja - juga perkataan serba guna yang kerap digunakan di Teluk",
+            "ur": "بس، ختم، ہو گیا - خلیج میں بھی اکثر استعمال ہونے والا ہمہ گیر لفظ",
+            "sw": "Basi, imekwisha, ndio hiyo - pia neno la matumizi yote linalotumika mara kwa mara Ghuba",
+            "ru": "Хватит, всё, готово - также часто используемое универсальное слово в Заливе",
+            "ps": "بس، پای ته ورسید، همدا - په خلیج کې هم یوه ډېره کارېدونکې هر اړخیزه کلمه"
           }
         },
         {
@@ -2281,7 +3601,15 @@
             "tr": "Allah seni sağ/sağlıklı tutsun - sıcak bir hoş geldin veya teşekkür ifadesi",
             "ar": "حياك الله - تحية ترحيب أو شكر حارة",
             "es": "Que Dios te mantenga con vida/salud - un cálido saludo de bienvenida o agradecimiento",
-            "fr": "Que Dieu te garde en vie/en bonne santé - une salutation chaleureuse de bienvenue ou de remerciement"
+            "fr": "Que Dieu te garde en vie/en bonne santé - une salutation chaleureuse de bienvenue ou de remerciement",
+            "id": "Semoga Allah memberimu umur/kesehatan - salam sambutan atau ucapan terima kasih yang hangat",
+            "bn": "আল্লাহ তোমাকে বাঁচিয়ে/ভালো রাখুন - একটি উষ্ণ স্বাগত বা কৃতজ্ঞতার অভিবাদন",
+            "fa": "خدا زنده/سلامت نگه‌ات دارد - سلامی گرم برای خوشامد یا تشکر",
+            "ms": "Semoga Allah memanjangkan umur/menyihatkan kamu - salam sambutan atau ucapan terima kasih yang mesra",
+            "ur": "اللہ تمہیں زندہ/سلامت رکھے - ایک پُرتپاک خوش آمدید یا شکریے کا سلام",
+            "sw": "Mungu akuhifadhi hai/mzima - salamu ya joto ya kukaribisha au kushukuru",
+            "ru": "Пусть Бог хранит тебя живым/здоровым - тёплое приветствие или благодарность",
+            "ps": "خدای دې ژوندی/روغ وساتي - د هرکلي یا مننې تود سلام"
           }
         },
         {
@@ -2293,7 +3621,15 @@
             "tr": "Hoşça kal, kelimenin tam anlamıyla “esenlikle” - klasik veda kalıbı",
             "ar": "مع السلامة - صيغة الوداع الكلاسيكية، حرفيًا «مع السلامة»",
             "es": "Adiós, literalmente «con la paz/seguridad» - la fórmula de despedida clásica",
-            "fr": "Au revoir, littéralement « avec la paix/sécurité » - la formule d’adieu classique"
+            "fr": "Au revoir, littéralement « avec la paix/sécurité » - la formule d’adieu classique",
+            "id": "Selamat jalan, harfiah ‘dengan keselamatan/kedamaian’ - formula perpisahan klasik",
+            "bn": "বিদায়, আক্ষরিক অর্থে ‘নিরাপত্তা/শান্তির সাথে’ - ক্লাসিক বিদায়ের বাক্য",
+            "fa": "خداحافظ، به معنای تحت‌اللفظی «به سلامت/با آرامش» - عبارت کلاسیک خداحافظی",
+            "ms": "Selamat jalan, secara harfiah ‘dengan keselamatan/kedamaian’ - ungkapan perpisahan klasik",
+            "ur": "خدا حافظ، لفظی طور پر ‘سلامتی/امن کے ساتھ’ - روایتی الوداعی کلمہ",
+            "sw": "Kwaheri, kwa maana halisi ‘kwa usalama/amani’ - kauli ya kawaida ya kuaga",
+            "ru": "До свидания, буквально «с безопасностью/миром» - классическая формула прощания",
+            "ps": "خدای پامان، لغوي معنا «په سلامتۍ/سوله سره» - د خدای پامانۍ کلاسيکه جمله"
           }
         },
         {
@@ -2305,7 +3641,15 @@
             "tr": "Vallahi - cümlelerde sürekli dolgu kelimesi olarak kullanılan bir vurgu kelimesi",
             "ar": "والله - كلمة تأكيد تُستخدم باستمرار كحشو في الجمل",
             "es": "Por Dios, lo juro - una palabra de énfasis usada constantemente como muletilla",
-            "fr": "Par Dieu, je le jure - un mot d’insistance constamment utilisé comme mot de remplissage"
+            "fr": "Par Dieu, je le jure - un mot d’insistance constamment utilisé comme mot de remplissage",
+            "id": "Demi Allah, sumpah - kata penekan yang terus-menerus dipakai sebagai kata sisipan dalam kalimat",
+            "bn": "আল্লাহর কসম - জোর দেওয়ার শব্দ, বাক্যে ভরাট শব্দ হিসেবে অবিরত ব্যবহৃত",
+            "fa": "به خدا، قسم می‌خورم - واژهٔ تأکیدی که دائماً به‌عنوان واژهٔ پرکننده در جملات به کار می‌رود",
+            "ms": "Demi Allah, aku bersumpah - kata penegas yang sentiasa digunakan sebagai kata sisipan dalam ayat",
+            "ur": "خدا کی قسم - زور دینے کا لفظ جو جملوں میں مسلسل بھرتی کے طور پر استعمال ہوتا ہے",
+            "sw": "Wallahi, naapa - neno la msisitizo linalotumika mara kwa mara kama kijazo katika sentensi",
+            "ru": "Клянусь Богом - слово-усилитель, постоянно используемое как заполнитель в предложениях",
+            "ps": "په خدای قسم - د ټینګار کلمه چې په جملو کې د ډکوونکي په توګه په دوامداره توګه کارېږي"
           }
         }
       ]
@@ -2331,7 +3675,15 @@
             "tr": "Nasılsın? (erkeğe izzayak, kadına izzayik) - Mısır Arapçasının en tanınmış selamlaşma sözü, Mısır'ın büyük film ve müzik endüstrisi sayesinde tüm Arap dünyasında bilinir",
             "ar": "إزيك؟ (للرجل إزيك، للمرأة إزيك بصيغة المؤنث) - أشهر تحية في العامية المصرية، معروفة في كل العالم العربي بفضل صناعة السينما والموسيقى المصرية الكبيرة",
             "es": "¿Cómo estás? (izzayak a un hombre, izzayik a una mujer) - el saludo más conocido del árabe egipcio, ampliamente reconocido en todo el mundo árabe gracias a la gran industria cinematográfica y musical de Egipto",
-            "fr": "Comment vas-tu ? (izzayak à un homme, izzayik à une femme) - la salutation la plus connue de l'arabe égyptien, largement reconnue dans tout le monde arabe grâce à la grande industrie cinématographique et musicale égyptienne"
+            "fr": "Comment vas-tu ? (izzayak à un homme, izzayik à une femme) - la salutation la plus connue de l'arabe égyptien, largement reconnue dans tout le monde arabe grâce à la grande industrie cinématographique et musicale égyptienne",
+            "id": "Apa kabar? (izzayak untuk laki-laki, izzayik untuk perempuan) - sapaan paling terkenal dalam bahasa Arab Mesir, dikenal luas di dunia Arab berkat industri film dan musik Mesir yang besar",
+            "bn": "কেমন আছেন? (পুরুষকে izzayak, নারীকে izzayik) - মিশরীয় আরবির সবচেয়ে পরিচিত অভিবাদন, মিশরের বিশাল চলচ্চিত্র ও সঙ্গীত শিল্পের কল্যাণে সমগ্র আরব বিশ্বে ব্যাপকভাবে পরিচিত",
+            "fa": "حالت چطور است؟ (izzayak به مرد، izzayik به زن) - شناخته‌شده‌ترین احوال‌پرسی عربی مصری، که به‌لطف صنعت بزرگ فیلم و موسیقی مصر در سراسر جهان عرب مشهور است",
+            "ms": "Apa khabar? (izzayak kepada lelaki, izzayik kepada perempuan) - sapaan paling terkenal dalam bahasa Arab Mesir, terkenal luas di dunia Arab berkat industri filem dan muzik Mesir yang besar",
+            "ur": "آپ کیسے ہیں؟ (مرد کو izzayak، عورت کو izzayik) - مصری عربی کا سب سے مشہور سلام، مصر کی بڑی فلمی اور موسیقی صنعت کی بدولت پورے عرب دنیا میں معروف",
+            "sw": "Habari yako? (izzayak kwa mwanaume, izzayik kwa mwanamke) - salamu maarufu zaidi ya Kiarabu cha Misri, inayojulikana sana kote katika ulimwengu wa Kiarabu kutokana na tasnia kubwa ya filamu na muziki ya Misri",
+            "ru": "Как дела? (izzayak мужчине, izzayik женщине) - самое известное приветствие египетского арабского, широко известное во всём арабском мире благодаря крупной киноиндустрии и музыке Египта",
+            "ps": "څنګه یې؟ (izzayak نر ته، izzayik ښځې ته) - د مصري عربي تر ټولو مشهور سلام، چې د مصر د لوی فلمي او موسیقۍ صنعت له امله په ټوله عربي نړۍ کې پېژندل کېږي"
           }
         },
         {
@@ -2343,7 +3695,15 @@
             "tr": "İyi (eril kwayyes, dişil kwayyesa) - izzayak?'a verilen yaygın cevap",
             "ar": "كويس (مذكر)، كويسة (مؤنث) - الرد المعتاد على إزيك؟",
             "es": "Bien (kwayyes masculino, kwayyesa femenino) - la respuesta habitual a izzayak?",
-            "fr": "Bien (kwayyes masculin, kwayyesa féminin) - la réponse habituelle à izzayak ?"
+            "fr": "Bien (kwayyes masculin, kwayyesa féminin) - la réponse habituelle à izzayak ?",
+            "id": "Baik (kwayyes untuk laki-laki, kwayyesa untuk perempuan) - jawaban umum untuk izzayak?",
+            "bn": "ভালো (kwayyes পুংলিঙ্গ, kwayyesa স্ত্রীলিঙ্গ) - izzayak?-এর সাধারণ উত্তর",
+            "fa": "خوب (kwayyes مذکر، kwayyesa مؤنث) - پاسخ معمول به izzayak؟",
+            "ms": "Baik (kwayyes lelaki, kwayyesa perempuan) - jawapan lazim kepada izzayak?",
+            "ur": "اچھا (kwayyes مذکر، kwayyesa مؤنث) - izzayak? کا عام جواب",
+            "sw": "Nzuri (kwayyes kiume, kwayyesa kike) - jibu la kawaida kwa izzayak?",
+            "ru": "Хорошо (kwayyes мужской род, kwayyesa женский) - обычный ответ на izzayak?",
+            "ps": "ښه (kwayyes نارینه، kwayyesa ښځینه) - د izzayak؟ عام ځواب"
           }
         },
         {
@@ -2355,7 +3715,15 @@
             "tr": "Zararı yok, önemli değil, üzgünüm - küçük aksilikler için son derece yaygın, tipik Mısır tesellisi kelimesi",
             "ar": "معلش (لا بأس، لا يهم، آسف) - كلمة تعزية مصرية شائعة جدًا للمواقف الصغيرة",
             "es": "No pasa nada, no hay problema, lo siento - una palabra de consuelo extremadamente común y típicamente egipcia para pequeños contratiempos",
-            "fr": "Ce n'est rien, pas de problème, désolé - un mot de réconfort extrêmement courant et typiquement égyptien pour les petits contretemps"
+            "fr": "Ce n'est rien, pas de problème, désolé - un mot de réconfort extrêmement courant et typiquement égyptien pour les petits contretemps",
+            "id": "Tidak apa-apa, tidak masalah, maaf - kata penenang yang sangat umum dan khas Mesir untuk kesalahan kecil",
+            "bn": "কিছু না, সমস্যা নেই, দুঃখিত - ছোটখাটো ভুলের জন্য অত্যন্ত প্রচলিত, বিশেষভাবে মিশরীয় সান্ত্বনার শব্দ",
+            "fa": "عیب ندارد، مشکلی نیست، ببخشید - واژهٔ بسیار رایج و نمونهٔ مصری برای دلداری در اشتباهات کوچک",
+            "ms": "Tidak mengapa, tidak masalah, maaf - perkataan penenang yang amat lazim dan khas Mesir untuk kesilapan kecil",
+            "ur": "کوئی بات نہیں، کوئی مسئلہ نہیں، معاف کیجیے - چھوٹی غلطیوں پر تسلی کا نہایت عام، خاص مصری لفظ",
+            "sw": "Si kitu, hakuna shida, samahani - neno la kutuliza lililoenea sana na la Kimisri kwa makosa madogo",
+            "ru": "Ничего страшного, не проблема, извини - крайне распространённое, типично египетское слово утешения при мелких неприятностях",
+            "ps": "پروا نلري، ستونزه نشته، بخښنه - د کوچنیو تېروتنو لپاره یوه ډېره عامه، ځانګړې مصري د ډاډ ورکولو کلمه"
           }
         },
         {
@@ -2367,7 +3735,15 @@
             "tr": "Sorun yok (kelimenin tam anlamıyla “problem yok”)",
             "ar": "مفيش مشكلة (لا توجد مشكلة)",
             "es": "No hay problema (literalmente «no hay ningún problema»)",
-            "fr": "Pas de problème (littéralement « il n'y a pas de problème »)"
+            "fr": "Pas de problème (littéralement « il n'y a pas de problème »)",
+            "id": "Tidak masalah (harfiah ‘tidak ada masalah’)",
+            "bn": "কোনো সমস্যা নেই (আক্ষরিক অর্থে ‘কোনো সমস্যা নেই’)",
+            "fa": "مشکلی نیست (به معنای تحت‌اللفظی «مشکلی وجود ندارد»)",
+            "ms": "Tiada masalah (secara harfiah ‘tidak ada masalah’)",
+            "ur": "کوئی مسئلہ نہیں (لفظی طور پر ‘کوئی مسئلہ نہیں ہے’)",
+            "sw": "Hakuna shida (kwa maana halisi ‘hakuna tatizo’)",
+            "ru": "Нет проблем (буквально «нет никакой проблемы»)",
+            "ps": "کومه ستونزه نشته (لغوي معنا «مشکل نشته»)"
           }
         },
         {
@@ -2379,7 +3755,15 @@
             "tr": "Ne haber? (eh = “ne”, çok tipik bir Mısır soru kelimesi)",
             "ar": "إيه أخبارك؟ (ما الجديد؟ - إيه كلمة استفهام مصرية مميزة)",
             "es": "¿Qué hay de nuevo? (eh = «qué», una palabra interrogativa muy típicamente egipcia)",
-            "fr": "Quoi de neuf ? (eh = « quoi », un mot interrogatif très typiquement égyptien)"
+            "fr": "Quoi de neuf ? (eh = « quoi », un mot interrogatif très typiquement égyptien)",
+            "id": "Ada kabar apa? (eh = ‘apa’, kata tanya yang sangat khas Mesir)",
+            "bn": "নতুন কী খবর? (eh = ‘কী’, খুব বৈশিষ্ট্যপূর্ণ মিশরীয় প্রশ্নবোধক শব্দ)",
+            "fa": "چه خبر؟ (eh = «چه»، واژهٔ پرسشی بسیار نمونهٔ مصری)",
+            "ms": "Apa cerita? (eh = ‘apa’, kata tanya yang sangat khas Mesir)",
+            "ur": "کیا حال چال؟ (eh = ‘کیا’، نہایت خاص مصری سوالیہ لفظ)",
+            "sw": "Kuna habari gani? (eh = ‘nini’, neno la kuuliza lenye sifa ya Kimisri sana)",
+            "ru": "Что нового? (eh = «что», очень типичное египетское вопросительное слово)",
+            "ps": "څه خبر دي؟ (eh = «څه»، یوه ډېره ځانګړې مصري پوښتنیزه کلمه)"
           }
         },
         {
@@ -2391,7 +3775,15 @@
             "tr": "Şimdi",
             "ar": "دلوقتي (الآن)",
             "es": "Ahora",
-            "fr": "Maintenant"
+            "fr": "Maintenant",
+            "id": "Sekarang",
+            "bn": "এখন",
+            "fa": "الان",
+            "ms": "Sekarang",
+            "ur": "اب",
+            "sw": "Sasa",
+            "ru": "Сейчас",
+            "ps": "اوس"
           }
         },
         {
@@ -2403,7 +3795,15 @@
             "tr": "Nasıl? (izzayak'ın da bir parçası - “nasılsın” kelimenin tam anlamıyla “halin nasıl”)",
             "ar": "إزاي؟ (كيف؟ - وهي أيضًا جزء من إزيك، أي حرفيًا «كيف حالك»)",
             "es": "¿Cómo? (también parte de izzayak - «cómo estás» es literalmente «cómo [está] tu estado»)",
-            "fr": "Comment ? (fait aussi partie de izzayak - « comment vas-tu » signifie littéralement « comment [est] ton état »)"
+            "fr": "Comment ? (fait aussi partie de izzayak - « comment vas-tu » signifie littéralement « comment [est] ton état »)",
+            "id": "Bagaimana? (juga bagian dari izzayak - ‘apa kabar’ harfiah ‘bagaimana keadaanmu’)",
+            "bn": "কীভাবে? (izzayak-এরও অংশ - ‘কেমন আছ’ আক্ষরিক অর্থে ‘তোমার অবস্থা কেমন’)",
+            "fa": "چطور؟ (بخشی از izzayak هم هست - «حالت چطور است» به‌تحت‌اللفظ «حالِ تو چگونه است»)",
+            "ms": "Bagaimana? (juga sebahagian daripada izzayak - ‘apa khabar’ secara harfiah ‘bagaimana keadaan kamu’)",
+            "ur": "کیسے؟ (izzayak کا بھی حصہ - ‘کیسے ہو’ لفظی طور پر ‘تمہاری حالت کیسی ہے’)",
+            "sw": "Vipi? (pia sehemu ya izzayak - ‘habari yako’ kwa maana halisi ‘hali yako ikoje’)",
+            "ru": "Как? (также часть izzayak - «как дела» буквально «каково твоё состояние»)",
+            "ps": "څنګه؟ (د izzayak برخه هم ده - «څنګه یې» لغوي معنا «ستا حال څنګه دی»)"
           }
         },
         {
@@ -2415,7 +3815,15 @@
             "tr": "Yani, demek istiyorum - günlük Mısır Arapçasında son derece sık kullanılan bir dolgu kelimesi",
             "ar": "يعني (أي، بمعنى) - كلمة حشو تُستخدم بكثرة في العامية المصرية اليومية",
             "es": "Es decir, o sea - una muletilla usada con muchísima frecuencia en el árabe egipcio cotidiano",
-            "fr": "C'est-à-dire, en quelque sorte - un mot de remplissage utilisé très fréquemment dans l'arabe égyptien quotidien"
+            "fr": "C'est-à-dire, en quelque sorte - un mot de remplissage utilisé très fréquemment dans l'arabe égyptien quotidien",
+            "id": "Artinya, semacamnya - kata sisipan yang sangat sering dipakai dalam bahasa Arab Mesir sehari-hari",
+            "bn": "অর্থাৎ, একরকম - দৈনন্দিন মিশরীয় আরবিতে অত্যন্ত প্রায়ই ব্যবহৃত ভরাট শব্দ",
+            "fa": "یعنی، یه‌جورایی - واژهٔ پرکننده‌ای که در عربی مصری روزمره بسیار زیاد به کار می‌رود",
+            "ms": "Maksudnya, macam - kata sisipan yang amat kerap digunakan dalam bahasa Arab Mesir harian",
+            "ur": "یعنی، ایک طرح سے - روزمرہ مصری عربی میں بہت زیادہ استعمال ہونے والا بھرتی کا لفظ",
+            "sw": "Yaani, kwa namna fulani - neno la kijazo linalotumika mara nyingi sana katika Kiarabu cha Misri cha kila siku",
+            "ru": "То есть, типа - слово-заполнитель, крайне часто используемое в повседневном египетском арабском",
+            "ps": "یعنې، یو ډول - یوه ډکوونکې کلمه چې په ورځني مصري عربي کې ډېره کارېږي"
           }
         }
       ]
@@ -2441,7 +3849,15 @@
             "tr": "Bir (1)",
             "ar": "واحد (1)",
             "es": "Uno (1)",
-            "fr": "Un (1)"
+            "fr": "Un (1)",
+            "id": "Satu (1)",
+            "bn": "এক (1)",
+            "fa": "یک (1)",
+            "ms": "Satu (1)",
+            "ur": "ایک (1)",
+            "sw": "Moja (1)",
+            "ru": "Один (1)",
+            "ps": "یو (1)"
           }
         },
         {
@@ -2453,7 +3869,15 @@
             "tr": "İki (2)",
             "ar": "اتنين (2)",
             "es": "Dos (2)",
-            "fr": "Deux (2)"
+            "fr": "Deux (2)",
+            "id": "Dua (2)",
+            "bn": "দুই (2)",
+            "fa": "دو (2)",
+            "ms": "Dua (2)",
+            "ur": "دو (2)",
+            "sw": "Mbili (2)",
+            "ru": "Два (2)",
+            "ps": "دوه (2)"
           }
         },
         {
@@ -2465,7 +3889,15 @@
             "tr": "Üç (3)",
             "ar": "تلاتة (3)",
             "es": "Tres (3)",
-            "fr": "Trois (3)"
+            "fr": "Trois (3)",
+            "id": "Tiga (3)",
+            "bn": "তিন (3)",
+            "fa": "سه (3)",
+            "ms": "Tiga (3)",
+            "ur": "تین (3)",
+            "sw": "Tatu (3)",
+            "ru": "Три (3)",
+            "ps": "درې (3)"
           }
         },
         {
@@ -2477,7 +3909,15 @@
             "tr": "Dört (4)",
             "ar": "أربعة (4)",
             "es": "Cuatro (4)",
-            "fr": "Quatre (4)"
+            "fr": "Quatre (4)",
+            "id": "Empat (4)",
+            "bn": "চার (4)",
+            "fa": "چهار (4)",
+            "ms": "Empat (4)",
+            "ur": "چار (4)",
+            "sw": "Nne (4)",
+            "ru": "Четыре (4)",
+            "ps": "څلور (4)"
           }
         },
         {
@@ -2489,7 +3929,15 @@
             "tr": "Beş (5)",
             "ar": "خمسة (5)",
             "es": "Cinco (5)",
-            "fr": "Cinq (5)"
+            "fr": "Cinq (5)",
+            "id": "Lima (5)",
+            "bn": "পাঁচ (5)",
+            "fa": "پنج (5)",
+            "ms": "Lima (5)",
+            "ur": "پانچ (5)",
+            "sw": "Tano (5)",
+            "ru": "Пять (5)",
+            "ps": "پنځه (5)"
           }
         },
         {
@@ -2501,7 +3949,15 @@
             "tr": "On (10)",
             "ar": "عشرة (10)",
             "es": "Diez (10)",
-            "fr": "Dix (10)"
+            "fr": "Dix (10)",
+            "id": "Sepuluh (10)",
+            "bn": "দশ (10)",
+            "fa": "ده (10)",
+            "ms": "Sepuluh (10)",
+            "ur": "دس (10)",
+            "sw": "Kumi (10)",
+            "ru": "Десять (10)",
+            "ps": "لس (10)"
           }
         },
         {
@@ -2513,7 +3969,15 @@
             "tr": "Bugün",
             "ar": "النهارده (اليوم)",
             "es": "Hoy",
-            "fr": "Aujourd’hui"
+            "fr": "Aujourd’hui",
+            "id": "Hari ini",
+            "bn": "আজ",
+            "fa": "امروز",
+            "ms": "Hari ini",
+            "ur": "آج",
+            "sw": "Leo",
+            "ru": "Сегодня",
+            "ps": "نن"
           }
         },
         {
@@ -2525,7 +3989,15 @@
             "tr": "Yarın",
             "ar": "بكرة (غدًا)",
             "es": "Mañana (el día siguiente)",
-            "fr": "Demain (le jour suivant)"
+            "fr": "Demain (le jour suivant)",
+            "id": "Besok (hari berikutnya)",
+            "bn": "আগামীকাল (পরের দিন)",
+            "fa": "فردا (روز بعد)",
+            "ms": "Esok (hari berikutnya)",
+            "ur": "کل (اگلا دن)",
+            "sw": "Kesho (siku inayofuata)",
+            "ru": "Завтра (следующий день)",
+            "ps": "سبا (بله ورځ)"
           }
         }
       ]
@@ -2551,7 +4023,15 @@
             "tr": "Nerede?",
             "ar": "فين؟ (أين؟)",
             "es": "¿Dónde?",
-            "fr": "Où ?"
+            "fr": "Où ?",
+            "id": "Di mana?",
+            "bn": "কোথায়?",
+            "fa": "کجا؟",
+            "ms": "Di mana?",
+            "ur": "کہاں؟",
+            "sw": "Wapi?",
+            "ru": "Где?",
+            "ps": "چېرته؟"
           }
         },
         {
@@ -2563,7 +4043,15 @@
             "tr": "Ne zaman?",
             "ar": "امتى؟ (متى؟)",
             "es": "¿Cuándo?",
-            "fr": "Quand ?"
+            "fr": "Quand ?",
+            "id": "Kapan?",
+            "bn": "কখন?",
+            "fa": "کِی؟",
+            "ms": "Bila?",
+            "ur": "کب؟",
+            "sw": "Lini?",
+            "ru": "Когда?",
+            "ps": "کله؟"
           }
         },
         {
@@ -2575,7 +4063,15 @@
             "tr": "Neden?",
             "ar": "ليه؟ (لماذا؟)",
             "es": "¿Por qué?",
-            "fr": "Pourquoi ?"
+            "fr": "Pourquoi ?",
+            "id": "Mengapa?",
+            "bn": "কেন?",
+            "fa": "چرا؟",
+            "ms": "Mengapa?",
+            "ur": "کیوں؟",
+            "sw": "Kwa nini?",
+            "ru": "Почему?",
+            "ps": "ولې؟"
           }
         },
         {
@@ -2587,7 +4083,15 @@
             "tr": "Kim?",
             "ar": "مين؟ (من؟)",
             "es": "¿Quién?",
-            "fr": "Qui ?"
+            "fr": "Qui ?",
+            "id": "Siapa?",
+            "bn": "কে?",
+            "fa": "چه کسی؟",
+            "ms": "Siapa?",
+            "ur": "کون؟",
+            "sw": "Nani?",
+            "ru": "Кто?",
+            "ps": "څوک؟"
           }
         },
         {
@@ -2599,7 +4103,15 @@
             "tr": "Bu ne kadar? - Mısır çarşısında alışverişin klasik ifadesi",
             "ar": "بكام؟ (كم ثمن هذا؟) - العبارة الكلاسيكية للتسوق في السوق المصري",
             "es": "¿Cuánto cuesta esto? - la frase clásica para comprar en un mercado egipcio",
-            "fr": "Combien ça coûte ? - la phrase classique pour faire ses courses au marché égyptien"
+            "fr": "Combien ça coûte ? - la phrase classique pour faire ses courses au marché égyptien",
+            "id": "Berapa harganya? - frasa klasik saat berbelanja di pasar Mesir",
+            "bn": "এটার দাম কত? - মিশরীয় বাজারে কেনাকাটার ক্লাসিক বাক্য",
+            "fa": "این چند است؟ - عبارت کلاسیک هنگام خرید در بازار مصر",
+            "ms": "Berapa harganya? - frasa klasik semasa membeli-belah di pasar Mesir",
+            "ur": "یہ کتنے کا ہے؟ - مصری بازار میں خریداری کا روایتی جملہ",
+            "sw": "Hii ni bei gani? - kifungu cha kawaida cha kununua sokoni Misri",
+            "ru": "Сколько это стоит? - классическая фраза для покупок на египетском рынке",
+            "ps": "دا څو دی؟ - د مصري بازار کې د پېرودلو کلاسيکه جمله"
           }
         },
         {
@@ -2611,7 +4123,15 @@
             "tr": "Var, … var mı?",
             "ar": "فيه (يوجد، هل يوجد …؟)",
             "es": "Hay, ¿hay …?",
-            "fr": "Il y a, y a-t-il … ?"
+            "fr": "Il y a, y a-t-il … ?",
+            "id": "Ada, apakah ada …?",
+            "bn": "আছে, আছে কি …?",
+            "fa": "هست، آیا هست …؟",
+            "ms": "Ada, adakah …?",
+            "ur": "ہے، کیا ہے …؟",
+            "sw": "Kuna, je, kuna …?",
+            "ru": "Есть, есть ли …?",
+            "ps": "شته، آیا شته …؟"
           }
         },
         {
@@ -2623,7 +4143,15 @@
             "tr": "Burada",
             "ar": "هنا",
             "es": "Aquí",
-            "fr": "Ici"
+            "fr": "Ici",
+            "id": "Di sini",
+            "bn": "এখানে",
+            "fa": "اینجا",
+            "ms": "Di sini",
+            "ur": "یہاں",
+            "sw": "Hapa",
+            "ru": "Здесь",
+            "ps": "دلته"
           }
         },
         {
@@ -2635,7 +4163,15 @@
             "tr": "Orada",
             "ar": "هناك",
             "es": "Allí, allá",
-            "fr": "Là-bas"
+            "fr": "Là-bas",
+            "id": "Di sana, di seberang sana",
+            "bn": "সেখানে, ওখানে",
+            "fa": "آنجا، آن‌طرف",
+            "ms": "Di sana, di sebelah sana",
+            "ur": "وہاں، اُس طرف",
+            "sw": "Pale, kule",
+            "ru": "Там, вон там",
+            "ps": "هلته، هغه خوا"
           }
         }
       ]
@@ -2661,7 +4197,15 @@
             "tr": "Baba",
             "ar": "بابا (الأب)",
             "es": "Papá, padre",
-            "fr": "Papa, père"
+            "fr": "Papa, père",
+            "id": "Papa, ayah",
+            "bn": "বাবা, পিতা",
+            "fa": "بابا، پدر",
+            "ms": "Ayah, bapa",
+            "ur": "ابّا، والد",
+            "sw": "Baba",
+            "ru": "Папа, отец",
+            "ps": "پلار، بابا"
           }
         },
         {
@@ -2673,7 +4217,15 @@
             "tr": "Anne",
             "ar": "ماما (الأم)",
             "es": "Mamá, madre",
-            "fr": "Maman, mère"
+            "fr": "Maman, mère",
+            "id": "Mama, ibu",
+            "bn": "মা, জননী",
+            "fa": "مامان، مادر",
+            "ms": "Emak, ibu",
+            "ur": "امّاں، والدہ",
+            "sw": "Mama",
+            "ru": "Мама, мать",
+            "ps": "مور، مامي"
           }
         },
         {
@@ -2685,7 +4237,15 @@
             "tr": "Kardeşim",
             "ar": "اخويا (أخي)",
             "es": "Mi hermano",
-            "fr": "Mon frère"
+            "fr": "Mon frère",
+            "id": "Saudara laki-lakiku",
+            "bn": "আমার ভাই",
+            "fa": "برادرم",
+            "ms": "Abang/adik lelaki saya",
+            "ur": "میرا بھائی",
+            "sw": "Kaka/ndugu yangu wa kiume",
+            "ru": "Мой брат",
+            "ps": "زما ورور"
           }
         },
         {
@@ -2697,7 +4257,15 @@
             "tr": "Kız kardeşim",
             "ar": "اختي",
             "es": "Mi hermana",
-            "fr": "Ma sœur"
+            "fr": "Ma sœur",
+            "id": "Saudara perempuanku",
+            "bn": "আমার বোন",
+            "fa": "خواهرم",
+            "ms": "Kakak/adik perempuan saya",
+            "ur": "میری بہن",
+            "sw": "Dada yangu",
+            "ru": "Моя сестра",
+            "ps": "زما خور"
           }
         },
         {
@@ -2709,7 +4277,15 @@
             "tr": "Oğlum",
             "ar": "ابني",
             "es": "Mi hijo",
-            "fr": "Mon fils"
+            "fr": "Mon fils",
+            "id": "Anak laki-lakiku",
+            "bn": "আমার ছেলে",
+            "fa": "پسرم",
+            "ms": "Anak lelaki saya",
+            "ur": "میرا بیٹا",
+            "sw": "Mwanangu wa kiume",
+            "ru": "Мой сын",
+            "ps": "زما زوی"
           }
         },
         {
@@ -2721,7 +4297,15 @@
             "tr": "Kızım",
             "ar": "بنتي",
             "es": "Mi hija",
-            "fr": "Ma fille"
+            "fr": "Ma fille",
+            "id": "Anak perempuanku",
+            "bn": "আমার মেয়ে",
+            "fa": "دخترم",
+            "ms": "Anak perempuan saya",
+            "ur": "میری بیٹی",
+            "sw": "Binti yangu",
+            "ru": "Моя дочь",
+            "ps": "زما لور"
           }
         },
         {
@@ -2733,7 +4317,15 @@
             "tr": "Dedem",
             "ar": "جدو",
             "es": "Mi abuelo",
-            "fr": "Mon grand-père"
+            "fr": "Mon grand-père",
+            "id": "Kakekku",
+            "bn": "আমার দাদা/নানা",
+            "fa": "پدربزرگم",
+            "ms": "Datuk saya",
+            "ur": "میرا دادا/نانا",
+            "sw": "Babu yangu",
+            "ru": "Мой дедушка",
+            "ps": "زما نیکه"
           }
         },
         {
@@ -2745,7 +4337,15 @@
             "tr": "Büyükannem - Mısır Arapçasında en sıcak ve en çok kullanılan aile kelimelerinden biri",
             "ar": "تيتا (جدتي) - من أكثر كلمات العائلة دفئًا واستخدامًا في العامية المصرية",
             "es": "Mi abuela - una de las palabras familiares más cálidas y usadas en árabe egipcio",
-            "fr": "Ma grand-mère - l’un des mots de famille les plus chaleureux et les plus utilisés en arabe égyptien"
+            "fr": "Ma grand-mère - l’un des mots de famille les plus chaleureux et les plus utilisés en arabe égyptien",
+            "id": "Nenekku - salah satu kata keluarga paling hangat dan sering dipakai dalam bahasa Arab Mesir",
+            "bn": "আমার দাদি/নানি - মিশরীয় আরবিতে সবচেয়ে স্নেহময় ও বেশি ব্যবহৃত পারিবারিক শব্দগুলোর একটি",
+            "fa": "مادربزرگم - یکی از صمیمی‌ترین و پرکاربردترین واژه‌های خانوادگی در عربی مصری",
+            "ms": "Nenek saya - salah satu perkataan keluarga paling mesra dan kerap digunakan dalam bahasa Arab Mesir",
+            "ur": "میری دادی/نانی - مصری عربی کے سب سے پیار بھرے اور زیادہ استعمال ہونے والے خاندانی الفاظ میں سے",
+            "sw": "Bibi yangu - mojawapo ya maneno ya familia yenye joto na yanayotumika zaidi katika Kiarabu cha Misri",
+            "ru": "Моя бабушка - одно из самых тёплых и употребляемых семейных слов в египетском арабском",
+            "ps": "زما انا - په مصري عربي کې د تر ټولو تودو او ډېرو کارېدونکو کورنیو کلمو څخه یوه"
           }
         }
       ]
@@ -2771,7 +4371,15 @@
             "tr": "Ekmek - kelimenin tam anlamıyla “hayat”; Fasih Arapçadaki khubz’un yerini tamamen alan, Mısır Arapçasına özgü bir kelime",
             "ar": "عيش (خبز) - حرفيًا «حياة»؛ كلمة فريدة في العامية المصرية تحل محل خبز الفصحى تمامًا",
             "es": "Pan - literalmente «vida»; único del árabe egipcio, donde esta palabra sustituye por completo al khubz del árabe estándar",
-            "fr": "Pain - littéralement « vie » ; unique à l’arabe égyptien, où ce mot remplace entièrement le khubz de l’arabe standard"
+            "fr": "Pain - littéralement « vie » ; unique à l’arabe égyptien, où ce mot remplace entièrement le khubz de l’arabe standard",
+            "id": "Roti - harfiah ‘kehidupan’; unik dalam bahasa Arab Mesir, di mana kata ini sepenuhnya menggantikan khubz baku",
+            "bn": "রুটি - আক্ষরিক অর্থে ‘জীবন’; মিশরীয় আরবিতে অনন্য, যেখানে এই শব্দ প্রমিত khubz-কে সম্পূর্ণ প্রতিস্থাপন করে",
+            "fa": "نان - به معنای تحت‌اللفظی «زندگی»؛ ویژهٔ عربی مصری، جایی که این واژه به‌طور کامل جایگزین khubzِ فصیح می‌شود",
+            "ms": "Roti - secara harfiah ‘kehidupan’; unik dalam bahasa Arab Mesir, di mana perkataan ini menggantikan sepenuhnya khubz baku",
+            "ur": "روٹی - لفظی طور پر ‘زندگی’؛ مصری عربی میں منفرد، جہاں یہ لفظ فصیح khubz کی مکمل جگہ لے لیتا ہے",
+            "sw": "Mkate - kwa maana halisi ‘uhai’; wa kipekee katika Kiarabu cha Misri, ambako neno hili linachukua kabisa nafasi ya khubz sanifu",
+            "ru": "Хлеб - буквально «жизнь»; уникально для египетского арабского, где это слово полностью заменяет литературное khubz",
+            "ps": "ډوډۍ - لغوي معنا «ژوند»؛ په مصري عربي کې ځانګړی، چیرته چې دا کلمه په بشپړه توګه د فصیح khubz ځای نیسي"
           }
         },
         {
@@ -2783,7 +4391,15 @@
             "tr": "Su",
             "ar": "مية (ماء)",
             "es": "Agua",
-            "fr": "Eau"
+            "fr": "Eau",
+            "id": "Air",
+            "bn": "পানি",
+            "fa": "آب",
+            "ms": "Air",
+            "ur": "پانی",
+            "sw": "Maji",
+            "ru": "Вода",
+            "ps": "اوبه"
           }
         },
         {
@@ -2795,7 +4411,15 @@
             "tr": "Kahve - Mısır Arapçasında q sesi (Fasih Arapçadaki qahwa gibi) genellikle gırtlaksı bir sese dönüşür, burada tamamen düşer: ahwa",
             "ar": "قهوة تُنطق «أهوة» - يتحول صوت القاف في العامية المصرية غالبًا إلى همزة، وهنا يُحذف تمامًا",
             "es": "Café - en árabe egipcio el sonido q (como en el estándar qahwa) suele convertirse en una oclusión glotal, aquí omitida por completo: ahwa",
-            "fr": "Café - en arabe égyptien, le son q (comme dans qahwa en arabe standard) devient souvent un coup de glotte, ici totalement omis : ahwa"
+            "fr": "Café - en arabe égyptien, le son q (comme dans qahwa en arabe standard) devient souvent un coup de glotte, ici totalement omis : ahwa",
+            "id": "Kopi - dalam bahasa Arab Mesir bunyi q (seperti pada qahwa baku) sering menjadi hentian glotal, di sini dihilangkan sama sekali: ahwa",
+            "bn": "কফি - মিশরীয় আরবিতে q ধ্বনি (প্রমিত qahwa-র মতো) প্রায়ই কণ্ঠনালীয় স্পর্শে পরিণত হয়, এখানে পুরোপুরি বাদ: ahwa",
+            "fa": "قهوه - در عربی مصری صدای q (مانند qahwaِ فصیح) اغلب به یک توقف چاکنایی تبدیل می‌شود، اینجا کاملاً حذف شده: ahwa",
+            "ms": "Kopi - dalam bahasa Arab Mesir bunyi q (seperti qahwa baku) sering menjadi hentian glotis, di sini digugurkan terus: ahwa",
+            "ur": "کافی/قہوہ - مصری عربی میں q کی آواز (فصیح qahwa کی طرح) اکثر ایک حلقی وقفے میں بدل جاتی ہے، یہاں مکمل طور پر گر جاتی ہے: ahwa",
+            "sw": "Kahawa - katika Kiarabu cha Misri sauti ya q (kama qahwa sanifu) mara nyingi huwa kituo cha koo, hapa imedondoshwa kabisa: ahwa",
+            "ru": "Кофе - в египетском арабском звук q (как в qahwa) часто становится гортанной смычкой, здесь опущен полностью: ahwa",
+            "ps": "قهوه - په مصري عربي کې د q غږ (لکه فصیح qahwa) ډېری وخت د حلقي درېدو په بڼه بدلېږي، دلته په بشپړه توګه غورځول شوی: ahwa"
           }
         },
         {
@@ -2807,7 +4431,15 @@
             "tr": "Çarşı, pazar",
             "ar": "سوق",
             "es": "Mercado, zoco",
-            "fr": "Marché, souk"
+            "fr": "Marché, souk",
+            "id": "Pasar, bazar",
+            "bn": "বাজার",
+            "fa": "بازار",
+            "ms": "Pasar, bazar",
+            "ur": "بازار",
+            "sw": "Soko",
+            "ru": "Рынок, базар",
+            "ps": "بازار"
           }
         },
         {
@@ -2819,7 +4451,15 @@
             "tr": "Pahalı",
             "ar": "غالي",
             "es": "Caro",
-            "fr": "Cher"
+            "fr": "Cher",
+            "id": "Mahal",
+            "bn": "দামি",
+            "fa": "گران",
+            "ms": "Mahal",
+            "ur": "مہنگا",
+            "sw": "Ghali",
+            "ru": "Дорогой",
+            "ps": "ګران"
           }
         },
         {
@@ -2831,7 +4471,15 @@
             "tr": "Ucuz",
             "ar": "رخيص",
             "es": "Barato",
-            "fr": "Bon marché"
+            "fr": "Bon marché",
+            "id": "Murah",
+            "bn": "সস্তা",
+            "fa": "ارزان",
+            "ms": "Murah",
+            "ur": "سستا",
+            "sw": "Rahisi",
+            "ru": "Дешёвый",
+            "ps": "ارزان"
           }
         },
         {
@@ -2843,7 +4491,15 @@
             "tr": "İstiyorum (eril biçim; dişil: 3ayza) - Mısır Arapçasına özgü bir “istemek” biçimi",
             "ar": "عايز (أريد - للمذكر، والمؤنث عايزة) - صيغة مميزة للعامية المصرية لفعل «أراد»",
             "es": "Quiero, me gustaría (forma masculina; femenina: 3ayza) - una forma de «querer» típica del árabe egipcio",
-            "fr": "Je veux, je voudrais (forme masculine ; féminin : 3ayza) - une forme de « vouloir » typique de l’arabe égyptien"
+            "fr": "Je veux, je voudrais (forme masculine ; féminin : 3ayza) - une forme de « vouloir » typique de l’arabe égyptien",
+            "id": "Saya mau, saya ingin (bentuk laki-laki; perempuan: 3ayza) - bentuk ‘ingin’ yang khas bahasa Arab Mesir",
+            "bn": "আমি চাই (পুংলিঙ্গ রূপ; স্ত্রীলিঙ্গ: 3ayza) - মিশরীয় আরবির বৈশিষ্ট্যপূর্ণ ‘চাওয়া’-র রূপ",
+            "fa": "می‌خواهم (شکل مذکر؛ مؤنث: 3ayza) - شکلی از «خواستن» که نمونهٔ عربی مصری است",
+            "ms": "Saya mahu, saya ingin (bentuk lelaki; perempuan: 3ayza) - bentuk ‘mahu’ yang khas bahasa Arab Mesir",
+            "ur": "میں چاہتا ہوں (مذکر صورت؛ مؤنث: 3ayza) - مصری عربی کی خاص ‘چاہنا’ کی صورت",
+            "sw": "Nataka (umbo la kiume; kike: 3ayza) - umbo la ‘kutaka’ lenye sifa ya Kiarabu cha Misri",
+            "ru": "Я хочу, мне бы хотелось (мужская форма; женская: 3ayza) - форма «хотеть», типичная для египетского арабского",
+            "ps": "زه غواړم (نارینه بڼه؛ ښځینه: 3ayza) - د «غوښتل» یوه بڼه چې د مصري عربي ځانګړې ده"
           }
         },
         {
@@ -2855,7 +4511,15 @@
             "tr": "Bakla yemeği - klasik Mısır kahvaltısı, genellikle zeytinyağı, limon ve ekmekle yenir",
             "ar": "فول - الفطور المصري الكلاسيكي، يُؤكل غالبًا بالزيت والليمون والعيش",
             "es": "Guiso de habas - el desayuno egipcio clásico, a menudo comido con aceite, limón y pan",
-            "fr": "Ragoût de fèves - le petit-déjeuner égyptien classique, souvent mangé avec de l’huile, du citron et du pain"
+            "fr": "Ragoût de fèves - le petit-déjeuner égyptien classique, souvent mangé avec de l’huile, du citron et du pain",
+            "id": "Semur kacang fava (ful) - sarapan klasik Mesir, sering disantap dengan minyak, lemon, dan roti",
+            "bn": "ফাভা শিমের স্টু - ক্লাসিক মিশরীয় নাশতা, প্রায়ই তেল, লেবু ও রুটি দিয়ে খাওয়া হয়",
+            "fa": "خوراک باقلا (فول) - صبحانهٔ کلاسیک مصری، اغلب با روغن، لیمو و نان خورده می‌شود",
+            "ms": "Rebusan kacang fava (ful) - sarapan klasik Mesir, sering dimakan dengan minyak, lemon, dan roti",
+            "ur": "پھلیوں (فول) کا سالن - مصر کا روایتی ناشتہ، اکثر تیل، لیموں اور روٹی کے ساتھ کھایا جاتا ہے",
+            "sw": "Mchuzi wa maharagwe ya ful - kifungua kinywa cha kawaida cha Misri, mara nyingi huliwa na mafuta, limau, na mkate",
+            "ru": "Рагу из бобов (фул) - классический египетский завтрак, часто едят с маслом, лимоном и хлебом",
+            "ps": "د باقلا (فول) خوراک - د مصر کلاسيک سهارنی، ډېری وخت د غوړیو، لیمو او ډوډۍ سره خوړل کېږي"
           }
         }
       ]
@@ -2881,7 +4545,15 @@
             "tr": "Evet - Mısır’ın en tanınmış “evet” biçimi, film ve müzik yoluyla tüm Arap dünyasına yayılmıştır",
             "ar": "أيوة (نعم) - أشهر صيغة مصرية لـ«نعم»، انتشرت في كل العالم العربي عبر السينما والموسيقى",
             "es": "Sí - la forma egipcia de «sí» más conocida, difundida por todo el mundo árabe a través del cine y la música",
-            "fr": "Oui - la forme égyptienne de « oui » la plus connue, répandue dans tout le monde arabe grâce au cinéma et à la musique"
+            "fr": "Oui - la forme égyptienne de « oui » la plus connue, répandue dans tout le monde arabe grâce au cinéma et à la musique",
+            "id": "Ya - bentuk ‘ya’ Mesir yang paling terkenal, tersebar ke seluruh dunia Arab lewat film dan musik",
+            "bn": "হ্যাঁ - ‘হ্যাঁ’-এর সবচেয়ে পরিচিত মিশরীয় রূপ, চলচ্চিত্র ও সঙ্গীতের মাধ্যমে সমগ্র আরব বিশ্বে ছড়িয়েছে",
+            "fa": "بله - مشهورترین شکل مصری «بله»، که از طریق فیلم و موسیقی در سراسر جهان عرب گسترش یافته",
+            "ms": "Ya - bentuk ‘ya’ Mesir yang paling terkenal, tersebar ke seluruh dunia Arab melalui filem dan muzik",
+            "ur": "ہاں - ‘ہاں’ کی سب سے مشہور مصری صورت، فلم اور موسیقی کے ذریعے پورے عرب دنیا میں پھیلی",
+            "sw": "Ndiyo - namna maarufu zaidi ya Kimisri ya ‘ndiyo’, iliyoenea kote katika ulimwengu wa Kiarabu kupitia filamu na muziki",
+            "ru": "Да - самая известная египетская форма «да», распространившаяся по всему арабскому миру через кино и музыку",
+            "ps": "هو - د «هو» تر ټولو مشهوره مصري بڼه، چې د فلم او موسیقۍ له لارې په ټوله عربي نړۍ کې خپره شوې"
           }
         },
         {
@@ -2893,7 +4565,15 @@
             "tr": "Hayır",
             "ar": "لأ",
             "es": "No",
-            "fr": "Non"
+            "fr": "Non",
+            "id": "Tidak",
+            "bn": "না",
+            "fa": "نه",
+            "ms": "Tidak",
+            "ur": "نہیں",
+            "sw": "Hapana",
+            "ru": "Нет",
+            "ps": "نه"
           }
         },
         {
@@ -2905,7 +4585,15 @@
             "tr": "Mutlu",
             "ar": "فرحان",
             "es": "Feliz, contento",
-            "fr": "Heureux, content"
+            "fr": "Heureux, content",
+            "id": "Bahagia, senang",
+            "bn": "খুশি, আনন্দিত",
+            "fa": "خوشحال، شاد",
+            "ms": "Gembira, senang",
+            "ur": "خوش، مسرور",
+            "sw": "Mwenye furaha, kufurahi",
+            "ru": "Счастливый, радостный",
+            "ps": "خوښ، خوشحاله"
           }
         },
         {
@@ -2917,7 +4605,15 @@
             "tr": "Üzgün",
             "ar": "زعلان",
             "es": "Triste, disgustado",
-            "fr": "Triste, contrarié"
+            "fr": "Triste, contrarié",
+            "id": "Sedih, kesal",
+            "bn": "দুঃখিত, বিরক্ত",
+            "fa": "غمگین، ناراحت",
+            "ms": "Sedih, kecil hati",
+            "ur": "اداس، ناراض",
+            "sw": "Mwenye huzuni, kuudhika",
+            "ru": "Грустный, расстроенный",
+            "ps": "خپه، خواشینی"
           }
         },
         {
@@ -2929,7 +4625,15 @@
             "tr": "Yorgun",
             "ar": "تعبان",
             "es": "Cansado, agotado",
-            "fr": "Fatigué, épuisé"
+            "fr": "Fatigué, épuisé",
+            "id": "Lelah, capai",
+            "bn": "ক্লান্ত, অবসন্ন",
+            "fa": "خسته، فرسوده",
+            "ms": "Letih, penat",
+            "ur": "تھکا ہوا، نڈھال",
+            "sw": "Mchovu, kuchoka",
+            "ru": "Уставший, измотанный",
+            "ps": "ستړی، ستومانه"
           }
         },
         {
@@ -2941,7 +4645,15 @@
             "tr": "Korkmuş",
             "ar": "خايف",
             "es": "Asustado",
-            "fr": "Effrayé, a peur"
+            "fr": "Effrayé, a peur",
+            "id": "Takut, ketakutan",
+            "bn": "ভীত, ভয় পাচ্ছে",
+            "fa": "ترسیده، هراسان",
+            "ms": "Takut",
+            "ur": "خوفزدہ، ڈرا ہوا",
+            "sw": "Mwenye hofu, kuogopa",
+            "ru": "Испуганный, боится",
+            "ps": "ویریدلی، وارخطا"
           }
         },
         {
@@ -2953,7 +4665,15 @@
             "tr": "Hasta",
             "ar": "عيان",
             "es": "Enfermo",
-            "fr": "Malade"
+            "fr": "Malade",
+            "id": "Sakit",
+            "bn": "অসুস্থ",
+            "fa": "بیمار، مریض",
+            "ms": "Sakit",
+            "ur": "بیمار",
+            "sw": "Mgonjwa",
+            "ru": "Больной",
+            "ps": "ناروغ، مریض"
           }
         },
         {
@@ -2965,7 +4685,15 @@
             "tr": "Allah’a şükür",
             "ar": "الحمد لله",
             "es": "Gracias a Dios",
-            "fr": "Dieu merci"
+            "fr": "Dieu merci",
+            "id": "Segala puji bagi Allah",
+            "bn": "আলহামদুলিল্লাহ, সমস্ত প্রশংসা আল্লাহর",
+            "fa": "خدا را شکر، همهٔ ستایش‌ها از آنِ خداست",
+            "ms": "Segala puji bagi Allah",
+            "ur": "الحمد للہ، تمام تعریف اللہ کے لیے",
+            "sw": "Alhamdulillah, sifa zote ni za Mwenyezi Mungu",
+            "ru": "Слава Богу, вся хвала Аллаху",
+            "ps": "الحمد لله، ټوله ستاینه د الله ده"
           }
         }
       ]
@@ -2991,7 +4719,15 @@
             "tr": "Hadi, acele et - Mısır Arapçasında da tüm Arap dünyasında olduğu gibi çok yaygın",
             "ar": "يلا (هيا، أسرع) - شائعة جدًا في العامية المصرية أيضًا، كما في كل العالم العربي",
             "es": "Vamos, date prisa - también muy común en árabe egipcio, como en todo el mundo árabe",
-            "fr": "Allons-y, dépêche-toi - également très courant en arabe égyptien, comme dans tout le monde arabe"
+            "fr": "Allons-y, dépêche-toi - également très courant en arabe égyptien, comme dans tout le monde arabe",
+            "id": "Ayo, cepatlah - juga sangat umum dalam bahasa Arab Mesir, seperti di seluruh dunia Arab",
+            "bn": "চলো, তাড়াতাড়ি করো - মিশরীয় আরবিতেও খুব প্রচলিত, সমগ্র আরব বিশ্বের মতোই",
+            "fa": "بزن بریم، زودباش - در عربی مصری هم بسیار رایج است، مانند سراسر جهان عرب",
+            "ms": "Jom, cepatlah - juga sangat lazim dalam bahasa Arab Mesir, seperti di seluruh dunia Arab",
+            "ur": "چلو، جلدی کرو - مصری عربی میں بھی بہت عام، پورے عرب دنیا کی طرح",
+            "sw": "Twende, harakisha - pia ni ya kawaida sana katika Kiarabu cha Misri, kama kote katika ulimwengu wa Kiarabu",
+            "ru": "Пошли, поторопись - также очень распространено в египетском арабском, как и во всём арабском мире",
+            "ps": "ځه لاړ شو، ژر کوه - په مصري عربي کې هم ډېر عام دی، لکه په ټوله عربي نړۍ کې"
           }
         },
         {
@@ -3003,7 +4739,15 @@
             "tr": "Yeter, bitti - sık kullanılan çok amaçlı bir kelime",
             "ar": "خلاص (يكفي، انتهى) - كلمة متعددة الاستخدامات شائعة",
             "es": "Suficiente, se acabó - una palabra multiuso muy usada",
-            "fr": "Ça suffit, c’est fini - un mot passe-partout très utilisé"
+            "fr": "Ça suffit, c’est fini - un mot passe-partout très utilisé",
+            "id": "Cukup, selesai, sudah - kata serbaguna yang sering dipakai",
+            "bn": "যথেষ্ট, শেষ, ব্যস - প্রায়শই ব্যবহৃত সর্বজনীন শব্দ",
+            "fa": "کافی است، تمام شد، همین - واژه‌ای همه‌کاره و پرکاربرد",
+            "ms": "Cukup, selesai, itu sahaja - perkataan serba guna yang kerap digunakan",
+            "ur": "بس، ختم، ہو گیا - اکثر استعمال ہونے والا ہمہ گیر لفظ",
+            "sw": "Basi, imekwisha, ndio hiyo - neno la matumizi yote linalotumika mara kwa mara",
+            "ru": "Хватит, всё, готово - часто используемое универсальное слово",
+            "ps": "بس، پای ته ورسید، همدا - یوه ډېره کارېدونکې هر اړخیزه کلمه"
           }
         },
         {
@@ -3015,7 +4759,15 @@
             "tr": "Allah izin verirse, inşallah",
             "ar": "إن شاء الله",
             "es": "Si Dios quiere",
-            "fr": "Si Dieu le veut"
+            "fr": "Si Dieu le veut",
+            "id": "Insya Allah, semoga",
+            "bn": "ইনশাআল্লাহ, আশা করি",
+            "fa": "ان‌شاءالله، امیدوارم",
+            "ms": "Insya-Allah, moga-moga",
+            "ur": "ان شاء اللہ، امید ہے",
+            "sw": "Inshallah, tunatumaini",
+            "ru": "Если Бог даст, надеюсь",
+            "ps": "ان شاء الله، هیله ده"
           }
         },
         {
@@ -3027,7 +4779,15 @@
             "tr": "Allah’ın dilediği - hayranlık ifadesi, nazardan korur",
             "ar": "ماشاء الله - تعبير عن الإعجاب، يقي من العين",
             "es": "Lo que Dios ha querido - expresión de admiración, protege del mal de ojo",
-            "fr": "Ce que Dieu a voulu - expression d’admiration, protège du mauvais œil"
+            "fr": "Ce que Dieu a voulu - expression d’admiration, protège du mauvais œil",
+            "id": "Masya Allah - ungkapan kagum, menangkal mata jahat",
+            "bn": "মাশাআল্লাহ - প্রশংসার প্রকাশ, কুদৃষ্টি প্রতিরোধ করে",
+            "fa": "ماشاءالله - ابراز تحسین، چشم‌زخم را دور می‌کند",
+            "ms": "Masya-Allah - ungkapan kagum, menangkal mata jahat",
+            "ur": "ماشاء اللہ - تعریف کا اظہار، نظرِ بد کو دور کرتا ہے",
+            "sw": "Mashallah - kauli ya kustaajabia, huepusha jicho baya",
+            "ru": "Машаллах - выражение восхищения, отводит сглаз",
+            "ps": "ماشاء الله - د ستاینې څرګندونه، بد نظر لرې کوي"
           }
         },
         {
@@ -3039,7 +4799,15 @@
             "tr": "Vallahi - wallah’ın sonunda vurgulu bir i ile söylenen Mısır telaffuz varyantı",
             "ar": "والله (واللاهي) - نطق مصري لكلمة والله مع ياء مشددة في النهاية",
             "es": "Lo juro por Dios - la variante de pronunciación egipcia de wallah, con una i acentuada añadida al final",
-            "fr": "Je le jure par Dieu - la variante de prononciation égyptienne de wallah, avec un i accentué ajouté à la fin"
+            "fr": "Je le jure par Dieu - la variante de prononciation égyptienne de wallah, avec un i accentué ajouté à la fin",
+            "id": "Sumpah demi Allah - varian pelafalan Mesir dari wallah, dengan tambahan i yang ditekankan di akhir",
+            "bn": "আল্লাহর কসম খাচ্ছি - wallah-এর মিশরীয় উচ্চারণ রূপ, শেষে অতিরিক্ত জোরালো i সহ",
+            "fa": "به خدا قسم می‌خورم - گونهٔ تلفظ مصری wallah، با یک i تأکیدی اضافه در پایان",
+            "ms": "Aku bersumpah demi Allah - varian sebutan Mesir bagi wallah, dengan tambahan i yang ditekankan di hujung",
+            "ur": "میں خدا کی قسم کھاتا ہوں - wallah کی مصری تلفظی صورت، آخر میں ایک اضافی زور دار i کے ساتھ",
+            "sw": "Naapa kwa Mwenyezi Mungu - namna ya matamshi ya Kimisri ya wallah, yenye i ya ziada yenye mkazo mwishoni",
+            "ru": "Клянусь Богом - египетский вариант произношения wallah, с дополнительным ударным i в конце",
+            "ps": "په خدای قسم کوم - د wallah مصري تلفظي بڼه، په پای کې د یو اضافي ټینګاریز i سره"
           }
         },
         {
@@ -3051,7 +4819,15 @@
             "tr": "Canım, sevgilim - Mısır Arapçasında romantik ilişkiler dışında da (arkadaşlar, aile, hatta yabancılar) son derece sık kullanılan sevgi dolu bir hitap",
             "ar": "حبيبي - نداء عاطفي يُستخدم بكثرة في العامية المصرية حتى خارج العلاقات الرومانسية (الأصدقاء، العائلة، وحتى الغرباء)",
             "es": "Mi querido, cariño - un término de cariño usado con muchísima frecuencia en árabe egipcio incluso fuera de relaciones románticas (amigos, familia, incluso desconocidos)",
-            "fr": "Mon cher, chéri - un terme affectueux utilisé très fréquemment en arabe égyptien même en dehors des relations amoureuses (amis, famille, voire inconnus)"
+            "fr": "Mon cher, chéri - un terme affectueux utilisé très fréquemment en arabe égyptien même en dehors des relations amoureuses (amis, famille, voire inconnus)",
+            "id": "Sayangku, kekasihku - sapaan penuh kasih yang sangat sering dipakai dalam bahasa Arab Mesir bahkan di luar hubungan asmara (teman, keluarga, bahkan orang asing)",
+            "bn": "আমার প্রিয়, সোনা - একটি স্নেহপূর্ণ সম্বোধন, মিশরীয় আরবিতে প্রেমের সম্পর্কের বাইরেও অত্যন্ত প্রায়ই ব্যবহৃত (বন্ধু, পরিবার, এমনকি অপরিচিতদের ক্ষেত্রেও)",
+            "fa": "عزیزم، دلبندم - خطابی محبت‌آمیز که در عربی مصری حتی خارج از روابط عاشقانه بسیار زیاد به کار می‌رود (دوستان، خانواده، حتی غریبه‌ها)",
+            "ms": "Sayangku, kekasihku - panggilan mesra yang amat kerap digunakan dalam bahasa Arab Mesir walaupun di luar hubungan cinta (kawan, keluarga, malah orang asing)",
+            "ur": "میرے پیارے، جانم - ایک پیار بھرا خطاب جو مصری عربی میں محبت کے رشتوں سے باہر بھی بہت استعمال ہوتا ہے (دوست، گھر والے، حتیٰ کہ اجنبی)",
+            "sw": "Mpendwa wangu, kipenzi changu - namna ya mapenzi ya kumwita inayotumika mara nyingi sana katika Kiarabu cha Misri hata nje ya mahusiano ya kimapenzi (marafiki, familia, hata wageni)",
+            "ru": "Мой дорогой, милый - ласковое обращение, крайне часто используемое в египетском арабском даже вне романтических отношений (друзья, семья, даже незнакомцы)",
+            "ps": "زما ګرانه، جانانه - یو مینه‌ناک خطاب چې په مصري عربي کې حتی د مینې د اړیکو نه بهر هم ډېر کارېږي (ملګري، کورنۍ، حتی ناپیژندونکي)"
           }
         },
         {
@@ -3063,7 +4839,15 @@
             "tr": "Güçlü, harika, etkileyici - iyi veya etkileyici olan her şey için kullanılan modern Mısır argosu",
             "ar": "جامد (قوي، رائع) - كلمة عامية مصرية حديثة تُقال عن كل ما هو جيد أو مثير للإعجاب",
             "es": "Fuerte, genial, impresionante - una palabra de argot egipcio moderno para todo lo que es bueno o impresionante",
-            "fr": "Fort, cool, impressionnant - un mot d’argot égyptien moderne pour tout ce qui est bien ou impressionnant"
+            "fr": "Fort, cool, impressionnant - un mot d’argot égyptien moderne pour tout ce qui est bien ou impressionnant",
+            "id": "Keren, hebat, mengesankan - kata gaul Mesir modern untuk apa pun yang bagus atau mengesankan",
+            "bn": "দারুণ, কুল, চমৎকার - ভালো বা মুগ্ধকর যেকোনো কিছুর জন্য আধুনিক মিশরীয় অপশব্দ",
+            "fa": "قوی، باحال، تأثیرگذار - واژهٔ عامیانهٔ مدرن مصری برای هر چیز خوب یا چشمگیر",
+            "ms": "Hebat, mantap, mengagumkan - perkataan slanga Mesir moden untuk apa-apa yang bagus atau mengagumkan",
+            "ur": "زبردست، شاندار، متاثر کن - کسی بھی اچھی یا متاثر کن چیز کے لیے جدید مصری بول چال کا لفظ",
+            "sw": "Kali, poa, ya kuvutia - neno la mtaani la Kimisri la kisasa kwa chochote kizuri au cha kuvutia",
+            "ru": "Крутой, классный, впечатляющий - современное египетское сленговое слово для чего-то хорошего или впечатляющего",
+            "ps": "پیاوړی، جالب، اغیزناک - د هر ښه یا اغیزناک شي لپاره یوه عصري مصري سلنګ کلمه"
           }
         },
         {
@@ -3075,7 +4859,15 @@
             "tr": "O halde, tamam öyleyse - Mısır konuşma diline çok yerleşmiş bir dolgu kelimesi, tayyib’in kısaltması",
             "ar": "طب (إذن، حسنًا) - كلمة حشو شائعة جدًا في الحوار المصري، اختصار لكلمة طيب",
             "es": "Entonces, bueno, vale - una muletilla muy común en la conversación egipcia, forma corta de tayyib",
-            "fr": "Alors, bon, d’accord - un mot de remplissage très courant dans la conversation égyptienne, forme courte de tayyib"
+            "fr": "Alors, bon, d’accord - un mot de remplissage très courant dans la conversation égyptienne, forme courte de tayyib",
+            "id": "Kalau begitu, baiklah, oke - kata sisipan yang sangat umum dalam percakapan Mesir, singkatan dari tayyib",
+            "bn": "তাহলে, আচ্ছা, ঠিক আছে - মিশরীয় কথোপকথনে খুব প্রচলিত ভরাট শব্দ, tayyib-এর সংক্ষিপ্ত রূপ",
+            "fa": "خب، باشد، پس - واژهٔ پرکنندهٔ بسیار رایج در گفتگوی مصری، کوتاه‌شدهٔ tayyib",
+            "ms": "Kalau begitu, baiklah, okey - kata sisipan yang sangat lazim dalam perbualan Mesir, singkatan bagi tayyib",
+            "ur": "تو، اچھا، ٹھیک ہے پھر - مصری گفتگو میں بہت عام بھرتی کا لفظ، tayyib کا مختصر",
+            "sw": "Basi, sawa, haya basi - neno la kijazo la kawaida sana katika mazungumzo ya Kimisri, kifupi cha tayyib",
+            "ru": "Ну, ладно, хорошо тогда - очень распространённое слово-заполнитель в египетском разговоре, сокращение от tayyib",
+            "ps": "نو، ښه، سمه ده بیا - په مصري خبرو کې یوه ډېره عامه ډکوونکې کلمه، د tayyib لنډه بڼه"
           }
         }
       ]

@@ -59,6 +59,7 @@
     "new": "New"
   },
   "quran": {
+    "surahN": "Surah {n}",
     "surahs": "Surah",
     "juz": "Juz'",
     "juzItem": "Juz'",
@@ -211,6 +212,7 @@
     "shareImage": "Bagikan sebagai gambar"
   },
   "search": {
+    "globalTitle": "Pencarian global",
     "title": "Pencarian",
     "placeholder": "Al-Qur'an, Hadis, doa, kursus…",
     "hint": "Masukkan minimal 2 karakter",

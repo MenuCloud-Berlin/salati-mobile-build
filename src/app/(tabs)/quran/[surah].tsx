@@ -586,7 +586,7 @@ export default function SurahReaderScreen() {
 
   const shareAyah = useCallback(
     (item: { numberInSurah: number; arabic: string; translation: string }) => {
-      const surahName = data?.meta.englishName ?? `Sure ${surahNumber}`;
+      const surahName = data?.meta.englishName ?? t('quran.surahN').replace('{n}', String(surahNumber));
       // Deep-Link mit anhängen (salatibox://quran/…?ayah=…, springt beim
       // Empfänger automatisch zum Vers): anders als beim Bild-Teilen (s.
       // shareCard-Kompromiss unten) gibt es hier KEINE Plattform-Einschränkung
@@ -596,7 +596,7 @@ export default function SurahReaderScreen() {
         message: `${item.arabic}\n\n${item.translation}\n\n— ${surahName} ${surahNumber}:${item.numberInSurah}\n\n${quranAyahDeepLink(surahNumber, item.numberInSurah)}`,
       }).catch(() => {});
     },
-    [data, surahNumber],
+    [data, surahNumber, t],
   );
 
   const searchMatches = useMemo(() => {
@@ -620,12 +620,12 @@ export default function SurahReaderScreen() {
 
   const copyAyah = useCallback(
     (item: { numberInSurah: number; arabic: string; translation: string }) => {
-      const surahName = data?.meta.englishName ?? `Sure ${surahNumber}`;
+      const surahName = data?.meta.englishName ?? t('quran.surahN').replace('{n}', String(surahNumber));
       Clipboard.setStringAsync(
         `${item.arabic}\n\n${item.translation}\n\n— ${surahName} ${surahNumber}:${item.numberInSurah}`,
       ).catch(() => {});
     },
-    [data, surahNumber],
+    [data, surahNumber, t],
   );
 
   // Web: eigene Canvas-Lösung (shareImage.ts, kein DOM-Canvas nativ verfügbar).
@@ -633,7 +633,7 @@ export default function SurahReaderScreen() {
   const shareCard = useShareCard();
   const shareAyahImage = useCallback(
     (item: { numberInSurah: number; arabic: string; translation: string }) => {
-      const surahName = data?.meta.englishName ?? `Sure ${surahNumber}`;
+      const surahName = data?.meta.englishName ?? t('quran.surahN').replace('{n}', String(surahNumber));
       const source = `${surahName} ${surahNumber}:${item.numberInSurah}`;
       const deepLink = quranAyahDeepLink(surahNumber, item.numberInSurah);
       if (canShareVerseImage) {
@@ -642,7 +642,7 @@ export default function SurahReaderScreen() {
         shareCard.open({ arabic: item.arabic, translation: item.translation, source, deepLink });
       }
     },
-    [data, surahNumber, shareCard],
+    [data, surahNumber, shareCard, t],
   );
 
   const currentReciterEdition = audioEditions?.find((e) => e.identifier === settings.quranReciter);

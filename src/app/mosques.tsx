@@ -9,7 +9,8 @@ import { EmptyState } from '@/components/empty-state';
 import { ThemedActivityIndicator } from '@/components/themed-activity-indicator';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { Colors, IconBadge, MaxContentWidth, Spacing } from '@/constants/theme';
 import { useDeviceLocation } from '@/features/location/useDeviceLocation';
 import { useNearbyMosques, sortByDistance } from '@/features/mosques/hooks';
 import MosquesMapView from '@/features/mosques/MosquesMapView';
@@ -58,10 +59,8 @@ export default function MosquesScreen() {
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
+        <ScreenHeader title={t('mosques.title')} />
         <View style={styles.header}>
-          <ThemedText type="title" style={styles.title}>
-            {t('mosques.title')}
-          </ThemedText>
           <View style={styles.toggleRow}>
             <ToggleButton label={t('mosques.map')} active={view === 'map'} onPress={() => setView('map')} />
             <ToggleButton label={t('mosques.list')} active={view === 'list'} onPress={() => setView('list')} />
@@ -185,9 +184,8 @@ function ToggleButton({ label, active, onPress }: { label: string; active: boole
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
-  header: { alignItems: 'center', gap: Spacing.two, paddingHorizontal: Spacing.three },
-  title: { textAlign: 'center' },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
+  header: { alignItems: 'center', gap: Spacing.two, paddingHorizontal: Spacing.three, marginBottom: Spacing.two },
   toggleRow: { flexDirection: 'row', gap: Spacing.two },
   toggleChip: { paddingVertical: Spacing.one, paddingHorizontal: Spacing.four, borderRadius: Spacing.four },
   pressableWeb: { cursor: 'pointer' },
@@ -217,9 +215,9 @@ const styles = StyleSheet.create({
     gap: Spacing.two,
   },
   iconBadge: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
+    width: IconBadge.row,
+    height: IconBadge.row,
+    borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
   },

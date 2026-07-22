@@ -325,7 +325,13 @@ export function WidgetConfigScreen({ widgetInfo, renderWidget, setResult }: Widg
   // geschluckt: der Task-Handler rendert beim nächsten Tick ohnehin neu.
   async function commit() {
     try {
-      renderWidget(await renderWidgetForInfo(widgetName, widgetId));
+      // Echte Widget-Größe (DP) mitgeben, damit die "Fertig"-Zeichnung dieselbe
+      // Dichtestufe (compact/medium/tall) trifft wie das platzierte Widget.
+      const size =
+        hasWidget && typeof widgetInfo.width === 'number' && typeof widgetInfo.height === 'number'
+          ? { width: widgetInfo.width, height: widgetInfo.height }
+          : undefined;
+      renderWidget(await renderWidgetForInfo(widgetName, widgetId, size));
     } catch {
       // Vorschau bleibt bestehen — kein harter Fehler.
     }

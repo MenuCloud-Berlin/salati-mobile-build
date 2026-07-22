@@ -44,14 +44,15 @@ export function SwitchRow({
 }
 
 const styles = StyleSheet.create({
+  // Kein eigener unterer Rand mehr: der iOS-Inset-Trenner wird jetzt zentral
+  // von der Sektion NUR zwischen Zeilen gezeichnet (Audit 2026-07-22).
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    minHeight: 44,
     paddingVertical: Spacing.two,
     paddingHorizontal: Spacing.three,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgba(128,124,116,0.35)',
   },
   rowRtl: { flexDirection: 'row-reverse' },
   label: { flex: 1, gap: 2, paddingRight: Spacing.two },

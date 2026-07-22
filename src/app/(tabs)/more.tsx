@@ -8,7 +8,7 @@ import { IconSymbol, type IconName } from '@/components/ui/icon-symbol';
 import { PressableCard } from '@/components/ui/pressable-card';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { Colors, IconBadge, MaxContentWidth, Spacing } from '@/constants/theme';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
 import { useTranslation } from '@/lib/i18n';
 
@@ -83,7 +83,7 @@ export default function MoreScreen() {
               </ThemedView>
               <View style={styles.kiText}>
                 <ThemedText type="smallBold" themeColor="accent">
-                  {t('nav.search')}
+                  {t('search.globalTitle')}
                 </ThemedText>
                 <ThemedText type="small" themeColor="textSecondary">
                   {t('search.moreDesc')}
@@ -188,9 +188,9 @@ const styles = StyleSheet.create({
   },
   rowLeft: { flexDirection: 'row', alignItems: 'center', gap: Spacing.three },
   iconBadge: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
+    width: IconBadge.row,
+    height: IconBadge.row,
+    borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
   },

@@ -6,7 +6,8 @@ import { ThemedActivityIndicator } from '@/components/themed-activity-indicator'
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { IconSymbol, type IconName } from '@/components/ui/icon-symbol';
-import { BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { Colors, MaxContentWidth, Spacing } from '@/constants/theme';
 import {
   MODELL_GROESSE_BYTES,
   aktuelleModellGroesse,
@@ -247,9 +248,7 @@ export default function StorageScreen() {
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={styles.scroll}>
-          <ThemedText type="title" style={styles.title}>
-            {t('settings.storage.title')}
-          </ThemedText>
+          <ScreenHeader title={t('settings.storage.title')} variant="modal" />
           <ThemedText type="small" themeColor="textSecondary" style={styles.subtitle}>
             {t('settings.storage.subtitle')}
           </ThemedText>
@@ -591,7 +590,7 @@ function Section({ label, icon, children }: { label: string; icon: IconName; chi
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
   scroll: {
     paddingHorizontal: Spacing.three,
     paddingBottom: Spacing.six,

@@ -54,7 +54,7 @@ KNOWLEDGE & HEART
 • 22 badges for milestones reached
 • 13 hadith collections with search across all of them (Arabic, English, Turkish)
 • Quran Radio: 24/7 recitation streams
-• 99 Names of Allah with audio, 47 duas with source references
+• 99 Names of Allah with audio, 89 duas with source references
 • 11 practice guides with photos: Wudu, Ghusl, prayer, Janazah, Hajj & Umrah and more
 • Zakat and inheritance calculators, 26 authenticated wisdoms, Tasbih counter
 

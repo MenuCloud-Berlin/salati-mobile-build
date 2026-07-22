@@ -66,19 +66,24 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     fontWeight: 500,
   },
+  // Apple-Typo-Skala (Audit 2026-07-22 „manche Elemente zu groß"): iOS Large
+  // Title ist ~34, nicht 48. Auf breiten Screens (≥420) 34, auf schmalen
+  // Phones 28 — deutlich kompakter/ruhiger als vorher, ohne die Titel-Wirkung
+  // zu verlieren.
   title: {
-    fontSize: 48,
-    fontWeight: 600,
-    lineHeight: 52,
+    fontSize: 34,
+    fontWeight: 700,
+    lineHeight: 41,
   },
   titleNarrow: {
-    fontSize: 36,
-    fontWeight: 600,
-    lineHeight: 42,
+    fontSize: 28,
+    fontWeight: 700,
+    lineHeight: 34,
   },
+  // iOS Title2 (~22–24) statt vorher 32 — als Zwischen-Überschrift/Stat-Zahl.
   subtitle: {
-    fontSize: 32,
-    lineHeight: 44,
+    fontSize: 24,
+    lineHeight: 30,
     fontWeight: 600,
   },
   link: {

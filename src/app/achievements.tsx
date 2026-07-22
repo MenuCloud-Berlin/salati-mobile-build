@@ -7,7 +7,8 @@ import { AnimatedListItem } from '@/components/ui/animated-list-item';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, Brand, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { Brand, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
 import { loadSeenBadges, markBadgesSeen } from '@/features/achievements/seen';
 import { type BadgeWithStatus, useAchievements } from '@/features/achievements/store';
 import { maybeRequestReview } from '@/features/settings/ratingPrompt';
@@ -57,9 +58,7 @@ export default function AchievementsScreen() {
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <ThemedText type="title" style={styles.title}>
-          {t('achievements.title')}
-        </ThemedText>
+        <ScreenHeader title={t('achievements.title')} />
         <ThemedText type="small" themeColor="textSecondary" style={styles.subtitle}>
           {t('achievements.subtitle')}
         </ThemedText>
@@ -131,7 +130,7 @@ export default function AchievementsScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
   title: { textAlign: 'center' },
   subtitle: { textAlign: 'center', paddingHorizontal: Spacing.four, marginBottom: Spacing.two },
   progressWrap: {

@@ -59,6 +59,7 @@
     "new": "New"
   },
   "quran": {
+    "surahN": "Sourate {n}",
     "surahs": "Sourates",
     "juz": "Juz'",
     "juzItem": "Juz'",
@@ -211,6 +212,7 @@
     "shareImage": "Partager en image"
   },
   "search": {
+    "globalTitle": "Recherche globale",
     "title": "Recherche",
     "placeholder": "Coran, Hadith, invocations, cours…",
     "hint": "Entrez au moins 2 caractères",

@@ -207,6 +207,13 @@ export default function VideoPlayerScreen() {
   });
   useEventListener(player, 'playToEnd', () => {
     if (!autoplayRef.current) return;
+    // Kaskaden-Schutz: nur weiterspringen, wenn die Folge WIRKLICH bis ans Ende
+    // gelaufen ist. Sonst loesen Lade-/Quellwechsel-Events (replace auf noch
+    // nicht bereitem Player) ein falsches playToEnd aus und Autoplay springt
+    // Folge fuer Folge bis ans Reihenende durch (frueherer Bug: „immer letzte
+    // Folge der Reihe"). player.duration/currentTime werden live gelesen.
+    const dur = player.duration;
+    if (!(dur > 0 && player.currentTime >= dur - 1.5)) return;
     const n = nextRef.current;
     if (!n) return;
     router.replace({

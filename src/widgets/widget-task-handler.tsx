@@ -13,6 +13,7 @@ import { COURSE_META } from '@/features/study/courses';
 import { computeLearningStreak } from '@/features/study/streak';
 import { translate } from '@/lib/translate';
 import { CountdownWidget } from './CountdownWidget';
+import type { WidgetSize } from './widgetLayout';
 import { PrayerWidget } from './PrayerWidget';
 import { QiblaWidget } from './QiblaWidget';
 import { StreakWidget } from './StreakWidget';
@@ -162,7 +163,7 @@ function prayerProgress(data: CachedTimings, next: { nextIdx: number; nextTs: Da
   return Math.max(0, Math.min(1, (now.getTime() - prevTs.getTime()) / span));
 }
 
-async function renderPrayerWidget(settings: AppSettings, cfg: ResolvedWidgetConfig) {
+async function renderPrayerWidget(settings: AppSettings, cfg: ResolvedWidgetConfig, size?: WidgetSize) {
   const t = (key: string) => translate(settings.language, key);
   const timeFormat = resolveTimeFormat(cfg, settings);
   const data = await loadTimings(settings);
@@ -176,6 +177,7 @@ async function renderPrayerWidget(settings: AppSettings, cfg: ResolvedWidgetConf
         showCoords={cfg.showCoords}
         showNextTime={cfg.showNextTime}
         highlightNext={cfg.highlightNext}
+        size={size}
         {...styleProps(cfg)}
       />
     );
@@ -199,12 +201,13 @@ async function renderPrayerWidget(settings: AppSettings, cfg: ResolvedWidgetConf
       remaining={t('widgets.remaining').replace('{t}', compact)}
       progress={prayerProgress(data, next, now)}
       hijri={cfg.showHijri && data.hijri ? formatHijri(data.hijri) : undefined}
+      size={size}
       {...styleProps(cfg)}
     />
   );
 }
 
-async function renderCountdownWidget(settings: AppSettings, cfg: ResolvedWidgetConfig) {
+async function renderCountdownWidget(settings: AppSettings, cfg: ResolvedWidgetConfig, size?: WidgetSize) {
   const t = (key: string) => translate(settings.language, key);
   const timeFormat = resolveTimeFormat(cfg, settings);
   const data = await loadTimings(settings);
@@ -217,6 +220,7 @@ async function renderCountdownWidget(settings: AppSettings, cfg: ResolvedWidgetC
         remaining=""
         showCoords={cfg.showCoords}
         showNextTime={cfg.showNextTime}
+        size={size}
         {...styleProps(cfg)}
       />
     );
@@ -235,12 +239,13 @@ async function renderCountdownWidget(settings: AppSettings, cfg: ResolvedWidgetC
       remaining={t('widgets.remaining').replace('{t}', compact)}
       showCoords={cfg.showCoords}
       showNextTime={cfg.showNextTime}
+      size={size}
       {...styleProps(cfg)}
     />
   );
 }
 
-function renderQiblaWidget(settings: AppSettings, cfg: ResolvedWidgetConfig) {
+function renderQiblaWidget(settings: AppSettings, cfg: ResolvedWidgetConfig, size?: WidgetSize) {
   const t = (key: string) => translate(settings.language, key);
   const { lat, lon } = settings.location;
   const bearing = qiblaBearing(lat, lon);
@@ -254,6 +259,7 @@ function renderQiblaWidget(settings: AppSettings, cfg: ResolvedWidgetConfig) {
       showBearing={cfg.showBearing}
       showDirection={cfg.showDirection}
       showDistance={cfg.showDistance}
+      size={size}
       {...styleProps(cfg)}
     />
   );
@@ -265,7 +271,7 @@ interface DuaEntry {
   source?: string;
 }
 
-function renderWisdomWidget(settings: AppSettings, cfg: ResolvedWidgetConfig) {
+function renderWisdomWidget(settings: AppSettings, cfg: ResolvedWidgetConfig, size?: WidgetSize) {
   const t = (key: string) => translate(settings.language, key);
   const duas = (duasData as { duas: DuaEntry[] }).duas;
   // 'daily' = feste, über den Tag stabile Rotation (Tag-des-Jahres); 'random' =
@@ -283,12 +289,13 @@ function renderWisdomWidget(settings: AppSettings, cfg: ResolvedWidgetConfig) {
       showArabic={cfg.showArabic}
       showTranslation={cfg.showTranslation}
       showSource={cfg.showSource}
+      size={size}
       {...styleProps(cfg)}
     />
   );
 }
 
-async function renderStreakWidget(settings: AppSettings, cfg: ResolvedWidgetConfig) {
+async function renderStreakWidget(settings: AppSettings, cfg: ResolvedWidgetConfig, size?: WidgetSize) {
   const t = (key: string) => translate(settings.language, key);
   const [learnRaw, ...courseRaws] = await Promise.all([
     AsyncStorage.getItem(LEARN_PROGRESS_STORAGE_KEY),
@@ -314,6 +321,7 @@ async function renderStreakWidget(settings: AppSettings, cfg: ResolvedWidgetConf
       todayLine={t('widgets.todayLessons').replace('{n}', String(today))}
       streakLarge={cfg.streakLarge}
       showStreakLabel={cfg.showStreakLabel}
+      size={size}
       {...styleProps(cfg)}
     />
   );
@@ -338,22 +346,23 @@ async function renderStreakWidget(settings: AppSettings, cfg: ResolvedWidgetConf
 export async function renderWidgetForInfo(
   widgetName: string,
   widgetId: number,
+  size?: WidgetSize,
 ): Promise<WidgetRepresentation> {
   const settings = await loadSettings();
   const instance = await getWidgetConfig(widgetId);
   const cfg = resolveWidgetConfig(instance, widgetName, settings);
   switch (baseWidgetName(widgetName)) {
     case 'SalatiWisdom':
-      return renderWisdomWidget(settings, cfg);
+      return renderWisdomWidget(settings, cfg, size);
     case 'SalatiStreak':
-      return renderStreakWidget(settings, cfg);
+      return renderStreakWidget(settings, cfg, size);
     case 'SalatiCountdown':
-      return renderCountdownWidget(settings, cfg);
+      return renderCountdownWidget(settings, cfg, size);
     case 'SalatiQibla':
-      return renderQiblaWidget(settings, cfg);
+      return renderQiblaWidget(settings, cfg, size);
     case 'SalatiPrayer':
     default:
-      return renderPrayerWidget(settings, cfg);
+      return renderPrayerWidget(settings, cfg, size);
   }
 }
 
@@ -363,7 +372,10 @@ export async function widgetTaskHandler(props: WidgetTaskHandlerProps) {
     case 'WIDGET_UPDATE':
     case 'WIDGET_RESIZED':
       props.renderWidget(
-        await renderWidgetForInfo(props.widgetInfo.widgetName, props.widgetInfo.widgetId),
+        await renderWidgetForInfo(props.widgetInfo.widgetName, props.widgetInfo.widgetId, {
+          width: props.widgetInfo.width,
+          height: props.widgetInfo.height,
+        }),
       );
       break;
     default:

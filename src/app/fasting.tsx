@@ -7,7 +7,8 @@ import { IconSymbol, type IconName } from '@/components/ui/icon-symbol';
 import { PressableCard } from '@/components/ui/pressable-card';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { Colors, MaxContentWidth, Spacing } from '@/constants/theme';
 import {
   fastCountdown,
   fastedCount,
@@ -49,9 +50,7 @@ export default function FastingScreen() {
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={styles.scroll}>
-          <ThemedText type="title" style={styles.title}>
-            {t('fasting.title')}
-          </ThemedText>
+          <ScreenHeader title={t('fasting.title')} />
           <ThemedText type="small" themeColor="textSecondary" style={styles.subtitle}>
             {t('fasting.total')}: {fastedCount(data)}
           </ThemedText>
@@ -142,7 +141,7 @@ export default function FastingScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
   scroll: { paddingHorizontal: Spacing.three, paddingBottom: Spacing.five, gap: Spacing.three, alignSelf: 'center', width: '100%', maxWidth: MaxContentWidth, },
   title: { textAlign: 'center' },
   subtitle: { textAlign: 'center', marginBottom: Spacing.one },

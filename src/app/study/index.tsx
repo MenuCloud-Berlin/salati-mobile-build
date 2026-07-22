@@ -11,7 +11,8 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { PressableCard } from '@/components/ui/pressable-card';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { Colors, IconBadge, MaxContentWidth, Spacing } from '@/constants/theme';
 import { COURSE_META, loadAllCourses, type CourseCategory } from '@/features/study/courses';
 import { loadCourseOrder, sortCoursesByOrder } from '@/features/study/courseOrder';
 import { lessonTitle } from '@/features/learn/curriculum';
@@ -150,28 +151,28 @@ export default function StudyHubScreen() {
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <ThemedText type="title" style={styles.title}>
-          {t('study.title')}
-        </ThemedText>
-        <ThemedText type="small" themeColor="textSecondary" style={styles.subtitle}>
-          {t('study.subtitle')}
-        </ThemedText>
-        {streak > 0 && (
-          <ThemedView type="backgroundSelected" style={styles.streakBadge}>
-            <IconSymbol name="flame" size={16} color={colors.accent} />
-            <ThemedText type="smallBold" themeColor="accent">
-              {streak === 1 ? t('study.streakOne') : t('study.streak').replace('{n}', String(streak))}
-            </ThemedText>
-          </ThemedView>
-        )}
-        <ThemedText
-          type="smallBold"
-          themeColor={todayCount >= TIME_BUDGETS[settings.dailyMinutes].lessonsPerDay ? 'accent' : 'textSecondary'}
-          style={styles.goalLine}>
-          {t('study.todayGoal')
-            .replace('{x}', String(todayCount))
-            .replace('{y}', String(TIME_BUDGETS[settings.dailyMinutes].lessonsPerDay))}
-        </ThemedText>
+        <ScreenHeader title={t('study.title')} subtitle={t('study.subtitle')} />
+        {/* Streak + Tagesziel kompakt in EINER Zeile (Audit 2026-07-22 P2):
+            vorher stapelte der Kopf Titel + Untertitel + Streak-Badge +
+            Tagesziel-Zeile untereinander und schob die Kernliste weit nach
+            unten. */}
+        <View style={styles.metaRow}>
+          {streak > 0 && (
+            <ThemedView type="backgroundSelected" style={styles.streakBadge}>
+              <IconSymbol name="flame" size={14} color={colors.accent} />
+              <ThemedText type="smallBold" themeColor="accent">
+                {streak === 1 ? t('study.streakOne') : t('study.streak').replace('{n}', String(streak))}
+              </ThemedText>
+            </ThemedView>
+          )}
+          <ThemedText
+            type="smallBold"
+            themeColor={todayCount >= TIME_BUDGETS[settings.dailyMinutes].lessonsPerDay ? 'accent' : 'textSecondary'}>
+            {t('study.todayGoal')
+              .replace('{x}', String(todayCount))
+              .replace('{y}', String(TIME_BUDGETS[settings.dailyMinutes].lessonsPerDay))}
+          </ThemedText>
+        </View>
 
         <SectionList
           sections={sections}
@@ -291,19 +292,24 @@ export default function StudyHubScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
-  title: { textAlign: 'center' },
-  subtitle: { textAlign: 'center', paddingHorizontal: Spacing.four },
-  goalLine: { textAlign: 'center', marginTop: Spacing.one, marginBottom: Spacing.three },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
+  metaRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: Spacing.two,
+    marginTop: Spacing.two,
+    marginBottom: Spacing.three,
+    paddingHorizontal: Spacing.three,
+  },
   streakBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    alignSelf: 'center',
     gap: Spacing.one,
-    paddingVertical: Spacing.one,
-    paddingHorizontal: Spacing.three,
+    paddingVertical: 3,
+    paddingHorizontal: Spacing.two,
     borderRadius: Spacing.five,
-    marginTop: Spacing.two,
   },
   list: { paddingHorizontal: Spacing.three, gap: Spacing.two, paddingBottom: Spacing.five, alignSelf: 'center', width: '100%', maxWidth: MaxContentWidth, },
   row: {
@@ -313,9 +319,9 @@ const styles = StyleSheet.create({
     padding: Spacing.three,
   },
   iconBadge: {
-    width: 44,
-    height: 44,
-    borderRadius: 18,
+    width: IconBadge.row,
+    height: IconBadge.row,
+    borderRadius: 14,
     alignItems: 'center',
     justifyContent: 'center',
   },

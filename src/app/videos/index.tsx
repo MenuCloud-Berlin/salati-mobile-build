@@ -64,13 +64,18 @@ export default function VideoListScreen() {
 
   // Ziel-Folge fuer das „zu Playlist hinzufuegen"-Sheet (langes Antippen).
   const [playlistTarget, setPlaylistTarget] = useState<number | null>(null);
+  // Reihen-Filter (null = alle). Chips oben; bei ausgewaehlter Reihe entfaellt
+  // der Section-Header (nur EINE Reihe sichtbar).
+  const [activeSeries, setActiveSeries] = useState<string | null>(null);
 
   const episodes = data?.episodes ?? [];
   const multiSeries = hasMultipleSeries(episodes);
+  const allGroups = groupEpisodesBySeries(episodes);
+  const visibleGroups = activeSeries ? allGroups.filter((g) => g.key === activeSeries) : allGroups;
   const rows: ListRow[] = [];
   let itemIndex = 0;
-  for (const group of groupEpisodesBySeries(episodes)) {
-    if (multiSeries) {
+  for (const group of visibleGroups) {
+    if (multiSeries && !activeSeries) {
       rows.push({
         kind: 'section',
         key: `s:${group.key}`,
@@ -125,6 +130,27 @@ export default function VideoListScreen() {
                 </PressableCard>
               </View>
 
+              {multiSeries && (
+                <ScrollView
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  contentContainerStyle={styles.filterRow}>
+                  <FilterChip
+                    label={t('reels.all')}
+                    active={activeSeries === null}
+                    onPress={() => setActiveSeries(null)}
+                  />
+                  {allGroups.map((g) => (
+                    <FilterChip
+                      key={g.key}
+                      label={g.title ?? ''}
+                      active={activeSeries === g.key}
+                      onPress={() => setActiveSeries(activeSeries === g.key ? null : g.key)}
+                    />
+                  ))}
+                </ScrollView>
+              )}
+
               {continueItems.length > 0 && (
                 <View style={styles.railBlock}>
                   <ThemedText type="smallBold" themeColor="textSecondary" style={styles.railLabel}>
@@ -174,6 +200,22 @@ export default function VideoListScreen() {
         episodeNo={playlistTarget ?? 0}
       />
     </ThemedView>
+  );
+}
+
+function FilterChip({ label, active, onPress }: { label: string; active: boolean; onPress: () => void }) {
+  const scheme = useResolvedScheme();
+  const colors = Colors[scheme];
+  return (
+    <Pressable
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityState={{ selected: active }}
+      style={[styles.filterChip, { backgroundColor: active ? colors.accent : colors.backgroundElement }]}>
+      <ThemedText type="smallBold" style={{ color: active ? colors.background : colors.textSecondary }}>
+        {label}
+      </ThemedText>
+    </Pressable>
   );
 }
 
@@ -382,6 +424,8 @@ const styles = StyleSheet.create({
   railThumbWrap: { width: '100%', height: 99 },
   railThumb: { width: '100%', height: 99, borderRadius: 12 },
   railTitle: { marginTop: Spacing.one, paddingHorizontal: Spacing.half, minHeight: 34 },
+  filterRow: { gap: Spacing.one, paddingHorizontal: Spacing.half, paddingBottom: Spacing.two },
+  filterChip: { paddingVertical: Spacing.one, paddingHorizontal: Spacing.three, borderRadius: 999 },
   sectionHeader: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one, paddingTop: Spacing.two, paddingBottom: Spacing.half, paddingHorizontal: Spacing.one },
   sectionHeaderText: { letterSpacing: 0.5 },
   center: { alignItems: 'center', paddingVertical: Spacing.five },

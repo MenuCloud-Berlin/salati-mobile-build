@@ -3,7 +3,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, MaxContentWidth, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { MaxContentWidth, Spacing } from '@/constants/theme';
 import { useTranslation } from '@/lib/i18n';
 
 function Section({ label, text }: { label: string; text: string }) {
@@ -28,9 +29,7 @@ export default function DatenschutzScreen() {
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={styles.scroll}>
-          <ThemedText type="title" style={styles.title}>
-            {t('datenschutz.title')}
-          </ThemedText>
+          <ScreenHeader title={t('datenschutz.title')} variant="modal" />
           <ThemedText type="small" themeColor="textSecondary" style={styles.subtitle}>
             {t('datenschutz.subtitle')}
           </ThemedText>
@@ -58,7 +57,7 @@ export default function DatenschutzScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
   scroll: {
     padding: Spacing.four,
     paddingBottom: Spacing.six,

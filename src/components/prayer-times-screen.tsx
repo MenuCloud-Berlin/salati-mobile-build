@@ -569,48 +569,64 @@ export default function PrayerTimesScreen() {
             <Fragment key={id}>{cardContent[id]}</Fragment>
           ))}
 
+          {/* Aktionsleiste (Audit 2026-07-22): ≥44pt Chips statt gedrängter
+              Text-Links; die Primäraktion (Wochenübersicht) ist als gefüllter
+              Akzent-Chip hervorgehoben, der Rest als ruhige Sekundär-Chips. */}
           <View style={styles.actions}>
             <Pressable
               onPress={() => router.push('/prayer-times-week')}
-              style={({ pressed }) => [styles.actionBtn, Platform.OS === 'web' ? styles.pressableWeb : undefined, pressed && styles.pressed]}>
-              <IconSymbol name="grid-outline" size={15} color={colors.accent} />
-              <ThemedText type="link" themeColor="accent">
+              accessibilityRole="button"
+              accessibilityLabel={t('prayer.weekView')}
+              style={({ pressed }) => [
+                styles.actionChip,
+                { backgroundColor: colors.accent },
+                Platform.OS === 'web' ? styles.pressableWeb : undefined,
+                pressed && styles.pressed,
+              ]}>
+              <IconSymbol name="grid-outline" size={16} color={colors.background} />
+              <ThemedText type="smallBold" style={{ color: colors.background }}>
                 {t('prayer.weekView')}
               </ThemedText>
             </Pressable>
             {settings.azanChoice !== 'default' && (
               <Pressable
                 onPress={playAzan}
-                style={({ pressed }) => [styles.actionBtn, Platform.OS === 'web' ? styles.pressableWeb : undefined, pressed && styles.pressed]}>
-                <IconSymbol name="musical-notes-outline" size={15} color={colors.accent} />
-                <ThemedText type="link" themeColor="accent">
+                accessibilityRole="button"
+                accessibilityLabel={t('prayer.playAzan')}
+                style={({ pressed }) => [styles.actionChip, styles.actionChipSecondary, Platform.OS === 'web' ? styles.pressableWeb : undefined, pressed && styles.pressed]}>
+                <IconSymbol name="musical-notes-outline" size={16} color={colors.accent} />
+                <ThemedText type="smallBold" themeColor="accent">
                   {t('prayer.playAzan')}
                 </ThemedText>
               </Pressable>
             )}
-            {(
-              <Pressable
-                onPress={exportIcs}
-                style={({ pressed }) => [styles.actionBtn, Platform.OS === 'web' ? styles.pressableWeb : undefined, pressed && styles.pressed]}>
-                <IconSymbol name="calendar-outline" size={15} color={colors.accent} />
-                <ThemedText type="link" themeColor="accent">
-                  {t('prayer.icsExport')}
-                </ThemedText>
-              </Pressable>
-            )}
+            <Pressable
+              onPress={exportIcs}
+              accessibilityRole="button"
+              accessibilityLabel={t('prayer.icsExport')}
+              style={({ pressed }) => [styles.actionChip, styles.actionChipSecondary, Platform.OS === 'web' ? styles.pressableWeb : undefined, pressed && styles.pressed]}>
+              <IconSymbol name="calendar-outline" size={16} color={colors.accent} />
+              <ThemedText type="smallBold" themeColor="accent">
+                {t('prayer.icsExport')}
+              </ThemedText>
+            </Pressable>
             <Pressable
               onPress={useMyLocation}
-              style={({ pressed }) => [styles.actionBtn, Platform.OS === 'web' ? styles.pressableWeb : undefined, pressed && styles.pressed]}>
-              <IconSymbol name="locate-outline" size={15} color={colors.accent} />
-              <ThemedText type="link" themeColor="accent">
+              accessibilityRole="button"
+              accessibilityLabel={t('common.useLocation')}
+              style={({ pressed }) => [styles.actionChip, styles.actionChipSecondary, Platform.OS === 'web' ? styles.pressableWeb : undefined, pressed && styles.pressed]}>
+              <IconSymbol name="locate-outline" size={16} color={colors.accent} />
+              <ThemedText type="smallBold" themeColor="accent">
                 {locLoading ? t('common.locating') : t('common.useLocation')}
               </ThemedText>
             </Pressable>
             <Pressable
               onPress={() => refetch()}
-              style={({ pressed }) => [styles.actionBtn, Platform.OS === 'web' ? styles.pressableWeb : undefined, pressed && styles.pressed]}>
-              <IconSymbol name="refresh-outline" size={15} color={colors.textSecondary} />
-              <ThemedText type="link" themeColor="textSecondary">
+              accessibilityRole="button"
+              accessibilityLabel={t('common.refresh')}
+              style={({ pressed }) => [styles.actionChip, styles.actionChipSecondary, Platform.OS === 'web' ? styles.pressableWeb : undefined, pressed && styles.pressed]}>
+              <IconSymbol name="refresh-outline" size={16} color={colors.textSecondary} />
+              <ThemedText type="smallBold" themeColor="textSecondary">
                 {t('common.refresh')}
               </ThemedText>
             </Pressable>
@@ -653,7 +669,11 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(11,11,13,0.35)',
+    // Höherer Scrim + feiner Ring, damit die Icons auch über hellen Bildstellen
+    // der Kaaba-Aufnahme klar lesbar bleiben (Audit 2026-07-22).
+    backgroundColor: 'rgba(11,11,13,0.55)',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: 'rgba(247,243,234,0.35)',
   },
   pressed: { opacity: 0.6 },
   hero: {
@@ -733,13 +753,26 @@ const styles = StyleSheet.create({
   rowLabelGroup: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one },
   timeCol: { alignItems: 'flex-end', gap: 1 },
   hijriRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: Spacing.one },
-  actionBtn: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one },
+  actionChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: Spacing.one,
+    minHeight: 44,
+    paddingVertical: Spacing.two,
+    paddingHorizontal: Spacing.three,
+    borderRadius: 999,
+  },
+  actionChipSecondary: {
+    // Neutraler, in beiden Themes ruhiger Chip-Grund.
+    backgroundColor: 'rgba(128,124,116,0.14)',
+  },
   actions: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
-    columnGap: Spacing.four,
+    columnGap: Spacing.two,
     rowGap: Spacing.two,
     marginTop: Spacing.two,
   },

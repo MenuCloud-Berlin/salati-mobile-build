@@ -121,7 +121,7 @@ export default function QuranBookmarksScreen() {
                     <View style={styles.rowTop}>
                       <View style={styles.rowText}>
                         <ThemedText type="default">
-                          {meta?.englishName ?? `Sure ${item.surah}`} · {t('quran.verse')} {item.ayah}
+                          {meta?.englishName ?? t('quran.surahN').replace('{n}', String(item.surah))} · {t('quran.verse')} {item.ayah}
                         </ThemedText>
                         {meta && (
                           <ThemedText type="small" themeColor="textSecondary">
@@ -200,7 +200,7 @@ export default function QuranBookmarksScreen() {
                     <View style={styles.rowTop}>
                       <View style={styles.rowText}>
                         <ThemedText type="default">
-                          {meta?.englishName ?? `Sure ${item.surah}`} · {t('quran.verse')} {item.ayah}
+                          {meta?.englishName ?? t('quran.surahN').replace('{n}', String(item.surah))} · {t('quran.verse')} {item.ayah}
                         </ThemedText>
                         {meta && (
                           <ThemedText type="small" themeColor="textSecondary">

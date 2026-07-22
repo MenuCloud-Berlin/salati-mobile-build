@@ -59,6 +59,7 @@
     "new": "New"
   },
   "quran": {
+    "surahN": "Surah {n}",
     "surahs": "Surah",
     "juz": "Juzuk",
     "juzItem": "Juzuk",
@@ -211,6 +212,7 @@
     "shareImage": "Kongsi sebagai imej"
   },
   "search": {
+    "globalTitle": "Carian global",
     "title": "Carian",
     "placeholder": "Al-Quran, Hadis, doa, kursus…",
     "hint": "Masukkan sekurang-kurangnya 2 aksara",

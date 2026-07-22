@@ -7,7 +7,8 @@ import { ThemedView } from '@/components/themed-view';
 import { DisclosureChevron } from '@/components/ui/disclosure-chevron';
 import { IconSymbol, type IconName } from '@/components/ui/icon-symbol';
 import { ThemedSwitch } from '@/components/ui/themed-switch';
-import { BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { Colors, MaxContentWidth, Spacing } from '@/constants/theme';
 import { rescheduleAdhkarReminders } from '@/features/duas/adhkarNotifications';
 import { requestNotificationPermission } from '@/features/prayer-times/notifications';
 import { useSettings } from '@/features/settings/store';
@@ -70,9 +71,7 @@ export default function NotificationsOverviewScreen() {
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={styles.scroll}>
-          <ThemedText type="title" style={styles.title}>
-            {t('settings.notificationsOverview.title')}
-          </ThemedText>
+          <ScreenHeader title={t('settings.notificationsOverview.title')} variant="modal" />
           <ThemedText type="small" themeColor="textSecondary" style={styles.subtitle}>
             {t('settings.notificationsOverview.subtitle')}
           </ThemedText>
@@ -387,7 +386,7 @@ function Section({ label, icon, children }: { label: string; icon: IconName; chi
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
   scroll: {
     paddingHorizontal: Spacing.three,
     paddingBottom: Spacing.six,

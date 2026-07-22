@@ -8,7 +8,8 @@ import { PressableCard } from '@/components/ui/pressable-card';
 import { ThemedActivityIndicator } from '@/components/themed-activity-indicator';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { Colors, MaxContentWidth, Spacing } from '@/constants/theme';
 import { distanceKm, fetchNearbyHalal } from '@/features/mosques/overpass';
 import { useSettings } from '@/features/settings/store';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
@@ -36,9 +37,7 @@ export default function HalalScreen() {
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <ThemedText type="title" style={styles.title}>
-          {t('halal.title')}
-        </ThemedText>
+        <ScreenHeader title={t('halal.title')} />
         <ThemedText type="small" themeColor="textSecondary" style={styles.subtitle}>
           {settings.location.label} · {t('halal.osmNote')}
         </ThemedText>
@@ -99,7 +98,7 @@ export default function HalalScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
   title: { textAlign: 'center' },
   subtitle: { textAlign: 'center', marginBottom: Spacing.two, paddingHorizontal: Spacing.four },
   center: { alignItems: 'center', paddingVertical: Spacing.five },

@@ -66,3 +66,21 @@ jobs:
           name: salati-release-apk
           path: android/app/build/outputs/apk/release/app-release.apk
           if-no-files-found: error
+
+      # Zusätzlich das AAB für den Play Store (bundleRelease) — ebenfalls signiert,
+      # gratis auf demselben Runner. `eas submit`/Play-Upload braucht AAB, nicht APK.
+      - name: Gradle bundleRelease (AAB, signiert)
+        working-directory: android
+        env:
+          ORG_GRADLE_PROJECT_RELEASE_STORE_FILE: ${{ runner.temp }}/release.jks
+          ORG_GRADLE_PROJECT_RELEASE_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
+          ORG_GRADLE_PROJECT_RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
+          ORG_GRADLE_PROJECT_RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
+        run: ./gradlew :app:bundleRelease --no-daemon -PreactNativeArchitectures=arm64-v8a,armeabi-v7a
+
+      - name: AAB als Artefakt hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: salati-release-aab
+          path: android/app/build/outputs/bundle/release/app-release.aab
+          if-no-files-found: error

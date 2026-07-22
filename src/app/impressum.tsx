@@ -3,7 +3,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, MaxContentWidth, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { MaxContentWidth, Spacing } from '@/constants/theme';
 import { useTranslation } from '@/lib/i18n';
 
 function Section({ label, children }: { label: string; children: React.ReactNode }) {
@@ -39,9 +40,7 @@ export default function ImpressumScreen() {
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={styles.scroll}>
-          <ThemedText type="title" style={styles.title}>
-            {t('impressum.title')}
-          </ThemedText>
+          <ScreenHeader title={t('impressum.title')} variant="modal" />
           <ThemedText type="small" themeColor="textSecondary" style={styles.subtitle}>
             {t('impressum.subtitle')}
           </ThemedText>
@@ -106,7 +105,7 @@ export default function ImpressumScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
   scroll: {
     padding: Spacing.four,
     paddingBottom: Spacing.six,

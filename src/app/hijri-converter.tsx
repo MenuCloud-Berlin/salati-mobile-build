@@ -13,7 +13,8 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { ThemedActivityIndicator } from '@/components/themed-activity-indicator';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { Colors, MaxContentWidth, Spacing } from '@/constants/theme';
 import { useGregorianToHijri, useHijriToGregorian } from '@/features/calendar/hooks';
 import { gregorianToHijriOffline, hijriToGregorianOffline, HIJRI_MONTHS, type HijriYMD } from '@/features/calendar/offline';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
@@ -161,9 +162,7 @@ export default function HijriConverterScreen() {
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={styles.scroll}>
-          <ThemedText type="title" style={styles.title}>
-            {t('hijriConverter.title')}
-          </ThemedText>
+          <ScreenHeader title={t('hijriConverter.title')} />
           <ThemedText type="small" themeColor="textSecondary" style={styles.subtitle}>
             {t('hijriConverter.subtitle')}
           </ThemedText>
@@ -273,7 +272,7 @@ export default function HijriConverterScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
   scroll: {
     paddingHorizontal: Spacing.three,
     paddingBottom: Spacing.five,

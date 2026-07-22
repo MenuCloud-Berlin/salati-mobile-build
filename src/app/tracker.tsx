@@ -5,7 +5,8 @@ import { AnimatedListItem } from '@/components/ui/animated-list-item';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, Brand, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { Brand, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
 import {
   PRAYER_IDS,
   completedCount,
@@ -56,9 +57,7 @@ export default function TrackerScreen() {
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={styles.scroll}>
-          <ThemedText type="title" style={styles.title}>
-            {t('tracker.title')}
-          </ThemedText>
+          <ScreenHeader title={t('tracker.title')} />
           <View style={styles.subtitleRow}>
             {streak > 0 && <IconSymbol name="flame" size={14} color={colors.accent} />}
             <ThemedText type="small" themeColor={streak > 0 ? 'accent' : 'textSecondary'}>
@@ -251,7 +250,7 @@ export default function TrackerScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
   scroll: { paddingHorizontal: Spacing.three, paddingBottom: Spacing.five, gap: Spacing.three, alignSelf: 'center', width: '100%', maxWidth: MaxContentWidth, },
   title: { textAlign: 'center' },
   subtitleRow: {

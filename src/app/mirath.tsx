@@ -6,7 +6,8 @@ import { AnimatedListItem } from '@/components/ui/animated-list-item';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { Colors, MaxContentWidth, Spacing } from '@/constants/theme';
 import { calcMirath, type Heir, type MirathInput } from '@/features/mirath/calc';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
 import { useTranslation } from '@/lib/i18n';
@@ -121,9 +122,7 @@ export default function MirathScreen() {
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={styles.scroll}>
-          <ThemedText type="title" style={styles.title}>
-            {t('mirath.title')}
-          </ThemedText>
+          <ScreenHeader title={t('mirath.title')} />
           <ThemedText type="small" themeColor="textSecondary" style={styles.subtitle}>
             {t('mirath.subtitle')}
           </ThemedText>
@@ -239,7 +238,7 @@ export default function MirathScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
   scroll: {
     paddingHorizontal: Spacing.three,
     paddingBottom: Spacing.five,

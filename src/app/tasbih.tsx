@@ -10,7 +10,8 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { PressableCard } from '@/components/ui/pressable-card';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, Brand, Colors, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { Brand, Colors, Spacing } from '@/constants/theme';
 import { DHIKR_PRESETS, useTasbih, type DhikrPreset } from '@/features/dhikr/counter';
 import { sanitizeTarget, useCustomDhikr } from '@/features/dhikr/custom';
 import { crossesGoal, DAILY_GOAL_OPTIONS, sanitizeGoal, useTasbihGoal, useTasbihHistory } from '@/features/dhikr/goal';
@@ -100,9 +101,7 @@ export default function TasbihScreen() {
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <ThemedText type="title" style={styles.title}>
-          {t('tasbih.title')}
-        </ThemedText>
+        <ScreenHeader title={t('tasbih.title')} />
         <ThemedText type="small" themeColor="textSecondary" style={styles.subtitle}>
           {t('tasbih.today')}: {state.todayTotal}
         </ThemedText>
@@ -356,7 +355,7 @@ export default function TasbihScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
   title: { textAlign: 'center' },
   subtitle: { textAlign: 'center', marginBottom: Spacing.three },
   afterSalahCard: {

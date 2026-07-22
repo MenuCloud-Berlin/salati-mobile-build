@@ -30,7 +30,8 @@ export async function refreshAllWidgets(): Promise<void> {
     WIDGET_NAMES.map((widgetName) =>
       requestWidgetUpdate({
         widgetName,
-        renderWidget: (info: WidgetInfo) => renderWidgetForInfo(info.widgetName, info.widgetId),
+        renderWidget: (info: WidgetInfo) =>
+          renderWidgetForInfo(info.widgetName, info.widgetId, { width: info.width, height: info.height }),
         // Kein platziertes Widget dieses Namens → nichts tun (kein Fehler).
         widgetNotFound: () => {},
       }).catch(() => {

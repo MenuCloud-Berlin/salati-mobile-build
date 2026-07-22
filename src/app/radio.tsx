@@ -18,7 +18,8 @@ import { PressableCard } from '@/components/ui/pressable-card';
 import { ThemedActivityIndicator } from '@/components/themed-activity-indicator';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { Colors, MaxContentWidth, Spacing } from '@/constants/theme';
 import { fetchRadios, type RadioStation } from '@/features/quran/radio';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
 import { useTranslation } from '@/lib/i18n';
@@ -109,9 +110,7 @@ export default function RadioScreen() {
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <ThemedText type="title" style={styles.title}>
-          {t('radio.title')}
-        </ThemedText>
+        <ScreenHeader title={t('radio.title')} />
         <ThemedText type="small" themeColor="textSecondary" style={styles.subtitle}>
           {t('radio.subtitle')}
         </ThemedText>
@@ -173,7 +172,7 @@ export default function RadioScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
   title: { textAlign: 'center' },
   subtitle: { textAlign: 'center', marginBottom: Spacing.three, paddingHorizontal: Spacing.four },
   center: { alignItems: 'center', paddingVertical: Spacing.five },

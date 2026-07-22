@@ -59,6 +59,7 @@
     "new": "Neu"
   },
   "quran": {
+    "surahN": "Sure {n}",
     "surahs": "Suren",
     "juz": "Juz'",
     "juzItem": "Juz'",
@@ -211,6 +212,7 @@
     "shareImage": "Als Bild teilen"
   },
   "search": {
+    "globalTitle": "Globale Suche",
     "title": "Suche",
     "placeholder": "Koran, Hadith, Duas, Kurse …",
     "hint": "Mindestens 2 Zeichen eingeben",

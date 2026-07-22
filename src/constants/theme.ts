@@ -21,6 +21,10 @@ export const Colors = {
     background: Brand.paper,
     backgroundElement: '#F0EAD9',
     backgroundSelected: '#E8DFC7',
+    // iOS-„systemGroupedBackground": ruhiger, leicht dunklerer Grund, VOR dem
+    // die abgerundeten Inset-Karten (backgroundElement) heller stehen — genau
+    // die Ebenen-Staffelung der iOS-Einstellungen (Seite dunkler, Karte heller).
+    groupedBackground: '#E4DCC7',
     textSecondary: '#6B6455',
     // Dunkleres Gold für Text/Icons im Light Mode: Brand.gold (#d4af37) hat
     // auf Paper nur 1.9:1 Kontrast (WCAG-Fail) — #846200 erreicht 5.1:1 auf
@@ -33,6 +37,9 @@ export const Colors = {
     background: Brand.ink,
     backgroundElement: '#1A1A1D',
     backgroundSelected: '#242427',
+    // Im Dark Mode ist die Seite (ink, fast schwarz) dunkler als die Karten
+    // (#1A1A1D) — wieder die iOS-Staffelung, nur invertiert.
+    groupedBackground: Brand.ink,
     textSecondary: 'rgba(247,243,234,0.65)',
     accent: Brand.gold,
   },
@@ -93,3 +100,14 @@ export const BackChipInset = Platform.OS === 'web' ? 44 : 0;
 
 export const BottomTabInset = Platform.select({ ios: 50, android: 80 }) ?? 0;
 export const MaxContentWidth = 800;
+
+/**
+ * Einheitliche Icon-Badge-Größenskala (Audit 2026-07-22: vorher 32↔44 wild
+ * gemischt). `row` = kompakte Listen-Zeile (Mehr, Moscheen, Studium-Hub,
+ * Erste-Schritte), `card` = große Feature-/Raster-Karte (Lernen). Bewusst
+ * kompakt (Apple-Maß): lieber ruhig-dicht als aufgeblasen.
+ */
+export const IconBadge = {
+  row: 40,
+  card: 44,
+} as const;

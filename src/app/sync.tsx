@@ -8,7 +8,8 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { ThemedActivityIndicator } from '@/components/themed-activity-indicator';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { Colors, MaxContentWidth, Spacing } from '@/constants/theme';
 import { exportProgressCode, importProgressCode } from '@/features/sync/codeSync';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
 import { useTranslation } from '@/lib/i18n';
@@ -60,9 +61,7 @@ export default function SyncScreen() {
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={styles.scroll}>
-          <ThemedText type="title" style={styles.title}>
-            {t('sync.title')}
-          </ThemedText>
+          <ScreenHeader title={t('sync.title')} variant="modal" />
           <ThemedText type="small" themeColor="textSecondary" style={styles.intro}>
             {t('sync.intro')}
           </ThemedText>
@@ -173,7 +172,7 @@ export default function SyncScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: BackChipInset },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
   scroll: {
     padding: Spacing.four,
     gap: Spacing.two,

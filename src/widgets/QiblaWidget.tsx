@@ -2,6 +2,7 @@
 
 import { FlexWidget, TextWidget } from 'react-native-android-widget';
 
+import { heightBucket, widthScale, type WidgetSize } from './widgetLayout';
 import { cardGradient, hairline, WIDGET_THEMES, type WidgetTheme } from './widgetTheme';
 
 // "use no memo" oben: siehe Kommentar in PrayerWidget.tsx (React-Compiler
@@ -13,6 +14,10 @@ import { cardGradient, hairline, WIDGET_THEMES, type WidgetTheme } from './widge
 // Standort berechnet (features/qibla/bearing.ts). KEIN Live-Kompass: ein
 // Homescreen-Widget hat keinen Zugriff auf den Magnetometer-Stream, daher
 // das feste geografische Bearing statt einer drehenden Nadel.
+//
+// GRÖSSEN-ADAPTIV (size-Prop, s. widgetLayout.ts): bei flacher Höhe (~1 Zelle)
+// stehen Titel/Bearing/Richtung nebeneinander in einer Reihe (Entfernung
+// entfällt); sonst das zentrierte Standard-Layout. Breite skaliert die Schrift.
 export type { WidgetTheme };
 
 export interface QiblaWidgetProps {
@@ -40,6 +45,8 @@ export interface QiblaWidgetProps {
   textColor?: `#${string}`;
   /** Akzentfarben-Override (Hex); undefined = Theme-Akzentfarbe. */
   accentColor?: `#${string}`;
+  /** Aktuelle Widget-Größe in DP (aus WidgetInfo) für das adaptive Layout. */
+  size?: WidgetSize;
 }
 
 export function QiblaWidget({
@@ -56,11 +63,52 @@ export function QiblaWidget({
   showDistance = true,
   textColor,
   accentColor,
+  size,
 }: QiblaWidgetProps) {
   const c = WIDGET_THEMES[theme];
   const text = textColor ?? c.text;
   const accent = accentColor ?? c.accent;
-  const fs = (n: number) => Math.round(n * fontScale);
+  const auto = widthScale(size?.width);
+  const fs = (n: number) => Math.round(n * fontScale * auto);
+
+  // compact (~1 Zelle hoch): 🕋 Bearing + Richtung in einer Reihe, Entfernung weg.
+  if (heightBucket(size?.height) === 'compact') {
+    return (
+      <FlexWidget
+        clickAction="OPEN_APP"
+        style={{
+          flex: 1,
+          width: 'match_parent',
+          height: 'match_parent',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          backgroundGradient: cardGradient(theme, opacity),
+          borderRadius: radius,
+          borderWidth: 1,
+          borderColor: hairline(theme),
+          paddingHorizontal: 14,
+          paddingVertical: 8,
+        }}>
+        <FlexWidget style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
+          {showBearing ? (
+            <TextWidget text={`🕋 ${bearing}`} style={{ fontSize: fs(20), color: text, fontWeight: '700' }} />
+          ) : (
+            <TextWidget text={`🕋 ${title}`} style={{ fontSize: fs(14), color: accent, fontWeight: '600', letterSpacing: 0.2 }} />
+          )}
+        </FlexWidget>
+        {showDirection ? (
+          <TextWidget
+            text={direction}
+            truncate="END"
+            maxLines={1}
+            style={{ fontSize: fs(13), color: accent, fontWeight: '700' }}
+          />
+        ) : null}
+      </FlexWidget>
+    );
+  }
+
   return (
     <FlexWidget
       clickAction="OPEN_APP"

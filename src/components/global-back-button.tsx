@@ -16,7 +16,22 @@ import { isRtlLocale } from '@/lib/locale-detect';
  * Routen im Tab-Navigator (inkl. Unterrouten wie /quran/1) zeigen auf Web
  * bereits die obere Nav-Leiste — dort würde der Chip die Leiste überlappen.
  */
-const TAB_PREFIXES = ['/qibla', '/quran', '/more', '/prayer'];
+const TAB_PREFIXES = ['/qibla', '/quran', '/more', '/prayer', '/lernen'];
+
+// Modal-Routen bringen ihren eigenen sichtbaren Schließen/„Fertig"-Button im
+// ScreenHeader mit (Audit 2026-07-22) — dort würde der schwebende Chip nur eine
+// zweite, doppelte Zurück-Affordanz erzeugen. Daher hier ausblenden.
+const MODAL_ROUTES = [
+  '/settings',
+  '/storage',
+  '/notifications-overview',
+  '/dashboard-reorder',
+  '/sync',
+  '/impressum',
+  '/datenschutz',
+  '/agb',
+  '/changelog',
+];
 
 export function GlobalBackButton() {
   const pathname = usePathname();
@@ -28,6 +43,7 @@ export function GlobalBackButton() {
   if (Platform.OS !== 'web') return null;
   if (pathname === '/' || TAB_PREFIXES.some((p) => pathname === p || pathname.startsWith(p + '/')))
     return null;
+  if (MODAL_ROUTES.includes(pathname)) return null;
 
   return (
     <Pressable

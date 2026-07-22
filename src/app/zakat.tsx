@@ -9,7 +9,8 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { ThemedSwitch } from '@/components/ui/themed-switch';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { Colors, MaxContentWidth, Spacing } from '@/constants/theme';
 import {
   NISAB_GOLD_GRAMS,
   REFERENCE_GOLD_PRICE_PER_GRAM,
@@ -80,9 +81,7 @@ export default function ZakatScreen() {
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={styles.scroll}>
-          <ThemedText type="title" style={styles.title}>
-            {t('zakat.title')}
-          </ThemedText>
+          <ScreenHeader title={t('zakat.title')} />
           <ThemedText type="small" themeColor="textSecondary" style={styles.subtitle}>
             {t('zakat.subtitle')}
           </ThemedText>
@@ -259,7 +258,7 @@ export default function ZakatScreen() {
 const styles = StyleSheet.create({
   pressableWeb: { cursor: 'pointer' },
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
   scroll: { paddingHorizontal: Spacing.three, paddingBottom: Spacing.five, gap: Spacing.two, alignSelf: 'center', width: '100%', maxWidth: MaxContentWidth, },
   title: { textAlign: 'center' },
   subtitle: { textAlign: 'center', marginBottom: Spacing.two, paddingHorizontal: Spacing.four },

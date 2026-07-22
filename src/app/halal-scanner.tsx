@@ -8,7 +8,8 @@ import { PressableCard } from '@/components/ui/pressable-card';
 import { ThemedActivityIndicator } from '@/components/themed-activity-indicator';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, Colors, MaxContentWidth, Spacing, type ThemeColor } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { Colors, MaxContentWidth, Spacing, type ThemeColor } from '@/constants/theme';
 import { fetchProductByBarcode, type ScannedProduct } from '@/features/halal-scanner/api';
 import { classifyIngredients, type ClassificationResult } from '@/features/halal-scanner/matcher';
 import type { HalalStatus } from '@/features/halal-scanner/classification';
@@ -86,9 +87,7 @@ export default function HalalScannerScreen() {
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={styles.scroll}>
-          <ThemedText type="title" style={styles.title}>
-            {t('scanner.title')}
-          </ThemedText>
+          <ScreenHeader title={t('scanner.title')} />
           <ThemedText type="small" themeColor="textSecondary" style={styles.subtitle}>
             {t('scanner.subtitle')}
           </ThemedText>
@@ -310,7 +309,7 @@ function ResultView({
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
   scroll: {
     padding: Spacing.four,
     gap: Spacing.three,

@@ -7,7 +7,8 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { PressableCard } from '@/components/ui/pressable-card';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, Brand, Colors, Spacing } from '@/constants/theme';
+import { ScreenHeader } from '@/components/screen-header';
+import { Brand, Colors, Spacing } from '@/constants/theme';
 import {
   AFTER_SALAH_PHASES,
   AFTER_SALAH_TOTAL,
@@ -60,9 +61,7 @@ export default function DhikrAfterSalahScreen() {
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <ThemedText type="title" style={styles.center}>
-          {t('dhikrAfterSalah.title')}
-        </ThemedText>
+        <ScreenHeader title={t('dhikrAfterSalah.title')} />
         <ThemedText type="small" themeColor="textSecondary" style={[styles.center, styles.subtitle]}>
           {t('dhikrAfterSalah.subtitle')}
         </ThemedText>
@@ -159,7 +158,7 @@ export default function DhikrAfterSalahScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  safeArea: { flex: 1, paddingTop: Spacing.two },
   center: { textAlign: 'center' },
   subtitle: { marginBottom: Spacing.three, paddingHorizontal: Spacing.four },
   body: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: Spacing.three, paddingHorizontal: Spacing.four },

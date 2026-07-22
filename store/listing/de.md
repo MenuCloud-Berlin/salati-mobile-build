@@ -54,7 +54,7 @@ WISSEN & HERZ
 • 22 Abzeichen für erreichte Meilensteine
 • 13 Hadith-Sammlungen mit Suche über alle gleichzeitig (Arabisch, Englisch, Türkisch)
 • Koran-Radio: 24/7-Rezitations-Streams
-• 99 Namen Allahs mit Audio, 47 Duas mit Quellenangabe
+• 99 Namen Allahs mit Audio, 89 Duas mit Quellenangabe
 • 11 Praxis-Guides mit Bildern: Wudu, Ghusl, Gebet, Janazah, Hajj & Umrah und mehr
 • Zakat- und Erbrechts-Rechner, 26 belegte Weisheiten, Tasbih-Zähler
 
