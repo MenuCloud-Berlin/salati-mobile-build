@@ -54,6 +54,43 @@ export interface RevealedWord {
   status: 'hit' | 'near';
 }
 
+export interface AudioWindow {
+  /** Sample-Index (inklusive) des Fenster-Anfangs im Gesamt-Puffer. */
+  start: number;
+  /** Sample-Index (exklusive) des Fenster-Endes im Gesamt-Puffer. */
+  end: number;
+}
+
+/**
+ * Zerlegt eine Gesamt-Sample-Länge in überlappende Fenster [start,end) für die
+ * FINALE Voll-Auswertung der ganzen Aufnahme (s. speech.ts stop()). Anders als
+ * das reine Tail-Fenster (whisperCheck.tailWindow), das nur die letzten Sekunden
+ * abdeckt, überstreicht diese Zerlegung die GESAMTE Aufnahme vom Anfang bis zum
+ * Ende — so wird am Ende jeder korrekt rezitierte Vers ausgewertet und aufgedeckt
+ * ("die Sure löst sich auf"), auch die früh gesprochenen, die längst aus dem
+ * Live-Tail-Fenster gefallen waren.
+ *
+ * Aufeinanderfolgende Fenster überlappen (hop < window), damit an keiner
+ * Fenstergrenze ein Wort verloren geht. Das letzte Fenster endet immer exakt bei
+ * `totalSamples`. Reine Funktion — testbar ohne Audio/Whisper.
+ */
+export function overlappingWindows(
+  totalSamples: number,
+  windowSamples: number,
+  hopSamples: number,
+): AudioWindow[] {
+  if (totalSamples <= 0 || windowSamples <= 0) return [];
+  if (totalSamples <= windowSamples) return [{ start: 0, end: totalSamples }];
+  const hop = Math.max(1, hopSamples);
+  const out: AudioWindow[] = [];
+  for (let start = 0; start < totalSamples; start += hop) {
+    const end = Math.min(totalSamples, start + windowSamples);
+    out.push({ start, end });
+    if (end >= totalSamples) break;
+  }
+  return out;
+}
+
 /** Zerlegt den erwarteten Text in Roh-Wörter (mit Diakritika, für Prompt/Anzeige). */
 export function splitExpectedWords(expectedText: string): string[] {
   return expectedText.split(/\s+/).filter(Boolean);

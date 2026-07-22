@@ -353,7 +353,11 @@
     },
     "nextLesson": "بل درس",
     "podcastIntro": "Podcast for this phase",
-    "podcastOptional": "Optional — listen first or start right away"
+    "podcastOptional": "Optional — listen first or start right away",
+    "videoIntro": "د دې پړاو ویډیو",
+    "videoOptional": "اختیاري – وګورئ یا مستقیم پیل وکړئ",
+    "tableView": "جدول وګورئ",
+    "tableViewDesc": "د گرامر جدول د لټون لپاره"
   },
   "practice": {
     "title": "تمرین او آزموینه",
@@ -577,7 +581,10 @@
       "cta": "ټوله سوره ولولئ",
       "intro": "پیل وکړئ او ټوله سوره پرله پسې ولولئ — آیتونه د پیژندلو سره سم څرګندیږي.",
       "start": "د تلاوت پیل",
-      "stop": "ودرول"
+      "stop": "ودرول",
+      "finalizing": "Evaluating the full recitation…",
+      "doneAll": "Whole surah recognized — well done!",
+      "doneSome": "Recognized {n} of {total} words."
     },
     "speechError": {
       "heading": "د تلاوت کتنه ناکامه شوه",

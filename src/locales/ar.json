@@ -353,7 +353,11 @@
     },
     "nextLesson": "الدرس التالي",
     "podcastIntro": "Podcast for this phase",
-    "podcastOptional": "Optional — listen first or start right away"
+    "podcastOptional": "Optional — listen first or start right away",
+    "videoIntro": "فيديو لهذه المرحلة",
+    "videoOptional": "اختياري – شاهده أو ابدأ مباشرةً",
+    "tableView": "عرض الجدول",
+    "tableViewDesc": "جدول نحوي للمراجعة"
   },
   "practice": {
     "title": "تدريب واختبارات",
@@ -577,7 +581,10 @@
       "cta": "تلاوة السورة كاملة",
       "intro": "ابدأ واتلُ السورة كاملة دون توقف — تنكشف الآيات فور التعرّف عليها.",
       "start": "بدء التلاوة",
-      "stop": "إيقاف"
+      "stop": "إيقاف",
+      "finalizing": "Evaluating the full recitation…",
+      "doneAll": "Whole surah recognized — well done!",
+      "doneSome": "Recognized {n} of {total} words."
     },
     "speechError": {
       "heading": "فشل التحقق من التلاوة",

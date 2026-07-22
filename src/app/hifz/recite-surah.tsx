@@ -53,6 +53,12 @@ export default function ReciteSurahScreen() {
   const [modelDlPct, setModelDlPct] = useState<number | null>(null);
   const [running, setRunning] = useState(false);
   const [starting, setStarting] = useState(false);
+  // Läuft die finale Voll-Auswertung der GESAMTEN Aufnahme (nach Stopp) — kann
+  // bei langen Suren mehrere überlappende Blöcke dauern. Danach ist die Sure
+  // vollständig „aufgelöst" (s. summary).
+  const [finalizing, setFinalizing] = useState(false);
+  // Abschluss-Ergebnis: wie viele Wörter am Ende aufgedeckt wurden.
+  const [summary, setSummary] = useState<{ revealed: number; total: number } | null>(null);
   // On-Screen-Fehler statt stummem console.error (User-Report: „komplett
   // kaputt", ohne ablesbare Ursache nicht diagnostizierbar).
   const [startErr, setStartErr] = useState<{ info: WhisperFehlerInfo; diag: WhisperDiagnose | null } | null>(null);
@@ -87,6 +93,8 @@ export default function ReciteSurahScreen() {
     () => ayahs.map((a) => a.arabic).join(' '),
     [ayahs],
   );
+  // Gesamt-Wortzahl der Sure — Bezugsgröße für die Abschluss-Zählung (summary).
+  const totalWords = useMemo(() => verseWordCounts.reduce((s, c) => s + c, 0), [verseWordCounts]);
 
   // Monotones Aufdecken (User-Bug 2026-07-22: „erkennt nur die ersten Verse,
   // dann verliert es den Faden und löscht die ersten wieder" + „ein Wort aus
@@ -99,6 +107,11 @@ export default function ReciteSurahScreen() {
   // (undefined < near < hit) — ein späteres Fenster ohne die frühen Verse deckt
   // daher nichts wieder zu.
   const [revealed, setRevealed] = useState<Record<number, 'hit' | 'near'>>({});
+  // Spiegel des aufgedeckten Standes als Ref — die finale Voll-Auswertung
+  // (stop()) deckt über onPartial→applyReveals asynchron auf; direkt nach dem
+  // awaiteten stop() ist der State-Batch evtl. noch nicht geflusht, der Ref ist
+  // aber sofort aktuell → verlässliche Abschluss-Zählung.
+  const revealedRef = useRef<Record<number, 'hit' | 'near'>>({});
   const applyReveals = useCallback((reveals: RevealedWord[]) => {
     if (reveals.length === 0) return;
     setRevealed((prev) => {
@@ -110,6 +123,7 @@ export default function ReciteSurahScreen() {
         next[r.index] = r.status;
         changed = true;
       }
+      if (changed) revealedRef.current = next;
       return changed ? next : prev;
     });
   }, []);
@@ -132,6 +146,8 @@ export default function ReciteSurahScreen() {
     setStarting(true);
     setStartErr(null);
     setRevealed({});
+    revealedRef.current = {};
+    setSummary(null);
     try {
       controllerRef.current = await recognizeArabicContinuous({
         expectedText: expectedFull,
@@ -155,12 +171,17 @@ export default function ReciteSurahScreen() {
     const c = controllerRef.current;
     controllerRef.current = null;
     setRunning(false);
-    // Der finale Durchlauf meldet seine Treffer selbst über onPartial→applyReveals.
+    // Der finale Durchlauf wertet die GESAMTE Aufnahme in überlappenden Blöcken
+    // aus und meldet seine Treffer über onPartial→applyReveals — danach ist die
+    // Sure vollständig aufgedeckt. Solange läuft, „finalizing" anzeigen.
     if (c) {
+      setFinalizing(true);
       await c.stop().catch((e) => {
         console.warn('[hifz recite-surah] Stopp/Final-Transkription fehlgeschlagen:', String(e));
         return '';
       });
+      setSummary({ revealed: Object.keys(revealedRef.current).length, total: totalWords });
+      setFinalizing(false);
     }
   }
 
@@ -237,6 +258,30 @@ export default function ReciteSurahScreen() {
 
         {settings.speechExercisesEnabled && whisperSupported() && recognitionAvailable() && (
           <View style={styles.footer}>
+            {finalizing && (
+              <ThemedView type="backgroundElement" style={styles.summaryCard}>
+                <ThemedActivityIndicator />
+                <ThemedText type="small" themeColor="textSecondary">
+                  {t('hifz.surahRecite.finalizing')}
+                </ThemedText>
+              </ThemedView>
+            )}
+            {!finalizing && summary && (
+              <ThemedView type="backgroundElement" style={styles.summaryCard}>
+                <IconSymbol
+                  name={summary.revealed >= summary.total ? 'checkmark-circle' : 'information-circle'}
+                  size={18}
+                  color={summary.revealed >= summary.total ? Brand.gold : colors.textSecondary}
+                />
+                <ThemedText type="small" themeColor="textSecondary" style={styles.summaryText}>
+                  {summary.revealed >= summary.total && summary.total > 0
+                    ? t('hifz.surahRecite.doneAll')
+                    : t('hifz.surahRecite.doneSome')
+                        .replace('{n}', String(summary.revealed))
+                        .replace('{total}', String(summary.total))}
+                </ThemedText>
+              </ThemedView>
+            )}
             {startErr && (
               <ThemedView type="backgroundElement" style={styles.errCard}>
                 <View style={styles.errHeadRow}>
@@ -296,16 +341,22 @@ export default function ReciteSurahScreen() {
             ) : (
               <Pressable
                 onPress={running ? stop : start}
-                disabled={modelReady === null || starting}
+                disabled={modelReady === null || starting || finalizing}
                 accessibilityRole="button"
                 style={({ pressed }) => [
                   styles.primaryBtn,
                   { backgroundColor: running ? '#e5544b' : Brand.gold },
-                  pressed && styles.pressed,
+                  (pressed || finalizing) && styles.pressed,
                 ]}>
                 <IconSymbol name={running ? 'stop' : 'mic'} size={20} color={running ? '#fff' : Brand.ink} />
                 <ThemedText type="smallBold" style={[styles.primaryLabel, running && { color: '#fff' }]}>
-                  {starting ? t('hifz.listening') : running ? t('hifz.surahRecite.stop') : t('hifz.surahRecite.start')}
+                  {finalizing
+                    ? t('hifz.surahRecite.finalizing')
+                    : starting
+                      ? t('hifz.listening')
+                      : running
+                        ? t('hifz.surahRecite.stop')
+                        : t('hifz.surahRecite.start')}
                 </ThemedText>
               </Pressable>
             )}
@@ -369,6 +420,15 @@ const styles = StyleSheet.create({
     marginBottom: Spacing.two,
     backgroundColor: 'rgba(248,113,113,0.16)',
   },
+  summaryCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.two,
+    padding: Spacing.three,
+    borderRadius: Spacing.two,
+    marginBottom: Spacing.two,
+  },
+  summaryText: { flexShrink: 1 },
   errHeadRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   diagRow: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.three },
   errDetail: { padding: Spacing.two, borderRadius: Spacing.two, gap: 2 },

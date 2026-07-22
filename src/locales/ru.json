@@ -353,7 +353,11 @@
     },
     "nextLesson": "Следующий урок",
     "podcastIntro": "Podcast for this phase",
-    "podcastOptional": "Optional — listen first or start right away"
+    "podcastOptional": "Optional — listen first or start right away",
+    "videoIntro": "Видео к этому этапу",
+    "videoOptional": "Необязательно — посмотрите или начните сразу",
+    "tableView": "Посмотреть таблицу",
+    "tableViewDesc": "Грамматическая таблица для справки"
   },
   "practice": {
     "title": "Практика и викторина",
@@ -577,7 +581,10 @@
       "cta": "Прочитать всю суру",
       "intro": "Начните и читайте всю суру подряд — аяты открываются по мере распознавания.",
       "start": "Начать чтение",
-      "stop": "Стоп"
+      "stop": "Стоп",
+      "finalizing": "Evaluating the full recitation…",
+      "doneAll": "Whole surah recognized — well done!",
+      "doneSome": "Recognized {n} of {total} words."
     },
     "speechError": {
       "heading": "Проверка чтения не удалась",

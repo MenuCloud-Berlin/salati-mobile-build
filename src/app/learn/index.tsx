@@ -26,6 +26,8 @@ import {
 } from '@/features/learn/progress';
 import { courseMetaById, loadCourseLessons } from '@/features/study/courses';
 import { fetchPodcastIndex, formatDuration } from '@/features/podcast/data';
+import { PHASE_TABLE_VIDEO } from '@/features/video/data';
+import { PhaseTableCard, PhaseVideoCard } from '@/features/video/recommendation-cards';
 import { useSettings } from '@/features/settings/store';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
 import { useTranslation } from '@/lib/i18n';
@@ -72,6 +74,12 @@ interface Phase {
   // konsumiert `section.key` als React-Key, im renderSectionHeader ist er
   // dann nicht mehr zuverlaessig lesbar.
   episodeNo?: number;
+  // Optionale, thematisch EXAKT passende Grammatik-Tabelle (kind:'table',
+  // episode_no>=1000) fuer diese Phase — oeffnet denselben Video-Player. Nur
+  // gesetzt, wo es genau passt (Grammatik->muslimun-Tabelle, Madinah->
+  // Hinweiswoerter); Werte aus PHASE_TABLE_VIDEO. Wie episodeNo als Feld statt
+  // Lookup ueber section.key (im renderSectionHeader nicht zuverlaessig lesbar).
+  tableEpisodeNo?: number;
 }
 
 /** Optionale Podcast-Karte im Phasen-Kopf. Laedt den Folgen-Titel aus dem
@@ -200,6 +208,7 @@ export default function LearnOverviewScreen() {
       lessons: grammarLessons,
       progress: grammarProgress,
       episodeNo: 3,
+      tableEpisodeNo: PHASE_TABLE_VIDEO.grammar,
     },
     {
       key: 'madinah',
@@ -208,6 +217,7 @@ export default function LearnOverviewScreen() {
       lessons: madinahLessons,
       progress: madinahProgress,
       episodeNo: 16,
+      tableEpisodeNo: PHASE_TABLE_VIDEO.madinah,
     },
     {
       key: 'amau',
@@ -249,7 +259,8 @@ export default function LearnOverviewScreen() {
           contentContainerStyle={styles.list}
           stickySectionHeadersEnabled={false}
           renderSectionHeader={({ section }) => {
-            const episodeNo = (section as unknown as Phase).episodeNo;
+            const phase = section as unknown as Phase;
+            const { episodeNo, tableEpisodeNo } = phase;
             return (
               <View>
                 <View style={styles.sectionHeaderRow}>
@@ -261,6 +272,11 @@ export default function LearnOverviewScreen() {
                   </ThemedText>
                 </View>
                 {episodeNo ? <PhasePodcastCard episodeNo={episodeNo} /> : null}
+                {/* Video-Empfehlung: gleiche episode_no wie der Podcast, da
+                    inhaltsgleich (Lektion als Video). */}
+                {episodeNo ? <PhaseVideoCard episodeNo={episodeNo} /> : null}
+                {/* Optional: exakt passende Grammatik-Tabelle (kind:'table'). */}
+                {tableEpisodeNo ? <PhaseTableCard episodeNo={tableEpisodeNo} /> : null}
               </View>
             );
           }}

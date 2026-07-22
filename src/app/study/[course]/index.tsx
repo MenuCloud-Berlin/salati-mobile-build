@@ -19,6 +19,8 @@ import {
   useCourseProgress,
 } from '@/features/learn/progress';
 import { COURSE_META, courseMetaById, loadCourseLessons } from '@/features/study/courses';
+import { PHASE_INTRO_VIDEO, PHASE_TABLE_VIDEO } from '@/features/video/data';
+import { PhaseTableCard, PhaseVideoCard } from '@/features/video/recommendation-cards';
 import { useSettings } from '@/features/settings/store';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
 import { useTranslation } from '@/lib/i18n';
@@ -130,7 +132,18 @@ export default function CourseLessonsScreen() {
           keyExtractor={(l) => l.id}
           contentContainerStyle={styles.list}
           ListHeaderComponent={
-            lessons.length > 1 ? (
+            <>
+              {/* Optionale Video-/Tabellen-Empfehlung zum Kurs (gleiches Muster
+                  wie im Lern-Pfad). Beide Karten blenden sich selbst aus, wenn
+                  der Kurs kein passendes Video/keine Tabelle hat oder der Index
+                  den Eintrag nicht kennt. */}
+              {PHASE_INTRO_VIDEO[course.id] ? (
+                <PhaseVideoCard episodeNo={PHASE_INTRO_VIDEO[course.id]} />
+              ) : null}
+              {PHASE_TABLE_VIDEO[course.id] ? (
+                <PhaseTableCard episodeNo={PHASE_TABLE_VIDEO[course.id]} />
+              ) : null}
+              {lessons.length > 1 ? (
               // Immer verfügbar (User-Wunsch): Einstufung für Neue, danach
               // wiederholbarer Wissens-Test — recordResult behält stets das
               // beste Ergebnis, Wiederholen kann nichts zurücksetzen.
@@ -161,7 +174,8 @@ export default function CourseLessonsScreen() {
                 </View>
                 <DisclosureChevron size={18} color={colors.textSecondary} />
               </PressableCard>
-            ) : null
+              ) : null}
+            </>
           }
           ListFooterComponent={
             <PressableCard

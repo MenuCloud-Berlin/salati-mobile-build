@@ -353,7 +353,11 @@
     },
     "nextLesson": "Pelajaran seterusnya",
     "podcastIntro": "Podcast for this phase",
-    "podcastOptional": "Optional — listen first or start right away"
+    "podcastOptional": "Optional — listen first or start right away",
+    "videoIntro": "Video untuk fasa ini",
+    "videoOptional": "Pilihan – tonton atau terus mula",
+    "tableView": "Lihat jadual",
+    "tableViewDesc": "Jadual tatabahasa untuk rujukan"
   },
   "practice": {
     "title": "Latihan & Kuiz",
@@ -577,7 +581,10 @@
       "cta": "Baca seluruh surah",
       "intro": "Mula dan baca seluruh surah tanpa henti — ayat terbuka apabila dikenali.",
       "start": "Mula bacaan",
-      "stop": "Berhenti"
+      "stop": "Berhenti",
+      "finalizing": "Evaluating the full recitation…",
+      "doneAll": "Whole surah recognized — well done!",
+      "doneSome": "Recognized {n} of {total} words."
     },
     "speechError": {
       "heading": "Semakan bacaan gagal",

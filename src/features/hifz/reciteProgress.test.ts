@@ -1,5 +1,6 @@
 import {
   ReciteProgress,
+  overlappingWindows,
   promptWindow,
   splitExpectedWords,
   windowedReveal,
@@ -83,6 +84,54 @@ describe('windowedReveal — Positions-gekoppeltes Aufdecken', () => {
     expect(
       windowedReveal('دال', REPEAT_WORDS, REPEAT_WORDS.length, { lookBehind: 0, lookAhead: 3 }),
     ).toEqual({ reveals: [], frontier: REPEAT_WORDS.length });
+  });
+});
+
+describe('overlappingWindows — finale Voll-Auswertung', () => {
+  it('liefert genau EIN Fenster, wenn die Aufnahme kürzer als das Fenster ist', () => {
+    expect(overlappingWindows(1000, 4000, 2000)).toEqual([{ start: 0, end: 1000 }]);
+  });
+
+  it('deckt bei exakter Fensterlänge alles in einem Fenster ab', () => {
+    expect(overlappingWindows(4000, 4000, 2000)).toEqual([{ start: 0, end: 4000 }]);
+  });
+
+  it('zerlegt eine lange Aufnahme in überlappende Fenster bis exakt ans Ende', () => {
+    // 10000 Samples, Fenster 4000, hop 2000 → 0,2000,4000,6000; das Fenster bei
+    // 6000 endet bei 10000 (== total) und beendet die Kette.
+    expect(overlappingWindows(10000, 4000, 2000)).toEqual([
+      { start: 0, end: 4000 },
+      { start: 2000, end: 6000 },
+      { start: 4000, end: 8000 },
+      { start: 6000, end: 10000 },
+    ]);
+  });
+
+  it('das letzte Fenster endet IMMER exakt bei totalSamples (nichts fällt hinten weg)', () => {
+    const wins = overlappingWindows(9500, 4000, 2000);
+    expect(wins[wins.length - 1].end).toBe(9500);
+  });
+
+  it('aufeinanderfolgende Fenster überlappen (keine Wort-Lücke an der Grenze)', () => {
+    const wins = overlappingWindows(20000, 4000, 2000);
+    for (let i = 1; i < wins.length; i++) {
+      expect(wins[i].start).toBeLessThan(wins[i - 1].end);
+    }
+  });
+
+  it('deckt lückenlos ab: jede Position liegt in mindestens einem Fenster', () => {
+    const total = 15000;
+    const wins = overlappingWindows(total, 4000, 2000);
+    for (let pos = 0; pos < total; pos += 500) {
+      expect(wins.some((w) => pos >= w.start && pos < w.end)).toBe(true);
+    }
+  });
+
+  it('robust gegen Rand-Eingaben (leer / degenerierte Größen)', () => {
+    expect(overlappingWindows(0, 4000, 2000)).toEqual([]);
+    expect(overlappingWindows(1000, 0, 2000)).toEqual([]);
+    // hop <= 0 wird auf 1 geklemmt → terminiert trotzdem (kein Endlos-Loop).
+    expect(overlappingWindows(3000, 4000, 0)).toEqual([{ start: 0, end: 3000 }]);
   });
 });
 

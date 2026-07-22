@@ -353,7 +353,11 @@
     },
     "nextLesson": "Nächste Lektion",
     "podcastIntro": "Podcast zu dieser Phase",
-    "podcastOptional": "Optional — vorher anhören oder direkt starten"
+    "podcastOptional": "Optional — vorher anhören oder direkt starten",
+    "videoIntro": "Video zu dieser Phase",
+    "videoOptional": "Optional – ansehen oder direkt starten",
+    "tableView": "Tabelle ansehen",
+    "tableViewDesc": "Grammatik-Tabelle zum Nachschlagen"
   },
   "practice": {
     "title": "Üben & Quiz",
@@ -577,7 +581,10 @@
       "cta": "Ganze Sure aufsagen",
       "intro": "Starte und rezitiere die ganze Sure am Stück — die Verse decken sich auf, sobald sie erkannt werden.",
       "start": "Rezitation starten",
-      "stop": "Stopp"
+      "stop": "Stopp",
+      "finalizing": "Gesamte Rezitation wird ausgewertet…",
+      "doneAll": "Ganze Sure erkannt — gut gemacht!",
+      "doneSome": "{n} von {total} Wörtern erkannt."
     },
     "speechError": {
       "heading": "Aufsagen-Prüfung fehlgeschlagen",

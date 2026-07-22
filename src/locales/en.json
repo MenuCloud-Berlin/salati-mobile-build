@@ -353,7 +353,11 @@
     },
     "nextLesson": "Next lesson",
     "podcastIntro": "Podcast for this phase",
-    "podcastOptional": "Optional — listen first or start right away"
+    "podcastOptional": "Optional — listen first or start right away",
+    "videoIntro": "Video for this phase",
+    "videoOptional": "Optional – watch or start right away",
+    "tableView": "View table",
+    "tableViewDesc": "Grammar table to look things up"
   },
   "practice": {
     "title": "Practice & Quiz",
@@ -577,7 +581,10 @@
       "cta": "Recite whole surah",
       "intro": "Start and recite the whole surah continuously — the verses reveal as they are recognized.",
       "start": "Start recitation",
-      "stop": "Stop"
+      "stop": "Stop",
+      "finalizing": "Evaluating the full recitation…",
+      "doneAll": "Whole surah recognized — well done!",
+      "doneSome": "Recognized {n} of {total} words."
     },
     "speechError": {
       "heading": "Recitation check failed",

@@ -353,7 +353,11 @@
     },
     "nextLesson": "درس بعدی",
     "podcastIntro": "Podcast for this phase",
-    "podcastOptional": "Optional — listen first or start right away"
+    "podcastOptional": "Optional — listen first or start right away",
+    "videoIntro": "ویدیوی این مرحله",
+    "videoOptional": "اختیاری – ببینید یا مستقیم شروع کنید",
+    "tableView": "مشاهده جدول",
+    "tableViewDesc": "جدول دستور زبان برای مرجع"
   },
   "practice": {
     "title": "تمرین و آزمون",
@@ -577,7 +581,10 @@
       "cta": "تلاوت کل سوره",
       "intro": "شروع کن و کل سوره را پیوسته تلاوت کن — آیات با شناسایی آشکار می‌شوند.",
       "start": "شروع تلاوت",
-      "stop": "توقف"
+      "stop": "توقف",
+      "finalizing": "Evaluating the full recitation…",
+      "doneAll": "Whole surah recognized — well done!",
+      "doneSome": "Recognized {n} of {total} words."
     },
     "speechError": {
       "heading": "بررسی تلاوت ناموفق بود",

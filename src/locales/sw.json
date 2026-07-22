@@ -353,7 +353,11 @@
     },
     "nextLesson": "Somo linalofuata",
     "podcastIntro": "Podcast for this phase",
-    "podcastOptional": "Optional — listen first or start right away"
+    "podcastOptional": "Optional — listen first or start right away",
+    "videoIntro": "Video ya awamu hii",
+    "videoOptional": "Hiari – tazama au anza moja kwa moja",
+    "tableView": "Tazama jedwali",
+    "tableViewDesc": "Jedwali la sarufi la kurejelea"
   },
   "practice": {
     "title": "Mazoezi na Maswali",
@@ -577,7 +581,10 @@
       "cta": "Soma sura nzima",
       "intro": "Anza na usome sura nzima mfululizo — aya hufunuliwa zinapotambuliwa.",
       "start": "Anza kisomo",
-      "stop": "Simamisha"
+      "stop": "Simamisha",
+      "finalizing": "Evaluating the full recitation…",
+      "doneAll": "Whole surah recognized — well done!",
+      "doneSome": "Recognized {n} of {total} words."
     },
     "speechError": {
       "heading": "Ukaguzi wa kisomo umeshindwa",

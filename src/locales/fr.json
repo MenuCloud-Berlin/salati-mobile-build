@@ -353,7 +353,11 @@
     },
     "nextLesson": "Leçon suivante",
     "podcastIntro": "Podcast for this phase",
-    "podcastOptional": "Optional — listen first or start right away"
+    "podcastOptional": "Optional — listen first or start right away",
+    "videoIntro": "Vidéo pour cette phase",
+    "videoOptional": "Facultatif – à regarder ou commencer directement",
+    "tableView": "Voir le tableau",
+    "tableViewDesc": "Tableau de grammaire à consulter"
   },
   "practice": {
     "title": "Entraînement et Quiz",
@@ -577,7 +581,10 @@
       "cta": "Réciter toute la sourate",
       "intro": "Démarre et récite toute la sourate d’affilée — les versets se révèlent à mesure qu’ils sont reconnus.",
       "start": "Démarrer la récitation",
-      "stop": "Arrêter"
+      "stop": "Arrêter",
+      "finalizing": "Evaluating the full recitation…",
+      "doneAll": "Whole surah recognized — well done!",
+      "doneSome": "Recognized {n} of {total} words."
     },
     "speechError": {
       "heading": "Échec de la vérification de la récitation",

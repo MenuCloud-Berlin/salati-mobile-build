@@ -353,7 +353,11 @@
     },
     "nextLesson": "اگلا سبق",
     "podcastIntro": "Podcast for this phase",
-    "podcastOptional": "Optional — listen first or start right away"
+    "podcastOptional": "Optional — listen first or start right away",
+    "videoIntro": "اس مرحلے کی ویڈیو",
+    "videoOptional": "اختیاری – دیکھیں یا براہِ راست شروع کریں",
+    "tableView": "ٹیبل دیکھیں",
+    "tableViewDesc": "مراجعت کے لیے گرامر ٹیبل"
   },
   "practice": {
     "title": "مشق اور کوئز",
@@ -577,7 +581,10 @@
       "cta": "پوری سورت پڑھیں",
       "intro": "شروع کریں اور پوری سورت مسلسل پڑھیں — آیات پہچانے جانے پر کھلتی جائیں گی۔",
       "start": "تلاوت شروع کریں",
-      "stop": "روکیں"
+      "stop": "روکیں",
+      "finalizing": "Evaluating the full recitation…",
+      "doneAll": "Whole surah recognized — well done!",
+      "doneSome": "Recognized {n} of {total} words."
     },
     "speechError": {
       "heading": "تلاوت کی جانچ ناکام",

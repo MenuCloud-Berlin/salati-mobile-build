@@ -353,7 +353,11 @@
     },
     "nextLesson": "Siguiente lección",
     "podcastIntro": "Podcast for this phase",
-    "podcastOptional": "Optional — listen first or start right away"
+    "podcastOptional": "Optional — listen first or start right away",
+    "videoIntro": "Vídeo de esta fase",
+    "videoOptional": "Opcional: míralo o empieza directamente",
+    "tableView": "Ver tabla",
+    "tableViewDesc": "Tabla de gramática para consultar"
   },
   "practice": {
     "title": "Práctica y Quiz",
@@ -577,7 +581,10 @@
       "cta": "Recitar toda la sura",
       "intro": "Inicia y recita toda la sura de corrido — los versículos se revelan al reconocerse.",
       "start": "Iniciar recitación",
-      "stop": "Detener"
+      "stop": "Detener",
+      "finalizing": "Evaluating the full recitation…",
+      "doneAll": "Whole surah recognized — well done!",
+      "doneSome": "Recognized {n} of {total} words."
     },
     "speechError": {
       "heading": "La comprobación del recitado falló",

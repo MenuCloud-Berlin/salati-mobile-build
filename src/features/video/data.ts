@@ -29,6 +29,31 @@ export interface VideoIndex {
   episodes: VideoEpisode[];
 }
 
+// Zuordnung Lernphase/Kurs -> passende Einstiegsfolge (episode_no). Die Video-
+// episode_no ist inhaltsgleich mit der jeweiligen Podcast-Folge (dieselbe
+// Lektion, nur als Video), daher entsprechen sich die Nummern 1:1 mit den
+// Phase.episodeNo-Werten in app/learn/index.tsx. Keyed nach Phase-key bzw.
+// Kurs-id (core/tajwid/grammar/madinah/amau; `vocab` als Alias fuer amau, weil
+// die Video-Reihe so heisst). Kurse ohne Video fehlen bewusst -> keine Karte.
+export const PHASE_INTRO_VIDEO: Record<string, number> = {
+  core: 1,
+  tajwid: 2,
+  grammar: 3,
+  madinah: 16,
+  amau: 26,
+  vocab: 26,
+};
+
+// Zuordnung Lernphase/Kurs -> genau EINE thematisch exakt passende Grammatik-
+// Tabelle (kind:'table', episode_no>=1000). Nur wo der Phasen-Einstieg exakt
+// auf eine Tabelle abbildet: Grammatik-Einstieg (Ism/Nomen) -> muslimun-Tabelle
+// 1000; Madinah-Einstieg (dies/das = Hinweiswoerter) -> Tabelle 1003. Andere
+// Phasen fehlen bewusst -> keine Tabellen-Karte.
+export const PHASE_TABLE_VIDEO: Record<string, number> = {
+  grammar: 1000,
+  madinah: 1003,
+};
+
 export async function fetchVideoIndex(): Promise<VideoIndex> {
   const r = await fetch(VIDEO_INDEX_URL, { cache: 'no-cache' });
   if (!r.ok) throw new Error(`video_index_${r.status}`);

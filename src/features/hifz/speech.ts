@@ -34,13 +34,12 @@ import {
   WhisperFehler,
   loadWhisperContext,
   startPcmCapture,
-  tailWindow,
   transcribePcm,
   trimSilence,
   whisperSupported,
   type WhisperProgress,
 } from './whisperCheck';
-import { ReciteProgress, type RevealedWord } from './reciteProgress';
+import { ReciteProgress, overlappingWindows, type RevealedWord } from './reciteProgress';
 
 // Ab hier gilt: hat schon gesprochen (RMS über Schwelle) — danach beendet
 // anhaltende Stille die Aufnahme automatisch. Bewusst niedrig (0.01), damit
@@ -190,6 +189,13 @@ export interface ContinuousOptions {
 // geladen (der Screen gated darauf, s. app/hifz/recite-surah.tsx) — hier kein
 // Download-während-Aufnahme.
 const CONTINUOUS_INTERVAL_MS = 1500;
+// Live-Fenster (Samples) = die bewährten 24 s. Bounded Latenz pro Live-Tick.
+const LIVE_WINDOW_SAMPLES = CONTINUOUS_WINDOW_SEC * SAMPLE_RATE;
+// FINALE Voll-Auswertung: Fenster + 50-%-Überlappung (hop = window/2), damit an
+// keiner Fenstergrenze ein Wort verloren geht. Beam-5 (volle Genauigkeit) —
+// Latenz beim Stopp unkritisch.
+const FINAL_WINDOW_SAMPLES = CONTINUOUS_WINDOW_SEC * SAMPLE_RATE;
+const FINAL_HOP_SAMPLES = Math.floor(FINAL_WINDOW_SAMPLES / 2);
 
 export async function recognizeArabicContinuous(options: ContinuousOptions): Promise<ContinuousController> {
   if (!recognitionAvailable()) throw new WhisperError(WhisperFehler.unavailable, 'recognitionAvailable() === false (whisperSupported false)');
@@ -206,17 +212,28 @@ export async function recognizeArabicContinuous(options: ContinuousOptions): Pro
 
   let stopped = false;
   let busy = false;
+  // Anfang (Sample-Offset) des Live-Fensters — MONOTON steigend. Anti-Skip-Fix
+  // (User-Report „erkennt noch nicht alles" bei langer Sure): das Fenster rückt
+  // NUR dann von den früh gesprochenen Versen weg (Richtung Live-Kante), wenn die
+  // Front tatsächlich VORGERÜCKT ist — also die alten Verse bereits bestätigt
+  // wurden. Steht die Front (Erkennung hinkt hinterher), bleibt liveStart stehen
+  // und dasselbe Audio-Fenster wird erneut ausgewertet (mit dem Front-Prompt), bis
+  // es sitzt — statt dass die frühen Verse unerkannt aus dem 24-s-Tail fallen.
+  // Kommt die Erkennung mit, verhält es sich exakt wie das bisherige Tail-Fenster.
+  let liveStart = 0;
   const timer = setInterval(() => {
     if (busy || stopped) return;
     const pcm16 = capture.snapshot();
     if (pcm16.length < SAMPLE_RATE * 0.6) return;
     busy = true;
-    const float32 = new Float32Array(pcm16.length);
-    for (let i = 0; i < pcm16.length; i++) float32[i] = pcm16[i] / 0x8000;
-    // Nur das rollende Fenster transkribieren (bounded Latenz) + mitwandernder
-    // Prompt. `fast`: greedy für Live-Takt.
-    const windowed = tailWindow(trimSilence(float32), CONTINUOUS_WINDOW_SEC);
+    const total = pcm16.length;
+    const float32 = new Float32Array(total);
+    for (let i = 0; i < total; i++) float32[i] = pcm16[i] / 0x8000;
+    // Fenster [liveStart, liveStart+24s) — bounded Latenz + mitwandernder Prompt.
+    const windowEnd = Math.min(total, liveStart + LIVE_WINDOW_SAMPLES);
+    const windowed = trimSilence(float32.subarray(liveStart, windowEnd));
     const prompt = progress ? progress.prompt() : options.expectedText;
+    const frontierBefore = progress ? progress.position : 0;
     // skipIfBusy: kontinuierlicher Takt darf nie parallel transkribieren — läuft
     // noch ein Lauf (Tick oder der finale Durchlauf aus stop()), Tick verwerfen
     // statt „already transcribing" (globaler Serializer, s. transcribeSerializer.ts).
@@ -231,6 +248,14 @@ export async function recognizeArabicContinuous(options: ContinuousOptions): Pro
           // außerhalb des Fensters mehr fälschlich treffen.
           const reveals = progress ? progress.ingest(t) : [];
           options.onPartial(t, reveals);
+          // Nur bei echtem Fortschritt die früh gesprochenen Verse „loslassen" und
+          // das Fenster Richtung Live-Kante schieben (monoton). Bleibt die Front
+          // stehen, hält liveStart und dasselbe Fenster bekommt einen neuen Versuch.
+          // Ohne erwarteten Text (kein progress) gibt es keine Front → klassisches
+          // Tail-Verhalten beibehalten (Fenster folgt der Live-Kante).
+          if (!progress || progress.position > frontierBefore) {
+            liveStart = Math.max(liveStart, total - LIVE_WINDOW_SAMPLES);
+          }
         }
       })
       .catch((e) => {
@@ -252,15 +277,33 @@ export async function recognizeArabicContinuous(options: ContinuousOptions): Pro
       if (pcm16.length < SAMPLE_RATE * 0.4) return '';
       const float32 = new Float32Array(pcm16.length);
       for (let i = 0; i < pcm16.length; i++) float32[i] = pcm16[i] / 0x8000;
-      // Finaler Durchlauf: rollendes Fenster + mitwandernder Prompt, aber volle
-      // Genauigkeit (Beam-5). Deckt das Sure-Ende ab; früher Aufgedecktes bleibt
-      // dank monotoner UI-Aufdeckung erhalten.
-      const windowed = tailWindow(trimSilence(float32), CONTINUOUS_WINDOW_SEC);
-      const prompt = progress ? progress.prompt() : options.expectedText;
-      const finalText = await transcribePcm(windowed, whisperContext, 'hifz-surah-final.wav', prompt);
-      // Auch der finale Durchlauf deckt positions-gekoppelt auf.
-      if (finalText && progress) options.onPartial(finalText, progress.ingest(finalText));
-      return finalText;
+      // FINALE VOLL-AUSWERTUNG: nicht nur das Tail-Fenster, sondern die GESAMTE
+      // Aufnahme in überlappenden 24-s-Blöcken (50 % Überlappung) von vorne bis
+      // hinten durch whisper (Beam-5) — mit dem mitwandernden Sure-Prompt. So wird
+      // JEDER korrekt rezitierte Vers ausgewertet und aufgedeckt, auch die früh
+      // gesprochenen, die aus dem Live-Fenster gefallen waren → „die Sure löst sich
+      // am Ende auf". Die Front wandert über die Blöcke monoton bis zum Ende; früher
+      // Aufgedecktes bleibt dank monotoner UI-Aufdeckung erhalten.
+      const windows = overlappingWindows(float32.length, FINAL_WINDOW_SAMPLES, FINAL_HOP_SAMPLES);
+      let lastText = '';
+      for (const w of windows) {
+        const chunk = trimSilence(float32.subarray(w.start, w.end));
+        // Zu kurze/stille Blöcke (z. B. eine Schluss-Pause) überspringen.
+        if (chunk.length < SAMPLE_RATE * 0.3) continue;
+        const prompt = progress ? progress.prompt() : options.expectedText;
+        // Kein skipIfBusy: die Final-Blöcke reihen sich im Serializer ein (dürfen
+        // nicht verworfen werden) und laufen strikt nacheinander.
+        const text = await transcribePcm(chunk, whisperContext, 'hifz-surah-final.wav', prompt).catch((e) => {
+          console.warn('[hifz recite-surah] Final-Block-Transkription fehlgeschlagen:', String(e));
+          return '';
+        });
+        if (text) {
+          lastText = text;
+          const reveals = progress ? progress.ingest(text) : [];
+          options.onPartial(text, reveals);
+        }
+      }
+      return lastText;
     },
   };
 }

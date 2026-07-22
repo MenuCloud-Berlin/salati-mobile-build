@@ -353,7 +353,11 @@
     },
     "nextLesson": "পরবর্তী পাঠ",
     "podcastIntro": "Podcast for this phase",
-    "podcastOptional": "Optional — listen first or start right away"
+    "podcastOptional": "Optional — listen first or start right away",
+    "videoIntro": "এই ধাপের ভিডিও",
+    "videoOptional": "ঐচ্ছিক – দেখুন বা সরাসরি শুরু করুন",
+    "tableView": "টেবিল দেখুন",
+    "tableViewDesc": "রেফারেন্সের জন্য ব্যাকরণ টেবিল"
   },
   "practice": {
     "title": "অনুশীলন ও কুইজ",
@@ -577,7 +581,10 @@
       "cta": "পুরো সূরা তিলাওয়াত",
       "intro": "শুরু করুন এবং পুরো সূরা একটানা তিলাওয়াত করুন — আয়াতগুলো শনাক্ত হলে খুলে যায়।",
       "start": "তিলাওয়াত শুরু",
-      "stop": "থামুন"
+      "stop": "থামুন",
+      "finalizing": "Evaluating the full recitation…",
+      "doneAll": "Whole surah recognized — well done!",
+      "doneSome": "Recognized {n} of {total} words."
     },
     "speechError": {
       "heading": "তিলাওয়াত যাচাই ব্যর্থ হয়েছে",

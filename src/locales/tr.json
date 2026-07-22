@@ -353,7 +353,11 @@
     },
     "nextLesson": "Sonraki ders",
     "podcastIntro": "Podcast for this phase",
-    "podcastOptional": "Optional — listen first or start right away"
+    "podcastOptional": "Optional — listen first or start right away",
+    "videoIntro": "Bu aşama için video",
+    "videoOptional": "İsteğe bağlı – izleyin ya da hemen başlayın",
+    "tableView": "Tabloyu görüntüle",
+    "tableViewDesc": "Başvurmak için dil bilgisi tablosu"
   },
   "practice": {
     "title": "Alıştırma ve Quiz",
@@ -577,7 +581,10 @@
       "cta": "Tüm sureyi oku",
       "intro": "Başlat ve tüm sureyi kesintisiz oku — ayetler tanındıkça açılır.",
       "start": "Okumayı başlat",
-      "stop": "Durdur"
+      "stop": "Durdur",
+      "finalizing": "Evaluating the full recitation…",
+      "doneAll": "Whole surah recognized — well done!",
+      "doneSome": "Recognized {n} of {total} words."
     },
     "speechError": {
       "heading": "Okuma kontrolü başarısız oldu",

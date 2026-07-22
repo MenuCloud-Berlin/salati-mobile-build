@@ -353,7 +353,11 @@
     },
     "nextLesson": "Pelajaran berikutnya",
     "podcastIntro": "Podcast for this phase",
-    "podcastOptional": "Optional — listen first or start right away"
+    "podcastOptional": "Optional — listen first or start right away",
+    "videoIntro": "Video untuk fase ini",
+    "videoOptional": "Opsional – tonton atau langsung mulai",
+    "tableView": "Lihat tabel",
+    "tableViewDesc": "Tabel tata bahasa untuk rujukan"
   },
   "practice": {
     "title": "Latihan & Kuis",
@@ -577,7 +581,10 @@
       "cta": "Baca satu surah penuh",
       "intro": "Mulai dan baca seluruh surah tanpa henti — ayat terbuka saat dikenali.",
       "start": "Mulai bacaan",
-      "stop": "Berhenti"
+      "stop": "Berhenti",
+      "finalizing": "Evaluating the full recitation…",
+      "doneAll": "Whole surah recognized — well done!",
+      "doneSome": "Recognized {n} of {total} words."
     },
     "speechError": {
       "heading": "Pemeriksaan bacaan gagal",
