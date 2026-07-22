@@ -70,8 +70,19 @@ YAML
 # apps/mobile — im Standalone-Build fehlt es, und pnpm bricht bei einem
 # ungenutzten Patch hart ab (ERR_PNPM_UNUSED_PATCH).
 
-# Root-.npmrc (node-linker etc.) mitnehmen, falls vorhanden.
-[ -f "$ROOT/.npmrc" ] && cp "$ROOT/.npmrc" ./.npmrc || true
+# Standalone-.npmrc (NICHT die Root-.npmrc kopieren): die Root nutzt
+# node-linker=isolated + kurzen virtual-store-dir als reinen WINDOWS-Workaround
+# gegen die 260-Zeichen-Pfadgrenze. Auf dem Linux-CI-Runner gibt es die Grenze
+# nicht — dort ist ein flaches, klassisches node_modules (hoisted) nötig, weil
+# @bacons/apple-targets bei der Expo-Config-Auflösung (createExpoConfig) das nur
+# transitiv vorhandene @expo/image-utils per require anzieht, OHNE es zu
+# deklarieren; im isolierten Store scheitert das mit "Cannot find module
+# '@expo/image-utils'". hoisted stellt alle Pakete flach bereit → auffindbar.
+cat > .npmrc <<'NPMRC'
+auto-install-peers=true
+strict-peer-dependencies=false
+node-linker=hoisted
+NPMRC
 
 cat > README.md <<'MD'
 # Salati Mobile — Build-Mirror (öffentlich)
