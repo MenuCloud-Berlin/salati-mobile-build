@@ -54,7 +54,7 @@ SABER Y CORAZÓN
 • 22 insignias por hitos alcanzados
 • 13 colecciones de hadices con búsqueda en todas a la vez (árabe, inglés, turco)
 • Radio del Corán: recitaciones 24/7
-• 99 Nombres de Allah con audio, 89 duas con indicación de la fuente
+• 99 Nombres de Allah con audio, 106 duas con indicación de la fuente
 • 11 guías prácticas con fotos: wudu, ghusl, la oración, el yanaza, hach y umra y más
 • Calculadoras de zakat y de herencia, 26 sabidurías documentadas, contador de tasbih
 

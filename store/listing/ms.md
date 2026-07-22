@@ -54,7 +54,7 @@ ILMU & HATI
 • 22 lencana bagi pencapaian tonggak
 • 13 koleksi hadis dengan carian merentas kesemuanya sekali gus (Arab, Inggeris, Turki)
 • Radio Al-Quran: strim bacaan 24/7
-• 99 Nama Allah dengan audio, 89 doa dengan rujukan sumber
+• 99 Nama Allah dengan audio, 106 doa dengan rujukan sumber
 • 11 panduan amali dengan foto: Wuduk, Ghusl, solat, Jenazah, Haji & Umrah dan banyak lagi
 • Kalkulator Zakat dan pusaka, 26 hikmah bersumber, pengira Tasbih
 

@@ -54,7 +54,7 @@ ELIMU NA MOYO
 • Beji 22 kwa hatua zilizofikiwa
 • Makusanyo 13 ya hadithi yenye utafutaji katika yote kwa pamoja (Kiarabu, Kiingereza, Kituruki)
 • Redio ya Qurani: mitiririko ya tilawa 24/7
-• Majina 99 ya Allah yenye sauti, dua 89 zenye marejeleo ya vyanzo
+• Majina 99 ya Allah yenye sauti, dua 106 zenye marejeleo ya vyanzo
 • Miongozo 11 ya vitendo yenye picha: Udhu, Ghusl, sala, Janaza, Hija na Umra na zaidi
 • Vikokotoo vya Zaka na urithi, hekima 26 zilizothibitishwa, kihesabu cha Tasbihi
 

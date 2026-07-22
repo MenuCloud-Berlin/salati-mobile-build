@@ -54,7 +54,7 @@ SALATİ YAPAY ZEKÂ
 • Kilometre taşları için 22 rozet
 • Tamamında birden arama yapılabilen 13 hadis külliyatı (Arapça, İngilizce, Türkçe)
 • Kur'an Radyosu: 7/24 tilavet yayınları
-• Sesli Esmâü'l-Hüsnâ, kaynağı belirtilen 89 dua
+• Sesli Esmâü'l-Hüsnâ, kaynağı belirtilen 106 dua
 • Fotoğraflı 11 uygulama rehberi: abdest, gusül, namaz, cenaze, hac ve umre ve daha fazlası
 • Zekât ve miras hesaplayıcı, 26 kaynaklı hikmet, tesbih sayacı
 
