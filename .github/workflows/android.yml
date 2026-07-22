@@ -43,6 +43,11 @@ jobs:
         working-directory: android
         run: chmod +x ./gradlew
 
+      - name: Gradle-Heap für R8 erhöhen (CI-only, überschreibt Projekt-gradle.properties)
+        run: |
+          mkdir -p ~/.gradle
+          echo "org.gradle.jvmargs=-Xmx6g -XX:MaxMetaspaceSize=1g -XX:+UseParallelGC" >> ~/.gradle/gradle.properties
+
       - name: Gradle assembleRelease (signiert)
         working-directory: android
         env:
@@ -50,7 +55,10 @@ jobs:
           ORG_GRADLE_PROJECT_RELEASE_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
           ORG_GRADLE_PROJECT_RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
           ORG_GRADLE_PROJECT_RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
-        run: ./gradlew :app:assembleRelease --no-daemon
+        # Nur reale Phone-ABIs (arm64-v8a deckt praktisch alle modernen Geräte,
+        # armeabi-v7a alte 32-Bit) — x86/x86_64 sind Emulator-only und halbieren
+        # sonst die native Build-Zeit + APK-Größe unnötig.
+        run: ./gradlew :app:assembleRelease --no-daemon -PreactNativeArchitectures=arm64-v8a,armeabi-v7a
 
       - name: APK als Artefakt hochladen
         uses: actions/upload-artifact@v4

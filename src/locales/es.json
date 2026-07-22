@@ -846,6 +846,13 @@
         "hint": "Texto y traducción de las suras descargadas para uso sin conexión. Se elimina al vaciar la caché.",
         "empty": "Aún no hay suras descargadas sin conexión.",
         "surahs": "{n} de 114 suras"
+      },
+      "podcast": {
+        "title": "Descargas del pódcast",
+        "empty": "No hay episodios descargados",
+        "deleteAll": "Eliminar todo",
+        "deleteAllConfirmTitle": "¿Eliminar todas las descargas?",
+        "deleteAllConfirmBody": "Todos los episodios descargados se eliminarán de tu dispositivo."
       }
     },
     "appIcon": {
@@ -2126,7 +2133,9 @@
     "intro": "Cómo rezar, paso a paso. Tómate tu tiempo: cada paso muestra el texto árabe, la transliteración latina y la traducción. Toca el texto árabe para escucharlo. Para seguir la oración mientras rezas, usa «Reza paso a paso».",
     "pickPrompt": "¿Qué oración quieres aprender?",
     "coreTitle": "Al-Fatiha y suras cortas",
-    "coreSubtitle": "La Al-Fatiha completa (7 versículos) más Al-Ikhlas y Al-Kawthar: los primeros textos que se memorizan."
+    "coreSubtitle": "La Al-Fatiha completa (7 versículos) más Al-Ikhlas y Al-Kawthar: los primeros textos que se memorizan.",
+    "surahsTitle": "Las dos suras cortas",
+    "surahsSubtitle": "Al-Ikhlas y Al-Kawthar: las primeras suras que se memorizan."
   },
   "widgetConfig": {
     "title": "Configurar widget",
@@ -2163,7 +2172,16 @@
     "speed": "Velocidad",
     "off": "Desactivado",
     "endOfEpisode": "Fin del episodio",
-    "autoplay": "Reproducción automática"
+    "autoplay": "Reproducción automática",
+    "download": "Descargar",
+    "downloaded": "Descargado",
+    "offline": "Sin conexión",
+    "cancelDownload": "Cancelar descarga",
+    "deleteDownload": "Eliminar descarga",
+    "deleteDownloadConfirmTitle": "¿Eliminar descarga?",
+    "deleteDownloadConfirmBody": "Este episodio se eliminará de tu dispositivo.",
+    "moreEpisodes": "Más episodios",
+    "series": "Serie"
   },
   "lernen": {
     "learnDesc": "2000+ interactive lessons — step by step.",

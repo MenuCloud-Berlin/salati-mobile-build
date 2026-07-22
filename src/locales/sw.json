@@ -846,6 +846,13 @@
         "hint": "Maandishi na tafsiri ya sura zilizopakuliwa kwa matumizi ya nje ya mtandao. Huondolewa unapofuta akiba.",
         "empty": "Bado hakuna sura zilizopakuliwa nje ya mtandao.",
         "surahs": "Sura {n} kati ya 114"
+      },
+      "podcast": {
+        "title": "Vipakuliwa vya podikasti",
+        "empty": "Hakuna vipindi vilivyopakuliwa",
+        "deleteAll": "Futa vyote",
+        "deleteAllConfirmTitle": "Futa vipakuliwa vyote?",
+        "deleteAllConfirmBody": "Vipindi vyote vilivyopakuliwa vitaondolewa kwenye kifaa chako."
       }
     },
     "appIcon": {
@@ -2126,7 +2133,9 @@
     "intro": "Jinsi ya kusali, hatua kwa hatua. Chukua muda wako: kila hatua inaonyesha maandishi ya Kiarabu, matamshi ya Kilatini na tafsiri yake. Gusa maandishi ya Kiarabu ili kuyasikia. Kufuatana wakati wa sala, tumia hali ya kusali pamoja.",
     "pickPrompt": "Ungependa kujifunza sala gani?",
     "coreTitle": "Al-Fatiha na sura fupi",
-    "coreSubtitle": "Al-Fatiha kamili (aya 7) pamoja na Al-Ikhlas na Al-Kawthar — matini za kwanza kuhifadhiwa."
+    "coreSubtitle": "Al-Fatiha kamili (aya 7) pamoja na Al-Ikhlas na Al-Kawthar — matini za kwanza kuhifadhiwa.",
+    "surahsTitle": "Sura mbili fupi",
+    "surahsSubtitle": "Al-Ikhlas na Al-Kawthar — sura za kwanza kuhifadhiwa."
   },
   "widgetConfig": {
     "title": "Sanidi wijeti",
@@ -2163,7 +2172,16 @@
     "speed": "Kasi",
     "off": "Zima",
     "endOfEpisode": "Mwisho wa kipindi",
-    "autoplay": "Cheza kiotomatiki"
+    "autoplay": "Cheza kiotomatiki",
+    "download": "Pakua",
+    "downloaded": "Imepakuliwa",
+    "offline": "Nje ya mtandao",
+    "cancelDownload": "Ghairi upakuaji",
+    "deleteDownload": "Futa upakuaji",
+    "deleteDownloadConfirmTitle": "Futa upakuaji?",
+    "deleteDownloadConfirmBody": "Kipindi hiki kitaondolewa kwenye kifaa chako.",
+    "moreEpisodes": "Vipindi vingine",
+    "series": "Mfululizo"
   },
   "lernen": {
     "learnDesc": "2000+ interactive lessons — step by step.",

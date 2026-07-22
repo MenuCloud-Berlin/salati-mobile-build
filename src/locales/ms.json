@@ -846,6 +846,13 @@
         "hint": "Teks dan terjemahan surah yang dimuat turun untuk kegunaan luar talian. Dialih keluar apabila anda mengosongkan cache.",
         "empty": "Belum ada surah dimuat turun untuk luar talian.",
         "surahs": "{n} daripada 114 surah"
+      },
+      "podcast": {
+        "title": "Muat turun podcast",
+        "empty": "Tiada episod dimuat turun",
+        "deleteAll": "Padam semua",
+        "deleteAllConfirmTitle": "Padam semua muat turun?",
+        "deleteAllConfirmBody": "Semua episod yang dimuat turun akan dialih keluar daripada peranti anda."
       }
     },
     "appIcon": {
@@ -2126,7 +2133,9 @@
     "intro": "Cara solat, langkah demi langkah. Ambil masa anda: setiap langkah menunjukkan teks Arab, transliterasi Latin dan terjemahannya. Ketik teks Arab untuk mendengarnya. Untuk mengikuti semasa solat, gunakan mod solat bersama.",
     "pickPrompt": "Solat mana yang ingin anda pelajari?",
     "coreTitle": "Al-Fatihah & surah pendek",
-    "coreSubtitle": "Al-Fatihah lengkap (7 ayat) serta Al-Ikhlas dan Al-Kawthar — teks pertama yang dihafal."
+    "coreSubtitle": "Al-Fatihah lengkap (7 ayat) serta Al-Ikhlas dan Al-Kawthar — teks pertama yang dihafal.",
+    "surahsTitle": "Dua surah pendek",
+    "surahsSubtitle": "Al-Ikhlas dan Al-Kawthar — surah pertama yang dihafal."
   },
   "widgetConfig": {
     "title": "Konfigur widget",
@@ -2163,7 +2172,16 @@
     "speed": "Kelajuan",
     "off": "Mati",
     "endOfEpisode": "Akhir episod",
-    "autoplay": "Main automatik"
+    "autoplay": "Main automatik",
+    "download": "Muat turun",
+    "downloaded": "Dimuat turun",
+    "offline": "Luar talian",
+    "cancelDownload": "Batal muat turun",
+    "deleteDownload": "Padam muat turun",
+    "deleteDownloadConfirmTitle": "Padam muat turun?",
+    "deleteDownloadConfirmBody": "Episod ini akan dialih keluar daripada peranti anda.",
+    "moreEpisodes": "Episod lain",
+    "series": "Siri"
   },
   "lernen": {
     "learnDesc": "2000+ interactive lessons — step by step.",

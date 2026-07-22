@@ -18,6 +18,7 @@ import {
   type StorageOverview,
 } from '@/features/settings/storage';
 import { whisperDownloadLaeuft, whisperModellHerunterladen } from '@/features/hifz/whisperModel';
+import { deleteAllPodcastDownloads, deleteEpisodeDownload } from '@/features/podcast/downloads';
 import { deleteFullMushafAudio } from '@/features/quran/offline-audio';
 import { editionDisplayName } from '@/features/quran/EditionPicker';
 import { useAudioEditions } from '@/features/quran/hooks';
@@ -117,6 +118,42 @@ export default function StorageScreen() {
         onPress: async () => {
           setBusy('whisperModel');
           await deleteWhisperModel();
+          await refresh();
+          setBusy(null);
+        },
+      },
+    ]);
+  }
+
+  function confirmDeletePodcastEpisode(episodeNo: number, title: string) {
+    Alert.alert(
+      t('podcast.deleteDownloadConfirmTitle'),
+      `${title}\n\n${t('podcast.deleteDownloadConfirmBody')}`,
+      [
+        { text: t('common.cancel'), style: 'cancel' },
+        {
+          text: t('podcast.deleteDownload'),
+          style: 'destructive',
+          onPress: async () => {
+            setBusy(`podcast:${episodeNo}`);
+            await deleteEpisodeDownload(episodeNo);
+            await refresh();
+            setBusy(null);
+          },
+        },
+      ],
+    );
+  }
+
+  function confirmDeleteAllPodcasts() {
+    Alert.alert(t('settings.storage.podcast.deleteAllConfirmTitle'), t('settings.storage.podcast.deleteAllConfirmBody'), [
+      { text: t('common.cancel'), style: 'cancel' },
+      {
+        text: t('settings.storage.podcast.deleteAll'),
+        style: 'destructive',
+        onPress: async () => {
+          setBusy('podcastAll');
+          await deleteAllPodcastDownloads();
           await refresh();
           setBusy(null);
         },
@@ -257,6 +294,58 @@ export default function StorageScreen() {
                     )}
                   </View>
                 </View>
+              </Section>
+
+              <Section label={t('settings.storage.podcast.title')} icon="headset-outline">
+                {overview.podcast.episodes.length === 0 ? (
+                  <ThemedText type="small" themeColor="textSecondary" style={styles.emptyHint}>
+                    {t('settings.storage.podcast.empty')}
+                  </ThemedText>
+                ) : (
+                  <>
+                    {overview.podcast.episodes.map((ep) => (
+                      <View key={ep.episodeNo} style={[styles.itemRow, rtl && styles.itemRowRtl]}>
+                        <View style={styles.itemLabel}>
+                          <ThemedText type="default" style={rtl && styles.rtlText} numberOfLines={2}>
+                            {ep.episodeNo}. {ep.title}
+                          </ThemedText>
+                          <ThemedText type="small" themeColor="textSecondary" style={rtl && styles.rtlText}>
+                            {formatBytes(ep.bytes)}
+                          </ThemedText>
+                        </View>
+                        <DeleteButton
+                          busy={busy === `podcast:${ep.episodeNo}`}
+                          onPress={() => confirmDeletePodcastEpisode(ep.episodeNo, ep.title)}
+                          color={colors.accent}
+                          label={t('podcast.deleteDownload')}
+                        />
+                      </View>
+                    ))}
+                    <Pressable
+                      onPress={confirmDeleteAllPodcasts}
+                      disabled={busy === 'podcastAll'}
+                      accessibilityRole="button"
+                      accessibilityLabel={t('settings.storage.podcast.deleteAll')}
+                      style={({ pressed }) => [
+                        styles.deleteAllWrap,
+                        Platform.OS === 'web' ? styles.pressableWeb : undefined,
+                        pressed && styles.pressed,
+                      ]}>
+                      <ThemedView type="backgroundSelected" style={styles.clearChip}>
+                        {busy === 'podcastAll' ? (
+                          <ThemedActivityIndicator size="small" />
+                        ) : (
+                          <>
+                            <IconSymbol name="trash-outline" size={14} color={colors.accent} />
+                            <ThemedText type="smallBold" themeColor="accent">
+                              {t('settings.storage.podcast.deleteAll')}
+                            </ThemedText>
+                          </>
+                        )}
+                      </ThemedView>
+                    </Pressable>
+                  </>
+                )}
               </Section>
 
               <Section label={t('settings.storage.kiModel.title')} icon="chatbubble-ellipses-outline">
@@ -455,6 +544,7 @@ const styles = StyleSheet.create({
   itemLabel: { flex: 1, gap: 2 },
   rtlText: { textAlign: 'right' },
   iconChip: { width: 32, height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center' },
+  deleteAllWrap: { alignSelf: 'flex-start', marginTop: Spacing.one },
   clearChip: {
     flexDirection: 'row',
     alignItems: 'center',

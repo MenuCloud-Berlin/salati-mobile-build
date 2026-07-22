@@ -846,6 +846,13 @@
         "hint": "Texte et traduction des sourates téléchargées pour une utilisation hors ligne. Supprimés lorsque vous videz le cache.",
         "empty": "Aucune sourate téléchargée hors ligne pour l'instant.",
         "surahs": "{n} sur 114 sourates"
+      },
+      "podcast": {
+        "title": "Téléchargements du podcast",
+        "empty": "Aucun épisode téléchargé",
+        "deleteAll": "Tout supprimer",
+        "deleteAllConfirmTitle": "Supprimer tous les téléchargements ?",
+        "deleteAllConfirmBody": "Tous les épisodes téléchargés seront supprimés de votre appareil."
       }
     },
     "appIcon": {
@@ -2126,7 +2133,9 @@
     "intro": "Comment prier, étape par étape. Prends ton temps : chaque étape montre le texte arabe, la translittération latine et la traduction. Touche le texte arabe pour l’écouter. Pour suivre pendant la prière, utilise « Prier pas à pas ».",
     "pickPrompt": "Quelle prière veux-tu apprendre ?",
     "coreTitle": "Al-Fatiha et courtes sourates",
-    "coreSubtitle": "La sourate Al-Fatiha complète (7 versets) ainsi qu’Al-Ikhlas et Al-Kawthar : les premiers textes que l’on mémorise."
+    "coreSubtitle": "La sourate Al-Fatiha complète (7 versets) ainsi qu’Al-Ikhlas et Al-Kawthar : les premiers textes que l’on mémorise.",
+    "surahsTitle": "Les deux courtes sourates",
+    "surahsSubtitle": "Al-Ikhlas et Al-Kawthar : les premières sourates que l’on mémorise."
   },
   "widgetConfig": {
     "title": "Configurer le widget",
@@ -2163,7 +2172,16 @@
     "speed": "Vitesse",
     "off": "Désactivé",
     "endOfEpisode": "Fin de l'épisode",
-    "autoplay": "Lecture automatique"
+    "autoplay": "Lecture automatique",
+    "download": "Télécharger",
+    "downloaded": "Téléchargé",
+    "offline": "Hors ligne",
+    "cancelDownload": "Annuler le téléchargement",
+    "deleteDownload": "Supprimer le téléchargement",
+    "deleteDownloadConfirmTitle": "Supprimer le téléchargement ?",
+    "deleteDownloadConfirmBody": "Cet épisode sera supprimé de votre appareil.",
+    "moreEpisodes": "Autres épisodes",
+    "series": "Série"
   },
   "lernen": {
     "learnDesc": "2000+ interactive lessons — step by step.",

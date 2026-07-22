@@ -856,6 +856,13 @@
         "hint": "Text und Übersetzung offline geladener Suren. Wird beim Leeren des Caches mit entfernt.",
         "empty": "Noch keine Suren offline geladen.",
         "surahs": "{n} von 114 Suren"
+      },
+      "podcast": {
+        "title": "Podcast-Downloads",
+        "empty": "Keine Folgen heruntergeladen",
+        "deleteAll": "Alle löschen",
+        "deleteAllConfirmTitle": "Alle Downloads löschen?",
+        "deleteAllConfirmBody": "Alle heruntergeladenen Folgen werden von deinem Gerät entfernt."
       }
     },
     "appIcon": {
@@ -2129,7 +2136,16 @@
     "speed": "Geschwindigkeit",
     "off": "Aus",
     "endOfEpisode": "Ende der Folge",
-    "autoplay": "Autoplay"
+    "autoplay": "Autoplay",
+    "download": "Herunterladen",
+    "downloaded": "Heruntergeladen",
+    "offline": "Offline",
+    "cancelDownload": "Download abbrechen",
+    "deleteDownload": "Download löschen",
+    "deleteDownloadConfirmTitle": "Download löschen?",
+    "deleteDownloadConfirmBody": "Die Folge wird von deinem Gerät entfernt.",
+    "moreEpisodes": "Weitere Folgen",
+    "series": "Reihe"
   },
   "lernen": {
     "learnDesc": "Über 2000 interaktive Lektionen — Schritt für Schritt.",
@@ -2153,7 +2169,9 @@
     "intro": "So betest du – Schritt für Schritt. Nimm dir Zeit: Jeder Schritt zeigt den arabischen Wortlaut, die lateinische Umschrift und die Übersetzung. Tippe auf den arabischen Text, um ihn zu hören. Zum Mitsprechen während des Gebets nutze „Gebet mitbeten\".",
     "pickPrompt": "Welches Gebet möchtest du lernen?",
     "coreTitle": "Al-Fatiha & kurze Suren",
-    "coreSubtitle": "Die komplette Al-Fatiha (7 Verse) sowie Al-Ikhlas und Al-Kawthar – die ersten Texte, die man auswendig lernt."
+    "coreSubtitle": "Die komplette Al-Fatiha (7 Verse) sowie Al-Ikhlas und Al-Kawthar – die ersten Texte, die man auswendig lernt.",
+    "surahsTitle": "Die beiden kurzen Suren",
+    "surahsSubtitle": "Al-Ikhlas und Al-Kawthar – die ersten Suren, die man auswendig lernt."
   },
   "widgetConfig": {
     "title": "Widget einrichten",

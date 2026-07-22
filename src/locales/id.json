@@ -846,6 +846,13 @@
         "hint": "Teks dan terjemahan surah yang diunduh untuk penggunaan offline. Dihapus saat Anda membersihkan cache.",
         "empty": "Belum ada surah yang dimuat offline.",
         "surahs": "{n} dari 114 surah"
+      },
+      "podcast": {
+        "title": "Unduhan podcast",
+        "empty": "Belum ada episode yang diunduh",
+        "deleteAll": "Hapus semua",
+        "deleteAllConfirmTitle": "Hapus semua unduhan?",
+        "deleteAllConfirmBody": "Semua episode yang diunduh akan dihapus dari perangkat Anda."
       }
     },
     "appIcon": {
@@ -2126,7 +2133,9 @@
     "intro": "Cara salat, langkah demi langkah. Luangkan waktumu: setiap langkah menampilkan teks Arab, transliterasi Latin, dan terjemahannya. Ketuk teks Arab untuk mendengarkannya. Untuk mengikuti bacaan saat salat, gunakan mode salat bersama.",
     "pickPrompt": "Salat mana yang ingin kamu pelajari?",
     "coreTitle": "Al-Fatihah & surah pendek",
-    "coreSubtitle": "Al-Fatihah lengkap (7 ayat) serta Al-Ikhlas dan Al-Kautsar — teks pertama yang dihafalkan."
+    "coreSubtitle": "Al-Fatihah lengkap (7 ayat) serta Al-Ikhlas dan Al-Kautsar — teks pertama yang dihafalkan.",
+    "surahsTitle": "Dua surah pendek",
+    "surahsSubtitle": "Al-Ikhlas dan Al-Kautsar — surah pertama yang dihafalkan."
   },
   "widgetConfig": {
     "title": "Atur widget",
@@ -2163,7 +2172,16 @@
     "speed": "Kecepatan",
     "off": "Nonaktif",
     "endOfEpisode": "Akhir episode",
-    "autoplay": "Putar otomatis"
+    "autoplay": "Putar otomatis",
+    "download": "Unduh",
+    "downloaded": "Terunduh",
+    "offline": "Luring",
+    "cancelDownload": "Batalkan unduhan",
+    "deleteDownload": "Hapus unduhan",
+    "deleteDownloadConfirmTitle": "Hapus unduhan?",
+    "deleteDownloadConfirmBody": "Episode ini akan dihapus dari perangkat Anda.",
+    "moreEpisodes": "Episode lainnya",
+    "series": "Seri"
   },
   "lernen": {
     "learnDesc": "2000+ interactive lessons — step by step.",

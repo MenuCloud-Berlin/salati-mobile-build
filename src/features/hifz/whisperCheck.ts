@@ -261,6 +261,24 @@ export function trimSilence(pcm: Float32Array, threshold = 0.01, sampleRate = SA
   return pcm.subarray(Math.max(0, start - pad), Math.min(pcm.length, end + pad));
 }
 
+// Rollendes Audio-Fenster für die kontinuierliche Ganz-Sure-Erkennung: nur die
+// letzten CONTINUOUS_WINDOW_SEC Sekunden werden je Durchlauf transkribiert
+// (statt des immer länger werdenden Gesamt-Puffers). Grund: (1) O(n²)-Kosten +
+// mit der Sure wachsende Latenz vermeiden, damit die Live-Erkennung mit dem
+// Rezitierenden Schritt hält; (2) das Fenster deckt die AKTUELLE Rezitations-
+// stelle ab, sodass der gleitende erwarteter-Text-Prompt (reciteProgress.ts)
+// zum tatsächlich gehörten Audio passt. Aufeinanderfolgende Fenster (Intervall
+// ~1,5 s « Fensterlänge) überlappen stark → keine verlorenen Wörter an den
+// Fenstergrenzen. Für kurze Suren (< Fensterlänge) unverändert = ganzer Puffer.
+export const CONTINUOUS_WINDOW_SEC = 24;
+
+/** Letzte `seconds` Sekunden der Aufnahme (oder alles, falls kürzer). */
+export function tailWindow(pcm: Float32Array, seconds: number, sampleRate = SAMPLE_RATE): Float32Array {
+  const maxSamples = Math.floor(seconds * sampleRate);
+  if (pcm.length <= maxSamples) return pcm;
+  return pcm.subarray(pcm.length - maxSamples);
+}
+
 /** Lineares Resampling auf ein Tempo-Vielfaches — Pendant zu speedUp() in whisperCheck.web.ts. */
 export function speedUp(pcm: Float32Array, factor: number): Float32Array {
   const outLen = Math.max(1, Math.floor(pcm.length / factor));
@@ -368,17 +386,22 @@ export async function transcribePcm(
   whisperContext: WhisperContext,
   tempFileName: string,
   expectedText?: string,
+  // `fast`: greedy (beamSize 1) statt Beam-Search-5 — für Live-Zwischenstände
+  // während der Aufnahme, die im ~1,5-s-Takt kommen müssen (Beam-5 auf einem
+  // 24-s-Fenster ist auf dem Handy zu langsam, die Live-Erkennung würde
+  // hinterherhinken → „verliert den Faden"). Der FINALE Bewertungs-Durchlauf
+  // bleibt bewusst Beam-5 (höhere Genauigkeit, Latenz dort unkritisch).
+  opts?: { fast?: boolean },
 ): Promise<string> {
   const path = `${FileSystem.cacheDirectory}${tempFileName}`;
   try {
     await writeWavFile(path, float32ToInt16(pcm), SAMPLE_RATE);
     // Arabisch fest vorgeben (ISO-639-1 'ar') statt 'auto' — das Zielpublikum
     // rezitiert immer Koran-Arabisch, Sprach-Autodetektion bei kurzen/leisen
-    // Aufnahmen ist unnötig fehleranfällig. beamSize 5 + temperature 0:
-    // genauere, deterministische Erkennung als der Greedy-Default.
+    // Aufnahmen ist unnötig fehleranfällig. temperature 0 = deterministisch.
     const { promise } = whisperContext.transcribe(path, {
       language: 'ar',
-      beamSize: 5,
+      beamSize: opts?.fast ? 1 : 5,
       temperature: 0,
       ...(expectedText ? { prompt: expectedText } : {}),
     });

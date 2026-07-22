@@ -846,6 +846,13 @@
         "hint": "Çevrimdışı kullanım için yüklenen surelerin metni ve çevirisi. Önbelleği temizlediğinizde kaldırılır.",
         "empty": "Henüz çevrimdışı yüklenmiş sure yok.",
         "surahs": "114 sureden {n} tanesi"
+      },
+      "podcast": {
+        "title": "Podcast indirmeleri",
+        "empty": "İndirilen bölüm yok",
+        "deleteAll": "Tümünü sil",
+        "deleteAllConfirmTitle": "Tüm indirmeler silinsin mi?",
+        "deleteAllConfirmBody": "İndirilen tüm bölümler cihazınızdan kaldırılacak."
       }
     },
     "appIcon": {
@@ -2126,7 +2133,9 @@
     "intro": "Adım adım nasıl namaz kılınır. Acele etme: Her adımda Arapça metin, Latin harfli okunuş ve anlamı gösterilir. Dinlemek için Arapça metne dokun. Namaz sırasında eşlik etmek için „Namaza eşlik et\" bölümünü kullan.",
     "pickPrompt": "Hangi namazı öğrenmek istersin?",
     "coreTitle": "Fâtiha ve kısa sureler",
-    "coreSubtitle": "Tam Fâtiha (7 ayet) ile İhlâs ve Kevser – ilk ezberlenen metinlerdir."
+    "coreSubtitle": "Tam Fâtiha (7 ayet) ile İhlâs ve Kevser – ilk ezberlenen metinlerdir.",
+    "surahsTitle": "İki kısa sure",
+    "surahsSubtitle": "İhlâs ve Kevser – ilk ezberlenen surelerdir."
   },
   "widgetConfig": {
     "title": "Widget'ı ayarla",
@@ -2163,7 +2172,16 @@
     "speed": "Hız",
     "off": "Kapalı",
     "endOfEpisode": "Bölüm sonu",
-    "autoplay": "Otomatik oynat"
+    "autoplay": "Otomatik oynat",
+    "download": "İndir",
+    "downloaded": "İndirildi",
+    "offline": "Çevrimdışı",
+    "cancelDownload": "İndirmeyi iptal et",
+    "deleteDownload": "İndirmeyi sil",
+    "deleteDownloadConfirmTitle": "İndirme silinsin mi?",
+    "deleteDownloadConfirmBody": "Bu bölüm cihazınızdan kaldırılacak.",
+    "moreEpisodes": "Diğer bölümler",
+    "series": "Seri"
   },
   "lernen": {
     "learnDesc": "2000+ interactive lessons — step by step.",

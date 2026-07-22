@@ -10,7 +10,7 @@ import { Image } from 'expo-image';
 import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useQuery } from '@tanstack/react-query';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Modal, Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, Modal, Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { IconSymbol, type IconName } from '@/components/ui/icon-symbol';
@@ -25,6 +25,7 @@ import {
   type PodcastEpisode,
   type TranscriptSegment,
 } from '@/features/podcast/data';
+import { resolveEpisodeAudioUri, usePodcastDownload } from '@/features/podcast/downloads';
 import { Slider } from '@/features/podcast/slider';
 import { useSharedPlayer, type NowPlayingInfo } from '@/features/quran/usePlayer';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
@@ -50,6 +51,7 @@ export default function PodcastPlayerScreen() {
 
   const episodes = data?.episodes ?? [];
   const episode = episodes.find((e) => e.episode_no === episodeNo);
+  const dl = usePodcastDownload(episode);
   const idx = episodes.findIndex((e) => e.episode_no === episodeNo);
   const prev = idx > 0 ? episodes[idx - 1] : undefined;
   const next = idx >= 0 && idx < episodes.length - 1 ? episodes[idx + 1] : undefined;
@@ -164,15 +166,22 @@ export default function PodcastPlayerScreen() {
     };
   }
 
-  function playEpisode(ep: PodcastEpisode) {
-    player.replace(ep.audio_url);
+  // Lokale Datei hat Vorrang (Offline-Wiedergabe): ist die Folge heruntergeladen,
+  // wird die file://-URI statt der Remote-URL an den Player gegeben (async
+  // Datei-Existenz-Check → playEpisode ist async, Aufrufer nutzen es
+  // Fire-and-forget). setNowPlaying nutzt das reiche nowPlayingFor (Titel,
+  // Serienname, Rücksprung, Folge-vor/zurück UND onEnded-Auto-Advance) — nicht
+  // nur den Titel, sonst gingen Auto-Advance + Mini-Player-Steuerung verloren.
+  async function playEpisode(ep: PodcastEpisode) {
+    const uri = await resolveEpisodeAudioUri(ep);
+    player.replace(uri);
     player.setPlaybackRate(speed);
     configureBackground(ep);
     player.play();
     setNowPlaying(nowPlayingFor(ep));
   }
 
-  function loadAndPlay() {
+  async function loadAndPlay() {
     if (!episode) return;
     playEpisode(episode);
   }
@@ -290,13 +299,15 @@ export default function PodcastPlayerScreen() {
   }
 
   const shownProgress = seekPreview ?? progress;
+  // Offline-Cover bevorzugen (lokale Datei), sonst Remote-Cover.
+  const coverSource = dl.localCoverUri ?? episode.cover_url;
 
   return (
     <ThemedView style={styles.container}>
       {/* Unscharfer Cover-Hintergrund (Spotify-Optik) */}
-      {episode.cover_url ? (
+      {coverSource ? (
         <Image
-          source={episode.cover_url}
+          source={coverSource}
           style={styles.bgImage}
           contentFit="cover"
           blurRadius={Platform.OS === 'web' ? 60 : 40}
@@ -306,8 +317,13 @@ export default function PodcastPlayerScreen() {
       <View style={[styles.bgOverlay, { backgroundColor: colors.background, opacity: 0.82 }]} />
 
       <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
-        {/* Kopfzeile: Settings rechts */}
+        {/* Kopfzeile: Offline-Download links, Settings rechts */}
         <View style={styles.topBar}>
+          {dl.supported ? (
+            <PodcastDownloadButton dl={dl} />
+          ) : (
+            <View style={styles.settingsBtn} />
+          )}
           <Pressable
             onPress={() => setShowSettings(true)}
             accessibilityRole="button"
@@ -319,9 +335,9 @@ export default function PodcastPlayerScreen() {
         </View>
 
         <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
-          {episode.cover_url ? (
+          {coverSource ? (
             <Image
-              source={episode.cover_url}
+              source={coverSource}
               style={styles.cover}
               contentFit="cover"
               transition={200}
@@ -472,6 +488,68 @@ function CircleButton({
       hitSlop={8}
       style={[styles.circleBtn, disabled && styles.circleBtnDisabled]}>
       <IconSymbol name={icon} size={size} color={disabled ? colors.textSecondary : colors.text} />
+    </Pressable>
+  );
+}
+
+/** Offline-Download-Steuerung in der Kopfzeile: none -> laden, downloading ->
+ *  Prozent/abbrechen, done -> löschen (mit Bestätigung). */
+function PodcastDownloadButton({ dl }: { dl: ReturnType<typeof usePodcastDownload> }) {
+  const { t } = useTranslation();
+  const scheme = useResolvedScheme();
+  const colors = Colors[scheme];
+
+  function confirmDelete() {
+    Alert.alert(t('podcast.deleteDownloadConfirmTitle'), t('podcast.deleteDownloadConfirmBody'), [
+      { text: t('common.cancel'), style: 'cancel' },
+      { text: t('podcast.deleteDownload'), style: 'destructive', onPress: () => void dl.remove() },
+    ]);
+  }
+
+  if (dl.state === 'downloading') {
+    return (
+      <Pressable
+        onPress={dl.cancel}
+        accessibilityRole="button"
+        accessibilityLabel={t('podcast.cancelDownload')}
+        hitSlop={8}
+        style={styles.downloadBtn}>
+        {dl.progress > 0 ? (
+          <ThemedText type="smallBold" themeColor="accent" style={styles.downloadPct}>
+            {Math.round(dl.progress * 100)}%
+          </ThemedText>
+        ) : (
+          <ThemedActivityIndicator size="small" />
+        )}
+        <IconSymbol name="close" size={16} color={colors.textSecondary} />
+      </Pressable>
+    );
+  }
+
+  if (dl.state === 'done') {
+    return (
+      <Pressable
+        onPress={confirmDelete}
+        accessibilityRole="button"
+        accessibilityLabel={t('podcast.deleteDownload')}
+        hitSlop={8}
+        style={styles.downloadBtn}>
+        <IconSymbol name="cloud-done" size={20} color={colors.accent} />
+        <ThemedText type="smallBold" themeColor="accent" style={styles.downloadPct}>
+          {t('podcast.offline')}
+        </ThemedText>
+      </Pressable>
+    );
+  }
+
+  return (
+    <Pressable
+      onPress={dl.download}
+      accessibilityRole="button"
+      accessibilityLabel={t('podcast.download')}
+      hitSlop={8}
+      style={styles.downloadBtn}>
+      <IconSymbol name="download-outline" size={20} color={colors.text} />
     </Pressable>
   );
 }
@@ -669,8 +747,10 @@ const styles = StyleSheet.create({
   bgOverlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 },
   safeArea: { flex: 1, paddingTop: Spacing.two + BackChipInset },
   center: { alignItems: 'center', justifyContent: 'center' },
-  topBar: { flexDirection: 'row', justifyContent: 'flex-end', paddingHorizontal: Spacing.four },
+  topBar: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: Spacing.four },
   settingsBtn: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' },
+  downloadBtn: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one, height: 40, paddingHorizontal: Spacing.two, borderRadius: 20 },
+  downloadPct: { fontSize: 12 },
   scroll: {
     paddingHorizontal: Spacing.four,
     paddingBottom: Spacing.six,

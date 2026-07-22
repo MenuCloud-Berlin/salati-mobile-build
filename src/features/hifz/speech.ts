@@ -28,14 +28,17 @@
 // whisperCheck.ts-Kopfkommentar und Abschluss-Bericht).
 
 import {
+  CONTINUOUS_WINDOW_SEC,
   SAMPLE_RATE,
   loadWhisperContext,
   startPcmCapture,
+  tailWindow,
   transcribePcm,
   trimSilence,
   whisperSupported,
   type WhisperProgress,
 } from './whisperCheck';
+import { ReciteProgress } from './reciteProgress';
 
 // Ab hier gilt: hat schon gesprochen (RMS über Schwelle) — danach beendet
 // anhaltende Stille die Aufnahme automatisch. Bewusst niedrig (0.01), damit
@@ -114,7 +117,11 @@ export async function recognizeArabicStreaming(options: StreamingOptions): Promi
     partialBusy = true;
     const float32 = new Float32Array(pcm16.length);
     for (let i = 0; i < pcm16.length; i++) float32[i] = pcm16[i] / 0x8000;
-    transcribePcm(trimSilence(float32), ctx, 'hifz-partial.wav', options.expectedText)
+    // Live-Zwischenstand: greedy (`fast`) für den ~1,4-s-Takt. Ein einzelner
+    // Ayah ist kurz (< Fensterlänge, < 224 Prompt-Tokens) → hier reicht der
+    // ganze Ayah-Text als Prompt, kein gleitendes Fenster nötig. Die finale
+    // Bewertung unten bleibt der volle Beam-5-Durchlauf.
+    transcribePcm(trimSilence(float32), ctx, 'hifz-partial.wav', options.expectedText, { fast: true })
       .then((t) => {
         if (t && options.onPartial) options.onPartial(t);
       })
@@ -174,6 +181,13 @@ export async function recognizeArabicContinuous(options: ContinuousOptions): Pro
   const whisperContext = await loadWhisperContext(options.onProgress);
   const capture = await startPcmCapture();
 
+  // Gleitender erwarteter-Text-Prompt statt einmaligem Ganz-Sure-Prompt: der
+  // Prompt zeigt immer auf die als-nächstes-erwarteten Wörter ab der zuletzt
+  // sicher erkannten Position (reciteProgress.ts). Verhindert, dass whisper
+  // nach den ersten ~224 Prompt-Tokens ohne erwarteten-Text-Anker weiterläuft
+  // und „den Faden verliert" (Kern-Fix, s. reciteProgress.ts-Kopfkommentar).
+  const progress = options.expectedText ? new ReciteProgress(options.expectedText) : null;
+
   let stopped = false;
   let busy = false;
   const timer = setInterval(() => {
@@ -183,9 +197,20 @@ export async function recognizeArabicContinuous(options: ContinuousOptions): Pro
     busy = true;
     const float32 = new Float32Array(pcm16.length);
     for (let i = 0; i < pcm16.length; i++) float32[i] = pcm16[i] / 0x8000;
-    transcribePcm(trimSilence(float32), whisperContext, 'hifz-surah-partial.wav', options.expectedText)
+    // Nur das rollende Fenster transkribieren (bounded Latenz) + mitwandernder
+    // Prompt. `fast`: greedy für Live-Takt.
+    const windowed = tailWindow(trimSilence(float32), CONTINUOUS_WINDOW_SEC);
+    const prompt = progress ? progress.prompt() : options.expectedText;
+    transcribePcm(windowed, whisperContext, 'hifz-surah-partial.wav', prompt, { fast: true })
       .then((t) => {
-        if (t && !stopped) options.onPartial(t);
+        if (t && !stopped) {
+          // Erst die Front vorrücken (steuert den Prompt des NÄCHSTEN Fensters),
+          // dann der UI melden. Die UI (recite-surah.tsx) deckt monoton auf —
+          // ein Fenster-Transkript, das frühe Verse nicht mehr enthält, macht
+          // daher nichts rückgängig.
+          progress?.update(t);
+          options.onPartial(t);
+        }
       })
       .catch(() => undefined)
       .finally(() => {
@@ -201,7 +226,12 @@ export async function recognizeArabicContinuous(options: ContinuousOptions): Pro
       if (pcm16.length < SAMPLE_RATE * 0.4) return '';
       const float32 = new Float32Array(pcm16.length);
       for (let i = 0; i < pcm16.length; i++) float32[i] = pcm16[i] / 0x8000;
-      return transcribePcm(trimSilence(float32), whisperContext, 'hifz-surah-final.wav', options.expectedText);
+      // Finaler Durchlauf: rollendes Fenster + mitwandernder Prompt, aber volle
+      // Genauigkeit (Beam-5). Deckt das Sure-Ende ab; früher Aufgedecktes bleibt
+      // dank monotoner UI-Aufdeckung erhalten.
+      const windowed = tailWindow(trimSilence(float32), CONTINUOUS_WINDOW_SEC);
+      const prompt = progress ? progress.prompt() : options.expectedText;
+      return transcribePcm(windowed, whisperContext, 'hifz-surah-final.wav', prompt);
     },
   };
 }

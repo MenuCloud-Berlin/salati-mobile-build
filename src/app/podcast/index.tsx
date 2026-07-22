@@ -1,12 +1,13 @@
-// Podcast-Uebersicht: der deutsche Quran-Arabisch-Podcast (15 Folgen).
-// Serien-Header + Folgenliste. Antippen oeffnet den Voll-Player
-// (podcast/[episode].tsx). Daten aus dem oeffentlichen Supabase-Bucket
-// (features/podcast/data.ts) via react-query — gleiches Lade-/Fehlermuster
-// wie radio.tsx.
+// Podcast-Uebersicht: der deutsche Quran-Arabisch-Podcast. Serien-Header +
+// Folgenliste, optional nach Reihen (`series`) gruppiert (Section-Header je
+// Reihe, sobald mehr als eine Reihe vorkommt — sonst flache Liste wie bisher).
+// Antippen oeffnet den Voll-Player (podcast/[episode].tsx). Pro Folge ein
+// Offline-Download-Button + Offline-Kennzeichnung. Daten aus dem oeffentlichen
+// Supabase-Bucket (features/podcast/data.ts) via react-query.
 import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import { useQuery } from '@tanstack/react-query';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { Alert, FlatList, Pressable, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AnimatedListItem } from '@/components/ui/animated-list-item';
@@ -17,10 +18,21 @@ import { ThemedActivityIndicator } from '@/components/themed-activity-indicator'
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
-import { fetchPodcastIndex, formatDuration, type PodcastEpisode } from '@/features/podcast/data';
+import {
+  fetchPodcastIndex,
+  formatDuration,
+  groupEpisodesBySeries,
+  hasMultipleSeries,
+  type PodcastEpisode,
+} from '@/features/podcast/data';
+import { usePodcastDownload } from '@/features/podcast/downloads';
 import { useSharedPlayer } from '@/features/quran/usePlayer';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
 import { useTranslation } from '@/lib/i18n';
+
+type ListRow =
+  | { kind: 'section'; key: string; title: string }
+  | { kind: 'episode'; key: string; episode: PodcastEpisode; itemIndex: number };
 
 export default function PodcastListScreen() {
   const { t } = useTranslation();
@@ -35,13 +47,29 @@ export default function PodcastListScreen() {
   });
 
   const series = data?.series;
+  const episodes = data?.episodes ?? [];
+
+  // Reihen-Gruppierung: Section-Header nur zeigen, wenn tatsaechlich mehrere
+  // Reihen vorkommen — mit den aktuellen Folgen ohne series-Feld bleibt es eine
+  // flache Liste (rueckwaertskompatibel).
+  const multiSeries = hasMultipleSeries(episodes);
+  const rows: ListRow[] = [];
+  let itemIndex = 0;
+  for (const group of groupEpisodesBySeries(episodes)) {
+    if (multiSeries) {
+      rows.push({ kind: 'section', key: `s:${group.key}`, title: group.title ?? t('podcast.moreEpisodes') });
+    }
+    for (const ep of group.episodes) {
+      rows.push({ kind: 'episode', key: `e:${ep.episode_no}`, episode: ep, itemIndex: itemIndex++ });
+    }
+  }
 
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
         <FlatList
-          data={data?.episodes ?? []}
-          keyExtractor={(e) => String(e.episode_no)}
+          data={rows}
+          keyExtractor={(row) => row.key}
           contentContainerStyle={styles.list}
           ListHeaderComponent={
             <View style={styles.header}>
@@ -71,13 +99,17 @@ export default function PodcastListScreen() {
               ) : null}
             </View>
           }
-          renderItem={({ item, index }) => (
-            <EpisodeRow
-              episode={item}
-              index={index}
-              active={nowPlaying?.title?.startsWith(`${item.episode_no}.`) ?? false}
-            />
-          )}
+          renderItem={({ item }) =>
+            item.kind === 'section' ? (
+              <SectionHeader title={item.title} />
+            ) : (
+              <EpisodeRow
+                episode={item.episode}
+                index={item.itemIndex}
+                active={nowPlaying?.title?.startsWith(`${item.episode.episode_no}.`) ?? false}
+              />
+            )
+          }
           ListEmptyComponent={
             <View style={styles.center}>
               {isLoading ? (
@@ -95,6 +127,16 @@ export default function PodcastListScreen() {
   );
 }
 
+function SectionHeader({ title }: { title: string }) {
+  return (
+    <View style={styles.sectionHeader}>
+      <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sectionHeaderText}>
+        {title.toUpperCase()}
+      </ThemedText>
+    </View>
+  );
+}
+
 function EpisodeRow({
   episode,
   index,
@@ -104,8 +146,19 @@ function EpisodeRow({
   index: number;
   active: boolean;
 }) {
+  const { t } = useTranslation();
   const scheme = useResolvedScheme();
   const colors = Colors[scheme];
+  const dl = usePodcastDownload(episode);
+  const downloaded = dl.state === 'done';
+  const coverSource = dl.localCoverUri ?? episode.cover_url;
+
+  function confirmDelete() {
+    Alert.alert(t('podcast.deleteDownloadConfirmTitle'), t('podcast.deleteDownloadConfirmBody'), [
+      { text: t('common.cancel'), style: 'cancel' },
+      { text: t('podcast.deleteDownload'), style: 'destructive', onPress: () => void dl.remove() },
+    ]);
+  }
 
   return (
     <AnimatedListItem index={index % 12}>
@@ -116,8 +169,8 @@ function EpisodeRow({
         type={active ? 'backgroundSelected' : 'backgroundElement'}
         style={styles.row}>
         <View style={styles.thumbWrap}>
-          {episode.cover_url ? (
-            <Image source={episode.cover_url} style={styles.thumb} contentFit="cover" transition={150} />
+          {coverSource ? (
+            <Image source={coverSource} style={styles.thumb} contentFit="cover" transition={150} />
           ) : (
             <ThemedView type="backgroundSelected" style={[styles.thumb, styles.coverFallback]}>
               <ThemedText type="smallBold" themeColor="accent">
@@ -144,8 +197,57 @@ function EpisodeRow({
             <ThemedText type="small" themeColor="accent">
               {formatDuration(episode.duration_sec)}
             </ThemedText>
+            {downloaded && (
+              <View style={styles.offlineBadge}>
+                <IconSymbol name="cloud-done" size={13} color={colors.accent} />
+                <ThemedText type="small" themeColor="accent" style={styles.offlineLabel}>
+                  {t('podcast.offline')}
+                </ThemedText>
+              </View>
+            )}
           </View>
         </View>
+
+        {/* Download-Steuerung: none -> laden, downloading -> Fortschritt/abbrechen,
+            done -> loeschen. Auf Web (kein Dateisystem) ist dl.supported false
+            und die Steuerung bleibt aus (vermeidet zudem verschachtelte Buttons
+            im Web-Export). */}
+        {dl.supported &&
+          (dl.state === 'downloading' ? (
+            <Pressable
+              onPress={dl.cancel}
+              hitSlop={8}
+              accessibilityRole="button"
+              accessibilityLabel={t('podcast.cancelDownload')}
+              style={({ pressed }) => [styles.dlBtn, pressed && styles.pressed]}>
+              {dl.progress > 0 ? (
+                <ThemedText type="small" themeColor="accent" style={styles.dlPct}>
+                  {Math.round(dl.progress * 100)}%
+                </ThemedText>
+              ) : (
+                <ThemedActivityIndicator size="small" />
+              )}
+            </Pressable>
+          ) : dl.state === 'done' ? (
+            <Pressable
+              onPress={confirmDelete}
+              hitSlop={8}
+              accessibilityRole="button"
+              accessibilityLabel={t('podcast.deleteDownload')}
+              style={({ pressed }) => [styles.dlBtn, pressed && styles.pressed]}>
+              <IconSymbol name="cloud-done" size={20} color={colors.accent} />
+            </Pressable>
+          ) : (
+            <Pressable
+              onPress={dl.download}
+              hitSlop={8}
+              accessibilityRole="button"
+              accessibilityLabel={t('podcast.download')}
+              style={({ pressed }) => [styles.dlBtn, pressed && styles.pressed]}>
+              <IconSymbol name="download-outline" size={20} color={colors.textSecondary} />
+            </Pressable>
+          ))}
+
         <DisclosureChevron size={18} color={colors.textSecondary} />
       </PressableCard>
     </AnimatedListItem>
@@ -169,6 +271,8 @@ const styles = StyleSheet.create({
   seriesTitle: { textAlign: 'center', marginTop: Spacing.two },
   seriesSubtitle: { textAlign: 'center' },
   seriesDesc: { textAlign: 'center', paddingHorizontal: Spacing.two },
+  sectionHeader: { paddingTop: Spacing.two, paddingBottom: Spacing.half, paddingHorizontal: Spacing.one },
+  sectionHeaderText: { letterSpacing: 0.5 },
   center: { alignItems: 'center', paddingVertical: Spacing.five },
   row: { flexDirection: 'row', alignItems: 'center', gap: Spacing.three, padding: Spacing.two },
   thumbWrap: { width: 64, height: 64 },
@@ -190,4 +294,9 @@ const styles = StyleSheet.create({
   // Overflow ohne Begrenzung). Nativ (Yoga) ist min-width ohnehin 0.
   rowText: { flex: 1, minWidth: 0, gap: 3 },
   metaRow: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one, marginTop: 2 },
+  offlineBadge: { flexDirection: 'row', alignItems: 'center', gap: 3, marginLeft: Spacing.one },
+  offlineLabel: { fontSize: 11 },
+  dlBtn: { width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center' },
+  dlPct: { fontSize: 11 },
+  pressed: { opacity: 0.6 },
 });
