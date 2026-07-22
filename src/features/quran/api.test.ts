@@ -1,5 +1,6 @@
 import {
   editionDisplayName,
+  normalizeArabicSearchQuery,
   parseAyahSajda,
   parseHighlightedText,
   parseMushafPage,
@@ -582,5 +583,48 @@ describe('parseAyahSajda', () => {
       sajda: true,
       sajdaObligatory: true,
     });
+  });
+});
+
+describe('normalizeArabicSearchQuery', () => {
+  it('entfernt Tashkeel/Harakat (الرَّحْمٰن → الرحمن)', () => {
+    // الرَّحْمَٰن → الرحمن
+    expect(normalizeArabicSearchQuery('الرَّحْمٰن')).toBe(
+      'الرحمن',
+    );
+  });
+
+  it('faltet Alif-Wasla ٱ auf ا (der Kern-Fix: ٱلعالمين findet sonst 0 Treffer)', () => {
+    // ٱلعالمين → العالمين
+    expect(normalizeArabicSearchQuery('ٱلعالمين')).toBe(
+      'العالمين',
+    );
+  });
+
+  it('faltet Hamza-auf-Alif أإآ auf ا', () => {
+    // أنعمت → انعمت
+    expect(normalizeArabicSearchQuery('أنعمت')).toBe('انعمت');
+  });
+
+  it('faltet Alif-Maqsura ى BEWUSST NICHT (das wuerde die Trefferzahl einbrechen lassen)', () => {
+    // موسى bleibt موسى (ى = U+0649 unveraendert)
+    expect(normalizeArabicSearchQuery('موسى')).toBe('موسى');
+  });
+
+  it('laesst Ta-Marbuta ة unveraendert (der Suchindex faltet das bereits selbst)', () => {
+    // رحمة bleibt رحمة
+    expect(normalizeArabicSearchQuery('رحمة')).toBe('رحمة');
+  });
+
+  it('entfernt Tatweel ـ und normalisiert Whitespace', () => {
+    // الصــراط → الصراط, plus umschliessende Leerzeichen
+    expect(normalizeArabicSearchQuery('  الصــراط  ')).toBe(
+      'الصراط',
+    );
+  });
+
+  it('behaelt arabisch-indische Ziffern (٠-٩) statt sie zu strippen', () => {
+    // ٢٣ bleibt erhalten
+    expect(normalizeArabicSearchQuery('٢٣')).toBe('٢٣');
   });
 });

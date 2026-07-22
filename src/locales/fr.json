@@ -1153,7 +1153,20 @@
     "aligned": "Aligné - tu fais face à la Kaaba",
     "calibrateHint": "Mauvaise direction ? Calibre la boussole : bouge le téléphone en formant un 8, loin du métal/des aimants.",
     "accuracyDisclaimer": "La direction est basée sur les données du magnétomètre de votre appareil et peut légèrement dévier à cause de métal ou d'appareils électroniques à proximité.",
-    "distanceKm": "{km} km jusqu'à la Kaaba"
+    "distanceKm": "{km} km jusqu'à la Kaaba",
+    "ar": {
+      "compassTab": "Boussole",
+      "cameraTab": "Caméra",
+      "instruction": "Déplacez votre téléphone jusqu'à ce que le repère de la Kaaba soit centré.",
+      "turnLeft": "Tournez à gauche",
+      "turnRight": "Tournez à droite",
+      "permissionTitle": "Accès à la caméra requis",
+      "permissionBody": "Salati superpose la direction de la Qibla sur l'image de la caméra. L'image est affichée en direct uniquement et n'est ni enregistrée ni envoyée.",
+      "grantCamera": "Autoriser la caméra",
+      "cameraDenied": "L'accès à la caméra a été refusé. Autorisez-le dans les réglages de l'appareil ou continuez avec la boussole.",
+      "backToCompass": "Retour à la boussole",
+      "notAvailableWeb": "La vue AR nécessite la caméra du téléphone et n'est pas disponible sur le Web."
+    }
   },
   "calendar": {
     "offlineNotice": "Hors ligne - les dates hégiriennes sont calculées localement et peuvent différer de ±1 jour de la date officielle.",

@@ -1153,7 +1153,20 @@
     "aligned": "Mwelekeo ni sahihi - unaelekea Al-Kaaba",
     "calibrateHint": "Mwelekeo si sahihi? Sawazisha dira: sogeza simu mara kadhaa kwa umbo la 8, mbali na chuma/sumaku.",
     "accuracyDisclaimer": "Mwelekeo huu unatokana na data ya sumaku ya kifaa chako na unaweza kupotoka kidogo kutokana na chuma au vifaa vya elektroniki karibu.",
-    "distanceKm": "Kilomita {km} hadi Kaaba"
+    "distanceKm": "Kilomita {km} hadi Kaaba",
+    "ar": {
+      "compassTab": "Dira",
+      "cameraTab": "Kamera",
+      "instruction": "Sogeza simu yako hadi alama ya Kaaba iwe katikati.",
+      "turnLeft": "Geuka kushoto",
+      "turnRight": "Geuka kulia",
+      "permissionTitle": "Ufikiaji wa kamera unahitajika",
+      "permissionBody": "Salati inaonyesha mwelekeo wa Kibla juu ya picha ya kamera. Picha inaonyeshwa moja kwa moja tu na haihifadhiwi wala kutumwa.",
+      "grantCamera": "Ruhusu kamera",
+      "cameraDenied": "Ufikiaji wa kamera ulikataliwa. Uruhusu katika mipangilio ya kifaa, au endelea kutumia dira.",
+      "backToCompass": "Rudi kwenye dira",
+      "notAvailableWeb": "Mwonekano wa AR unahitaji kamera ya simu na haupatikani kwenye wavuti."
+    }
   },
   "calendar": {
     "offlineNotice": "Nje ya mtandao - data ya Hijria inahesabiwa kwa ndani na inaweza kutofautiana kwa ±siku 1 na tarehe rasmi.",

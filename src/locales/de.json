@@ -1163,7 +1163,20 @@
     "aligned": "Richtung stimmt - du blickst zur Kaaba",
     "calibrateHint": "Richtung falsch? Kompass kalibrieren: Handy einige Male in einer 8 bewegen, weg von Metall/Magneten.",
     "accuracyDisclaimer": "Die Richtung basiert auf den Magnetometer-Daten deines Geräts und kann durch Metall oder Elektronik in der Umgebung leicht abweichen.",
-    "distanceKm": "{km} km bis zur Kaaba"
+    "distanceKm": "{km} km bis zur Kaaba",
+    "ar": {
+      "compassTab": "Kompass",
+      "cameraTab": "Kamera",
+      "instruction": "Bewege dein Handy, bis die Kaaba-Markierung mittig steht.",
+      "turnLeft": "Nach links drehen",
+      "turnRight": "Nach rechts drehen",
+      "permissionTitle": "Kamerazugriff nötig",
+      "permissionBody": "Salati blendet die Qibla-Richtung in dein Kamerabild ein. Das Bild wird nur live angezeigt und weder gespeichert noch gesendet.",
+      "grantCamera": "Kamera erlauben",
+      "cameraDenied": "Kamerazugriff wurde abgelehnt. Erlaube ihn in den Geräteeinstellungen oder nutze weiter den Kompass.",
+      "backToCompass": "Zurück zum Kompass",
+      "notAvailableWeb": "Die AR-Ansicht braucht eine Handy-Kamera und ist im Web nicht verfügbar."
+    }
   },
   "calendar": {
     "offlineNotice": "Offline - Hijri-Daten sind lokal berechnet und können um ±1 Tag vom offiziellen Datum abweichen.",

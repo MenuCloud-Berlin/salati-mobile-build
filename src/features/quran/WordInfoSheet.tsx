@@ -35,6 +35,10 @@ interface WordInfoSheetProps {
   /** Audio-URL für das einzelne Wort (nur im normalen Reader verfügbar). */
   audioUrl?: string | null;
   onPlay?: () => void;
+  /** Übersetzung in der App-Sprache (z. B. gepflegtes deutsches Gloss für die
+   * Kernsuren). Wenn gesetzt, ersetzt sie das englische quran.com-Gloss und der
+   * "nur Englisch"-Hinweis entfällt. */
+  translationOverride?: string | null;
 }
 
 /**
@@ -46,13 +50,24 @@ interface WordInfoSheetProps {
  * stillschweigend ignoriert), und eine geratene Wurzel zu einem religiösen
  * Text wäre eine Falschangabe. Stattdessen ein kurzer, ehrlicher Hinweis.
  */
-export function WordInfoSheet({ visible, word, onClose, loading, error, audioUrl, onPlay }: WordInfoSheetProps) {
+export function WordInfoSheet({
+  visible,
+  word,
+  onClose,
+  loading,
+  error,
+  audioUrl,
+  onPlay,
+  translationOverride,
+}: WordInfoSheetProps) {
   const { t, locale } = useTranslation();
   const scheme = useResolvedScheme();
   const colors = Colors[scheme];
   const ruleFamilies = wordTajweedRuleFamilies(word?.tajweedRules);
   const letterList = word ? wordToLetterList(word.arabic) : [];
-  const hasContent = !!word && (word.translation !== '' || word.transliteration !== '');
+  // Deutsches Gloss (falls vorhanden) bevorzugen, sonst das englische von quran.com.
+  const displayTranslation = translationOverride ?? word?.translation ?? '';
+  const hasContent = !!word && (displayTranslation !== '' || word.transliteration !== '');
   const showNoData = !loading && !error && !hasContent;
 
   return (
@@ -125,19 +140,21 @@ export function WordInfoSheet({ visible, word, onClose, loading, error, audioUrl
                 </ThemedText>
               )}
 
-              {word.translation !== '' && (
+              {displayTranslation !== '' && (
                 <View style={styles.section}>
                   <ThemedText type="small" themeColor="textSecondary" style={styles.sectionLabel}>
                     {t('quran.wordInfo.translationLabel')}
                   </ThemedText>
-                  <ThemedText type="default">{word.translation}</ThemedText>
+                  <ThemedText type="default">{displayTranslation}</ThemedText>
                   {/* Wort-für-Wort-Übersetzung kommt von quran.com und ist dort NUR auf
                       Englisch verfügbar (weder `language`- noch
                       `word_translation_language`-Parameter ändern das, live geprüft) —
                       anders als die vollständige Vers-Übersetzung darüber im Reader, die
                       in der jeweiligen App-Sprache läuft. Ohne diesen Hinweis würden
-                      nicht-englischsprachige Nutzer denken, das sei bereits ihre Sprache. */}
-                  {locale !== 'en' && (
+                      nicht-englischsprachige Nutzer denken, das sei bereits ihre Sprache.
+                      Bei einem gepflegten deutschen Gloss (translationOverride) entfällt
+                      der Hinweis, weil dann bereits die App-Sprache angezeigt wird. */}
+                  {locale !== 'en' && !translationOverride && (
                     <ThemedText type="small" themeColor="textSecondary" style={styles.languageNote}>
                       {t('quran.wordInfo.translationLanguageNote')}
                     </ThemedText>

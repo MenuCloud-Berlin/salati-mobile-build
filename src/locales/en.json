@@ -1153,7 +1153,20 @@
     "aligned": "Aligned - you are facing the Kaaba",
     "calibrateHint": "Wrong direction? Calibrate the compass: move your phone in a figure-8 a few times, away from metal/magnets.",
     "accuracyDisclaimer": "The direction is based on your device's magnetometer data and may deviate slightly due to nearby metal or electronics.",
-    "distanceKm": "{km} km to the Kaaba"
+    "distanceKm": "{km} km to the Kaaba",
+    "ar": {
+      "compassTab": "Compass",
+      "cameraTab": "Camera",
+      "instruction": "Move your phone until the Kaaba marker is centered.",
+      "turnLeft": "Turn left",
+      "turnRight": "Turn right",
+      "permissionTitle": "Camera access needed",
+      "permissionBody": "Salati overlays the Qibla direction onto your camera view. The image is shown live only and is never stored or sent.",
+      "grantCamera": "Allow camera",
+      "cameraDenied": "Camera access was denied. Allow it in your device settings, or keep using the compass.",
+      "backToCompass": "Back to compass",
+      "notAvailableWeb": "The AR view needs a phone camera and isn't available on the web."
+    }
   },
   "calendar": {
     "offlineNotice": "Offline - Hijri dates are calculated locally and may differ from the official date by ±1 day.",

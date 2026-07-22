@@ -70,6 +70,7 @@ import { useAyahPlayer, useComparePlayer, useSharedPlayer } from '@/features/qur
 import { canShareVerseImage, shareVerseImage } from '@/features/quran/shareImage';
 import { useShareCard } from '@/features/share/useShareCard';
 import { WordInfoSheet } from '@/features/quran/WordInfoSheet';
+import { getGermanWordGlosses, hasGermanWordByWord } from '@/features/quran/wbw-de';
 import { useSettings } from '@/features/settings/store';
 import { PLAYBACK_SPEED_OPTIONS } from '@/features/settings/types';
 import { useHydrated } from '@/hooks/use-hydrated';
@@ -198,6 +199,10 @@ export default function SurahReaderScreen() {
       : null;
   const { settings, update } = useSettings();
   const { t, locale } = useTranslation();
+  // Deutsche Wort-für-Wort-Glossen (nur für die Kernsuren gepflegt, s.
+  // features/quran/wbw-de) — quran.com liefert die Wort-Bedeutung sonst NUR
+  // auf Englisch. Nur relevant, wenn die App auf Deutsch läuft.
+  const germanWbwAvailable = locale === 'de' && hasGermanWordByWord(surahNumber);
   const [pickerOpen, setPickerOpen] = useState<
     'reciter' | 'translation' | 'translation2' | 'tafsir' | 'compareA' | 'compareB' | null
   >(null);
@@ -683,6 +688,12 @@ export default function SurahReaderScreen() {
     const bookmarked = isBookmarked(bookmarks, surahNumber, item.numberInSurah);
     const savedNote = getNoteText(notes, surahNumber, item.numberInSurah);
     const isEditingNote = editingNoteAyah === item.numberInSurah;
+    // Deutsche Wort-Glossen für diesen Vers (nur wenn App = Deutsch UND Sure
+    // gepflegt). Wird beim Rendern gegen die tatsächliche Wortanzahl geprüft;
+    // bei Abweichung fällt jedes Wort sauber auf das englische Gloss zurück.
+    const germanGlosses = germanWbwAvailable
+      ? getGermanWordGlosses(surahNumber, item.numberInSurah)
+      : undefined;
     return (
       <AnimatedListItem index={index % 12}>
         <PressableCard
@@ -871,7 +882,11 @@ export default function SurahReaderScreen() {
           )}
           {showWordByWord && wordByWord?.[index] && (
             <View style={styles.wordByWordRow}>
-              {wordByWord[index].map((w, wi) => {
+              {wordByWord[index].map((w, wi, words) => {
+                // Deutsches Gloss NUR wenn die Wortanzahl exakt passt — sonst
+                // wäre die Zuordnung verschoben, dann lieber Englisch.
+                const gloss =
+                  germanGlosses && germanGlosses.length === words.length ? germanGlosses[wi] : w.translation;
                 // Aktives Wort während der Rezitation (Wort-Sync):
                 // Segment [wortIdx, wortNr, startMs, endMs] gegen
                 // die aktuelle Wiedergabeposition.
@@ -903,7 +918,7 @@ export default function SurahReaderScreen() {
                       {w.arabic}
                     </ThemedText>
                     <ThemedText type="small" themeColor="textSecondary" sepia={sepia} style={styles.wordGloss}>
-                      {w.translation}
+                      {gloss}
                     </ThemedText>
                   </Pressable>
                 );
@@ -1340,10 +1355,13 @@ export default function SurahReaderScreen() {
                   style={[styles.chip, styles.chipRow]}>
                   <IconSymbol name="grid-outline" size={13} color={showWordByWord ? colors.accent : colors.text} />
                   <ThemedText type="small" themeColor={showWordByWord ? 'accent' : 'text'}>
-                    {/* Wort-Glossen existieren als freie Datenquelle nur auf
-                        Englisch — in allen anderen UI-Sprachen ehrlich
-                        kennzeichnen statt still Englisch einzublenden. */}
-                    {locale === 'en' ? t('quran.wordByWord') : `${t('quran.wordByWord')} (EN)`}
+                    {/* Wort-Glossen kommen von quran.com nur auf Englisch. Für
+                        die Kernsuren gibt es aber gepflegte DEUTSCHE Glossen
+                        (germanWbwAvailable) — dann kein "(EN)"-Hinweis. Sonst in
+                        allen Nicht-EN-Sprachen ehrlich als Englisch kennzeichnen. */}
+                    {locale === 'en' || germanWbwAvailable
+                      ? t('quran.wordByWord')
+                      : `${t('quran.wordByWord')} (EN)`}
                   </ThemedText>
                 </ThemedView>
               </Pressable>
@@ -1719,6 +1737,19 @@ export default function SurahReaderScreen() {
               ? (wordByWord?.[selectedWordPos.ayahIndex]?.[selectedWordPos.wordIndex] ?? null)
               : null
           }
+          // Deutsches Gloss ins Lexikon-Sheet durchreichen (nur Kernsuren, App=DE),
+          // sonst null → englisches quran.com-Gloss. Gleicher Längen-Guard wie in
+          // der Inline-Ansicht: bei abweichender Wortanzahl kein deutsches Gloss.
+          translationOverride={(() => {
+            if (!selectedWordPos || !germanWbwAvailable) return null;
+            const words = wordByWord?.[selectedWordPos.ayahIndex];
+            const ayahNo = data?.ayahs?.[selectedWordPos.ayahIndex]?.numberInSurah;
+            if (!words || ayahNo == null) return null;
+            const glosses = getGermanWordGlosses(surahNumber, ayahNo);
+            return glosses && glosses.length === words.length
+              ? (glosses[selectedWordPos.wordIndex] ?? null)
+              : null;
+          })()}
           loading={selectedWordPos !== null && wordByWordLoading}
           error={selectedWordPos !== null && wordByWordError}
           audioUrl={

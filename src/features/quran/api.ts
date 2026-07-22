@@ -624,6 +624,42 @@ const SEARCH_LANGUAGE_PARAM: Partial<Record<string, string>> = {
   fr: 'fr',
 };
 
+// Kombinierende Koran-Zeichen: Harakat/Tanwin/Sukun + kleine Annotationszeichen
+// (064B–065F), Alif khanjariyya (0670), Koran-Annotationssymbole (06D6–06ED),
+// Tatweel (0640). Bewusst NICHT 0660–066F (arabisch-indische Ziffern +
+// Sonderbuchstaben) — die dürfen nicht aus dem Suchbegriff fallen.
+const SEARCH_DIACRITICS_RE = /[\u064B-\u065F\u0670\u06D6-\u06ED\u0640]/g;
+// Enthält der Suchbegriff überhaupt arabische Schrift? (nur dann normalisieren —
+// lateinische/Übersetzungssuche bleibt unangetastet).
+const ARABIC_LETTER_RE = /[؀-ۿ]/;
+
+/**
+ * Normalisiert einen ARABISCHEN Suchbegriff für die quran.com-Suche. Motivation
+ * (alle Trefferzahlen live geprüft, 2026-07-22): quran.coms Suchindex faltet
+ * Tashkeel, Tatweel, Hamza-auf-Alif (أإآ) und Ta-Marbuta bereits selbst
+ * („الرحمن"=„الرَّحْمَٰن"=45; „رحمة"=„رحمه"=35). ZWEI Fälle behandelt der Index
+ * aber NICHT — genau die schließt diese Funktion:
+ *   1) Alif-Wasla ٱ (U+0671): im Uthmani-Text (den der Reader anzeigt)
+ *      allgegenwärtig, als Suchbegriff aber tödlich — „ٱلعالمين" → 0 Treffer vs
+ *      „العالمين" → 61; „ٱلرحمن" → 0 vs 45. Kopiert ein Nutzer ein Wort aus dem
+ *      Reader in die Suche, findet er sonst NICHTS. → ٱ auf ا abbilden.
+ *   2) Voll vokalisierter Einfügetext mit Wasla („بِسْمِ ٱللَّهِ" → 1566 vs
+ *      „بسم الله" → 2344): Diakritika strippen holt die fehlenden Treffer.
+ * BEWUSST NICHT gefaltet: Alif-Maqsura ى→ي. Das WÜRDE die Trefferzahl einbrechen
+ * lassen (live: „موسى" → 1293 vs „موسي" → 124), weil der Koran-Text überwiegend
+ * ى schreibt — eine „Vereinheitlichung" wäre hier eine Verschlechterung.
+ * Bewusst als eigene, kleine Normalisierung in der Quran-Ebene gehalten (nicht
+ * aus features/hifz importiert, das parallel bearbeitet wird).
+ */
+export function normalizeArabicSearchQuery(query: string): string {
+  return query
+    .replace(SEARCH_DIACRITICS_RE, '')
+    .replace(/ٱ/g, 'ا') // ٱ Alif-Wasla → ا
+    .replace(/[أإآ]/g, 'ا') // أ إ آ → ا (Index faltet das zwar selbst; schadet nicht und macht den Begriff robust)
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 export interface QuranSearchResult {
   verseKey: string;
   surah: number;
@@ -711,7 +747,17 @@ export async function searchQuran(
   if (!trimmed) {
     return { query: '', totalResults: 0, currentPage: 1, totalPages: 0, results: [] };
   }
-  const params = new URLSearchParams({ q: trimmed, size: String(SEARCH_PAGE_SIZE), page: String(page) });
+  // Arabischen Suchbegriff normalisieren (Alif-Wasla/Diakritika, s.
+  // normalizeArabicSearchQuery) — DEUTLICH bessere Trefferrate, v. a. wenn ein
+  // Wort aus dem Uthmani-Reader (mit ٱ) in die Suche kopiert wird. Lateinische
+  // Übersetzungssuche bleibt unangetastet. Fällt die Normalisierung leer aus
+  // (reiner Diakritika-„Begriff"), lieber den Originalbegriff senden.
+  let effectiveQuery = trimmed;
+  if (ARABIC_LETTER_RE.test(trimmed)) {
+    const normalized = normalizeArabicSearchQuery(trimmed);
+    if (normalized) effectiveQuery = normalized;
+  }
+  const params = new URLSearchParams({ q: effectiveQuery, size: String(SEARCH_PAGE_SIZE), page: String(page) });
   const langParam = SEARCH_LANGUAGE_PARAM[appLanguage];
   if (langParam) params.set('language', langParam);
   const r = await fetch(`${QURANCOM_BASE}/search?${params.toString()}`);

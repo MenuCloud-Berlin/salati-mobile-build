@@ -86,22 +86,23 @@ jobs:
           <plist version="1.0">
           <dict>
             <key>method</key><string>app-store</string>
-            <key>signingStyle</key><string>manual</string>
+            <key>signingStyle</key><string>automatic</string>
             <key>teamID</key><string>ZKG548NGDR</string>
             <key>uploadSymbols</key><true/>
-            <key>provisioningProfiles</key>
-            <dict>
-              <key>de.salatibox.de</key><string>Salati AppStore v3 2026-07-19</string>
-              <key>de.salatibox.de.widget</key><string>Salati Widget AppStore v2 2026-07-19</string>
-              <key>de.salatibox.de.watch</key><string>Salati Watch AppStore 2026-07-19</string>
-              <key>de.salatibox.de.watch.clock</key><string>Salati Watch Clock AppStore v2 2026-07-19</string>
-            </dict>
           </dict>
           </plist>
           PLIST
 
-      - name: Archiv bauen (xcodebuild archive, manuell signiert)
+      - name: ASC-API-Key ablegen (für Auto-Provisioning)
+        env:
+          ASC_KEY_P8_BASE64: ${{ secrets.ASC_KEY_P8_BASE64 }}
+        run: echo "$ASC_KEY_P8_BASE64" | base64 -d > "$RUNNER_TEMP/asc.p8"
+
+      - name: Archiv bauen (xcodebuild archive, Auto-Signing via ASC-Key)
         working-directory: ios
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
         run: |
           set -o pipefail
           xcodebuild archive \
@@ -110,25 +111,25 @@ jobs:
             -configuration Release \
             -archivePath "$RUNNER_TEMP/Salati.xcarchive" \
             -destination "generic/platform=iOS" \
-            CODE_SIGN_STYLE=Manual \
-            DEVELOPMENT_TEAM=ZKG548NGDR \
             -allowProvisioningUpdates \
-            | xcpretty || xcodebuild archive \
-            -workspace Salati.xcworkspace \
-            -scheme Salati \
-            -configuration Release \
-            -archivePath "$RUNNER_TEMP/Salati.xcarchive" \
-            -destination "generic/platform=iOS" \
-            CODE_SIGN_STYLE=Manual \
-            DEVELOPMENT_TEAM=ZKG548NGDR \
-            -allowProvisioningUpdates
+            -authenticationKeyPath "$RUNNER_TEMP/asc.p8" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
+            DEVELOPMENT_TEAM=ZKG548NGDR
 
       - name: IPA exportieren
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
         run: |
           xcodebuild -exportArchive \
             -archivePath "$RUNNER_TEMP/Salati.xcarchive" \
             -exportPath "$RUNNER_TEMP/export" \
-            -exportOptionsPlist "$RUNNER_TEMP/exportOptions.plist"
+            -exportOptionsPlist "$RUNNER_TEMP/exportOptions.plist" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$RUNNER_TEMP/asc.p8" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID"
           ls -la "$RUNNER_TEMP/export"
 
       - name: IPA als Artefakt hochladen

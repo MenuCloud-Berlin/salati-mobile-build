@@ -1153,7 +1153,20 @@
     "aligned": "Arah sudah tepat - kamu menghadap ke Kakbah",
     "calibrateHint": "Arah salah? Kalibrasi kompas: gerakkan ponsel beberapa kali membentuk angka 8, jauh dari logam/magnet.",
     "accuracyDisclaimer": "Arah ini didasarkan pada data magnetometer perangkatmu dan dapat sedikit menyimpang karena logam atau perangkat elektronik di sekitarnya.",
-    "distanceKm": "{km} km menuju Kakbah"
+    "distanceKm": "{km} km menuju Kakbah",
+    "ar": {
+      "compassTab": "Kompas",
+      "cameraTab": "Kamera",
+      "instruction": "Gerakkan ponsel hingga penanda Kakbah berada di tengah.",
+      "turnLeft": "Putar ke kiri",
+      "turnRight": "Putar ke kanan",
+      "permissionTitle": "Perlu akses kamera",
+      "permissionBody": "Salati menampilkan arah kiblat di atas gambar kamera. Gambar hanya ditampilkan langsung dan tidak disimpan atau dikirim.",
+      "grantCamera": "Izinkan kamera",
+      "cameraDenied": "Akses kamera ditolak. Izinkan di pengaturan perangkat, atau tetap gunakan kompas.",
+      "backToCompass": "Kembali ke kompas",
+      "notAvailableWeb": "Tampilan AR memerlukan kamera ponsel dan tidak tersedia di web."
+    }
   },
   "calendar": {
     "offlineNotice": "Offline - data Hijriah dihitung secara lokal dan dapat berbeda ±1 hari dari tanggal resmi.",

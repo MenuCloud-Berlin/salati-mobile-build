@@ -1153,7 +1153,20 @@
     "aligned": "Alineado: estás mirando hacia la Kaaba",
     "calibrateHint": "¿Dirección incorrecta? Calibra la brújula: mueve el móvil en forma de 8 varias veces, lejos de metales/imanes.",
     "accuracyDisclaimer": "La dirección se basa en los datos del magnetómetro de tu dispositivo y puede desviarse ligeramente por metales o dispositivos electrónicos cercanos.",
-    "distanceKm": "{km} km hasta la Kaaba"
+    "distanceKm": "{km} km hasta la Kaaba",
+    "ar": {
+      "compassTab": "Brújula",
+      "cameraTab": "Cámara",
+      "instruction": "Mueve el teléfono hasta que la marca de la Kaaba quede centrada.",
+      "turnLeft": "Gira a la izquierda",
+      "turnRight": "Gira a la derecha",
+      "permissionTitle": "Se necesita acceso a la cámara",
+      "permissionBody": "Salati superpone la dirección de la Qibla sobre la imagen de la cámara. La imagen solo se muestra en directo y no se guarda ni se envía.",
+      "grantCamera": "Permitir cámara",
+      "cameraDenied": "Se denegó el acceso a la cámara. Permítelo en los ajustes del dispositivo o sigue usando la brújula.",
+      "backToCompass": "Volver a la brújula",
+      "notAvailableWeb": "La vista AR necesita la cámara del teléfono y no está disponible en la web."
+    }
   },
   "calendar": {
     "offlineNotice": "Sin conexión - las fechas hijri se calculan localmente y pueden diferir ±1 día de la fecha oficial.",

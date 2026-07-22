@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, G, Line, Path, Text as SvgText } from 'react-native-svg';
 
 import { AnimatedListItem } from '@/components/ui/animated-list-item';
+import QiblaArView from '@/components/qibla-ar-view';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -39,6 +40,11 @@ export default function QiblaScreen() {
   // In beiden Fällen jederzeit wegklickbar.
   const [firstOpenHint, setFirstOpenHint] = useState(false);
   const [hintDismissed, setHintDismissed] = useState(false);
+  // AR-/Kamera-Ansicht ist ein optionaler Zusatz zur Standard-Kompass-Ansicht.
+  // Nur nativ verfügbar (Kamera-AR im Browser nicht sinnvoll kalibrierbar) —
+  // auf Web wird der Umschalter ausgeblendet und dieser Zustand nie true.
+  const arAvailable = Platform.OS !== 'web';
+  const [arMode, setArMode] = useState(false);
   useEffect(() => {
     let cancelled = false;
     hasSeenQiblaCalibrationHint().then((seen) => {
@@ -108,6 +114,21 @@ export default function QiblaScreen() {
     }
   }
 
+  // Kamera-Ansicht ersetzt den gesamten Screen-Inhalt. Alle Hooks oben laufen
+  // weiter (useCompass ist fokus-gebunden und bleibt aktiv) — der Sensor
+  // versorgt so auch die AR-Ansicht mit `heading`.
+  if (arMode && arAvailable) {
+    return (
+      <QiblaArView
+        heading={heading}
+        bearing={bearing}
+        available={available}
+        needsCalibration={needsCalibration}
+        onClose={() => setArMode(false)}
+      />
+    );
+  }
+
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
@@ -119,6 +140,42 @@ export default function QiblaScreen() {
             {settings.location.label}
           </ThemedText>
         </AnimatedListItem>
+
+        {/* Umschalter Kompass ↔ AR-Kamera — nur nativ (Web hat keine AR-Ansicht). */}
+        {arAvailable && (
+          <AnimatedListItem index={1}>
+            <ThemedView type="backgroundElement" style={styles.modeToggle}>
+              <Pressable
+                onPress={() => setArMode(false)}
+                accessibilityRole="button"
+                accessibilityState={{ selected: !arMode }}
+                style={[styles.modeButton, !arMode && styles.modeButtonActive]}>
+                <IconSymbol
+                  name="compass-outline"
+                  size={16}
+                  color={!arMode ? Brand.gold : Colors[scheme].textSecondary}
+                />
+                <ThemedText type="smallBold" themeColor={!arMode ? 'accent' : 'textSecondary'}>
+                  {t('qibla.ar.compassTab')}
+                </ThemedText>
+              </Pressable>
+              <Pressable
+                onPress={() => setArMode(true)}
+                accessibilityRole="button"
+                accessibilityState={{ selected: arMode }}
+                style={[styles.modeButton, arMode && styles.modeButtonActive]}>
+                <IconSymbol
+                  name="camera-outline"
+                  size={16}
+                  color={arMode ? Brand.gold : Colors[scheme].textSecondary}
+                />
+                <ThemedText type="smallBold" themeColor={arMode ? 'accent' : 'textSecondary'}>
+                  {t('qibla.ar.cameraTab')}
+                </ThemedText>
+              </Pressable>
+            </ThemedView>
+          </AnimatedListItem>
+        )}
 
         {needsPermission ? (
           // iOS-Safari braucht eine Nutzer-Geste, bevor Sensor-Daten fließen.
@@ -295,6 +352,22 @@ const styles = StyleSheet.create({
   container: { flex: 1 },
   safeArea: { flex: 1, alignItems: 'center', paddingTop: Spacing.three, gap: Spacing.two },
   subtitle: { marginBottom: Spacing.three },
+  modeToggle: {
+    flexDirection: 'row',
+    borderRadius: Spacing.four,
+    padding: Spacing.half,
+    marginBottom: Spacing.three,
+    gap: Spacing.half,
+  },
+  modeButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.one,
+    paddingVertical: Spacing.one,
+    paddingHorizontal: Spacing.three,
+    borderRadius: Spacing.three,
+  },
+  modeButtonActive: { backgroundColor: 'rgba(212,175,55,0.16)' },
   notice: { textAlign: 'center', maxWidth: 320, marginBottom: Spacing.two },
   enableCompass: {
     paddingVertical: Spacing.one,

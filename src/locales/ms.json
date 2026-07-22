@@ -1153,7 +1153,20 @@
     "aligned": "Arah adalah betul - anda menghadap ke Kaabah",
     "calibrateHint": "Arah salah? Tentukur kompas: gerakkan telefon beberapa kali dalam bentuk angka 8, jauh daripada logam/magnet.",
     "accuracyDisclaimer": "Arah ini berdasarkan data magnetometer peranti anda dan mungkin sedikit menyimpang disebabkan oleh logam atau peranti elektronik berhampiran.",
-    "distanceKm": "{km} km ke Kaabah"
+    "distanceKm": "{km} km ke Kaabah",
+    "ar": {
+      "compassTab": "Kompas",
+      "cameraTab": "Kamera",
+      "instruction": "Gerakkan telefon anda sehingga penanda Kaabah berada di tengah.",
+      "turnLeft": "Pusing ke kiri",
+      "turnRight": "Pusing ke kanan",
+      "permissionTitle": "Akses kamera diperlukan",
+      "permissionBody": "Salati memaparkan arah kiblat pada imej kamera. Imej hanya dipaparkan secara langsung dan tidak disimpan atau dihantar.",
+      "grantCamera": "Benarkan kamera",
+      "cameraDenied": "Akses kamera ditolak. Benarkannya dalam tetapan peranti, atau teruskan menggunakan kompas.",
+      "backToCompass": "Kembali ke kompas",
+      "notAvailableWeb": "Paparan AR memerlukan kamera telefon dan tidak tersedia di web."
+    }
   },
   "calendar": {
     "offlineNotice": "Luar talian - data Hijrah dikira secara tempatan dan boleh berbeza ±1 hari daripada tarikh rasmi.",

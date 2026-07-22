@@ -1153,7 +1153,20 @@
     "aligned": "Yön doğru - Kâbe'ye bakıyorsun",
     "calibrateHint": "Yön yanlış mı? Pusulayı kalibre et: telefonu birkaç kez 8 çizerek hareket ettir, metal/mıknatıstan uzak dur.",
     "accuracyDisclaimer": "Yön, cihazının manyetometre verilerine dayanır ve yakındaki metal veya elektronik cihazlar nedeniyle hafifçe sapabilir.",
-    "distanceKm": "Kâbe'ye {km} km"
+    "distanceKm": "Kâbe'ye {km} km",
+    "ar": {
+      "compassTab": "Pusula",
+      "cameraTab": "Kamera",
+      "instruction": "Kâbe işareti ortalanana kadar telefonunuzu hareket ettirin.",
+      "turnLeft": "Sola dönün",
+      "turnRight": "Sağa dönün",
+      "permissionTitle": "Kamera erişimi gerekli",
+      "permissionBody": "Salati, Kıble yönünü kamera görüntünüzün üzerine yerleştirir. Görüntü yalnızca canlı gösterilir; kaydedilmez veya gönderilmez.",
+      "grantCamera": "Kameraya izin ver",
+      "cameraDenied": "Kamera erişimi reddedildi. Cihaz ayarlarından izin verin veya pusulayı kullanmaya devam edin.",
+      "backToCompass": "Pusulaya dön",
+      "notAvailableWeb": "AR görünümü telefon kamerası gerektirir ve web'de kullanılamaz."
+    }
   },
   "calendar": {
     "offlineNotice": "Çevrimdışı - Hicri tarihler yerel olarak hesaplanır ve resmi tarihten ±1 gün farklı olabilir.",
