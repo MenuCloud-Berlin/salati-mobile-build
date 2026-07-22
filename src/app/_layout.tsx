@@ -11,6 +11,7 @@ import { GlobalBackButton } from '@/components/global-back-button';
 import { MiniPlayer } from '@/components/mini-player';
 import { SettingsProvider } from '@/features/settings/store';
 import { SharedPlayerProvider } from '@/features/quran/usePlayer';
+import { syncCoursesFromRemote } from '@/features/study/courseSync';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
 import { installGlobalErrorHandler } from '@/lib/errorLog';
 import { QUERY_PERSIST_MAX_AGE, queryClient, queryPersister } from '@/lib/queryClient';
@@ -44,6 +45,13 @@ export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts({
     KFGQPCHafs: require('@/assets/fonts/kfgqpc-hafs.ttf'),
   });
+
+  // OTA-Content: einmalig prüfen, ob in Supabase neuere Kurs-Versionen liegen,
+  // und ggf. nachladen (native, mit Netz; wirft nie, blockiert nichts — die
+  // gebündelten Kurse sind sofort offline nutzbar). S. features/study/courseSync.
+  useEffect(() => {
+    syncCoursesFromRemote();
+  }, []);
 
   if (!fontsLoaded && !fontError) return null;
 

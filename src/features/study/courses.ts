@@ -18,6 +18,7 @@
 // damit die Zahl nie stillschweigend veraltet (siehe dortiger Test).
 import type { IconName } from '@/components/ui/icon-symbol';
 import type { Lesson } from '@/features/learn/curriculum';
+import { loadCachedCourseJson } from '@/features/study/courseSync';
 
 /**
  * 'quranArabic' = baut direkt auf "Koran lesen lernen" auf (Grammatik,
@@ -96,12 +97,15 @@ export function courseMetaById(id: string | undefined): CourseMeta | undefined {
   return COURSE_META.find((c) => c.id === id);
 }
 
-/** Lädt NUR die Lektionen eines Kurses async (per-Kurs Code-Split im Web-Export). */
+/** Lädt NUR die Lektionen eines Kurses async (per-Kurs Code-Split im Web-Export).
+ *  Bevorzugt eine per OTA nachgeladene neuere Version aus dem Cache (s.
+ *  courseSync.ts); ohne Cache das gebündelte JSON (sofort offline). */
 export async function loadCourseLessons(id: string): Promise<Lesson[]> {
   const def = COURSE_DEFS.find((d) => d.id === id);
   if (!def) return [];
-  const mod = await def.load();
-  return (mod as { lessons: Lesson[] }).lessons;
+  const cached = await loadCachedCourseJson(id);
+  const mod = cached ?? (await def.load());
+  return (mod as { lessons: Lesson[] }).lessons ?? [];
 }
 
 /** Lädt Metadaten + Lektionen zusammen (Ersatz für den früheren synchronen courseById()). */
