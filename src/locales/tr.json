@@ -2156,7 +2156,14 @@
     "previous": "Previous episode",
     "next": "Next episode",
     "showTranscript": "Read along",
-    "hideTranscript": "Hide transcript"
+    "hideTranscript": "Hide transcript",
+    "settings": "Ayarlar",
+    "repeat": "Tekrarla",
+    "sleepTimer": "Uyku zamanlayıcısı",
+    "speed": "Hız",
+    "off": "Kapalı",
+    "endOfEpisode": "Bölüm sonu",
+    "autoplay": "Otomatik oynat"
   },
   "lernen": {
     "learnDesc": "2000+ interactive lessons — step by step.",

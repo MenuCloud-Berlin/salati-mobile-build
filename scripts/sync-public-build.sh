@@ -32,6 +32,13 @@ find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
 echo "Spiegle apps/mobile (git archive, nur getrackte Dateien)"
 git -C "$ROOT" archive HEAD:apps/mobile | tar -x -C .
 
+# Die pnpm-Patches liegen im Monorepo-ROOT (patches/), nicht in apps/mobile,
+# werden aber von der Standalone-pnpm-workspace.yaml (patchedDependencies)
+# referenziert -> ebenfalls mitspiegeln, sonst schlägt `pnpm install` mit ENOENT
+# auf die Patch-Datei fehl.
+rm -rf patches && mkdir -p patches
+git -C "$ROOT" archive HEAD:patches | tar -x -C patches
+
 # Website-APK-Teile (164MB, im Privat-Repo getrackt) gehören NICHT ins
 # Build-Mirror.
 rm -f public/salati.apk.part00 public/salati.apk.part01

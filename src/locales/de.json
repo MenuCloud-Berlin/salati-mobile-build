@@ -2122,7 +2122,14 @@
     "previous": "Vorige Folge",
     "next": "Nächste Folge",
     "showTranscript": "Text mitlesen",
-    "hideTranscript": "Text ausblenden"
+    "hideTranscript": "Text ausblenden",
+    "settings": "Einstellungen",
+    "repeat": "Wiederholen",
+    "sleepTimer": "Sleeptimer",
+    "speed": "Geschwindigkeit",
+    "off": "Aus",
+    "endOfEpisode": "Ende der Folge",
+    "autoplay": "Autoplay"
   },
   "lernen": {
     "learnDesc": "Über 2000 interaktive Lektionen — Schritt für Schritt.",

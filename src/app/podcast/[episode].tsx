@@ -7,9 +7,9 @@
 // bereits geloest; der globale Mini-Player uebernimmt beim Verlassen.
 import { setAudioModeAsync } from 'expo-audio';
 import { Image } from 'expo-image';
-import { router, useLocalSearchParams } from 'expo-router';
+import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useQuery } from '@tanstack/react-query';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Modal, Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -26,7 +26,7 @@ import {
   type TranscriptSegment,
 } from '@/features/podcast/data';
 import { Slider } from '@/features/podcast/slider';
-import { useSharedPlayer } from '@/features/quran/usePlayer';
+import { useSharedPlayer, type NowPlayingInfo } from '@/features/quran/usePlayer';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
 import { useTranslation } from '@/lib/i18n';
 
@@ -55,7 +55,11 @@ export default function PodcastPlayerScreen() {
   const next = idx >= 0 && idx < episodes.length - 1 ? episodes[idx + 1] : undefined;
 
   const nowTitle = episode ? `${episode.episode_no}. ${episode.title}` : '';
-  const isThisLoaded = nowPlaying?.title === nowTitle;
+  const isThisLoaded = !!episode && nowPlaying?.title === nowTitle;
+  // Interpret/Album fürs OS-Now-Playing (Sperrbildschirm/Benachrichtigung):
+  // Serientitel, sonst ein sprechender Fallback statt der rohen Audio-URL.
+  const seriesTitle = data?.series?.title;
+  const artist = seriesTitle && seriesTitle.trim() ? seriesTitle : 'Salati Podcast';
 
   const [speed, setSpeed] = useState(1);
   const [volume, setVolume] = useState(1);
@@ -70,36 +74,107 @@ export default function PodcastPlayerScreen() {
   const position = status.currentTime || 0;
   const progress = duration > 0 ? position / duration : 0;
 
-  // Refs, damit der didJustFinish-Effekt keine veralteten Werte sieht.
-  // Sync im Effekt (nicht im Render-Body — react-hooks/refs).
+  // Refs, damit der (screen-unabhängige) onEnded-Callback keine veralteten
+  // Werte sieht. Sync im Effekt (nicht im Render-Body — react-hooks/refs).
   const repeatRef = useRef(repeat);
   const autoplayRef = useRef(autoplay);
   const sleepRef = useRef(sleep);
-  const nextRef = useRef(next);
   useEffect(() => {
     repeatRef.current = repeat;
     autoplayRef.current = autoplay;
     sleepRef.current = sleep;
-    nextRef.current = next;
   });
 
-  function configureBackground() {
+  // Ist der Voll-Player-Screen gerade sichtbar? Am Folgenende wird im
+  // Vordergrund zur nächsten Folge navigiert (die große Ansicht folgt mit),
+  // im Hintergrund NUR still auf dem Shared-Player weitergespielt, ohne den
+  // Nutzer aus einem anderen Screen herauszureißen.
+  const focusedRef = useRef(true);
+  useFocusEffect(
+    useCallback(() => {
+      focusedRef.current = true;
+      return () => {
+        focusedRef.current = false;
+      };
+    }, []),
+  );
+
+  function configureBackground(ep?: PodcastEpisode) {
     if (Platform.OS === 'web') return;
     setAudioModeAsync({
       shouldPlayInBackground: true,
       playsInSilentMode: true,
       interruptionMode: 'doNotMix',
     }).catch(() => {});
-    player.setActiveForLockScreen(true, { title: nowTitle });
+    // Vollständige Metadaten statt nur Titel: sonst zeigt das OS beim Laden der
+    // Quelle die rohe Audio-URL (Bug: "salati.pro/Podcast/1" auf dem
+    // Sperrbildschirm). artworkUrl liefert zusätzlich das Cover.
+    const e = ep ?? episode;
+    player.setActiveForLockScreen(true, {
+      title: e ? `${e.episode_no}. ${e.title}` : nowTitle,
+      artist,
+      artworkUrl: e?.cover_url || undefined,
+    });
+  }
+
+  // Now-Playing-Info für den globalen Mini-Player: Titel, Serienname, Rücksprung
+  // (href) und Folge-vor/zurück. Die onPrev/onNext wechseln die Folge DIREKT im
+  // geteilten Player (ohne Navigation), damit die Steuerung auch funktioniert,
+  // während der Nutzer längst auf einem anderen Screen ist.
+  // Verhalten am natürlichen Folgenende — an die KONKRET gespielte Folge `ep`
+  // gebunden (nicht an den gerade angezeigten Screen-Parameter), damit das
+  // Auto-Advance auch beim Weiterlaufen im Hintergrund über mehrere Folgen
+  // hinweg immer die richtige „nächste" Folge trifft. Priorität: Sleeptimer
+  // „bis Folgenende" (stehen bleiben) > Wiederholen > Autoplay nächste Folge.
+  function handleEndedFor(ep: PodcastEpisode): () => void {
+    return () => {
+      if (sleepRef.current === 'episode') return;
+      if (repeatRef.current) {
+        player.seekTo(0);
+        player.play();
+        return;
+      }
+      if (!autoplayRef.current) return;
+      const i = episodes.findIndex((e) => e.episode_no === ep.episode_no);
+      const n = i >= 0 && i < episodes.length - 1 ? episodes[i + 1] : undefined;
+      if (!n) return;
+      if (focusedRef.current) {
+        // Vordergrund: Screen mitziehen (autoPlayedRef-Effekt startet die Folge).
+        router.replace({ pathname: '/podcast/[episode]', params: { episode: n.episode_no } });
+      } else {
+        // Hintergrund: still auf dem Shared-Player weiterspielen.
+        playEpisode(n);
+      }
+    };
+  }
+
+  function nowPlayingFor(ep: PodcastEpisode): NowPlayingInfo {
+    const i = episodes.findIndex((e) => e.episode_no === ep.episode_no);
+    const p = i > 0 ? episodes[i - 1] : undefined;
+    const n = i >= 0 && i < episodes.length - 1 ? episodes[i + 1] : undefined;
+    return {
+      title: `${ep.episode_no}. ${ep.title}`,
+      subtitle: artist,
+      href: { pathname: '/podcast/[episode]', params: { episode: ep.episode_no } },
+      hasPrev: !!p,
+      hasNext: !!n,
+      onPrev: p ? () => playEpisode(p) : undefined,
+      onNext: n ? () => playEpisode(n) : undefined,
+      onEnded: handleEndedFor(ep),
+    };
+  }
+
+  function playEpisode(ep: PodcastEpisode) {
+    player.replace(ep.audio_url);
+    player.setPlaybackRate(speed);
+    configureBackground(ep);
+    player.play();
+    setNowPlaying(nowPlayingFor(ep));
   }
 
   function loadAndPlay() {
     if (!episode) return;
-    player.replace(episode.audio_url);
-    player.setPlaybackRate(speed);
-    configureBackground();
-    player.play();
-    setNowPlaying({ title: nowTitle });
+    playEpisode(episode);
   }
 
   // Lautstaerke reaktiv anwenden: expo-audio bietet dafuer nur die Property
@@ -107,31 +182,43 @@ export default function PodcastPlayerScreen() {
   // isThisLoaded gekoppelt. Effekt ist die korrekte Seiteneffekt-Stelle.
   useEffect(() => {
     if (!isThisLoaded) return;
-    // eslint-disable-next-line react-hooks/immutability
     player.volume = volume;
   }, [volume, isThisLoaded, player]);
 
-  // Ende-der-Folge: Wiederholen, Autoplay naechste Folge oder Sleeptimer
-  // "bis Ende der Folge". didJustFinish wird im Render erkannt (kein setState
-  // im Effekt-Body, gleiches Muster wie radio.tsx/useComparePlayer) und ueber
-  // einen Zaehler an den ausfuehrenden Effekt weitergereicht.
-  const [lastFinish, setLastFinish] = useState(false);
-  const [finishTick, setFinishTick] = useState(0);
-  if (status.didJustFinish !== lastFinish) {
-    setLastFinish(status.didJustFinish);
-    if (status.didJustFinish && isThisLoaded) setFinishTick((n) => n + 1);
-  }
+  // Ausgewählte Folge automatisch starten (Bug: Antippen einer anderen Folge
+  // spielte nicht ab). Gilt für Öffnen aus der Liste, Folge vor/zurück und
+  // Autoplay am Folgenende — pro episode_no genau einmal. Läuft im Player
+  // bereits GENAU diese Folge (Rückkehr über den Mini-Player), NICHT neu von
+  // vorn starten.
+  const autoPlayedRef = useRef<number | null>(null);
   useEffect(() => {
-    if (finishTick === 0) return;
-    if (sleepRef.current === 'episode') return; // am Ende stehen bleiben
-    if (repeatRef.current) {
-      player.seekTo(0);
-      player.play();
-    } else if (autoplayRef.current && nextRef.current) {
-      router.replace({ pathname: '/podcast/[episode]', params: { episode: nextRef.current.episode_no } });
-    }
+    if (!episode) return;
+    if (autoPlayedRef.current === episode.episode_no) return;
+    autoPlayedRef.current = episode.episode_no;
+    if (isThisLoaded) return;
+    loadAndPlay();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [finishTick]);
+  }, [episode?.episode_no, isThisLoaded]);
+
+  // Sperrbildschirm-/Benachrichtigungs-Metadaten nach dem Laden erneut setzen:
+  // replace() lädt die Quelle asynchron; expo-audio initialisiert die
+  // Now-Playing-Info beim Laden aus der rohen Datei (URL/Dateiname) und
+  // überschreibt damit den direkt nach replace() gesetzten Titel — dadurch
+  // stand die Audio-URL statt des Folgentitels auf dem Sperrbildschirm.
+  useEffect(() => {
+    if (Platform.OS === 'web' || !isThisLoaded || !status.isLoaded || !episode) return;
+    player.updateLockScreenMetadata({
+      title: nowTitle,
+      artist,
+      artworkUrl: episode.cover_url || undefined,
+    });
+  }, [isThisLoaded, status.isLoaded, nowTitle, artist, episode, player]);
+
+  // Das Ende-der-Folge-Verhalten (Wiederholen / Autoplay nächste Folge /
+  // Sleeptimer „bis Folgenende") läuft screen-unabhängig über den in
+  // nowPlaying hinterlegten onEnded-Callback, den der Shared-Player auslöst
+  // (s. handleEndedFor + SharedPlayerProvider) — so greift es auch, wenn dieser
+  // Screen längst verlassen ist und der Podcast nur noch im Mini-Player läuft.
 
   // Sleeptimer (Minuten): pausiert nach Ablauf. 'episode' wird oben behandelt.
   const sleepTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);

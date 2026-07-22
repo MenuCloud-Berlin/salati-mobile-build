@@ -2122,7 +2122,14 @@
     "previous": "Previous episode",
     "next": "Next episode",
     "showTranscript": "Read along",
-    "hideTranscript": "Hide transcript"
+    "hideTranscript": "Hide transcript",
+    "settings": "Settings",
+    "repeat": "Repeat",
+    "sleepTimer": "Sleep timer",
+    "speed": "Speed",
+    "off": "Off",
+    "endOfEpisode": "End of episode",
+    "autoplay": "Autoplay"
   },
   "lernen": {
     "learnDesc": "2000+ interactive lessons — step by step.",

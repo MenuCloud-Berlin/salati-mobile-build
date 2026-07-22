@@ -2156,7 +2156,14 @@
     "previous": "Previous episode",
     "next": "Next episode",
     "showTranscript": "Read along",
-    "hideTranscript": "Hide transcript"
+    "hideTranscript": "Hide transcript",
+    "settings": "Mipangilio",
+    "repeat": "Rudia",
+    "sleepTimer": "Kipima muda cha kulala",
+    "speed": "Kasi",
+    "off": "Zima",
+    "endOfEpisode": "Mwisho wa kipindi",
+    "autoplay": "Cheza kiotomatiki"
   },
   "lernen": {
     "learnDesc": "2000+ interactive lessons — step by step.",

@@ -184,6 +184,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 5,
   },
-  rowText: { flex: 1, gap: 3 },
+  // minWidth:0 ist auf React Native Web zwingend: ohne das behält der flex:1-
+  // Textblock seine intrinsische Breite (CSS min-width:auto) und lange Titel/
+  // Themen-Zeilen schieben die Zeile über den rechten Rand hinaus (horizontaler
+  // Overflow ohne Begrenzung). Nativ (Yoga) ist min-width ohnehin 0.
+  rowText: { flex: 1, minWidth: 0, gap: 3 },
   metaRow: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one, marginTop: 2 },
 });

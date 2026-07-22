@@ -2156,7 +2156,14 @@
     "previous": "Previous episode",
     "next": "Next episode",
     "showTranscript": "Read along",
-    "hideTranscript": "Hide transcript"
+    "hideTranscript": "Hide transcript",
+    "settings": "সেটিংস",
+    "repeat": "পুনরাবৃত্তি",
+    "sleepTimer": "স্লিপ টাইমার",
+    "speed": "গতি",
+    "off": "বন্ধ",
+    "endOfEpisode": "পর্বের শেষ",
+    "autoplay": "স্বয়ংক্রিয় প্লে"
   },
   "lernen": {
     "learnDesc": "2000+ interactive lessons — step by step.",

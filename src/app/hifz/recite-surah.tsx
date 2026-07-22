@@ -77,6 +77,32 @@ export default function ReciteSurahScreen() {
     [partial, expectedFull],
   );
 
+  // Monotones Aufdecken (User-Bug 2026-07-22: „erkennt nur die ersten Verse,
+  // dann verliert es den Faden und löscht die ersten wieder"). Whispers
+  // kontinuierliches Transkript hat ein gleitendes Fenster — ein späteres
+  // `partial` enthält frühere Verse oft nicht mehr, wodurch deren Wörter aus
+  // der Live-Ausrichtung fielen und wieder verdeckt wurden. Hier wird der beste
+  // je erreichte Status pro Wort festgehalten und NIE herabgestuft
+  // (undefined < near < hit). So bleibt jeder einmal korrekt rezitierte Vers
+  // aufgedeckt, bis Stopp/Neustart.
+  const [revealed, setRevealed] = useState<Record<number, 'hit' | 'near'>>({});
+  useEffect(() => {
+    if (!alignment) return;
+    setRevealed((prev) => {
+      let changed = false;
+      const next = { ...prev };
+      for (let i = 0; i < alignment.length; i++) {
+        const st = alignment[i]?.status;
+        if (st !== 'hit' && st !== 'near') continue;
+        if (next[i] === 'hit') continue; // schon maximal
+        if (next[i] === 'near' && st === 'near') continue;
+        next[i] = st;
+        changed = true;
+      }
+      return changed ? next : prev;
+    });
+  }, [alignment]);
+
   async function downloadModel() {
     if (modelDlPct !== null) return;
     setModelDlPct(0);
@@ -94,6 +120,7 @@ export default function ReciteSurahScreen() {
     if (running || starting) return;
     setStarting(true);
     setPartial('');
+    setRevealed({});
     try {
       controllerRef.current = await recognizeArabicContinuous({
         expectedText: expectedFull,
@@ -124,10 +151,9 @@ export default function ReciteSurahScreen() {
     () =>
       ayahs.map((a, i) => {
         const off = verseWordCounts.slice(0, i).reduce((s, c) => s + c, 0);
-        const slice = alignment ? alignment.slice(off, off + verseWordCounts[i]) : null;
-        return { ayah: a, slice };
+        return { ayah: a, off };
       }),
-    [ayahs, verseWordCounts, alignment],
+    [ayahs, verseWordCounts],
   );
 
   return (
@@ -157,7 +183,7 @@ export default function ReciteSurahScreen() {
 
         {!isLoading && (
           <ScrollView contentContainerStyle={styles.content}>
-            {perVerse.map(({ ayah, slice }) => (
+            {perVerse.map(({ ayah, off }) => (
               <View key={ayah.numberInSurah} style={styles.verseCard}>
                 <ThemedText type="small" themeColor="accent" style={styles.verseNum}>
                   {ayah.numberInSurah}
@@ -167,7 +193,7 @@ export default function ReciteSurahScreen() {
                     .split(/\s+/)
                     .filter(Boolean)
                     .map((w, wi) => {
-                      const st = slice?.[wi]?.status;
+                      const st = revealed[off + wi];
                       if (st === 'hit' || st === 'near') {
                         return (
                           <ThemedText

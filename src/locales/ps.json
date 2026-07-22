@@ -2156,7 +2156,14 @@
     "previous": "Previous episode",
     "next": "Next episode",
     "showTranscript": "Read along",
-    "hideTranscript": "Hide transcript"
+    "hideTranscript": "Hide transcript",
+    "settings": "تنظیمات",
+    "repeat": "تکرار",
+    "sleepTimer": "د خوب ټایمر",
+    "speed": "سرعت",
+    "off": "بند",
+    "endOfEpisode": "د برخې پای",
+    "autoplay": "اتومات غږول"
   },
   "lernen": {
     "learnDesc": "2000+ interactive lessons — step by step.",

@@ -1,4 +1,5 @@
 import { setAudioModeAsync, type AudioPlayer, type AudioStatus } from 'expo-audio';
+import type { Href } from 'expo-router';
 
 import { useSsrSafeAudioPlayer, useSsrSafeAudioPlayerStatus } from '@/lib/ssrSafeAudio';
 import {
@@ -31,6 +32,24 @@ export interface PlayableAyah {
 // liest denselben Kontext und bleibt dadurch screen-übergreifend sichtbar.
 export interface NowPlayingInfo {
   title: string;
+  /** Optionaler Untertitel (z. B. Serien-/Sendername) für den Mini-Player. */
+  subtitle?: string;
+  /** Route zum jeweiligen Voll-Player — ein Tap auf den Mini-Player springt
+   *  dorthin zurück (Podcast-Folge / Radio / Sure-Reader). Ohne href ist die
+   *  Pille nicht antippbar (reine Statusanzeige). */
+  href?: Href;
+  /** Vorige/nächste Spur direkt aus dem Mini-Player — pro Medium optional
+   *  (Podcast: Folge, Radio: Sender, Rezitation: Vers). Fehlt der Callback,
+   *  wird der jeweilige Button ausgeblendet. */
+  onPrev?: () => void;
+  onNext?: () => void;
+  hasPrev?: boolean;
+  hasNext?: boolean;
+  /** Was am NATÜRLICHEN Ende der Spur passieren soll (didJustFinish) — vom
+   *  Shared-Player screen-unabhängig ausgelöst. So läuft z. B. der Podcast auch
+   *  im Hintergrund (Voll-Player-Screen längst verlassen) automatisch mit der
+   *  nächsten Folge weiter. Fehlt der Callback, passiert am Ende nichts. */
+  onEnded?: () => void;
 }
 
 export interface SharedPlayerHandle {
@@ -56,6 +75,31 @@ export function SharedPlayerProvider({ children }: { children: ReactNode }) {
   const player = useSsrSafeAudioPlayer(null, { updateInterval: SHARED_PLAYER_UPDATE_INTERVAL_MS });
   const status = useSsrSafeAudioPlayerStatus(player);
   const [nowPlaying, setNowPlaying] = useState<NowPlayingInfo | null>(null);
+
+  // Screen-unabhängiges Track-Ende: der aktive Player läuft an der App-Wurzel
+  // weiter, auch wenn der jeweilige Voll-Player-Screen unmountet ist (nur
+  // Mini-Player sichtbar). Bisher hing das Auto-Advance im [episode]-Screen —
+  // war der verlassen, blieb der Podcast am Folgenende stehen (User-Bug
+  // 2026-07-22: „Folge 1 zu Ende → Folge 2 startet nicht"). Jetzt löst der
+  // Provider den vom Medium hinterlegten onEnded-Callback aus. didJustFinish
+  // wird render-abgeleitet erkannt (kein setState im Effekt-Body) und über
+  // einen Zähler an den ausführenden Effekt gereicht; nowPlaying via Ref, damit
+  // der zum Track-Ende gehörende Callback (nicht ein zwischenzeitlich neuer)
+  // läuft.
+  const nowPlayingRef = useRef(nowPlaying);
+  useEffect(() => {
+    nowPlayingRef.current = nowPlaying;
+  });
+  const [lastFinish, setLastFinish] = useState(false);
+  const [finishTick, setFinishTick] = useState(0);
+  if (status.didJustFinish !== lastFinish) {
+    setLastFinish(status.didJustFinish);
+    if (status.didJustFinish) setFinishTick((n) => n + 1);
+  }
+  useEffect(() => {
+    if (finishTick === 0) return;
+    nowPlayingRef.current?.onEnded?.();
+  }, [finishTick]);
 
   const value = useMemo<SharedPlayerContextValue>(
     () => ({ player, status, nowPlaying, setNowPlaying }),
@@ -97,6 +141,9 @@ export function useAyahPlayer(
   speed: PlaybackSpeed = 1,
   updateIntervalMs = 500,
   shared?: SharedPlayerHandle,
+  /** Route, zu der der globale Mini-Player bei Tap zurückspringt (Sure-Reader).
+   *  Nur relevant, wenn `shared` gesetzt ist. */
+  nowPlayingHref?: Href,
 ) {
   const [index, setIndex] = useState<number | null>(null);
   // Lokaler Player wird unabhängig davon erzeugt, ob `shared` gesetzt ist —
@@ -191,7 +238,24 @@ export function useAyahPlayer(
       });
     }
     player.play();
-    shared?.setNowPlaying({ title: `${surahLabel} · Vers ${ayahsRef.current[i]?.numberInSurah ?? ''}` });
+    if (shared) {
+      const list = ayahsRef.current;
+      let p = i - 1;
+      while (p >= 0 && !list[p]?.audio) p--;
+      let n = i + 1;
+      while (n < list.length && !list[n]?.audio) n++;
+      const hasPrev = p >= 0;
+      const hasNext = n < list.length;
+      shared.setNowPlaying({
+        title: `${surahLabel} · Vers ${list[i]?.numberInSurah ?? ''}`,
+        subtitle: surahLabel,
+        href: nowPlayingHref,
+        hasPrev,
+        hasNext,
+        onPrev: hasPrev ? () => playFrom(p) : undefined,
+        onNext: hasNext ? () => playFrom(n) : undefined,
+      });
+    }
   }
 
   function pause() {

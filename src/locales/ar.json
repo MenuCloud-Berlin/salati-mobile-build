@@ -2156,7 +2156,14 @@
     "previous": "Previous episode",
     "next": "Next episode",
     "showTranscript": "Read along",
-    "hideTranscript": "Hide transcript"
+    "hideTranscript": "Hide transcript",
+    "settings": "الإعدادات",
+    "repeat": "تكرار",
+    "sleepTimer": "مؤقت النوم",
+    "speed": "السرعة",
+    "off": "إيقاف",
+    "endOfEpisode": "نهاية الحلقة",
+    "autoplay": "تشغيل تلقائي"
   },
   "lernen": {
     "learnDesc": "2000+ interactive lessons — step by step.",

@@ -53,14 +53,13 @@ export default function RadioScreen() {
     setActiveId(station ? station.id : null);
   }
 
-  function toggle(station: RadioStation) {
-    if (activeId === station.id) {
-      player.pause();
-      setActiveId(null);
-      setNowPlaying(null);
-      if (Platform.OS !== 'web') player.setActiveForLockScreen(false);
-      return;
-    }
+  // Sender abspielen + globalen Player-Kontext (nowPlaying) inkl. Sender-vor/
+  // zurück für den Mini-Player setzen. Bewusst OHNE Zugriff auf activeId-State,
+  // damit die im Mini-Player hinterlegten onPrev/onNext-Callbacks auch dann
+  // korrekt weiterspringen, wenn dieser Screen längst verlassen (unmounted)
+  // ist — der geteilte Player überlebt die Navigation. activeId für die
+  // Listen-Hervorhebung wird oben aus nowPlaying abgeleitet.
+  function playStation(station: RadioStation, list: RadioStation[]) {
     player.replace(station.url);
     if (Platform.OS !== 'web') {
       // interruptionMode 'doNotMix' + setActiveForLockScreen sind
@@ -74,11 +73,37 @@ export default function RadioScreen() {
         playsInSilentMode: true,
         interruptionMode: 'doNotMix',
       }).catch(() => {});
-      player.setActiveForLockScreen(true, { title: station.name });
+      player.setActiveForLockScreen(
+        true,
+        { title: station.name, artist: t('radio.title') },
+        { isLiveStream: true },
+      );
     }
     player.play();
+    const i = list.findIndex((s) => s.id === station.id);
+    const prev = i > 0 ? list[i - 1] : undefined;
+    const next = i >= 0 && i < list.length - 1 ? list[i + 1] : undefined;
+    setNowPlaying({
+      title: station.name,
+      subtitle: t('radio.title'),
+      href: '/radio',
+      hasPrev: !!prev,
+      hasNext: !!next,
+      onPrev: prev ? () => playStation(prev, list) : undefined,
+      onNext: next ? () => playStation(next, list) : undefined,
+    });
+  }
+
+  function toggle(station: RadioStation) {
+    if (activeId === station.id) {
+      player.pause();
+      setActiveId(null);
+      setNowPlaying(null);
+      if (Platform.OS !== 'web') player.setActiveForLockScreen(false);
+      return;
+    }
+    playStation(station, stations ?? []);
     setActiveId(station.id);
-    setNowPlaying({ title: station.name });
   }
 
   return (

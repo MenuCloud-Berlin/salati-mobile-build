@@ -2156,7 +2156,14 @@
     "previous": "Previous episode",
     "next": "Next episode",
     "showTranscript": "Read along",
-    "hideTranscript": "Hide transcript"
+    "hideTranscript": "Hide transcript",
+    "settings": "Ajustes",
+    "repeat": "Repetir",
+    "sleepTimer": "Temporizador",
+    "speed": "Velocidad",
+    "off": "Desactivado",
+    "endOfEpisode": "Fin del episodio",
+    "autoplay": "Reproducción automática"
   },
   "lernen": {
     "learnDesc": "2000+ interactive lessons — step by step.",

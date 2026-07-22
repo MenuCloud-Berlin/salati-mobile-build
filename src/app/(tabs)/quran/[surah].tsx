@@ -432,6 +432,7 @@ export default function SurahReaderScreen() {
     settings.quranPlaybackSpeed,
     100,
     sharedPlayer,
+    { pathname: '/quran/[surah]', params: { surah: String(surahNumber) } },
   );
   // Wort-Sync-Rennen-Schutz (Audit 2026-07-20): useSurahSegments lädt async;
   // tippt der Nutzer sofort nach einem Sure-/Rezitator-Wechsel auf Play, BEVOR

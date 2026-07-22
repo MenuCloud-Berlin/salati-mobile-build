@@ -5,7 +5,7 @@
 // (SharedPlayerProvider in features/quran/usePlayer.ts), NICHT aus einem
 // lokalen Player, der beim Verlassen des jeweiligen Screens sonst freigegeben
 // würde (Audit 2026-07-20 Punkt D).
-import { usePathname } from 'expo-router';
+import { router, usePathname } from 'expo-router';
 import { Platform, Pressable, StyleSheet, View } from 'react-native';
 
 import { IconSymbol } from '@/components/ui/icon-symbol';
@@ -43,29 +43,66 @@ export function MiniPlayer() {
   )
     return null;
 
+  const webCursor = Platform.OS === 'web' ? styles.pressableWeb : undefined;
+  const { onPrev, onNext, href } = nowPlaying;
+
   return (
     <View style={styles.wrap} pointerEvents="box-none">
       <ThemedView type="backgroundSelected" style={styles.bar}>
+        {onPrev ? (
+          <Pressable
+            onPress={() => onPrev()}
+            accessibilityRole="button"
+            accessibilityLabel={t('podcast.previous')}
+            hitSlop={8}
+            style={webCursor}>
+            <IconSymbol name="play-skip-back" size={18} color={colors.text} />
+          </Pressable>
+        ) : null}
         <Pressable
           onPress={() => (status.playing ? player.pause() : player.play())}
           accessibilityRole="button"
           accessibilityLabel={status.playing ? t('quran.pause') : t('quran.playSurah')}
           hitSlop={8}
-          style={Platform.OS === 'web' ? styles.pressableWeb : undefined}>
-          <IconSymbol name={status.playing ? 'pause' : 'play'} size={20} color={colors.accent} />
+          style={webCursor}>
+          <IconSymbol name={status.playing ? 'pause' : 'play'} size={22} color={colors.accent} />
         </Pressable>
-        <ThemedText type="small" numberOfLines={1} style={styles.title}>
-          {nowPlaying.title}
-        </ThemedText>
+        {/* Antippen des Titelbereichs führt zurück zum Voll-Player (href). */}
+        <Pressable
+          onPress={() => href && router.push(href)}
+          disabled={!href}
+          accessibilityRole="button"
+          accessibilityLabel={nowPlaying.title}
+          style={[styles.titleWrap, href ? webCursor : undefined]}>
+          <ThemedText type="small" numberOfLines={1}>
+            {nowPlaying.title}
+          </ThemedText>
+          {nowPlaying.subtitle ? (
+            <ThemedText type="small" themeColor="textSecondary" numberOfLines={1} style={styles.subtitle}>
+              {nowPlaying.subtitle}
+            </ThemedText>
+          ) : null}
+        </Pressable>
+        {onNext ? (
+          <Pressable
+            onPress={() => onNext()}
+            accessibilityRole="button"
+            accessibilityLabel={t('podcast.next')}
+            hitSlop={8}
+            style={webCursor}>
+            <IconSymbol name="play-skip-forward" size={18} color={colors.text} />
+          </Pressable>
+        ) : null}
         <Pressable
           onPress={() => {
             player.pause();
             setNowPlaying(null);
+            if (Platform.OS !== 'web') player.setActiveForLockScreen(false);
           }}
           accessibilityRole="button"
           accessibilityLabel={t('a11y.close')}
           hitSlop={8}
-          style={Platform.OS === 'web' ? styles.pressableWeb : undefined}>
+          style={webCursor}>
           <IconSymbol name="close" size={18} color={colors.textSecondary} />
         </Pressable>
       </ThemedView>
@@ -105,6 +142,7 @@ const styles = StyleSheet.create({
       },
     }),
   },
-  title: { flex: 1 },
+  titleWrap: { flex: 1, minWidth: 0 },
+  subtitle: { marginTop: 1 },
   pressableWeb: { cursor: 'pointer' },
 });
