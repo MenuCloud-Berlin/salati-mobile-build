@@ -21,6 +21,8 @@ export interface StreakWidgetProps {
   theme?: WidgetTheme;
   /** Halbtransparenter Kartenhintergrund (PER-WIDGET Transparenz-Option). */
   transparent?: boolean;
+  /** Textfarben-Override (Hex) für den Haupttext; undefined = Theme-Textfarbe. */
+  textColor?: `#${string}`;
 }
 
 export function StreakWidget({
@@ -29,9 +31,11 @@ export function StreakWidget({
   todayLine,
   theme = 'dark',
   transparent = false,
+  textColor,
 }: StreakWidgetProps) {
   const c = WIDGET_THEMES[theme];
   const bg = transparent ? transparentBg(c.bg) : c.bg;
+  const text = textColor ?? c.text;
   return (
     <FlexWidget
       clickAction="OPEN_APP"
@@ -47,7 +51,7 @@ export function StreakWidget({
         padding: 12,
       }}>
       <TextWidget text={`🔥 ${streak}`} style={{ fontSize: 30, color: c.accent, fontWeight: '700' }} />
-      <TextWidget text={streakLabel} style={{ fontSize: 12, color: c.text, marginTop: 4 }} />
+      <TextWidget text={streakLabel} style={{ fontSize: 12, color: text, marginTop: 4 }} />
       <TextWidget text={todayLine} style={{ fontSize: 11, color: c.muted, marginTop: 6 }} />
     </FlexWidget>
   );

@@ -16,7 +16,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import type { AppSettings } from '@/features/settings/types';
-import type { WidgetTheme } from './widgetTheme';
+import type { WidgetTextColor, WidgetTheme } from './widgetTheme';
 
 /** Pro widgetId gespeicherte Overrides. Alle Felder optional → Fallback global. */
 export interface WidgetInstanceConfig {
@@ -24,6 +24,8 @@ export interface WidgetInstanceConfig {
   theme?: WidgetTheme;
   /** Halbtransparenter Kartenhintergrund über dem gewählten Theme. */
   transparent?: boolean;
+  /** Textfarben-Override für den Haupttext ('default' = Theme-Textfarbe). */
+  textColor?: WidgetTextColor;
   /** Prayer/Countdown: Ort/Standort-Zeile zeigen. */
   showCoords?: boolean;
   /** Prayer/Countdown: "nächste Gebetszeit" zeigen. */
@@ -38,6 +40,7 @@ export interface WidgetInstanceConfig {
 export interface ResolvedWidgetConfig {
   theme: WidgetTheme;
   transparent: boolean;
+  textColor: WidgetTextColor;
   showCoords: boolean;
   showNextTime: boolean;
   showTranslation: boolean;
@@ -124,6 +127,7 @@ export function resolveWidgetConfig(
   return {
     theme: config.theme ?? settings.widgetTheme,
     transparent: config.transparent ?? false,
+    textColor: config.textColor ?? 'default',
     showCoords: config.showCoords ?? true,
     showNextTime: config.showNextTime ?? true,
     showTranslation: config.showTranslation ?? true,

@@ -19,8 +19,6 @@ import { PressableCard } from '@/components/ui/pressable-card';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
-import { resolveText } from '@/features/guides/hooks';
-import { PRAY_ALONG_ENTRY } from '@/features/pray-along/prayers';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
 import { useTranslation } from '@/lib/i18n';
 
@@ -42,7 +40,7 @@ const STEPS: Step[] = [
 ];
 
 export default function GettingStartedScreen() {
-  const { t, locale } = useTranslation();
+  const { t } = useTranslation();
   const scheme = useResolvedScheme();
   const colors = Colors[scheme];
 
@@ -60,46 +58,6 @@ export default function GettingStartedScreen() {
           data={STEPS}
           keyExtractor={(s) => s.id}
           contentContainerStyle={styles.list}
-          ListHeaderComponent={
-            <View style={styles.headerCtas}>
-              {/* Ruhiger Lern-Modus (Schritt für Schritt, arab. + Umschrift) */}
-              <PressableCard
-                onPress={() => router.push('/learn-to-pray')}
-                type="backgroundSelected"
-                style={styles.prayAlongCta}>
-                <ThemedView type="backgroundElement" style={styles.numberBadge}>
-                  <IconSymbol name="school-outline" size={18} color={colors.accent} />
-                </ThemedView>
-                <View style={styles.rowText}>
-                  <ThemedText type="default" themeColor="accent">
-                    {t('learnToPray.title')}
-                  </ThemedText>
-                  <ThemedText type="small" themeColor="textSecondary">
-                    {t('learnToPray.subtitle')}
-                  </ThemedText>
-                </View>
-                <DisclosureChevron size={18} color={colors.textSecondary} />
-              </PressableCard>
-              {/* Mitbet-Modus (während des Gebets) */}
-              <PressableCard
-                onPress={() => router.push('/pray-along')}
-                type="backgroundSelected"
-                style={styles.prayAlongCta}>
-                <ThemedView type="backgroundElement" style={styles.numberBadge}>
-                  <IconSymbol name="play" size={18} color={colors.accent} />
-                </ThemedView>
-                <View style={styles.rowText}>
-                  <ThemedText type="default" themeColor="accent">
-                    {resolveText(PRAY_ALONG_ENTRY.title, locale)}
-                  </ThemedText>
-                  <ThemedText type="small" themeColor="textSecondary">
-                    {resolveText(PRAY_ALONG_ENTRY.subtitle, locale)}
-                  </ThemedText>
-                </View>
-                <DisclosureChevron size={18} color={colors.textSecondary} />
-              </PressableCard>
-            </View>
-          }
           renderItem={({ item, index }) => (
             <AnimatedListItem index={index}>
               <PressableCard onPress={() => router.push(item.href)} style={styles.row}>
@@ -142,11 +100,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   rowText: { flex: 1, gap: Spacing.half },
-  headerCtas: { gap: Spacing.two },
-  prayAlongCta: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: Spacing.three,
-    padding: Spacing.three,
-  },
 });

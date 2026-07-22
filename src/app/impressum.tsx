@@ -54,7 +54,7 @@ export default function ImpressumScreen() {
 
           <Section label={t('impressum.contactSection')}>
             <Row label={t('impressum.phone')} value="+49 30 767 645 46" />
-            <Row label={t('impressum.email')} value="info@menucloud-berlin.de" />
+            <Row label={t('impressum.email')} value="salatibox@gmail.com" />
             <Row label={t('impressum.website')} value="menucloud-berlin.de" />
           </Section>
 

@@ -46,6 +46,39 @@ export type WidgetTheme = keyof typeof WIDGET_THEMES;
 /** Alle Theme-Schlüssel als Array (für die Auswahl in den Einstellungen). */
 export const WIDGET_THEME_KEYS = Object.keys(WIDGET_THEMES) as WidgetTheme[];
 
+// PER-WIDGET Textfarben-Override (WidgetConfig). 'default' = die Textfarbe des
+// gewählten Themes bleibt unverändert; jede andere Option überschreibt den
+// Haupttext (Gebetszeiten/Uhrzeit/arabischer Text/Serien-Label …). Der Akzent
+// (nächstes Gebet, aktive Zeile, Streak-Zahl) bleibt bewusst die Theme-
+// Akzentfarbe, damit die visuelle Hierarchie erhalten bleibt. Die Farben sind
+// bewusst kräftig gewählt, damit sie auf dunklem Grund gut lesbar sind — auf
+// hellem Theme kann der Nutzer eine dunkle Farbe (z. B. black) wählen.
+export const WIDGET_TEXT_COLORS = {
+  default: null,
+  red: '#ef4444',
+  orange: '#fb923c',
+  gold: '#f0cf6b',
+  green: '#34d399',
+  blue: '#60a5fa',
+  white: '#ffffff',
+  black: '#111111',
+} as const;
+
+export type WidgetTextColor = keyof typeof WIDGET_TEXT_COLORS;
+
+/** Alle Textfarben-Schlüssel als Array (für die Swatch-Auswahl im Config-Screen). */
+export const WIDGET_TEXT_COLOR_KEYS = Object.keys(WIDGET_TEXT_COLORS) as WidgetTextColor[];
+
+/**
+ * Löst einen Textfarben-Schlüssel in den Hex-Wert auf. 'default' (bzw. ein
+ * unbekannter/fehlender Schlüssel) ergibt undefined → das Widget nutzt weiter
+ * die Theme-Textfarbe.
+ */
+export function widgetTextColorHex(key: WidgetTextColor | undefined): `#${string}` | undefined {
+  if (!key) return undefined;
+  return WIDGET_TEXT_COLORS[key] ?? undefined;
+}
+
 // Macht den Kartenhintergrund eines beliebigen Themes halbtransparent, ohne
 // die Farbe zu ändern (für die PER-WIDGET Transparenz-Option, WidgetConfig).
 // Erzwingt einen Alpha-Wert von 0xbb (~73 % Deckung) — derselbe Wert wie im

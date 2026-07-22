@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React from 'react';
-import type { WidgetTaskHandlerProps } from 'react-native-android-widget';
+import type { WidgetRepresentation, WidgetTaskHandlerProps } from 'react-native-android-widget';
 
 import duasData from '@/features/duas/data/duas.json';
 import { parseLearnProgress, LEARN_PROGRESS_STORAGE_KEY } from '@/features/learn/progress';
@@ -22,6 +22,7 @@ import {
   resolveWidgetConfig,
   type ResolvedWidgetConfig,
 } from './widgetConfig';
+import { widgetTextColorHex } from './widgetTheme';
 import { WisdomWidget } from './WisdomWidget';
 
 // Headless-Handler: läuft OHNE UI-Kontext (kein SettingsProvider, kein
@@ -89,6 +90,7 @@ async function renderPrayerWidget(settings: AppSettings, cfg: ResolvedWidgetConf
         rows={PRAYERS.map((p) => ({ name: t(`prayers.${p.toLowerCase()}`), time: '--:--', active: false }))}
         theme={cfg.theme}
         transparent={cfg.transparent}
+        textColor={widgetTextColorHex(cfg.textColor)}
         showCoords={cfg.showCoords}
         showNextTime={cfg.showNextTime}
       />
@@ -110,6 +112,7 @@ async function renderPrayerWidget(settings: AppSettings, cfg: ResolvedWidgetConf
       }))}
       theme={cfg.theme}
       transparent={cfg.transparent}
+      textColor={widgetTextColorHex(cfg.textColor)}
       showCoords={cfg.showCoords}
       showNextTime={cfg.showNextTime}
     />
@@ -128,6 +131,7 @@ async function renderCountdownWidget(settings: AppSettings, cfg: ResolvedWidgetC
         remaining=""
         theme={cfg.theme}
         transparent={cfg.transparent}
+        textColor={widgetTextColorHex(cfg.textColor)}
         showCoords={cfg.showCoords}
         showNextTime={cfg.showNextTime}
       />
@@ -150,6 +154,7 @@ async function renderCountdownWidget(settings: AppSettings, cfg: ResolvedWidgetC
       remaining={t('widgets.remaining').replace('{t}', compact)}
       theme={cfg.theme}
       transparent={cfg.transparent}
+      textColor={widgetTextColorHex(cfg.textColor)}
       showCoords={cfg.showCoords}
       showNextTime={cfg.showNextTime}
     />
@@ -169,6 +174,7 @@ function renderQiblaWidget(settings: AppSettings, cfg: ResolvedWidgetConfig) {
       distance={`${km} km`}
       theme={cfg.theme}
       transparent={cfg.transparent}
+      textColor={widgetTextColorHex(cfg.textColor)}
       showDistance={cfg.showDistance}
     />
   );
@@ -192,6 +198,7 @@ function renderWisdomWidget(settings: AppSettings, cfg: ResolvedWidgetConfig) {
       translation={dua.translations[settings.language] ?? dua.translations.en ?? ''}
       theme={cfg.theme}
       transparent={cfg.transparent}
+      textColor={widgetTextColorHex(cfg.textColor)}
       showTranslation={cfg.showTranslation}
     />
   );
@@ -223,6 +230,7 @@ async function renderStreakWidget(settings: AppSettings, cfg: ResolvedWidgetConf
       todayLine={t('widgets.todayLessons').replace('{n}', String(today))}
       theme={cfg.theme}
       transparent={cfg.transparent}
+      textColor={widgetTextColorHex(cfg.textColor)}
     />
   );
 }
@@ -235,23 +243,45 @@ async function renderStreakWidget(settings: AppSettings, cfg: ResolvedWidgetConf
 // Die "Light"-Provider im Picker (Namenssuffix "Light") leiten weiterhin
 // denselben Widget-TYP ab wie ihr Basisname (baseWidgetName in widgetConfig.ts).
 
+/**
+ * Rendert das zu (widgetName, widgetId) passende Widget mit ECHTEN Daten +
+ * der pro-Instanz aufgelösten Konfiguration (Theme/Transparenz/Textfarbe/
+ * Inhalts-Toggles). Gemeinsame Render-Logik für a) den Headless-Task-Handler
+ * (WIDGET_UPDATE) und b) das sofortige Neu-Rendern nach einer Änderung
+ * (Config-Screen "Fertig" bzw. Theme-Wechsel in den Einstellungen →
+ * requestWidgetUpdate, s. refresh.android.ts).
+ */
+export async function renderWidgetForInfo(
+  widgetName: string,
+  widgetId: number,
+): Promise<WidgetRepresentation> {
+  const settings = await loadSettings();
+  const instance = await getWidgetConfig(widgetId);
+  const cfg = resolveWidgetConfig(instance, widgetName, settings);
+  switch (baseWidgetName(widgetName)) {
+    case 'SalatiWisdom':
+      return renderWisdomWidget(settings, cfg);
+    case 'SalatiStreak':
+      return renderStreakWidget(settings, cfg);
+    case 'SalatiCountdown':
+      return renderCountdownWidget(settings, cfg);
+    case 'SalatiQibla':
+      return renderQiblaWidget(settings, cfg);
+    case 'SalatiPrayer':
+    default:
+      return renderPrayerWidget(settings, cfg);
+  }
+}
+
 export async function widgetTaskHandler(props: WidgetTaskHandlerProps) {
-  const name = props.widgetInfo.widgetName;
-  const base = baseWidgetName(name);
   switch (props.widgetAction) {
     case 'WIDGET_ADDED':
     case 'WIDGET_UPDATE':
-    case 'WIDGET_RESIZED': {
-      const settings = await loadSettings();
-      const instance = await getWidgetConfig(props.widgetInfo.widgetId);
-      const cfg = resolveWidgetConfig(instance, name, settings);
-      if (base === 'SalatiPrayer') props.renderWidget(await renderPrayerWidget(settings, cfg));
-      else if (base === 'SalatiWisdom') props.renderWidget(renderWisdomWidget(settings, cfg));
-      else if (base === 'SalatiStreak') props.renderWidget(await renderStreakWidget(settings, cfg));
-      else if (base === 'SalatiCountdown') props.renderWidget(await renderCountdownWidget(settings, cfg));
-      else if (base === 'SalatiQibla') props.renderWidget(renderQiblaWidget(settings, cfg));
+    case 'WIDGET_RESIZED':
+      props.renderWidget(
+        await renderWidgetForInfo(props.widgetInfo.widgetName, props.widgetInfo.widgetId),
+      );
       break;
-    }
     default:
       // WIDGET_DELETED/WIDGET_CLICK: Klick öffnet die App bereits über
       // clickAction="OPEN_APP" am Widget-Root — nichts zu tun.

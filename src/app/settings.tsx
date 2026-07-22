@@ -83,6 +83,7 @@ import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
 import { useTranslation } from '@/lib/i18n';
 import { isRtlLocale } from '@/lib/locale-detect';
 import type { Locale } from '@/lib/locale-detect';
+import { refreshAllWidgets } from '@/widgets/refresh';
 import { WIDGET_THEME_KEYS } from '@/widgets/widgetTheme';
 
 // Sprach-Labels bewusst in der jeweiligen Sprache (Endonym), nicht übersetzt.
@@ -415,7 +416,7 @@ export default function SettingsScreen() {
   // eigenes Backend, öffnet nur den Standard-Mail-Client des Geräts.
   function openFeedbackMail() {
     const subject = encodeURIComponent(t('settings.legalFeedbackSubject'));
-    Linking.openURL(`mailto:info@menucloud-berlin.de?subject=${subject}`).catch(() => {});
+    Linking.openURL(`mailto:salatibox@gmail.com?subject=${subject}`).catch(() => {});
   }
 
   // App-Version für Support-Anfragen: JS-Konfigversion (app.config.ts) plus
@@ -1473,7 +1474,13 @@ export default function SettingsScreen() {
               {WIDGET_THEME_KEYS.map((k) => (
                 <Row
                   key={k}
-                  onPress={() => update({ widgetTheme: k })}
+                  onPress={() => {
+                    // Erst persistieren, DANN die platzierten Widgets neu
+                    // zeichnen — sonst läse der Widget-Renderer noch das alte
+                    // Theme aus AsyncStorage. Auf Web/iOS ist refreshAllWidgets
+                    // ein No-Op (s. widgets/refresh.ts).
+                    void update({ widgetTheme: k }).then(() => refreshAllWidgets());
+                  }}
                   label={t(`widgets.theme_${k}`)}
                   selected={settings.widgetTheme === k}
                 />

@@ -60,7 +60,7 @@ export default function LernenScreen() {
           {/* Hero: Podcast */}
           <AnimatedListItem index={itemIndex++}>
             <PressableCard
-              onPress={() => router.push('/podcast/index')}
+              onPress={() => router.push('/podcast')}
               type="backgroundSelected"
               style={styles.hero}>
               <View style={[styles.heroIcon, { backgroundColor: colors.accent }]}>

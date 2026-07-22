@@ -15,6 +15,21 @@ type Transcriber = (
 
 export type WhisperProgress = { status: 'downloading'; percent: number } | { status: 'ready' };
 
+// Parität zur nativen whisperCheck.ts, damit named-Importe (z. B. in
+// app/hifz/[surah].tsx) auch im Web-Bundle existieren.
+export const WhisperFehler = {
+  unavailable: 'speech_recognition_unavailable',
+  permission: 'whisper_permission_denied',
+  modelDownload: 'whisper_model_download_failed',
+  modelInit: 'whisper_model_init_failed',
+  transcribe: 'whisper_transcribe_failed',
+} as const;
+
+export function istModellFehler(e: unknown): boolean {
+  const msg = e instanceof Error ? e.message : String(e);
+  return msg === WhisperFehler.modelDownload || msg === WhisperFehler.modelInit;
+}
+
 // Metro darf den CDN-Import nicht statisch auflösen — Indirektion über
 // Function. Sicherheit: der Function-Body ist ein KONSTANTES Literal ohne
 // jede Interpolation; die URL kommt als Parameter herein und ist selbst

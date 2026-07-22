@@ -26,6 +26,7 @@ import { knownCount, useHifzProgress } from '@/features/hifz/progress';
 import { recognitionAvailable, recognizeArabicStreaming } from '@/features/hifz/speech';
 import { useHydrated } from '@/hooks/use-hydrated';
 import {
+  istModellFehler,
   whisperSupported,
   type WhisperRecorder,
 } from '@/features/hifz/whisperCheck';
@@ -239,9 +240,14 @@ export default function HifzPracticeScreen() {
       }
       setMicState('done');
     } catch (e) {
-      console.warn('[hifz recite] Erkennung fehlgeschlagen:', e);
+      console.error('[hifz recite] Erkennung fehlgeschlagen:', e instanceof Error ? e.message : String(e));
       setDownloadPercent(null);
       setLivePartial(null);
+      // Modell-Problem (Download/Init/kaputter Header) → das Modell wurde
+      // verworfen (whisperCheck.loadWhisperContext) bzw. gilt jetzt als
+      // ungültig. modelReady zurücksetzen, damit die UI den Download erneut
+      // anbietet, statt den Nutzer im generischen „nicht verfügbar" festzuhalten.
+      if (istModellFehler(e)) setModelReady(false);
       setMicState('error');
     }
   }

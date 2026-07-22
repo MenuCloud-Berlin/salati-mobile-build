@@ -28,6 +28,8 @@ export interface CountdownWidgetProps {
   showCoords?: boolean;
   /** Absolute Uhrzeit des nächsten Gebets zeigen (default true). */
   showNextTime?: boolean;
+  /** Textfarben-Override (Hex) für den Haupttext; undefined = Theme-Textfarbe. */
+  textColor?: `#${string}`;
 }
 
 export function CountdownWidget({
@@ -39,9 +41,11 @@ export function CountdownWidget({
   transparent = false,
   showCoords = true,
   showNextTime = true,
+  textColor,
 }: CountdownWidgetProps) {
   const c = WIDGET_THEMES[theme];
   const bg = transparent ? transparentBg(c.bg) : c.bg;
+  const text = textColor ?? c.text;
   return (
     <FlexWidget
       clickAction="OPEN_APP"
@@ -59,7 +63,7 @@ export function CountdownWidget({
       {showCoords ? <TextWidget text={title} style={{ fontSize: 11, color: c.muted }} /> : null}
       <TextWidget text={nextName} style={{ fontSize: 22, color: c.accent, fontWeight: '700', marginTop: 2 }} />
       {showNextTime ? (
-        <TextWidget text={nextTime} style={{ fontSize: 18, color: c.text, fontWeight: '700' }} />
+        <TextWidget text={nextTime} style={{ fontSize: 18, color: text, fontWeight: '700' }} />
       ) : null}
       <TextWidget text={remaining} style={{ fontSize: 12, color: c.muted, marginTop: 4 }} />
     </FlexWidget>

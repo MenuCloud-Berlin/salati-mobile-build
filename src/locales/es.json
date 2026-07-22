@@ -2150,6 +2150,7 @@
     "showDistance": "Mostrar distancia",
     "cancel": "Cancelar",
     "done": "Listo",
+    "textColor": "Color del texto",
     "previewHint": "Los cambios se aplican solo a este widget. Mantén pulsado un widget en la pantalla de inicio para configurarlo individualmente."
   },
   "podcast": {

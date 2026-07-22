@@ -33,7 +33,16 @@ import {
   type WidgetContentToggle,
   type WidgetInstanceConfig,
 } from './widgetConfig';
-import { WIDGET_THEME_KEYS, WIDGET_THEMES, type WidgetTheme } from './widgetTheme';
+import { renderWidgetForInfo } from './widget-task-handler';
+import {
+  WIDGET_TEXT_COLOR_KEYS,
+  WIDGET_TEXT_COLORS,
+  WIDGET_THEME_KEYS,
+  WIDGET_THEMES,
+  widgetTextColorHex,
+  type WidgetTextColor,
+  type WidgetTheme,
+} from './widgetTheme';
 
 async function loadSettings(): Promise<AppSettings> {
   try {
@@ -79,7 +88,11 @@ function buildPreview(
   settings: AppSettings,
 ): WidgetRepresentation | null {
   const t = (key: string) => translate(settings.language, key);
-  const common = { theme: cfg.theme, transparent: cfg.transparent };
+  const common = {
+    theme: cfg.theme,
+    transparent: cfg.transparent,
+    textColor: widgetTextColorHex(cfg.textColor),
+  };
   switch (base) {
     case 'SalatiPrayer':
       return (
@@ -179,6 +192,20 @@ export function WidgetConfigScreen({ widgetInfo, renderWidget, setResult }: Widg
     if (preview) renderWidget(preview);
   }
 
+  // "Fertig": vor dem Abschließen das Widget einmal mit ECHTEN Daten (statt der
+  // Beispiel-Vorschau) und der frisch gespeicherten Konfiguration zeichnen, damit
+  // es sofort korrekt aussieht — sonst bliebe bis zum nächsten Update-Tick die
+  // Vorschau mit Beispielzeiten stehen. Fehler (z. B. offline) werden bewusst
+  // geschluckt: der Task-Handler rendert beim nächsten Tick ohnehin neu.
+  async function commit() {
+    try {
+      renderWidget(await renderWidgetForInfo(widgetInfo.widgetName, widgetId));
+    } catch {
+      // Vorschau bleibt bestehen — kein harter Fehler.
+    }
+    setResult('ok');
+  }
+
   if (!settings) {
     return <View style={styles.screen} />;
   }
@@ -224,6 +251,31 @@ export function WidgetConfigScreen({ widgetInfo, renderWidget, setResult }: Widg
           />
         </View>
 
+        {/* Textfarbe: 'default' zeigt die Textfarbe des gewählten Themes, alle
+            anderen überschreiben den Haupttext (z. B. rot). */}
+        <Text style={styles.sectionLabel}>{t('widgetConfig.textColor')}</Text>
+        <View style={styles.colorRow}>
+          {WIDGET_TEXT_COLOR_KEYS.map((k: WidgetTextColor) => {
+            const dot = WIDGET_TEXT_COLORS[k] ?? WIDGET_THEMES[resolved.theme].text;
+            const selected = resolved.textColor === k;
+            return (
+              <Pressable
+                key={k}
+                onPress={() => apply({ textColor: k })}
+                style={[styles.colorSwatch, selected && styles.colorSwatchSelected]}
+                accessibilityRole="button"
+                accessibilityLabel={k}
+                accessibilityState={{ selected }}>
+                <View style={[styles.colorDot, { backgroundColor: dot }]}>
+                  {k === 'default' ? (
+                    <Text style={[styles.colorDefaultGlyph, { color: WIDGET_THEMES[resolved.theme].bg }]}>A</Text>
+                  ) : null}
+                </View>
+              </Pressable>
+            );
+          })}
+        </View>
+
         {/* Inhalts-Toggles je Widgettyp */}
         {toggles.length > 0 ? (
           <>
@@ -253,7 +305,7 @@ export function WidgetConfigScreen({ widgetInfo, renderWidget, setResult }: Widg
           <Text style={styles.buttonGhostText}>{t('widgetConfig.cancel')}</Text>
         </Pressable>
         <Pressable
-          onPress={() => setResult('ok')}
+          onPress={() => void commit()}
           style={[styles.button, styles.buttonPrimary]}
           accessibilityRole="button">
           <Text style={styles.buttonPrimaryText}>{t('widgetConfig.done')}</Text>
@@ -297,6 +349,25 @@ const styles = StyleSheet.create({
   swatchSelected: { borderColor: '#d4af37' },
   swatchDot: { fontSize: 14 },
   swatchLabel: { fontSize: 13, fontWeight: '600', flexShrink: 1 },
+  colorRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 12 },
+  colorSwatch: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 2,
+    borderColor: 'transparent',
+  },
+  colorSwatchSelected: { borderColor: '#d4af37' },
+  colorDot: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  colorDefaultGlyph: { fontSize: 15, fontWeight: '800' },
   toggleRow: {
     flexDirection: 'row',
     alignItems: 'center',

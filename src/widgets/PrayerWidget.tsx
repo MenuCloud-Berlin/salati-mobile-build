@@ -28,6 +28,8 @@ export interface PrayerWidgetProps {
   showCoords?: boolean;
   /** Große "nächstes Gebet"-Zeile (Name + Uhrzeit) zeigen (default true). */
   showNextTime?: boolean;
+  /** Textfarben-Override (Hex) für den Haupttext; undefined = Theme-Textfarbe. */
+  textColor?: `#${string}`;
 }
 
 export function PrayerWidget({
@@ -39,9 +41,11 @@ export function PrayerWidget({
   transparent = false,
   showCoords = true,
   showNextTime = true,
+  textColor,
 }: PrayerWidgetProps) {
   const c = WIDGET_THEMES[theme];
   const bg = transparent ? transparentBg(c.bg) : c.bg;
+  const text = textColor ?? c.text;
   return (
     <FlexWidget
       clickAction="OPEN_APP"
@@ -65,7 +69,7 @@ export function PrayerWidget({
             marginBottom: 8,
           }}>
           <TextWidget text={nextName} style={{ fontSize: 20, color: c.accent, fontWeight: '700' }} />
-          <TextWidget text={`  ${nextTime}`} style={{ fontSize: 20, color: c.text, fontWeight: '700' }} />
+          <TextWidget text={`  ${nextTime}`} style={{ fontSize: 20, color: text, fontWeight: '700' }} />
         </FlexWidget>
       ) : null}
       <FlexWidget style={{ flexDirection: 'row', width: 'match_parent', justifyContent: 'space-between' }}>
@@ -74,7 +78,7 @@ export function PrayerWidget({
             <TextWidget text={r.name} style={{ fontSize: 11, color: r.active ? c.accent : c.muted }} />
             <TextWidget
               text={r.time}
-              style={{ fontSize: 13, color: r.active ? c.accent : c.text, fontWeight: r.active ? '700' : '400' }}
+              style={{ fontSize: 13, color: r.active ? c.accent : text, fontWeight: r.active ? '700' : '400' }}
             />
           </FlexWidget>
         ))}

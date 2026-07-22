@@ -30,6 +30,7 @@
 import {
   CONTINUOUS_WINDOW_SEC,
   SAMPLE_RATE,
+  WhisperFehler,
   loadWhisperContext,
   startPcmCapture,
   tailWindow,
@@ -38,7 +39,7 @@ import {
   whisperSupported,
   type WhisperProgress,
 } from './whisperCheck';
-import { ReciteProgress } from './reciteProgress';
+import { ReciteProgress, type RevealedWord } from './reciteProgress';
 
 // Ab hier gilt: hat schon gesprochen (RMS über Schwelle) — danach beendet
 // anhaltende Stille die Aufnahme automatisch. Bewusst niedrig (0.01), damit
@@ -90,7 +91,7 @@ const PARTIAL_INTERVAL_MS = 1400;
  * ist das finale, vollständige Transkript (für die Bewertung).
  */
 export async function recognizeArabicStreaming(options: StreamingOptions): Promise<string[]> {
-  if (!recognitionAvailable()) throw new Error('speech_recognition_unavailable');
+  if (!recognitionAvailable()) throw new Error(WhisperFehler.unavailable);
 
   const contextReady = loadWhisperContext(options.onProgress);
   let ctx: Awaited<ReturnType<typeof loadWhisperContext>> | null = null;
@@ -125,7 +126,9 @@ export async function recognizeArabicStreaming(options: StreamingOptions): Promi
       .then((t) => {
         if (t && options.onPartial) options.onPartial(t);
       })
-      .catch(() => undefined)
+      .catch((e) => {
+        console.warn('[hifz recite] Live-Zwischen-Transkription fehlgeschlagen:', String(e));
+      })
       .finally(() => {
         partialBusy = false;
       });
@@ -163,8 +166,16 @@ export interface ContinuousOptions {
   /** Erwarteter Text (ganze Sure) als Conditioning-Prompt. */
   expectedText?: string;
   onProgress?: (p: WhisperProgress) => void;
-  /** Wiederholt mit dem bisher erkannten Gesamt-Text (füllt den Mushaf). */
-  onPartial: (transcript: string) => void;
+  /**
+   * Wiederholt mit (a) dem bisher erkannten Fenster-Text und (b) den
+   * POSITIONS-gekoppelten Aufdeck-Treffern (globaler Wort-Index + hit/near).
+   * Die UI (recite-surah.tsx) deckt AUSSCHLIESSLICH anhand von `reveals` auf —
+   * nicht mehr per globalem alignWords(partial, ganzeSure). So kann ein Wort aus
+   * Vers 1 nie ein gleichlautendes Wort in Vers 7 „treffen" (User-Bug
+   * 2026-07-22), weil das Alignment auf ein enges Fenster um die aktuelle Front
+   * beschränkt ist (reciteProgress.ts windowedReveal).
+   */
+  onPartial: (transcript: string, reveals: RevealedWord[]) => void;
 }
 
 // Kontinuierliche Erkennung für den „leeren Mushaf ganze Sure" (K): das Modell
@@ -176,7 +187,7 @@ export interface ContinuousOptions {
 const CONTINUOUS_INTERVAL_MS = 1500;
 
 export async function recognizeArabicContinuous(options: ContinuousOptions): Promise<ContinuousController> {
-  if (!recognitionAvailable()) throw new Error('speech_recognition_unavailable');
+  if (!recognitionAvailable()) throw new Error(WhisperFehler.unavailable);
 
   const whisperContext = await loadWhisperContext(options.onProgress);
   const capture = await startPcmCapture();
@@ -204,15 +215,22 @@ export async function recognizeArabicContinuous(options: ContinuousOptions): Pro
     transcribePcm(windowed, whisperContext, 'hifz-surah-partial.wav', prompt, { fast: true })
       .then((t) => {
         if (t && !stopped) {
-          // Erst die Front vorrücken (steuert den Prompt des NÄCHSTEN Fensters),
-          // dann der UI melden. Die UI (recite-surah.tsx) deckt monoton auf —
-          // ein Fenster-Transkript, das frühe Verse nicht mehr enthält, macht
-          // daher nichts rückgängig.
-          progress?.update(t);
-          options.onPartial(t);
+          // ingest() rückt die Front positions-gekoppelt vor (steuert den Prompt
+          // des NÄCHSTEN Fensters) UND liefert die global indizierten Aufdeck-
+          // Treffer. Die UI deckt nur diese Treffer auf — ein Fenster-Transkript,
+          // das frühe Verse nicht mehr enthält, macht dank monotoner UI-Aufdeckung
+          // nichts rückgängig; ein spätes Wort kann keinen frühen/späteren Vers
+          // außerhalb des Fensters mehr fälschlich treffen.
+          const reveals = progress ? progress.ingest(t) : [];
+          options.onPartial(t, reveals);
         }
       })
-      .catch(() => undefined)
+      .catch((e) => {
+        // Nicht verschlucken: Zwischen-Transkriptionsfehler sichtbar machen
+        // (halfen bisher, die Ursache des „nicht verfügbar" zu verbergen). Der
+        // Lauf ist unkritisch (nächstes Fenster folgt), daher nur warn.
+        console.warn('[hifz recite-surah] Zwischen-Transkription fehlgeschlagen:', String(e));
+      })
       .finally(() => {
         busy = false;
       });
@@ -231,7 +249,10 @@ export async function recognizeArabicContinuous(options: ContinuousOptions): Pro
       // dank monotoner UI-Aufdeckung erhalten.
       const windowed = tailWindow(trimSilence(float32), CONTINUOUS_WINDOW_SEC);
       const prompt = progress ? progress.prompt() : options.expectedText;
-      return transcribePcm(windowed, whisperContext, 'hifz-surah-final.wav', prompt);
+      const finalText = await transcribePcm(windowed, whisperContext, 'hifz-surah-final.wav', prompt);
+      // Auch der finale Durchlauf deckt positions-gekoppelt auf.
+      if (finalText && progress) options.onPartial(finalText, progress.ingest(finalText));
+      return finalText;
     },
   };
 }
@@ -254,7 +275,7 @@ function rms(pcm: Int16Array): number {
 export async function recognizeArabicAlternatives(
   options?: RecognizeOptions,
 ): Promise<string[]> {
-  if (!recognitionAvailable()) throw new Error('speech_recognition_unavailable');
+  if (!recognitionAvailable()) throw new Error(WhisperFehler.unavailable);
 
   // onProgress durchreichen — beim ersten Aufruf lädt sich das (grosse)
   // Koran-Modell herunter; der Aufrufer zeigt damit den Download-Fortschritt.

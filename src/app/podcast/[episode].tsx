@@ -10,7 +10,17 @@ import { Image } from 'expo-image';
 import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useQuery } from '@tanstack/react-query';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Alert, Modal, Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import {
+  Alert,
+  Modal,
+  Platform,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  View,
+  type StyleProp,
+  type ViewStyle,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { IconSymbol, type IconName } from '@/components/ui/icon-symbol';
@@ -34,6 +44,9 @@ import { useTranslation } from '@/lib/i18n';
 const SPEEDS = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2] as const;
 const SLEEP_OPTIONS: (number | 'episode')[] = [5, 10, 15, 30, 60, 'episode'];
 const SKIP_SEC = 15;
+// Feste Groesse des Media-Slots (Cover bzw. Transkript). Kompakter als frueher
+// (260), damit alle Regler ohne Scrollen auf eine Handy-Seite passen.
+const COVER_SIZE = 210;
 
 export default function PodcastPlayerScreen() {
   const { episode: episodeParam } = useLocalSearchParams<{ episode: string }>();
@@ -335,19 +348,31 @@ export default function PodcastPlayerScreen() {
         </View>
 
         <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
-          {coverSource ? (
-            <Image
-              source={coverSource}
-              style={styles.cover}
-              contentFit="cover"
-              transition={200}
-              accessibilityLabel={episode.title}
-            />
-          ) : (
-            <ThemedView type="backgroundSelected" style={[styles.cover, styles.coverFallback]}>
-              <IconSymbol name="headset" size={64} color={colors.accent} />
-            </ThemedView>
-          )}
+          {/* Media-Slot: Cover ODER mitlaufendes Transkript teilen sich denselben
+              Platz (Umschalter unten). Statt das Transkript unten anzuhaengen,
+              ersetzt es das Cover — so bleibt der Player kompakt (eine Seite). */}
+          <View style={styles.mediaSlot}>
+            {showTranscript ? (
+              <Transcript
+                segments={episode.transcript}
+                positionMs={position * 1000}
+                active={isThisLoaded && status.playing}
+                style={styles.transcriptInSlot}
+              />
+            ) : coverSource ? (
+              <Image
+                source={coverSource}
+                style={styles.cover}
+                contentFit="cover"
+                transition={200}
+                accessibilityLabel={episode.title}
+              />
+            ) : (
+              <ThemedView type="backgroundSelected" style={[styles.cover, styles.coverFallback]}>
+                <IconSymbol name="headset" size={64} color={colors.accent} />
+              </ThemedView>
+            )}
+          </View>
 
           <ThemedText type="small" themeColor="accent" style={styles.epNo}>
             {t('podcast.episodeLabel')} {episode.episode_no}
@@ -356,7 +381,7 @@ export default function PodcastPlayerScreen() {
             {episode.title}
           </ThemedText>
           {episode.description ? (
-            <ThemedText type="small" themeColor="textSecondary" style={styles.desc}>
+            <ThemedText type="small" themeColor="textSecondary" style={styles.desc} numberOfLines={2}>
               {episode.description}
             </ThemedText>
           ) : null}
@@ -433,18 +458,15 @@ export default function PodcastPlayerScreen() {
             </View>
           </View>
 
-          {/* Transkript */}
+          {/* Umschalter „Text mitlesen": blendet oben das Cover gegen das
+              synchrone Transkript aus (kein separater Block unten mehr). */}
           <PressableCard onPress={() => setShowTranscript((s) => !s)} type="backgroundElement" style={styles.transcriptToggle}>
-            <IconSymbol name="document-text" size={18} color={colors.accent} />
+            <IconSymbol name={showTranscript ? 'image' : 'document-text'} size={18} color={colors.accent} />
             <ThemedText type="smallBold" themeColor="accent" style={styles.flex}>
               {showTranscript ? t('podcast.hideTranscript') : t('podcast.showTranscript')}
             </ThemedText>
-            <IconSymbol name={showTranscript ? 'chevron-up' : 'chevron-down'} size={16} color={colors.textSecondary} />
+            <IconSymbol name={showTranscript ? 'checkmark-circle' : 'chevron-forward'} size={16} color={colors.textSecondary} />
           </PressableCard>
-
-          {showTranscript && (
-            <Transcript segments={episode.transcript} positionMs={position * 1000} active={isThisLoaded && status.playing} />
-          )}
         </ScrollView>
       </SafeAreaView>
 
@@ -682,10 +704,12 @@ function Transcript({
   segments,
   positionMs,
   active,
+  style,
 }: {
   segments: TranscriptSegment[];
   positionMs: number;
   active: boolean;
+  style?: StyleProp<ViewStyle>;
 }) {
   const scheme = useResolvedScheme();
   const colors = Colors[scheme];
@@ -713,7 +737,7 @@ function Transcript({
   }, [activeIndex]);
 
   return (
-    <ScrollView ref={scrollRef} style={styles.transcript} nestedScrollEnabled showsVerticalScrollIndicator={false}>
+    <ScrollView ref={scrollRef} style={[styles.transcript, style]} nestedScrollEnabled showsVerticalScrollIndicator={false}>
       {segments.map((seg, i) => {
         const isActive = i === activeIndex;
         if (seg.type === 'ar') {
@@ -759,23 +783,28 @@ const styles = StyleSheet.create({
     maxWidth: MaxContentWidth,
     alignItems: 'center',
   },
-  cover: { width: 260, height: 260, borderRadius: 28, marginTop: Spacing.one },
+  // Media-Slot: feste Hoehe, in der sich Cover und Transkript denselben Platz
+  // teilen. Kompakter als das alte 260er-Cover, damit der Player ohne Scrollen
+  // auf eine Seite passt.
+  mediaSlot: { width: '100%', height: COVER_SIZE, alignItems: 'center', justifyContent: 'center', marginTop: Spacing.two },
+  cover: { width: COVER_SIZE, height: COVER_SIZE, borderRadius: 24 },
   coverFallback: { alignItems: 'center', justifyContent: 'center' },
-  epNo: { marginTop: Spacing.four, textTransform: 'uppercase', letterSpacing: 1 },
+  transcriptInSlot: { height: COVER_SIZE, maxHeight: COVER_SIZE, marginTop: 0 },
+  epNo: { marginTop: Spacing.three, textTransform: 'uppercase', letterSpacing: 1 },
   title: { textAlign: 'center', marginTop: Spacing.one },
   desc: { textAlign: 'center', marginTop: Spacing.two, paddingHorizontal: Spacing.two, lineHeight: 20 },
-  scrubBlock: { width: '100%', marginTop: Spacing.four },
+  scrubBlock: { width: '100%', marginTop: Spacing.three },
   timeRow: { flexDirection: 'row', justifyContent: 'space-between', marginTop: -Spacing.one },
   transport: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: Spacing.three, marginTop: Spacing.two },
   circleBtn: { width: 48, height: 48, borderRadius: 24, alignItems: 'center', justifyContent: 'center' },
   circleBtnDisabled: { opacity: 0.35 },
   playBtn: { width: 72, height: 72, borderRadius: 36, alignItems: 'center', justifyContent: 'center' },
-  controlsRow: { flexDirection: 'row', alignItems: 'center', gap: Spacing.three, marginTop: Spacing.four, width: '100%' },
+  controlsRow: { flexDirection: 'row', alignItems: 'center', gap: Spacing.three, marginTop: Spacing.three, width: '100%' },
   pill: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one, paddingVertical: Spacing.two, paddingHorizontal: Spacing.three },
   iconToggle: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' },
   volumeBlock: { flex: 1, flexDirection: 'row', alignItems: 'center', gap: Spacing.two },
   volumeSlider: { flex: 1 },
-  transcriptToggle: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two, padding: Spacing.three, marginTop: Spacing.four, width: '100%' },
+  transcriptToggle: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two, padding: Spacing.three, marginTop: Spacing.three, width: '100%' },
   flex: { flex: 1 },
   transcript: { maxHeight: 400, width: '100%', marginTop: Spacing.two },
   deSeg: { marginBottom: Spacing.two, lineHeight: 24 },

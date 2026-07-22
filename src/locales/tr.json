@@ -2150,6 +2150,7 @@
     "showDistance": "Mesafeyi göster",
     "cancel": "İptal",
     "done": "Bitti",
+    "textColor": "Metin rengi",
     "previewHint": "Değişiklikler yalnızca bu widget için geçerlidir. Ana ekranda bir widget'a uzun basarak ayrı ayrı ayarlayın."
   },
   "podcast": {

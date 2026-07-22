@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 
 import { BEST_TAFSIRS, BEST_TRANSLATIONS } from '@/features/quran/api';
 import { setRecitationModel } from '@/features/hifz/whisperModel';
@@ -9,7 +9,9 @@ import { AppSettings, DEFAULT_SETTINGS, SETTINGS_STORAGE_KEY } from './types';
 interface SettingsContextValue {
   settings: AppSettings;
   loaded: boolean;
-  update: (patch: Partial<AppSettings>) => void;
+  /** Persistiert das Patch; das zurückgegebene Promise löst nach dem Schreiben
+   *  in AsyncStorage auf (z. B. um danach Homescreen-Widgets neu zu zeichnen). */
+  update: (patch: Partial<AppSettings>) => Promise<void>;
   reset: () => void;
 }
 
@@ -18,6 +20,16 @@ const SettingsContext = createContext<SettingsContextValue | null>(null);
 export function SettingsProvider({ children }: { children: ReactNode }) {
   const [settings, setSettings] = useState<AppSettings>(DEFAULT_SETTINGS);
   const [loaded, setLoaded] = useState(false);
+  // Immer aktueller Settings-Stand für update() — vermeidet ein veraltetes
+  // Merge bei mehreren synchronen update()-Aufrufen und erlaubt es, das
+  // AsyncStorage-Schreib-Promise deterministisch zurückzugeben. Wird per Effekt
+  // (nicht während des Renderns) synchron gehalten; update() setzt den Ref
+  // zusätzlich sofort im Event-Handler, damit direkt aufeinanderfolgende
+  // update()-Aufrufe korrekt mergen.
+  const settingsRef = useRef(settings);
+  useEffect(() => {
+    settingsRef.current = settings;
+  }, [settings]);
 
   useEffect(() => {
     let cancelled = false;
@@ -83,12 +95,13 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     setRecitationModel(settings.recitationModel);
   }, [settings.recitationModel]);
 
-  function update(patch: Partial<AppSettings>) {
-    setSettings((prev) => {
-      const next = { ...prev, ...patch };
-      AsyncStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(next)).catch(() => {});
-      return next;
-    });
+  function update(patch: Partial<AppSettings>): Promise<void> {
+    const next = { ...settingsRef.current, ...patch };
+    settingsRef.current = next;
+    setSettings(next);
+    return AsyncStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(next))
+      .then(() => {})
+      .catch(() => {});
   }
 
   function reset() {

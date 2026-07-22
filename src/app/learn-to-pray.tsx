@@ -9,14 +9,12 @@
 //
 // Alle religiösen Texte (Ablauf + Suren) stammen 1:1 aus den geprüften Daten in
 // features/pray-along/prayers.ts (buildSteps) — hier wird nichts dupliziert.
-import { router } from 'expo-router';
 import { useMemo, useState } from 'react';
 import { FlatList, Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AnimatedListItem } from '@/components/ui/animated-list-item';
 import { IconSymbol } from '@/components/ui/icon-symbol';
-import { PressableCard } from '@/components/ui/pressable-card';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import {
@@ -176,25 +174,6 @@ export default function LearnToPrayScreen() {
                   hearHint={resolveText(PRAY_ALONG_UI.tapToHear, locale)}
                 />
               ))}
-
-              {/* Querverweis auf den Mitbet-Modus */}
-              <PressableCard
-                onPress={() => router.push('/pray-along')}
-                type="backgroundSelected"
-                style={[styles.crossLink, rtl && styles.rowReverse]}>
-                <ThemedView type="backgroundElement" style={styles.crossLinkIcon}>
-                  <IconSymbol name="play" size={18} color={colors.accent} />
-                </ThemedView>
-                <View style={styles.crossLinkText}>
-                  <ThemedText type="smallBold" themeColor="accent" style={rtl && styles.textRtl}>
-                    {resolveText(PRAY_ALONG_UI.title, locale)}
-                  </ThemedText>
-                  <ThemedText type="small" themeColor="textSecondary" style={rtl && styles.textRtl}>
-                    {resolveText(PRAY_ALONG_UI.pickPrompt, locale)}
-                  </ThemedText>
-                </View>
-                <IconSymbol name={rtl ? 'chevron-back' : 'chevron-forward'} size={18} color={colors.textSecondary} />
-              </PressableCard>
             </View>
           }
         />
@@ -448,14 +427,4 @@ const styles = StyleSheet.create({
   surahHeadingText: { textAlign: 'center' },
   surahSub: { textAlign: 'center', paddingHorizontal: Spacing.three },
   surahTitleRow: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two },
-
-  crossLink: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: Spacing.three,
-    padding: Spacing.three,
-    marginTop: Spacing.two,
-  },
-  crossLinkIcon: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' },
-  crossLinkText: { flex: 1, gap: Spacing.half },
 });

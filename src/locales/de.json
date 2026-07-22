@@ -2186,6 +2186,7 @@
     "showDistance": "Entfernung anzeigen",
     "cancel": "Abbrechen",
     "done": "Fertig",
+    "textColor": "Textfarbe",
     "previewHint": "Änderungen gelten nur für dieses Widget. Drücke lange auf ein Widget auf dem Homescreen, um es einzeln einzurichten."
   }
 }

@@ -84,16 +84,99 @@ export function aktuelleModellGroesse(): number {
 // (Header/Server-Rundung). >= 98 % gilt als vollständig, < 98 % als Teil-Datei.
 const VOLLSTAENDIG_ANTEIL = 0.98;
 
+// GGML-Header-Prüfung (s. Memory project_salati_whisper_model_ntextctx).
+// Ein GGML-whisper-Modell beginnt mit dem 4-Byte-Magic 'ggml' (LE 0x67676d6c),
+// gefolgt von den hparams als int32 in fester Reihenfolge: n_vocab, n_audio_ctx,
+// n_audio_state, n_audio_head, n_audio_layer, n_text_ctx, … → n_text_ctx liegt
+// bei Byte-Offset 24. whisper.rn/whisper.cpp lädt NUR Modelle mit n_text_ctx=448
+// (Whisper-base-Standard); ein größenmäßig „vollständiger", aber inhaltlich
+// falscher/beschädigter File (z. B. eine fehlerhafte Community-Konvertierung mit
+// n_text_ctx=1024 oder ein während des Downloads korrumpierter Puffer) lässt
+// initWhisper mit generischem Fehler scheitern — genau der „nicht verfügbar"-
+// Report. Deshalb wird der Header vor der Nutzung geprüft.
+const GGML_MAGIC = 0x67676d6c;
+export const REQUIRED_N_TEXT_CTX = 448;
+const GGML_HEADER_BYTES = 48;
+const B64_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+
+/** Byteweises Base64-Decode NUR für den kurzen Binär-Header (kein UTF-8-Text). */
+function decodeHeaderBase64(b64: string): Uint8Array {
+  const out = new Uint8Array(Math.ceil((b64.length * 3) / 4));
+  let outIdx = 0;
+  let buffer = 0;
+  let bits = 0;
+  for (let i = 0; i < b64.length; i++) {
+    const idx = B64_ALPHABET.indexOf(b64[i]);
+    if (idx === -1) continue; // '=' und Whitespace überspringen
+    buffer = (buffer << 6) | idx;
+    bits += 6;
+    if (bits >= 8) {
+      bits -= 8;
+      out[outIdx++] = (buffer >> bits) & 0xff;
+    }
+  }
+  return out.subarray(0, outIdx);
+}
+
+export interface GgmlHeaderInfo {
+  /** Konnte der Header überhaupt gelesen werden? (false = IO-Fehler, NICHT „ungültig") */
+  lesbar: boolean;
+  magicOk: boolean;
+  nTextCtx: number | null;
+}
+
 /**
- * true NUR, wenn die Datei existiert UND (nahezu) die erwartete Modellgröße hat.
+ * Liest die ersten Bytes des Modell-Files und prüft GGML-Magic + n_text_ctx.
+ * Wirft NICHT — ein Lesefehler liefert `{ lesbar: false }`, damit ein
+ * IO-Hiccup nicht fälschlich einen Re-Download auslöst.
+ */
+export async function pruefeGgmlHeader(pfad: string = whisperModellPfad()): Promise<GgmlHeaderInfo> {
+  try {
+    const b64 = await FileSystem.readAsStringAsync(pfad, {
+      encoding: FileSystem.EncodingType.Base64,
+      position: 0,
+      length: GGML_HEADER_BYTES,
+    });
+    const bytes = decodeHeaderBase64(b64);
+    if (bytes.length < 28) return { lesbar: false, magicOk: false, nTextCtx: null };
+    const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+    const magic = view.getUint32(0, true);
+    const nTextCtx = view.getInt32(24, true);
+    return { lesbar: true, magicOk: magic === GGML_MAGIC, nTextCtx };
+  } catch {
+    return { lesbar: false, magicOk: false, nTextCtx: null };
+  }
+}
+
+/**
+ * true NUR, wenn die Datei existiert, (nahezu) die erwartete Modellgröße hat UND
+ * einen gültigen GGML-Header (Magic + n_text_ctx=448) trägt.
  * WICHTIG (User-Bug): früher galt jede Datei > 0 Byte als „fertig" — ein
  * abgebrochener Download (z. B. 30 MB) wurde dann fälschlich als vollständiges
- * Modell behandelt und ließ sich nicht weiterladen.
+ * Modell behandelt und ließ sich nicht weiterladen. Zusätzlich gilt jetzt: ein
+ * größenmäßig vollständiger, aber am Header ungültiger File (initWhisper würde
+ * scheitern) wird als NICHT heruntergeladen gemeldet → die UI bietet den
+ * Download erneut an, der alte kaputte File wird beim Neu-Download gelöscht
+ * (self-healing statt Dauer-„nicht verfügbar").
  */
 export async function istWhisperModellHeruntergeladen(): Promise<boolean> {
   const model = getRecitationModel();
   const info = await FileSystem.getInfoAsync(whisperModellPfad());
-  return info.exists && (info.size ?? 0) >= model.groesse * VOLLSTAENDIG_ANTEIL;
+  if (!info.exists || (info.size ?? 0) < model.groesse * VOLLSTAENDIG_ANTEIL) return false;
+  const header = await pruefeGgmlHeader();
+  // Lesefehler (lesbar=false) NICHT als ungültig werten — sonst würde ein
+  // transienter IO-Fehler einen unnötigen 148-MB-Re-Download erzwingen.
+  if (!header.lesbar) return true;
+  if (!header.magicOk || header.nTextCtx !== REQUIRED_N_TEXT_CTX) {
+    console.error('[whisper] Modell-Header ungültig — Re-Download nötig', {
+      dateiname: model.dateiname,
+      magicOk: header.magicOk,
+      nTextCtx: header.nTextCtx,
+      erwartet: REQUIRED_N_TEXT_CTX,
+    });
+    return false;
+  }
+  return true;
 }
 
 export interface WhisperDownloadFortschritt {
@@ -185,6 +268,17 @@ export function whisperModellHerunterladen(
     if (!info.exists || (info.size ?? 0) < model.groesse * VOLLSTAENDIG_ANTEIL) {
       await FileSystem.deleteAsync(ziel, { idempotent: true }).catch(() => {});
       throw new Error('Whisper-Modell-Download unvollständig');
+    }
+    // Header prüfen: ein größenmäßig vollständiger, aber am GGML-Header
+    // ungültiger File (falsches Magic / n_text_ctx≠448) lässt initWhisper
+    // scheitern → hier sofort verwerfen + klarer Fehler, statt ihn als „fertig"
+    // durchzureichen und später am generischen „nicht verfügbar" zu scheitern.
+    const header = await pruefeGgmlHeader(ziel);
+    if (header.lesbar && (!header.magicOk || header.nTextCtx !== REQUIRED_N_TEXT_CTX)) {
+      await FileSystem.deleteAsync(ziel, { idempotent: true }).catch(() => {});
+      throw new Error(
+        `Whisper-Modell-Header ungültig (magicOk=${header.magicOk}, n_text_ctx=${header.nTextCtx}, erwartet=${REQUIRED_N_TEXT_CTX})`,
+      );
     }
     emit({ bytesGeladen: info.size ?? model.groesse, bytesGesamt: model.groesse, anteil: 1 });
   })().finally(() => {

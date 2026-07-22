@@ -36,6 +36,7 @@ import { requestRecordingPermissionsAsync } from 'expo-audio';
 import {
   istWhisperModellHeruntergeladen,
   whisperModellHerunterladen,
+  whisperModellLoeschen,
   whisperModellPfad,
 } from './whisperModel';
 
@@ -73,6 +74,11 @@ import {
 // RNLiveAudioStreamModule.java + ios/RNLiveAudioStream.m).
 interface WhisperTranscribeResult {
   result: string;
+  // whisper.rn liefert isAborted:true, wenn die Dekodierung abgebrochen wurde
+  // (z. B. stop() während des Laufs, oder ein interner Abbruch) — dann ist
+  // `result` unvollständig/leer. Vorher ignoriert → als „nichts erkannt" oder
+  // generischer Fehler getarnt. Jetzt explizit erkannt + geloggt.
+  isAborted?: boolean;
 }
 interface WhisperTranscribeHandle {
   stop: () => void;
@@ -123,6 +129,30 @@ const AudioRecordModule = require('@fugood/react-native-audio-pcm-stream').defau
 
 export type WhisperProgress = { status: 'downloading'; percent: number } | { status: 'ready' };
 
+// Distinkte Fehler-Codes statt eines einzigen generischen „nicht verfügbar".
+// Jeder Pfad, der bisher stumm in denselben catch lief, wirft jetzt einen
+// klar benannten Code (message), der geloggt wird und den die UI unterscheiden
+// kann (z. B. Modell erneut anbieten vs. Mikrofon-Hinweis). Siehe
+// Aufruf-Stellen in speech.ts / app/hifz.
+export const WhisperFehler = {
+  /** Plattform kann whisper.rn nicht laden (Web / nicht iOS/Android). */
+  unavailable: 'speech_recognition_unavailable',
+  /** Mikrofon-Berechtigung fehlt/abgelehnt. */
+  permission: 'whisper_permission_denied',
+  /** Modell-Download fehlgeschlagen/unvollständig/Header ungültig. */
+  modelDownload: 'whisper_model_download_failed',
+  /** initWhisper hat den Kontext nicht erstellt (Modell beschädigt/inkompatibel). */
+  modelInit: 'whisper_model_init_failed',
+  /** transcribe() selbst hat geworfen. */
+  transcribe: 'whisper_transcribe_failed',
+} as const;
+
+/** Ist der Fehler ein Modell-Problem (Download/Init/Header)? → UI kann Modell neu anbieten. */
+export function istModellFehler(e: unknown): boolean {
+  const msg = e instanceof Error ? e.message : String(e);
+  return msg === WhisperFehler.modelDownload || msg === WhisperFehler.modelInit;
+}
+
 export interface WhisperRecorder {
   /** Beendet die Aufnahme und liefert Transkript-Varianten (Original + beschleunigt). */
   stop: () => Promise<string[]>;
@@ -156,14 +186,37 @@ let whisperContextPromise: Promise<WhisperContext> | null = null;
 export function loadWhisperContext(onProgress?: (p: WhisperProgress) => void): Promise<WhisperContext> {
   if (!whisperContextPromise) {
     whisperContextPromise = (async () => {
+      // 1) Modell sicherstellen. istWhisperModellHeruntergeladen prüft jetzt auch
+      //    den GGML-Header (n_text_ctx=448) — ein größenmäßig vollständiger, aber
+      //    beschädigter File wird als „nicht da" gemeldet und hier neu geladen.
       if (!(await istWhisperModellHeruntergeladen())) {
-        await whisperModellHerunterladen((p) =>
-          onProgress?.({ status: 'downloading', percent: Math.round(p.anteil * 100) }),
-        );
+        try {
+          await whisperModellHerunterladen((p) =>
+            onProgress?.({ status: 'downloading', percent: Math.round(p.anteil * 100) }),
+          );
+        } catch (e) {
+          console.error('[whisper] Modell-Download/Verifikation fehlgeschlagen', {
+            pfad: whisperModellPfad(),
+            fehler: e instanceof Error ? e.message : String(e),
+          });
+          throw new Error(WhisperFehler.modelDownload);
+        }
       }
-      const ctx = await initWhisper({ filePath: whisperModellPfad() });
-      onProgress?.({ status: 'ready' });
-      return ctx;
+      // 2) Kontext initialisieren. Schlägt das trotz gültigem Header/Size fehl,
+      //    ist der File real inkompatibel/kaputt → löschen, damit der NÄCHSTE
+      //    Versuch frisch lädt (statt dauerhaft am selben File zu scheitern).
+      try {
+        const ctx = await initWhisper({ filePath: whisperModellPfad() });
+        onProgress?.({ status: 'ready' });
+        return ctx;
+      } catch (e) {
+        console.error('[whisper] initWhisper fehlgeschlagen — Modell wird verworfen', {
+          pfad: whisperModellPfad(),
+          fehler: e instanceof Error ? e.message : String(e),
+        });
+        await whisperModellLoeschen().catch(() => {});
+        throw new Error(WhisperFehler.modelInit);
+      }
     })().catch((e) => {
       whisperContextPromise = null; // nächster Versuch darf neu laden
       throw e;
@@ -341,9 +394,23 @@ export interface PcmCapture {
  */
 export async function startPcmCapture(onChunk?: (pcm: Int16Array) => void): Promise<PcmCapture> {
   const permission = await requestRecordingPermissionsAsync();
-  if (!permission.granted) throw new Error('whisper_permission_denied');
+  if (!permission.granted) {
+    console.error('[whisper] Mikrofon-Berechtigung nicht erteilt', {
+      status: permission.status,
+      canAskAgain: permission.canAskAgain,
+    });
+    throw new Error(WhisperFehler.permission);
+  }
 
-  await AudioRecordModule.init({ sampleRate: SAMPLE_RATE, channels: 1, bitsPerSample: 16 });
+  try {
+    await AudioRecordModule.init({ sampleRate: SAMPLE_RATE, channels: 1, bitsPerSample: 16 });
+  } catch (e) {
+    console.error('[whisper] Audio-Aufnahme konnte nicht initialisiert werden', {
+      sampleRate: SAMPLE_RATE,
+      fehler: e instanceof Error ? e.message : String(e),
+    });
+    throw e;
+  }
   const chunks: Uint8Array[] = [];
   const subscription = AudioRecordModule.on('data', (b64: string) => {
     const bytes = base64ToBytes(b64);
@@ -399,14 +466,28 @@ export async function transcribePcm(
     // Arabisch fest vorgeben (ISO-639-1 'ar') statt 'auto' — das Zielpublikum
     // rezitiert immer Koran-Arabisch, Sprach-Autodetektion bei kurzen/leisen
     // Aufnahmen ist unnötig fehleranfällig. temperature 0 = deterministisch.
-    const { promise } = whisperContext.transcribe(path, {
-      language: 'ar',
-      beamSize: opts?.fast ? 1 : 5,
-      temperature: 0,
-      ...(expectedText ? { prompt: expectedText } : {}),
+    const result = await whisperContext
+      .transcribe(path, {
+        language: 'ar',
+        beamSize: opts?.fast ? 1 : 5,
+        temperature: 0,
+        ...(expectedText ? { prompt: expectedText } : {}),
+      })
+      .promise;
+    // isAborted: die Dekodierung lief nicht durch → Ergebnis unvollständig.
+    // Nicht als generischen Fehler tarnen, aber sichtbar loggen (half bisher
+    // die Ursachenanalyse zu verschleiern).
+    if (result?.isAborted) {
+      console.warn('[whisper] Transkription abgebrochen (isAborted)', { datei: tempFileName });
+    }
+    return result?.result?.trim() ?? '';
+  } catch (e) {
+    console.error('[whisper] Transkription fehlgeschlagen', {
+      datei: tempFileName,
+      fast: opts?.fast ?? false,
+      fehler: e instanceof Error ? e.message : String(e),
     });
-    const { result } = await promise;
-    return result?.trim() ?? '';
+    throw new Error(WhisperFehler.transcribe);
   } finally {
     await FileSystem.deleteAsync(path, { idempotent: true }).catch(() => {});
   }

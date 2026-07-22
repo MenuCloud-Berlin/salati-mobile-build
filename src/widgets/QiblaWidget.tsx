@@ -28,6 +28,8 @@ export interface QiblaWidgetProps {
   transparent?: boolean;
   /** Entfernungs-Zeile zeigen (default true). */
   showDistance?: boolean;
+  /** Textfarben-Override (Hex) für den Haupttext; undefined = Theme-Textfarbe. */
+  textColor?: `#${string}`;
 }
 
 export function QiblaWidget({
@@ -38,9 +40,11 @@ export function QiblaWidget({
   theme = 'dark',
   transparent = false,
   showDistance = true,
+  textColor,
 }: QiblaWidgetProps) {
   const c = WIDGET_THEMES[theme];
   const bg = transparent ? transparentBg(c.bg) : c.bg;
+  const text = textColor ?? c.text;
   return (
     <FlexWidget
       clickAction="OPEN_APP"
@@ -56,7 +60,7 @@ export function QiblaWidget({
         padding: 12,
       }}>
       <TextWidget text={`🕋 ${title}`} style={{ fontSize: 11, color: c.accent }} />
-      <TextWidget text={bearing} style={{ fontSize: 30, color: c.text, fontWeight: '700', marginTop: 2 }} />
+      <TextWidget text={bearing} style={{ fontSize: 30, color: text, fontWeight: '700', marginTop: 2 }} />
       <TextWidget text={direction} style={{ fontSize: 13, color: c.accent, fontWeight: '700' }} />
       {showDistance ? (
         <TextWidget text={distance} style={{ fontSize: 11, color: c.muted, marginTop: 4 }} />

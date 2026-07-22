@@ -1,5 +1,5 @@
 import { useLocalSearchParams } from 'expo-router';
-import { useMemo, useRef, useState, useEffect } from 'react';
+import { useCallback, useMemo, useRef, useState, useEffect } from 'react';
 import { Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -8,12 +8,12 @@ import { ThemedActivityIndicator } from '@/components/themed-activity-indicator'
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { BackChipInset, Brand, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
-import { alignWords, type WordAlignment } from '@/features/hifz/similarity';
 import {
   recognizeArabicContinuous,
   recognitionAvailable,
   type ContinuousController,
 } from '@/features/hifz/speech';
+import type { RevealedWord } from '@/features/hifz/reciteProgress';
 import { whisperSupported } from '@/features/hifz/whisperCheck';
 import {
   aktuelleModellGroesse,
@@ -46,7 +46,6 @@ export default function ReciteSurahScreen() {
   const [modelReady, setModelReady] = useState<boolean | null>(null);
   const [modelDlPct, setModelDlPct] = useState<number | null>(null);
   const [running, setRunning] = useState(false);
-  const [partial, setPartial] = useState('');
   const [starting, setStarting] = useState(false);
   const controllerRef = useRef<ContinuousController | null>(null);
 
@@ -72,36 +71,32 @@ export default function ReciteSurahScreen() {
     () => ayahs.map((a) => a.arabic).join(' '),
     [ayahs],
   );
-  const alignment = useMemo<WordAlignment[] | null>(
-    () => (partial ? alignWords(partial, expectedFull) : null),
-    [partial, expectedFull],
-  );
 
   // Monotones Aufdecken (User-Bug 2026-07-22: „erkennt nur die ersten Verse,
-  // dann verliert es den Faden und löscht die ersten wieder"). Whispers
-  // kontinuierliches Transkript hat ein gleitendes Fenster — ein späteres
-  // `partial` enthält frühere Verse oft nicht mehr, wodurch deren Wörter aus
-  // der Live-Ausrichtung fielen und wieder verdeckt wurden. Hier wird der beste
-  // je erreichte Status pro Wort festgehalten und NIE herabgestuft
-  // (undefined < near < hit). So bleibt jeder einmal korrekt rezitierte Vers
-  // aufgedeckt, bis Stopp/Neustart.
+  // dann verliert es den Faden und löscht die ersten wieder" + „ein Wort aus
+  // Vers 1 wird beim Vers 7 als Treffer gewertet"). Die Aufdeck-Treffer kommen
+  // jetzt POSITIONS-gekoppelt aus der Erkennung (speech.ts → reciteProgress.ts
+  // windowedReveal): je Teil-Transkript nur Treffer NAHE der aktuellen Front,
+  // global indiziert. Kein globales alignWords(partial, ganzeSure) mehr, das ein
+  // spätes/frühes gleichlautendes Wort fälschlich zuordnen konnte. Der beste je
+  // erreichte Status pro Wort wird festgehalten und NIE herabgestuft
+  // (undefined < near < hit) — ein späteres Fenster ohne die frühen Verse deckt
+  // daher nichts wieder zu.
   const [revealed, setRevealed] = useState<Record<number, 'hit' | 'near'>>({});
-  useEffect(() => {
-    if (!alignment) return;
+  const applyReveals = useCallback((reveals: RevealedWord[]) => {
+    if (reveals.length === 0) return;
     setRevealed((prev) => {
       let changed = false;
       const next = { ...prev };
-      for (let i = 0; i < alignment.length; i++) {
-        const st = alignment[i]?.status;
-        if (st !== 'hit' && st !== 'near') continue;
-        if (next[i] === 'hit') continue; // schon maximal
-        if (next[i] === 'near' && st === 'near') continue;
-        next[i] = st;
+      for (const r of reveals) {
+        if (next[r.index] === 'hit') continue; // schon maximal
+        if (next[r.index] === 'near' && r.status === 'near') continue;
+        next[r.index] = r.status;
         changed = true;
       }
       return changed ? next : prev;
     });
-  }, [alignment]);
+  }, []);
 
   async function downloadModel() {
     if (modelDlPct !== null) return;
@@ -119,16 +114,17 @@ export default function ReciteSurahScreen() {
   async function start() {
     if (running || starting) return;
     setStarting(true);
-    setPartial('');
     setRevealed({});
     try {
       controllerRef.current = await recognizeArabicContinuous({
         expectedText: expectedFull,
-        onPartial: (tr) => setPartial(tr),
+        // Positions-gekoppelte Treffer direkt aufdecken (kein globales
+        // Alignment mehr, s. applyReveals-Kommentar).
+        onPartial: (_tr, reveals) => applyReveals(reveals),
       });
       setRunning(true);
-    } catch {
-      /* ignore */
+    } catch (e) {
+      console.error('[hifz recite-surah] Erkennung konnte nicht gestartet werden:', String(e));
     } finally {
       setStarting(false);
     }
@@ -138,15 +134,19 @@ export default function ReciteSurahScreen() {
     const c = controllerRef.current;
     controllerRef.current = null;
     setRunning(false);
+    // Der finale Durchlauf meldet seine Treffer selbst über onPartial→applyReveals.
     if (c) {
-      const finalText = await c.stop().catch(() => '');
-      if (finalText) setPartial(finalText);
+      await c.stop().catch((e) => {
+        console.warn('[hifz recite-surah] Stopp/Final-Transkription fehlgeschlagen:', String(e));
+        return '';
+      });
     }
   }
 
-  // Ausrichtung je Vers zerlegen (flache alignment-Liste → pro Vers).
-  // Offset mutationsfrei berechnen (Summe der Wortzahlen davor) — der
-  // React-Compiler-Lint verbietet ein `let off += …` im Render.
+  // Globaler Wort-Offset je Vers: die Reveals sind global über die ganze Sure
+  // indiziert (reciteProgress.ts) — off + wortIndexImVers = globaler Index in
+  // `revealed`. Offset mutationsfrei berechnen (Summe der Wortzahlen davor) —
+  // der React-Compiler-Lint verbietet ein `let off += …` im Render.
   const perVerse = useMemo(
     () =>
       ayahs.map((a, i) => {

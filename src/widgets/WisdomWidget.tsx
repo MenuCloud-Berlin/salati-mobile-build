@@ -22,6 +22,8 @@ export interface WisdomWidgetProps {
   transparent?: boolean;
   /** Übersetzungs-Zeile unter dem arabischen Text zeigen (default true). */
   showTranslation?: boolean;
+  /** Textfarben-Override (Hex) für den Haupttext; undefined = Theme-Textfarbe. */
+  textColor?: `#${string}`;
 }
 
 export function WisdomWidget({
@@ -31,9 +33,11 @@ export function WisdomWidget({
   theme = 'dark',
   transparent = false,
   showTranslation = true,
+  textColor,
 }: WisdomWidgetProps) {
   const c = WIDGET_THEMES[theme];
   const bg = transparent ? transparentBg(c.bg) : c.bg;
+  const text = textColor ?? c.text;
   return (
     <FlexWidget
       clickAction="OPEN_APP"
@@ -51,7 +55,7 @@ export function WisdomWidget({
         text={arabic}
         truncate="END"
         maxLines={2}
-        style={{ fontSize: 17, color: c.text, marginTop: 6, marginBottom: 6 }}
+        style={{ fontSize: 17, color: text, marginTop: 6, marginBottom: 6 }}
       />
       {showTranslation ? (
         <TextWidget text={translation} truncate="END" maxLines={3} style={{ fontSize: 12, color: c.muted }} />

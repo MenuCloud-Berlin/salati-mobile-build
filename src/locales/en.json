@@ -2186,6 +2186,7 @@
     "showDistance": "Show distance",
     "cancel": "Cancel",
     "done": "Done",
+    "textColor": "Text colour",
     "previewHint": "Changes apply to this widget only. Long-press any widget on your home screen to configure it individually."
   }
 }
