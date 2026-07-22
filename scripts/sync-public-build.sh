@@ -63,9 +63,12 @@ overrides:
 patchedDependencies:
   '@bacons/apple-targets@5.0.0': patches/@bacons__apple-targets@5.0.0.patch
   expo-dynamic-app-icon@1.2.0: patches/expo-dynamic-app-icon@1.2.0.patch
-  unrs-resolver@1.11.1: patches/unrs-resolver@1.11.1.patch
   whisper.rn@0.7.0: patches/whisper.rn@0.7.0.patch
 YAML
+# unrs-resolver-Patch bewusst NICHT aufgeführt: das Paket ist nur ein
+# transitives Dep des Monorepo-Root-Toolings (ESLint/oxc), nicht von
+# apps/mobile — im Standalone-Build fehlt es, und pnpm bricht bei einem
+# ungenutzten Patch hart ab (ERR_PNPM_UNUSED_PATCH).
 
 # Root-.npmrc (node-linker etc.) mitnehmen, falls vorhanden.
 [ -f "$ROOT/.npmrc" ] && cp "$ROOT/.npmrc" ./.npmrc || true
