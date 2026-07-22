@@ -79,6 +79,39 @@ function nearThreshold(len: number): number {
   return Math.max(len >= 3 ? 2 : 1, Math.floor(len / 2));
 }
 
+// Arabische Proklitika, die die ASR gern anhängt oder verschluckt: der Artikel
+// ال sowie die angehängten Partikel و (und), ف (dann), ب (mit), ك (wie),
+// ل (für). Fällt so ein Präfix beim Erkennen weg oder kommt eins dazu
+// ("وقال" ↔ "قال", "الرحيم" ↔ "رحيم"), soll das Wort trotzdem als „fast
+// richtig" zählen, nicht als Fehler.
+function stripProclitics(w: string): string {
+  let s = w;
+  if (s.startsWith('ال') && s.length > 3) s = s.slice(2);
+  else if (s.length > 2 && 'وفبكل'.includes(s[0])) s = s.slice(1);
+  return s;
+}
+
+/**
+ * Wort-Ähnlichkeit für das Alignment: 'exact' (normalisiert identisch),
+ * 'near' (kleine Abweichung — Editier-Distanz unter der Schwelle ODER nur ein
+ * an-/abgehängtes Proklitikon wie Artikel/Konjunktion) oder 'no'. Beide Wörter
+ * werden als BEREITS normalisiert erwartet (normalizeArabic). Reine Funktion,
+ * damit Fenster-Matching (reciteProgress.ts) und Tests sie teilen können.
+ */
+export function wordsSimilar(a: string, b: string): 'exact' | 'near' | 'no' {
+  if (a === '' || b === '') return 'no';
+  if (a === b) return 'exact';
+  // Schwelle am kürzeren Wort — sonst würde ein langes erwartetes Wort ein
+  // stark verkürztes Erkanntes fälschlich als „fast" durchwinken.
+  if (levenshtein(a, b) <= nearThreshold(Math.min(a.length, b.length))) return 'near';
+  // Proklitikon-Toleranz: nach Abziehen eines angehängten Artikels/Partikels
+  // gleich → „fast richtig", auch wenn die reine Editier-Distanz die Schwelle reißt.
+  const sa = stripProclitics(a);
+  const sb = stripProclitics(b);
+  if (sa.length >= 2 && sb.length >= 2 && (sa === sb || sa === b || sb === a)) return 'near';
+  return 'no';
+}
+
 export type WordStatus = 'hit' | 'near' | 'miss';
 
 export interface WordAlignment {
@@ -166,7 +199,13 @@ export function alignWords(spoken: string, target: string): WordAlignment[] {
     }
     if (bestIdx >= 0) {
       closestSpokenFor[k] = spokenNorm[bestIdx];
-      if (bestDist <= nearThreshold(targetNorm[k].length)) {
+      // „fast richtig", wenn die Editier-Distanz unter der Schwelle liegt ODER
+      // sich die Wörter nur um ein an-/abgehängtes Proklitikon (Artikel/Partikel)
+      // unterscheiden — wordsSimilar kapselt beide Fälle (s. dort).
+      if (
+        bestDist <= nearThreshold(targetNorm[k].length) ||
+        wordsSimilar(targetNorm[k], spokenNorm[bestIdx]) === 'near'
+      ) {
         usedSpoken[bestIdx] = true;
         nearSpokenFor[k] = spokenNorm[bestIdx];
       }

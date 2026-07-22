@@ -1,24 +1,27 @@
-// Video-Uebersicht: die 37 Lernvideos, nach Reihe gruppiert (Section-Header je
-// Reihe — es gibt vier: Sprache/Madinah/Vokabeln/Tadschwied). Antippen oeffnet
-// den Voll-Player (videos/[episode].tsx). Pro Folge Cover + Titel +
-// Beschreibung + Dauer, ein Offline-Download-Button, eine Offline-Kennzeichnung
-// sowie ein „Weiterschauen"-Balken, wenn die Folge schon angefangen wurde.
+// Video-Uebersicht: die Lernvideos, nach Reihe gruppiert (Section-Header je
+// Reihe — Sprache/Madinah/Vokabeln/Tadschwied sowie die Tabellen- und Vokabel-
+// Video-Reihen). Oben ein „Weiterschauen"-Streifen (angefangene Folgen) und ein
+// Einstieg in die eigenen Playlists. Antippen oeffnet den Voll-Player
+// (videos/[episode].tsx); langes Antippen legt die Folge in eine Playlist.
+// Pro Folge Cover + Titel + Beschreibung + Dauer, ein Offline-Download-Button,
+// eine Offline-Kennzeichnung sowie ein „Weiterschauen"-Balken.
 // Daten aus dem oeffentlichen R2-Bucket (features/video/data.ts) via react-query.
 import { Image } from 'expo-image';
 import { router, useFocusEffect } from 'expo-router';
 import { useQuery } from '@tanstack/react-query';
-import { useCallback } from 'react';
-import { Alert, FlatList, Pressable, StyleSheet, View } from 'react-native';
+import { useCallback, useState } from 'react';
+import { Alert, FlatList, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AnimatedListItem } from '@/components/ui/animated-list-item';
 import { DisclosureChevron } from '@/components/ui/disclosure-chevron';
-import { IconSymbol } from '@/components/ui/icon-symbol';
+import { IconSymbol, type IconName } from '@/components/ui/icon-symbol';
 import { PressableCard } from '@/components/ui/pressable-card';
 import { ThemedActivityIndicator } from '@/components/themed-activity-indicator';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { BackChipInset, Brand, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { AddToPlaylistSheet } from '@/features/video/add-to-playlist-sheet';
 import {
   fetchVideoIndex,
   formatDuration,
@@ -32,8 +35,13 @@ import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
 import { useTranslation } from '@/lib/i18n';
 
 type ListRow =
-  | { kind: 'section'; key: string; title: string }
+  | { kind: 'section'; key: string; title: string; icon: IconName }
   | { kind: 'episode'; key: string; episode: VideoEpisode; itemIndex: number; resume: number };
+
+// Tabellen-/Vokabel-Video-Reihen bekommen ein Tabellen-Icon, sonst Video.
+function seriesIcon(episodes: VideoEpisode[]): IconName {
+  return episodes.some((e) => e.kind === 'table') ? 'grid-outline' : 'videocam';
+}
 
 export default function VideoListScreen() {
   const { t } = useTranslation();
@@ -46,8 +54,7 @@ export default function VideoListScreen() {
     staleTime: 60 * 60 * 1000,
   });
 
-  // „Weiterschauen"-Positionen: beim Zurueckkehren aus dem Player neu laden,
-  // damit der Balken den aktuellen Stand zeigt.
+  // „Weiterschauen"-Positionen: beim Zurueckkehren aus dem Player neu laden.
   const { progress, reload } = useAllVideoProgress();
   useFocusEffect(
     useCallback(() => {
@@ -55,13 +62,21 @@ export default function VideoListScreen() {
     }, [reload]),
   );
 
+  // Ziel-Folge fuer das „zu Playlist hinzufuegen"-Sheet (langes Antippen).
+  const [playlistTarget, setPlaylistTarget] = useState<number | null>(null);
+
   const episodes = data?.episodes ?? [];
   const multiSeries = hasMultipleSeries(episodes);
   const rows: ListRow[] = [];
   let itemIndex = 0;
   for (const group of groupEpisodesBySeries(episodes)) {
     if (multiSeries) {
-      rows.push({ kind: 'section', key: `s:${group.key}`, title: group.title ?? t('video.moreEpisodes') });
+      rows.push({
+        kind: 'section',
+        key: `s:${group.key}`,
+        title: group.title ?? t('video.moreEpisodes'),
+        icon: seriesIcon(group.episodes),
+      });
     }
     for (const ep of group.episodes) {
       const p = progress[String(ep.episode_no)];
@@ -69,6 +84,16 @@ export default function VideoListScreen() {
       rows.push({ kind: 'episode', key: `e:${ep.episode_no}`, episode: ep, itemIndex: itemIndex++, resume });
     }
   }
+
+  // Angefangene Folgen (Weiterschauen-Streifen), zuletzt gesehen zuerst.
+  const continueItems = Object.entries(progress)
+    .map(([no, p]) => ({ ep: episodes.find((e) => e.episode_no === Number(no)), p }))
+    .filter(
+      (x): x is { ep: VideoEpisode; p: (typeof progress)[string] } =>
+        !!x.ep && x.p.duration > 0 && x.p.position / x.p.duration > 0.02 && x.p.position / x.p.duration < 0.98,
+    )
+    .sort((a, b) => b.p.updatedAt - a.p.updatedAt)
+    .slice(0, 12);
 
   return (
     <ThemedView style={styles.container}>
@@ -78,23 +103,55 @@ export default function VideoListScreen() {
           keyExtractor={(row) => row.key}
           contentContainerStyle={styles.list}
           ListHeaderComponent={
-            <View style={styles.header}>
-              <View style={[styles.headerIcon, { backgroundColor: colors.accent }]}>
-                <IconSymbol name="videocam" size={40} color={colors.background} />
+            <View>
+              <View style={styles.header}>
+                <View style={[styles.headerIcon, { backgroundColor: colors.accent }]}>
+                  <IconSymbol name="videocam" size={40} color={colors.background} />
+                </View>
+                <ThemedText type="title" style={styles.headerTitle}>
+                  {t('video.title')}
+                </ThemedText>
+                <ThemedText type="small" themeColor="textSecondary" style={styles.headerSubtitle}>
+                  {t('video.subtitle')}
+                </ThemedText>
+                <PressableCard
+                  onPress={() => router.push('/videos/playlists')}
+                  type="backgroundElement"
+                  style={styles.playlistsBtn}>
+                  <IconSymbol name="albums" size={18} color={colors.accent} />
+                  <ThemedText type="smallBold" themeColor="accent">
+                    {t('video.playlists')}
+                  </ThemedText>
+                </PressableCard>
               </View>
-              <ThemedText type="title" style={styles.headerTitle}>
-                {t('video.title')}
-              </ThemedText>
-              <ThemedText type="small" themeColor="textSecondary" style={styles.headerSubtitle}>
-                {t('video.subtitle')}
-              </ThemedText>
+
+              {continueItems.length > 0 && (
+                <View style={styles.railBlock}>
+                  <ThemedText type="smallBold" themeColor="textSecondary" style={styles.railLabel}>
+                    {t('video.continueWatching').toUpperCase()}
+                  </ThemedText>
+                  <ScrollView
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    contentContainerStyle={styles.railScroll}>
+                    {continueItems.map(({ ep, p }) => (
+                      <ContinueCard key={ep.episode_no} episode={ep} resume={Math.min(1, p.position / p.duration)} />
+                    ))}
+                  </ScrollView>
+                </View>
+              )}
             </View>
           }
           renderItem={({ item }) =>
             item.kind === 'section' ? (
-              <SectionHeader title={item.title} />
+              <SectionHeader title={item.title} icon={item.icon} />
             ) : (
-              <EpisodeRow episode={item.episode} index={item.itemIndex} resume={item.resume} />
+              <EpisodeRow
+                episode={item.episode}
+                index={item.itemIndex}
+                resume={item.resume}
+                onLongPress={() => setPlaylistTarget(item.episode.episode_no)}
+              />
             )
           }
           ListEmptyComponent={
@@ -110,13 +167,22 @@ export default function VideoListScreen() {
           }
         />
       </SafeAreaView>
+
+      <AddToPlaylistSheet
+        visible={playlistTarget != null}
+        onClose={() => setPlaylistTarget(null)}
+        episodeNo={playlistTarget ?? 0}
+      />
     </ThemedView>
   );
 }
 
-function SectionHeader({ title }: { title: string }) {
+function SectionHeader({ title, icon }: { title: string; icon: IconName }) {
+  const scheme = useResolvedScheme();
+  const colors = Colors[scheme];
   return (
     <View style={styles.sectionHeader}>
+      <IconSymbol name={icon} size={15} color={colors.textSecondary} />
       <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sectionHeaderText}>
         {title.toUpperCase()}
       </ThemedText>
@@ -124,7 +190,50 @@ function SectionHeader({ title }: { title: string }) {
   );
 }
 
-function EpisodeRow({ episode, index, resume }: { episode: VideoEpisode; index: number; resume: number }) {
+// Horizontale „Weiterschauen"-Kachel (16:9-Cover, Fortschrittsbalken, Titel).
+function ContinueCard({ episode, resume }: { episode: VideoEpisode; resume: number }) {
+  const scheme = useResolvedScheme();
+  const colors = Colors[scheme];
+  const dl = useVideoDownload(episode);
+  const coverSource = dl.localCoverUri ?? episode.cover_url;
+  return (
+    <PressableCard
+      onPress={() => router.push({ pathname: '/videos/[episode]', params: { episode: episode.episode_no } })}
+      type="backgroundElement"
+      style={styles.railCard}>
+      <View style={styles.railThumbWrap}>
+        {coverSource ? (
+          <Image source={coverSource} style={styles.railThumb} contentFit="cover" transition={150} />
+        ) : (
+          <ThemedView type="backgroundSelected" style={[styles.railThumb, styles.coverFallback]}>
+            <IconSymbol name="videocam" size={22} color={colors.accent} />
+          </ThemedView>
+        )}
+        <View style={styles.playOverlay}>
+          <IconSymbol name="play" size={20} color="#FFFFFF" />
+        </View>
+        <View style={styles.resumeTrack}>
+          <View style={[styles.resumeFill, { width: `${Math.round(resume * 100)}%`, backgroundColor: Brand.gold }]} />
+        </View>
+      </View>
+      <ThemedText type="small" numberOfLines={2} style={styles.railTitle}>
+        {episode.title}
+      </ThemedText>
+    </PressableCard>
+  );
+}
+
+function EpisodeRow({
+  episode,
+  index,
+  resume,
+  onLongPress,
+}: {
+  episode: VideoEpisode;
+  index: number;
+  resume: number;
+  onLongPress: () => void;
+}) {
   const { t } = useTranslation();
   const scheme = useResolvedScheme();
   const colors = Colors[scheme];
@@ -144,6 +253,8 @@ function EpisodeRow({ episode, index, resume }: { episode: VideoEpisode; index: 
     <AnimatedListItem index={index % 12}>
       <PressableCard
         onPress={() => router.push({ pathname: '/videos/[episode]', params: { episode: episode.episode_no } })}
+        onLongPress={onLongPress}
+        delayLongPress={350}
         type="backgroundElement"
         style={styles.row}>
         <View style={styles.thumbWrap}>
@@ -259,11 +370,19 @@ const styles = StyleSheet.create({
     width: '100%',
     maxWidth: MaxContentWidth,
   },
-  header: { alignItems: 'center', gap: Spacing.one, paddingBottom: Spacing.four, paddingTop: Spacing.two },
+  header: { alignItems: 'center', gap: Spacing.one, paddingBottom: Spacing.three, paddingTop: Spacing.two },
   headerIcon: { width: 80, height: 80, borderRadius: 26, alignItems: 'center', justifyContent: 'center', marginBottom: Spacing.two },
   headerTitle: { textAlign: 'center' },
   headerSubtitle: { textAlign: 'center', paddingHorizontal: Spacing.two },
-  sectionHeader: { paddingTop: Spacing.two, paddingBottom: Spacing.half, paddingHorizontal: Spacing.one },
+  playlistsBtn: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one, paddingVertical: Spacing.one, paddingHorizontal: Spacing.three, marginTop: Spacing.two },
+  railBlock: { paddingBottom: Spacing.two },
+  railLabel: { letterSpacing: 0.5, paddingHorizontal: Spacing.one, marginBottom: Spacing.one },
+  railScroll: { gap: Spacing.two, paddingHorizontal: Spacing.half, paddingBottom: Spacing.one },
+  railCard: { width: 176, padding: Spacing.one },
+  railThumbWrap: { width: '100%', height: 99 },
+  railThumb: { width: '100%', height: 99, borderRadius: 12 },
+  railTitle: { marginTop: Spacing.one, paddingHorizontal: Spacing.half, minHeight: 34 },
+  sectionHeader: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one, paddingTop: Spacing.two, paddingBottom: Spacing.half, paddingHorizontal: Spacing.one },
   sectionHeaderText: { letterSpacing: 0.5 },
   center: { alignItems: 'center', paddingVertical: Spacing.five },
   row: { flexDirection: 'row', alignItems: 'center', gap: Spacing.three, padding: Spacing.two },

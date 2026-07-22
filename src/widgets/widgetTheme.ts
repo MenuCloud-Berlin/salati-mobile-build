@@ -79,6 +79,66 @@ export function widgetTextColorHex(key: WidgetTextColor | undefined): `#${string
   return WIDGET_TEXT_COLORS[key] ?? undefined;
 }
 
+// --- Design-Helfer für das Widget-Rendering (reines Aussehen) ---------------
+// Diese Helfer erzeugen aus den vorhandenen Theme-Tokens hochwertigere Flächen
+// (subtiler Karten-Verlauf, hauchdünne Kontur, Akzent-Tönung für Pillen/aktive
+// Zeile). Sie ändern KEINE Funktion — nur die Optik der gerenderten Widgets.
+
+/** Beliebigen Hex (#RGB-Alpha egal) auf reine 6-stellige RRGGBB-Ziffern bringen. */
+function to6(hex: string): string {
+  const s = hex.startsWith('#') ? hex.slice(1) : hex;
+  return s.length >= 6 ? s.slice(0, 6) : s.padEnd(6, '0');
+}
+
+/** Zwei Farben mischen (t=0 → a, t=1 → b). Gibt reines #RRGGBB zurück. */
+export function mixHex(a: string, b: string, t: number): `#${string}` {
+  const pa = to6(a);
+  const pb = to6(b);
+  const f = Math.max(0, Math.min(1, t));
+  const ch = (i: number) => {
+    const x = parseInt(pa.slice(i, i + 2), 16);
+    const y = parseInt(pb.slice(i, i + 2), 16);
+    return Math.round(x + (y - x) * f)
+      .toString(16)
+      .padStart(2, '0');
+  };
+  return `#${ch(0)}${ch(2)}${ch(4)}`;
+}
+
+/** Fügt einer Farbe einen Alpha-Anteil (0..1) hinzu → #RRGGBBAA (Alpha zuletzt, RN-Style). */
+export function tint(hex: string, alpha: number): `#${string}` {
+  const a = Math.round(Math.max(0, Math.min(1, alpha)) * 255)
+    .toString(16)
+    .padStart(2, '0');
+  return `#${to6(hex)}${a}`;
+}
+
+/**
+ * Subtiler Karten-Verlauf: oben leicht zum Text hin angehoben (Tiefe/Glanz),
+ * unten die Basis-Grundfarbe. Die gewählte Deckkraft (0/25/50/75/100 %) bleibt
+ * erhalten, indem sie auf beide Verlaufsenden angewandt wird.
+ */
+export function cardGradient(
+  theme: WidgetTheme,
+  opacity: number,
+): { from: `#${string}`; to: `#${string}`; orientation: 'TOP_BOTTOM' } {
+  const c = WIDGET_THEMES[theme];
+  const top = mixHex(c.bg, c.text, 0.09);
+  return {
+    from: withOpacity(top, opacity),
+    to: withOpacity(c.bg, opacity),
+    orientation: 'TOP_BOTTOM',
+  };
+}
+
+/**
+ * Hauchdünne Kontur passend zum Theme (Text-Farbe mit sehr wenig Alpha) — hebt
+ * die Karte sauber vom Wallpaper ab, ohne aufdringlich zu wirken.
+ */
+export function hairline(theme: WidgetTheme, alpha = 0.14): `#${string}` {
+  return tint(WIDGET_THEMES[theme].text, alpha);
+}
+
 // Macht den Kartenhintergrund eines beliebigen Themes halbtransparent, ohne
 // die Farbe zu ändern (für die PER-WIDGET Transparenz-Option, WidgetConfig).
 // Erzwingt einen Alpha-Wert von 0xbb (~73 % Deckung) — derselbe Wert wie im

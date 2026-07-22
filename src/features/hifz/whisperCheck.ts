@@ -89,28 +89,52 @@ interface WhisperTranscribeHandle {
   stop: () => Promise<void>;
   promise: Promise<WhisperTranscribeResult>;
 }
+// Optionen 1:1 gegen die echte whisper.rn-0.7.0-API getypt (lib/typescript/
+// NativeRNWhisper.d.ts → TranscribeOptions) und gegen die native Auswertung in
+// cpp/jsi/RNWhisperJSI.cpp (createTranscribeConfig) verifiziert: Property-Namen
+// sind camelCase (maxThreads, temperatureInc, beamSize, bestOf, maxContext) und
+// werden dort auf die whisper.cpp-params gemappt.
+interface WhisperTranscribeOptions {
+  language?: string;
+  // Genauigkeit: Beam-Search statt Greedy-Dekodierung. whisper.rn/whisper.cpp
+  // unterstützt beides — beamSize>0 aktiviert die (deutlich genauere, etwas
+  // langsamere) Strahlsuche. temperature 0 = deterministisch.
+  beamSize?: number;
+  bestOf?: number;
+  temperature?: number;
+  // Temperatur-Fallback: schlägt eine Dekodierung die Qualitätsschwellen von
+  // whisper.cpp (compression_ratio/avg_logprob) → Wiederholung/Halluzination,
+  // wird mit temperature += temperatureInc neu versucht. Gerade bei starkem
+  // Prompt wichtig, damit das Modell nicht in eine Prompt-Echo-Schleife läuft.
+  temperatureInc?: number;
+  // Rechen-Threads. whisper.rn-Default ist konservativ (2 auf 4-Kern-Geräten) —
+  // mehr Threads = schnellere Dekodierung = die Live-Erkennung hält mit dem
+  // Rezitieren Schritt statt „den Faden zu verlieren".
+  maxThreads?: number;
+  // Obergrenze der Prompt-/Kontext-Tokens (whisper.cpp n_max_text_ctx, zusätzlich
+  // hart auf n_text_ctx/2 = 224 beim base-Modell gedeckelt).
+  maxContext?: number;
+  // Conditioning: der erwartete Ayah-Text als Prior. whisper.cpp nutzt den
+  // Prompt als vorangestellten Kontext, sodass die Dekodierung stark auf
+  // die korrekten Koran-Wörter/Diakritika gezogen wird (Tarteel-Prinzip).
+  // Steigert die Erkennung korrekter Rezitation deutlich; s.
+  // transcribePcm(expectedText).
+  prompt?: string;
+}
 interface WhisperContext {
-  transcribe: (
-    filePathOrBase64: string,
-    options?: {
-      language?: string;
-      // Genauigkeit: Beam-Search statt Greedy-Dekodierung. whisper.rn/whisper.cpp
-      // unterstützt beides — beamSize>0 aktiviert die (deutlich genauere, etwas
-      // langsamere) Strahlsuche. temperature 0 = deterministisch.
-      beamSize?: number;
-      bestOf?: number;
-      temperature?: number;
-      // Conditioning: der erwartete Ayah-Text als Prior. whisper.cpp nutzt den
-      // Prompt als vorangestellten Kontext, sodass die Dekodierung stark auf
-      // die korrekten Koran-Wörter/Diakritika gezogen wird (Tarteel-Prinzip).
-      // Steigert die Erkennung korrekter Rezitation deutlich; s.
-      // transcribePcm(expectedText).
-      prompt?: string;
-    },
-  ) => WhisperTranscribeHandle;
+  transcribe: (filePathOrBase64: string, options?: WhisperTranscribeOptions) => WhisperTranscribeHandle;
+}
+interface InitWhisperOptions {
+  filePath: string;
+  // iOS: Metal-GPU-Beschleunigung (Android: no-op, wird nativ ignoriert). Deutlich
+  // schnellere Dekodierung auf iPhones → Live-Beam hält Schritt. useCoreMLIos wird
+  // bei aktivem GPU nativ ignoriert (wir bündeln ohnehin keine CoreML-Assets).
+  useGpu?: boolean;
+  // Flash-Attention — nur mit GPU sinnvoll (whisper.rn-Empfehlung).
+  useFlashAttn?: boolean;
 }
 interface WhisperModule {
-  initWhisper: (options: { filePath: string }) => Promise<WhisperContext>;
+  initWhisper: (options: InitWhisperOptions) => Promise<WhisperContext>;
 }
 interface AudioPcmStreamOptions {
   sampleRate: number;
@@ -157,6 +181,11 @@ export interface WhisperRecorder {
 
 export const SAMPLE_RATE = 16000;
 const MAX_RECORDING_MS = 45000;
+// Rechen-Threads für whisper.cpp. Der whisper.rn-Default ist konservativ (2 auf
+// 4-Kern-Geräten). 4 ist auf modernen Handys (≥6 Kerne) der Sweet-Spot — mehr
+// Threads bringen bei whisper kaum noch etwas (bandbreitengebunden), 4 hebt aber
+// spürbar die Low-End-Latenz an, wo der Default nur 2 nutzt.
+const WHISPER_THREADS = 4;
 const BASE64_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
 /**
@@ -268,7 +297,10 @@ export function loadWhisperContext(onProgress?: (p: WhisperProgress) => void): P
       //    ist der File real inkompatibel/kaputt → löschen, damit der NÄCHSTE
       //    Versuch frisch lädt (statt dauerhaft am selben File zu scheitern).
       try {
-        const ctx = await initWhisper({ filePath: whisperModellPfad() });
+        // useGpu: auf iOS Metal-Beschleunigung (Android ignoriert es nativ) —
+        // schnellere Dekodierung, damit die Live-Erkennung Schritt hält. Kein
+        // useFlashAttn (nur mit stabilem GPU-Pfad empfohlen; konservativ aus).
+        const ctx = await initWhisper({ filePath: whisperModellPfad(), useGpu: true });
         onProgress?.({ status: 'ready' });
         return ctx;
       } catch (e) {
@@ -567,8 +599,20 @@ export async function transcribePcm(
         // Aufnahmen ist unnötig fehleranfällig. temperature 0 = deterministisch.
         const handle = whisperContext.transcribe(path, {
           language: 'ar',
+          // Live-Tick: greedy (beamSize 1) für Tempo. Finale Bewertung: Beam-5
+          // + bestOf 5 (mehr Kandidaten, Latenz dort unkritisch) = genaueste
+          // Dekodierung der ganzen Aufnahme.
           beamSize: opts?.fast ? 1 : 5,
+          bestOf: opts?.fast ? 1 : 5,
+          // temperature 0 = deterministisch; temperatureInc 0.2 aktiviert den
+          // whisper.cpp-Fallback, der bei Wiederholung/Halluzination (u. a.
+          // Prompt-Echo bei starkem Prompt) die Temperatur schrittweise anhebt
+          // und neu dekodiert — bricht Endlos-Wiederholungen auf.
           temperature: 0,
+          temperatureInc: 0.2,
+          // Mehr Threads als der konservative whisper.rn-Default (2 auf 4-Kern-
+          // Geräten) → schnellere Dekodierung, Live-Erkennung hält Schritt.
+          maxThreads: WHISPER_THREADS,
           ...(expectedText ? { prompt: expectedText } : {}),
         });
         aktivesHandle = handle;

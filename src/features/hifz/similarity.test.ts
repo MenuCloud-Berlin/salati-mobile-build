@@ -7,6 +7,7 @@ import {
   gradeFromSimilarity,
   normalizeArabic,
   similarity,
+  wordsSimilar,
 } from './similarity';
 
 describe('alignWords', () => {
@@ -150,5 +151,34 @@ describe('closestSpoken (Anzeige: "erkannt vs. erwartet" auch bei miss)', () => 
     expect(words[3].status).toBe('miss');
     expect(words[3].nearSpoken).toBeUndefined();
     expect(words[3].closestSpoken).toBe('بيت');
+  });
+});
+
+describe('wordsSimilar (Wort-Ähnlichkeit fürs Alignment)', () => {
+  it('identische Wörter = exact', () => {
+    expect(wordsSimilar('قال', 'قال')).toBe('exact');
+  });
+
+  it('kleiner Buchstabendreher = near (خلق↔حلق)', () => {
+    expect(wordsSimilar('خلق', 'حلق')).toBe('near');
+  });
+
+  it('angehängter Artikel ال = near (رحيم↔الرحيم)', () => {
+    expect(wordsSimilar('الرحيم', 'رحيم')).toBe('near');
+    expect(wordsSimilar('رحيم', 'الرحيم')).toBe('near');
+  });
+
+  it('angehängte Konjunktion و/ف = near (قال↔وقال)', () => {
+    expect(wordsSimilar('وقال', 'قال')).toBe('near');
+    expect(wordsSimilar('فقال', 'قال')).toBe('near');
+  });
+
+  it('völlig andere Wörter = no', () => {
+    expect(wordsSimilar('بسم', 'نور')).toBe('no');
+  });
+
+  it('leere Eingabe = no', () => {
+    expect(wordsSimilar('', 'قال')).toBe('no');
+    expect(wordsSimilar('قال', '')).toBe('no');
   });
 });

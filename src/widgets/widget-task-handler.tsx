@@ -5,7 +5,7 @@ import type { WidgetRepresentation, WidgetTaskHandlerProps } from 'react-native-
 import duasData from '@/features/duas/data/duas.json';
 import { parseLearnProgress, LEARN_PROGRESS_STORAGE_KEY } from '@/features/learn/progress';
 import { fetchTimingsWithRetry, type HijriDate, type Timings } from '@/features/prayer-times/api';
-import { formatHHMM, nextPrayer, PRAYERS } from '@/features/prayer-times/next-prayer';
+import { formatHHMM, nextPrayer, parseTimeOn, PRAYERS } from '@/features/prayer-times/next-prayer';
 import { qiblaBearing, distanceToMeccaKm } from '@/features/qibla/bearing';
 import { cardinalKey } from '@/features/qibla/cardinal';
 import { DEFAULT_SETTINGS, SETTINGS_STORAGE_KEY, type AppSettings } from '@/features/settings/types';
@@ -110,30 +110,56 @@ async function loadTimings(settings: AppSettings): Promise<CachedTimings | null>
 
 // Baut die Zeiten-Zeilen (5 Pflichtgebete; optional Sonnenaufgang nach Fajr).
 // `active` markiert das nächste Gebet für die farbliche Hervorhebung — der
-// Sonnenaufgang ist kein Gebet und daher nie aktiv.
+// Sonnenaufgang ist kein Gebet und daher nie aktiv. `passed` markiert bereits
+// vergangene Gebete, damit sie im Widget dezent abgetönt werden (rein optisch).
+// nextIdx === -1 bedeutet: alle heutigen Gebete sind vorbei (nächstes ist Fajr
+// morgen) → alle heutigen Zeilen gelten als vergangen.
 function prayerRows(
   data: CachedTimings,
   nextIdx: number,
   timeFormat: '24h' | '12h',
   showSunrise: boolean,
   t: (key: string) => string,
-): { name: string; time: string; active: boolean }[] {
-  const rows: { name: string; time: string; active: boolean }[] = [];
+): { name: string; time: string; active: boolean; passed: boolean }[] {
+  const rows: { name: string; time: string; active: boolean; passed: boolean }[] = [];
+  const allPassed = nextIdx < 0;
   PRAYERS.forEach((p, i) => {
     rows.push({
       name: t(`prayers.${p.toLowerCase()}`),
       time: formatHHMM(data.today[p], timeFormat),
       active: i === nextIdx,
+      passed: allPassed || i < nextIdx,
     });
     if (showSunrise && p === 'Fajr') {
+      // Sonnenaufgang liegt zwischen Fajr und Dhuhr → vergangen, sobald Fajr
+      // vorbei ist (nächstes Gebet ist Dhuhr o. später bzw. schon morgen).
       rows.push({
         name: t('prayer.sunrise'),
         time: formatHHMM(data.today.Sunrise, timeFormat),
         active: false,
+        passed: allPassed || nextIdx > 0,
       });
     }
   });
   return rows;
+}
+
+// Fortschritt vom vorigen zum nächsten Gebet (0..1) für die dünne Leiste im
+// PrayerWidget. Ohne sinnvollen Bezugspunkt (ganz früh morgens vor Fajr, wenn
+// das vorige Gebet Isha von GESTERN wäre — hier nicht vorhanden) → undefined.
+// Reiner Anzeigewert vom Zeitpunkt des Widget-Updates.
+function prayerProgress(data: CachedTimings, next: { nextIdx: number; nextTs: Date }, now: Date): number | undefined {
+  let prevTs: Date;
+  if (next.nextIdx > 0) {
+    prevTs = parseTimeOn(data.today[PRAYERS[next.nextIdx - 1] as (typeof PRAYERS)[number]], now);
+  } else if (next.nextIdx < 0) {
+    prevTs = parseTimeOn(data.today.Isha, now);
+  } else {
+    return undefined; // vor Fajr: kein heutiger Vorgänger
+  }
+  const span = next.nextTs.getTime() - prevTs.getTime();
+  if (span <= 0) return undefined;
+  return Math.max(0, Math.min(1, (now.getTime() - prevTs.getTime()) / span));
 }
 
 async function renderPrayerWidget(settings: AppSettings, cfg: ResolvedWidgetConfig) {
@@ -171,6 +197,7 @@ async function renderPrayerWidget(settings: AppSettings, cfg: ResolvedWidgetConf
       highlightNext={cfg.highlightNext}
       showCountdown={cfg.showCountdown}
       remaining={t('widgets.remaining').replace('{t}', compact)}
+      progress={prayerProgress(data, next, now)}
       hijri={cfg.showHijri && data.hijri ? formatHijri(data.hijri) : undefined}
       {...styleProps(cfg)}
     />

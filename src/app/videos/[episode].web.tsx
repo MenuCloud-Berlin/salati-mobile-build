@@ -1,29 +1,34 @@
 // Video-Voll-Player — WEB-Fallback. expo-video/VideoView laeuft zwar auch im
 // Browser, doch fuer den statischen Web-Export ist ein schlichtes HTML5-
 // <video controls>-Element robuster (kein natives Modul im SSR-Prerender) und
-// bringt Scrubber, Play/Pause und Vollbild bereits mit. Offline-Downloads gibt
-// es im Web nicht (kein Dateisystem) — hier wird nur gestreamt. Titel,
-// Beschreibung und Themen sowie Folge vor/zurueck sind identisch zur nativen
-// Ansicht ([episode].tsx). Die Wiedergabe-Position wird ueber dieselbe
-// progress.ts (AsyncStorage) gemerkt und wiederhergestellt.
+// bringt Scrubber, Play/Pause, Geschwindigkeit, Bild-in-Bild und Vollbild
+// bereits mit. Offline-Downloads gibt es im Web nicht (kein Dateisystem) — hier
+// wird nur gestreamt. Auto-Play der naechsten Folge (Reihe/Playlist), „zu
+// Playlist hinzufuegen", Titel/Beschreibung/Themen und Folge vor/zurueck sind
+// wie in der nativen Ansicht ([episode].tsx). Die Wiedergabe-Position wird ueber
+// dieselbe progress.ts (AsyncStorage) gemerkt und wiederhergestellt.
 import { router, useLocalSearchParams } from 'expo-router';
 import { useQuery } from '@tanstack/react-query';
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { IconSymbol } from '@/components/ui/icon-symbol';
+import { PressableCard } from '@/components/ui/pressable-card';
 import { ThemedActivityIndicator } from '@/components/themed-activity-indicator';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
-import { fetchVideoIndex, formatDuration, type VideoEpisode } from '@/features/video/data';
+import { AddToPlaylistSheet } from '@/features/video/add-to-playlist-sheet';
+import { fetchVideoIndex, formatDuration, seriesNeighbors, type VideoEpisode } from '@/features/video/data';
+import { useVideoPlaylists } from '@/features/video/playlists';
+import { useVideoPrefs } from '@/features/video/prefs';
 import { loadVideoProgress, saveVideoProgress } from '@/features/video/progress';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
 import { useTranslation } from '@/lib/i18n';
 
 export default function VideoPlayerWebScreen() {
-  const { episode: episodeParam } = useLocalSearchParams<{ episode: string }>();
+  const { episode: episodeParam, list: listParam } = useLocalSearchParams<{ episode: string; list?: string }>();
   const episodeNo = Number(episodeParam);
   const { t } = useTranslation();
   const scheme = useResolvedScheme();
@@ -35,18 +40,44 @@ export default function VideoPlayerWebScreen() {
     staleTime: 60 * 60 * 1000,
   });
 
-  const episodes = data?.episodes ?? [];
-  const episode = episodes.find((e) => e.episode_no === episodeNo);
-  const idx = episodes.findIndex((e) => e.episode_no === episodeNo);
-  const prev = idx > 0 ? episodes[idx - 1] : undefined;
-  const next = idx >= 0 && idx < episodes.length - 1 ? episodes[idx + 1] : undefined;
+  const { prefs } = useVideoPrefs();
+  const { playlists } = useVideoPlaylists();
 
+  const episodes = useMemo(() => data?.episodes ?? [], [data]);
+  const episode = episodes.find((e) => e.episode_no === episodeNo);
+
+  const { prev, next } = useMemo(() => {
+    const playlist = listParam ? playlists.find((p) => p.id === listParam) : undefined;
+    if (playlist) {
+      const ordered = playlist.episodeNos
+        .map((n) => episodes.find((e) => e.episode_no === n))
+        .filter((e): e is VideoEpisode => !!e);
+      const i = ordered.findIndex((e) => e.episode_no === episodeNo);
+      return {
+        prev: i > 0 ? ordered[i - 1] : undefined,
+        next: i >= 0 && i < ordered.length - 1 ? ordered[i + 1] : undefined,
+      };
+    }
+    return seriesNeighbors(episodes, episodeNo);
+  }, [episodes, episodeNo, listParam, playlists]);
+
+  const [showPlaylistSheet, setShowPlaylistSheet] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const seekedRef = useRef(false);
   const lastSaveRef = useRef(0);
 
-  // Gemerkte Position auf die Videoflaeche anwenden, sobald die Metadaten
-  // geladen sind; danach fortlaufend (throttled) sichern.
+  // Refs, damit der onEnded-Listener frische Werte sieht.
+  const autoplayRef = useRef(prefs.autoplay);
+  const nextRef = useRef<VideoEpisode | undefined>(next);
+  const listRef = useRef<string | undefined>(listParam);
+  useEffect(() => {
+    autoplayRef.current = prefs.autoplay;
+    nextRef.current = next;
+    listRef.current = listParam;
+  });
+
+  // Gemerkte Position anwenden, fortlaufend (throttled) sichern; am Folgenende
+  // bei aktivem Autoplay die naechste Folge oeffnen.
   useEffect(() => {
     seekedRef.current = false;
     lastSaveRef.current = 0;
@@ -67,17 +98,33 @@ export default function VideoPlayerWebScreen() {
       lastSaveRef.current = now;
       void saveVideoProgress(episodeNo, el.currentTime, el.duration || 0);
     };
+    const onEnded = () => {
+      void saveVideoProgress(episodeNo, el.currentTime, el.duration || 0);
+      const n = nextRef.current;
+      if (autoplayRef.current && n) {
+        router.replace({
+          pathname: '/videos/[episode]',
+          params: listRef.current ? { episode: n.episode_no, list: listRef.current } : { episode: n.episode_no },
+        });
+      }
+    };
     el.addEventListener('loadedmetadata', onLoaded);
     el.addEventListener('timeupdate', onTime);
+    el.addEventListener('ended', onEnded);
     return () => {
       el.removeEventListener('loadedmetadata', onLoaded);
       el.removeEventListener('timeupdate', onTime);
+      el.removeEventListener('ended', onEnded);
       if (seekedRef.current) void saveVideoProgress(episodeNo, el.currentTime, el.duration || 0);
     };
   }, [episodeNo, episode]);
 
   function goTo(ep?: VideoEpisode) {
-    if (ep) router.replace({ pathname: '/videos/[episode]', params: { episode: ep.episode_no } });
+    if (ep)
+      router.replace({
+        pathname: '/videos/[episode]',
+        params: listParam ? { episode: ep.episode_no, list: listParam } : { episode: ep.episode_no },
+      });
   }
 
   if (isLoading) {
@@ -136,6 +183,12 @@ export default function VideoPlayerWebScreen() {
                   {t('video.previous')}
                 </ThemedText>
               </Pressable>
+              <PressableCard onPress={() => setShowPlaylistSheet(true)} type="backgroundElement" style={styles.playlistBtn}>
+                <IconSymbol name="albums-outline" size={16} color={colors.accent} />
+                <ThemedText type="smallBold" themeColor="accent">
+                  {t('video.playlist')}
+                </ThemedText>
+              </PressableCard>
               <Pressable
                 onPress={() => goTo(next)}
                 disabled={!next}
@@ -181,6 +234,8 @@ export default function VideoPlayerWebScreen() {
           </View>
         </ScrollView>
       </SafeAreaView>
+
+      <AddToPlaylistSheet visible={showPlaylistSheet} onClose={() => setShowPlaylistSheet(false)} episodeNo={episode.episode_no} />
     </ThemedView>
   );
 }
@@ -200,9 +255,10 @@ const styles = StyleSheet.create({
   scroll: { paddingBottom: Spacing.six, alignItems: 'center' },
   videoWrap: { width: '100%', maxWidth: MaxContentWidth, alignSelf: 'center' },
   info: { width: '100%', maxWidth: MaxContentWidth, paddingHorizontal: Spacing.four, marginTop: Spacing.three, gap: Spacing.one },
-  navRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: Spacing.two },
+  navRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: Spacing.two },
   navBtn: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one, paddingVertical: Spacing.one },
   navDisabled: { opacity: 0.4 },
+  playlistBtn: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one, paddingVertical: Spacing.one, paddingHorizontal: Spacing.three },
   epNo: { textTransform: 'uppercase', letterSpacing: 1 },
   title: { fontSize: 22, lineHeight: 28, marginTop: Spacing.half },
   desc: { marginTop: Spacing.one, lineHeight: 22 },

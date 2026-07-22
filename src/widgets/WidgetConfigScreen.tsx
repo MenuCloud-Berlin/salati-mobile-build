@@ -130,11 +130,11 @@ function buildPreview(
       const times = sample12
         ? ['5:12 AM', '1:05 PM', '3:42 PM', '6:20 PM', '8:01 PM']
         : ['05:12', '13:05', '15:42', '18:20', '20:01'];
-      const rows: { name: string; time: string; active: boolean }[] = [];
+      const rows: { name: string; time: string; active: boolean; passed: boolean }[] = [];
       PRAYERS.forEach((p, i) => {
-        rows.push({ name: t(`prayers.${p.toLowerCase()}`), time: times[i], active: i === 2 });
+        rows.push({ name: t(`prayers.${p.toLowerCase()}`), time: times[i], active: i === 2, passed: i < 2 });
         if (cfg.showSunrise && p === 'Fajr') {
-          rows.push({ name: t('prayer.sunrise'), time: sample12 ? '6:48 AM' : '06:48', active: false });
+          rows.push({ name: t('prayer.sunrise'), time: sample12 ? '6:48 AM' : '06:48', active: false, passed: true });
         }
       });
       return (
@@ -148,6 +148,7 @@ function buildPreview(
           highlightNext={cfg.highlightNext}
           showCountdown={cfg.showCountdown}
           remaining={t('widgets.remaining').replace('{t}', '2h 15m')}
+          progress={0.62}
           hijri={cfg.showHijri ? '12 Rajab 1447' : undefined}
           {...common}
         />

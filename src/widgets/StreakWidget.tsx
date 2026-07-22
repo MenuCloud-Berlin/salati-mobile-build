@@ -10,7 +10,7 @@ import { FlexWidget, TextWidget } from 'react-native-android-widget';
 // dem Homescreen ist der stärkste Trigger, die Tageslektion zu machen.
 // Farbe/Deckkraft/Schriftgröße/Ecken/Inhalt sind PER-WIDGET über die
 // Konfigurations-Activity einstellbar (WidgetConfig).
-import { WIDGET_THEMES, withOpacity, type WidgetTheme } from './widgetTheme';
+import { cardGradient, hairline, WIDGET_THEMES, type WidgetTheme } from './widgetTheme';
 
 export type { WidgetTheme };
 
@@ -49,7 +49,6 @@ export function StreakWidget({
   accentColor,
 }: StreakWidgetProps) {
   const c = WIDGET_THEMES[theme];
-  const bg = withOpacity(c.bg, opacity);
   const text = textColor ?? c.text;
   const accent = accentColor ?? c.accent;
   const fs = (n: number) => Math.round(n * fontScale);
@@ -64,13 +63,15 @@ export function StreakWidget({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: bg,
+        backgroundGradient: cardGradient(theme, opacity),
         borderRadius: radius,
+        borderWidth: 1,
+        borderColor: hairline(theme),
         padding: 12,
       }}>
-      <TextWidget text={`🔥 ${streak}`} style={{ fontSize: streakSize, color: accent, fontWeight: '700' }} />
+      <TextWidget text={`🔥 ${streak}`} style={{ fontSize: streakSize, color: accent, fontWeight: '700', letterSpacing: 0.2 }} />
       {showStreakLabel ? (
-        <TextWidget text={streakLabel} style={{ fontSize: 12, color: text, marginTop: 4 }} />
+        <TextWidget text={streakLabel} style={{ fontSize: 12, color: text, marginTop: 4, letterSpacing: 0.2 }} />
       ) : null}
       <TextWidget text={todayLine} style={{ fontSize: 11, color: c.muted, marginTop: 6 }} />
     </FlexWidget>

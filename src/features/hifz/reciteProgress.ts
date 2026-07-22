@@ -40,8 +40,12 @@ export interface WindowConfig {
 // erwarteten Wortes NAHE der aktuellen Stelle zählen — nie als Treffer eines
 // weit entfernten gleichlautenden Wortes. lookBehind hält den Übergang stabil,
 // lookAhead gibt genug Spielraum für flüssiges Rezitieren, ohne die ganze Sure
-// zu öffnen (Al-Fatiha ≈ 29 Wörter → 16-Wort-Fenster koppelt trotzdem eng).
-export const DEFAULT_MATCH_WINDOW: WindowConfig = { lookBehind: 4, lookAhead: 12 };
+// zu öffnen. lookAhead großzügiger (18): ein zügig Rezitierender spricht in
+// einem ~1,5-s-Live-Takt + Transkriptionszeit leicht 10+ Wörter vor der Front —
+// ein zu enges Fenster ließ die Front dann hinterherhinken („erkennt noch nicht
+// alles"). 18 bleibt klar unter typischen Vers-Wiederholungsabständen, koppelt
+// also weiter eng genug gegen den Gleichlaut-Bug.
+export const DEFAULT_MATCH_WINDOW: WindowConfig = { lookBehind: 4, lookAhead: 18 };
 
 // Weites Fenster NUR für den Conditioning-Prompt (whisper.cpp-Kontext) — hier
 // hilft mehr Vorschau, s. Kopfkommentar. Bleibt klar unter den 224 Prompt-
@@ -120,9 +124,21 @@ export function promptWindow(
  * gleichlautende) Wörter können NICHT getroffen/aufgedeckt werden — ein Wort
  * aus Vers 1 kann so nie ein Wort in Vers 7 „treffen".
  *
- * Front NUR an exakten Treffern (hit) vorrücken, monoton (nie zurück): ein
- * unsicherer near soll die Front nicht verfrüht schieben; einen einzelnen
- * near-„Loch" überspringt ein späterer echter Treffer ohnehin (lastHit+1).
+ * Front-Vorrücken (monoton, nie zurück) auf ZWEI Wegen — der Kern-Fix gegen das
+ * „verliert den Faden / erkennt noch nicht alles" (User 2026-07-22):
+ *  (1) Bis zum letzten EXAKTEN Treffer (hit) im Fenster (lastHit+1) — wie bisher;
+ *      ein einzelner near-„Loch" wird von einem späteren hit übersprungen.
+ *  (2) Über eine ZUSAMMENHÄNGENDE Kette von Treffern (hit ODER near), die GENAU
+ *      an der aktuellen Front beginnt. Rezitiert jemand korrekt, aber die
+ *      Quran-ASR gibt sein Wort systematisch nur „fast" (near) wieder (Dialekt,
+ *      Madd, Anfänger), blieb die Front früher an diesem near hängen und ALLES
+ *      danach blieb verdeckt. Eine near-Kette DIREKT an der Front ist starke
+ *      Evidenz echten Fortschritts → die Front darf mit. Ein ISOLIERTER near
+ *      irgendwo weiter im Fenster (nicht an der Front) rückt die Front NICHT vor
+ *      (bleibt gelb sichtbar, aber kein verfrühtes Überspringen ungesprochener
+ *      Wörter) — so bleibt der Schutz gegen Gleichlaut-Fehltreffer erhalten.
+ * Die finale Voll-Auswertung (Beam-5) deckt ohnehin alles nach, monotones
+ * Aufdecken macht nie etwas rückgängig.
  */
 export function windowedReveal(
   partial: string,
@@ -149,7 +165,21 @@ export function windowedReveal(
       reveals.push({ index: start + k, status: 'near' });
     }
   }
-  const candidate = lastHit >= 0 ? start + lastHit + 1 : frontier;
+
+  // (1) Vorrücken bis zum letzten exakten Treffer.
+  let candidate = lastHit >= 0 ? start + lastHit + 1 : frontier;
+
+  // (2) Zusammenhängende hit/near-Kette AB der Front. Lokaler Index der Front im
+  // Fenster (start entspricht frontier-lookBehind, außer am Sure-Anfang geklemmt).
+  const frontierLocal = frontier - start;
+  if (frontierLocal >= 0 && frontierLocal < aligned.length) {
+    let k = frontierLocal;
+    while (k < aligned.length && (aligned[k]?.status === 'hit' || aligned[k]?.status === 'near')) k++;
+    // k = erstes NICHT-getroffenes Wort ab der Front → Front bis dorthin ziehen.
+    const runCandidate = start + k;
+    if (runCandidate > candidate) candidate = runCandidate;
+  }
+
   return { reveals, frontier: candidate > frontier ? candidate : frontier };
 }
 

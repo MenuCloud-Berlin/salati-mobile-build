@@ -137,21 +137,22 @@ export default function LernenScreen() {
             ))}
           </View>
 
-          {/* Raster: uebrige Werkzeuge */}
+          {/* Raster: uebrige Werkzeuge. Zwei-spaltige Karten mit grossem
+              Icon-Badge (44) statt der frueheren duennen Zeilen mit 32er-Badge
+              - groessere, gleichmaessige Tap-Ziele und visuell konsistent mit
+              den Featured-/Medien-Karten darueber (User-Wunsch: groessere
+              Buttons + aufgeraeumteres Studium-Menue). */}
           <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sectionTitle}>
             {t('lernen.more')}
           </ThemedText>
           <View style={styles.grid}>
             {GRID.map((item) => (
               <AnimatedListItem key={item.href} index={itemIndex++} style={styles.gridItem}>
-                <PressableCard onPress={() => router.push(item.href)} style={styles.row}>
-                  <View style={styles.rowLeft}>
-                    <ThemedView type="backgroundSelected" style={styles.iconBadge}>
-                      <IconSymbol name={item.icon} size={18} color={colors.accent} />
-                    </ThemedView>
-                    <ThemedText type="default">{t(item.labelKey)}</ThemedText>
-                  </View>
-                  <DisclosureChevron size={18} color={colors.textSecondary} />
+                <PressableCard onPress={() => router.push(item.href)} style={styles.gridCard}>
+                  <ThemedView type="backgroundSelected" style={styles.gridIcon}>
+                    <IconSymbol name={item.icon} size={22} color={colors.accent} />
+                  </ThemedView>
+                  <ThemedText type="smallBold" numberOfLines={2}>{t(item.labelKey)}</ThemedText>
                 </PressableCard>
               </AnimatedListItem>
             ))}
@@ -185,9 +186,8 @@ const styles = StyleSheet.create({
   featuredIcon: { width: 44, height: 44, borderRadius: 14, alignItems: 'center', justifyContent: 'center' },
   mediaTitleRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   sectionTitle: { textTransform: 'uppercase', letterSpacing: 1, paddingLeft: Spacing.one, marginTop: Spacing.one },
-  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.two },
-  gridItem: { flexBasis: 320, minWidth: 280, flexGrow: 1 },
-  row: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: Spacing.three },
-  rowLeft: { flexDirection: 'row', alignItems: 'center', gap: Spacing.three },
-  iconBadge: { width: 32, height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center' },
+  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.three },
+  gridItem: { flexBasis: 150, minWidth: 140, flexGrow: 1 },
+  gridCard: { gap: Spacing.two, padding: Spacing.four, minHeight: 108, justifyContent: 'flex-start' },
+  gridIcon: { width: 44, height: 44, borderRadius: 14, alignItems: 'center', justifyContent: 'center' },
 });

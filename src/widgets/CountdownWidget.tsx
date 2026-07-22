@@ -2,7 +2,7 @@
 
 import { FlexWidget, TextWidget } from 'react-native-android-widget';
 
-import { WIDGET_THEMES, withOpacity, type WidgetTheme } from './widgetTheme';
+import { cardGradient, hairline, tint, WIDGET_THEMES, type WidgetTheme } from './widgetTheme';
 
 // "use no memo" oben: siehe Kommentar in PrayerWidget.tsx (React-Compiler
 // bricht sonst mit "Invalid Hook Call", da react-native-android-widget die
@@ -53,7 +53,6 @@ export function CountdownWidget({
   accentColor,
 }: CountdownWidgetProps) {
   const c = WIDGET_THEMES[theme];
-  const bg = withOpacity(c.bg, opacity);
   const text = textColor ?? c.text;
   const accent = accentColor ?? c.accent;
   const fs = (n: number) => Math.round(n * fontScale);
@@ -67,16 +66,36 @@ export function CountdownWidget({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: bg,
+        backgroundGradient: cardGradient(theme, opacity),
         borderRadius: radius,
+        borderWidth: 1,
+        borderColor: hairline(theme),
         padding: 12,
       }}>
-      {showCoords ? <TextWidget text={title} style={{ fontSize: 11, color: c.muted }} /> : null}
-      <TextWidget text={nextName} style={{ fontSize: fs(22), color: accent, fontWeight: '700', marginTop: 2 }} />
-      {showNextTime ? (
-        <TextWidget text={nextTime} style={{ fontSize: fs(18), color: text, fontWeight: '700' }} />
+      {showCoords ? (
+        <TextWidget
+          text={title}
+          truncate="END"
+          maxLines={1}
+          style={{ fontSize: 11, color: c.muted, letterSpacing: 0.3, marginBottom: 2 }}
+        />
       ) : null}
-      <TextWidget text={remaining} style={{ fontSize: 12, color: c.muted, marginTop: 4 }} />
+      <TextWidget text={nextName} style={{ fontSize: fs(24), color: accent, fontWeight: '700', letterSpacing: 0.2 }} />
+      {showNextTime ? (
+        <TextWidget text={nextTime} style={{ fontSize: fs(20), color: text, fontWeight: '700', marginTop: 2 }} />
+      ) : null}
+      {remaining ? (
+        <FlexWidget
+          style={{
+            backgroundColor: tint(accent, 0.16),
+            borderRadius: 999,
+            paddingHorizontal: 12,
+            paddingVertical: 4,
+            marginTop: 10,
+          }}>
+          <TextWidget text={remaining} style={{ fontSize: fs(12), color: accent, fontWeight: '600', letterSpacing: 0.2 }} />
+        </FlexWidget>
+      ) : null}
     </FlexWidget>
   );
 }

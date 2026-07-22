@@ -1,17 +1,26 @@
 // Video-Voll-Player (nativ, iOS/Android): grosser 16:9-VideoView mit eigenen
-// Steuerelementen — Scrubber, Play/Pause, ±15 s, Folge vor/zurueck,
-// Geschwindigkeit, Vollbild (Querformat ueber die native Vollbild-Ansicht).
-// Die Wiedergabe-Position wird pro Folge gemerkt (Weiterschauen) und beim
-// erneuten Oeffnen wiederhergestellt. Darunter Titel, Beschreibung und Themen.
-// Hintergrund-Wiedergabe ist bei Video bewusst AUS (staysActiveInBackground:
-// false) — Video pausiert beim Verlassen. Der Web-Fallback (HTML5 <video>)
-// liegt in [episode].web.tsx.
-import { useEvent } from 'expo';
+// Steuerelementen — Scrubber (mit Buffer-Anzeige), Play/Pause, ±15 s, Folge
+// vor/zurueck, Geschwindigkeit, Bild-in-Bild, Vollbild sowie ein Einstellungs-
+// Sheet (Geschwindigkeit, Autoplay, Hintergrund-Ton). Am Folgenende spielt bei
+// aktivem Autoplay automatisch die naechste Folge (innerhalb derselben Reihe
+// bzw. Playlist). Ueber „zu Playlist hinzufuegen" landet die Folge in einer
+// eigenen, lokalen Playlist. Die Wiedergabe-Position wird pro Folge gemerkt
+// (Weiterschauen) und beim erneuten Oeffnen wiederhergestellt. Der Web-Fallback
+// (HTML5 <video>) liegt in [episode].web.tsx.
+import { useEvent, useEventListener } from 'expo';
 import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
-import { useVideoPlayer, VideoView } from 'expo-video';
+import { isPictureInPictureSupported, useVideoPlayer, VideoView } from 'expo-video';
 import { useQuery } from '@tanstack/react-query';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { Alert, Pressable, ScrollView, StyleSheet, useWindowDimensions, View } from 'react-native';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  Alert,
+  Modal,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  useWindowDimensions,
+  View,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { IconSymbol, type IconName } from '@/components/ui/icon-symbol';
@@ -20,8 +29,11 @@ import { ThemedActivityIndicator } from '@/components/themed-activity-indicator'
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
-import { fetchVideoIndex, formatDuration, type VideoEpisode } from '@/features/video/data';
+import { AddToPlaylistSheet } from '@/features/video/add-to-playlist-sheet';
+import { fetchVideoIndex, formatDuration, seriesNeighbors, type VideoEpisode } from '@/features/video/data';
 import { resolveVideoUri, useVideoDownload } from '@/features/video/downloads';
+import { useVideoPlaylists } from '@/features/video/playlists';
+import { useVideoPrefs } from '@/features/video/prefs';
 import { loadVideoProgress, saveVideoProgress } from '@/features/video/progress';
 import { Slider } from '@/features/podcast/slider';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
@@ -31,7 +43,7 @@ const SPEEDS = [0.75, 1, 1.25, 1.5, 1.75, 2] as const;
 const SKIP_SEC = 15;
 
 export default function VideoPlayerScreen() {
-  const { episode: episodeParam } = useLocalSearchParams<{ episode: string }>();
+  const { episode: episodeParam, list: listParam } = useLocalSearchParams<{ episode: string; list?: string }>();
   const episodeNo = Number(episodeParam);
   const { t } = useTranslation();
   const scheme = useResolvedScheme();
@@ -44,17 +56,35 @@ export default function VideoPlayerScreen() {
     staleTime: 60 * 60 * 1000,
   });
 
-  const episodes = data?.episodes ?? [];
+  const { prefs, setAutoplay, setBackground, setSpeed } = useVideoPrefs();
+  const { playlists } = useVideoPlaylists();
+
+  const episodes = useMemo(() => data?.episodes ?? [], [data]);
   const episode = episodes.find((e) => e.episode_no === episodeNo);
-  const idx = episodes.findIndex((e) => e.episode_no === episodeNo);
-  const prev = idx > 0 ? episodes[idx - 1] : undefined;
-  const next = idx >= 0 && idx < episodes.length - 1 ? episodes[idx + 1] : undefined;
   const dl = useVideoDownload(episode);
+
+  // Reihenfolge fuer „vor/zurueck" + Auto-Play: innerhalb einer Playlist (wenn
+  // ueber `list` geoeffnet) sonst innerhalb der eigenen Reihe (nicht quer durch
+  // alle Reihen). So bleibt das Auto-Play thematisch zusammenhaengend.
+  const { prev, next } = useMemo(() => {
+    const playlist = listParam ? playlists.find((p) => p.id === listParam) : undefined;
+    if (playlist) {
+      const ordered = playlist.episodeNos
+        .map((n) => episodes.find((e) => e.episode_no === n))
+        .filter((e): e is VideoEpisode => !!e);
+      const i = ordered.findIndex((e) => e.episode_no === episodeNo);
+      return {
+        prev: i > 0 ? ordered[i - 1] : undefined,
+        next: i >= 0 && i < ordered.length - 1 ? ordered[i + 1] : undefined,
+      };
+    }
+    return seriesNeighbors(episodes, episodeNo);
+  }, [episodes, episodeNo, listParam, playlists]);
 
   // Player einmal mit leerer Quelle anlegen (Rules of Hooks: unbedingt am
   // Anfang). Die echte Quelle wird gesetzt, sobald die Folge + die aufgeloeste
   // (lokale oder Remote-) URI feststehen. 0.5 s Zeitmarken-Intervall speist den
-  // eigenen Scrubber; Hintergrund-Wiedergabe ist bei Video aus.
+  // eigenen Scrubber.
   const player = useVideoPlayer(null, (p) => {
     p.timeUpdateEventInterval = 0.5;
     p.staysActiveInBackground = false;
@@ -66,26 +96,43 @@ export default function VideoPlayerScreen() {
   const timeUpdate = useEvent(player, 'timeUpdate');
   const currentTime = timeUpdate?.currentTime ?? 0;
 
-  const [speed, setSpeed] = useState(1);
   const [seekPreview, setSeekPreview] = useState<number | null>(null);
+  const [showSettings, setShowSettings] = useState(false);
+  const [showPlaylistSheet, setShowPlaylistSheet] = useState(false);
 
+  const speed = prefs.speed;
   const duration = player.duration || episode?.duration_sec || 0;
   const progress = duration > 0 ? currentTime / duration : 0;
   const shownProgress = seekPreview ?? progress;
+  const bufferedRatio = duration > 0 ? Math.min(1, (player.bufferedPosition || 0) / duration) : 0;
 
   const viewRef = useRef<VideoView>(null);
+  const pipSupported = useMemo(() => {
+    try {
+      return isPictureInPictureSupported();
+    } catch {
+      return false;
+    }
+  }, []);
 
   // Geschwindigkeit auf den Player anwenden — nur im Effekt erlaubt (Property-
   // Mutation eines Hook-Werts). Nach jedem Quellwechsel (status → readyToPlay)
   // erneut, da replace() die Rate zuruecksetzen kann.
   useEffect(() => {
-    // expo-video setzt die Geschwindigkeit ausschliesslich ueber diese
-    // Property (kein setPlaybackRate — so auch in den Expo-Docs). Die
-    // Compiler-Immutability-Regel ist hier ein False-Positive fuer den
-    // absichtlich veraenderbaren Player.
     // eslint-disable-next-line react-hooks/immutability
     player.playbackRate = speed;
   }, [speed, status, player]);
+
+  // Hintergrund-Ton + Now-Playing-Benachrichtigung an die (klebrige) Nutzer-
+  // Einstellung koppeln. Hinweis: Fuer echten Hintergrund-Ton muss zusaetzlich
+  // das expo-video-Plugin `supportsBackgroundPlayback: true` gesetzt sein
+  // (greift erst nach einem nativen Rebuild).
+  useEffect(() => {
+    /* eslint-disable react-hooks/immutability */
+    player.staysActiveInBackground = prefs.background;
+    player.showNowPlayingNotification = prefs.background;
+    /* eslint-enable react-hooks/immutability */
+  }, [prefs.background, player, status]);
 
   // Weiterschauen-Position wird nach dem Laden EINMAL angesprungen.
   const seekedRef = useRef(false);
@@ -120,13 +167,11 @@ export default function VideoPlayerScreen() {
     if (status !== 'readyToPlay' || seekedRef.current) return;
     seekedRef.current = true;
     const seek = pendingSeekRef.current;
-    // Relativ via seekBy (Methode) statt Property-Zuweisung an den Player.
     if (seek > 1 && seek < player.duration - 2) player.seekBy(seek - player.currentTime);
   }, [status, player]);
 
   // Position throttled sichern (alle ~4 s), erst nachdem der Resume-Sprung
-  // angewandt wurde (sonst ueberschreibt ein fruehes timeUpdate die Position
-  // mit 0).
+  // angewandt wurde.
   const lastSaveRef = useRef(0);
   useEffect(() => {
     if (!episode || !seekedRef.current) return;
@@ -136,8 +181,7 @@ export default function VideoPlayerScreen() {
     void saveVideoProgress(episode.episode_no, currentTime, duration);
   }, [currentTime, episode, duration]);
 
-  // Beim Verlassen/Unmount die letzte Position sichern (Refs, damit der
-  // Cleanup die aktuellen Werte sieht).
+  // Beim Verlassen/Unmount die letzte Position sichern.
   const saveRef = useRef({ episodeNo, currentTime, duration, seeked: false });
   useEffect(() => {
     saveRef.current = { episodeNo, currentTime, duration, seeked: seekedRef.current };
@@ -151,29 +195,50 @@ export default function VideoPlayerScreen() {
     }, []),
   );
 
+  // Auto-Play am Folgenende: naechste Folge (Reihe/Playlist) laden. Refs, damit
+  // der Event-Callback frische Werte sieht (nicht die vom ersten Render).
+  const autoplayRef = useRef(prefs.autoplay);
+  const nextRef = useRef<VideoEpisode | undefined>(next);
+  const listRef = useRef<string | undefined>(listParam);
+  useEffect(() => {
+    autoplayRef.current = prefs.autoplay;
+    nextRef.current = next;
+    listRef.current = listParam;
+  });
+  useEventListener(player, 'playToEnd', () => {
+    if (!autoplayRef.current) return;
+    const n = nextRef.current;
+    if (!n) return;
+    router.replace({
+      pathname: '/videos/[episode]',
+      params: listRef.current ? { episode: n.episode_no, list: listRef.current } : { episode: n.episode_no },
+    });
+  });
+
   function togglePlay() {
     if (isPlaying) player.pause();
     else player.play();
   }
 
   function skip(delta: number) {
-    // seekBy ist relativ und eine Methode (Property-Zuweisung an den Player
-    // waere ausserhalb eines Effekts nicht erlaubt).
     player.seekBy(delta);
-  }
-
-  function applySpeed(s: number) {
-    // Nur den State setzen; der Effekt oben uebertraegt die Rate auf den Player.
-    setSpeed(s);
   }
 
   function cycleSpeed() {
     const i = SPEEDS.indexOf(speed as (typeof SPEEDS)[number]);
-    applySpeed(SPEEDS[(i + 1) % SPEEDS.length]);
+    void setSpeed(SPEEDS[(i + 1) % SPEEDS.length]);
   }
 
   function goTo(ep?: VideoEpisode) {
-    if (ep) router.replace({ pathname: '/videos/[episode]', params: { episode: ep.episode_no } });
+    if (ep)
+      router.replace({
+        pathname: '/videos/[episode]',
+        params: listParam ? { episode: ep.episode_no, list: listParam } : { episode: ep.episode_no },
+      });
+  }
+
+  function togglePip() {
+    void viewRef.current?.startPictureInPicture().catch(() => {});
   }
 
   function confirmDeleteDownload() {
@@ -205,7 +270,6 @@ export default function VideoPlayerScreen() {
     );
   }
 
-  // 16:9-Videoflaeche, an die Bildschirmbreite (bis MaxContentWidth) gebunden.
   const videoWidth = Math.min(winWidth, MaxContentWidth);
   const videoHeight = Math.round((videoWidth * 9) / 16);
   const loadingVideo = status === 'loading' || status === 'idle';
@@ -225,6 +289,7 @@ export default function VideoPlayerScreen() {
               nativeControls={false}
               fullscreenOptions={{ enable: true }}
               allowsPictureInPicture
+              startsPictureInPictureAutomatically={prefs.background}
               accessibilityLabel={episode.title}
             />
             {loadingVideo && (
@@ -243,11 +308,15 @@ export default function VideoPlayerScreen() {
                 onChange={(r) => setSeekPreview(r)}
                 onCommit={(r) => {
                   setSeekPreview(null);
-                  // Absolut anspringen via relativem seekBy (Methode statt
-                  // Property-Zuweisung — Rules-of-Hooks-Immutability).
                   if (duration > 0) player.seekBy(r * duration - currentTime);
                 }}
               />
+              {/* Buffer-Anzeige: wie weit vorausgeladen ist. */}
+              {bufferedRatio > 0.001 && bufferedRatio < 0.999 && (
+                <View style={styles.bufferTrack} pointerEvents="none">
+                  <View style={[styles.bufferFill, { width: `${Math.round(bufferedRatio * 100)}%`, backgroundColor: colors.textSecondary }]} />
+                </View>
+              )}
               <View style={styles.timeRow}>
                 <ThemedText type="small" themeColor="textSecondary">
                   {formatDuration((seekPreview != null ? seekPreview * duration : currentTime) || 0)}
@@ -272,13 +341,18 @@ export default function VideoPlayerScreen() {
               <CircleButton icon="play-skip-forward" size={24} onPress={() => goTo(next)} disabled={!next} label={t('video.next')} />
             </View>
 
+            {/* Sekundaerreihe (umbrechend): Speed, Autoplay, Playlist, PiP,
+                Download, Vollbild, Einstellungen. */}
             <View style={styles.secondaryRow}>
-              <PressableCard onPress={cycleSpeed} type="backgroundElement" style={styles.pill}>
-                <IconSymbol name="speedometer" size={16} color={colors.accent} />
-                <ThemedText type="smallBold" themeColor="accent">
-                  {speed}×
-                </ThemedText>
-              </PressableCard>
+              <Pill icon="speedometer" label={`${speed}×`} onPress={cycleSpeed} />
+              <Pill
+                icon="play-forward-circle"
+                label={t('video.autoplay')}
+                active={prefs.autoplay}
+                onPress={() => void setAutoplay(!prefs.autoplay)}
+              />
+              <Pill icon="albums-outline" label={t('video.playlist')} onPress={() => setShowPlaylistSheet(true)} />
+              {pipSupported && <Pill icon="browsers-outline" label={t('video.pip')} onPress={togglePip} />}
 
               {dl.supported &&
                 (dl.state === 'downloading' ? (
@@ -300,25 +374,11 @@ export default function VideoPlayerScreen() {
                     </ThemedText>
                   </PressableCard>
                 ) : (
-                  <PressableCard onPress={dl.download} type="backgroundElement" style={styles.pill}>
-                    <IconSymbol name="download-outline" size={16} color={colors.accent} />
-                    <ThemedText type="smallBold" themeColor="accent">
-                      {t('video.download')}
-                    </ThemedText>
-                  </PressableCard>
+                  <Pill icon="download-outline" label={t('video.download')} onPress={dl.download} />
                 ))}
 
-              <View style={styles.flex} />
-
-              <PressableCard
-                onPress={() => viewRef.current?.enterFullscreen()}
-                type="backgroundElement"
-                style={styles.pill}>
-                <IconSymbol name="expand" size={16} color={colors.accent} />
-                <ThemedText type="smallBold" themeColor="accent">
-                  {t('video.fullscreen')}
-                </ThemedText>
-              </PressableCard>
+              <Pill icon="expand" label={t('video.fullscreen')} onPress={() => void viewRef.current?.enterFullscreen()} />
+              <Pill icon="options" label={t('video.settings')} onPress={() => setShowSettings(true)} />
             </View>
           </View>
 
@@ -356,7 +416,42 @@ export default function VideoPlayerScreen() {
           </View>
         </ScrollView>
       </SafeAreaView>
+
+      <AddToPlaylistSheet visible={showPlaylistSheet} onClose={() => setShowPlaylistSheet(false)} episodeNo={episode.episode_no} />
+      <VideoSettingsSheet
+        visible={showSettings}
+        onClose={() => setShowSettings(false)}
+        speed={speed}
+        onSpeed={(s) => void setSpeed(s)}
+        autoplay={prefs.autoplay}
+        onAutoplay={(a) => void setAutoplay(a)}
+        background={prefs.background}
+        onBackground={(b) => void setBackground(b)}
+      />
     </ThemedView>
+  );
+}
+
+function Pill({
+  icon,
+  label,
+  onPress,
+  active,
+}: {
+  icon: IconName;
+  label: string;
+  onPress: () => void;
+  active?: boolean;
+}) {
+  const scheme = useResolvedScheme();
+  const colors = Colors[scheme];
+  return (
+    <PressableCard onPress={onPress} type="backgroundElement" style={styles.pill}>
+      <IconSymbol name={icon} size={16} color={active === false ? colors.textSecondary : colors.accent} />
+      <ThemedText type="smallBold" themeColor={active === false ? 'textSecondary' : 'accent'}>
+        {label}
+      </ThemedText>
+    </PressableCard>
   );
 }
 
@@ -388,6 +483,117 @@ function CircleButton({
   );
 }
 
+function VideoSettingsSheet({
+  visible,
+  onClose,
+  speed,
+  onSpeed,
+  autoplay,
+  onAutoplay,
+  background,
+  onBackground,
+}: {
+  visible: boolean;
+  onClose: () => void;
+  speed: number;
+  onSpeed: (s: number) => void;
+  autoplay: boolean;
+  onAutoplay: (a: boolean) => void;
+  background: boolean;
+  onBackground: (b: boolean) => void;
+}) {
+  const { t } = useTranslation();
+  const scheme = useResolvedScheme();
+  const colors = Colors[scheme];
+
+  return (
+    <Modal visible={visible} transparent animationType="slide" onRequestClose={onClose}>
+      <Pressable style={styles.backdrop} onPress={onClose} />
+      <ThemedView type="backgroundElement" style={styles.sheet}>
+        <View style={styles.sheetHandle} />
+        <ScrollView contentContainerStyle={styles.sheetContent} showsVerticalScrollIndicator={false}>
+          <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sheetLabel}>
+            {t('video.speed')}
+          </ThemedText>
+          <View style={styles.chipRow}>
+            {SPEEDS.map((s) => (
+              <Chip key={s} active={speed === s} label={`${s}×`} onPress={() => onSpeed(s)} />
+            ))}
+          </View>
+
+          <ToggleRow
+            icon="play-forward-circle"
+            label={t('video.autoplay')}
+            hint={t('video.autoplayHint')}
+            value={autoplay}
+            onToggle={() => onAutoplay(!autoplay)}
+          />
+          <ToggleRow
+            icon="headset"
+            label={t('video.backgroundPlay')}
+            hint={t('video.backgroundPlayHint')}
+            value={background}
+            onToggle={() => onBackground(!background)}
+          />
+
+          <Pressable onPress={onClose} style={[styles.doneBtn, { backgroundColor: colors.accent }]}>
+            <ThemedText type="smallBold" style={{ color: colors.background }}>
+              {t('common.done')}
+            </ThemedText>
+          </Pressable>
+        </ScrollView>
+      </ThemedView>
+    </Modal>
+  );
+}
+
+function Chip({ active, label, onPress }: { active: boolean; label: string; onPress: () => void }) {
+  const scheme = useResolvedScheme();
+  const colors = Colors[scheme];
+  return (
+    <Pressable
+      onPress={onPress}
+      style={[styles.chip, { backgroundColor: active ? colors.accent : colors.backgroundSelected }]}>
+      <ThemedText type="small" style={{ color: active ? colors.background : colors.text }}>
+        {label}
+      </ThemedText>
+    </Pressable>
+  );
+}
+
+function ToggleRow({
+  icon,
+  label,
+  hint,
+  value,
+  onToggle,
+}: {
+  icon: IconName;
+  label: string;
+  hint?: string;
+  value: boolean;
+  onToggle: () => void;
+}) {
+  const scheme = useResolvedScheme();
+  const colors = Colors[scheme];
+  return (
+    <Pressable onPress={onToggle} style={styles.toggleRow} accessibilityRole="switch" accessibilityState={{ checked: value }}>
+      <IconSymbol name={icon} size={20} color={value ? colors.accent : colors.textSecondary} />
+      <View style={styles.toggleText}>
+        <ThemedText type="default">{label}</ThemedText>
+        {hint ? (
+          <ThemedText type="small" themeColor="textSecondary">
+            {hint}
+          </ThemedText>
+        ) : null}
+      </View>
+      <View style={[styles.switchTrack, { backgroundColor: value ? colors.accent : colors.backgroundSelected }]}>
+        <View style={[styles.switchThumb, { backgroundColor: colors.background, alignSelf: value ? 'flex-end' : 'flex-start' }]} />
+      </View>
+    </Pressable>
+  );
+}
+
 const styles = StyleSheet.create({
   container: { flex: 1 },
   safeArea: { flex: 1, paddingTop: Spacing.two + BackChipInset },
@@ -403,14 +609,15 @@ const styles = StyleSheet.create({
     marginTop: Spacing.three,
   },
   scrubBlock: { width: '100%' },
-  timeRow: { flexDirection: 'row', justifyContent: 'space-between', marginTop: -Spacing.one },
+  bufferTrack: { height: 2, borderRadius: 1, backgroundColor: 'rgba(128,128,128,0.25)', overflow: 'hidden', marginTop: 2 },
+  bufferFill: { height: 2, borderRadius: 1, opacity: 0.6 },
+  timeRow: { flexDirection: 'row', justifyContent: 'space-between', marginTop: Spacing.half },
   transport: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: Spacing.four, marginTop: Spacing.two },
   circleBtn: { width: 48, height: 48, borderRadius: 24, alignItems: 'center', justifyContent: 'center' },
   circleBtnDisabled: { opacity: 0.35 },
   playBtn: { width: 68, height: 68, borderRadius: 34, alignItems: 'center', justifyContent: 'center' },
-  secondaryRow: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two, marginTop: Spacing.three },
+  secondaryRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: Spacing.two, marginTop: Spacing.three },
   pill: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one, paddingVertical: Spacing.one, paddingHorizontal: Spacing.three },
-  flex: { flex: 1 },
   info: {
     width: '100%',
     maxWidth: MaxContentWidth,
@@ -424,4 +631,26 @@ const styles = StyleSheet.create({
   topicsLabel: { letterSpacing: 1, marginTop: Spacing.three },
   topicsWrap: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.two, marginTop: Spacing.one },
   topicChip: { paddingVertical: Spacing.one, paddingHorizontal: Spacing.three, borderRadius: 999 },
+  // Settings-Sheet
+  backdrop: { flex: 1, backgroundColor: 'rgba(0,0,0,0.5)' },
+  sheet: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    maxHeight: '80%',
+    paddingBottom: Spacing.five,
+  },
+  sheetHandle: { alignSelf: 'center', width: 40, height: 4, borderRadius: 2, backgroundColor: 'rgba(128,128,128,0.4)', marginTop: Spacing.two },
+  sheetContent: { padding: Spacing.four, gap: Spacing.two, alignSelf: 'center', width: '100%', maxWidth: MaxContentWidth },
+  sheetLabel: { textTransform: 'uppercase', letterSpacing: 1, marginTop: Spacing.two },
+  chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.two },
+  chip: { paddingVertical: Spacing.two, paddingHorizontal: Spacing.three, borderRadius: 999, minWidth: 52, alignItems: 'center' },
+  toggleRow: { flexDirection: 'row', alignItems: 'center', gap: Spacing.three, paddingVertical: Spacing.three, marginTop: Spacing.one },
+  toggleText: { flex: 1, gap: 2 },
+  switchTrack: { width: 44, height: 26, borderRadius: 13, padding: 3, justifyContent: 'center' },
+  switchThumb: { width: 20, height: 20, borderRadius: 10 },
+  doneBtn: { marginTop: Spacing.four, paddingVertical: Spacing.three, borderRadius: 999, alignItems: 'center' },
 });

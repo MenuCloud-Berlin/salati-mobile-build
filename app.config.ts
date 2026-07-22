@@ -4,7 +4,7 @@ const config: ExpoConfig = {
   name: 'Salati',
   slug: 'salatibox',
   owner: 'menucloudberlin',
-  version: '1.27.19',
+  version: '1.27.20',
   orientation: 'portrait',
   icon: './assets/images/icon.png',
   scheme: 'salatibox',
@@ -108,9 +108,12 @@ const config: ExpoConfig = {
     [
       'expo-video',
       {
-        // Lernvideos werden im Vordergrund abgespielt; Hintergrund-Wiedergabe ist
-        // bei Video bewusst aus (staysActiveInBackground: false im Player).
-        supportsBackgroundPlayback: false,
+        // Hintergrund-Ton ist optional pro Nutzer (Player-Einstellung
+        // „Im Hintergrund weiter" -> player.staysActiveInBackground). Der
+        // Plugin-Schalter muss dafuer aktiv sein und schaltet die noetigen
+        // nativen Capabilities frei (iOS UIBackgroundModes: audio ist gesetzt);
+        // greift erst nach einem nativen Rebuild.
+        supportsBackgroundPlayback: true,
         supportsPictureInPicture: true,
       },
     ],

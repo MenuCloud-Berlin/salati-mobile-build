@@ -2,7 +2,7 @@
 
 import { FlexWidget, TextWidget } from 'react-native-android-widget';
 
-import { WIDGET_THEMES, withOpacity, type WidgetTheme } from './widgetTheme';
+import { cardGradient, hairline, WIDGET_THEMES, type WidgetTheme } from './widgetTheme';
 
 // "use no memo" oben: siehe Kommentar in PrayerWidget.tsx (React-Compiler
 // bricht sonst mit "Invalid Hook Call", da react-native-android-widget die
@@ -55,7 +55,6 @@ export function WisdomWidget({
   accentColor,
 }: WisdomWidgetProps) {
   const c = WIDGET_THEMES[theme];
-  const bg = withOpacity(c.bg, opacity);
   const text = textColor ?? c.text;
   const accent = accentColor ?? c.accent;
   const fs = (n: number) => Math.round(n * fontScale);
@@ -67,11 +66,13 @@ export function WisdomWidget({
         width: 'match_parent',
         height: 'match_parent',
         flexDirection: 'column',
-        backgroundColor: bg,
+        backgroundGradient: cardGradient(theme, opacity),
         borderRadius: radius,
+        borderWidth: 1,
+        borderColor: hairline(theme),
         padding: 14,
       }}>
-      <TextWidget text={title} style={{ fontSize: 11, color: accent }} />
+      <TextWidget text={title} style={{ fontSize: 11, color: accent, fontWeight: '600', letterSpacing: 0.3 }} />
       {showArabic ? (
         <TextWidget
           text={arabic}

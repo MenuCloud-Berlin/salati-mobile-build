@@ -5,6 +5,7 @@ export default function VideosLayout() {
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="index" />
       <Stack.Screen name="[episode]" />
+      <Stack.Screen name="playlists" />
     </Stack>
   );
 }

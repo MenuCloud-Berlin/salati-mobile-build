@@ -189,11 +189,19 @@ export interface ContinuousOptions {
 // geladen (der Screen gated darauf, s. app/hifz/recite-surah.tsx) — hier kein
 // Download-während-Aufnahme.
 const CONTINUOUS_INTERVAL_MS = 1500;
-// Live-Fenster (Samples) = die bewährten 24 s. Bounded Latenz pro Live-Tick.
-const LIVE_WINDOW_SAMPLES = CONTINUOUS_WINDOW_SEC * SAMPLE_RATE;
+// LIVE-Fenster bewusst KÜRZER als das Final-Fenster (16 statt 24 s): ein
+// greedy-Durchlauf über 24 s Audio kann auf dem Handy > 1,5 s dauern → die
+// meisten Live-Ticks würden per skipIfBusy verworfen und das Aufdecken hinkt
+// spürbar hinterher (User: „erst am Ende"). 16 s halbieren die Dekodier-Latenz
+// nahezu, überlappen bei 1,5-s-Takt weiter massiv (kein Wortverlust) und decken
+// die aktuelle Rezitationsstelle bequem ab. Die VOLLSTÄNDIGKEIT sichert der
+// Final-Pass (unten, 24 s Beam-5 über die ganze Aufnahme) — nicht der Live-Pass.
+const LIVE_WINDOW_SEC = 16;
+const LIVE_WINDOW_SAMPLES = LIVE_WINDOW_SEC * SAMPLE_RATE;
 // FINALE Voll-Auswertung: Fenster + 50-%-Überlappung (hop = window/2), damit an
 // keiner Fenstergrenze ein Wort verloren geht. Beam-5 (volle Genauigkeit) —
-// Latenz beim Stopp unkritisch.
+// Latenz beim Stopp unkritisch. Bewusst weiter die vollen 24 s (mehr Kontext
+// pro Block = genauere Dekodierung, wo Tempo egal ist).
 const FINAL_WINDOW_SAMPLES = CONTINUOUS_WINDOW_SEC * SAMPLE_RATE;
 const FINAL_HOP_SAMPLES = Math.floor(FINAL_WINDOW_SAMPLES / 2);
 

@@ -62,12 +62,33 @@ describe('windowedReveal — Positions-gekoppeltes Aufdecken', () => {
     expect(reveals).toEqual([{ index: 8, status: 'hit' }]);
   });
 
-  it('near (Anfängerfehler) wird im Fenster aufgedeckt, rückt die Front aber NICHT vor', () => {
+  it('near AN der Front rückt die Front mit (systematisches „fast" blockiert nicht mehr)', () => {
     const NEAR = splitExpectedWords('بسم الله خلق العالمين'); // Index 0..3
-    // حلق statt خلق (ح↔خ, near). Front 2, Fenster [1,4) → Index 1,2,3.
+    // حلق statt خلق (ح↔خ, near). Front 2, Fenster [1,4) → Index 1,2,3. Der near
+    // liegt GENAU an der Front → die Front zieht bis dahinter (Index 3), damit
+    // ein durchweg „fast" erkannter Rezitierender nicht hängen bleibt.
     const { reveals, frontier } = windowedReveal('حلق', NEAR, 2, { lookBehind: 1, lookAhead: 2 });
     expect(reveals).toEqual([{ index: 2, status: 'near' }]);
-    expect(frontier).toBe(2); // kein hit → Front bleibt
+    expect(frontier).toBe(3);
+  });
+
+  it('near-KETTE ab der Front rückt über alle fast-Treffer vor', () => {
+    // Zwei aufeinanderfolgende „fast"-Wörter direkt an der Front → Front bis
+    // hinter beide. حلق≈خلق, العلمين≈العالمين.
+    const NEAR = splitExpectedWords('بسم الله خلق العالمين رب'); // Index 0..4
+    const { reveals, frontier } = windowedReveal('حلق العلمين', NEAR, 2, { lookBehind: 1, lookAhead: 4 });
+    expect(reveals.map((r) => r.status)).toEqual(['near', 'near']);
+    expect(reveals.map((r) => r.index)).toEqual([2, 3]);
+    expect(frontier).toBe(4);
+  });
+
+  it('ISOLIERTER near (nicht an der Front) rückt die Front NICHT vor', () => {
+    // „الرحي" wird als „fast" einem der الرحـ-Wörter zugeordnet (hier Index 4),
+    // die Front steht bei 0 und das Wort an der Front (الحمد) fehlt → die Front
+    // bleibt bei 0 (kein verfrühtes Überspringen der ungesprochenen Wörter 1..3).
+    const { reveals, frontier } = windowedReveal('الرحي', WORDS, 0);
+    expect(reveals).toEqual([{ index: 4, status: 'near' }]);
+    expect(frontier).toBe(0);
   });
 
   it('ist monoton — ein späteres Fenster ohne frühe Wörter senkt die Front nicht', () => {

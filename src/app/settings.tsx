@@ -1840,7 +1840,18 @@ function MethodPicker({
 const styles = StyleSheet.create({
   hourRow: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.two, paddingHorizontal: Spacing.three, paddingBottom: Spacing.two },
   hourRowRtl: { flexDirection: 'row-reverse' },
-  hourChip: { paddingVertical: Spacing.one, paddingHorizontal: Spacing.three, borderRadius: 999 },
+  // Groessere Tap-Ziele fuer die Auswahl-Chips (Iqama-Offsets, Pre-Adhan-
+  // Minuten, Adhkar-/Vers-Stunden) und die Download-Icon-Buttons: vorher nur
+  // ~28px hoch (unter der 44pt-Empfehlung), jetzt min. 40px und zentriert.
+  hourChip: {
+    minHeight: 40,
+    minWidth: 40,
+    paddingVertical: Spacing.two,
+    paddingHorizontal: Spacing.three,
+    borderRadius: 999,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   azanRow: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.two, paddingHorizontal: Spacing.three, paddingBottom: Spacing.two },
   azanRowRtl: { flexDirection: 'row-reverse' },
   azanChip: {

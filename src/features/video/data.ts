@@ -23,6 +23,9 @@ export interface VideoEpisode {
   series?: string;
   /** Anzeigename der Reihe (Section-Header). Faellt auf `series` zurueck. */
   series_title?: string;
+  /** Art des Eintrags: 'lesson' (Lernvideo) oder 'table' (Grammatik-Tabelle /
+   *  Vokabel-Video). Nur fuer Iconografie; fehlt es, gilt 'lesson'. */
+  kind?: 'lesson' | 'table';
 }
 
 export interface VideoIndex {
@@ -112,4 +115,28 @@ export function hasMultipleSeries(episodes: VideoEpisode[]): boolean {
     if (seen.size > 1) return true;
   }
   return false;
+}
+
+/**
+ * Nachbarn EINER Folge innerhalb ihrer eigenen Reihe (fuer „nach/vor" + Auto-
+ * Play). Bleibt bewusst in der Reihe: am Reihenende gibt es kein `next` — so
+ * springt das Auto-Play nicht ungewollt in eine thematisch fremde Reihe (z. B.
+ * von den Lernvideos in die Tabellen). Reihenfolge = episode_no aufsteigend.
+ */
+export function seriesNeighbors(
+  episodes: VideoEpisode[],
+  episodeNo: number,
+): { prev?: VideoEpisode; next?: VideoEpisode } {
+  const ep = episodes.find((e) => e.episode_no === episodeNo);
+  if (!ep) return {};
+  const key = ep.series?.trim() || DEFAULT_SERIES_KEY;
+  const siblings = episodes
+    .filter((e) => (e.series?.trim() || DEFAULT_SERIES_KEY) === key)
+    .sort((a, b) => a.episode_no - b.episode_no);
+  const i = siblings.findIndex((e) => e.episode_no === episodeNo);
+  if (i < 0) return {};
+  return {
+    prev: i > 0 ? siblings[i - 1] : undefined,
+    next: i < siblings.length - 1 ? siblings[i + 1] : undefined,
+  };
 }
