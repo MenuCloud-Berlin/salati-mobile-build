@@ -576,6 +576,25 @@
       "intro": "Anza na usome sura nzima mfululizo — aya hufunuliwa zinapotambuliwa.",
       "start": "Anza kisomo",
       "stop": "Simamisha"
+    },
+    "speechError": {
+      "heading": "Ukaguzi wa kisomo umeshindwa",
+      "showDetails": "Onyesha maelezo ya kiufundi",
+      "hideDetails": "Ficha maelezo",
+      "model": "Modeli",
+      "permission": "Maikrofoni",
+      "yes": "ndiyo",
+      "no": "hapana",
+      "unknown": "haijulikani",
+      "code": "Msimbo",
+      "unavailableMsg": "Utambuzi wa kifaani haupatikani kwenye kifaa/toleo hili.",
+      "permissionMsg": "Ruhusa ya maikrofoni haipo. Ruhusu programu itumie maikrofoni katika mipangilio ya mfumo kisha ujaribu tena.",
+      "audioInitMsg": "Maikrofoni haikuweza kuanzishwa. Funga programu nyingine zinazotumia maikrofoni kisha ujaribu tena.",
+      "modelDownloadMsg": "Upakuaji wa modeli ya sauti haukukamilika. Angalia muunganisho wako kisha upakue tena.",
+      "modelInitMsg": "Modeli ya sauti haikuweza kupakiwa. Imewekwa upya — ipakue tena.",
+      "transcribeMsg": "Uchambuzi wa rekodi umeshindwa. Tafadhali jaribu tena.",
+      "noSpeechMsg": "Hakuna sauti iliyotambuliwa. Soma kwa sauti kubwa zaidi na karibu na maikrofoni.",
+      "unknownMsg": "Hitilafu isiyotarajiwa imetokea. Fungua maelezo na utoe ujumbe."
     }
   },
   "tasbih": {

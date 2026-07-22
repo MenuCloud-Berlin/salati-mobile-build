@@ -1,5 +1,7 @@
 package de.salatibox.de;
 
+import android.os.Bundle;
+
 import com.facebook.react.ReactActivityDelegate;
 import com.reactnativeandroidwidget.RNWidgetConfigurationActivity;
 
@@ -23,6 +25,22 @@ import expo.modules.ReactActivityDelegateWrapper;
 // weiter, sodass die widgetInfo-Initial-Props (widgetId/widgetName) für den
 // Config-Screen erhalten bleiben.
 public class WidgetConfigurationActivity extends RNWidgetConfigurationActivity {
+  // ROBUSTHEIT (Absturz-Vermeidung):
+  // 1) setTheme(AppTheme): erzwingt die echte App-Theme, falls das Manifest je
+  //    wieder auf die Splash-Theme zurückgesetzt wird (z. B. nach einem expo
+  //    prebuild). Diese Config-Activity ruft KEIN SplashScreenManager.
+  //    registerOnActivity() auf, die Splash->App-Transition würde also nie
+  //    stattfinden.
+  // 2) super.onCreate(null): React-Native-Empfehlung — ein non-null
+  //    savedInstanceState lässt RN Fragmente wiederherstellen, was beim
+  //    Activity-Recreate crashen kann. Die Basisklasse übergibt sonst das
+  //    originale Bundle weiter.
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    setTheme(R.style.AppTheme);
+    super.onCreate(null);
+  }
+
   @Override
   protected ReactActivityDelegate createReactActivityDelegate() {
     return new ReactActivityDelegateWrapper(

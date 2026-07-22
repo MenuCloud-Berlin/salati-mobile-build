@@ -576,6 +576,25 @@
       "intro": "Mula dan baca seluruh surah tanpa henti — ayat terbuka apabila dikenali.",
       "start": "Mula bacaan",
       "stop": "Berhenti"
+    },
+    "speechError": {
+      "heading": "Semakan bacaan gagal",
+      "showDetails": "Tunjukkan butiran teknikal",
+      "hideDetails": "Sembunyikan butiran",
+      "model": "Model",
+      "permission": "Mikrofon",
+      "yes": "ya",
+      "no": "tidak",
+      "unknown": "tidak diketahui",
+      "code": "Kod",
+      "unavailableMsg": "Pengecaman pada peranti tidak tersedia pada peranti/binaan ini.",
+      "permissionMsg": "Akses mikrofon tiada. Benarkan apl menggunakan mikrofon dalam tetapan sistem, kemudian cuba lagi.",
+      "audioInitMsg": "Mikrofon tidak dapat dimulakan. Tutup apl lain yang menggunakan mikrofon dan cuba lagi.",
+      "modelDownloadMsg": "Muat turun model suara tidak lengkap. Semak sambungan anda dan muat turun semula.",
+      "modelInitMsg": "Model suara tidak dapat dimuatkan. Ia telah ditetapkan semula — muat turun semula.",
+      "transcribeMsg": "Analisis rakaman gagal. Sila cuba lagi.",
+      "noSpeechMsg": "Tiada pertuturan dikesan. Bacalah sedikit lebih kuat dan lebih dekat dengan mikrofon.",
+      "unknownMsg": "Ralat tidak dijangka berlaku. Buka butiran dan sampaikan mesej itu."
     }
   },
   "tasbih": {

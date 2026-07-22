@@ -30,6 +30,7 @@
 import {
   CONTINUOUS_WINDOW_SEC,
   SAMPLE_RATE,
+  WhisperError,
   WhisperFehler,
   loadWhisperContext,
   startPcmCapture,
@@ -91,7 +92,7 @@ const PARTIAL_INTERVAL_MS = 1400;
  * ist das finale, vollständige Transkript (für die Bewertung).
  */
 export async function recognizeArabicStreaming(options: StreamingOptions): Promise<string[]> {
-  if (!recognitionAvailable()) throw new Error(WhisperFehler.unavailable);
+  if (!recognitionAvailable()) throw new WhisperError(WhisperFehler.unavailable, 'recognitionAvailable() === false (whisperSupported false)');
 
   const contextReady = loadWhisperContext(options.onProgress);
   let ctx: Awaited<ReturnType<typeof loadWhisperContext>> | null = null;
@@ -187,7 +188,7 @@ export interface ContinuousOptions {
 const CONTINUOUS_INTERVAL_MS = 1500;
 
 export async function recognizeArabicContinuous(options: ContinuousOptions): Promise<ContinuousController> {
-  if (!recognitionAvailable()) throw new Error(WhisperFehler.unavailable);
+  if (!recognitionAvailable()) throw new WhisperError(WhisperFehler.unavailable, 'recognitionAvailable() === false (whisperSupported false)');
 
   const whisperContext = await loadWhisperContext(options.onProgress);
   const capture = await startPcmCapture();
@@ -275,7 +276,7 @@ function rms(pcm: Int16Array): number {
 export async function recognizeArabicAlternatives(
   options?: RecognizeOptions,
 ): Promise<string[]> {
-  if (!recognitionAvailable()) throw new Error(WhisperFehler.unavailable);
+  if (!recognitionAvailable()) throw new WhisperError(WhisperFehler.unavailable, 'recognitionAvailable() === false (whisperSupported false)');
 
   // onProgress durchreichen — beim ersten Aufruf lädt sich das (grosse)
   // Koran-Modell herunter; der Aufrufer zeigt damit den Download-Fortschritt.

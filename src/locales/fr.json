@@ -576,6 +576,25 @@
       "intro": "Démarre et récite toute la sourate d’affilée — les versets se révèlent à mesure qu’ils sont reconnus.",
       "start": "Démarrer la récitation",
       "stop": "Arrêter"
+    },
+    "speechError": {
+      "heading": "Échec de la vérification de la récitation",
+      "showDetails": "Afficher les détails techniques",
+      "hideDetails": "Masquer les détails",
+      "model": "Modèle",
+      "permission": "Micro",
+      "yes": "oui",
+      "no": "non",
+      "unknown": "inconnu",
+      "code": "Code",
+      "unavailableMsg": "La reconnaissance sur l'appareil n'est pas disponible sur cet appareil/cette version.",
+      "permissionMsg": "L'accès au micro est manquant. Autorisez l'application à utiliser le micro dans les réglages système, puis réessayez.",
+      "audioInitMsg": "Le micro n'a pas pu démarrer. Fermez les autres applications qui l'utilisent et réessayez.",
+      "modelDownloadMsg": "Le téléchargement du modèle vocal est incomplet. Vérifiez votre connexion et téléchargez-le à nouveau.",
+      "modelInitMsg": "Le modèle vocal n'a pas pu être chargé. Il a été réinitialisé — téléchargez-le à nouveau.",
+      "transcribeMsg": "L'analyse de l'enregistrement a échoué. Veuillez réessayer.",
+      "noSpeechMsg": "Aucune parole détectée. Récitez un peu plus fort et plus près du micro.",
+      "unknownMsg": "Une erreur inattendue s'est produite. Ouvrez les détails et communiquez le message."
     }
   },
   "tasbih": {

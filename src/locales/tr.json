@@ -576,6 +576,25 @@
       "intro": "Başlat ve tüm sureyi kesintisiz oku — ayetler tanındıkça açılır.",
       "start": "Okumayı başlat",
       "stop": "Durdur"
+    },
+    "speechError": {
+      "heading": "Okuma kontrolü başarısız oldu",
+      "showDetails": "Teknik ayrıntıları göster",
+      "hideDetails": "Ayrıntıları gizle",
+      "model": "Model",
+      "permission": "Mikrofon",
+      "yes": "evet",
+      "no": "hayır",
+      "unknown": "bilinmiyor",
+      "code": "Kod",
+      "unavailableMsg": "Cihaz üzerinde tanıma bu cihazda/derlemede kullanılamıyor.",
+      "permissionMsg": "Mikrofon erişimi yok. Sistem ayarlarından uygulamaya mikrofon erişimi ver ve tekrar dene.",
+      "audioInitMsg": "Mikrofon başlatılamadı. Mikrofonu kullanan diğer uygulamaları kapatıp tekrar dene.",
+      "modelDownloadMsg": "Konuşma modeli indirmesi tamamlanmadı. Bağlantını kontrol edip yeniden indir.",
+      "modelInitMsg": "Konuşma modeli yüklenemedi. Sıfırlandı — yeniden indir.",
+      "transcribeMsg": "Kaydın çözümlenmesi başarısız oldu. Lütfen tekrar dene.",
+      "noSpeechMsg": "Konuşma algılanmadı. Biraz daha yüksek sesle ve mikrofona daha yakın oku.",
+      "unknownMsg": "Beklenmeyen bir hata oluştu. Ayrıntıları aç ve mesajı ilet."
     }
   },
   "tasbih": {

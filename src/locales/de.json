@@ -576,6 +576,25 @@
       "intro": "Starte und rezitiere die ganze Sure am Stück — die Verse decken sich auf, sobald sie erkannt werden.",
       "start": "Rezitation starten",
       "stop": "Stopp"
+    },
+    "speechError": {
+      "heading": "Aufsagen-Prüfung fehlgeschlagen",
+      "showDetails": "Technische Details anzeigen",
+      "hideDetails": "Details verbergen",
+      "model": "Modell",
+      "permission": "Mikrofon",
+      "yes": "ja",
+      "no": "nein",
+      "unknown": "unbekannt",
+      "code": "Code",
+      "unavailableMsg": "Die On-Device-Erkennung ist auf diesem Gerät/Build nicht verfügbar.",
+      "permissionMsg": "Der Mikrofon-Zugriff fehlt. Erlaube der App in den Systemeinstellungen den Zugriff auf das Mikrofon und versuche es erneut.",
+      "audioInitMsg": "Das Mikrofon konnte nicht gestartet werden. Schließe andere Apps, die das Mikrofon nutzen, und versuche es erneut.",
+      "modelDownloadMsg": "Der Download des Sprachmodells war unvollständig. Prüfe deine Verbindung und lade es erneut.",
+      "modelInitMsg": "Das Sprachmodell konnte nicht geladen werden. Es wurde zurückgesetzt — lade es erneut herunter.",
+      "transcribeMsg": "Die Auswertung der Aufnahme ist fehlgeschlagen. Bitte versuche es erneut.",
+      "noSpeechMsg": "Es wurde keine Sprache erkannt. Rezitiere etwas lauter und näher am Mikrofon.",
+      "unknownMsg": "Ein unerwarteter Fehler ist aufgetreten. Öffne die Details und gib die Meldung durch."
     }
   },
   "tasbih": {

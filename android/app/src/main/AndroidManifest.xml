@@ -35,7 +35,16 @@
          startet sie beim Platzieren/Bearbeiten und hostet den RN-Config-Screen
          (registerWidgetConfigurationScreen in index.android.js). Manuell
          gepflegt, da dieses Projekt ohne expo prebuild baut. -->
-    <activity android:name=".WidgetConfigurationActivity" android:exported="true" android:theme="@style/Theme.App.SplashScreen">
+    <!-- Theme BEWUSST @style/AppTheme (nicht die Splash-Theme wie MainActivity):
+         die Splash->App-Transition laeuft nur ueber SplashScreenManager.
+         registerOnActivity(), das ausschliesslich MainActivity aufruft. Mit der
+         Splash-Theme wuerde diese Config-Activity im Splash-Zustand haengen
+         (falsches/kein Fenster-Theme -> Fehldarstellung/Absturz-Risiko). Portrait
+         + configChanges spiegeln MainActivity, damit eine Rotation die RN-Activity
+         nicht neu erzeugt (Recreate mit non-null savedInstanceState ist ein
+         bekannter RN-Crash-Vektor; die native Activity uebergibt onCreate zudem
+         null, s. WidgetConfigurationActivity.java). -->
+    <activity android:name=".WidgetConfigurationActivity" android:exported="true" android:theme="@style/AppTheme" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|smallestScreenSize|locale|layoutDirection">
       <intent-filter>
         <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
       </intent-filter>

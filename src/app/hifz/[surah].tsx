@@ -26,8 +26,13 @@ import { knownCount, useHifzProgress } from '@/features/hifz/progress';
 import { recognitionAvailable, recognizeArabicStreaming } from '@/features/hifz/speech';
 import { useHydrated } from '@/hooks/use-hydrated';
 import {
+  beschreibeWhisperFehler,
   istModellFehler,
+  whisperDiagnose,
   whisperSupported,
+  WhisperFehler,
+  type WhisperDiagnose,
+  type WhisperFehlerInfo,
   type WhisperRecorder,
 } from '@/features/hifz/whisperCheck';
 import {
@@ -150,7 +155,33 @@ export default function HifzPracticeScreen() {
   // auch wenn man den Screen verlässt (whisperModel-Singleton).
   const [modelReady, setModelReady] = useState<boolean | null>(null);
   const [modelDlPct, setModelDlPct] = useState<number | null>(null);
+  // Distinkter, on-screen sichtbarer Fehler statt der früheren generischen
+  // „nicht verfügbar"-Meldung: Code + Klartext + rohe Diagnose (Modell da?
+  // Mikrofon erlaubt? Roh-Exception) — damit der Nutzer die echte Ursache
+  // ablesen und 1:1 durchgeben kann (User-Report: „komplett kaputt", ohne
+  // Logcat nicht diagnostizierbar).
+  const [micErr, setMicErr] = useState<{ info: WhisperFehlerInfo; diag: WhisperDiagnose | null } | null>(null);
+  const [showErrDetail, setShowErrDetail] = useState(false);
   const recorderRef = useRef<WhisperRecorder | null>(null);
+
+  async function showMicError(e: unknown) {
+    const info = beschreibeWhisperFehler(e);
+    const diag = await whisperDiagnose().catch(() => null);
+    setMicErr({ info, diag });
+    setShowErrDetail(false);
+    // Modell-Problem (Download/Init/kaputter Header) → Modell wurde verworfen
+    // (whisperCheck.loadWhisperContext). modelReady zurücksetzen, damit die UI
+    // den Download erneut anbietet.
+    if (istModellFehler(e)) setModelReady(false);
+    setMicState('error');
+  }
+
+  // Freigabe-Status → Klartext-Label für die Diagnose.
+  function permStatusLabel(status: string): string {
+    if (status === 'granted') return t('hifz.speechError.yes');
+    if (status === 'denied') return t('hifz.speechError.no');
+    return t('hifz.speechError.unknown');
+  }
 
   useEffect(() => {
     if (!hydrated || !settings.speechExercisesEnabled || !whisperSupported()) return;
@@ -212,6 +243,7 @@ export default function HifzPracticeScreen() {
   async function runRecitation() {
     if (!ayah) return;
     setMicResult(null);
+    setMicErr(null);
     setLivePartial(null);
     setMicState('listening');
     try {
@@ -223,6 +255,13 @@ export default function HifzPracticeScreen() {
       });
       setDownloadPercent(null);
       setLivePartial(null);
+      // Aufnahme lief, aber es kam kein Ton/keine Sprache an (leerer Puffer /
+      // zu leise) → als distinkter „noSpeech"-Fehler zeigen statt eines
+      // verwirrenden 0-%-Ergebnisses.
+      if (alternatives.length === 0) {
+        await showMicError(WhisperFehler.noSpeech);
+        return;
+      }
       const { transcript, score } = bestTranscript(alternatives, ayah.arabic);
       setMicResult({
         score,
@@ -243,12 +282,7 @@ export default function HifzPracticeScreen() {
       console.error('[hifz recite] Erkennung fehlgeschlagen:', e instanceof Error ? e.message : String(e));
       setDownloadPercent(null);
       setLivePartial(null);
-      // Modell-Problem (Download/Init/kaputter Header) → das Modell wurde
-      // verworfen (whisperCheck.loadWhisperContext) bzw. gilt jetzt als
-      // ungültig. modelReady zurücksetzen, damit die UI den Download erneut
-      // anbietet, statt den Nutzer im generischen „nicht verfügbar" festzuhalten.
-      if (istModellFehler(e)) setModelReady(false);
-      setMicState('error');
+      await showMicError(e);
     }
   }
 
@@ -277,6 +311,7 @@ export default function HifzPracticeScreen() {
       // Vers-Wechsel: Mikrofon-Ergebnis des vorherigen Verses verwerfen
       setMicState('idle');
       setMicResult(null);
+      setMicErr(null);
       setExpandedWordIndex(null);
       setDownloadPercent(null);
       setLivePartial(null);
@@ -645,10 +680,52 @@ export default function HifzPracticeScreen() {
                 </ThemedText>
               </ThemedView>
             )}
-            {micState === 'error' && (
-              <ThemedText type="small" themeColor="textSecondary" style={styles.micError}>
-                {t('hifz.micError')}
-              </ThemedText>
+            {micState === 'error' && micErr && (
+              <ThemedView type="backgroundElement" style={[styles.micResult, styles.micRetry]}>
+                <View style={styles.chipRow}>
+                  <IconSymbol name="alert-circle" size={16} color={colors.text} />
+                  <ThemedText type="smallBold">{t('hifz.speechError.heading')}</ThemedText>
+                </View>
+                <ThemedText type="small" themeColor="textSecondary" style={styles.micNote}>
+                  {t(`hifz.speechError.${micErr.info.i18nKey}Msg`)}
+                </ThemedText>
+                {/* Diagnose: Modell vorhanden? Mikrofon-Freigabe? — beantwortet
+                    die häufigsten realen Ursachen direkt auf dem Screen. */}
+                {micErr.diag && (
+                  <View style={styles.diagRow}>
+                    <ThemedText type="small" themeColor="textSecondary">
+                      {t('hifz.speechError.model')}:{' '}
+                      {micErr.diag.modellVorhanden ? t('hifz.speechError.yes') : t('hifz.speechError.no')}
+                    </ThemedText>
+                    <ThemedText type="small" themeColor="textSecondary">
+                      {t('hifz.speechError.permission')}: {permStatusLabel(micErr.diag.mikrofonStatus)}
+                    </ThemedText>
+                  </View>
+                )}
+                {/* Aufklappbares technisches Detail (Code + rohe Exception) —
+                    selektierbar, damit der Nutzer es 1:1 durchgeben kann. */}
+                <Pressable
+                  onPress={() => setShowErrDetail((s) => !s)}
+                  accessibilityRole="button"
+                  hitSlop={6}
+                  style={Platform.OS === 'web' ? styles.pressableWeb : undefined}>
+                  <ThemedText type="small" themeColor="accent">
+                    {showErrDetail ? t('hifz.speechError.hideDetails') : t('hifz.speechError.showDetails')}
+                  </ThemedText>
+                </Pressable>
+                {showErrDetail && (
+                  <ThemedView type="backgroundSelected" style={styles.wordDetail}>
+                    <ThemedText type="code" themeColor="textSecondary" selectable>
+                      {t('hifz.speechError.code')}: {micErr.info.code ?? '—'}
+                    </ThemedText>
+                    {micErr.info.detail ? (
+                      <ThemedText type="code" themeColor="textSecondary" selectable>
+                        {micErr.info.detail}
+                      </ThemedText>
+                    ) : null}
+                  </ThemedView>
+                )}
+              </ThemedView>
             )}
 
             <View style={styles.gradeRow}>
@@ -843,12 +920,12 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
   },
   micNote: { textAlign: 'center' },
+  diagRow: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: Spacing.three },
   modeRow: { flexDirection: 'row', gap: Spacing.two, justifyContent: 'center', marginTop: Spacing.two },
   modeChip: { paddingVertical: Spacing.one, paddingHorizontal: Spacing.three, borderRadius: Spacing.three },
   micExcellent: { backgroundColor: 'rgba(74,222,128,0.25)' },
   micGood: { backgroundColor: 'rgba(212,175,55,0.2)' },
   micRetry: { backgroundColor: 'rgba(248,113,113,0.2)' },
-  micError: { textAlign: 'center' },
   gradeRow: { flexDirection: 'row', justifyContent: 'center', gap: Spacing.two, marginTop: Spacing.two },
   gradeButton: {
     paddingVertical: Spacing.two,

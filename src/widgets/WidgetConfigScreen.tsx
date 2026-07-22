@@ -17,6 +17,7 @@ import type { WidgetConfigurationScreenProps, WidgetRepresentation } from 'react
 
 import { DEFAULT_SETTINGS, SETTINGS_STORAGE_KEY, type AppSettings } from '@/features/settings/types';
 import { PRAYERS } from '@/features/prayer-times/next-prayer';
+import { ErrorBoundary } from '@/components/error-boundary';
 import { translate } from '@/lib/translate';
 import { CountdownWidget } from './CountdownWidget';
 import { PrayerWidget } from './PrayerWidget';
@@ -158,23 +159,39 @@ function buildPreview(
 }
 
 export function WidgetConfigScreen({ widgetInfo, renderWidget, setResult }: WidgetConfigurationScreenProps) {
-  const widgetId = widgetInfo.widgetId;
-  const base = baseWidgetName(widgetInfo.widgetName);
-  const toggles = widgetContentToggles(widgetInfo.widgetName);
+  // ROBUSTHEIT: Android liefert die widgetInfo (widgetId/widgetName) als
+  // Initial-Props der nativen Config-Activity. Fehlen sie (z. B. wenn die
+  // Initial-Props im New-Architecture-/bridgeless-Pfad nicht ankommen), darf der
+  // Screen NICHT abstürzen — bisher las er widgetInfo.widgetId direkt und crashte
+  // damit die ganze App. Statt dessen zeigen wir eine sichtbare Meldung.
+  const hasWidget =
+    !!widgetInfo &&
+    typeof widgetInfo.widgetId === 'number' &&
+    typeof widgetInfo.widgetName === 'string';
+  const widgetId = hasWidget ? widgetInfo.widgetId : -1;
+  const widgetName = hasWidget ? widgetInfo.widgetName : '';
+  const base = baseWidgetName(widgetName);
+  const toggles = widgetContentToggles(widgetName);
 
   const [settings, setSettings] = useState<AppSettings | null>(null);
   const [config, setConfig] = useState<WidgetInstanceConfig>({});
 
   useEffect(() => {
+    if (!hasWidget) return;
     let alive = true;
     void (async () => {
-      const [s, c] = await Promise.all([loadSettings(), getWidgetConfig(widgetId)]);
-      if (!alive) return;
-      setSettings(s);
-      setConfig(c);
-      // Erste Vorschau sofort rendern, damit das Widget nicht leer wirkt.
-      const preview = buildPreview(base, resolveWidgetConfig(c, widgetInfo.widgetName, s), s);
-      if (preview) renderWidget(preview);
+      try {
+        const [s, c] = await Promise.all([loadSettings(), getWidgetConfig(widgetId)]);
+        if (!alive) return;
+        setSettings(s);
+        setConfig(c);
+        // Erste Vorschau sofort rendern, damit das Widget nicht leer wirkt.
+        const preview = buildPreview(base, resolveWidgetConfig(c, widgetName, s), s);
+        if (preview) renderWidget(preview);
+      } catch {
+        // Settings/Vorschau optional — der Screen bleibt bedienbar, statt zu crashen.
+        if (alive) setSettings(DEFAULT_SETTINGS);
+      }
     })();
     return () => {
       alive = false;
@@ -186,10 +203,14 @@ export function WidgetConfigScreen({ widgetInfo, renderWidget, setResult }: Widg
 
   async function apply(patch: Partial<WidgetInstanceConfig>) {
     if (!settings) return;
-    const next = await setWidgetConfig(widgetId, patch);
-    setConfig(next);
-    const preview = buildPreview(base, resolveWidgetConfig(next, widgetInfo.widgetName, settings), settings);
-    if (preview) renderWidget(preview);
+    try {
+      const next = await setWidgetConfig(widgetId, patch);
+      setConfig(next);
+      const preview = buildPreview(base, resolveWidgetConfig(next, widgetName, settings), settings);
+      if (preview) renderWidget(preview);
+    } catch {
+      // Persistenz-/Render-Fehler nicht eskalieren — Screen bleibt nutzbar.
+    }
   }
 
   // "Fertig": vor dem Abschließen das Widget einmal mit ECHTEN Daten (statt der
@@ -199,18 +220,48 @@ export function WidgetConfigScreen({ widgetInfo, renderWidget, setResult }: Widg
   // geschluckt: der Task-Handler rendert beim nächsten Tick ohnehin neu.
   async function commit() {
     try {
-      renderWidget(await renderWidgetForInfo(widgetInfo.widgetName, widgetId));
+      renderWidget(await renderWidgetForInfo(widgetName, widgetId));
     } catch {
       // Vorschau bleibt bestehen — kein harter Fehler.
     }
-    setResult('ok');
+    try {
+      setResult('ok');
+    } catch {
+      // finishWidgetConfiguration ist ein nativer Aufruf — sollte er werfen,
+      // darf das die App nicht beenden.
+    }
+  }
+
+  function cancel() {
+    try {
+      setResult('cancel');
+    } catch {
+      // s. commit(): nativer Aufruf defensiv umschlossen.
+    }
+  }
+
+  // widgetInfo fehlt/ungültig: sichtbare Meldung statt Absturz. Kein setResult,
+  // da dessen widgetId ebenfalls fehlt — der Nutzer entfernt das Widget und legt
+  // es neu an.
+  if (!hasWidget) {
+    return (
+      <View style={[styles.screen, styles.centered]}>
+        <Text style={styles.title}>Widget</Text>
+        <Text style={styles.fallbackBody}>
+          Diese Konfiguration konnte nicht geladen werden. Bitte entferne das Widget vom Startbildschirm
+          und füge es erneut hinzu.{'\n\n'}
+          This configuration could not be loaded. Please remove the widget from the home screen and add it
+          again.
+        </Text>
+      </View>
+    );
   }
 
   if (!settings) {
     return <View style={styles.screen} />;
   }
 
-  const resolved = resolveWidgetConfig(config, widgetInfo.widgetName, settings);
+  const resolved = resolveWidgetConfig(config, widgetName, settings);
 
   return (
     <View style={styles.screen}>
@@ -299,7 +350,7 @@ export function WidgetConfigScreen({ widgetInfo, renderWidget, setResult }: Widg
 
       <View style={styles.footer}>
         <Pressable
-          onPress={() => setResult('cancel')}
+          onPress={cancel}
           style={[styles.button, styles.buttonGhost]}
           accessibilityRole="button">
           <Text style={styles.buttonGhostText}>{t('widgetConfig.cancel')}</Text>
@@ -315,6 +366,21 @@ export function WidgetConfigScreen({ widgetInfo, renderWidget, setResult }: Widg
   );
 }
 
+// Registrierter Root der nativen Config-Activity (index.android.js). Hüllt den
+// Screen in die ErrorBoundary: ein Render-Fehler IRGENDWO im Config-Screen
+// (fehlende Initial-Props, defekte Settings, Widget-Vorschau-Fehler …) zeigt
+// dann den Wiederherstellungs-Screen statt die GESAMTE App zu beenden — genau
+// das Verhalten, das der vc27-Delegate-Fix allein nicht abgedeckt hat. Die
+// ErrorBoundary ist bewusst standalone lauffähig (nur RN-Primitive + Colors +
+// systemweites useColorScheme, kein App-Context), siehe error-boundary.tsx.
+export function WidgetConfigScreenRoot(props: WidgetConfigurationScreenProps) {
+  return (
+    <ErrorBoundary>
+      <WidgetConfigScreen {...props} />
+    </ErrorBoundary>
+  );
+}
+
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
@@ -322,6 +388,8 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === 'android' ? (StatusBar.currentHeight ?? 24) : 44,
   },
   content: { padding: 20, paddingBottom: 24 },
+  centered: { alignItems: 'center', justifyContent: 'center', padding: 24, gap: 12 },
+  fallbackBody: { color: '#f7f3eacc', fontSize: 14, lineHeight: 20, textAlign: 'center' },
   title: { color: '#f7f3ea', fontSize: 22, fontWeight: '700' },
   subtitle: { color: '#d4af37', fontSize: 14, fontWeight: '600', marginTop: 2, marginBottom: 18 },
   sectionLabel: {

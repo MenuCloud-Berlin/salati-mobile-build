@@ -14,7 +14,13 @@ import {
   type ContinuousController,
 } from '@/features/hifz/speech';
 import type { RevealedWord } from '@/features/hifz/reciteProgress';
-import { whisperSupported } from '@/features/hifz/whisperCheck';
+import {
+  beschreibeWhisperFehler,
+  whisperDiagnose,
+  whisperSupported,
+  type WhisperDiagnose,
+  type WhisperFehlerInfo,
+} from '@/features/hifz/whisperCheck';
 import {
   aktuelleModellGroesse,
   istWhisperModellHeruntergeladen,
@@ -47,7 +53,17 @@ export default function ReciteSurahScreen() {
   const [modelDlPct, setModelDlPct] = useState<number | null>(null);
   const [running, setRunning] = useState(false);
   const [starting, setStarting] = useState(false);
+  // On-Screen-Fehler statt stummem console.error (User-Report: „komplett
+  // kaputt", ohne ablesbare Ursache nicht diagnostizierbar).
+  const [startErr, setStartErr] = useState<{ info: WhisperFehlerInfo; diag: WhisperDiagnose | null } | null>(null);
+  const [showErrDetail, setShowErrDetail] = useState(false);
   const controllerRef = useRef<ContinuousController | null>(null);
+
+  function permStatusLabel(status: string): string {
+    if (status === 'granted') return t('hifz.speechError.yes');
+    if (status === 'denied') return t('hifz.speechError.no');
+    return t('hifz.speechError.unknown');
+  }
 
   useEffect(() => {
     if (!whisperSupported()) return;
@@ -114,6 +130,7 @@ export default function ReciteSurahScreen() {
   async function start() {
     if (running || starting) return;
     setStarting(true);
+    setStartErr(null);
     setRevealed({});
     try {
       controllerRef.current = await recognizeArabicContinuous({
@@ -125,6 +142,10 @@ export default function ReciteSurahScreen() {
       setRunning(true);
     } catch (e) {
       console.error('[hifz recite-surah] Erkennung konnte nicht gestartet werden:', String(e));
+      const info = beschreibeWhisperFehler(e);
+      const diag = await whisperDiagnose().catch(() => null);
+      setStartErr({ info, diag });
+      setShowErrDetail(false);
     } finally {
       setStarting(false);
     }
@@ -216,6 +237,49 @@ export default function ReciteSurahScreen() {
 
         {settings.speechExercisesEnabled && whisperSupported() && recognitionAvailable() && (
           <View style={styles.footer}>
+            {startErr && (
+              <ThemedView type="backgroundElement" style={styles.errCard}>
+                <View style={styles.errHeadRow}>
+                  <IconSymbol name="alert-circle" size={16} color={colors.text} />
+                  <ThemedText type="smallBold">{t('hifz.speechError.heading')}</ThemedText>
+                </View>
+                <ThemedText type="small" themeColor="textSecondary">
+                  {t(`hifz.speechError.${startErr.info.i18nKey}Msg`)}
+                </ThemedText>
+                {startErr.diag && (
+                  <View style={styles.diagRow}>
+                    <ThemedText type="small" themeColor="textSecondary">
+                      {t('hifz.speechError.model')}:{' '}
+                      {startErr.diag.modellVorhanden ? t('hifz.speechError.yes') : t('hifz.speechError.no')}
+                    </ThemedText>
+                    <ThemedText type="small" themeColor="textSecondary">
+                      {t('hifz.speechError.permission')}: {permStatusLabel(startErr.diag.mikrofonStatus)}
+                    </ThemedText>
+                  </View>
+                )}
+                <Pressable
+                  onPress={() => setShowErrDetail((s) => !s)}
+                  accessibilityRole="button"
+                  hitSlop={6}
+                  style={Platform.OS === 'web' ? styles.pressableWeb : undefined}>
+                  <ThemedText type="small" themeColor="accent">
+                    {showErrDetail ? t('hifz.speechError.hideDetails') : t('hifz.speechError.showDetails')}
+                  </ThemedText>
+                </Pressable>
+                {showErrDetail && (
+                  <ThemedView type="backgroundSelected" style={styles.errDetail}>
+                    <ThemedText type="code" themeColor="textSecondary" selectable>
+                      {t('hifz.speechError.code')}: {startErr.info.code ?? '—'}
+                    </ThemedText>
+                    {startErr.info.detail ? (
+                      <ThemedText type="code" themeColor="textSecondary" selectable>
+                        {startErr.info.detail}
+                      </ThemedText>
+                    ) : null}
+                  </ThemedView>
+                )}
+              </ThemedView>
+            )}
             {modelReady === false ? (
               <Pressable
                 onPress={downloadModel}
@@ -297,4 +361,15 @@ const styles = StyleSheet.create({
   },
   primaryLabel: { fontSize: 16, color: Brand.ink },
   pressed: { opacity: 0.6 },
+  pressableWeb: { cursor: 'pointer' },
+  errCard: {
+    padding: Spacing.three,
+    borderRadius: Spacing.two,
+    gap: Spacing.two,
+    marginBottom: Spacing.two,
+    backgroundColor: 'rgba(248,113,113,0.16)',
+  },
+  errHeadRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  diagRow: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.three },
+  errDetail: { padding: Spacing.two, borderRadius: Spacing.two, gap: 2 },
 });

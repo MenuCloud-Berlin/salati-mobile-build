@@ -44,9 +44,10 @@ import { useTranslation } from '@/lib/i18n';
 const SPEEDS = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2] as const;
 const SLEEP_OPTIONS: (number | 'episode')[] = [5, 10, 15, 30, 60, 'episode'];
 const SKIP_SEC = 15;
-// Feste Groesse des Media-Slots (Cover bzw. Transkript). Kompakter als frueher
-// (260), damit alle Regler ohne Scrollen auf eine Handy-Seite passen.
-const COVER_SIZE = 210;
+// Feste Groesse des Media-Slots (Cover bzw. Transkript). Weiter verkleinert
+// (260 -> 210 -> 160), damit Cover, Titel, Scrubber, Transport UND alle Regler
+// samt Mitlese-Umschalter ohne Scrollen auf eine Handy-Seite passen.
+const COVER_SIZE = 160;
 
 export default function PodcastPlayerScreen() {
   const { episode: episodeParam } = useLocalSearchParams<{ episode: string }>();
@@ -377,7 +378,7 @@ export default function PodcastPlayerScreen() {
           <ThemedText type="small" themeColor="accent" style={styles.epNo}>
             {t('podcast.episodeLabel')} {episode.episode_no}
           </ThemedText>
-          <ThemedText type="title" style={styles.title}>
+          <ThemedText type="subtitle" style={styles.title} numberOfLines={2}>
             {episode.title}
           </ThemedText>
           {episode.description ? (
@@ -777,7 +778,7 @@ const styles = StyleSheet.create({
   downloadPct: { fontSize: 12 },
   scroll: {
     paddingHorizontal: Spacing.four,
-    paddingBottom: Spacing.six,
+    paddingBottom: Spacing.four,
     alignSelf: 'center',
     width: '100%',
     maxWidth: MaxContentWidth,
@@ -786,25 +787,27 @@ const styles = StyleSheet.create({
   // Media-Slot: feste Hoehe, in der sich Cover und Transkript denselben Platz
   // teilen. Kompakter als das alte 260er-Cover, damit der Player ohne Scrollen
   // auf eine Seite passt.
-  mediaSlot: { width: '100%', height: COVER_SIZE, alignItems: 'center', justifyContent: 'center', marginTop: Spacing.two },
-  cover: { width: COVER_SIZE, height: COVER_SIZE, borderRadius: 24 },
+  mediaSlot: { width: '100%', height: COVER_SIZE, alignItems: 'center', justifyContent: 'center', marginTop: Spacing.one },
+  cover: { width: COVER_SIZE, height: COVER_SIZE, borderRadius: 20 },
   coverFallback: { alignItems: 'center', justifyContent: 'center' },
   transcriptInSlot: { height: COVER_SIZE, maxHeight: COVER_SIZE, marginTop: 0 },
-  epNo: { marginTop: Spacing.three, textTransform: 'uppercase', letterSpacing: 1 },
-  title: { textAlign: 'center', marginTop: Spacing.one },
-  desc: { textAlign: 'center', marginTop: Spacing.two, paddingHorizontal: Spacing.two, lineHeight: 20 },
-  scrubBlock: { width: '100%', marginTop: Spacing.three },
+  epNo: { marginTop: Spacing.two, textTransform: 'uppercase', letterSpacing: 1 },
+  // Titel kompakt: subtitle (32/44) waere zu hoch fuer eine Seite — auf 22/28
+  // heruntergesetzt, damit Titel + Rest naeher zusammenruecken.
+  title: { textAlign: 'center', marginTop: Spacing.half, fontSize: 22, lineHeight: 28 },
+  desc: { textAlign: 'center', marginTop: Spacing.one, paddingHorizontal: Spacing.two, lineHeight: 20 },
+  scrubBlock: { width: '100%', marginTop: Spacing.two },
   timeRow: { flexDirection: 'row', justifyContent: 'space-between', marginTop: -Spacing.one },
-  transport: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: Spacing.three, marginTop: Spacing.two },
-  circleBtn: { width: 48, height: 48, borderRadius: 24, alignItems: 'center', justifyContent: 'center' },
+  transport: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: Spacing.three, marginTop: Spacing.one },
+  circleBtn: { width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
   circleBtnDisabled: { opacity: 0.35 },
-  playBtn: { width: 72, height: 72, borderRadius: 36, alignItems: 'center', justifyContent: 'center' },
-  controlsRow: { flexDirection: 'row', alignItems: 'center', gap: Spacing.three, marginTop: Spacing.three, width: '100%' },
-  pill: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one, paddingVertical: Spacing.two, paddingHorizontal: Spacing.three },
-  iconToggle: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' },
+  playBtn: { width: 64, height: 64, borderRadius: 32, alignItems: 'center', justifyContent: 'center' },
+  controlsRow: { flexDirection: 'row', alignItems: 'center', gap: Spacing.three, marginTop: Spacing.two, width: '100%' },
+  pill: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one, paddingVertical: Spacing.one, paddingHorizontal: Spacing.three },
+  iconToggle: { width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center' },
   volumeBlock: { flex: 1, flexDirection: 'row', alignItems: 'center', gap: Spacing.two },
   volumeSlider: { flex: 1 },
-  transcriptToggle: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two, padding: Spacing.three, marginTop: Spacing.three, width: '100%' },
+  transcriptToggle: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two, padding: Spacing.two, marginTop: Spacing.two, width: '100%' },
   flex: { flex: 1 },
   transcript: { maxHeight: 400, width: '100%', marginTop: Spacing.two },
   deSeg: { marginBottom: Spacing.two, lineHeight: 24 },

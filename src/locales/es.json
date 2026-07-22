@@ -576,6 +576,25 @@
       "intro": "Inicia y recita toda la sura de corrido — los versículos se revelan al reconocerse.",
       "start": "Iniciar recitación",
       "stop": "Detener"
+    },
+    "speechError": {
+      "heading": "La comprobación del recitado falló",
+      "showDetails": "Mostrar detalles técnicos",
+      "hideDetails": "Ocultar detalles",
+      "model": "Modelo",
+      "permission": "Micrófono",
+      "yes": "sí",
+      "no": "no",
+      "unknown": "desconocido",
+      "code": "Código",
+      "unavailableMsg": "El reconocimiento en el dispositivo no está disponible en este dispositivo/versión.",
+      "permissionMsg": "Falta el acceso al micrófono. Permite que la app use el micrófono en los ajustes del sistema e inténtalo de nuevo.",
+      "audioInitMsg": "No se pudo iniciar el micrófono. Cierra otras apps que usen el micrófono e inténtalo de nuevo.",
+      "modelDownloadMsg": "La descarga del modelo de voz quedó incompleta. Comprueba tu conexión y descárgalo de nuevo.",
+      "modelInitMsg": "No se pudo cargar el modelo de voz. Se restableció: descárgalo de nuevo.",
+      "transcribeMsg": "El análisis de la grabación falló. Inténtalo de nuevo.",
+      "noSpeechMsg": "No se detectó voz. Recita un poco más alto y más cerca del micrófono.",
+      "unknownMsg": "Ocurrió un error inesperado. Abre los detalles y comparte el mensaje."
     }
   },
   "tasbih": {

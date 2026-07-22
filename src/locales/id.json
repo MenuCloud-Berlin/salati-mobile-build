@@ -576,6 +576,25 @@
       "intro": "Mulai dan baca seluruh surah tanpa henti — ayat terbuka saat dikenali.",
       "start": "Mulai bacaan",
       "stop": "Berhenti"
+    },
+    "speechError": {
+      "heading": "Pemeriksaan bacaan gagal",
+      "showDetails": "Tampilkan detail teknis",
+      "hideDetails": "Sembunyikan detail",
+      "model": "Model",
+      "permission": "Mikrofon",
+      "yes": "ya",
+      "no": "tidak",
+      "unknown": "tidak diketahui",
+      "code": "Kode",
+      "unavailableMsg": "Pengenalan di perangkat tidak tersedia di perangkat/build ini.",
+      "permissionMsg": "Akses mikrofon tidak ada. Izinkan aplikasi menggunakan mikrofon di pengaturan sistem, lalu coba lagi.",
+      "audioInitMsg": "Mikrofon tidak dapat dimulai. Tutup aplikasi lain yang memakai mikrofon lalu coba lagi.",
+      "modelDownloadMsg": "Unduhan model suara tidak lengkap. Periksa koneksi Anda dan unduh lagi.",
+      "modelInitMsg": "Model suara tidak dapat dimuat. Model telah disetel ulang — unduh lagi.",
+      "transcribeMsg": "Analisis rekaman gagal. Silakan coba lagi.",
+      "noSpeechMsg": "Tidak ada suara terdeteksi. Bacalah sedikit lebih keras dan lebih dekat ke mikrofon.",
+      "unknownMsg": "Terjadi kesalahan tak terduga. Buka detail dan sampaikan pesannya."
     }
   },
   "tasbih": {

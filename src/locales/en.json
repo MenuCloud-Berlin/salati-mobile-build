@@ -576,6 +576,25 @@
       "intro": "Start and recite the whole surah continuously — the verses reveal as they are recognized.",
       "start": "Start recitation",
       "stop": "Stop"
+    },
+    "speechError": {
+      "heading": "Recitation check failed",
+      "showDetails": "Show technical details",
+      "hideDetails": "Hide details",
+      "model": "Model",
+      "permission": "Microphone",
+      "yes": "yes",
+      "no": "no",
+      "unknown": "unknown",
+      "code": "Code",
+      "unavailableMsg": "On-device recognition is not available on this device/build.",
+      "permissionMsg": "Microphone access is missing. Allow the app to use the microphone in system settings, then try again.",
+      "audioInitMsg": "The microphone could not be started. Close other apps that are using the microphone and try again.",
+      "modelDownloadMsg": "The speech model download was incomplete. Check your connection and download it again.",
+      "modelInitMsg": "The speech model could not be loaded. It was reset — download it again.",
+      "transcribeMsg": "Analysis of the recording failed. Please try again.",
+      "noSpeechMsg": "No speech was detected. Recite a little louder and closer to the microphone.",
+      "unknownMsg": "An unexpected error occurred. Open the details and share the message."
     }
   },
   "tasbih": {

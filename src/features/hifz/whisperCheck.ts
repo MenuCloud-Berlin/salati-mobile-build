@@ -32,13 +32,14 @@
 
 import { Platform } from 'react-native';
 import * as FileSystem from 'expo-file-system/legacy';
-import { requestRecordingPermissionsAsync } from 'expo-audio';
+import { getRecordingPermissionsAsync, requestRecordingPermissionsAsync } from 'expo-audio';
 import {
   istWhisperModellHeruntergeladen,
   whisperModellHerunterladen,
   whisperModellLoeschen,
   whisperModellPfad,
 } from './whisperModel';
+import { WhisperError, WhisperFehler } from './whisperError';
 
 // Beide nativen Pakete werden bewusst per require() statt per import geladen
 // und auf selbst geschriebene (gegen die tatsächlichen Quellen verifizierte)
@@ -129,29 +130,19 @@ const AudioRecordModule = require('@fugood/react-native-audio-pcm-stream').defau
 
 export type WhisperProgress = { status: 'downloading'; percent: number } | { status: 'ready' };
 
-// Distinkte Fehler-Codes statt eines einzigen generischen „nicht verfügbar".
-// Jeder Pfad, der bisher stumm in denselben catch lief, wirft jetzt einen
-// klar benannten Code (message), der geloggt wird und den die UI unterscheiden
-// kann (z. B. Modell erneut anbieten vs. Mikrofon-Hinweis). Siehe
-// Aufruf-Stellen in speech.ts / app/hifz.
-export const WhisperFehler = {
-  /** Plattform kann whisper.rn nicht laden (Web / nicht iOS/Android). */
-  unavailable: 'speech_recognition_unavailable',
-  /** Mikrofon-Berechtigung fehlt/abgelehnt. */
-  permission: 'whisper_permission_denied',
-  /** Modell-Download fehlgeschlagen/unvollständig/Header ungültig. */
-  modelDownload: 'whisper_model_download_failed',
-  /** initWhisper hat den Kontext nicht erstellt (Modell beschädigt/inkompatibel). */
-  modelInit: 'whisper_model_init_failed',
-  /** transcribe() selbst hat geworfen. */
-  transcribe: 'whisper_transcribe_failed',
-} as const;
-
-/** Ist der Fehler ein Modell-Problem (Download/Init/Header)? → UI kann Modell neu anbieten. */
-export function istModellFehler(e: unknown): boolean {
-  const msg = e instanceof Error ? e.message : String(e);
-  return msg === WhisperFehler.modelDownload || msg === WhisperFehler.modelInit;
-}
+// Distinkte Fehler-Codes + Fehlerklasse leben jetzt in whisperError.ts (geteilt
+// mit dem Web-Pfad und der UI). Hier nur re-exportiert, damit bestehende Importe
+// aus '@/features/hifz/whisperCheck' unverändert weiterlaufen.
+export {
+  WhisperFehler,
+  WhisperError,
+  istModellFehler,
+  fehlerCode,
+  fehlerDetail,
+  beschreibeWhisperFehler,
+  type WhisperFehlerCode,
+  type WhisperFehlerInfo,
+} from './whisperError';
 
 export interface WhisperRecorder {
   /** Beendet die Aufnahme und liefert Transkript-Varianten (Original + beschleunigt). */
@@ -180,6 +171,41 @@ export function whisperSupported(): boolean {
   return Platform.OS === 'ios' || Platform.OS === 'android';
 }
 
+export interface WhisperDiagnose {
+  /** Ist das GGML-Modell vollständig + mit gültigem Header vorhanden? */
+  modellVorhanden: boolean;
+  /** Mikrofon-Freigabe: 'granted' | 'denied' | 'undetermined' (ohne Nachfrage geprüft). */
+  mikrofonStatus: string;
+  /** Ist das native Audio-Modul überhaupt eingebunden? */
+  audioModulGelinkt: boolean;
+}
+
+/**
+ * Momentaufnahme für die On-Screen-Diagnose (Modell da? Mikrofon erlaubt?
+ * Audio-Modul gelinkt?) — fragt die Freigabe NICHT an, liest sie nur. Wirft nie;
+ * ein Fehler beim Lesen liefert konservative Defaults.
+ */
+export async function whisperDiagnose(): Promise<WhisperDiagnose> {
+  let modellVorhanden = false;
+  try {
+    modellVorhanden = await istWhisperModellHeruntergeladen();
+  } catch {
+    modellVorhanden = false;
+  }
+  let mikrofonStatus = 'unknown';
+  try {
+    const p = await getRecordingPermissionsAsync();
+    mikrofonStatus = p.status;
+  } catch {
+    mikrofonStatus = 'unknown';
+  }
+  return {
+    modellVorhanden,
+    mikrofonStatus,
+    audioModulGelinkt: !!AudioRecordModule && typeof AudioRecordModule.init === 'function',
+  };
+}
+
 let whisperContextPromise: Promise<WhisperContext> | null = null;
 
 /** Lädt (bei Bedarf herunterladend) das GGML-Modell einmalig; parallele Aufrufe teilen sich das Laden. */
@@ -195,11 +221,12 @@ export function loadWhisperContext(onProgress?: (p: WhisperProgress) => void): P
             onProgress?.({ status: 'downloading', percent: Math.round(p.anteil * 100) }),
           );
         } catch (e) {
+          const detail = e instanceof Error ? e.message : String(e);
           console.error('[whisper] Modell-Download/Verifikation fehlgeschlagen', {
             pfad: whisperModellPfad(),
-            fehler: e instanceof Error ? e.message : String(e),
+            fehler: detail,
           });
-          throw new Error(WhisperFehler.modelDownload);
+          throw new WhisperError(WhisperFehler.modelDownload, detail);
         }
       }
       // 2) Kontext initialisieren. Schlägt das trotz gültigem Header/Size fehl,
@@ -210,12 +237,13 @@ export function loadWhisperContext(onProgress?: (p: WhisperProgress) => void): P
         onProgress?.({ status: 'ready' });
         return ctx;
       } catch (e) {
+        const detail = e instanceof Error ? e.message : String(e);
         console.error('[whisper] initWhisper fehlgeschlagen — Modell wird verworfen', {
           pfad: whisperModellPfad(),
-          fehler: e instanceof Error ? e.message : String(e),
+          fehler: detail,
         });
         await whisperModellLoeschen().catch(() => {});
-        throw new Error(WhisperFehler.modelInit);
+        throw new WhisperError(WhisperFehler.modelInit, detail);
       }
     })().catch((e) => {
       whisperContextPromise = null; // nächster Versuch darf neu laden
@@ -393,23 +421,45 @@ export interface PcmCapture {
  * 'whisper_permission_denied', wenn die Mikrofon-Berechtigung fehlt.
  */
 export async function startPcmCapture(onChunk?: (pcm: Int16Array) => void): Promise<PcmCapture> {
+  // Native-Modul-Guard: ist @fugood/react-native-audio-pcm-stream nicht in den
+  // Build gelinkt (z. B. Expo Go / fehlgeschlagenes Prebuild), ist das Default-
+  // Objekt zwar da, aber seine Methoden rufen ein undefined NativeModule auf und
+  // werfen kryptisch. Lieber sofort ein klares „nicht verfügbar" mit Detail.
+  if (!AudioRecordModule || typeof AudioRecordModule.init !== 'function') {
+    throw new WhisperError(
+      WhisperFehler.unavailable,
+      'Natives Audio-Modul (RNLiveAudioStream) nicht gelinkt — Dev-/Prebuild ohne das Modul?',
+    );
+  }
+
+  // Mikrofon-Freigabe EXPLIZIT zur Laufzeit anfragen (löst unter Android/iOS den
+  // System-Dialog aus, falls noch nicht entschieden). Ohne diese Anfrage schlägt
+  // die native AudioRecord-Initialisierung stumm fehl → wirkte wie „nicht
+  // verfügbar". Bei Verweigerung: distinkter Code + Status im Detail.
   const permission = await requestRecordingPermissionsAsync();
   if (!permission.granted) {
+    const detail = `status=${permission.status}; canAskAgain=${permission.canAskAgain}`;
     console.error('[whisper] Mikrofon-Berechtigung nicht erteilt', {
       status: permission.status,
       canAskAgain: permission.canAskAgain,
     });
-    throw new Error(WhisperFehler.permission);
+    throw new WhisperError(WhisperFehler.permission, detail);
   }
 
   try {
+    // Der native init() lehnt (Android) mit „AudioRecord initialization failed"
+    // ab, wenn das AudioRecord-Objekt nicht in den Zustand STATE_INITIALIZED
+    // kommt — typische reale Ursachen: Freigabe erst gerade erteilt aber Hardware
+    // noch belegt, ein anderes App/OS-Objekt hält das Mikro, oder eine nicht
+    // unterstützte Sample-Rate. Als distinkter audioInit-Code melden statt roh.
     await AudioRecordModule.init({ sampleRate: SAMPLE_RATE, channels: 1, bitsPerSample: 16 });
   } catch (e) {
+    const detail = e instanceof Error ? e.message : String(e);
     console.error('[whisper] Audio-Aufnahme konnte nicht initialisiert werden', {
       sampleRate: SAMPLE_RATE,
-      fehler: e instanceof Error ? e.message : String(e),
+      fehler: detail,
     });
-    throw e;
+    throw new WhisperError(WhisperFehler.audioInit, detail);
   }
   const chunks: Uint8Array[] = [];
   const subscription = AudioRecordModule.on('data', (b64: string) => {
@@ -482,12 +532,13 @@ export async function transcribePcm(
     }
     return result?.result?.trim() ?? '';
   } catch (e) {
+    const detail = e instanceof Error ? e.message : String(e);
     console.error('[whisper] Transkription fehlgeschlagen', {
       datei: tempFileName,
       fast: opts?.fast ?? false,
-      fehler: e instanceof Error ? e.message : String(e),
+      fehler: detail,
     });
-    throw new Error(WhisperFehler.transcribe);
+    throw new WhisperError(WhisperFehler.transcribe, detail);
   } finally {
     await FileSystem.deleteAsync(path, { idempotent: true }).catch(() => {});
   }

@@ -16,18 +16,41 @@ type Transcriber = (
 export type WhisperProgress = { status: 'downloading'; percent: number } | { status: 'ready' };
 
 // Parität zur nativen whisperCheck.ts, damit named-Importe (z. B. in
-// app/hifz/[surah].tsx) auch im Web-Bundle existieren.
-export const WhisperFehler = {
-  unavailable: 'speech_recognition_unavailable',
-  permission: 'whisper_permission_denied',
-  modelDownload: 'whisper_model_download_failed',
-  modelInit: 'whisper_model_init_failed',
-  transcribe: 'whisper_transcribe_failed',
-} as const;
+// app/hifz/[surah].tsx) auch im Web-Bundle existieren — geteilte Quelle in
+// whisperError.ts.
+export {
+  WhisperFehler,
+  WhisperError,
+  istModellFehler,
+  fehlerCode,
+  fehlerDetail,
+  beschreibeWhisperFehler,
+  type WhisperFehlerCode,
+  type WhisperFehlerInfo,
+} from './whisperError';
 
-export function istModellFehler(e: unknown): boolean {
-  const msg = e instanceof Error ? e.message : String(e);
-  return msg === WhisperFehler.modelDownload || msg === WhisperFehler.modelInit;
+export interface WhisperDiagnose {
+  modellVorhanden: boolean;
+  mikrofonStatus: string;
+  audioModulGelinkt: boolean;
+}
+
+/** Web-Parität zu whisperCheck.ts::whisperDiagnose (Browser-Fähigkeiten prüfen). */
+export async function whisperDiagnose(): Promise<WhisperDiagnose> {
+  let mikrofonStatus = 'unknown';
+  try {
+    if (typeof navigator !== 'undefined' && navigator.permissions?.query) {
+      const p = await navigator.permissions.query({ name: 'microphone' as PermissionName });
+      mikrofonStatus = p.state === 'prompt' ? 'undetermined' : p.state;
+    }
+  } catch {
+    mikrofonStatus = 'unknown';
+  }
+  return {
+    modellVorhanden: whisperSupported(),
+    mikrofonStatus,
+    audioModulGelinkt: whisperSupported(),
+  };
 }
 
 // Metro darf den CDN-Import nicht statisch auflösen — Indirektion über
