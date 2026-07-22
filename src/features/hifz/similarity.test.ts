@@ -177,6 +177,25 @@ describe('wordsSimilar (Wort-Ähnlichkeit fürs Alignment)', () => {
     expect(wordsSimilar('بسم', 'نور')).toBe('no');
   });
 
+  it('EHRLICHKEIT: 3-Buchstaben-Wort mit 2 abweichenden Radikalen ist KEIN near (قال↔مات)', () => {
+    // Distanz 2 bei Länge 3 = anderes Wort → darf nicht als „fast richtig" die
+    // Note schönen. Früher (Mindestschwelle 2 ab Länge 3) fälschlich near.
+    expect(levenshtein('قال', 'مات')).toBe(2);
+    expect(wordsSimilar('قال', 'مات')).toBe('no');
+  });
+
+  it('echter Buchstabendreher (1 Abweichung) bei 3-Buchstaben-Wort bleibt near (قال↔قام)', () => {
+    expect(levenshtein('قال', 'قام')).toBe(1);
+    expect(wordsSimilar('قال', 'قام')).toBe('near');
+  });
+
+  it('längere Wörter behalten die großzügige Toleranz (unverändert)', () => {
+    // Länge 6, Distanz 2 (الرحمن↔الرحيم, letzte zwei Buchstaben) → weiter near
+    // (Schwelle floor(6/2)=3). Zeigt: der Ehrlichkeits-Fix verschärft nur Länge 3.
+    expect(levenshtein('الرحمن', 'الرحيم')).toBe(2);
+    expect(wordsSimilar('الرحمن', 'الرحيم')).toBe('near');
+  });
+
   it('leere Eingabe = no', () => {
     expect(wordsSimilar('', 'قال')).toBe('no');
     expect(wordsSimilar('قال', '')).toBe('no');

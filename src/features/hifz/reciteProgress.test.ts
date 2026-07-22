@@ -199,6 +199,36 @@ describe('ReciteProgress', () => {
     expect(rp.update('الحمد لله رب')).toBe(3);
   });
 
+  it('FINAL-SWEEP: eine FRISCHE Front deckt beim Durchlauf von vorne die ganze Sure auf', () => {
+    // Robustheits-Fix ganze Sure: nach dem Live-Lauf steht die Front irgendwo
+    // mittendrin. Der Final-Sweep läuft von vorne durchs Audio — mit einer
+    // FRISCHEN Front (bei 0). Sequenz überlappender Block-Transkripte (wie die
+    // finalen Fenster) → am Ende ist jeder Vers aufgedeckt, inkl. der frühen.
+    const fresh = new ReciteProgress(EXPECTED); // Default-Fenster (lookAhead 18)
+    const revealed = new Set<number>();
+    for (const block of [
+      'الحمد لله رب العالمين',
+      'العالمين الرحمن الرحيم مالك',
+      'مالك يوم الدين',
+    ]) {
+      for (const r of fresh.ingest(block)) revealed.add(r.index);
+    }
+    // Alle 9 Wort-Indizes der Sure sind aufgedeckt.
+    expect([...revealed].sort((a, b) => a - b)).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8]);
+  });
+
+  it('FINAL-SWEEP: eine weit voraus stehende (Live-)Front deckt frühe Verse NICHT mehr auf', () => {
+    // Begründung, warum der Final-Sweep eine frische Front braucht: steht die
+    // Front schon am Ende (Live-Lauf), findet ein Block mit FRÜHEM Audio seine
+    // Wörter nicht mehr (Match-Fenster liegt fern der frühen Stelle).
+    const stale = new ReciteProgress(EXPECTED);
+    stale.update('الحمد لله رب العالمين الرحمن الرحيم مالك يوم الدين'); // Front ans Ende
+    const reveals = stale.ingest('الحمد لله رب'); // frühes Audio erneut
+    // Die tatsächlich gesprochenen frühen Wörter (Index 0,1,2) werden NICHT
+    // aufgedeckt — das Match-Fenster der End-Front liegt fern (Index 5..8).
+    expect(reveals.some((r) => r.index <= 2)).toBe(false);
+  });
+
   it('deckt bei wiederholtem Wort nicht die falsche (spätere) Stelle auf', () => {
     // Simuliert die ganze „Sure" REPEAT: Front steht bei 0, es wird das erste
     // الله (Index 2) rezitiert — das zweite (Index 8) bleibt verdeckt.

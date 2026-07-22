@@ -40,12 +40,15 @@ import {
   type WhisperProgress,
 } from './whisperCheck';
 import { ReciteProgress, overlappingWindows, type RevealedWord } from './reciteProgress';
+import { createEnergyVadGate, trimSilenceAdaptive } from './vad';
 
-// Ab hier gilt: hat schon gesprochen (RMS über Schwelle) — danach beendet
-// anhaltende Stille die Aufnahme automatisch. Bewusst niedrig (0.01), damit
-// auch leise Quellen erkannt werden (User-Report: Wiedergabe vom 2. Handy /
-// leises Rezitieren blieb unter 0.02 → "nichts erkannt").
-const VOICE_RMS_THRESHOLD = 0.01;
+// Sprach-/Stille-Erkennung während der Aufnahme läuft jetzt über den adaptiven
+// Energie-Gate (createEnergyVadGate, s. vad.ts) statt eines festen RMS-
+// Schwellwerts: adaptive Schwelle über einer mitlaufenden Rausch-Untergrenze +
+// Mindest-Sprachdauer. Die absolute Untergrenze im Gate (ABS_MIN_RMS = 0.01)
+// hält das bisherige Verhalten für leise Quellen in Stille bei (User-Report:
+// Wiedergabe vom 2. Handy / leises Rezitieren), hebt die Schwelle aber über
+// gemessenes Hintergrundrauschen und ignoriert einen einzelnen Klick/Huster.
 // Wie lange Stille NACH erkannter Sprache toleriert wird, bevor automatisch
 // gestoppt wird. Etwas länger (1200 ms), damit natürliche Vers-Pausen nicht
 // vorschnell abbrechen.
@@ -101,11 +104,13 @@ export async function recognizeArabicStreaming(options: StreamingOptions): Promi
   let lastVoicedAt = Date.now();
   const startedAt = Date.now();
 
+  const gate = createEnergyVadGate();
   const capture = await startPcmCapture((chunk) => {
-    if (rms(chunk) >= VOICE_RMS_THRESHOLD) {
-      hasSpeech = true;
-      lastVoicedAt = Date.now();
-    }
+    const { voiced, speechConfirmed } = gate.push(chunk);
+    // voiced steuert den Stille-Timeout, speechConfirmed (>= Mindest-Sprachdauer)
+    // erst schaltet die Aufnahme scharf → ein einzelner Klick startet nichts.
+    if (voiced) lastVoicedAt = Date.now();
+    if (speechConfirmed) hasSpeech = true;
   });
 
   // Live-Zwischen-Transkription: nur EIN Lauf gleichzeitig (busy), damit sich
@@ -155,9 +160,20 @@ export async function recognizeArabicStreaming(options: StreamingOptions): Promi
   if (!hasSpeech) return [];
   const float32 = new Float32Array(pcm16.length);
   for (let i = 0; i < pcm16.length; i++) float32[i] = pcm16[i] / 0x8000;
-  const trimmed = trimSilence(float32);
+  // Finaler Bewertungs-Durchlauf: adaptive VAD-Trimmung (s. vad.ts) statt festem
+  // Schwellwert — weniger Halluzinationsfläche an leisen Rändern.
+  const trimmed = trimSilenceAdaptive(float32);
   const whisperContext = await contextReady;
-  const text = await transcribePcm(trimmed, whisperContext, 'hifz-final-rec.wav', options.expectedText);
+  // KEIN erwarteter-Vers-Prompt für die FINALE Bewertung (Ehrlichkeit): eine
+  // empirische Messung des tatsächlichen On-Device-Modells (bashir-manafikhi
+  // tarteel-base GGML) gegen 46 echte Rezitations-Clips zeigte, dass das
+  // Konditionieren auf den erwarteten Vers die Transkription BIAST (Prompt-Echo):
+  // Wort-Recall fiel 80→73 %, CER stieg — und kritischer, das Modell kann
+  // erwartete Wörter HALLUZINIEREN → falsch-positives „richtig". Die Bewertung
+  // muss unvoreingenommen transkribieren und ERST DANACH gegen den erwarteten
+  // Text matchen (alignWords). Der bewegte Prompt bleibt nur bei den Live-Partials
+  // (Positions-Tracking, disposable), nicht in der Score-Quelle.
+  const text = await transcribePcm(trimmed, whisperContext, 'hifz-final-rec.wav');
   return text ? [text] : [];
 }
 
@@ -292,38 +308,50 @@ export async function recognizeArabicContinuous(options: ContinuousOptions): Pro
       // gesprochenen, die aus dem Live-Fenster gefallen waren → „die Sure löst sich
       // am Ende auf". Die Front wandert über die Blöcke monoton bis zum Ende; früher
       // Aufgedecktes bleibt dank monotoner UI-Aufdeckung erhalten.
+      //
+      // FRISCHE Fortschritts-Front für den Final-Sweep (Robustheits-Fix ganze
+      // Sure): der Sweep läuft von vorne durchs Audio, die Live-`progress`-Front
+      // steht aber irgendwo mittendrin (wo die Live-Erkennung hängen blieb) — mit
+      // ihr bekäme der ERSTE Block (frühes Audio) den Prompt der SPÄTEN Verse und
+      // sein Alignment-Fenster läge fern der frühen Wörter → frühe Verse blieben
+      // unaufgedeckt. Eine bei 0 startende Front wandert synchron mit den Blöcken
+      // durchs Audio: jeder Block bekommt den zu SEINER Stelle passenden Prompt und
+      // deckt seine Verse auf. Monotones UI-Aufdecken macht bereits Aufgedecktes
+      // nie rückgängig; die Live-`progress`-Front wird hier bewusst nicht weiter
+      // benutzt.
+      const finalProgress = options.expectedText ? new ReciteProgress(options.expectedText) : null;
       const windows = overlappingWindows(float32.length, FINAL_WINDOW_SAMPLES, FINAL_HOP_SAMPLES);
       let lastText = '';
       for (const w of windows) {
-        const chunk = trimSilence(float32.subarray(w.start, w.end));
+        // Adaptive VAD-Trimmung des Blocks (Rausch-Floor + Mindest-Sprachdauer,
+        // s. vad.ts) statt festem Schwellwert — schneidet leise Ränder/Rauschen
+        // und reduziert Halluzination an Block-Grenzen.
+        const chunk = trimSilenceAdaptive(float32.subarray(w.start, w.end));
         // Zu kurze/stille Blöcke (z. B. eine Schluss-Pause) überspringen.
         if (chunk.length < SAMPLE_RATE * 0.3) continue;
-        const prompt = progress ? progress.prompt() : options.expectedText;
+        // KEIN erwarteter-Text-Prompt für die finale Block-Transkription
+        // (Ehrlichkeit, s. recognizeArabicStreaming): der Prompt biast die
+        // Transkription (Prompt-Echo) und kann erwartete Wörter halluzinieren →
+        // falsch aufgedeckte Verse. Frei (greedy) transkribieren; das
+        // Positions-Tracking + Aufdecken übernimmt finalProgress.ingest() durch
+        // ALIGNMENT des freien Transkripts gegen den erwarteten Text — die Front
+        // braucht den Prompt nicht (sie folgt der Block-Reihenfolge + dem
+        // Alignment). Der bewegte Prompt bleibt nur im LIVE-Fenster oben.
         // Kein skipIfBusy: die Final-Blöcke reihen sich im Serializer ein (dürfen
         // nicht verworfen werden) und laufen strikt nacheinander.
-        const text = await transcribePcm(chunk, whisperContext, 'hifz-surah-final.wav', prompt).catch((e) => {
+        const text = await transcribePcm(chunk, whisperContext, 'hifz-surah-final.wav').catch((e) => {
           console.warn('[hifz recite-surah] Final-Block-Transkription fehlgeschlagen:', String(e));
           return '';
         });
         if (text) {
           lastText = text;
-          const reveals = progress ? progress.ingest(text) : [];
+          const reveals = finalProgress ? finalProgress.ingest(text) : [];
           options.onPartial(text, reveals);
         }
       }
       return lastText;
     },
   };
-}
-
-function rms(pcm: Int16Array): number {
-  if (pcm.length === 0) return 0;
-  let sumSquares = 0;
-  for (let i = 0; i < pcm.length; i++) {
-    const normalized = pcm[i] / 0x8000;
-    sumSquares += normalized * normalized;
-  }
-  return Math.sqrt(sumSquares / pcm.length);
 }
 
 /**
@@ -343,11 +371,11 @@ export async function recognizeArabicAlternatives(
   let lastVoicedAt = Date.now();
   const startedAt = Date.now();
 
+  const gate = createEnergyVadGate();
   const capture = await startPcmCapture((chunk) => {
-    if (rms(chunk) >= VOICE_RMS_THRESHOLD) {
-      hasSpeech = true;
-      lastVoicedAt = Date.now();
-    }
+    const { voiced, speechConfirmed } = gate.push(chunk);
+    if (voiced) lastVoicedAt = Date.now();
+    if (speechConfirmed) hasSpeech = true;
   });
 
   await new Promise<void>((resolve) => {
@@ -367,9 +395,12 @@ export async function recognizeArabicAlternatives(
 
   const float32 = new Float32Array(pcm16.length);
   for (let i = 0; i < pcm16.length; i++) float32[i] = pcm16[i] / 0x8000;
-  const trimmed = trimSilence(float32);
+  const trimmed = trimSilenceAdaptive(float32);
 
   const whisperContext = await contextReady;
-  const text = await transcribePcm(trimmed, whisperContext, 'hifz-fast-rec.wav', options?.expectedText);
+  // Kein erwarteter-Vers-Prompt für die Bewertung (s. recognizeArabicStreaming:
+  // empirisch senkt der Prompt Recall und erzeugt falsch-positive Treffer). Frei
+  // transkribieren, danach gegen den erwarteten Text matchen.
+  const text = await transcribePcm(trimmed, whisperContext, 'hifz-fast-rec.wav');
   return text ? [text] : [];
 }

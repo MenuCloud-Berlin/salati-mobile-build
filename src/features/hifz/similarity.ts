@@ -73,10 +73,21 @@ export function levenshtein(a: string, b: string): number {
  * großzügig (len/2), weil die ASR bei langsamem Anfänger-Lesen und
  * Madd-Dehnungen leicht 1–2 Buchstaben daneben liegt — der Nutzer soll für
  * korrekt Rezitiertes nicht bestraft werden (User-Report: "zu streng, nie
- * 100%"). Mindestens 2 ab Wortlänge 3, damit auch kurze Wörter Toleranz haben.
+ * 100%").
+ *
+ * FEEDBACK-EHRLICHKEIT (2026-07-22): die frühere Mindestschwelle von 2 ab
+ * Wortlänge 3 war zu locker — ein 3-Buchstaben-Wort durfte in ZWEI von drei
+ * Buchstaben abweichen und galt trotzdem als „fast richtig". Bei arabischen
+ * Drei-Radikalen-Wurzeln ist das faktisch ein ANDERES Wort (z. B. قال↔مات,
+ * Distanz 2) → falsch-positives „near", das die Note schönt und einen Vers
+ * fälschlich als gekonnt abhaken kann. Jetzt: max(1, len/2). Damit bleibt die
+ * Toleranz für Wörter ab Länge 4 unverändert (len 4→2, 5→2, 6→3, …) und für
+ * längere Wörter großzügig, aber ein 3-Buchstaben-Wort braucht mindestens zwei
+ * korrekte Radikale (Distanz ≤ 1) — ein echter Buchstabendreher (خلق↔حلق) zählt
+ * weiter als near, zwei nicht.
  */
 function nearThreshold(len: number): number {
-  return Math.max(len >= 3 ? 2 : 1, Math.floor(len / 2));
+  return Math.max(1, Math.floor(len / 2));
 }
 
 // Arabische Proklitika, die die ASR gern anhängt oder verschluckt: der Artikel

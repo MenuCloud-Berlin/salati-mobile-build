@@ -41,6 +41,7 @@ import {
 } from './whisperModel';
 import { WhisperError, WhisperFehler } from './whisperError';
 import { createTranscribeSerializer } from './transcribeSerializer';
+import { trimSilenceAdaptive } from './vad';
 
 // Beide nativen Pakete werden bewusst per require() statt per import geladen
 // und auf selbst geschriebene (gegen die tatsächlichen Quellen verifizierte)
@@ -673,7 +674,12 @@ export async function startWhisperRecording(
     const pcm16 = capture.stopCapture();
     if (cancelled) return [];
     const float32 = int16ToFloat32(pcm16);
-    const trimmed = trimSilence(float32);
+    // Adaptive VAD-Trimmung (Rausch-Floor-Schätzung + Mindest-Sprachdauer) statt
+    // festem 0.01-Schwellwert: schneidet leises Dauerrauschen/Stille an den
+    // Rändern weg → weniger Halluzinationsfläche für whisper, ohne echte (auch
+    // leise) Rezitation zu verlieren (fällt bei reiner Stille auf das Signal
+    // zurück, nie leer). trimSilence bleibt für den Web-Pfad + Fallback erhalten.
+    const trimmed = trimSilenceAdaptive(float32);
     const whisperContext = await contextReady;
     if (cancelled) return [];
     // NUR EIN Transkriptions-Pass (früher zusätzlich eine 1,5x-beschleunigte
