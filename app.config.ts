@@ -4,7 +4,7 @@ const config: ExpoConfig = {
   name: 'Salati',
   slug: 'salatibox',
   owner: 'menucloudberlin',
-  version: '1.27.17',
+  version: '1.27.18',
   orientation: 'portrait',
   icon: './assets/images/icon.png',
   scheme: 'salatibox',
@@ -70,7 +70,6 @@ const config: ExpoConfig = {
   },
   plugins: [
     'expo-router',
-    'expo-video',
     [
       'expo-build-properties',
       {
@@ -104,6 +103,15 @@ const config: ExpoConfig = {
         recordAudioAndroid: true,
         microphonePermission:
           'Salati nutzt das Mikrofon, um deine Koran-Rezitation im Hifz-Übungsmodus zu prüfen.',
+      },
+    ],
+    [
+      'expo-video',
+      {
+        // Lernvideos werden im Vordergrund abgespielt; Hintergrund-Wiedergabe ist
+        // bei Video bewusst aus (staysActiveInBackground: false im Player).
+        supportsBackgroundPlayback: false,
+        supportsPictureInPicture: true,
       },
     ],
     'expo-localization',

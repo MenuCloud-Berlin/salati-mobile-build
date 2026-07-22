@@ -1,10 +1,16 @@
-// Vers als Bild teilen (Web): zeichnet eine Share-Card (1080×1350, Instagram-
-// Hochformat) auf ein Canvas — arabischer Vers, Übersetzung, Quelle, Branding —
-// und öffnet das System-Share-Sheet (Fallback: PNG-Download). Nativ zeigt der
-// Reader den Button nicht (canShareVerseImage), dort bleibt der Text-Share.
+// Inhalt als Bild teilen (Web): zeichnet eine Share-Card (1080×1350, Instagram-
+// Hochformat) auf ein Canvas — arabischer Text, optionale Umschrift (Duas),
+// Übersetzung, Quelle, Branding — und öffnet das System-Share-Sheet (Fallback:
+// PNG-Download). Wird von Quran-Vers, Weisheit und Dua auf dem Web genutzt;
+// nativ übernimmt stattdessen die RN-View-Variante (components/share-card.tsx),
+// weil DOM-Canvas nativ nicht verfügbar ist. Deshalb ist der Web-Pfad an
+// `Platform.OS === 'web'` (canShareVerseImage) gebunden.
 import { Platform } from 'react-native';
 
 export const canShareVerseImage = Platform.OS === 'web';
+/** Generischer Alias — der Canvas-Renderer ist nicht mehr vers-spezifisch,
+ * neue Aufrufer (Weisheit/Dua) sollen den neutralen Namen verwenden. */
+export const canShareContentImage = canShareVerseImage;
 
 const W = 1080;
 const H = 1350;
@@ -30,6 +36,9 @@ function wrapText(ctx: CanvasRenderingContext2D, text: string, maxWidth: number)
 
 export interface VerseCardInput {
   arabic: string;
+  /** Lateinische Umschrift — nur Duas liefern das; zwischen Arabisch und
+   * Übersetzung gezeichnet. Fehlt bei Vers/Hadith/Weisheit → Zeile entfällt. */
+  transliteration?: string;
   translation: string;
   /** z. B. "Al-Baqara 2:153" */
   source: string;
@@ -70,16 +79,26 @@ export function drawVerseCard(input: VerseCardInput): Promise<Blob> {
   const arabicLines = wrapText(ctx, input.arabic, maxWidth);
   const arabicLineHeight = 104;
 
-  // Übersetzung
+  // Umschrift (optional, nur Duas) — zwischen Arabisch und Übersetzung
   ctx.direction = 'ltr';
+  ctx.font = 'italic 30px Georgia, "Times New Roman", serif';
+  const transliterationText = input.transliteration?.trim() ?? '';
+  const transliterationLines = transliterationText ? wrapText(ctx, transliterationText, maxWidth) : [];
+  const transliterationLineHeight = 44;
+
+  // Übersetzung (leer bei rein arabischer Anzeige → Zeile entfällt)
   ctx.font = 'italic 34px Georgia, "Times New Roman", serif';
-  const translationLines = wrapText(ctx, `„${input.translation}“`, maxWidth);
+  const translationText = input.translation.trim();
+  const translationLines = translationText ? wrapText(ctx, `„${translationText}“`, maxWidth) : [];
   const translationLineHeight = 50;
 
-  // Vertikal zentrieren (Arabisch + Lücke + Übersetzung)
+  // Vertikal zentrieren (Arabisch + Lücke + Umschrift + Übersetzung)
   const gap = 70;
   const blockHeight =
-    arabicLines.length * arabicLineHeight + gap + translationLines.length * translationLineHeight;
+    arabicLines.length * arabicLineHeight +
+    gap +
+    transliterationLines.length * transliterationLineHeight +
+    translationLines.length * translationLineHeight;
   let y = Math.max(MARGIN + 80, (H - blockHeight) / 2);
 
   ctx.direction = 'rtl';
@@ -92,6 +111,15 @@ export function drawVerseCard(input: VerseCardInput): Promise<Blob> {
 
   y += gap - arabicLineHeight / 2;
   ctx.direction = 'ltr';
+  if (transliterationLines.length > 0) {
+    ctx.font = 'italic 30px Georgia, "Times New Roman", serif';
+    ctx.fillStyle = '#a8a08c';
+    for (const line of transliterationLines) {
+      ctx.fillText(line, W / 2, y);
+      y += transliterationLineHeight;
+    }
+    y += 16;
+  }
   ctx.font = 'italic 34px Georgia, "Times New Roman", serif';
   ctx.fillStyle = '#cfc8b8';
   for (const line of translationLines) {
@@ -137,3 +165,7 @@ export async function shareVerseImage(input: VerseCardInput): Promise<boolean> {
   setTimeout(() => URL.revokeObjectURL(url), 10_000);
   return true;
 }
+
+/** Generischer Alias für neue Aufrufer (Weisheit/Dua) — identisches Verhalten
+ * wie shareVerseImage, nur ohne vers-spezifische Benennung. */
+export const shareContentImage = shareVerseImage;

@@ -235,7 +235,9 @@
   "duas": {
     "offlineNote": "Disponible completamente sin conexión",
     "countOne": "1 dua",
-    "countMany": "{n} duas"
+    "countMany": "{n} duas",
+    "shareText": "Compartir dua",
+    "shareImage": "Compartir como imagen"
   },
   "learn": {
     "title": "Aprender a leer el Corán",
@@ -619,7 +621,8 @@
   "wisdom": {
     "title": "Sabidurías",
     "today": "Sabiduría del día",
-    "share": "Compartir"
+    "share": "Compartir",
+    "shareImage": "Compartir como imagen"
   },
   "settings": {
     "groups": {
@@ -872,6 +875,13 @@
         "deleteAll": "Eliminar todo",
         "deleteAllConfirmTitle": "¿Eliminar todas las descargas?",
         "deleteAllConfirmBody": "Todos los episodios descargados se eliminarán de tu dispositivo."
+      },
+      "video": {
+        "title": "Descargas de vídeo",
+        "empty": "No hay vídeos descargados",
+        "deleteAll": "Eliminar todo",
+        "deleteAllConfirmTitle": "¿Eliminar todas las descargas?",
+        "deleteAllConfirmBody": "Todos los vídeos descargados se eliminarán de tu dispositivo."
       }
     },
     "appIcon": {
@@ -2235,5 +2245,42 @@
     "learnDesc": "2000+ interactive lessons — step by step.",
     "hifzDesc": "Memorize the Qur’an, with speech recognition.",
     "more": "More learning"
+  },
+  "reels": {
+    "title": "Reels",
+    "comingSoonTitle": "Reels muy pronto",
+    "comingSoonDesc": "Pronto aparecerán aquí clips cortos para deslizar.",
+    "errorTitle": "No se pudieron cargar los reels",
+    "errorDesc": "Comprueba tu conexión e inténtalo de nuevo.",
+    "retry": "Reintentar",
+    "share": "Compartir",
+    "back": "Atrás",
+    "mute": "Silenciar",
+    "unmute": "Activar sonido",
+    "webOnlyNote": "Los reels se reproducen en la app de Salati. Abre la app para verlos."
+  },
+  "video": {
+    "title": "Vídeos",
+    "subtitle": "Los vídeos de aprendizaje — entiende el Corán paso a paso.",
+    "heroDesc": "37 vídeos de aprendizaje: gramática, taywid y más — para ver.",
+    "reelsTitle": "Reels",
+    "reelsDesc": "Clips cortos — conocimiento en pequeñas dosis.",
+    "empty": "Próximamente.",
+    "moreEpisodes": "Más vídeos",
+    "episodeLabel": "Episodio",
+    "topics": "Temas",
+    "continue": "Seguir viendo",
+    "play": "Reproducir",
+    "pause": "Pausa",
+    "seek": "Posición",
+    "previous": "Vídeo anterior",
+    "next": "Vídeo siguiente",
+    "fullscreen": "Pantalla completa",
+    "download": "Descargar",
+    "offline": "Sin conexión",
+    "cancelDownload": "Cancelar descarga",
+    "deleteDownload": "Eliminar descarga",
+    "deleteDownloadConfirmTitle": "¿Eliminar la descarga?",
+    "deleteDownloadConfirmBody": "El vídeo se eliminará de tu dispositivo."
   }
 }

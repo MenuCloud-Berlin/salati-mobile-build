@@ -1,12 +1,17 @@
 import { useLocalSearchParams } from 'expo-router';
-import { FlatList, Platform, StyleSheet } from 'react-native';
+import { FlatList, Platform, Pressable, Share, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { ShareCardModal } from '@/components/share-card';
 import { AnimatedListItem } from '@/components/ui/animated-list-item';
+import { IconSymbol } from '@/components/ui/icon-symbol';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { BackChipInset, MaxContentWidth, Spacing } from '@/constants/theme';
-import { categoryLabel, DUA_CATEGORIES, duaTranslation, duasForCategory } from '@/features/duas/hooks';
+import { BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
+import { categoryLabel, DUA_CATEGORIES, duaTranslation, duasForCategory, type Dua } from '@/features/duas/hooks';
+import { canShareContentImage, shareContentImage } from '@/features/quran/shareImage';
+import { useShareCard } from '@/features/share/useShareCard';
+import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
 import { useTranslation } from '@/lib/i18n';
 
 // Ohne generateStaticParams rendert `expo export --platform web` diese Route
@@ -21,7 +26,42 @@ export function generateStaticParams() {
 export default function DuaCategoryScreen() {
   const { category } = useLocalSearchParams<{ category: string }>();
   const duas = duasForCategory(category ?? '');
-  const { locale } = useTranslation();
+  const { t, locale } = useTranslation();
+  const scheme = useResolvedScheme();
+  const colors = Colors[scheme];
+  const shareCard = useShareCard();
+
+  function shareText(dua: Dua) {
+    const translation = duaTranslation(dua, locale);
+    Share.share({
+      message: `${dua.arabic}\n\n${dua.transliteration}${
+        translation ? `\n\n${translation}` : ''
+      }\n\n— ${dua.source}`,
+    }).catch(() => {});
+  }
+
+  // Als Bild teilen — Web via Canvas (shareContentImage), nativ über die
+  // RN-View-Karte (ShareCardModal); die Umschrift wandert als eigene Zeile in
+  // die Karte (nur Duas liefern sie).
+  function shareImage(dua: Dua) {
+    const translation = duaTranslation(dua, locale) ?? '';
+    if (canShareContentImage) {
+      shareContentImage({
+        arabic: dua.arabic,
+        transliteration: dua.transliteration,
+        translation,
+        source: dua.source,
+      }).catch(() => {});
+    } else {
+      shareCard.open({
+        kind: 'dua',
+        arabic: dua.arabic,
+        transliteration: dua.transliteration,
+        translation,
+        source: dua.source,
+      });
+    }
+  }
 
   return (
     <ThemedView style={styles.container}>
@@ -46,13 +86,40 @@ export default function DuaCategoryScreen() {
                 {duaTranslation(item, locale) && (
                   <ThemedText type="default">{duaTranslation(item, locale)}</ThemedText>
                 )}
-                <ThemedText type="small" themeColor="textSecondary" style={styles.source}>
-                  {item.source}
-                </ThemedText>
+                <View style={styles.footerRow}>
+                  <ThemedText type="small" themeColor="textSecondary" style={styles.source}>
+                    {item.source}
+                  </ThemedText>
+                  <View style={styles.actions}>
+                    <Pressable
+                      onPress={() => shareText(item)}
+                      hitSlop={12}
+                      accessibilityRole="button"
+                      accessibilityLabel={t('duas.shareText')}
+                      style={({ pressed }) => [
+                        Platform.OS === 'web' ? styles.pressableWeb : undefined,
+                        pressed && styles.pressed,
+                      ]}>
+                      <IconSymbol name="share-outline" size={16} color={colors.textSecondary} />
+                    </Pressable>
+                    <Pressable
+                      onPress={() => shareImage(item)}
+                      hitSlop={12}
+                      accessibilityRole="button"
+                      accessibilityLabel={t('duas.shareImage')}
+                      style={({ pressed }) => [
+                        Platform.OS === 'web' ? styles.pressableWeb : undefined,
+                        pressed && styles.pressed,
+                      ]}>
+                      <IconSymbol name="image-outline" size={16} color={colors.textSecondary} />
+                    </Pressable>
+                  </View>
+                </View>
               </ThemedView>
             </AnimatedListItem>
           )}
         />
+        <ShareCardModal content={shareCard.content} onClose={shareCard.close} />
       </SafeAreaView>
     </ThemedView>
   );
@@ -80,5 +147,15 @@ const styles = StyleSheet.create({
   },
   arabic: { fontSize: 22, textAlign: 'right', lineHeight: 36 },
   transliteration: { fontStyle: 'italic' },
-  source: { marginTop: Spacing.one },
+  footerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: Spacing.one,
+    gap: Spacing.two,
+  },
+  source: { flex: 1 },
+  actions: { flexDirection: 'row', alignItems: 'center', gap: Spacing.three },
+  pressableWeb: { cursor: 'pointer' },
+  pressed: { opacity: 0.6 },
 });

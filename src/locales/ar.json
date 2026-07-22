@@ -235,7 +235,9 @@
   "duas": {
     "offlineNote": "متوفر بالكامل دون اتصال",
     "countOne": "دعاء واحد",
-    "countMany": "{n} أدعية"
+    "countMany": "{n} أدعية",
+    "shareText": "مشاركة الدعاء",
+    "shareImage": "مشاركة كصورة"
   },
   "learn": {
     "title": "تعلّم قراءة القرآن",
@@ -619,7 +621,8 @@
   "wisdom": {
     "title": "حِكم",
     "today": "حكمة اليوم",
-    "share": "مشاركة"
+    "share": "مشاركة",
+    "shareImage": "مشاركة كصورة"
   },
   "settings": {
     "groups": {
@@ -872,6 +875,13 @@
         "deleteAll": "حذف الكل",
         "deleteAllConfirmTitle": "حذف كل التنزيلات؟",
         "deleteAllConfirmBody": "ستتم إزالة جميع الحلقات المُنزَّلة من جهازك."
+      },
+      "video": {
+        "title": "تنزيلات الفيديو",
+        "empty": "لا توجد فيديوهات مُنزّلة",
+        "deleteAll": "حذف الكل",
+        "deleteAllConfirmTitle": "حذف كل التنزيلات؟",
+        "deleteAllConfirmBody": "ستُزال جميع الفيديوهات المُنزّلة من جهازك."
       }
     },
     "appIcon": {
@@ -2235,5 +2245,42 @@
     "learnDesc": "2000+ interactive lessons — step by step.",
     "hifzDesc": "Memorize the Qur’an, with speech recognition.",
     "more": "More learning"
+  },
+  "reels": {
+    "title": "ريلز",
+    "comingSoonTitle": "الريلز قريبًا",
+    "comingSoonDesc": "ستظهر هنا قريبًا مقاطع قصيرة للتمرير.",
+    "errorTitle": "تعذّر تحميل الريلز",
+    "errorDesc": "تحقّق من اتصالك وحاول مرة أخرى.",
+    "retry": "إعادة المحاولة",
+    "share": "مشاركة",
+    "back": "رجوع",
+    "mute": "كتم الصوت",
+    "unmute": "تشغيل الصوت",
+    "webOnlyNote": "تُشغّل الريلز في تطبيق Salati. افتح التطبيق لمشاهدتها."
+  },
+  "video": {
+    "title": "مقاطع الفيديو",
+    "subtitle": "فيديوهات تعليمية — لفهم القرآن خطوة بخطوة.",
+    "heroDesc": "37 فيديو تعليمي: النحو والتجويد والمزيد — للمشاهدة.",
+    "reelsTitle": "مقاطع قصيرة",
+    "reelsDesc": "مقاطع قصيرة — معرفة على دفعات صغيرة.",
+    "empty": "قريبًا.",
+    "moreEpisodes": "مزيد من الفيديوهات",
+    "episodeLabel": "الحلقة",
+    "topics": "المواضيع",
+    "continue": "متابعة المشاهدة",
+    "play": "تشغيل",
+    "pause": "إيقاف مؤقت",
+    "seek": "الموضع",
+    "previous": "الفيديو السابق",
+    "next": "الفيديو التالي",
+    "fullscreen": "ملء الشاشة",
+    "download": "تنزيل",
+    "offline": "دون اتصال",
+    "cancelDownload": "إلغاء التنزيل",
+    "deleteDownload": "حذف التنزيل",
+    "deleteDownloadConfirmTitle": "حذف التنزيل؟",
+    "deleteDownloadConfirmBody": "سيُزال الفيديو من جهازك."
   }
 }

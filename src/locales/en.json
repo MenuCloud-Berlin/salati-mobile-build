@@ -235,7 +235,9 @@
   "duas": {
     "offlineNote": "Fully available offline",
     "countOne": "1 dua",
-    "countMany": "{n} duas"
+    "countMany": "{n} duas",
+    "shareText": "Share dua",
+    "shareImage": "Share as image"
   },
   "learn": {
     "title": "Learn to read Quran",
@@ -619,7 +621,8 @@
   "wisdom": {
     "title": "Wisdoms",
     "today": "Wisdom of the day",
-    "share": "Share"
+    "share": "Share",
+    "shareImage": "Share as image"
   },
   "settings": {
     "groups": {
@@ -872,6 +875,13 @@
         "deleteAll": "Delete all",
         "deleteAllConfirmTitle": "Delete all downloads?",
         "deleteAllConfirmBody": "All downloaded episodes will be removed from your device."
+      },
+      "video": {
+        "title": "Video downloads",
+        "empty": "No videos downloaded",
+        "deleteAll": "Delete all",
+        "deleteAllConfirmTitle": "Delete all downloads?",
+        "deleteAllConfirmBody": "All downloaded videos will be removed from your device."
       }
     },
     "appIcon": {
@@ -2235,5 +2245,42 @@
     "done": "Done",
     "textColor": "Text colour",
     "previewHint": "Changes apply to this widget only. Long-press any widget on your home screen to configure it individually."
+  },
+  "reels": {
+    "title": "Reels",
+    "comingSoonTitle": "Reels coming soon",
+    "comingSoonDesc": "Short swipe-up clips will appear here soon.",
+    "errorTitle": "Couldn't load reels",
+    "errorDesc": "Check your connection and try again.",
+    "retry": "Try again",
+    "share": "Share",
+    "back": "Back",
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "webOnlyNote": "Reels play in the Salati app. Open the app to watch them."
+  },
+  "video": {
+    "title": "Videos",
+    "subtitle": "The learning videos — understand the Qur’an step by step.",
+    "heroDesc": "37 learning videos: grammar, Tajwid and more — to watch.",
+    "reelsTitle": "Reels",
+    "reelsDesc": "Short clips — knowledge in bite-sized pieces.",
+    "empty": "Coming soon.",
+    "moreEpisodes": "More videos",
+    "episodeLabel": "Episode",
+    "topics": "Topics",
+    "continue": "Continue watching",
+    "play": "Play",
+    "pause": "Pause",
+    "seek": "Position",
+    "previous": "Previous video",
+    "next": "Next video",
+    "fullscreen": "Fullscreen",
+    "download": "Download",
+    "offline": "Offline",
+    "cancelDownload": "Cancel download",
+    "deleteDownload": "Delete download",
+    "deleteDownloadConfirmTitle": "Delete download?",
+    "deleteDownloadConfirmBody": "The video will be removed from your device."
   }
 }

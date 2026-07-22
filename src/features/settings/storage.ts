@@ -6,6 +6,7 @@ import { MODELL_GROESSE_BYTES, modellLoeschen, modellPfad } from '@/features/ki/
 import { aktuelleModellGroesse, whisperModellLoeschen, whisperModellPfad } from '@/features/hifz/whisperModel';
 import { listDownloadedReciters, reciterDir, QURAN_SURAH_COUNT, type DownloadedReciterPack } from '@/features/quran/offline-audio';
 import { listDownloadedEpisodes, podcastDir, type DownloadedEpisodeMeta } from '@/features/podcast/downloads';
+import { listDownloadedVideos, videoDir, type DownloadedVideoMeta } from '@/features/video/downloads';
 import { queryClient, queryPersister, QUERY_CACHE_STORAGE_KEY } from '@/lib/queryClient';
 
 // Zentrale Speicherverwaltung (app/storage.tsx): bündelt die Byte-Größen
@@ -141,6 +142,7 @@ export interface StorageOverview {
   reciterAudio: { bytes: number; reciters: ReciterStorageEntry[] };
   offlineQuran: OfflineQuranInfo;
   podcast: { bytes: number; episodes: DownloadedEpisodeMeta[] };
+  video: { bytes: number; episodes: DownloadedVideoMeta[] };
   kiModel: { bytes: number; downloaded: boolean };
   whisperModel: { bytes: number; downloaded: boolean };
   cache: { bytes: number };
@@ -152,6 +154,7 @@ const EMPTY_OVERVIEW: StorageOverview = {
   reciterAudio: { bytes: 0, reciters: [] },
   offlineQuran: { bytes: 0, surahCount: 0 },
   podcast: { bytes: 0, episodes: [] },
+  video: { bytes: 0, episodes: [] },
   kiModel: { bytes: 0, downloaded: false },
   whisperModel: { bytes: 0, downloaded: false },
   cache: { bytes: 0 },
@@ -162,16 +165,27 @@ const EMPTY_OVERVIEW: StorageOverview = {
 export async function getStorageOverview(): Promise<StorageOverview> {
   if (Platform.OS === 'web') return EMPTY_OVERVIEW;
 
-  const [reciters, podcastEpisodes, podcastBytes, kiInfo, whisperInfo, cacheDirBytes, rawQueryCache] =
-    await Promise.all([
-      getReciterAudioSizes(),
-      listDownloadedEpisodes(),
-      getDirectorySize(podcastDir()),
-      FileSystem.getInfoAsync(modellPfad()),
-      FileSystem.getInfoAsync(whisperModellPfad()),
-      getDirectorySize(FileSystem.cacheDirectory ?? ''),
-      AsyncStorage.getItem(QUERY_CACHE_STORAGE_KEY).catch(() => null),
-    ]);
+  const [
+    reciters,
+    podcastEpisodes,
+    podcastBytes,
+    videoEpisodes,
+    videoBytes,
+    kiInfo,
+    whisperInfo,
+    cacheDirBytes,
+    rawQueryCache,
+  ] = await Promise.all([
+    getReciterAudioSizes(),
+    listDownloadedEpisodes(),
+    getDirectorySize(podcastDir()),
+    listDownloadedVideos(),
+    getDirectorySize(videoDir()),
+    FileSystem.getInfoAsync(modellPfad()),
+    FileSystem.getInfoAsync(whisperModellPfad()),
+    getDirectorySize(FileSystem.cacheDirectory ?? ''),
+    AsyncStorage.getItem(QUERY_CACHE_STORAGE_KEY).catch(() => null),
+  ]);
 
   const reciterAudioBytes = reciters.reduce((sum, r) => sum + r.bytes, 0);
   const kiBytes = kiInfo.exists ? (kiInfo.size ?? 0) : 0;
@@ -190,11 +204,18 @@ export async function getStorageOverview(): Promise<StorageOverview> {
     reciterAudio: { bytes: reciterAudioBytes, reciters },
     offlineQuran,
     podcast: { bytes: podcastBytes, episodes: podcastEpisodes },
+    video: { bytes: videoBytes, episodes: videoEpisodes },
     kiModel: { bytes: kiBytes, downloaded: kiInfo.exists },
     whisperModel: { bytes: whisperBytes, downloaded: whisperInfo.exists },
     cache: { bytes: cacheBytes },
     totalBytes:
-      reciterAudioBytes + offlineQuran.bytes + podcastBytes + kiBytes + whisperBytes + cacheBytes,
+      reciterAudioBytes +
+      offlineQuran.bytes +
+      podcastBytes +
+      videoBytes +
+      kiBytes +
+      whisperBytes +
+      cacheBytes,
   };
 }
 

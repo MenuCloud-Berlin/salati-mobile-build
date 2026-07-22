@@ -235,7 +235,9 @@
   "duas": {
     "offlineNote": "Inapatikana kabisa nje ya mtandao",
     "countOne": "Dua 1",
-    "countMany": "Dua {n}"
+    "countMany": "Dua {n}",
+    "shareText": "Sambaza dua",
+    "shareImage": "Shiriki kama picha"
   },
   "learn": {
     "title": "Jifunze Kusoma Qur'an",
@@ -619,7 +621,8 @@
   "wisdom": {
     "title": "Hekima",
     "today": "Hekima ya Leo",
-    "share": "Shiriki"
+    "share": "Shiriki",
+    "shareImage": "Shiriki kama picha"
   },
   "settings": {
     "groups": {
@@ -872,6 +875,13 @@
         "deleteAll": "Futa vyote",
         "deleteAllConfirmTitle": "Futa vipakuliwa vyote?",
         "deleteAllConfirmBody": "Vipindi vyote vilivyopakuliwa vitaondolewa kwenye kifaa chako."
+      },
+      "video": {
+        "title": "Upakuaji wa video",
+        "empty": "Hakuna video zilizopakuliwa",
+        "deleteAll": "Futa zote",
+        "deleteAllConfirmTitle": "Futa upakuaji wote?",
+        "deleteAllConfirmBody": "Video zote zilizopakuliwa zitaondolewa kwenye kifaa chako."
       }
     },
     "appIcon": {
@@ -2235,5 +2245,42 @@
     "learnDesc": "2000+ interactive lessons — step by step.",
     "hifzDesc": "Memorize the Qur’an, with speech recognition.",
     "more": "More learning"
+  },
+  "reels": {
+    "title": "Reels",
+    "comingSoonTitle": "Reels zinakuja hivi karibuni",
+    "comingSoonDesc": "Klipu fupi za kutelezesha zitaonekana hapa hivi karibuni.",
+    "errorTitle": "Imeshindwa kupakia reels",
+    "errorDesc": "Angalia muunganisho wako na ujaribu tena.",
+    "retry": "Jaribu tena",
+    "share": "Shiriki",
+    "back": "Rudi",
+    "mute": "Zima sauti",
+    "unmute": "Washa sauti",
+    "webOnlyNote": "Reels huchezwa katika programu ya Salati. Fungua programu ili kuziangalia."
+  },
+  "video": {
+    "title": "Video",
+    "subtitle": "Video za kujifunza — kuelewa Qur’an hatua kwa hatua.",
+    "heroDesc": "Video 37 za kujifunza: sarufi, tajwidi na zaidi — za kutazama.",
+    "reelsTitle": "Reels",
+    "reelsDesc": "Klipu fupi — maarifa kwa vipande vidogo.",
+    "empty": "Inakuja hivi karibuni.",
+    "moreEpisodes": "Video zaidi",
+    "episodeLabel": "Kipindi",
+    "topics": "Mada",
+    "continue": "Endelea kutazama",
+    "play": "Cheza",
+    "pause": "Simamisha",
+    "seek": "Nafasi",
+    "previous": "Video iliyotangulia",
+    "next": "Video inayofuata",
+    "fullscreen": "Skrini nzima",
+    "download": "Pakua",
+    "offline": "Nje ya mtandao",
+    "cancelDownload": "Ghairi upakuaji",
+    "deleteDownload": "Futa upakuaji",
+    "deleteDownloadConfirmTitle": "Futa upakuaji?",
+    "deleteDownloadConfirmBody": "Video itaondolewa kwenye kifaa chako."
   }
 }

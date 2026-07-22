@@ -235,7 +235,9 @@
   "duas": {
     "offlineNote": "Tamamen çevrimdışı kullanılabilir",
     "countOne": "1 dua",
-    "countMany": "{n} dua"
+    "countMany": "{n} dua",
+    "shareText": "Duayı paylaş",
+    "shareImage": "Görsel olarak paylaş"
   },
   "learn": {
     "title": "Kur'an okumayı öğren",
@@ -619,7 +621,8 @@
   "wisdom": {
     "title": "Hikmetler",
     "today": "Günün hikmeti",
-    "share": "Paylaş"
+    "share": "Paylaş",
+    "shareImage": "Görsel olarak paylaş"
   },
   "settings": {
     "groups": {
@@ -872,6 +875,13 @@
         "deleteAll": "Tümünü sil",
         "deleteAllConfirmTitle": "Tüm indirmeler silinsin mi?",
         "deleteAllConfirmBody": "İndirilen tüm bölümler cihazınızdan kaldırılacak."
+      },
+      "video": {
+        "title": "Video indirmeleri",
+        "empty": "İndirilen video yok",
+        "deleteAll": "Tümünü sil",
+        "deleteAllConfirmTitle": "Tüm indirmeler silinsin mi?",
+        "deleteAllConfirmBody": "İndirilen tüm videolar cihazınızdan kaldırılacak."
       }
     },
     "appIcon": {
@@ -2235,5 +2245,42 @@
     "learnDesc": "2000+ interactive lessons — step by step.",
     "hifzDesc": "Memorize the Qur’an, with speech recognition.",
     "more": "More learning"
+  },
+  "reels": {
+    "title": "Reels",
+    "comingSoonTitle": "Reels yakında",
+    "comingSoonDesc": "Yukarı kaydırmalı kısa klipler yakında burada olacak.",
+    "errorTitle": "Reels yüklenemedi",
+    "errorDesc": "Bağlantını kontrol edip tekrar dene.",
+    "retry": "Tekrar dene",
+    "share": "Paylaş",
+    "back": "Geri",
+    "mute": "Sesi kapat",
+    "unmute": "Sesi aç",
+    "webOnlyNote": "Reels, Salati uygulamasında oynatılır. İzlemek için uygulamayı aç."
+  },
+  "video": {
+    "title": "Videolar",
+    "subtitle": "Öğrenme videoları — Kur’an’ı adım adım anlayın.",
+    "heroDesc": "37 öğrenme videosu: dil bilgisi, tecvit ve daha fazlası — izlemek için.",
+    "reelsTitle": "Reels",
+    "reelsDesc": "Kısa klipler — küçük parçalar hâlinde bilgi.",
+    "empty": "Yakında.",
+    "moreEpisodes": "Daha fazla video",
+    "episodeLabel": "Bölüm",
+    "topics": "Konular",
+    "continue": "İzlemeye devam et",
+    "play": "Oynat",
+    "pause": "Duraklat",
+    "seek": "Konum",
+    "previous": "Önceki video",
+    "next": "Sonraki video",
+    "fullscreen": "Tam ekran",
+    "download": "İndir",
+    "offline": "Çevrimdışı",
+    "cancelDownload": "İndirmeyi iptal et",
+    "deleteDownload": "İndirmeyi sil",
+    "deleteDownloadConfirmTitle": "İndirme silinsin mi?",
+    "deleteDownloadConfirmBody": "Video cihazınızdan kaldırılacak."
   }
 }

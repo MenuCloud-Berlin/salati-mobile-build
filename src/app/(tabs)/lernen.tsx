@@ -17,6 +17,13 @@ import { Colors, MaxContentWidth, Spacing } from '@/constants/theme';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
 import { useTranslation } from '@/lib/i18n';
 
+// Medien-Karten unter der Podcast-Hero: Lernvideos + Kurz-Reels. Der Reels-
+// Screen wird separat gebaut; hier nur der Einstieg.
+const MEDIA = [
+  { href: '/videos', icon: 'videocam', titleKey: 'video.title', descKey: 'video.heroDesc' },
+  { href: '/reels', icon: 'film', titleKey: 'video.reelsTitle', descKey: 'video.reelsDesc' },
+] as const satisfies readonly { href: string; icon: IconName; titleKey: string; descKey: string }[];
+
 const FEATURED = [
   {
     href: '/learn',
@@ -82,6 +89,33 @@ export default function LernenScreen() {
               <DisclosureChevron size={20} color={colors.textSecondary} />
             </PressableCard>
           </AnimatedListItem>
+
+          {/* Medien: Videos + Reels (unter der Podcast-Hero) */}
+          <View style={styles.featuredGrid}>
+            {MEDIA.map((item) => (
+              <AnimatedListItem key={item.href} index={itemIndex++} style={styles.featuredItem}>
+                <PressableCard
+                  onPress={() => router.push(item.href)}
+                  type="backgroundElement"
+                  style={styles.featuredCard}>
+                  <View style={styles.mediaTitleRow}>
+                    <ThemedView type="backgroundSelected" style={styles.featuredIcon}>
+                      <IconSymbol name={item.icon} size={22} color={colors.accent} />
+                    </ThemedView>
+                    <View style={[styles.badge, { backgroundColor: colors.accent }]}>
+                      <ThemedText type="small" style={{ color: colors.background, fontSize: 11 }}>
+                        {t('common.new')}
+                      </ThemedText>
+                    </View>
+                  </View>
+                  <ThemedText type="smallBold">{t(item.titleKey)}</ThemedText>
+                  <ThemedText type="small" themeColor="textSecondary" numberOfLines={2}>
+                    {t(item.descKey)}
+                  </ThemedText>
+                </PressableCard>
+              </AnimatedListItem>
+            ))}
+          </View>
 
           {/* Featured: Lern-App + Hifz */}
           <View style={styles.featuredGrid}>
@@ -149,6 +183,7 @@ const styles = StyleSheet.create({
   featuredItem: { flexBasis: 200, flexGrow: 1, minWidth: 160 },
   featuredCard: { gap: Spacing.two, padding: Spacing.four, minHeight: 132 },
   featuredIcon: { width: 44, height: 44, borderRadius: 14, alignItems: 'center', justifyContent: 'center' },
+  mediaTitleRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   sectionTitle: { textTransform: 'uppercase', letterSpacing: 1, paddingLeft: Spacing.one, marginTop: Spacing.one },
   grid: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.two },
   gridItem: { flexBasis: 320, minWidth: 280, flexGrow: 1 },

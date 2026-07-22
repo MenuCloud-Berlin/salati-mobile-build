@@ -235,7 +235,9 @@
   "duas": {
     "offlineNote": "Tersedia sepenuhnya secara offline",
     "countOne": "1 doa",
-    "countMany": "{n} doa"
+    "countMany": "{n} doa",
+    "shareText": "Bagikan doa",
+    "shareImage": "Bagikan sebagai gambar"
   },
   "learn": {
     "title": "Belajar Membaca Al-Qur'an",
@@ -619,7 +621,8 @@
   "wisdom": {
     "title": "Hikmah",
     "today": "Hikmah hari ini",
-    "share": "Bagikan"
+    "share": "Bagikan",
+    "shareImage": "Bagikan sebagai gambar"
   },
   "settings": {
     "groups": {
@@ -872,6 +875,13 @@
         "deleteAll": "Hapus semua",
         "deleteAllConfirmTitle": "Hapus semua unduhan?",
         "deleteAllConfirmBody": "Semua episode yang diunduh akan dihapus dari perangkat Anda."
+      },
+      "video": {
+        "title": "Unduhan video",
+        "empty": "Tidak ada video yang diunduh",
+        "deleteAll": "Hapus semua",
+        "deleteAllConfirmTitle": "Hapus semua unduhan?",
+        "deleteAllConfirmBody": "Semua video yang diunduh akan dihapus dari perangkat Anda."
       }
     },
     "appIcon": {
@@ -2235,5 +2245,42 @@
     "learnDesc": "2000+ interactive lessons — step by step.",
     "hifzDesc": "Memorize the Qur’an, with speech recognition.",
     "more": "More learning"
+  },
+  "reels": {
+    "title": "Reels",
+    "comingSoonTitle": "Reels segera hadir",
+    "comingSoonDesc": "Klip pendek untuk digeser akan segera muncul di sini.",
+    "errorTitle": "Gagal memuat reels",
+    "errorDesc": "Periksa koneksimu dan coba lagi.",
+    "retry": "Coba lagi",
+    "share": "Bagikan",
+    "back": "Kembali",
+    "mute": "Bisukan",
+    "unmute": "Nyalakan suara",
+    "webOnlyNote": "Reels diputar di aplikasi Salati. Buka aplikasi untuk menontonnya."
+  },
+  "video": {
+    "title": "Video",
+    "subtitle": "Video pembelajaran — memahami Al-Qur’an langkah demi langkah.",
+    "heroDesc": "37 video pembelajaran: tata bahasa, tajwid, dan lainnya — untuk ditonton.",
+    "reelsTitle": "Reels",
+    "reelsDesc": "Klip singkat — ilmu dalam potongan kecil.",
+    "empty": "Segera hadir.",
+    "moreEpisodes": "Video lainnya",
+    "episodeLabel": "Episode",
+    "topics": "Topik",
+    "continue": "Lanjutkan menonton",
+    "play": "Putar",
+    "pause": "Jeda",
+    "seek": "Posisi",
+    "previous": "Video sebelumnya",
+    "next": "Video berikutnya",
+    "fullscreen": "Layar penuh",
+    "download": "Unduh",
+    "offline": "Luring",
+    "cancelDownload": "Batalkan unduhan",
+    "deleteDownload": "Hapus unduhan",
+    "deleteDownloadConfirmTitle": "Hapus unduhan?",
+    "deleteDownloadConfirmBody": "Video akan dihapus dari perangkat Anda."
   }
 }

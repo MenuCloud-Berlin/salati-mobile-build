@@ -235,7 +235,9 @@
   "duas": {
     "offlineNote": "সম্পূর্ণ অফলাইনে উপলব্ধ",
     "countOne": "1টি দোয়া",
-    "countMany": "{n}টি দোয়া"
+    "countMany": "{n}টি দোয়া",
+    "shareText": "দোয়া শেয়ার করুন",
+    "shareImage": "ছবি হিসেবে শেয়ার করুন"
   },
   "learn": {
     "title": "কুরআন পড়া শিখুন",
@@ -619,7 +621,8 @@
   "wisdom": {
     "title": "প্রজ্ঞাবাণী",
     "today": "আজকের প্রজ্ঞা",
-    "share": "শেয়ার করুন"
+    "share": "শেয়ার করুন",
+    "shareImage": "ছবি হিসেবে শেয়ার করুন"
   },
   "settings": {
     "groups": {
@@ -872,6 +875,13 @@
         "deleteAll": "সব মুছুন",
         "deleteAllConfirmTitle": "সব ডাউনলোড মুছবেন?",
         "deleteAllConfirmBody": "ডাউনলোড করা সব পর্ব আপনার ডিভাইস থেকে সরানো হবে।"
+      },
+      "video": {
+        "title": "ভিডিও ডাউনলোড",
+        "empty": "কোনো ভিডিও ডাউনলোড করা হয়নি",
+        "deleteAll": "সব মুছুন",
+        "deleteAllConfirmTitle": "সব ডাউনলোড মুছবেন?",
+        "deleteAllConfirmBody": "ডাউনলোড করা সব ভিডিও আপনার ডিভাইস থেকে সরানো হবে।"
       }
     },
     "appIcon": {
@@ -2235,5 +2245,42 @@
     "learnDesc": "2000+ interactive lessons — step by step.",
     "hifzDesc": "Memorize the Qur’an, with speech recognition.",
     "more": "More learning"
+  },
+  "reels": {
+    "title": "রিলস",
+    "comingSoonTitle": "রিলস শীঘ্রই আসছে",
+    "comingSoonDesc": "উপরে সোয়াইপ করার ছোট ক্লিপগুলো শীঘ্রই এখানে দেখা যাবে।",
+    "errorTitle": "রিলস লোড করা যায়নি",
+    "errorDesc": "আপনার সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।",
+    "retry": "আবার চেষ্টা করুন",
+    "share": "শেয়ার",
+    "back": "পেছনে",
+    "mute": "নিঃশব্দ",
+    "unmute": "শব্দ চালু",
+    "webOnlyNote": "রিলস Salati অ্যাপে চলে। দেখতে অ্যাপটি খুলুন।"
+  },
+  "video": {
+    "title": "ভিডিও",
+    "subtitle": "শেখার ভিডিও — ধাপে ধাপে কুরআন বোঝা।",
+    "heroDesc": "৩৭টি শেখার ভিডিও: ব্যাকরণ, তাজবিদ ও আরও — দেখার জন্য।",
+    "reelsTitle": "রিলস",
+    "reelsDesc": "সংক্ষিপ্ত ক্লিপ — ছোট ছোট অংশে জ্ঞান।",
+    "empty": "শীঘ্রই আসছে।",
+    "moreEpisodes": "আরও ভিডিও",
+    "episodeLabel": "পর্ব",
+    "topics": "বিষয়",
+    "continue": "দেখা চালিয়ে যান",
+    "play": "চালান",
+    "pause": "বিরতি",
+    "seek": "অবস্থান",
+    "previous": "পূর্ববর্তী ভিডিও",
+    "next": "পরবর্তী ভিডিও",
+    "fullscreen": "পূর্ণ স্ক্রিন",
+    "download": "ডাউনলোড",
+    "offline": "অফলাইন",
+    "cancelDownload": "ডাউনলোড বাতিল করুন",
+    "deleteDownload": "ডাউনলোড মুছুন",
+    "deleteDownloadConfirmTitle": "ডাউনলোড মুছবেন?",
+    "deleteDownloadConfirmBody": "ভিডিওটি আপনার ডিভাইস থেকে সরানো হবে।"
   }
 }

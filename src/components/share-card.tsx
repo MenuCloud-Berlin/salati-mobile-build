@@ -4,9 +4,10 @@
 // eine eigene Canvas-Lösung (features/quran/shareImage.ts,
 // features/tracker/statsImage.ts — beide `Platform.OS === 'web'`-only, kein
 // DOM-Canvas nativ verfügbar), diese Komponente schließt genau die Lücke für
-// iOS/Android. Eine gemeinsame Komponente für BEIDE Content-Typen (Quran-Vers
-// und Hadith) statt zwei getrennter Implementierungen — der Aufrufer liefert
-// nur arabischen Text, Übersetzung und Quellenangabe.
+// iOS/Android. Eine gemeinsame Komponente für alle Text-Content-Typen (Quran-
+// Vers, Hadith, Weisheit, Dua) statt getrennter Implementierungen — der
+// Aufrufer liefert arabischen Text, optionale Umschrift (nur Duas), Übersetzung
+// und Quellenangabe; zusätzlich gibt es die Kurs-Abschluss-Variante.
 import * as Clipboard from 'expo-clipboard';
 import * as Sharing from 'expo-sharing';
 import { forwardRef, useRef, useState } from 'react';
@@ -21,10 +22,16 @@ import { useTranslation } from '@/lib/i18n';
 
 export interface VerseOrHadithShareContent {
   /** Fehlt bei bestehenden Aufrufern (Quran-Reader/Hadith-Detail) weiterhin -
-   * `kind` ist nur für die neue Kartenvariante unten Pflicht, damit die zwei
-   * bestehenden `shareCard.open({...})`-Aufrufe unverändert bleiben. */
-  kind?: 'verse';
+   * `kind` ist nur für die course-complete-Variante unten Pflicht, damit die
+   * bestehenden `shareCard.open({...})`-Aufrufe unverändert bleiben. Der
+   * Karteninhalt ist für alle Texttypen identisch (arabisch + optionale
+   * Umschrift + Übersetzung + Quelle), 'verse'|'wisdom'|'dua' dient nur der
+   * Lesbarkeit am Aufrufer. */
+  kind?: 'verse' | 'wisdom' | 'dua';
   arabic: string;
+  /** Lateinische Umschrift — nur Duas liefern das; zwischen Arabisch und
+   * Übersetzung dargestellt. Fehlt bei Vers/Hadith/Weisheit → Zeile entfällt. */
+  transliteration?: string;
   translation: string;
   /** z. B. "Al-Baqara 2:255" oder "Sahih al-Bukhari, Hadith 1" */
   source: string;
@@ -82,6 +89,11 @@ export const ShareCardVisual = forwardRef<View, { content: ShareCardContent }>(f
         ) : (
           <>
             <Text style={styles.arabic}>{truncateForShareCard(content.arabic, MAX_ARABIC_CHARS)}</Text>
+            {content.transliteration != null && content.transliteration.trim() !== '' && (
+              <Text style={styles.transliteration}>
+                {truncateForShareCard(content.transliteration, MAX_TRANSLATION_CHARS)}
+              </Text>
+            )}
             {content.translation.trim() !== '' && (
               <Text style={styles.translation}>
                 “{truncateForShareCard(content.translation, MAX_TRANSLATION_CHARS)}”
@@ -285,6 +297,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     writingDirection: 'rtl',
     fontFamily: ArabicFont,
+  },
+  transliteration: {
+    color: '#a8a08c',
+    fontSize: 13,
+    lineHeight: 20,
+    textAlign: 'center',
+    fontStyle: 'italic',
   },
   translation: {
     color: '#cfc8b8',

@@ -235,7 +235,9 @@
   "duas": {
     "offlineNote": "Полностью доступно офлайн",
     "countOne": "1 дуа",
-    "countMany": "{n} дуа"
+    "countMany": "{n} дуа",
+    "shareText": "Поделиться дуа",
+    "shareImage": "Поделиться как изображением"
   },
   "learn": {
     "title": "Учимся читать Коран",
@@ -619,7 +621,8 @@
   "wisdom": {
     "title": "Мудрости",
     "today": "Мудрость дня",
-    "share": "Поделиться"
+    "share": "Поделиться",
+    "shareImage": "Поделиться как изображением"
   },
   "settings": {
     "groups": {
@@ -872,6 +875,13 @@
         "deleteAll": "Удалить всё",
         "deleteAllConfirmTitle": "Удалить все загрузки?",
         "deleteAllConfirmBody": "Все загруженные выпуски будут удалены с вашего устройства."
+      },
+      "video": {
+        "title": "Загрузки видео",
+        "empty": "Нет загруженных видео",
+        "deleteAll": "Удалить все",
+        "deleteAllConfirmTitle": "Удалить все загрузки?",
+        "deleteAllConfirmBody": "Все загруженные видео будут удалены с вашего устройства."
       }
     },
     "appIcon": {
@@ -2235,5 +2245,42 @@
     "learnDesc": "2000+ interactive lessons — step by step.",
     "hifzDesc": "Memorize the Qur’an, with speech recognition.",
     "more": "More learning"
+  },
+  "reels": {
+    "title": "Reels",
+    "comingSoonTitle": "Reels скоро появятся",
+    "comingSoonDesc": "Скоро здесь появятся короткие ролики для пролистывания.",
+    "errorTitle": "Не удалось загрузить Reels",
+    "errorDesc": "Проверьте подключение и попробуйте снова.",
+    "retry": "Повторить",
+    "share": "Поделиться",
+    "back": "Назад",
+    "mute": "Выключить звук",
+    "unmute": "Включить звук",
+    "webOnlyNote": "Reels воспроизводятся в приложении Salati. Откройте приложение, чтобы смотреть."
+  },
+  "video": {
+    "title": "Видео",
+    "subtitle": "Обучающие видео — понимание Корана шаг за шагом.",
+    "heroDesc": "37 обучающих видео: грамматика, таджвид и другое — для просмотра.",
+    "reelsTitle": "Reels",
+    "reelsDesc": "Короткие клипы — знания небольшими порциями.",
+    "empty": "Скоро.",
+    "moreEpisodes": "Больше видео",
+    "episodeLabel": "Серия",
+    "topics": "Темы",
+    "continue": "Продолжить просмотр",
+    "play": "Воспроизвести",
+    "pause": "Пауза",
+    "seek": "Позиция",
+    "previous": "Предыдущее видео",
+    "next": "Следующее видео",
+    "fullscreen": "Полный экран",
+    "download": "Скачать",
+    "offline": "Офлайн",
+    "cancelDownload": "Отменить загрузку",
+    "deleteDownload": "Удалить загрузку",
+    "deleteDownloadConfirmTitle": "Удалить загрузку?",
+    "deleteDownloadConfirmBody": "Видео будет удалено с вашего устройства."
   }
 }

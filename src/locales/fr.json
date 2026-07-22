@@ -235,7 +235,9 @@
   "duas": {
     "offlineNote": "Entièrement disponible hors ligne",
     "countOne": "1 doua",
-    "countMany": "{n} douas"
+    "countMany": "{n} douas",
+    "shareText": "Partager le dua",
+    "shareImage": "Partager en image"
   },
   "learn": {
     "title": "Apprendre à lire le Coran",
@@ -619,7 +621,8 @@
   "wisdom": {
     "title": "Sagesses",
     "today": "Sagesse du jour",
-    "share": "Partager"
+    "share": "Partager",
+    "shareImage": "Partager en image"
   },
   "settings": {
     "groups": {
@@ -872,6 +875,13 @@
         "deleteAll": "Tout supprimer",
         "deleteAllConfirmTitle": "Supprimer tous les téléchargements ?",
         "deleteAllConfirmBody": "Tous les épisodes téléchargés seront supprimés de votre appareil."
+      },
+      "video": {
+        "title": "Téléchargements vidéo",
+        "empty": "Aucune vidéo téléchargée",
+        "deleteAll": "Tout supprimer",
+        "deleteAllConfirmTitle": "Supprimer tous les téléchargements ?",
+        "deleteAllConfirmBody": "Toutes les vidéos téléchargées seront supprimées de votre appareil."
       }
     },
     "appIcon": {
@@ -2235,5 +2245,42 @@
     "learnDesc": "2000+ interactive lessons — step by step.",
     "hifzDesc": "Memorize the Qur’an, with speech recognition.",
     "more": "More learning"
+  },
+  "reels": {
+    "title": "Reels",
+    "comingSoonTitle": "Reels bientôt disponibles",
+    "comingSoonDesc": "De courtes vidéos à faire défiler arriveront bientôt ici.",
+    "errorTitle": "Impossible de charger les reels",
+    "errorDesc": "Vérifie ta connexion et réessaie.",
+    "retry": "Réessayer",
+    "share": "Partager",
+    "back": "Retour",
+    "mute": "Couper le son",
+    "unmute": "Activer le son",
+    "webOnlyNote": "Les reels se lisent dans l'application Salati. Ouvre l'app pour les regarder."
+  },
+  "video": {
+    "title": "Vidéos",
+    "subtitle": "Les vidéos d’apprentissage — comprendre le Coran pas à pas.",
+    "heroDesc": "37 vidéos d’apprentissage : grammaire, tajwid et plus — à regarder.",
+    "reelsTitle": "Reels",
+    "reelsDesc": "Clips courts — le savoir en petites doses.",
+    "empty": "Bientôt disponible.",
+    "moreEpisodes": "Plus de vidéos",
+    "episodeLabel": "Épisode",
+    "topics": "Thèmes",
+    "continue": "Reprendre",
+    "play": "Lire",
+    "pause": "Pause",
+    "seek": "Position",
+    "previous": "Vidéo précédente",
+    "next": "Vidéo suivante",
+    "fullscreen": "Plein écran",
+    "download": "Télécharger",
+    "offline": "Hors ligne",
+    "cancelDownload": "Annuler le téléchargement",
+    "deleteDownload": "Supprimer le téléchargement",
+    "deleteDownloadConfirmTitle": "Supprimer le téléchargement ?",
+    "deleteDownloadConfirmBody": "La vidéo sera supprimée de votre appareil."
   }
 }

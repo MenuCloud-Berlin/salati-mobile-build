@@ -235,7 +235,9 @@
   "duas": {
     "offlineNote": "مکمل طور پر آف لائن دستیاب",
     "countOne": "1 دعا",
-    "countMany": "{n} دعائیں"
+    "countMany": "{n} دعائیں",
+    "shareText": "دعا شیئر کریں",
+    "shareImage": "بطور تصویر شیئر کریں"
   },
   "learn": {
     "title": "قرآن پڑھنا سیکھیں",
@@ -619,7 +621,8 @@
   "wisdom": {
     "title": "حکمتیں",
     "today": "آج کی حکمت",
-    "share": "شیئر کریں"
+    "share": "شیئر کریں",
+    "shareImage": "بطور تصویر شیئر کریں"
   },
   "settings": {
     "groups": {
@@ -872,6 +875,13 @@
         "deleteAll": "سب حذف کریں",
         "deleteAllConfirmTitle": "تمام ڈاؤن لوڈز حذف کریں؟",
         "deleteAllConfirmBody": "تمام ڈاؤن لوڈ شدہ اقساط آپ کے آلے سے ہٹا دی جائیں گی۔"
+      },
+      "video": {
+        "title": "ویڈیو ڈاؤن لوڈز",
+        "empty": "کوئی ویڈیو ڈاؤن لوڈ نہیں",
+        "deleteAll": "سب حذف کریں",
+        "deleteAllConfirmTitle": "تمام ڈاؤن لوڈز حذف کریں؟",
+        "deleteAllConfirmBody": "تمام ڈاؤن لوڈ کی گئی ویڈیوز آپ کے آلے سے ہٹا دی جائیں گی۔"
       }
     },
     "appIcon": {
@@ -2235,5 +2245,42 @@
     "learnDesc": "2000+ interactive lessons — step by step.",
     "hifzDesc": "Memorize the Qur’an, with speech recognition.",
     "more": "More learning"
+  },
+  "reels": {
+    "title": "ریلز",
+    "comingSoonTitle": "ریلز جلد آ رہے ہیں",
+    "comingSoonDesc": "یہاں جلد ہی اوپر سوائپ کرنے والی مختصر ویڈیوز نظر آئیں گی۔",
+    "errorTitle": "ریلز لوڈ نہیں ہو سکے",
+    "errorDesc": "اپنا کنکشن چیک کریں اور دوبارہ کوشش کریں۔",
+    "retry": "دوبارہ کوشش کریں",
+    "share": "شیئر کریں",
+    "back": "واپس",
+    "mute": "خاموش",
+    "unmute": "آواز آن کریں",
+    "webOnlyNote": "ریلز Salati ایپ میں چلتے ہیں۔ دیکھنے کے لیے ایپ کھولیں۔"
+  },
+  "video": {
+    "title": "ویڈیوز",
+    "subtitle": "سیکھنے کی ویڈیوز — قرآن کو قدم بہ قدم سمجھیں۔",
+    "heroDesc": "37 سیکھنے کی ویڈیوز: گرامر، تجوید اور مزید — دیکھنے کے لیے۔",
+    "reelsTitle": "ریلز",
+    "reelsDesc": "مختصر کلپس — تھوڑا تھوڑا علم۔",
+    "empty": "جلد آ رہا ہے۔",
+    "moreEpisodes": "مزید ویڈیوز",
+    "episodeLabel": "قسط",
+    "topics": "موضوعات",
+    "continue": "دیکھنا جاری رکھیں",
+    "play": "چلائیں",
+    "pause": "وقفہ",
+    "seek": "مقام",
+    "previous": "پچھلی ویڈیو",
+    "next": "اگلی ویڈیو",
+    "fullscreen": "پوری اسکرین",
+    "download": "ڈاؤن لوڈ",
+    "offline": "آف لائن",
+    "cancelDownload": "ڈاؤن لوڈ منسوخ کریں",
+    "deleteDownload": "ڈاؤن لوڈ حذف کریں",
+    "deleteDownloadConfirmTitle": "ڈاؤن لوڈ حذف کریں؟",
+    "deleteDownloadConfirmBody": "ویڈیو آپ کے آلے سے ہٹا دی جائے گی۔"
   }
 }

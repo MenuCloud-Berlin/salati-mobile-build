@@ -235,7 +235,9 @@
   "duas": {
     "offlineNote": "کاملاً به‌صورت آفلاین در دسترس است",
     "countOne": "1 دعا",
-    "countMany": "{n} دعا"
+    "countMany": "{n} دعا",
+    "shareText": "اشتراک دعا",
+    "shareImage": "اشتراک‌گذاری به‌صورت تصویر"
   },
   "learn": {
     "title": "آموزش خواندن قرآن",
@@ -619,7 +621,8 @@
   "wisdom": {
     "title": "حکمت‌ها",
     "today": "حکمت امروز",
-    "share": "اشتراک‌گذاری"
+    "share": "اشتراک‌گذاری",
+    "shareImage": "اشتراک‌گذاری به‌صورت تصویر"
   },
   "settings": {
     "groups": {
@@ -872,6 +875,13 @@
         "deleteAll": "حذف همه",
         "deleteAllConfirmTitle": "همه دانلودها حذف شوند؟",
         "deleteAllConfirmBody": "همه قسمت‌های دانلودشده از دستگاه شما حذف خواهند شد."
+      },
+      "video": {
+        "title": "دانلودهای ویدیو",
+        "empty": "هیچ ویدیویی دانلود نشده",
+        "deleteAll": "حذف همه",
+        "deleteAllConfirmTitle": "همهٔ دانلودها حذف شوند؟",
+        "deleteAllConfirmBody": "همهٔ ویدیوهای دانلودشده از دستگاه شما حذف خواهند شد."
       }
     },
     "appIcon": {
@@ -2235,5 +2245,42 @@
     "learnDesc": "2000+ interactive lessons — step by step.",
     "hifzDesc": "Memorize the Qur’an, with speech recognition.",
     "more": "More learning"
+  },
+  "reels": {
+    "title": "ریلز",
+    "comingSoonTitle": "ریلز به‌زودی",
+    "comingSoonDesc": "به‌زودی کلیپ‌های کوتاه برای بالا کشیدن اینجا نمایش داده می‌شوند.",
+    "errorTitle": "ریلز بارگیری نشد",
+    "errorDesc": "اتصال خود را بررسی کنید و دوباره تلاش کنید.",
+    "retry": "تلاش دوباره",
+    "share": "اشتراک‌گذاری",
+    "back": "بازگشت",
+    "mute": "بی‌صدا",
+    "unmute": "صدا",
+    "webOnlyNote": "ریلز در برنامه Salati پخش می‌شود. برای تماشا برنامه را باز کنید."
+  },
+  "video": {
+    "title": "ویدیوها",
+    "subtitle": "ویدیوهای آموزشی — فهم قرآن گام‌به‌گام.",
+    "heroDesc": "۳۷ ویدیوی آموزشی: دستور زبان، تجوید و بیشتر — برای تماشا.",
+    "reelsTitle": "ریلز",
+    "reelsDesc": "کلیپ‌های کوتاه — دانش در بخش‌های کوچک.",
+    "empty": "به‌زودی.",
+    "moreEpisodes": "ویدیوهای بیشتر",
+    "episodeLabel": "قسمت",
+    "topics": "موضوعات",
+    "continue": "ادامهٔ تماشا",
+    "play": "پخش",
+    "pause": "مکث",
+    "seek": "موقعیت",
+    "previous": "ویدیوی قبلی",
+    "next": "ویدیوی بعدی",
+    "fullscreen": "تمام‌صفحه",
+    "download": "دانلود",
+    "offline": "آفلاین",
+    "cancelDownload": "لغو دانلود",
+    "deleteDownload": "حذف دانلود",
+    "deleteDownloadConfirmTitle": "دانلود حذف شود؟",
+    "deleteDownloadConfirmBody": "ویدیو از دستگاه شما حذف خواهد شد."
   }
 }

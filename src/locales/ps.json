@@ -235,7 +235,9 @@
   "duas": {
     "offlineNote": "په بشپړ ډول آفلاین شتون لري",
     "countOne": "1 دعا",
-    "countMany": "{n} دعاوې"
+    "countMany": "{n} دعاوې",
+    "shareText": "دعا شریکه کړئ",
+    "shareImage": "د انځور په توګه شریکول"
   },
   "learn": {
     "title": "د قرآن لوستل زده کړئ",
@@ -619,7 +621,8 @@
   "wisdom": {
     "title": "حکمتونه",
     "today": "د نن ورځې حکمت",
-    "share": "شریکول"
+    "share": "شریکول",
+    "shareImage": "د انځور په توګه شریکول"
   },
   "settings": {
     "groups": {
@@ -872,6 +875,13 @@
         "deleteAll": "ټول ړنګ کړئ",
         "deleteAllConfirmTitle": "ټول ډاونلوډونه ړنګ کړئ؟",
         "deleteAllConfirmBody": "ټول ډاونلوډ شوي برخې به ستاسو له وسیلې لرې شي."
+      },
+      "video": {
+        "title": "د ویډیو ډاونلوډونه",
+        "empty": "هېڅ ویډیو نه ده ډاونلوډ شوې",
+        "deleteAll": "ټول ړنګ کړئ",
+        "deleteAllConfirmTitle": "ټول ډاونلوډونه ړنګ کړئ؟",
+        "deleteAllConfirmBody": "ټول ډاونلوډ شوي ویډیوګانې به ستاسو له وسیلې لرې شي."
       }
     },
     "appIcon": {
@@ -2235,5 +2245,42 @@
     "learnDesc": "2000+ interactive lessons — step by step.",
     "hifzDesc": "Memorize the Qur’an, with speech recognition.",
     "more": "More learning"
+  },
+  "reels": {
+    "title": "ریلز",
+    "comingSoonTitle": "ریلز ژر راځي",
+    "comingSoonDesc": "لنډ کلیپونه به ژر دلته ښکاره شي.",
+    "errorTitle": "ریلز نه شو پورته",
+    "errorDesc": "خپل ارتباط وگورئ او بیا هسه وکړئ.",
+    "retry": "بیا هسه وکړئ",
+    "share": "شریکول",
+    "back": "شاته",
+    "mute": "غږ بندول",
+    "unmute": "غږ چالانول",
+    "webOnlyNote": "ریلز د Salati په اپلیکیشن کې غږیږي. د لیدلو لپاره اپ پرانیزئ."
+  },
+  "video": {
+    "title": "ویډیوګانې",
+    "subtitle": "د زده‌کړې ویډیوګانې — قرآن ګام په ګام پوهېدل.",
+    "heroDesc": "۳۷ د زده‌کړې ویډیوګانې: ګرامر، تجوید او نور — د کتلو لپاره.",
+    "reelsTitle": "ریلز",
+    "reelsDesc": "لنډې کلیپونه — پوهه په وړو برخو کې.",
+    "empty": "ژر راځي.",
+    "moreEpisodes": "نور ویډیوګانې",
+    "episodeLabel": "برخه",
+    "topics": "موضوعات",
+    "continue": "کتلو ته دوام ورکړئ",
+    "play": "چلول",
+    "pause": "وقفه",
+    "seek": "موقعیت",
+    "previous": "مخکینۍ ویډیو",
+    "next": "راتلونکې ویډیو",
+    "fullscreen": "بشپړه پرده",
+    "download": "ډاونلوډ",
+    "offline": "آفلاین",
+    "cancelDownload": "ډاونلوډ لغوه کړئ",
+    "deleteDownload": "ډاونلوډ ړنګ کړئ",
+    "deleteDownloadConfirmTitle": "ډاونلوډ ړنګ کړئ؟",
+    "deleteDownloadConfirmBody": "ویډیو به ستاسو له وسیلې لرې شي."
   }
 }

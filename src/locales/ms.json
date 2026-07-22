@@ -235,7 +235,9 @@
   "duas": {
     "offlineNote": "Tersedia sepenuhnya secara luar talian",
     "countOne": "1 doa",
-    "countMany": "{n} doa"
+    "countMany": "{n} doa",
+    "shareText": "Kongsi doa",
+    "shareImage": "Kongsi sebagai imej"
   },
   "learn": {
     "title": "Belajar Membaca Al-Quran",
@@ -619,7 +621,8 @@
   "wisdom": {
     "title": "Hikmah",
     "today": "Hikmah hari ini",
-    "share": "Kongsi"
+    "share": "Kongsi",
+    "shareImage": "Kongsi sebagai imej"
   },
   "settings": {
     "groups": {
@@ -872,6 +875,13 @@
         "deleteAll": "Padam semua",
         "deleteAllConfirmTitle": "Padam semua muat turun?",
         "deleteAllConfirmBody": "Semua episod yang dimuat turun akan dialih keluar daripada peranti anda."
+      },
+      "video": {
+        "title": "Muat turun video",
+        "empty": "Tiada video dimuat turun",
+        "deleteAll": "Padam semua",
+        "deleteAllConfirmTitle": "Padam semua muat turun?",
+        "deleteAllConfirmBody": "Semua video yang dimuat turun akan dialih keluar daripada peranti anda."
       }
     },
     "appIcon": {
@@ -2235,5 +2245,42 @@
     "learnDesc": "2000+ interactive lessons — step by step.",
     "hifzDesc": "Memorize the Qur’an, with speech recognition.",
     "more": "More learning"
+  },
+  "reels": {
+    "title": "Reels",
+    "comingSoonTitle": "Reels akan datang",
+    "comingSoonDesc": "Klip pendek untuk dileret akan muncul di sini tidak lama lagi.",
+    "errorTitle": "Gagal memuatkan reels",
+    "errorDesc": "Semak sambungan anda dan cuba lagi.",
+    "retry": "Cuba lagi",
+    "share": "Kongsi",
+    "back": "Kembali",
+    "mute": "Senyapkan",
+    "unmute": "Hidupkan bunyi",
+    "webOnlyNote": "Reels dimainkan dalam aplikasi Salati. Buka aplikasi untuk menontonnya."
+  },
+  "video": {
+    "title": "Video",
+    "subtitle": "Video pembelajaran — memahami al-Qur’an langkah demi langkah.",
+    "heroDesc": "37 video pembelajaran: tatabahasa, tajwid dan banyak lagi — untuk ditonton.",
+    "reelsTitle": "Reels",
+    "reelsDesc": "Klip pendek — ilmu dalam bahagian kecil.",
+    "empty": "Akan datang.",
+    "moreEpisodes": "Lagi video",
+    "episodeLabel": "Episod",
+    "topics": "Topik",
+    "continue": "Sambung menonton",
+    "play": "Main",
+    "pause": "Jeda",
+    "seek": "Kedudukan",
+    "previous": "Video sebelumnya",
+    "next": "Video seterusnya",
+    "fullscreen": "Skrin penuh",
+    "download": "Muat turun",
+    "offline": "Luar talian",
+    "cancelDownload": "Batalkan muat turun",
+    "deleteDownload": "Padam muat turun",
+    "deleteDownloadConfirmTitle": "Padam muat turun?",
+    "deleteDownloadConfirmBody": "Video akan dialih keluar daripada peranti anda."
   }
 }

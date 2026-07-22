@@ -359,6 +359,27 @@ export default function LandingScreen() {
             ))}
           </View>
 
+          <View style={styles.socialRow}>
+            <Pressable
+              onPress={() => Linking.openURL('https://www.youtube.com/channel/UCzqiyiWVFK9NY4k0OD850Lw')}
+              accessibilityRole="link"
+              accessibilityLabel="YouTube">
+              <IconSymbol name="logo-youtube" size={28} color={colors.textSecondary} />
+            </Pressable>
+            <Pressable
+              onPress={() => Linking.openURL('https://www.instagram.com/salati.pro')}
+              accessibilityRole="link"
+              accessibilityLabel="Instagram">
+              <IconSymbol name="logo-instagram" size={28} color={colors.textSecondary} />
+            </Pressable>
+            <Pressable
+              onPress={() => Linking.openURL('https://open.spotify.com/show/033U0teP7zMDXYm3zQ3fje')}
+              accessibilityRole="link"
+              accessibilityLabel="Spotify">
+              <IconSymbol name="musical-notes" size={26} color={colors.textSecondary} />
+            </Pressable>
+          </View>
+
           <ThemedText type="small" themeColor="textSecondary" style={styles.footer}>
             {t('landing.footer')} · {t('common.credit')}
           </ThemedText>
@@ -542,6 +563,7 @@ const styles = StyleSheet.create({
   faqQuestionText: { flexShrink: 1 },
   faqAnswer: { marginTop: Spacing.two },
   footer: { textAlign: 'center', marginTop: Spacing.six },
+  socialRow: { flexDirection: 'row', gap: Spacing.four, justifyContent: 'center', alignItems: 'center', marginTop: Spacing.six },
   legalLinks: { flexDirection: 'row', gap: Spacing.two, justifyContent: 'center', marginTop: Spacing.two },
   legalLink: { textDecorationLine: 'underline' },
 });

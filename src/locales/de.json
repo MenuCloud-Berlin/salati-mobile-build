@@ -235,7 +235,9 @@
   "duas": {
     "offlineNote": "Vollständig offline verfügbar",
     "countOne": "1 Dua",
-    "countMany": "{n} Duas"
+    "countMany": "{n} Duas",
+    "shareText": "Dua teilen",
+    "shareImage": "Als Bild teilen"
   },
   "learn": {
     "title": "Koran lesen lernen",
@@ -629,7 +631,8 @@
   "wisdom": {
     "title": "Weisheiten",
     "today": "Weisheit des Tages",
-    "share": "Teilen"
+    "share": "Teilen",
+    "shareImage": "Als Bild teilen"
   },
   "settings": {
     "groups": {
@@ -882,6 +885,13 @@
         "deleteAll": "Alle löschen",
         "deleteAllConfirmTitle": "Alle Downloads löschen?",
         "deleteAllConfirmBody": "Alle heruntergeladenen Folgen werden von deinem Gerät entfernt."
+      },
+      "video": {
+        "title": "Video-Downloads",
+        "empty": "Keine Videos heruntergeladen",
+        "deleteAll": "Alle löschen",
+        "deleteAllConfirmTitle": "Alle Downloads löschen?",
+        "deleteAllConfirmBody": "Alle heruntergeladenen Videos werden von deinem Gerät entfernt."
       }
     },
     "appIcon": {
@@ -2235,5 +2245,42 @@
     "done": "Fertig",
     "textColor": "Textfarbe",
     "previewHint": "Änderungen gelten nur für dieses Widget. Drücke lange auf ein Widget auf dem Homescreen, um es einzeln einzurichten."
+  },
+  "reels": {
+    "title": "Reels",
+    "comingSoonTitle": "Reels kommen bald",
+    "comingSoonDesc": "Hier erscheinen bald kurze Clips zum Hochwischen.",
+    "errorTitle": "Reels konnten nicht geladen werden",
+    "errorDesc": "Prüfe deine Verbindung und versuche es erneut.",
+    "retry": "Erneut versuchen",
+    "share": "Teilen",
+    "back": "Zurück",
+    "mute": "Ton aus",
+    "unmute": "Ton an",
+    "webOnlyNote": "Reels laufen in der Salati-App. Öffne die App, um sie anzusehen."
+  },
+  "video": {
+    "title": "Videos",
+    "subtitle": "Die Lernvideos — Schritt für Schritt den Qur’an verstehen.",
+    "heroDesc": "37 Lernvideos: Grammatik, Tadschwied und mehr — zum Ansehen.",
+    "reelsTitle": "Reels",
+    "reelsDesc": "Kurze Clips — Wissen häppchenweise.",
+    "empty": "Bald verfügbar.",
+    "moreEpisodes": "Weitere Videos",
+    "episodeLabel": "Folge",
+    "topics": "Themen",
+    "continue": "Weiterschauen",
+    "play": "Abspielen",
+    "pause": "Pause",
+    "seek": "Position",
+    "previous": "Voriges Video",
+    "next": "Nächstes Video",
+    "fullscreen": "Vollbild",
+    "download": "Herunterladen",
+    "offline": "Offline",
+    "cancelDownload": "Download abbrechen",
+    "deleteDownload": "Download löschen",
+    "deleteDownloadConfirmTitle": "Download löschen?",
+    "deleteDownloadConfirmBody": "Das Video wird von deinem Gerät entfernt."
   }
 }
