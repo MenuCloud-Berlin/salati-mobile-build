@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Platform, Pressable, StyleSheet, View } from 'react-native';
+import { Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
@@ -66,6 +66,13 @@ export default function DhikrAfterSalahScreen() {
           {t('dhikrAfterSalah.subtitle')}
         </ThemedText>
 
+        {/* ScrollView, damit der Zähler im Querformat/auf kleinen Höhen
+            erreichbar bleibt (220px-Kreis + arabischer Text). Im Hochformat
+            unverändert: contentContainer wächst auf volle Höhe und zentriert
+            vertikal wie zuvor. */}
+        <ScrollView
+          contentContainerStyle={styles.scrollBody}
+          showsVerticalScrollIndicator={false}>
         {!state.complete ? (
           <View style={styles.body}>
             <View style={styles.phaseDotsRow}>
@@ -151,6 +158,7 @@ export default function DhikrAfterSalahScreen() {
             </ThemedView>
           </View>
         )}
+        </ScrollView>
       </SafeAreaView>
     </ThemedView>
   );
@@ -161,7 +169,10 @@ const styles = StyleSheet.create({
   safeArea: { flex: 1, paddingTop: Spacing.two },
   center: { textAlign: 'center' },
   subtitle: { marginBottom: Spacing.three, paddingHorizontal: Spacing.four },
-  body: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: Spacing.three, paddingHorizontal: Spacing.four },
+  // flexGrow:1 + justifyContent:center reproduziert das bisherige vertikale
+  // Zentrieren im Hochformat; im Querformat scrollt der Inhalt bei Bedarf.
+  scrollBody: { flexGrow: 1, justifyContent: 'center', paddingBottom: Spacing.four },
+  body: { alignItems: 'center', justifyContent: 'center', gap: Spacing.three, paddingHorizontal: Spacing.four },
   phaseDotsRow: { flexDirection: 'row', gap: Spacing.two },
   phaseDot: { width: 10, height: 10, borderRadius: 5 },
   totalBarTrack: {

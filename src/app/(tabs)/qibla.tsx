@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Platform, Pressable, StyleSheet } from 'react-native';
+import { Platform, Pressable, ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle, G, Line, Path, Text as SvgText } from 'react-native-svg';
 
@@ -131,7 +131,14 @@ export default function QiblaScreen() {
 
   return (
     <ThemedView style={styles.container}>
+      {/* ScrollView, damit im Querformat/auf kleinen Höhen (Kompass 300px +
+          Bearing-Infos + Disclaimer) alles erreichbar bleibt. Im Hochformat
+          identisch zu vorher: contentContainer zentriert horizontal, wächst
+          auf volle Höhe und beginnt oben (kein Layout-Unterschied auf Phones). */}
       <SafeAreaView style={styles.safeArea}>
+        <ScrollView
+          contentContainerStyle={styles.scrollContent}
+          showsVerticalScrollIndicator={false}>
         <AnimatedListItem index={0}>
           <ThemedText type="title">{t('nav.qibla')}</ThemedText>
         </AnimatedListItem>
@@ -343,6 +350,7 @@ export default function QiblaScreen() {
             </ThemedText>
           </Pressable>
         </AnimatedListItem>
+        </ScrollView>
       </SafeAreaView>
     </ThemedView>
   );
@@ -350,7 +358,14 @@ export default function QiblaScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, alignItems: 'center', paddingTop: Spacing.three, gap: Spacing.two },
+  safeArea: { flex: 1 },
+  scrollContent: {
+    flexGrow: 1,
+    alignItems: 'center',
+    paddingTop: Spacing.three,
+    paddingBottom: Spacing.four,
+    gap: Spacing.two,
+  },
   subtitle: { marginBottom: Spacing.three },
   modeToggle: {
     flexDirection: 'row',

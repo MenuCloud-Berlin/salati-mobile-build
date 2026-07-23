@@ -4,8 +4,16 @@ const config: ExpoConfig = {
   name: 'Salati',
   slug: 'salatibox',
   owner: 'menucloudberlin',
-  version: '1.27.21',
-  orientation: 'portrait',
+  version: '1.27.22',
+  // Play-Console-Empfehlung (Android 16, große Displays/Foldables): Orientierungs-
+  // Sperren werden auf großen Displays ohnehin ignoriert. Die App-UI ist
+  // durchgängig responsiv (ScrollView + MaxContentWidth-Deckelung + Flexbox-
+  // Grids, Mushaf-Doppelseite ≥900px), daher Rotation/Resize freigegeben statt
+  // gesperrt. WidgetConfigurationActivity bleibt separat Portrait (RN-Recreate-
+  // Crash-Schutz, s. AndroidManifest.xml). Da dieses Projekt OHNE `expo prebuild`
+  // baut, ist die effektive Quelle die manuell gepflegte AndroidManifest.xml —
+  // dieser Wert hält nur beide Seiten konsistent, falls je neu generiert wird.
+  orientation: 'default',
   icon: './assets/images/icon.png',
   scheme: 'salatibox',
   userInterfaceStyle: 'automatic',

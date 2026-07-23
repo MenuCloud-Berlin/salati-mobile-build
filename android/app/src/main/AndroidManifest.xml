@@ -54,7 +54,16 @@
         <action android:name="androidx.media3.session.MediaSessionService"/>
       </intent-filter>
     </service>
-    <activity android:name=".MainActivity" android:supportsPictureInPicture="true" android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|smallestScreenSize|assetsPaths|locale|layoutDirection" android:launchMode="singleTask" android:windowSoftInputMode="adjustResize" android:theme="@style/Theme.App.SplashScreen" android:exported="true" android:screenOrientation="portrait">
+    <!-- Orientierung ENTsperrt (Play-Console-Empfehlung Android 16, große Displays/
+         Foldables): kein android:screenOrientation mehr, dafür resizeableActivity=true.
+         Rotation/Resize ist sicher, weil android:configChanges bereits
+         orientation|screenSize|screenLayout|smallestScreenSize abfängt — die
+         RN-Activity wird bei Drehung NICHT neu erzeugt (kein Recreate mit non-null
+         savedInstanceState, der bekannte RN-Crash-Vektor), React Native re-layoutet
+         nur. Die App-UI ist durchgängig responsiv (ScrollView + MaxContentWidth,
+         Flexbox-Grids, Mushaf-Doppelseite ≥900px). Nur WidgetConfigurationActivity
+         bleibt bewusst Portrait (s. Kommentar oben). -->
+    <activity android:name=".MainActivity" android:supportsPictureInPicture="true" android:resizeableActivity="true" android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|smallestScreenSize|assetsPaths|locale|layoutDirection" android:launchMode="singleTask" android:windowSoftInputMode="adjustResize" android:theme="@style/Theme.App.SplashScreen" android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"/>
         <category android:name="android.intent.category.DEFAULT"/>
@@ -134,9 +143,9 @@
     </receiver>
     <!-- Play-Console-Empfehlung 2026-07-19: entfernt die von ML Kit's Barcode-
          Scanner-AAR fest vorgegebene Portrait-Sperre für Android-16-Großbild-
-         geräte. MainActivity bleibt bewusst gesperrt (siehe app.config.ts
-         orientation:'portrait', UI nie für Tablet getestet); dieser Scanner-
-         Screen ist dagegen klein/isoliert genug für sicheres Freigeben. -->
+         geräte. (MainActivity ist inzwischen ebenfalls entsperrt, s. oben; diese
+         AAR-Aktivität hatte eine EIGENE, in der Bibliothek fest verdrahtete
+         Portrait-Sperre, die nur per Manifest-Merger-Override zu entfernen ist.) -->
     <activity android:name="com.google.mlkit.vision.codescanner.internal.GmsBarcodeScanningDelegateActivity"
       tools:node="merge" tools:remove="android:screenOrientation"/>
   </application>

@@ -104,7 +104,10 @@ export function EditionPicker(props: Props) {
 
 const styles = StyleSheet.create({
   backdrop: { flex: 1, backgroundColor: 'rgba(0,0,0,0.4)', justifyContent: 'flex-end' },
-  sheet: { maxHeight: '75%', borderTopLeftRadius: Spacing.four, borderTopRightRadius: Spacing.four },
+  // width/maxWidth/alignSelf: auf breiten Displays (Tablet/Querformat) das
+  // Sheet zentriert begrenzen statt edge-to-edge zu strecken; auf Phones
+  // (< 640dp) unverändert volle Breite.
+  sheet: { maxHeight: '75%', width: '100%', maxWidth: 640, alignSelf: 'center', borderTopLeftRadius: Spacing.four, borderTopRightRadius: Spacing.four },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',

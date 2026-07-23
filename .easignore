@@ -9,3 +9,19 @@ public/salati.apk.part*
 public/models
 *.log
 .DS_Store
+
+# Lokale Build-Artefakte — blaehen das EAS-Archiv sonst auf >2GB (hier android/app/build = 6.9GB).
+# Fuer den iOS-Build ist android/ irrelevant; EAS prebuildet ios/ neu.
+android/build
+android/app/build
+android/.gradle
+android/.cxx
+android/app/.cxx
+android/**/build
+android/**/.cxx
+ios/build
+ios/Pods
+ios/DerivedData
+**/*.apk
+**/*.aab
+**/*.keystore

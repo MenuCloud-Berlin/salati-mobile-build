@@ -3,7 +3,7 @@
 // Tracker (features/tracker/statsImage.ts).
 import { useCallback, useState } from 'react';
 import { useFocusEffect } from 'expo-router';
-import { Platform, Pressable, StyleSheet, View } from 'react-native';
+import { Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AnimatedListItem } from '@/components/ui/animated-list-item';
@@ -63,6 +63,7 @@ export default function WeeklyReviewScreen() {
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
+        <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
         <ThemedText type="title" style={styles.title}>
           {t('study.weeklyReview.title')}
         </ThemedText>
@@ -123,6 +124,7 @@ export default function WeeklyReviewScreen() {
             )}
           </>
         )}
+        </ScrollView>
       </SafeAreaView>
     </ThemedView>
   );
@@ -130,7 +132,13 @@ export default function WeeklyReviewScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset, paddingHorizontal: Spacing.three },
+  safeArea: { flex: 1 },
+  scrollContent: {
+    flexGrow: 1,
+    paddingTop: Spacing.three + BackChipInset,
+    paddingHorizontal: Spacing.three,
+    paddingBottom: Spacing.four,
+  },
   center: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   title: { textAlign: 'center' },
   subtitle: { textAlign: 'center', paddingHorizontal: Spacing.four, marginBottom: Spacing.four },

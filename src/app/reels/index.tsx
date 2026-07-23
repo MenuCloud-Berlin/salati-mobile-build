@@ -26,13 +26,13 @@ import { useVideoPlayer, VideoView, type VideoPlayer } from 'expo-video';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   ActivityIndicator,
-  Dimensions,
   FlatList,
   PanResponder,
   Pressable,
   ScrollView,
   Share,
   StyleSheet,
+  useWindowDimensions,
   View,
   type LayoutChangeEvent,
   type ViewToken,
@@ -111,7 +111,10 @@ export default function ReelsScreen() {
   const allReels = useMemo(() => data?.reels ?? [], [data]);
 
   // Vollbild-Seitenhoehe = gesamte Fensterhoehe (randloses Video).
-  const { height, width } = Dimensions.get('window');
+  // useWindowDimensions statt Dimensions.get('window'), damit die Seitenhoehe
+  // (getItemLayout/snapToInterval) bei Geraetedrehung reaktiv nachzieht — sonst
+  // blieben Paging-Offsets nach einer Rotation auf dem alten Wert haengen.
+  const { height, width } = useWindowDimensions();
 
   const [activeIndex, setActiveIndex] = useState(0);
   // Respektvoller Start: gemutet, mit gut sichtbarem Ton-Button. Ton-Zustand
