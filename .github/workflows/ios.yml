@@ -58,7 +58,7 @@ jobs:
       # (bräuchte Xcode 26, das Expo SDK 57 nicht kompiliert). Auf 6.0 runter-
       # patchen — das simple generierte Manifest nutzt keine 6.1/6.2-only-APIs,
       # so löst Xcode 16.1 es auf.
-      - name: 'apple'-Package swift-tools 6.2 -> 6.0 patchen
+      - name: apple-Package swift-tools 6.2 auf 6.0 patchen
         run: |
           found=0
           while IFS= read -r f; do
