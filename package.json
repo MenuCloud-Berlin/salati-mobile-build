@@ -1,6 +1,6 @@
 {
   "name": "@salatibox/mobile",
-  "main": "index.js",
+  "main": "index",
   "version": "0.1.0",
   "dependencies": {
     "@bacons/apple-targets": "^5.0.0",

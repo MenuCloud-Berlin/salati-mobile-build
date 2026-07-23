@@ -237,6 +237,8 @@ async function renderCountdownWidget(settings: AppSettings, cfg: ResolvedWidgetC
       nextName={t(`prayers.${next.nextPrayer.toLowerCase()}`)}
       nextTime={formatHHMM(next.nextIdx >= 0 ? data.today[next.nextPrayer] : data.tomorrow.Fajr, timeFormat)}
       remaining={t('widgets.remaining').replace('{t}', compact)}
+      rows={prayerRows(data, next.nextIdx, timeFormat, false, t)}
+      highlightNext={cfg.highlightNext}
       showCoords={cfg.showCoords}
       showNextTime={cfg.showNextTime}
       size={size}

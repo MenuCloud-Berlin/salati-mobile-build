@@ -3,13 +3,14 @@ import { useFonts } from 'expo-font';
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
-import { Linking, Platform } from 'react-native';
+import { AppState, Linking, Platform } from 'react-native';
 
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { GlobalBackButton } from '@/components/global-back-button';
 import { MiniPlayer } from '@/components/mini-player';
 import { SettingsProvider } from '@/features/settings/store';
+import { refreshAllWidgets } from '@/widgets/refresh';
 import { SharedPlayerProvider } from '@/features/quran/usePlayer';
 import { syncCoursesFromRemote } from '@/features/study/courseSync';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
@@ -108,11 +109,44 @@ function useNotificationDeepLinkHandler() {
   }, []);
 }
 
+/**
+ * Aktualisiert die Android-Homescreen-Widgets ZUSÄTZLICH zum 30-Min-System-Tick
+ * (updatePeriodMillis): (a) sobald die App in den Vordergrund kommt → frische
+ * Gebetszeiten sofort sichtbar; (b) wenn eine Notification eintrifft (v. a. die
+ * Adhan-Notification zur Gebetszeit) während der Prozess lebt → das Widget
+ * springt genau zur neuen Gebetszeit aufs nächste Gebet. Ein vollständig
+ * gekillter Prozess bleibt vom System-Tick abgedeckt. Auf iOS/Web No-Op
+ * (refreshAllWidgets ist dort leer, Hook läuft nur auf Android).
+ */
+function useWidgetAutoRefresh() {
+  useEffect(() => {
+    if (Platform.OS !== 'android') return;
+    let last = 0;
+    const refresh = () => {
+      const now = Date.now();
+      if (now - last < 4000) return; // Debounce dicht aufeinanderfolgender Trigger
+      last = now;
+      void refreshAllWidgets();
+    };
+    const appSub = AppState.addEventListener('change', (s) => {
+      if (s === 'active') refresh();
+    });
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const Notifications = require('expo-notifications') as typeof import('expo-notifications');
+    const notifSub = Notifications.addNotificationReceivedListener(() => refresh());
+    return () => {
+      appSub.remove();
+      notifSub.remove();
+    };
+  }, []);
+}
+
 // useResolvedScheme() braucht die Settings (themeOverride) — muss deshalb
 // innerhalb von SettingsProvider gerendert werden, nicht in RootLayout selbst.
 function ThemedApp() {
   const colorScheme = useResolvedScheme();
   useNotificationDeepLinkHandler();
+  useWidgetAutoRefresh();
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <AnimatedSplashOverlay />

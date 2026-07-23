@@ -139,7 +139,11 @@ export function PrayerWidget({
       );
     });
 
-  // --- compact (~4×1): nächstes Gebet + Restzeit in EINER Zeile ---------------
+  // --- compact (~4×1): ALLE fünf Zeiten in EINER Reihe -------------------------
+  // Bewusst NICHT nur das nächste Gebet: der Nutzer soll auch bei flach
+  // gezogenem Widget die fünf Tageszeiten sehen. Die kompakte 5-Spalten-Reihe
+  // hebt das nächste Gebet farblich hervor (ersetzt so die separate
+  // "nächstes Gebet"-Zeile) und passt in eine ~1-Zellen-Höhe.
   if (bucket === 'compact') {
     return (
       <FlexWidget
@@ -154,33 +158,11 @@ export function PrayerWidget({
           borderRadius: radius,
           borderWidth: 1,
           borderColor: hairline(theme),
-          paddingHorizontal: 14,
-          paddingVertical: 8,
+          paddingHorizontal: 10,
+          paddingVertical: 6,
         }}>
-        <FlexWidget
-          style={{ flexDirection: 'row', width: 'match_parent', alignItems: 'center', justifyContent: 'space-between' }}>
-          <FlexWidget style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
-            <TextWidget
-              text={nextName}
-              truncate="END"
-              maxLines={1}
-              style={{ fontSize: fs(18), color: accent, fontWeight: '700', letterSpacing: 0.2 }}
-            />
-            {nextTime ? (
-              <TextWidget text={`  ${nextTime}`} style={{ fontSize: fs(18), color: text, fontWeight: '700' }} />
-            ) : null}
-          </FlexWidget>
-          {remaining && (!size || size.width >= 150) ? (
-            <FlexWidget
-              style={{ backgroundColor: tint(accent, 0.16), borderRadius: 999, paddingHorizontal: 10, paddingVertical: 3 }}>
-              <TextWidget
-                text={remaining}
-                truncate="END"
-                maxLines={1}
-                style={{ fontSize: fs(12), color: accent, fontWeight: '600', letterSpacing: 0.2 }}
-              />
-            </FlexWidget>
-          ) : null}
+        <FlexWidget style={{ flexDirection: 'row', width: 'match_parent', justifyContent: 'space-between' }}>
+          {timesRow(true)}
         </FlexWidget>
       </FlexWidget>
     );
