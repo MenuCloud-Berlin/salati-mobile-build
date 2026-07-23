@@ -180,11 +180,14 @@ function PrayerFlow({
 }) {
   const { t } = useTranslation();
   const { width } = useWindowDimensions();
-  const steps = useMemo(() => buildSteps(prayerId), [prayerId]);
+  const { prefs, update } = usePrayAlongPrefs();
+  const steps = useMemo(
+    () => buildSteps(prayerId, { witrSurahInThird: prefs.witrSurahInThird }),
+    [prayerId, prefs.witrSurahInThird],
+  );
   const prayer = prayerById(prayerId);
   const listRef = useRef<FlatList<PrayStep>>(null);
   const [index, setIndex] = useState(0);
-  const { prefs, update } = usePrayAlongPrefs();
   const [panelOpen, setPanelOpen] = useState(false);
 
   const total = steps.length;
@@ -317,6 +320,8 @@ function PrayerFlow({
           colors={colors}
           rtl={rtl}
           t={t}
+          prayerId={prayerId}
+          locale={locale}
         />
       </SafeAreaView>
     </ThemedView>
@@ -446,6 +451,8 @@ function CustomizePanel({
   colors,
   rtl,
   t,
+  prayerId,
+  locale,
 }: {
   visible: boolean;
   onClose: () => void;
@@ -454,6 +461,8 @@ function CustomizePanel({
   colors: Palette;
   rtl: boolean;
   t: ReturnType<typeof useTranslation>['t'];
+  prayerId: PrayerId;
+  locale: ReturnType<typeof useTranslation>['locale'];
 }) {
   const FONT_LABEL: Record<PrayAlongFontSize, string> = {
     small: t('settings.fontSmall'),
@@ -542,6 +551,25 @@ function CustomizePanel({
             colors={colors}
             rtl={rtl}
           />
+
+          {/* Witr: madhhab-abhängige Option, nur beim Witr-Gebet sichtbar. */}
+          {prayerId === 'witr' && (
+            <>
+              <ToggleRow
+                label={resolveText(PRAY_ALONG_UI.witrSurahLabel, locale)}
+                value={prefs.witrSurahInThird}
+                onToggle={() => update({ witrSurahInThird: !prefs.witrSurahInThird })}
+                colors={colors}
+                rtl={rtl}
+              />
+              <ThemedText
+                type="small"
+                themeColor="textSecondary"
+                style={[styles.witrScholarNote, rtl && styles.textRtl]}>
+                {resolveText(PRAY_ALONG_UI.witrScholarNote, locale)}
+              </ThemedText>
+            </>
+          )}
 
           {/* Anordnung */}
           <ThemedText type="small" themeColor="textSecondary" style={styles.sheetSectionLabel}>
@@ -796,6 +824,7 @@ const styles = StyleSheet.create({
   sheetHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   sheetTitle: { flex: 1 },
   sheetSectionLabel: { textTransform: 'uppercase', letterSpacing: 1, marginTop: Spacing.three },
+  witrScholarNote: { marginTop: Spacing.one, lineHeight: 18, opacity: 0.9 },
   segmented: { flexDirection: 'row', gap: Spacing.one },
   segment: {
     flex: 1,

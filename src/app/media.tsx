@@ -18,6 +18,7 @@ const MEDIA_TILES = [
   { href: '/podcast', labelKey: 'podcast.title', icon: 'headset' },
   { href: '/videos', labelKey: 'video.title', icon: 'videocam' },
   { href: '/reels', labelKey: 'reels.title', icon: 'film' },
+  { href: '/handouts', labelKey: 'handouts.title', icon: 'document-text' },
 ] as const satisfies readonly { href: string; labelKey: string; icon: IconName }[];
 
 export default function MediaHubScreen() {

@@ -384,33 +384,41 @@ function recitationStep(rakah: number, withSurah: boolean): PrayStep {
   };
 }
 
+// Dua al-Qunut (hanafitischer Wortlaut, „Allāhumma innā nastaʿīnuka …"), wird
+// im Witr in der 3. Rak'ah nach Al-Fatiha gesprochen. Arabisch + Umschrift
+// verbatim aus der etablierten Fassung; religiöse Gegenprüfung s.
+// PRAY_ALONG_SOURCE_NOTE / USER-TODO.
 function qunutStep(rakah: number): PrayStep {
   return {
     posture: 'qiyam',
     rakah,
     label: {
-      de: 'Qunut (nur Witr)',
-      en: 'Qunut (witr only)',
-      tr: 'Kunut (yalnız vitir)',
-      ar: 'القنوت (في الوتر)',
-      es: 'Qunut (solo witr)',
-      fr: 'Qunut (witr uniquement)',
+      de: 'Dua al-Qunut (nur Witr)',
+      en: 'Dua al-Qunut (witr only)',
+      tr: 'Kunut Duası (yalnız vitir)',
+      ar: 'دعاء القنوت (في الوتر)',
+      es: 'Dua al-Qunut (solo witr)',
+      fr: 'Dua al-Qunut (witr uniquement)',
     },
+    arabic:
+      'اللَّهُمَّ إِنَّا نَسْتَعِينُكَ وَنَسْتَغْفِرُكَ وَنُؤْمِنُ بِكَ وَنَتَوَكَّلُ عَلَيْكَ وَنُثْنِي عَلَيْكَ الْخَيْرَ، وَنَشْكُرُكَ وَلَا نَكْفُرُكَ، وَنَخْلَعُ وَنَتْرُكُ مَنْ يَفْجُرُكَ. اللَّهُمَّ إِيَّاكَ نَعْبُدُ وَلَكَ نُصَلِّي وَنَسْجُدُ، وَإِلَيْكَ نَسْعَى وَنَحْفِدُ، نَرْجُو رَحْمَتَكَ وَنَخْشَى عَذَابَكَ، إِنَّ عَذَابَكَ بِالْكُفَّارِ مُلْحِقٌ',
+    transliteration:
+      'allāhumma innā nastaʿīnuka wa-nastaghfiruka wa-nuʾminu bika wa-natawakkalu ʿalayka wa-nuthnī ʿalayka l-khayr, wa-nashkuruka wa-lā nakfuruka, wa-nakhlaʿu wa-natruku man yafjuruk. allāhumma iyyāka naʿbudu wa-laka nuṣallī wa-nasjud, wa-ilayka nasʿā wa-naḥfid, narjū raḥmataka wa-nakhshā ʿadhābak, inna ʿadhābaka bi-l-kuffāri mulḥiq',
     translation: {
-      de: 'Sage nach der Sure „Allahu Akbar", hebe die Hände und sprich das Qunut-Bittgebet, dann gehe in den Ruku.',
-      en: 'After the surah say “Allahu Akbar”, raise the hands and recite the qunut supplication, then go into ruku.',
-      tr: 'Sureden sonra „Allahu Ekber" de, elleri kaldır ve Kunut duasını oku, sonra rükûya git.',
-      ar: 'بعد السورة قل „الله أكبر" وارفع يديك واقرأ دعاء القنوت ثم اركع.',
-      es: 'Tras la sura di «Allahu Akbar», levanta las manos y recita la súplica del qunut, luego inclínate en ruku.',
-      fr: 'Après la sourate, dis « Allahu Akbar », lève les mains et récite l’invocation du qunut, puis effectue le ruku.',
+      de: 'O Allah, wir bitten Dich um Hilfe und um Vergebung, glauben an Dich und vertrauen auf Dich; wir loben Dich auf das Beste, danken Dir und sind nicht undankbar. Wir sagen uns los von jedem, der Dir ungehorsam ist, und lassen ihn. O Allah, Dir allein dienen wir, für Dich beten und werfen wir uns nieder, zu Dir eilen und streben wir; wir erhoffen Deine Barmherzigkeit und fürchten Deine Strafe. Wahrlich, Deine Strafe ereilt die Ungläubigen.',
+      en: 'O Allah, we seek Your help and Your forgiveness, we believe in You and rely upon You; we praise You in the best way, thank You and are not ungrateful. We forsake and abandon whoever disobeys You. O Allah, You alone we worship, for You we pray and prostrate, to You we strive and hasten; we hope for Your mercy and fear Your punishment. Truly, Your punishment will reach the disbelievers.',
+      tr: 'Allah’ım! Senden yardım ve bağışlanma dileriz; Sana inanır, Sana tevekkül ederiz. Seni en güzel şekilde över, Sana şükreder, nankörlük etmeyiz. Sana isyan edeni bırakır ve terk ederiz. Allah’ım! Yalnız Sana ibadet eder, yalnız Senin için namaz kılar ve secde ederiz; Sana koşar, Sana yöneliriz. Rahmetini umar, azabından korkarız. Şüphesiz Senin azabın kâfirlere ulaşır.',
+      ar: 'اللهم إنا نستعينك ونستغفرك ونؤمن بك ونتوكل عليك ونثني عليك الخير، ونشكرك ولا نكفرك، ونخلع ونترك من يفجرك. اللهم إياك نعبد ولك نصلي ونسجد، وإليك نسعى ونحفد، نرجو رحمتك ونخشى عذابك، إن عذابك بالكفار ملحق.',
+      es: 'Oh Alá, buscamos Tu ayuda y Tu perdón, creemos en Ti y confiamos en Ti; Te alabamos del mejor modo, Te agradecemos y no somos ingratos. Nos desligamos y abandonamos a quien Te desobedece. Oh Alá, solo a Ti adoramos, para Ti rezamos y nos postramos, hacia Ti nos esforzamos y acudimos; esperamos Tu misericordia y tememos Tu castigo. En verdad, Tu castigo alcanzará a los incrédulos.',
+      fr: 'Ô Allah, nous implorons Ton aide et Ton pardon, nous croyons en Toi et plaçons notre confiance en Toi ; nous Te louons de la meilleure façon, Te remercions et ne renions pas Tes bienfaits. Nous délaissons et abandonnons quiconque Te désobéit. Ô Allah, c’est Toi seul que nous adorons, pour Toi que nous prions et nous prosternons, vers Toi que nous nous empressons ; nous espérons Ta miséricorde et craignons Ton châtiment. En vérité, Ton châtiment atteindra les mécréants.',
     },
     note: {
-      de: 'Hanafitisch: in der 3. Rak’ah VOR dem Ruku. Andere Rechtsschulen sprechen den Qunut nach dem Ruku bzw. v. a. in der zweiten Ramadan-Hälfte. Den Wortlaut des Qunut findest du im Witr-Guide.',
-      en: 'Hanafi: in the 3rd rakah BEFORE ruku. Other schools recite qunut after ruku, or mainly in the second half of Ramadan. The wording of the qunut is in the Witr guide.',
-      tr: 'Hanefî: 3. rekâtta rükûdan ÖNCE. Diğer mezhepler Kunut’u rükûdan sonra ya da özellikle Ramazan’ın ikinci yarısında okur. Kunut metni Vitir rehberinde.',
-      ar: 'عند الحنفية: في الركعة الثالثة قبل الركوع. وغيرهم يقنت بعد الركوع أو في النصف الثاني من رمضان. نص القنوت في دليل الوتر.',
-      es: 'Hanafí: en la 3.ª raka ANTES del ruku. Otras escuelas recitan el qunut tras el ruku, o sobre todo en la segunda mitad del Ramadán. El texto está en la guía del Witr.',
-      fr: 'Hanafite : à la 3e rak’a AVANT le ruku. Les autres écoles récitent le qunut après le ruku, ou surtout dans la seconde moitié du Ramadan. Le texte figure dans le guide du Witr.',
+      de: 'Nur im Witr, in der 3. Rak’ah: nach Al-Fatiha (ohne weitere Sure) „Allahu Akbar" sagen, die Hände heben und dieses Bittgebet leise sprechen, danach in den Ruku gehen. Hanafitisch VOR dem Ruku; andere Rechtsschulen sprechen den Qunut nach dem Ruku bzw. v. a. in der zweiten Ramadan-Hälfte.',
+      en: 'Witr only, in the 3rd rakah: after Al-Fatiha (no additional surah) say “Allahu Akbar”, raise the hands and recite this supplication quietly, then go into ruku. Hanafi: BEFORE ruku; other schools recite it after ruku, or mainly in the second half of Ramadan.',
+      tr: 'Yalnız vitirde, 3. rekâtta: Fâtiha’dan sonra (ek sure olmadan) „Allahu Ekber" de, elleri kaldır ve bu duayı sessizce oku, sonra rükûya git. Hanefî: rükûdan ÖNCE; diğer mezhepler rükûdan sonra ya da özellikle Ramazan’ın ikinci yarısında okur.',
+      ar: 'في الوتر فقط، في الركعة الثالثة: بعد الفاتحة (دون سورة أخرى) قل „الله أكبر" وارفع يديك واقرأ هذا الدعاء سراً، ثم اركع. عند الحنفية قبل الركوع؛ وغيرهم يقنت بعد الركوع أو في النصف الثاني من رمضان.',
+      es: 'Solo en witr, en la 3.ª raka: tras Al-Fatiha (sin sura adicional) di «Allahu Akbar», levanta las manos y recita esta súplica en voz baja, luego inclínate en ruku. Hanafí: ANTES del ruku; otras escuelas lo recitan tras el ruku, o sobre todo en la segunda mitad del Ramadán.',
+      fr: 'Uniquement au witr, à la 3e rak’a : après Al-Fatiha (sans autre sourate), dis « Allahu Akbar », lève les mains et récite cette invocation à voix basse, puis effectue le ruku. Hanafite : AVANT le ruku ; les autres écoles la récitent après le ruku, ou surtout dans la seconde moitié du Ramadan.',
     },
   };
 }
@@ -713,17 +721,21 @@ function salamStep(rakah: number): PrayStep {
  * letzten Rak'ah das abschließende Tashahhud + Salawat + Zuflucht-Bittgebet +
  * Salam.
  */
-export function buildSteps(id: PrayerId): PrayStep[] {
+export function buildSteps(id: PrayerId, opts?: { witrSurahInThird?: boolean }): PrayStep[] {
   const prayer = prayerById(id);
   if (!prayer) return [];
   const { rakahs, witr } = prayer;
   const steps: PrayStep[] = [takbirStep(), sanaStep()];
 
   for (let r = 1; r <= rakahs; r++) {
-    const withSurah = witr ? true : r <= 2;
+    // Die zusätzliche Sure nach Al-Fatiha wird standardmäßig NUR in den ersten
+    // beiden Rak'ah gelesen. Für Witr kann der Nutzer – je nach Rechtsschule –
+    // optional auch in der 3. Rak'ah (vor dem Qunut) eine Sure aktivieren
+    // (opts.witrSurahInThird). Der In-App-Hinweis empfiehlt dazu einen Gelehrten.
+    const withSurah = r <= 2 || (!!witr && r === 3 && !!opts?.witrSurahInThird);
     steps.push(recitationStep(r, withSurah));
     // Nach Al-Fatiha die kurze Sure als eigener Schritt (Rak'ah 1 → Al-Ikhlas,
-    // Rak'ah 2 → Al-Kawthar; Witr 3. Rak'ah → Al-Ikhlas vor dem Qunut).
+    // Rak'ah 2 → Al-Kawthar).
     if (withSurah) steps.push(shortSurahStep(r));
     if (witr && r === 3) steps.push(qunutStep(r));
     steps.push(rukuStep(r), itidalStep(r), sujudStep(r, 1), jalsaStep(r), sujudStep(r, 2));
@@ -862,5 +874,22 @@ export const PRAY_ALONG_UI = {
     ar: 'انقر على النص العربي للاستماع',
     es: 'Toca el texto árabe para escuchar',
     fr: 'Touche le texte arabe pour écouter',
+  } as LocalizedText,
+  // Witr-spezifische Option + Hinweis (nur im Witr sichtbar).
+  witrSurahLabel: {
+    de: 'Witr: Sure auch in der 3. Rak’ah',
+    en: 'Witr: surah also in the 3rd rakah',
+    tr: 'Vitir: 3. rekâtta da sure',
+    ar: 'الوتر: سورة في الركعة الثالثة أيضاً',
+    es: 'Witr: sura también en la 3.ª raka',
+    fr: 'Witr : sourate aussi à la 3e rak’a',
+  } as LocalizedText,
+  witrScholarNote: {
+    de: 'Die Form des Witr – besonders ob in der 3. Rak’ah nach Al-Fatiha eine Sure folgt und wo der Qunut steht – unterscheidet sich je nach Rechtsschule. Richte dich nach deiner Rechtsschule und frage im Zweifel einen Gelehrten.',
+    en: 'The form of witr – especially whether a surah follows Al-Fatiha in the 3rd rakah and where the qunut is placed – differs between the schools of law. Follow your own school and, when in doubt, ask a scholar.',
+    tr: 'Vitrin şekli – özellikle 3. rekâtta Fâtiha’dan sonra sure okunup okunmayacağı ve Kunut’un yeri – mezhebe göre değişir. Kendi mezhebine uy ve şüphe hâlinde bir âlime danış.',
+    ar: 'تختلف صفة الوتر بين المذاهب – خاصة هل تُقرأ سورة بعد الفاتحة في الركعة الثالثة وأين يكون القنوت. اتبع مذهبك، وعند الشك اسأل عالماً.',
+    es: 'La forma del witr – en especial si tras Al-Fatiha se recita una sura en la 3.ª raka y dónde se coloca el qunut – varía según la escuela jurídica. Sigue tu escuela y, en caso de duda, consulta a un sabio.',
+    fr: 'La forme du witr – notamment si une sourate suit Al-Fatiha à la 3e rak’a et où se place le qunut – diffère selon les écoles juridiques. Suis ton école et, en cas de doute, demande à un savant.',
   } as LocalizedText,
 };

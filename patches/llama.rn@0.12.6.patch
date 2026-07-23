@@ -1,0 +1,48 @@
+diff --git a/install/download-native-artifacts.js b/install/download-native-artifacts.js
+index 240d48aca5b0201ddc3a7ed43e391074b21b36b0..97235ef0380240ef87d30fa06fbe4f0e3ee09ce6 100644
+--- a/install/download-native-artifacts.js
++++ b/install/download-native-artifacts.js
+@@ -188,13 +188,36 @@ async function installArtifact(artifact) {
+   const archivePath = path.join(tempDir, artifact.assetName)
+ 
+   try {
+-    console.log(`llama.rn: downloading ${artifact.assetName}`)
+-    const checksum = await downloadArchive(url, archivePath)
+-
+-    if (checksum !== artifact.sha256) {
+-      throw new Error(
+-        `SHA-256 mismatch for ${artifact.assetName}: expected ${artifact.sha256}, received ${checksum}`,
+-      )
++    // Retry: der iOS-xcframework-Download (~194 MB) bricht auf CI-Runnern
++    // gelegentlich ab ("gzip: unexpected end of file" / SHA-Mismatch). Bis zu
++    // 6 Versuche mit wachsender Pause, statt den ganzen Install fehlschlagen zu
++    // lassen.
++    let lastErr = null
++    for (let attempt = 1; attempt <= 6; attempt++) {
++      try {
++        console.log(
++          `llama.rn: downloading ${artifact.assetName} (Versuch ${attempt}/6)`,
++        )
++        const checksum = await downloadArchive(url, archivePath)
++        if (checksum !== artifact.sha256) {
++          throw new Error(
++            `SHA-256 mismatch for ${artifact.assetName}: expected ${artifact.sha256}, received ${checksum}`,
++          )
++        }
++        lastErr = null
++        break
++      } catch (err) {
++        lastErr = err
++        console.warn(
++          `llama.rn: download attempt ${attempt} failed: ${err.message}`,
++        )
++        if (attempt < 6) {
++          await new Promise((r) => setTimeout(r, 4000 * attempt))
++        }
++      }
++    }
++    if (lastErr) {
++      throw lastErr
+     }
+ 
+     removeIfExists(artifact.relativePath)

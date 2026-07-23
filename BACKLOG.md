@@ -35,7 +35,8 @@ User-Mandat: vollständig autonom bis in die Stores, keine Rückfragen, „alles
 
 **Offen / NICHT vergessen (kein vc35-Blocker):**
 - [ ] YouTube: 10/58 Videos hoch, Tageslimit — Rest hochladen sobald User Kanal verifiziert (youtube.com/verify)
-- [ ] Maschinelle Übersetzungen (8-Sprachen-Kurse, neue Duas, 99-Namen ps/bn) + PDF-Inhalte: muttersprachliche/fachliche Gegenlese vor „vollständig"-Anspruch
+- [x] **PDF-Lernbuch-Inhalte vom User gegengelesen** (2026-07-23) — freigegeben.
+- [ ] Maschinelle Übersetzungen (8-Sprachen-Kurse, neue Duas, 99-Namen ps/bn): muttersprachliche/fachliche Gegenlese vor „vollständig"-Anspruch (App-Inhalte, unabhängig vom PDF)
 - [ ] Play-Empf. #1/#3/#4 (Glide/Fresco edge-to-edge + AGP9-R8): erst mit Expo-SDK-58-Upgrade lösbar (57 ist aktuell) — SDK-Upgrade als geplanter Durchgang wenn 58 erscheint
 - [ ] Dokumentierte Blocker: iOS Live Activity (braucht iPhone), WearOS-Runtime-Test, Web-Bundle-Splitting (Metro), voller mehrsprachiger Tafsir (keine freie Quelle), benannte Adhan-Stimmen (keine Assets)
 

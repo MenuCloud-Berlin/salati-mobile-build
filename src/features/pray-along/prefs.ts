@@ -23,6 +23,12 @@ export interface PrayAlongPrefs {
   showNotes: boolean;
   /** true = arabischer Text zuerst, false = Umschrift zuerst (Standard). */
   arabicFirst: boolean;
+  /** Witr: zusätzliche Sure auch in der 3. Rak'ah (je nach Rechtsschule).
+   *  Standard false — die verbreitete Vereinfachung liest die Sure nur in den
+   *  ersten beiden Rak'ah; wer der klassischen hanafitischen Form folgt, kann
+   *  sie hier aktivieren. Der In-App-Hinweis empfiehlt Rücksprache mit einem
+   *  Gelehrten. */
+  witrSurahInThird: boolean;
 }
 
 export const DEFAULT_PRAY_ALONG_PREFS: PrayAlongPrefs = {
@@ -31,6 +37,7 @@ export const DEFAULT_PRAY_ALONG_PREFS: PrayAlongPrefs = {
   showArabic: true,
   showNotes: true,
   arabicFirst: false,
+  witrSurahInThird: false,
 };
 
 export const FONT_SIZE_OPTIONS: PrayAlongFontSize[] = ['small', 'medium', 'large', 'xlarge'];
@@ -66,6 +73,10 @@ export function parsePrefs(raw: string | null): PrayAlongPrefs {
         typeof parsed.showNotes === 'boolean' ? parsed.showNotes : DEFAULT_PRAY_ALONG_PREFS.showNotes,
       arabicFirst:
         typeof parsed.arabicFirst === 'boolean' ? parsed.arabicFirst : DEFAULT_PRAY_ALONG_PREFS.arabicFirst,
+      witrSurahInThird:
+        typeof parsed.witrSurahInThird === 'boolean'
+          ? parsed.witrSurahInThird
+          : DEFAULT_PRAY_ALONG_PREFS.witrSurahInThird,
     };
   } catch {
     return DEFAULT_PRAY_ALONG_PREFS;
