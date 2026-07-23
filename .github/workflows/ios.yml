@@ -33,10 +33,16 @@ jobs:
       - name: whisper.rn iOS-SDK-Fix (vtool, wie EAS-Post-Install-Hook)
         run: bash scripts/fix-whisper-rn-ios-sdk.sh || echo "Fix-Skript-Warnung ignoriert"
 
-      - name: Xcode-Version wählen (RN 0.86 braucht >= 16.1)
+      # Xcode 26 nötig: das generierte @bacons-'apple'-Package verlangt
+      # Swift-Tools 6.2 (Xcode 16.x hat nur 6.0/6.1). Xcode 26 erfüllt zugleich
+      # RN 0.86 (>= 16.1). Fallback-Kette auf verfügbare 26.x-Slots.
+      - name: Xcode-Version wählen (26.x für Swift-Tools 6.2)
         run: |
           ls /Applications | grep -i Xcode || true
-          sudo xcode-select -s /Applications/Xcode_16.1.app || sudo xcode-select -s /Applications/Xcode_16.2.app || sudo xcode-select -s /Applications/Xcode.app
+          sudo xcode-select -s /Applications/Xcode_26.0.app \
+            || sudo xcode-select -s /Applications/Xcode_26.1.app \
+            || sudo xcode-select -s /Applications/Xcode_26.2.app \
+            || sudo xcode-select -s /Applications/Xcode_16.4.app
           xcodebuild -version
 
       # Watch-App + Komplikation aus DIESEM Build ausschliessen: sie sind
