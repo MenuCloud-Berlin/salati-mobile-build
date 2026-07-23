@@ -7,6 +7,29 @@
 
 ---
 
+## Z2) vc33 ABSCHLUSS (2026-07-23) — alles abgearbeitet, Code verifiziert
+
+**Gesamt-Verifikation grün:** `tsc` 0 · `jest` 100 Suites/978 Tests · `eslint` 0 · Locale-Parität 14/14.
+Version: **vc33 / 1.27.21**.
+
+Gemergt & verifiziert (diese Runde):
+- UX/Element-Größen (Title 48→34 etc.)/iOS-Settings-Inset-Umbau/ScreenHeader (nativer Zurück + Modal-Fertig)/Sure-{n}-i18n/NEU-Karten/Home-Chips
+- Video-Bug gefixt (Autoplay-Kaskade → „immer letzte Folge"), Autoplay-Default aus, PiP-Manifest, Filter-Chips in Video-Übersicht
+- größen-adaptive Widgets (compact/medium/tall)
+- Sprachmodell: Energie-VAD, prompt-freie Endauswertung (Benchmark-belegt: Modell erkennt klare Rezitation ~perfekt), strengeres Scoring, Ganz-Sure-Fix
+- 99 Namen → 14 Sprachen · Dialekte → 14 · Nawawi40 → 14 · Aqida/Akhlaq/Nikah → 14
+- Quran-Suche: Alif-Wasla-Fix · Wort-für-Wort Deutsch (Kernsuren)
+- AR-Kamera-Qibla (neu) · Dua-Ausbau 89→106 (authentische Quellen) · Store-Listings 8 Sprachen · Store-Zahlen aktualisiert
+- WearOS-Kompilierfehler: verifiziert bereits gefixt (Gradle-Compile grün)
+
+**⚠️ Vor Store-Freigabe:** Die 8-Sprachen-Kurs-/Dialekt-Übersetzungen + neue Duas sind MASCHINELL — muttersprachlich-fachliche Gegenlese empfohlen (v. a. ps/bn). Auf User-Entscheidung wird trotzdem ausgeliefert.
+
+**Echt blockiert (dokumentiert, nicht wählbar):** Web-Bundle-Splitting (Metro/Expo 57), AGP-9-R8 (finalizeDsl), iOS Live Activity (braucht iPhone), voller mehrsprachiger Tafsir (keine freie Quelle), benannte Adhan-Stimmen (keine Assets).
+
+**Offen bis Deploy:** iOS-Gratis-Pipeline (GitHub-macOS) am Iterieren; Android gratis (APK+AAB) bereit.
+
+---
+
 ## Z) Voll-Audit-Runde → vc33 (Stand 2026-07-22, Nutzer: „alles abarbeiten, nichts auslassen, Build erst wenn perfekt")
 
 **vc32 (1.27.20) ist zum Testen live** auf www.salati.pro — trägt die 5 gezielten Fixes (A1–A5).

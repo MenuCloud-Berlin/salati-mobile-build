@@ -4,7 +4,7 @@ const config: ExpoConfig = {
   name: 'Salati',
   slug: 'salatibox',
   owner: 'menucloudberlin',
-  version: '1.27.20',
+  version: '1.27.21',
   orientation: 'portrait',
   icon: './assets/images/icon.png',
   scheme: 'salatibox',

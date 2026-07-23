@@ -39,6 +39,9 @@ jobs:
           sudo xcode-select -s /Applications/Xcode_16.1.app || sudo xcode-select -s /Applications/Xcode_16.2.app || sudo xcode-select -s /Applications/Xcode.app
           xcodebuild -version
 
+      - name: watchOS-Plattform nachladen (Watch-Target braucht die Simulator-Runtime)
+        run: sudo xcodebuild -downloadPlatform watchOS || echo "watchOS-Download-Warnung ignoriert"
+
       - name: expo prebuild (iOS-Projekt generieren)
         run: npx expo prebuild -p ios --no-install
 
