@@ -4,7 +4,7 @@ const config: ExpoConfig = {
   name: 'Salati',
   slug: 'salatibox',
   owner: 'menucloudberlin',
-  version: '1.29.1',
+  version: '1.29.2',
   // Play-Console-Empfehlung (Android 16, große Displays/Foldables): Orientierungs-
   // Sperren werden auf großen Displays ohnehin ignoriert. Die App-UI ist
   // durchgängig responsiv (ScrollView + MaxContentWidth-Deckelung + Flexbox-

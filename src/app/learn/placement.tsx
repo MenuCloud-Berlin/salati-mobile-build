@@ -3,11 +3,12 @@
 // Meilenstein geht's zum nächsten; beim ersten nicht bestandenen Meilenstein
 // endet der Test mit einer Empfehlung, wo man einsteigen sollte.
 import { router } from 'expo-router';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedActivityIndicator } from '@/components/themed-activity-indicator';
+import { IconSymbol } from '@/components/ui/icon-symbol';
 import { IntroHelpButton } from '@/components/ui/intro-help-button';
 import { IntroSheet } from '@/components/ui/intro-sheet';
 import { ThemedText } from '@/components/themed-text';
@@ -22,9 +23,11 @@ import {
   type PlacementCheckpoint,
 } from '@/features/learn/placement';
 import { useLearnProgress } from '@/features/learn/progress';
+import { speakArabic, stopSpeaking } from '@/features/learn/audio';
 import { useExerciseIntro } from '@/hooks/use-exercise-intro';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
 import { backOr } from '@/lib/nav';
+import { useSsrSafeAudioPlayer } from '@/lib/ssrSafeAudio';
 import { useTranslation } from '@/lib/i18n';
 
 export default function PlacementScreen() {
@@ -64,6 +67,31 @@ export default function PlacementScreen() {
 
   const checkpoint = checkpoints?.[checkpointIndex];
   const question = checkpoint?.questions[questionIndex];
+
+  // Hör-Fragen (display: '🔊', requiresAudio) haben KEINE sichtbare Antwort —
+  // ohne Wiedergabe unlösbar. Gleiches Auto-Play-Muster wie im Lektions-Quiz
+  // (quiz/[mode].tsx): echtes Rezitations-Audio, wenn audioUrl vorhanden, sonst
+  // Geräte-TTS; Tippen auf die Karte wiederholt es. Vorher fehlte das komplett
+  // im Einstufungstest — die Frage tauchte stumm auf.
+  const recitationPlayer = useSsrSafeAudioPlayer(null);
+  const playAudio = useCallback(
+    (item: { tts?: string; audioUrl?: string }) => {
+      stopSpeaking();
+      if (item.audioUrl) {
+        recitationPlayer.replace(item.audioUrl);
+        recitationPlayer.play();
+      } else if (item.tts) {
+        recitationPlayer.pause();
+        speakArabic(item.tts);
+      }
+    },
+    [recitationPlayer],
+  );
+  useEffect(() => stopSpeaking, []);
+  useEffect(() => {
+    if (question && (question.tts || question.audioUrl)) playAudio(question);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [checkpointIndex, questionIndex, checkpoints]);
 
   function answer(optionIndex: number) {
     if (answered !== null || !checkpoints || !checkpoint || !question) return;
@@ -167,12 +195,24 @@ export default function PlacementScreen() {
             <ThemedText type="default" style={styles.prompt}>
               {question.promptText ?? t(question.promptKey)}
             </ThemedText>
-            {question.display !== '' && (
-              <ThemedView type="backgroundElement" style={styles.card}>
-                <ThemedText style={question.displayArabic ? styles.cardArabic : styles.cardLatin}>
-                  {question.display}
-                </ThemedText>
-              </ThemedView>
+            {(question.display !== '' || question.tts || question.audioUrl) && (
+              <Pressable
+                onPress={() => playAudio(question)}
+                disabled={!question.tts && !question.audioUrl}
+                accessibilityRole="button"
+                accessibilityLabel={question.display === '' ? t('a11y.playAudio') : undefined}
+                style={Platform.OS === 'web' ? styles.pressableWeb : undefined}>
+                <ThemedView type="backgroundElement" style={styles.card}>
+                  {question.display !== '' && (
+                    <ThemedText style={question.displayArabic ? styles.cardArabic : styles.cardLatin}>
+                      {question.display}
+                    </ThemedText>
+                  )}
+                  {(question.tts || question.audioUrl) && (
+                    <IconSymbol name="volume-high" size={18} color={colors.accent} />
+                  )}
+                </ThemedView>
+              </Pressable>
             )}
             <View style={styles.options}>
               {question.options.map((option, i) => {

@@ -53,13 +53,10 @@ const LANG_MAP = {
   sw: 'sw', ps: 'ps',
 };
 
-const RELEASE_NOTES = `Neu in 1.29.0:
-• Kompletter Lernkurs: Grammatik- & Wortschatz-Videos mit „Taegliche Wiederholung"
-• Alle 56 Podcast-Folgen jetzt auch als Video & Reels
-• Gebet lernen: Witr-Optionen + Dua al-Qunut als Text
-• Medien-Hub mit PDF-Handouts
-• Arabische Grammatik-Begriffe (Raf'/Nasb/Jarr)
-• Viele Detailverbesserungen`;
+const RELEASE_NOTES = `Neu in 1.29.1:
+• Das Gebetszeiten-Widget aktualisiert sich jetzt selbststaendig (auch zur Gebetszeit)
+• Die fuenf Tageszeiten bleiben in jeder Widget-Groesse sichtbar
+• Weitere Detailverbesserungen`;
 
 // --- Auth -------------------------------------------------------------------
 const sa = JSON.parse(fs.readFileSync(SA_PATH, 'utf8'));
