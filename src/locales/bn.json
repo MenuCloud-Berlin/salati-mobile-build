@@ -11,7 +11,7 @@
     "mosques": "মসজিদ",
     "learn": "কুরআন পড়া শিখুন",
     "quiz": "অনুশীলন ও কুইজ",
-    "hifz": "মুখস্থ করা",
+    "hifz": "তিলাওয়াত",
     "tasbih": "তসবিহ",
     "guides": "নামাজ ও অনুশীলন",
     "wisdom": "প্রজ্ঞাবাণী",
@@ -38,7 +38,8 @@
     "journeys": "দৈনিক পরিকল্পনা",
     "search": "অনুসন্ধান",
     "gettingStarted": "প্রথম পদক্ষেপ",
-    "lernen": "Learn"
+    "lernen": "Learn",
+    "media": "মিডিয়া"
   },
   "common": {
     "loading": "লোড হচ্ছে…",
@@ -510,7 +511,9 @@
     "wrongListTitle": "ভুল উত্তর দেওয়া"
   },
   "hifz": {
-    "title": "মুখস্থ করা",
+    "title": "তিলাওয়াত",
+    "recognitionNoteCta": "এই শনাক্তকরণ কতটা নির্ভরযোগ্য?",
+    "recognitionDisclaimer": "এই শনাক্তকরণ আপনার ডিভাইসে চলা একটি ছোট স্পিচ মডেল ব্যবহার করে। এটি ভুল করে এবং একজন প্রকৃত শিক্ষকের বিকল্প হতে পারে না। গুরুতর ও নির্ভুল তিলাওয়াত ফিডব্যাকের জন্য আমরা Tarteel অ্যাপ সুপারিশ করি, যা সার্ভারভিত্তিক সিস্টেম ব্যবহার করে এবং অনেক ভালো কাজ করে।",
     "subtitle": "আয়াতে আয়াতে: শোনো, ঢাকো, বলো, চিহ্নিত করো",
     "searchNoResults": "\"{query}\"-এর জন্য কোনো সূরা পাওয়া যায়নি।",
     "memorized": "মুখস্থ হয়েছে",
@@ -565,7 +568,7 @@
     "tapWordHint": "কী শনাক্ত হয়েছে তা দেখতে হাইলাইট করা শব্দে ট্যাপ করুন",
     "gapTestCta": "অনুশীলন মোড (শব্দ ছাড়া)",
     "gapTest": {
-      "title": "মুখস্থ পরীক্ষা",
+      "title": "তিলাওয়াত পরীক্ষা",
       "noKnownVerses": "এখনও কোনো আয়াত \"আমি জানি\" হিসেবে চিহ্নিত নেই - প্রথমে কয়েকটি আয়াত মুখস্থ করুন, তারপর এখানে শব্দ ছাড়াই নিজেকে যাচাই করতে পারবেন।",
       "backCta": "সূরায় ফিরে যান",
       "progressLabel": "আয়াত {current} / {total}",
@@ -636,12 +639,16 @@
   "settings": {
     "groups": {
       "prayer": "নামাজ ও গণনা",
-      "notifications": "বিজ্ঞপ্তি ও অনুস্মারক",
+      "notifications": "বিজ্ঞপ্তি",
+      "reminders": "অনুস্মারক",
       "quran": "কুরআন ও তিলাওয়াত",
       "language": "ভাষা ও প্রদর্শন",
       "learning": "শেখা ও অনুশীলন",
       "data": "স্টোরেজ ও ডেটা",
       "about": "সম্পর্কে ও আইনি"
+    },
+    "moreReminders": {
+      "title": "আরও অনুস্মারক"
     },
     "location": "অবস্থান",
     "current": "বর্তমান",
@@ -2234,7 +2241,7 @@
   "podcast": {
     "listenOnSpotify": "Spotify-তে শুনুন",
     "title": "Language of the Qur’an",
-    "subtitle": "Understand Arabic — in 15 episodes",
+    "subtitle": "Understand Arabic, episode by episode",
     "heroDesc": "The podcast: the grammar of the Qur’an, episode by episode.",
     "empty": "Coming soon.",
     "episodeLabel": "Episode",
@@ -2333,5 +2340,24 @@
     "settings": "সেটিংস",
     "speed": "গতি",
     "renamePlaylist": "নাম বদলান"
+  },
+  "media": {
+    "title": "মিডিয়া",
+    "subtitle": "পডকাস্ট, ভিডিও এবং রিলস এক জায়গায়।"
+  },
+  "handouts": {
+    "title": "শেখার উপকরণ",
+    "subtitle": "পড়া ও ডাউনলোডের জন্য সংগৃহীত পিডিএফ শিক্ষা উপকরণ।",
+    "empty": "শীঘ্রই আসছে।",
+    "pages": "পৃষ্ঠা",
+    "read": "পড়ুন",
+    "download": "ডাউনলোড",
+    "offline": "অফলাইন",
+    "cancelDownload": "ডাউনলোড বাতিল করুন",
+    "deleteDownload": "ডাউনলোড মুছুন",
+    "deleteDownloadConfirmTitle": "ডাউনলোড মুছবেন?",
+    "deleteDownloadConfirmBody": "পিডিএফটি আপনার ডিভাইস থেকে সরানো হবে।",
+    "openInBrowser": "ব্রাউজারে খুলুন",
+    "viewerError": "পিডিএফ লোড করা যায়নি।"
   }
 }

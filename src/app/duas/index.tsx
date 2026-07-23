@@ -10,7 +10,7 @@ import { PressableCard } from '@/components/ui/pressable-card';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { BackChipInset, Colors, MaxContentWidth, Spacing } from '@/constants/theme';
-import { DUA_CATEGORIES, categoryLabel, duasForCategory } from '@/features/duas/hooks';
+import { DUA_CATEGORIES, categoryLabel } from '@/features/duas/hooks';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
 import { useTranslation } from '@/lib/i18n';
 
@@ -61,11 +61,6 @@ export default function DuasScreen() {
                 </ThemedView>
                 <View style={styles.rowText}>
                   <ThemedText type="default">{categoryLabel(item.id, locale)}</ThemedText>
-                  <ThemedText type="small" themeColor="textSecondary">
-                    {duasForCategory(item.id).length === 1
-                      ? t('duas.countOne')
-                      : t('duas.countMany').replace('{n}', String(duasForCategory(item.id).length))}
-                  </ThemedText>
                 </View>
                 <DisclosureChevron size={18} color={colors.textSecondary} />
               </PressableCard>

@@ -11,7 +11,7 @@
     "mosques": "Masjid",
     "learn": "Belajar Membaca Al-Quran",
     "quiz": "Latihan & Kuiz",
-    "hifz": "Hafazan",
+    "hifz": "Tilawah",
     "tasbih": "Tasbih",
     "guides": "Solat & Amalan",
     "wisdom": "Hikmah",
@@ -38,7 +38,8 @@
     "journeys": "Pelan Harian",
     "search": "Cari",
     "gettingStarted": "Langkah Pertama",
-    "lernen": "Learn"
+    "lernen": "Learn",
+    "media": "Media"
   },
   "common": {
     "loading": "Memuatkan…",
@@ -510,7 +511,9 @@
     "wrongListTitle": "Dijawab salah"
   },
   "hifz": {
-    "title": "Hafazan",
+    "title": "Tilawah",
+    "recognitionNoteCta": "Sejauh mana ketepatan pengecaman ini?",
+    "recognitionDisclaimer": "Pengecaman ini menggunakan model suara kecil yang berjalan pada peranti anda. Ia boleh melakukan kesilapan dan tidak dapat menggantikan guru sebenar. Untuk maklum balas tilawah yang serius dan tepat, kami mengesyorkan aplikasi Tarteel, yang menggunakan sistem berasaskan pelayan dan berfungsi dengan jauh lebih baik.",
     "subtitle": "Ayat demi ayat: dengar, tutup, sebut, tanda",
     "searchNoResults": "Tiada surah dijumpai untuk \"{query}\".",
     "memorized": "dihafal",
@@ -565,7 +568,7 @@
     "tapWordHint": "Ketik perkataan yang diserlahkan untuk melihat apa yang dikenali",
     "gapTestCta": "Mod latihan (tanpa bunyi)",
     "gapTest": {
-      "title": "Ujian Hafazan",
+      "title": "Ujian Tilawah",
       "noKnownVerses": "Belum ada ayat yang ditanda \"Sudah Hafal\" - hafal beberapa ayat dahulu, kemudian anda boleh menguji diri di sini tanpa bunyi.",
       "backCta": "Kembali ke Surah",
       "progressLabel": "Ayat {current} daripada {total}",
@@ -636,12 +639,16 @@
   "settings": {
     "groups": {
       "prayer": "Solat & Pengiraan",
-      "notifications": "Pemberitahuan & Peringatan",
+      "notifications": "Pemberitahuan",
+      "reminders": "Peringatan",
       "quran": "Al-Quran & Tilawah",
       "language": "Bahasa & Paparan",
       "learning": "Pembelajaran & Latihan",
       "data": "Storan & Data",
       "about": "Perihal & Undang-undang"
+    },
+    "moreReminders": {
+      "title": "Peringatan lain"
     },
     "location": "Lokasi",
     "current": "Semasa",
@@ -2234,7 +2241,7 @@
   "podcast": {
     "listenOnSpotify": "Dengar di Spotify",
     "title": "Language of the Qur’an",
-    "subtitle": "Understand Arabic — in 15 episodes",
+    "subtitle": "Understand Arabic, episode by episode",
     "heroDesc": "The podcast: the grammar of the Qur’an, episode by episode.",
     "empty": "Coming soon.",
     "episodeLabel": "Episode",
@@ -2333,5 +2340,24 @@
     "settings": "Tetapan",
     "speed": "Kelajuan",
     "renamePlaylist": "Namakan semula"
+  },
+  "media": {
+    "title": "Media",
+    "subtitle": "Podcast, video dan reel di satu tempat."
+  },
+  "handouts": {
+    "title": "Bahan Pembelajaran",
+    "subtitle": "Bahan pembelajaran PDF untuk dibaca dan dimuat turun.",
+    "empty": "Akan datang.",
+    "pages": "halaman",
+    "read": "Baca",
+    "download": "Muat turun",
+    "offline": "Luar talian",
+    "cancelDownload": "Batalkan muat turun",
+    "deleteDownload": "Padam muat turun",
+    "deleteDownloadConfirmTitle": "Padam muat turun?",
+    "deleteDownloadConfirmBody": "PDF akan dialih keluar daripada peranti anda.",
+    "openInBrowser": "Buka dalam pelayar",
+    "viewerError": "PDF tidak dapat dimuatkan."
   }
 }

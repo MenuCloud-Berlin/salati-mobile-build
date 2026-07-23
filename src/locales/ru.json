@@ -11,7 +11,7 @@
     "mosques": "Мечети",
     "learn": "Учимся читать Коран",
     "quiz": "Практика и викторина",
-    "hifz": "Заучивание наизусть",
+    "hifz": "Чтение Корана",
     "tasbih": "Тасбих",
     "guides": "Намаз и практика",
     "wisdom": "Мудрости",
@@ -38,7 +38,8 @@
     "journeys": "Ежедневные планы",
     "search": "Поиск",
     "gettingStarted": "Первые шаги",
-    "lernen": "Learn"
+    "lernen": "Learn",
+    "media": "Медиа"
   },
   "common": {
     "loading": "Загрузка…",
@@ -510,7 +511,9 @@
     "wrongListTitle": "Отвечено неверно"
   },
   "hifz": {
-    "title": "Заучивание наизусть",
+    "title": "Чтение Корана",
+    "recognitionNoteCta": "Насколько точно это распознавание?",
+    "recognitionDisclaimer": "Это распознавание использует небольшую речевую модель, работающую прямо на вашем устройстве. Она ошибается и не может заменить настоящего учителя. Для серьёзной и точной оценки чтения мы рекомендуем приложение Tarteel, которое использует серверную систему и работает заметно лучше.",
     "subtitle": "Аят за аятом: слушайте, закрывайте, произносите, отмечайте",
     "searchNoResults": "Сура для «{query}» не найдена.",
     "memorized": "выучено",
@@ -565,7 +568,7 @@
     "tapWordHint": "Нажмите на выделенное слово, чтобы увидеть, что было распознано",
     "gapTestCta": "Режим тренировки (без звука)",
     "gapTest": {
-      "title": "Тест на запоминание",
+      "title": "Тест по чтению",
       "noKnownVerses": "Пока нет аятов, отмеченных как «Знаю» - сначала выучите несколько аятов, затем сможете проверить себя здесь без звука.",
       "backCta": "Назад к суре",
       "progressLabel": "Аят {current} из {total}",
@@ -636,12 +639,16 @@
   "settings": {
     "groups": {
       "prayer": "Молитва и расчёт",
-      "notifications": "Уведомления и напоминания",
+      "notifications": "Уведомления",
+      "reminders": "Напоминания",
       "quran": "Коран и чтение",
       "language": "Язык и отображение",
       "learning": "Обучение и практика",
       "data": "Хранилище и данные",
       "about": "О приложении и правовое"
+    },
+    "moreReminders": {
+      "title": "Другие напоминания"
     },
     "location": "Местоположение",
     "current": "Текущее",
@@ -2234,7 +2241,7 @@
   "podcast": {
     "listenOnSpotify": "Слушать в Spotify",
     "title": "Language of the Qur’an",
-    "subtitle": "Understand Arabic — in 15 episodes",
+    "subtitle": "Understand Arabic, episode by episode",
     "heroDesc": "The podcast: the grammar of the Qur’an, episode by episode.",
     "empty": "Coming soon.",
     "episodeLabel": "Episode",
@@ -2333,5 +2340,24 @@
     "settings": "Настройки",
     "speed": "Скорость",
     "renamePlaylist": "Переименовать"
+  },
+  "media": {
+    "title": "Медиа",
+    "subtitle": "Подкаст, видео и ролики в одном месте."
+  },
+  "handouts": {
+    "title": "Учебные материалы",
+    "subtitle": "Собранные учебные материалы в PDF для чтения и загрузки.",
+    "empty": "Скоро.",
+    "pages": "стр.",
+    "read": "Читать",
+    "download": "Скачать",
+    "offline": "Офлайн",
+    "cancelDownload": "Отменить загрузку",
+    "deleteDownload": "Удалить загрузку",
+    "deleteDownloadConfirmTitle": "Удалить загрузку?",
+    "deleteDownloadConfirmBody": "PDF будет удалён с вашего устройства.",
+    "openInBrowser": "Открыть в браузере",
+    "viewerError": "Не удалось загрузить PDF."
   }
 }

@@ -11,6 +11,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { AnimatedListItem } from '@/components/ui/animated-list-item';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
 import { StarClusterDecoration } from '@/components/decorative-pattern';
+import { MediaShowcase } from '@/components/media-showcase.web';
 import { IconSymbol, type IconName } from '@/components/ui/icon-symbol';
 import { PressableCard } from '@/components/ui/pressable-card';
 import { ThemedText } from '@/components/themed-text';
@@ -302,6 +303,12 @@ export default function LandingScreen() {
               <ThemedText type="subtitle">›</ThemedText>
             </Pressable>
           </View>
+
+          {/* Inhalts-Angebote jenseits der App-Features: Podcast (Spotify),
+              Lern-Videos (YouTube), Reels (Instagram), PDF-Handouts. Eigene
+              web-only Komponente mit self-contained Sprach-Map, damit die
+              Landing-Erweiterung keine geteilten Locale-Dateien anfasst. */}
+          <MediaShowcase />
 
           <View style={styles.storeSection}>
             <ThemedText type="smallBold" themeColor="textSecondary">

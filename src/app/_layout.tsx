@@ -146,8 +146,10 @@ function ThemedApp() {
         <Stack.Screen name="calendar" />
         <Stack.Screen name="prayer-times-week" />
         <Stack.Screen name="radio" />
+        <Stack.Screen name="media" />
         <Stack.Screen name="podcast" />
         <Stack.Screen name="videos" />
+        <Stack.Screen name="handouts" />
         <Stack.Screen name="halal" />
         <Stack.Screen name="halal-scanner" />
         <Stack.Screen name="mosques" />

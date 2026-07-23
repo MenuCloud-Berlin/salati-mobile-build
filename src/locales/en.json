@@ -11,7 +11,7 @@
     "mosques": "Mosques",
     "learn": "Learn to read Quran",
     "quiz": "Practice & Quiz",
-    "hifz": "Memorization",
+    "hifz": "Recitation",
     "tasbih": "Tasbih",
     "guides": "Prayer & Practice",
     "wisdom": "Wisdoms",
@@ -38,7 +38,8 @@
     "journeys": "Day Plans",
     "search": "Search",
     "gettingStarted": "Getting Started",
-    "lernen": "Learn"
+    "lernen": "Learn",
+    "media": "Media"
   },
   "common": {
     "loading": "Loading…",
@@ -510,7 +511,9 @@
     "wrongListTitle": "Answered incorrectly"
   },
   "hifz": {
-    "title": "Memorization",
+    "title": "Recitation",
+    "recognitionNoteCta": "How reliable is this recognition?",
+    "recognitionDisclaimer": "This recognition uses a small speech model that runs on your device. It makes mistakes and cannot replace a real teacher. For serious, precise recitation feedback we recommend the Tarteel app, which uses a server-based system and works noticeably better.",
     "subtitle": "Verse by verse: listen, hide, recite, tick off",
     "searchNoResults": "No surah found for \"{query}\".",
     "memorized": "memorized",
@@ -565,7 +568,7 @@
     "tapWordHint": "Tap a highlighted word to see what was recognized",
     "gapTestCta": "Practice mode (no sound)",
     "gapTest": {
-      "title": "Memorization Test",
+      "title": "Recitation Test",
       "noKnownVerses": "No verses marked \"I know it\" yet - learn a few verses first, then you can quiz yourself here without sound.",
       "backCta": "Back to Surah",
       "progressLabel": "Verse {current} of {total}",
@@ -636,12 +639,16 @@
   "settings": {
     "groups": {
       "prayer": "Prayer & Calculation",
-      "notifications": "Notifications & Reminders",
+      "notifications": "Notifications",
+      "reminders": "Reminders",
       "quran": "Quran & Recitation",
       "language": "Language & Display",
       "learning": "Learning & Practice",
       "data": "Storage & Data",
       "about": "About & Legal"
+    },
+    "moreReminders": {
+      "title": "More reminders"
     },
     "location": "Location",
     "current": "Current",
@@ -2170,7 +2177,7 @@
   "podcast": {
     "listenOnSpotify": "Listen on Spotify",
     "title": "Language of the Qur’an",
-    "subtitle": "Understand Arabic — in 15 episodes",
+    "subtitle": "Understand Arabic, episode by episode",
     "heroDesc": "The podcast: the grammar of the Qur’an, episode by episode.",
     "empty": "Coming soon.",
     "episodeLabel": "Episode",
@@ -2333,5 +2340,24 @@
     "settings": "Settings",
     "speed": "Speed",
     "renamePlaylist": "Rename"
+  },
+  "media": {
+    "title": "Media",
+    "subtitle": "Podcast, videos and reels in one place."
+  },
+  "handouts": {
+    "title": "Handouts",
+    "subtitle": "Collected PDF study material to read and download.",
+    "empty": "Coming soon.",
+    "pages": "pages",
+    "read": "Read",
+    "download": "Download",
+    "offline": "Offline",
+    "cancelDownload": "Cancel download",
+    "deleteDownload": "Delete download",
+    "deleteDownloadConfirmTitle": "Delete download?",
+    "deleteDownloadConfirmBody": "The PDF will be removed from your device.",
+    "openInBrowser": "Open in browser",
+    "viewerError": "The PDF could not be loaded."
   }
 }

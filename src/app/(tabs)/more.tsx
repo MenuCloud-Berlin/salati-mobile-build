@@ -2,23 +2,28 @@ import { router } from 'expo-router';
 import { Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { AnimatedListItem } from '@/components/ui/animated-list-item';
 import { DisclosureChevron } from '@/components/ui/disclosure-chevron';
 import { IconSymbol, type IconName } from '@/components/ui/icon-symbol';
+import { NavTile, navTileStyles } from '@/components/ui/nav-tile';
 import { PressableCard } from '@/components/ui/pressable-card';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Colors, IconBadge, MaxContentWidth, Spacing } from '@/constants/theme';
+import { LERNEN_NAV } from '@/lib/lernenNav';
 import { useResolvedScheme } from '@/hooks/use-resolved-scheme';
 import { useTranslation } from '@/lib/i18n';
 
-// Thematische Gruppierung statt einer flachen 19-Einträge-Liste
+// Thematische Gruppierung statt einer flachen Liste
 // (User-Feedback "App muss übersichtlicher/sortierter sein").
 // `as const` hält die hrefs als Literale für expo-routers typisierte Routen.
-// Die Lern-Sektion (Podcast, Lern-App, Hifz, Quiz, Hadith, Radio, …) lebt jetzt
-// im eigenen prominenten „Lernen"-Tab ((tabs)/lernen.tsx) — bewusst NICHT mehr
-// hier unter „Mehr" vergraben (User-Wunsch: verdient Aufmerksamkeit).
+// Die Lern-Sektion („Lernen") ist eine VERKNÜPFUNG auf dieselben Einträge wie
+// im Lernen-Tab (gemeinsame Quelle lib/lernenNav.ts) — die wichtigsten Studium-
+// Werkzeuge sind so an beiden Orten erreichbar, ohne Funktion zu duplizieren.
 const SECTIONS = [
+  {
+    titleKey: 'more.sections.learning',
+    items: LERNEN_NAV,
+  },
   {
     titleKey: 'more.sections.practice',
     items: [
@@ -123,23 +128,16 @@ export default function MoreScreen() {
               <ThemedText type="smallBold" themeColor="textSecondary" style={styles.sectionTitle}>
                 {t(section.titleKey)}
               </ThemedText>
-              <View style={styles.grid}>
-                {section.items.map((item) => {
-                  const index = itemIndex++;
-                  return (
-                    <AnimatedListItem key={item.href} index={index} style={styles.gridItem}>
-                      <PressableCard onPress={() => router.push(item.href)} style={styles.row}>
-                        <View style={styles.rowLeft}>
-                          <ThemedView type="backgroundSelected" style={styles.iconBadge}>
-                            <IconSymbol name={item.icon} size={18} color={colors.accent} />
-                          </ThemedView>
-                          <ThemedText type="default">{t(item.labelKey)}</ThemedText>
-                        </View>
-                        <DisclosureChevron size={18} color={colors.textSecondary} />
-                      </PressableCard>
-                    </AnimatedListItem>
-                  );
-                })}
+              <View style={navTileStyles.grid}>
+                {section.items.map((item) => (
+                  <NavTile
+                    key={item.href}
+                    index={itemIndex++}
+                    label={t(item.labelKey)}
+                    icon={item.icon}
+                    onPress={() => router.push(item.href)}
+                  />
+                ))}
               </View>
             </View>
           ))}
@@ -175,18 +173,6 @@ const styles = StyleSheet.create({
   section: { gap: Spacing.two },
   credit: { textAlign: 'center', marginTop: Spacing.two },
   sectionTitle: { textTransform: 'uppercase', letterSpacing: 1, paddingLeft: Spacing.one },
-  // Reines Flexbox-Grid ohne JS-Breakpoint: schmale Screens 1 Spalte,
-  // Foldables/Tablets automatisch 2+, unabhängig von useWindowDimensions
-  // (das auf dem Static-Web-Export unzuverlässig aktualisierte).
-  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: Spacing.two },
-  gridItem: { flexBasis: 320, minWidth: 280, flexGrow: 1 },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: Spacing.three,
-  },
-  rowLeft: { flexDirection: 'row', alignItems: 'center', gap: Spacing.three },
   iconBadge: {
     width: IconBadge.row,
     height: IconBadge.row,

@@ -1,0 +1,64 @@
+// Medien-Hub: eine Zwischenebene, die Podcast, Videos und Reels unter einem
+// gemeinsamen Dach buendelt (vorher lagen die drei einzeln im Lernen-Tab).
+// Jeder Eintrag oeffnet die bestehende Liste/Route — hier wird nichts
+// dupliziert, nur navigiert. Web-Fallbacks der Ziele (reels/index.web.tsx,
+// videos/[episode].web.tsx) bleiben unangetastet.
+import { router } from 'expo-router';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+import { type IconName } from '@/components/ui/icon-symbol';
+import { NavTile, navTileStyles } from '@/components/ui/nav-tile';
+import { ThemedText } from '@/components/themed-text';
+import { ThemedView } from '@/components/themed-view';
+import { BackChipInset, MaxContentWidth, Spacing } from '@/constants/theme';
+import { useTranslation } from '@/lib/i18n';
+
+const MEDIA_TILES = [
+  { href: '/podcast', labelKey: 'podcast.title', icon: 'headset' },
+  { href: '/videos', labelKey: 'video.title', icon: 'videocam' },
+  { href: '/reels', labelKey: 'reels.title', icon: 'film' },
+] as const satisfies readonly { href: string; labelKey: string; icon: IconName }[];
+
+export default function MediaHubScreen() {
+  const { t } = useTranslation();
+  return (
+    <ThemedView style={styles.container}>
+      <SafeAreaView style={styles.safeArea}>
+        <ThemedText type="title" style={styles.title}>
+          {t('media.title')}
+        </ThemedText>
+        <ThemedText type="small" themeColor="textSecondary" style={styles.subtitle}>
+          {t('media.subtitle')}
+        </ThemedText>
+        <ScrollView contentContainerStyle={styles.list} showsVerticalScrollIndicator={false}>
+          <View style={navTileStyles.grid}>
+            {MEDIA_TILES.map((item, index) => (
+              <NavTile
+                key={item.href}
+                index={index}
+                label={t(item.labelKey)}
+                icon={item.icon}
+                onPress={() => router.push(item.href)}
+              />
+            ))}
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    </ThemedView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1 },
+  safeArea: { flex: 1, paddingTop: Spacing.three + BackChipInset },
+  title: { textAlign: 'center' },
+  subtitle: { textAlign: 'center', marginBottom: Spacing.three, paddingHorizontal: Spacing.three },
+  list: {
+    paddingHorizontal: Spacing.three,
+    paddingBottom: Spacing.five,
+    alignSelf: 'center',
+    width: '100%',
+    maxWidth: MaxContentWidth,
+  },
+});

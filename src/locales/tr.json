@@ -11,7 +11,7 @@
     "mosques": "Camiler",
     "learn": "Kur'an okumayı öğren",
     "quiz": "Alıştırma ve Quiz",
-    "hifz": "Ezberleme",
+    "hifz": "Tilavet",
     "tasbih": "Tesbih",
     "guides": "Namaz ve İbadet",
     "wisdom": "Hikmetler",
@@ -38,7 +38,8 @@
     "journeys": "Günlük Planlar",
     "search": "Ara",
     "gettingStarted": "İlk Adımlar",
-    "lernen": "Learn"
+    "lernen": "Learn",
+    "media": "Medya"
   },
   "common": {
     "loading": "Yükleniyor…",
@@ -510,7 +511,9 @@
     "wrongListTitle": "Yanlış cevaplananlar"
   },
   "hifz": {
-    "title": "Ezberleme",
+    "title": "Tilavet",
+    "recognitionNoteCta": "Bu tanıma ne kadar güvenilir?",
+    "recognitionDisclaimer": "Bu tanıma, cihazınızda çalışan küçük bir konuşma modeli kullanır. Hata yapar ve gerçek bir hocanın yerini tutamaz. Ciddi ve hassas tilavet geri bildirimi için, sunucu tabanlı bir sistem kullanan ve belirgin şekilde daha iyi çalışan Tarteel uygulamasını öneririz.",
     "subtitle": "Ayet ayet: dinle, gizle, oku, işaretle",
     "searchNoResults": "\"{query}\" için sure bulunamadı.",
     "memorized": "ezberlendi",
@@ -565,7 +568,7 @@
     "tapWordHint": "Neyin tanındığını görmek için vurgulanan kelimeye dokunun",
     "gapTestCta": "Alıştırma modu (sessiz)",
     "gapTest": {
-      "title": "Ezber Testi",
+      "title": "Tilavet Testi",
       "noKnownVerses": "Henüz \"Biliyorum\" olarak işaretlenmiş ayet yok - önce birkaç ayet öğren, sonra burada sessizce kendini sınayabilirsin.",
       "backCta": "Sureye dön",
       "progressLabel": "Ayet {current} / {total}",
@@ -636,12 +639,16 @@
   "settings": {
     "groups": {
       "prayer": "Namaz ve Hesaplama",
-      "notifications": "Bildirimler ve Hatırlatıcılar",
+      "notifications": "Bildirimler",
+      "reminders": "Hatırlatıcılar",
       "quran": "Kur'an ve Tilavet",
       "language": "Dil ve Görünüm",
       "learning": "Öğrenme ve Alıştırma",
       "data": "Depolama ve Veriler",
       "about": "Hakkında ve Yasal"
+    },
+    "moreReminders": {
+      "title": "Diğer hatırlatıcılar"
     },
     "location": "Konum",
     "current": "Şu an",
@@ -2234,7 +2241,7 @@
   "podcast": {
     "listenOnSpotify": "Spotify'da dinle",
     "title": "Language of the Qur’an",
-    "subtitle": "Understand Arabic — in 15 episodes",
+    "subtitle": "Understand Arabic, episode by episode",
     "heroDesc": "The podcast: the grammar of the Qur’an, episode by episode.",
     "empty": "Coming soon.",
     "episodeLabel": "Episode",
@@ -2333,5 +2340,24 @@
     "settings": "Ayarlar",
     "speed": "Hız",
     "renamePlaylist": "Yeniden adlandır"
+  },
+  "media": {
+    "title": "Medya",
+    "subtitle": "Podcast, videolar ve reels tek yerde."
+  },
+  "handouts": {
+    "title": "Ders Notları",
+    "subtitle": "Okumak ve indirmek için derlenmiş PDF çalışma materyalleri.",
+    "empty": "Yakında.",
+    "pages": "sayfa",
+    "read": "Oku",
+    "download": "İndir",
+    "offline": "Çevrimdışı",
+    "cancelDownload": "İndirmeyi iptal et",
+    "deleteDownload": "İndirmeyi sil",
+    "deleteDownloadConfirmTitle": "İndirme silinsin mi?",
+    "deleteDownloadConfirmBody": "PDF cihazınızdan kaldırılacak.",
+    "openInBrowser": "Tarayıcıda aç",
+    "viewerError": "PDF yüklenemedi."
   }
 }

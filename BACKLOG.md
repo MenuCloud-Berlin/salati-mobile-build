@@ -7,6 +7,40 @@
 
 ---
 
+## Z3) vc35 (1.28.0) — laufender Release (2026-07-23), autonomer Store-Push
+
+**Ziel:** vc35 ersetzt die noch in Review liegende vc33 in beiden Stores + Website/APK.
+User-Mandat: vollständig autonom bis in die Stores, keine Rückfragen, „alles perfekt, nichts vergessen".
+
+**App-Änderungen — GEMERGT + verifiziert (tsc0/jest978/eslint0):**
+- [x] Einstellungen übersichtlicher (Benachrichtigungen/Erinnerungen getrennt, Karten zusammengefasst, Suche erhalten)
+- [x] „Auswendiglernen" → „Rezitieren" (14 Sprachen) + ehrlicher On-Device-Modell-Hinweis mit Tarteel-Empfehlung
+- [x] Medien-Hub `/media` (Podcast/Videos/Reels darunter) + einheitliche NavTile-Raster (Lernen wie Mehr) + Studium-Verknüpfung in /mehr + feste wachsende Zahlen entfernt
+- [x] (aus vc34) Responsive/Tablet/Querformat + Orientierungssperre gelöst (Play-Empf. #2)
+
+**App-Änderungen — LAUFENDE Agents (sofort committen bei Fertig):**
+- [ ] In-App-Handouts-Feature (PDFs lesen/herunterladen; Einstieg beim Merge in lernenNav verdrahten)
+- [ ] Store-Listings 14 Sprachen + Website-Landing mit neuen Angeboten (Podcast/Videos/Reels/Handouts), Zahlen raus
+- [ ] Umfassendes **Lernbuch-PDF** + Themen-PDFs → R2 (`handouts/index.json`), alle Inhalte, nichts ausgelassen
+
+**Vor dem Build noch zu tun:**
+- [ ] Version auf **vc35 / versionCode 35 / 1.28.0** (aktuell steht 34/1.27.22 vom vc34-Test)
+- [ ] Handouts-Einstiegspunkt verdrahten (Kachel in LERNEN_NAV/media)
+- [ ] Gesamt-Verifikation tsc/eslint/jest/Locale-Parität nach allen Merges
+
+**Build + Einreichung (autonom):**
+- [ ] Android APK+AAB via GitHub (gratis) → Website-APK-Deploy + Play-Production (ersetzt vc33)
+- [ ] iOS via salatipro-EAS (Standalone-Dir C:/eas-salati-ios, vc35-Code neu spiegeln; llama.rn-194MB-Download war transient → bei Flake Retry) → App-Store-Einreichung (Build ablösen)
+- [ ] Store-Listings-Metadaten in Play/ASC aktualisieren (nach den md-Änderungen)
+
+**Offen / NICHT vergessen (kein vc35-Blocker):**
+- [ ] YouTube: 10/58 Videos hoch, Tageslimit — Rest hochladen sobald User Kanal verifiziert (youtube.com/verify)
+- [ ] Maschinelle Übersetzungen (8-Sprachen-Kurse, neue Duas, 99-Namen ps/bn) + PDF-Inhalte: muttersprachliche/fachliche Gegenlese vor „vollständig"-Anspruch
+- [ ] Play-Empf. #1/#3/#4 (Glide/Fresco edge-to-edge + AGP9-R8): erst mit Expo-SDK-58-Upgrade lösbar (57 ist aktuell) — SDK-Upgrade als geplanter Durchgang wenn 58 erscheint
+- [ ] Dokumentierte Blocker: iOS Live Activity (braucht iPhone), WearOS-Runtime-Test, Web-Bundle-Splitting (Metro), voller mehrsprachiger Tafsir (keine freie Quelle), benannte Adhan-Stimmen (keine Assets)
+
+---
+
 ## Z2) vc33 ABSCHLUSS (2026-07-23) — alles abgearbeitet, Code verifiziert
 
 **Gesamt-Verifikation grün:** `tsc` 0 · `jest` 100 Suites/978 Tests · `eslint` 0 · Locale-Parität 14/14.

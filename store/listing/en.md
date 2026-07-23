@@ -30,7 +30,7 @@ QURAN
 • Hifz trainer with recitation check: your recording is checked word by word (optionally with an on-device AI model — the recording never leaves your device)
 • Word-by-word view with word-synced highlighting during recitation
 • Tajweed color coding, transliteration, full-text search and personal verse notes
-• Themed verse collections (6 topics) and themed reading plans (4 journeys) for reflection
+• Themed verse collections and themed reading plans for reflection
 
 LEARN TO READ QURAN
 A complete course of 42 lessons guides you step by step from the Arabic alphabet to your first Surahs:
@@ -49,14 +49,20 @@ SALATI AI
 KNOWLEDGE & HEART
 • Study: 12 source-referenced courses with 311 lessons — Aqidah, Tajwid, 40 Hadith (Nawawi), Seerah, Prophets, Companions & Scholars, Akhlaq, Marriage & Family, Quranic grammar, everyday Arabic, Madinah Arabic (books 1–4), Arabic dialects — reorder courses and dialects freely
 • Placement & knowledge tests, spaced-repetition review, weakness training, learning streak & daily goal
-• Practice & Quiz: 14 modes with 177 questions, plus a mistake review to revisit what tripped you up
+• Practice & Quiz: 14 modes, plus a mistake review to revisit what tripped you up
 • Weekly recap as a shareable image: lessons, streak and best score of the week
-• 22 badges for milestones reached
-• 13 hadith collections with search across all of them (Arabic, English, Turkish)
+• Badges for milestones reached
+• Hadith collections with search across all of them (Arabic, English, Turkish)
 • Quran Radio: 24/7 recitation streams
-• 99 Names of Allah with audio, 106 duas with source references
-• 11 practice guides with photos: Wudu, Ghusl, prayer, Janazah, Hajj & Umrah and more
-• Zakat and inheritance calculators, 26 authenticated wisdoms, Tasbih counter
+• 99 Names of Allah with audio, duas with source references
+• Practice guides with photos: Wudu, Ghusl, prayer, Janazah, Hajj & Umrah and more
+• Zakat and inheritance calculators, authenticated wisdoms, Tasbih counter
+
+PODCAST, VIDEOS & REELS
+• Salati podcast "Language of the Quran": Quranic Arabic, episode by episode (in German) — also on Spotify
+• Learning videos: grammar and vocabulary tables plus lesson clips — also on YouTube
+• Reels: short learning clips for on the go — also on Instagram
+• PDF handouts: downloadable study material
 
 YOUR DATA STAYS YOURS
 Salati is ad-free and contains no tracking SDKs. There is no account and no sign-up — your data stays on your device. Your location is used only for prayer times, Qibla and nearby search. Core content works offline.
@@ -66,7 +72,7 @@ Salati is fully available in 14 languages: English, German, Turkish, Arabic, Spa
 Questions or feedback? info@menucloud-berlin.de
 Privacy policy: https://www.salati.pro/datenschutz
 
-(3672/4000 Zeichen)
+(3939/4000 Zeichen)
 
 ## Keywords
 

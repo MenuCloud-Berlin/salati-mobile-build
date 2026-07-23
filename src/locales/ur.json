@@ -11,7 +11,7 @@
     "mosques": "مساجد",
     "learn": "قرآن پڑھنا سیکھیں",
     "quiz": "مشق اور کوئز",
-    "hifz": "حفظ",
+    "hifz": "تلاوت",
     "tasbih": "تسبیح",
     "guides": "نماز اور عبادت",
     "wisdom": "حکمتیں",
@@ -38,7 +38,8 @@
     "journeys": "روزانہ منصوبے",
     "search": "تلاش",
     "gettingStarted": "پہلے قدم",
-    "lernen": "Learn"
+    "lernen": "Learn",
+    "media": "میڈیا"
   },
   "common": {
     "loading": "لوڈ ہو رہا ہے…",
@@ -510,7 +511,9 @@
     "wrongListTitle": "غلط جواب دیے گئے"
   },
   "hifz": {
-    "title": "حفظ",
+    "title": "تلاوت",
+    "recognitionNoteCta": "یہ شناخت کتنی قابلِ اعتماد ہے؟",
+    "recognitionDisclaimer": "یہ شناخت ایک چھوٹے اسپیچ ماڈل کو استعمال کرتی ہے جو آپ کے آلے پر چلتا ہے۔ یہ غلطیاں کرتی ہے اور کسی حقیقی استاد کی جگہ نہیں لے سکتی۔ سنجیدہ اور درست تلاوت فیڈ بیک کے لیے ہم Tarteel ایپ کی سفارش کرتے ہیں، جو سرور پر مبنی نظام استعمال کرتی ہے اور نمایاں طور پر بہتر کام کرتی ہے۔",
     "subtitle": "آیت بہ آیت: سنیں، چھپائیں، بولیں، نشان لگائیں",
     "searchNoResults": "\"{query}\" کے لیے کوئی سورت نہیں ملی۔",
     "memorized": "یاد ہو گیا",
@@ -565,7 +568,7 @@
     "tapWordHint": "یہ دیکھنے کے لیے کہ کیا پہچانا گیا نمایاں لفظ پر ٹیپ کریں",
     "gapTestCta": "مشقی موڈ (بغیر آواز)",
     "gapTest": {
-      "title": "حفظ ٹیسٹ",
+      "title": "تلاوت ٹیسٹ",
       "noKnownVerses": "ابھی تک کوئی آیت \"یاد ہے\" کے طور پر نشان زد نہیں ہے - پہلے چند آیات یاد کریں، پھر آپ یہاں بغیر آواز کے خود کو جانچ سکتے ہیں۔",
       "backCta": "سورت پر واپس جائیں",
       "progressLabel": "آیت {current} از {total}",
@@ -636,12 +639,16 @@
   "settings": {
     "groups": {
       "prayer": "نماز اور حساب",
-      "notifications": "اطلاعات اور یاد دہانیاں",
+      "notifications": "اطلاعات",
+      "reminders": "یاد دہانیاں",
       "quran": "قرآن اور تلاوت",
       "language": "زبان اور ڈسپلے",
       "learning": "سیکھنا اور مشق",
       "data": "اسٹوریج اور ڈیٹا",
       "about": "متعلق اور قانونی"
+    },
+    "moreReminders": {
+      "title": "مزید یاد دہانیاں"
     },
     "location": "مقام",
     "current": "موجودہ",
@@ -2234,7 +2241,7 @@
   "podcast": {
     "listenOnSpotify": "Spotify پر سنیں",
     "title": "Language of the Qur’an",
-    "subtitle": "Understand Arabic — in 15 episodes",
+    "subtitle": "Understand Arabic, episode by episode",
     "heroDesc": "The podcast: the grammar of the Qur’an, episode by episode.",
     "empty": "Coming soon.",
     "episodeLabel": "Episode",
@@ -2333,5 +2340,24 @@
     "settings": "ترتیبات",
     "speed": "رفتار",
     "renamePlaylist": "نام بدلیں"
+  },
+  "media": {
+    "title": "میڈیا",
+    "subtitle": "پوڈکاسٹ، ویڈیوز اور ریلز ایک جگہ۔"
+  },
+  "handouts": {
+    "title": "تعلیمی مواد",
+    "subtitle": "پڑھنے اور ڈاؤن لوڈ کے لیے جمع شدہ پی ڈی ایف تعلیمی مواد۔",
+    "empty": "جلد آ رہا ہے۔",
+    "pages": "صفحات",
+    "read": "پڑھیں",
+    "download": "ڈاؤن لوڈ",
+    "offline": "آف لائن",
+    "cancelDownload": "ڈاؤن لوڈ منسوخ کریں",
+    "deleteDownload": "ڈاؤن لوڈ حذف کریں",
+    "deleteDownloadConfirmTitle": "ڈاؤن لوڈ حذف کریں؟",
+    "deleteDownloadConfirmBody": "پی ڈی ایف آپ کے آلے سے ہٹا دی جائے گی۔",
+    "openInBrowser": "براؤزر میں کھولیں",
+    "viewerError": "پی ڈی ایف لوڈ نہیں ہو سکی۔"
   }
 }

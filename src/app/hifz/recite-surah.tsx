@@ -63,6 +63,9 @@ export default function ReciteSurahScreen() {
   // kaputt", ohne ablesbare Ursache nicht diagnostizierbar).
   const [startErr, setStartErr] = useState<{ info: WhisperFehlerInfo; diag: WhisperDiagnose | null } | null>(null);
   const [showErrDetail, setShowErrDetail] = useState(false);
+  // Ehrlicher Erwartungs-Hinweis (aufklappbar, dezent): das On-Device-Modell
+  // ist kein Lehrer-Ersatz. Standardmäßig eingeklappt, damit es nicht drängt.
+  const [showRecInfo, setShowRecInfo] = useState(false);
   const controllerRef = useRef<ContinuousController | null>(null);
 
   function permStatusLabel(status: string): string {
@@ -216,6 +219,31 @@ export default function ReciteSurahScreen() {
         <ThemedText type="small" themeColor="textSecondary" style={styles.intro}>
           {t('hifz.surahRecite.intro')}
         </ThemedText>
+
+        {settings.speechExercisesEnabled && whisperSupported() && (
+          <View style={styles.disclaimer}>
+            <Pressable
+              onPress={() => setShowRecInfo((s) => !s)}
+              accessibilityRole="button"
+              hitSlop={6}
+              style={({ pressed }) => [
+                styles.disclaimerHead,
+                Platform.OS === 'web' ? styles.pressableWeb : undefined,
+                pressed && styles.pressed,
+              ]}>
+              <IconSymbol name="information-circle" size={14} color={colors.textSecondary} />
+              <ThemedText type="small" themeColor="textSecondary" style={styles.disclaimerCta}>
+                {t('hifz.recognitionNoteCta')}
+              </ThemedText>
+              <IconSymbol name={showRecInfo ? 'chevron-up' : 'chevron-down'} size={14} color={colors.textSecondary} />
+            </Pressable>
+            {showRecInfo && (
+              <ThemedText type="small" themeColor="textSecondary" style={styles.disclaimerBody}>
+                {t('hifz.recognitionDisclaimer')}
+              </ThemedText>
+            )}
+          </View>
+        )}
 
         {isLoading && (
           <View style={styles.center}>
@@ -379,6 +407,16 @@ const styles = StyleSheet.create({
   },
   closeSpacer: { width: 20 },
   intro: { textAlign: 'center', paddingHorizontal: Spacing.four, marginBottom: Spacing.two },
+  disclaimer: {
+    alignSelf: 'center',
+    width: '100%',
+    maxWidth: MaxContentWidth,
+    paddingHorizontal: Spacing.four,
+    marginBottom: Spacing.two,
+  },
+  disclaimerHead: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6 },
+  disclaimerCta: { textAlign: 'center', flexShrink: 1 },
+  disclaimerBody: { textAlign: 'center', marginTop: Spacing.one, opacity: 0.9 },
   center: { alignItems: 'center', paddingVertical: Spacing.five },
   content: {
     padding: Spacing.four,

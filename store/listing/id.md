@@ -30,7 +30,7 @@ AL-QUR'AN
 • Pelatih Hifz dengan pemeriksaan bacaan: rekamanmu diperiksa kata demi kata (opsional dengan model AI di perangkat — rekaman tidak pernah meninggalkan perangkatmu)
 • Tampilan kata demi kata dengan penyorotan tersinkron saat membaca
 • Kode warna Tajwid, transliterasi, pencarian teks lengkap, dan catatan ayat pribadi
-• Koleksi ayat tematik (6 tema) dan rencana baca tematik (4 perjalanan) untuk perenungan
+• Koleksi ayat tematik dan rencana baca tematik untuk perenungan
 
 BELAJAR MEMBACA AL-QUR'AN
 Kursus lengkap dengan 42 pelajaran membimbingmu langkah demi langkah dari huruf hijaiah hingga surah pertamamu:
@@ -49,14 +49,18 @@ SALATI AI
 ILMU & HATI
 • Studi: 12 kursus bersumber dengan 311 pelajaran — Akidah, Tajwid, 40 Hadis (Nawawi), Sirah, Para Nabi, Sahabat & Ulama, Akhlak, Pernikahan & Keluarga, tata bahasa Al-Qur'an, bahasa Arab sehari-hari, bahasa Arab Madinah (buku 1–4), dialek Arab — atur ulang urutan kursus dan dialek sesukamu
 • Tes penempatan & pengetahuan, ulasan spaced-repetition, latihan titik lemah, rentetan belajar & target harian
-• Latihan & Kuis: 14 mode dengan 177 soal, plus ulasan kesalahan untuk mengulang yang membuatmu tersandung
+• Latihan & Kuis: 14 mode, plus ulasan kesalahan untuk mengulang yang membuatmu tersandung
 • Rekap mingguan sebagai gambar yang dapat dibagikan: pelajaran, rentetan, dan skor terbaik minggu ini
-• 22 lencana untuk pencapaian tonggak
-• 13 koleksi hadis dengan pencarian di semuanya sekaligus (Arab, Inggris, Turki)
+• Lencana untuk pencapaian tonggak
+• Koleksi hadis dengan pencarian di semuanya sekaligus (Arab, Inggris, Turki)
 • Radio Al-Qur'an: siaran murottal 24/7
-• 99 Nama Allah dengan audio, 106 doa dengan rujukan sumber
-• 11 panduan praktik dengan foto: Wudu, Ghusl, salat, Janazah, Haji & Umrah, dan lainnya
-• Kalkulator Zakat dan warisan, 26 hikmah terverifikasi, penghitung Tasbih
+• 99 Nama Allah dengan audio, doa dengan rujukan sumber
+• Panduan praktik dengan foto: Wudu, Ghusl, salat, Janazah, Haji & Umrah, dan lainnya
+• Kalkulator Zakat dan warisan, hikmah terverifikasi, penghitung Tasbih
+
+PODCAST, VIDEO & REELS
+• Podcast „Bahasa Al-Qur'an": bahasa Arab Al-Qur'an per episode — di Spotify
+• Video di YouTube, Reels di Instagram, dan PDF untuk diunduh
 
 DATAMU TETAP MILIKMU
 Salati tanpa iklan dan tidak memuat SDK pelacakan. Tidak ada akun dan tidak ada pendaftaran — datamu tetap di perangkatmu. Lokasimu hanya digunakan untuk waktu salat, Kiblat, dan pencarian terdekat. Konten inti berfungsi offline.
@@ -66,7 +70,7 @@ Salati tersedia lengkap dalam 14 bahasa: Inggris, Jerman, Turki, Arab, Spanyol, 
 Pertanyaan atau masukan? info@menucloud-berlin.de
 Kebijakan privasi: https://www.salati.pro/datenschutz
 
-(3867/4000 Zeichen)
+(3975/4000 Zeichen)
 
 ## Keywords
 

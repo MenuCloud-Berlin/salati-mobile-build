@@ -11,7 +11,7 @@
     "mosques": "Mosquées",
     "learn": "Apprendre à lire le Coran",
     "quiz": "Entraînement et Quiz",
-    "hifz": "Mémorisation",
+    "hifz": "Récitation",
     "tasbih": "Tasbih",
     "guides": "Prière et pratique",
     "wisdom": "Sagesses",
@@ -38,7 +38,8 @@
     "journeys": "Plans du jour",
     "search": "Recherche",
     "gettingStarted": "Premiers pas",
-    "lernen": "Learn"
+    "lernen": "Learn",
+    "media": "Médias"
   },
   "common": {
     "loading": "Chargement…",
@@ -510,7 +511,9 @@
     "wrongListTitle": "Mal répondues"
   },
   "hifz": {
-    "title": "Mémorisation",
+    "title": "Récitation",
+    "recognitionNoteCta": "Quelle est la fiabilité de cette reconnaissance ?",
+    "recognitionDisclaimer": "Cette reconnaissance utilise un petit modèle vocal qui fonctionne sur votre appareil. Il fait des erreurs et ne peut pas remplacer un vrai professeur. Pour un retour sérieux et précis sur la récitation, nous recommandons l'application Tarteel, qui utilise un système basé sur serveur et fonctionne nettement mieux.",
     "subtitle": "Verset par verset : écoute, masque, récite, valide",
     "searchNoResults": "Aucune sourate trouvée pour « {query} ».",
     "memorized": "mémorisés",
@@ -565,7 +568,7 @@
     "tapWordHint": "Appuyez sur un mot surligné pour voir ce qui a été reconnu",
     "gapTestCta": "Mode entraînement (sans son)",
     "gapTest": {
-      "title": "Test de mémorisation",
+      "title": "Test de récitation",
       "noKnownVerses": "Aucun verset encore marqué « Je le sais » - apprends d'abord quelques versets, tu pourras ensuite les réviser ici sans son.",
       "backCta": "Retour à la sourate",
       "progressLabel": "Verset {current} sur {total}",
@@ -636,12 +639,16 @@
   "settings": {
     "groups": {
       "prayer": "Prière et calcul",
-      "notifications": "Notifications et rappels",
+      "notifications": "Notifications",
+      "reminders": "Rappels",
       "quran": "Coran et récitation",
       "language": "Langue et affichage",
       "learning": "Apprentissage et exercices",
       "data": "Stockage et données",
       "about": "À propos et mentions légales"
+    },
+    "moreReminders": {
+      "title": "Autres rappels"
     },
     "location": "Position",
     "current": "Actuelle",
@@ -2234,7 +2241,7 @@
   "podcast": {
     "listenOnSpotify": "Écouter sur Spotify",
     "title": "Language of the Qur’an",
-    "subtitle": "Understand Arabic — in 15 episodes",
+    "subtitle": "Understand Arabic, episode by episode",
     "heroDesc": "The podcast: the grammar of the Qur’an, episode by episode.",
     "empty": "Coming soon.",
     "episodeLabel": "Episode",
@@ -2333,5 +2340,24 @@
     "settings": "Réglages",
     "speed": "Vitesse",
     "renamePlaylist": "Renommer"
+  },
+  "media": {
+    "title": "Médias",
+    "subtitle": "Podcast, vidéos et reels au même endroit."
+  },
+  "handouts": {
+    "title": "Supports de cours",
+    "subtitle": "Supports de cours en PDF à lire et à télécharger.",
+    "empty": "Bientôt disponible.",
+    "pages": "pages",
+    "read": "Lire",
+    "download": "Télécharger",
+    "offline": "Hors ligne",
+    "cancelDownload": "Annuler le téléchargement",
+    "deleteDownload": "Supprimer le téléchargement",
+    "deleteDownloadConfirmTitle": "Supprimer le téléchargement ?",
+    "deleteDownloadConfirmBody": "Le PDF sera supprimé de votre appareil.",
+    "openInBrowser": "Ouvrir dans le navigateur",
+    "viewerError": "Le PDF n'a pas pu être chargé."
   }
 }

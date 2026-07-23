@@ -30,7 +30,7 @@ KORAN
 • Hifz-Trainer mit Rezitations-Check: Aufnahme wird Wort für Wort geprüft (auf Wunsch mit lokalem KI-Modell — die Aufnahme verlässt nie dein Gerät)
 • Wort-für-Wort-Ansicht mit wortsynchroner Hervorhebung während der Rezitation
 • Tajweed-Farbkodierung, lateinische Umschrift, Volltextsuche und persönliche Vers-Notizen
-• Themen-Vers-Sammlungen (6 Themen) und Themen-Lesepläne (4 Journeys) für Selbstreflexion
+• Themen-Vers-Sammlungen und Themen-Lesepläne für Selbstreflexion
 
 KORAN LESEN LERNEN
 Ein kompletter Kurs mit 42 Lektionen führt dich Schritt für Schritt vom arabischen Alphabet bis zu den ersten Suren:
@@ -49,24 +49,30 @@ SALATI KI
 WISSEN & HERZ
 • Studium: 12 quellenbelegte Kurse mit 311 Lektionen — Aqida, Tajwid, 40 Hadithe (Nawawi), Seerah, Propheten, Sahaba & Gelehrte, Akhlaq, Ehe & Familie, Quran-Grammatik, Alltags-Arabisch, Madinah-Arabisch (Bücher 1–4), arabische Dialekte — Kurs- und Dialektreihenfolge frei einstellbar
 • Einstufungstest & Wissens-Test, Spaced-Repetition-Wiederholung, Schwächen-Training, Lernserie & Tagesziel
-• Üben & Quiz: 14 Modi mit 177 Fragen, plus Fehler-Wiederholung für gezieltes Nacharbeiten
+• Üben & Quiz: 14 Modi, plus Fehler-Wiederholung für gezieltes Nacharbeiten
 • Wochen-Rückblick als teilbares Bild: Lektionen, Serie und Bestwert der Woche
-• 22 Abzeichen für erreichte Meilensteine
-• 13 Hadith-Sammlungen mit Suche über alle gleichzeitig (Arabisch, Englisch, Türkisch)
+• Abzeichen für erreichte Meilensteine
+• Hadith-Sammlungen mit Suche über alle gleichzeitig (Arabisch, Englisch, Türkisch)
 • Koran-Radio: 24/7-Rezitations-Streams
-• 99 Namen Allahs mit Audio, 106 Duas mit Quellenangabe
-• 11 Praxis-Guides mit Bildern: Wudu, Ghusl, Gebet, Janazah, Hajj & Umrah und mehr
-• Zakat- und Erbrechts-Rechner, 26 belegte Weisheiten, Tasbih-Zähler
+• 99 Namen Allahs mit Audio, Duas mit Quellenangabe
+• Praxis-Guides mit Bildern: Wudu, Ghusl, Gebet, Janazah, Hajj & Umrah und mehr
+• Zakat- und Erbrechts-Rechner, belegte Weisheiten, Tasbih-Zähler
+
+PODCAST, VIDEOS & REELS
+• Salati-Podcast „Sprache des Koran": Koran-Arabisch Folge für Folge erklärt — auch auf Spotify
+• Lern-Videos: Grammatik- und Vokabel-Tabellen sowie Lektions-Clips — auch auf YouTube
+• Reels: kurze Lern-Clips für zwischendurch — auch auf Instagram
+• PDF-Handouts: Lernunterlagen zum Download
 
 DEINE DATEN GEHÖREN DIR
 Salati ist werbefrei und enthält keine Tracking-SDKs. Es gibt kein Konto und keine Registrierung — deine Daten bleiben auf deinem Gerät. Dein Standort wird ausschließlich für Gebetszeiten, Qibla und die Suche in deiner Umgebung genutzt. Die Kerninhalte funktionieren offline.
 
-Salati ist vollständig in 14 Sprachen verfügbar: Deutsch, Englisch, Türkisch, Arabisch, Spanisch, Französisch, Indonesisch, Bengali, Persisch, Malaiisch, Urdu, Russisch, Suaheli und Paschtu — inklusive RTL-Unterstützung für Arabisch, Urdu, Persisch und Paschtu.
+Salati ist vollständig in 14 Sprachen verfügbar — inklusive RTL-Unterstützung für Arabisch, Urdu, Persisch und Paschtu.
 
 Fragen oder Feedback? info@menucloud-berlin.de
 Datenschutz: https://www.salati.pro/datenschutz
 
-(3804/4000 Zeichen)
+(3925/4000 Zeichen)
 
 ## Keywords
 

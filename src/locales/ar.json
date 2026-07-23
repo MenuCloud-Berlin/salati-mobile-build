@@ -11,7 +11,7 @@
     "mosques": "المساجد",
     "learn": "تعلّم قراءة القرآن",
     "quiz": "تدريب واختبارات",
-    "hifz": "الحفظ",
+    "hifz": "التلاوة",
     "tasbih": "التسبيح",
     "guides": "الصلاة والعبادة",
     "wisdom": "حِكم",
@@ -38,7 +38,8 @@
     "journeys": "خطط يومية",
     "search": "بحث",
     "gettingStarted": "الخطوات الأولى",
-    "lernen": "Learn"
+    "lernen": "Learn",
+    "media": "الوسائط"
   },
   "common": {
     "loading": "جارٍ التحميل…",
@@ -510,7 +511,9 @@
     "wrongListTitle": "أجبت عنها خطأ"
   },
   "hifz": {
-    "title": "الحفظ",
+    "title": "التلاوة",
+    "recognitionNoteCta": "ما مدى دقة هذا التعرف؟",
+    "recognitionDisclaimer": "يعتمد هذا التعرف على نموذج صوتي صغير يعمل على جهازك. قد يخطئ ولا يمكنه أن يحل محل معلم حقيقي. للحصول على تقييم دقيق وجاد للتلاوة ننصح بتطبيق Tarteel الذي يستخدم نظامًا يعتمد على الخادم ويعمل بشكل أفضل بكثير.",
     "subtitle": "آية آية: استمع، أخفِ، اقرأ من حفظك، ثم علّم",
     "searchNoResults": "لا توجد سورة لـ «{query}».",
     "memorized": "محفوظة",
@@ -565,7 +568,7 @@
     "tapWordHint": "اضغط على كلمة مميزة لمعرفة ما تم التعرف عليه",
     "gapTestCta": "وضع التدريب (بدون صوت)",
     "gapTest": {
-      "title": "اختبار الحفظ",
+      "title": "اختبار التلاوة",
       "noKnownVerses": "لا توجد آيات محددة كـ«أحفظها» بعد - احفظ بعض الآيات أولاً، ثم يمكنك اختبار نفسك هنا بدون صوت.",
       "backCta": "الرجوع إلى السورة",
       "progressLabel": "الآية {current} من {total}",
@@ -636,12 +639,16 @@
   "settings": {
     "groups": {
       "prayer": "الصلاة والحساب",
-      "notifications": "الإشعارات والتذكيرات",
+      "notifications": "الإشعارات",
+      "reminders": "التذكيرات",
       "quran": "القرآن والتلاوة",
       "language": "اللغة والعرض",
       "learning": "التعلّم والتمرين",
       "data": "التخزين والبيانات",
       "about": "حول والقانونية"
+    },
+    "moreReminders": {
+      "title": "تذكيرات أخرى"
     },
     "location": "الموقع",
     "current": "الحالي",
@@ -2234,7 +2241,7 @@
   "podcast": {
     "listenOnSpotify": "استمع على Spotify",
     "title": "Language of the Qur’an",
-    "subtitle": "Understand Arabic — in 15 episodes",
+    "subtitle": "Understand Arabic, episode by episode",
     "heroDesc": "The podcast: the grammar of the Qur’an, episode by episode.",
     "empty": "Coming soon.",
     "episodeLabel": "Episode",
@@ -2333,5 +2340,24 @@
     "settings": "الإعدادات",
     "speed": "السرعة",
     "renamePlaylist": "إعادة تسمية"
+  },
+  "media": {
+    "title": "الوسائط",
+    "subtitle": "البودكاست والفيديوهات والريلز في مكان واحد."
+  },
+  "handouts": {
+    "title": "المواد التعليمية",
+    "subtitle": "ملفات PDF تعليمية مجمّعة للقراءة والتنزيل.",
+    "empty": "قريبًا.",
+    "pages": "صفحات",
+    "read": "قراءة",
+    "download": "تنزيل",
+    "offline": "دون اتصال",
+    "cancelDownload": "إلغاء التنزيل",
+    "deleteDownload": "حذف التنزيل",
+    "deleteDownloadConfirmTitle": "حذف التنزيل؟",
+    "deleteDownloadConfirmBody": "سيُحذف ملف PDF من جهازك.",
+    "openInBrowser": "فتح في المتصفح",
+    "viewerError": "تعذّر تحميل ملف PDF."
   }
 }

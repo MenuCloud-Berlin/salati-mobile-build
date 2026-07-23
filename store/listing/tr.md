@@ -30,7 +30,7 @@ KUR'AN
 • Rezitasyon kontrollü hıfz antrenörü: kaydınız kelime kelime denetlenir (isteğe bağlı yerel yapay zekâ modeliyle — kayıt cihazınızdan asla çıkmaz)
 • Tilavet sırasında kelimeyle eş zamanlı vurgulu kelime kelime görünüm
 • Renk kodlu tecvid, harf çevirisi, tam metin arama ve kişisel ayet notları
-• Kendini keşfetmek için konulu ayet koleksiyonları (6 konu) ve konulu okuma planları (4 yolculuk)
+• Kendini keşfetmek için konulu ayet koleksiyonları ve konulu okuma planları
 
 KUR'AN OKUMAYI ÖĞREN
 42 derslik eksiksiz bir kurs sizi Arap alfabesinden ilk surelere adım adım götürür:
@@ -49,14 +49,20 @@ SALATİ YAPAY ZEKÂ
 İLİM VE KALP
 • İlim: kaynak gösterilen 12 kurs, 311 ders — Akide, Tecvid, 40 Hadis (Nevevî), Siyer, Peygamberler, Sahabe ve Âlimler, Ahlak, Evlilik ve Aile, Kur'an Grameri, Günlük Arapça, Medine Arapçası (1–4), Arap lehçeleri — kurs ve lehçe sırası dilediğiniz gibi
 • Seviye tespit ve bilgi testi, aralıklı tekrar, zayıf nokta çalışması, öğrenme serisi ve günlük hedef
-• Alıştırma ve Quiz: 14 mod, 177 soru, artı yanlışları tekrar çalışmak için hata tekrarı
+• Alıştırma ve Quiz: 14 mod, artı yanlışları tekrar çalışmak için hata tekrarı
 • Haftalık özet paylaşılabilir görsel olarak: haftanın dersleri, serisi ve en iyi skoru
-• Kilometre taşları için 22 rozet
-• Tamamında birden arama yapılabilen 13 hadis külliyatı (Arapça, İngilizce, Türkçe)
+• Kilometre taşları için rozetler
+• Tamamında birden arama yapılabilen hadis külliyatları (Arapça, İngilizce, Türkçe)
 • Kur'an Radyosu: 7/24 tilavet yayınları
-• Sesli Esmâü'l-Hüsnâ, kaynağı belirtilen 106 dua
-• Fotoğraflı 11 uygulama rehberi: abdest, gusül, namaz, cenaze, hac ve umre ve daha fazlası
-• Zekât ve miras hesaplayıcı, 26 kaynaklı hikmet, tesbih sayacı
+• Sesli Esmâü'l-Hüsnâ, kaynağı belirtilen dualar
+• Fotoğraflı uygulama rehberleri: abdest, gusül, namaz, cenaze, hac ve umre ve daha fazlası
+• Zekât ve miras hesaplayıcı, kaynaklı hikmetler, tesbih sayacı
+
+PODCAST, VIDEO VE REELS
+• Salati podcast'i „Kur'an'ın Dili": Kur'an Arapçasını bölüm bölüm anlatır (Almanca) — Spotify'da da
+• Öğrenme videoları: dil bilgisi ve kelime tabloları ile ders klipleri — YouTube'da da
+• Reels: yol üstü için kısa öğrenme klipleri — Instagram'da da
+• PDF belgeler: indirilebilir çalışma materyali
 
 VERİLERİNİZ SİZE AİTTİR
 Salati reklamsızdır ve izleme SDK'sı içermez. Hesap ve kayıt yoktur — verileriniz cihazınızda kalır. Konumunuz yalnızca namaz vakitleri, kıble ve çevre araması için kullanılır. Temel içerikler çevrimdışı çalışır.
@@ -66,7 +72,7 @@ Salati 14 dilde eksiksiz sunulur: Türkçe, Almanca, İngilizce, Arapça, İspan
 Soru veya geri bildirim: info@menucloud-berlin.de
 Gizlilik: https://www.salati.pro/datenschutz
 
-(3554/4000 Zeichen)
+(3846/4000 Zeichen)
 
 ## Keywords
 

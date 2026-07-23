@@ -162,6 +162,9 @@ export default function HifzPracticeScreen() {
   // Logcat nicht diagnostizierbar).
   const [micErr, setMicErr] = useState<{ info: WhisperFehlerInfo; diag: WhisperDiagnose | null } | null>(null);
   const [showErrDetail, setShowErrDetail] = useState(false);
+  // Ehrlicher Erwartungs-Hinweis (aufklappbar, dezent): das On-Device-Modell
+  // ist kein Lehrer-Ersatz. Standardmäßig eingeklappt, damit es nicht drängt.
+  const [showRecInfo, setShowRecInfo] = useState(false);
   const recorderRef = useRef<WhisperRecorder | null>(null);
 
   async function showMicError(e: unknown) {
@@ -377,6 +380,31 @@ export default function HifzPracticeScreen() {
             </Pressable>
           )}
         </View>
+
+        {settings.speechExercisesEnabled && whisperSupported() && (
+          <View style={styles.disclaimer}>
+            <Pressable
+              onPress={() => setShowRecInfo((s) => !s)}
+              accessibilityRole="button"
+              hitSlop={6}
+              style={({ pressed }) => [
+                styles.disclaimerHead,
+                Platform.OS === 'web' ? styles.pressableWeb : undefined,
+                pressed && styles.pressed,
+              ]}>
+              <IconSymbol name="information-circle" size={14} color={colors.textSecondary} />
+              <ThemedText type="small" themeColor="textSecondary" style={styles.disclaimerCta}>
+                {t('hifz.recognitionNoteCta')}
+              </ThemedText>
+              <IconSymbol name={showRecInfo ? 'chevron-up' : 'chevron-down'} size={14} color={colors.textSecondary} />
+            </Pressable>
+            {showRecInfo && (
+              <ThemedText type="small" themeColor="textSecondary" style={styles.disclaimerBody}>
+                {t('hifz.recognitionDisclaimer')}
+              </ThemedText>
+            )}
+          </View>
+        )}
 
         {isLoading && (
           <View style={styles.center}>
@@ -920,6 +948,16 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
   },
   micNote: { textAlign: 'center' },
+  disclaimer: {
+    alignSelf: 'center',
+    width: '100%',
+    maxWidth: MaxContentWidth,
+    paddingHorizontal: Spacing.four,
+    marginBottom: Spacing.two,
+  },
+  disclaimerHead: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6 },
+  disclaimerCta: { textAlign: 'center', flexShrink: 1 },
+  disclaimerBody: { textAlign: 'center', marginTop: Spacing.one, opacity: 0.9 },
   diagRow: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: Spacing.three },
   modeRow: { flexDirection: 'row', gap: Spacing.two, justifyContent: 'center', marginTop: Spacing.two },
   modeChip: { paddingVertical: Spacing.one, paddingHorizontal: Spacing.three, borderRadius: Spacing.three },

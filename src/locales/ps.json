@@ -11,7 +11,7 @@
     "mosques": "جوماتونه",
     "learn": "د قرآن لوستل زده کړئ",
     "quiz": "تمرین او آزموینه",
-    "hifz": "ژېرل",
+    "hifz": "تلاوت",
     "tasbih": "تسبیح",
     "guides": "لمونځ او عبادت",
     "wisdom": "حکمتونه",
@@ -38,7 +38,8 @@
     "journeys": "ورځنۍ پلانونه",
     "search": "لټون",
     "gettingStarted": "لومړني ګامونه",
-    "lernen": "Learn"
+    "lernen": "Learn",
+    "media": "رسنۍ"
   },
   "common": {
     "loading": "بارېږي…",
@@ -510,7 +511,9 @@
     "wrongListTitle": "غلط ځواب شوي"
   },
   "hifz": {
-    "title": "ژېرل",
+    "title": "تلاوت",
+    "recognitionNoteCta": "دا تشخیص څومره باوري دی؟",
+    "recognitionDisclaimer": "دا تشخیص ستاسو په وسیله کې د یو کوچني غږیز موډل څخه کار اخلي. تېروتنې کوي او د یو ریښتیني ښوونکي ځای نیولی نشي. د تلاوت د جدي او دقیق ارزونې لپاره موږ د Tarteel اپلیکیشن وړاندیز کوو چې د سرور پر بنسټ سیسټم کاروي او خورا ښه کار کوي.",
     "subtitle": "آیت پر آیت: واورئ، پټ کړئ، ووایاست، نښه کړئ",
     "searchNoResults": "د \"{query}\" لپاره هیڅ سورت ونه موندل شو.",
     "memorized": "زده شوی",
@@ -565,7 +568,7 @@
     "tapWordHint": "د ښودل شوي کلمې پر مخ ټک کړئ چې وګورئ څه وپیژندل شول",
     "gapTestCta": "د تمرین حالت (پرته له غږ)",
     "gapTest": {
-      "title": "د حفظ ازموینه",
+      "title": "د تلاوت ازموینه",
       "noKnownVerses": "تر اوسه هېڅ آیت د \"را یادېږي\" په توګه نښه شوی نه دی - لومړی څو آیتونه زده کړئ، بیا کولی شئ دلته پرته له غږ ځان وازمویئ.",
       "backCta": "سورت ته بېرته",
       "progressLabel": "آیت {current} د {total}",
@@ -636,12 +639,16 @@
   "settings": {
     "groups": {
       "prayer": "لمونځ او محاسبه",
-      "notifications": "خبرتیاوې او یادونې",
+      "notifications": "خبرتیاوې",
+      "reminders": "یادونې",
       "quran": "قرآن او تلاوت",
       "language": "ژبه او ښکارېدنه",
       "learning": "زده کړه او تمرین",
       "data": "زېرمه او معلومات",
       "about": "په اړه او حقوقي"
+    },
+    "moreReminders": {
+      "title": "نورې یادونې"
     },
     "location": "موقعیت",
     "current": "اوسنی",
@@ -2234,7 +2241,7 @@
   "podcast": {
     "listenOnSpotify": "په Spotify کې واورئ",
     "title": "Language of the Qur’an",
-    "subtitle": "Understand Arabic — in 15 episodes",
+    "subtitle": "Understand Arabic, episode by episode",
     "heroDesc": "The podcast: the grammar of the Qur’an, episode by episode.",
     "empty": "Coming soon.",
     "episodeLabel": "Episode",
@@ -2333,5 +2340,24 @@
     "settings": "امستنې",
     "speed": "چټکتیا",
     "renamePlaylist": "نوم بدل کړئ"
+  },
+  "media": {
+    "title": "رسنۍ",
+    "subtitle": "پاډکاسټ، ویډیوګانې او ریلونه په یو ځای کې."
+  },
+  "handouts": {
+    "title": "زده‌کړې مواد",
+    "subtitle": "د لوستلو او ښکته کولو لپاره راټول شوي PDF زده‌کړې مواد.",
+    "empty": "ډېر ژر.",
+    "pages": "مخونه",
+    "read": "لوستل",
+    "download": "ښکته کول",
+    "offline": "آفلاین",
+    "cancelDownload": "ښکته کول لغوه کړئ",
+    "deleteDownload": "ښکته شوی ړنګ کړئ",
+    "deleteDownloadConfirmTitle": "ښکته شوی ړنګ کړئ؟",
+    "deleteDownloadConfirmBody": "PDF به ستاسو له وسیلې لرې شي.",
+    "openInBrowser": "په براوزر کې پرانیزئ",
+    "viewerError": "PDF بار نه شو."
   }
 }

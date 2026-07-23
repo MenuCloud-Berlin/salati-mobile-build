@@ -167,13 +167,28 @@ const SETTINGS_SEARCH_INDEX: SearchGroup[] = [
       { id: 'settings.lateNotif.title', keys: ['settings.lateNotif.title', 'settings.lateNotif.exactAlarm', 'settings.lateNotif.battery'] },
       { id: 'settings.azan.title', keys: ['settings.azan.title'] },
       { id: 'settings.preAdhan.title', keys: ['settings.preAdhan.title', 'settings.preAdhan.enable'] },
+    ],
+  },
+  {
+    group: 'settings.groups.reminders',
+    sections: [
       { id: 'settings.adhkar.title', keys: ['settings.adhkar.title', 'settings.adhkar.morning', 'settings.adhkar.evening'] },
       { id: 'settings.reviewReminder.title', keys: ['settings.reviewReminder.title', 'settings.reviewReminder.enable'] },
       { id: 'settings.verseOfDay.title', keys: ['settings.verseOfDay.title', 'settings.verseOfDay.enable'] },
-      { id: 'settings.jumuah.title', keys: ['settings.jumuah.title', 'settings.jumuah.enable'] },
-      { id: 'settings.sunnah.title', keys: ['settings.sunnah.title', 'settings.sunnah.duha', 'settings.sunnah.tahajjud', 'settings.sunnah.witr'] },
-      { id: 'settings.weeklySummary.title', keys: ['settings.weeklySummary.title', 'settings.weeklySummary.enable'] },
-      { id: 'settings.udhiyah.title', keys: ['settings.udhiyah.title', 'settings.udhiyah.enable'] },
+      // Zusammengefasste Karte "Weitere Erinnerungen": bündelt die vier bisher
+      // einzelnen Ein-Schalter-Sektionen (Jumu'ah/Sunnah/Wochenrückblick/Udhiyah).
+      // Deren frühere Titel bleiben als Such-Begriffe erhalten, damit die Live-
+      // Suche nach z. B. "Jumu'ah" weiterhin diese (jetzt gemeinsame) Karte trifft.
+      {
+        id: 'settings.moreReminders.title',
+        keys: [
+          'settings.moreReminders.title',
+          'settings.jumuah.title', 'settings.jumuah.enable',
+          'settings.sunnah.title', 'settings.sunnah.duha', 'settings.sunnah.tahajjud', 'settings.sunnah.witr',
+          'settings.weeklySummary.title', 'settings.weeklySummary.enable',
+          'settings.udhiyah.title', 'settings.udhiyah.enable',
+        ],
+      },
     ],
   },
   {
@@ -1018,6 +1033,8 @@ export default function SettingsScreen() {
           </Section>
           </AnimatedListItem>
 
+          <GroupHeader label={t('settings.groups.reminders')} rtl={rtl} />
+
           <AnimatedListItem index={11}>
           <Section label={t('settings.adhkar.title')} icon="partly-sunny-outline">
             {(
@@ -1136,19 +1153,19 @@ export default function SettingsScreen() {
           </Section>
           </AnimatedListItem>
 
+          {/* Zusammengefasste Karte: die vier bisher einzelnen Ein-Schalter-
+              Sektionen (Freitags-, Sunnah-, Wochenrückblick-, Udhiyah-Erinnerung)
+              sind hier zu EINER scanbaren Liste gebündelt — die einzelnen
+              Toggle-Labels bleiben selbsterklärend, jede onValueChange-Logik
+              (inkl. Reschedule) unverändert. Weniger fast-leere Karten. */}
           <AnimatedListItem index={14}>
-          <Section label={t('settings.jumuah.title')} icon="calendar-outline">
+          <Section label={t('settings.moreReminders.title')} icon="calendar-outline">
             <SwitchRow
               label={t('settings.jumuah.enable')}
               hint={t('settings.jumuah.hint')}
               value={settings.jumuahReminderEnabled}
               onValueChange={(v) => update({ jumuahReminderEnabled: v })}
             />
-          </Section>
-          </AnimatedListItem>
-
-          <AnimatedListItem index={15}>
-          <Section label={t('settings.sunnah.title')} icon="moon-outline">
             {(
               [
                 { key: 'duha', enabledKey: 'sunnahDuhaEnabled' },
@@ -1164,11 +1181,6 @@ export default function SettingsScreen() {
                 onValueChange={(v) => update({ [row.enabledKey]: v })}
               />
             ))}
-          </Section>
-          </AnimatedListItem>
-
-          <AnimatedListItem index={16}>
-          <Section label={t('settings.weeklySummary.title')} icon="stats-chart-outline">
             <SwitchRow
               label={t('settings.weeklySummary.enable')}
               hint={t('settings.weeklySummary.hint')}
@@ -1178,11 +1190,6 @@ export default function SettingsScreen() {
                 rescheduleWeeklySummary(v, settings.language).catch(() => {});
               }}
             />
-          </Section>
-          </AnimatedListItem>
-
-          <AnimatedListItem index={17}>
-          <Section label={t('settings.udhiyah.title')} icon="gift-outline">
             <SwitchRow
               label={t('settings.udhiyah.enable')}
               hint={t('settings.udhiyah.hint')}

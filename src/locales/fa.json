@@ -11,7 +11,7 @@
     "mosques": "مساجد",
     "learn": "آموزش خواندن قرآن",
     "quiz": "تمرین و آزمون",
-    "hifz": "حفظ قرآن",
+    "hifz": "تلاوت",
     "tasbih": "تسبیح",
     "guides": "نماز و عبادت",
     "wisdom": "حکمت‌ها",
@@ -38,7 +38,8 @@
     "journeys": "برنامه‌های روزانه",
     "search": "جستجو",
     "gettingStarted": "قدم‌های نخست",
-    "lernen": "Learn"
+    "lernen": "Learn",
+    "media": "رسانه"
   },
   "common": {
     "loading": "در حال بارگذاری…",
@@ -510,7 +511,9 @@
     "wrongListTitle": "نادرست پاسخ داده شده"
   },
   "hifz": {
-    "title": "حفظ قرآن",
+    "title": "تلاوت",
+    "recognitionNoteCta": "این تشخیص چقدر دقیق است؟",
+    "recognitionDisclaimer": "این تشخیص از یک مدل گفتاری کوچک استفاده می‌کند که روی دستگاه شما اجرا می‌شود. اشتباه می‌کند و نمی‌تواند جای یک معلم واقعی را بگیرد. برای بازخورد جدی و دقیقِ تلاوت، اپلیکیشن Tarteel را پیشنهاد می‌کنیم که از سیستمی مبتنی بر سرور استفاده می‌کند و به‌مراتب بهتر کار می‌کند.",
     "subtitle": "آیه به آیه: گوش کن، بپوشان، بگو، علامت بزن",
     "searchNoResults": "سوره‌ای برای «{query}» یافت نشد.",
     "memorized": "حفظ شده",
@@ -565,7 +568,7 @@
     "tapWordHint": "برای دیدن آنچه تشخیص داده شد، روی کلمه هایلایت‌شده ضربه بزنید",
     "gapTestCta": "حالت تمرین (بدون صدا)",
     "gapTest": {
-      "title": "آزمون حفظ",
+      "title": "آزمون تلاوت",
       "noKnownVerses": "هنوز هیچ آیه‌ای «حفظم» علامت‌گذاری نشده - ابتدا چند آیه حفظ کن، سپس می‌توانی اینجا بدون صدا خودت را بیازمایی.",
       "backCta": "بازگشت به سوره",
       "progressLabel": "آیه {current} از {total}",
@@ -636,12 +639,16 @@
   "settings": {
     "groups": {
       "prayer": "نماز و محاسبه",
-      "notifications": "اعلان‌ها و یادآوری‌ها",
+      "notifications": "اعلان‌ها",
+      "reminders": "یادآوری‌ها",
       "quran": "قرآن و تلاوت",
       "language": "زبان و نمایش",
       "learning": "یادگیری و تمرین",
       "data": "ذخیره‌سازی و داده‌ها",
       "about": "درباره و حقوقی"
+    },
+    "moreReminders": {
+      "title": "یادآوری‌های دیگر"
     },
     "location": "موقعیت",
     "current": "فعلی",
@@ -2234,7 +2241,7 @@
   "podcast": {
     "listenOnSpotify": "شنیدن در Spotify",
     "title": "Language of the Qur’an",
-    "subtitle": "Understand Arabic — in 15 episodes",
+    "subtitle": "Understand Arabic, episode by episode",
     "heroDesc": "The podcast: the grammar of the Qur’an, episode by episode.",
     "empty": "Coming soon.",
     "episodeLabel": "Episode",
@@ -2333,5 +2340,24 @@
     "settings": "تنظیمات",
     "speed": "سرعت",
     "renamePlaylist": "تغییر نام"
+  },
+  "media": {
+    "title": "رسانه",
+    "subtitle": "پادکست، ویدیوها و ریلز در یک جا."
+  },
+  "handouts": {
+    "title": "جزوه‌های آموزشی",
+    "subtitle": "جزوه‌های PDF گردآوری‌شده برای خواندن و دانلود.",
+    "empty": "به‌زودی.",
+    "pages": "صفحه",
+    "read": "خواندن",
+    "download": "دانلود",
+    "offline": "آفلاین",
+    "cancelDownload": "لغو دانلود",
+    "deleteDownload": "حذف دانلود",
+    "deleteDownloadConfirmTitle": "دانلود حذف شود؟",
+    "deleteDownloadConfirmBody": "فایل PDF از دستگاه شما حذف می‌شود.",
+    "openInBrowser": "باز کردن در مرورگر",
+    "viewerError": "بارگذاری PDF ممکن نشد."
   }
 }

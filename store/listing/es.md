@@ -30,7 +30,7 @@ CORÁN
 • Entrenador de hifz con verificación de recitación: tu grabación se revisa palabra por palabra (opcionalmente con un modelo de IA local — la grabación nunca sale de tu dispositivo)
 • Vista palabra por palabra con resaltado sincronizado durante la recitación
 • Código de colores de tayuid, transliteración, búsqueda de texto completo y notas personales por versículo
-• Colecciones de versículos por tema (6 temas) y planes de lectura temáticos (4 recorridos)
+• Colecciones de versículos por tema y planes de lectura temáticos
 
 APRENDER A LEER EL CORÁN
 Un curso completo de 42 lecciones te lleva paso a paso del alfabeto árabe a tus primeras suras:
@@ -49,24 +49,28 @@ SALATI IA
 SABER Y CORAZÓN
 • Estudio: 12 cursos con fuentes y 311 lecciones — Aqida, Tayuid, 40 hadices (Nawawi), Sira, Profetas, Compañeros y sabios, Ajlaq, Matrimonio y familia, gramática del Corán, árabe cotidiano, árabe de Medina (libros 1–4), dialectos árabes — con orden de cursos y dialectos totalmente personalizable
 • Prueba de nivel y de conocimientos, repaso espaciado, entrenamiento de puntos débiles, racha de aprendizaje y meta diaria
-• Práctica y Quiz: 14 modos con 177 preguntas, más repaso de errores para reforzar fallos
+• Práctica y Quiz: 14 modos, más repaso de errores para reforzar fallos
 • Resumen semanal como imagen para compartir: lecciones, racha y mejor puntuación de la semana
-• 22 insignias por hitos alcanzados
-• 13 colecciones de hadices con búsqueda en todas a la vez (árabe, inglés, turco)
+• Insignias por hitos alcanzados
+• Colecciones de hadices con búsqueda en todas a la vez (árabe, inglés, turco)
 • Radio del Corán: recitaciones 24/7
-• 99 Nombres de Allah con audio, 106 duas con indicación de la fuente
-• 11 guías prácticas con fotos: wudu, ghusl, la oración, el yanaza, hach y umra y más
-• Calculadoras de zakat y de herencia, 26 sabidurías documentadas, contador de tasbih
+• 99 Nombres de Allah con audio, duas con indicación de la fuente
+• Guías prácticas con fotos: wudu, ghusl, la oración, el yanaza, hach y umra y más
+• Calculadoras de zakat y de herencia, sabidurías documentadas, contador de tasbih
+
+PODCAST, VÍDEOS Y REELS
+• Podcast «La lengua del Corán»: árabe coránico episodio a episodio — en Spotify
+• Vídeos en YouTube, Reels en Instagram y PDF descargables
 
 TUS DATOS SON TUYOS
 Salati no tiene anuncios ni SDK de rastreo. No hay cuenta ni registro — tus datos se quedan en tu dispositivo. Tu ubicación solo se usa para los horarios de oración, la Qibla y la búsqueda cercana. El contenido principal funciona sin conexión.
 
-Salati está disponible por completo en 14 idiomas: español, alemán, inglés, turco, árabe, francés, indonesio, bengalí, persa, malayo, urdu, ruso, suajili y pastún — incluyendo compatibilidad RTL para árabe, urdu, persa y pastún.
+Salati está disponible por completo en 14 idiomas — incluyendo compatibilidad RTL para árabe, urdu, persa y pastún.
 
 ¿Preguntas o comentarios? info@menucloud-berlin.de
 Privacidad: https://www.salati.pro/datenschutz
 
-(3990/4000 Zeichen)
+(3984/4000 Zeichen)
 
 ## Keywords
 

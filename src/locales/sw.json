@@ -11,7 +11,7 @@
     "mosques": "Misikiti",
     "learn": "Jifunze Kusoma Qur'an",
     "quiz": "Mazoezi na Maswali",
-    "hifz": "Kuhifadhi",
+    "hifz": "Tilawa",
     "tasbih": "Tasbihi",
     "guides": "Sala na Ibada",
     "wisdom": "Hekima",
@@ -38,7 +38,8 @@
     "journeys": "Mipango ya Kila Siku",
     "search": "Tafuta",
     "gettingStarted": "Hatua za Kwanza",
-    "lernen": "Learn"
+    "lernen": "Learn",
+    "media": "Media"
   },
   "common": {
     "loading": "Inapakia…",
@@ -510,7 +511,9 @@
     "wrongListTitle": "Zilizojibiwa vibaya"
   },
   "hifz": {
-    "title": "Kuhifadhi",
+    "title": "Tilawa",
+    "recognitionNoteCta": "Utambuzi huu una uhakika kiasi gani?",
+    "recognitionDisclaimer": "Utambuzi huu hutumia modeli ndogo ya sauti inayofanya kazi kwenye kifaa chako. Hufanya makosa na hauwezi kuchukua nafasi ya mwalimu halisi. Kwa maoni ya kina na sahihi ya tilawa, tunapendekeza programu ya Tarteel, inayotumia mfumo wa seva na inayofanya kazi vizuri zaidi.",
     "subtitle": "Aya kwa aya: sikiliza, funika, sema, weka alama",
     "searchNoResults": "Hakuna sura iliyopatikana kwa \"{query}\".",
     "memorized": "imehifadhiwa",
@@ -565,7 +568,7 @@
     "tapWordHint": "Gusa neno lililoangaziwa kuona kilichotambuliwa",
     "gapTestCta": "Hali ya mazoezi (bila sauti)",
     "gapTest": {
-      "title": "Jaribio la Kuhifadhi",
+      "title": "Jaribio la Tilawa",
       "noKnownVerses": "Bado hakuna aya iliyowekwa alama \"Ninajua\" - hifadhi aya chache kwanza, kisha unaweza kujijaribu hapa bila sauti.",
       "backCta": "Rudi kwenye Sura",
       "progressLabel": "Aya {current} kati ya {total}",
@@ -636,12 +639,16 @@
   "settings": {
     "groups": {
       "prayer": "Sala na Hesabu",
-      "notifications": "Arifa na Vikumbusho",
+      "notifications": "Arifa",
+      "reminders": "Vikumbusho",
       "quran": "Quran na Kisomo",
       "language": "Lugha na Onyesho",
       "learning": "Kujifunza na Mazoezi",
       "data": "Hifadhi na Data",
       "about": "Kuhusu na Kisheria"
+    },
+    "moreReminders": {
+      "title": "Vikumbusho vingine"
     },
     "location": "Eneo",
     "current": "Sasa",
@@ -2234,7 +2241,7 @@
   "podcast": {
     "listenOnSpotify": "Sikiliza kwenye Spotify",
     "title": "Language of the Qur’an",
-    "subtitle": "Understand Arabic — in 15 episodes",
+    "subtitle": "Understand Arabic, episode by episode",
     "heroDesc": "The podcast: the grammar of the Qur’an, episode by episode.",
     "empty": "Coming soon.",
     "episodeLabel": "Episode",
@@ -2333,5 +2340,24 @@
     "settings": "Mipangilio",
     "speed": "Kasi",
     "renamePlaylist": "Badilisha jina"
+  },
+  "media": {
+    "title": "Media",
+    "subtitle": "Podikasti, video na reels mahali pamoja."
+  },
+  "handouts": {
+    "title": "Nyenzo za Kujifunza",
+    "subtitle": "Nyenzo za kujifunza za PDF za kusoma na kupakua.",
+    "empty": "Inakuja hivi karibuni.",
+    "pages": "kurasa",
+    "read": "Soma",
+    "download": "Pakua",
+    "offline": "Nje ya mtandao",
+    "cancelDownload": "Ghairi upakuaji",
+    "deleteDownload": "Futa upakuaji",
+    "deleteDownloadConfirmTitle": "Futa upakuaji?",
+    "deleteDownloadConfirmBody": "PDF itaondolewa kwenye kifaa chako.",
+    "openInBrowser": "Fungua katika kivinjari",
+    "viewerError": "PDF haikuweza kupakiwa."
   }
 }

@@ -30,7 +30,7 @@ AL-QURAN
 • Jurulatih Hifz dengan semakan bacaan: rakaman anda disemak perkataan demi perkataan (secara pilihan dengan model AI pada peranti — rakaman tidak pernah meninggalkan peranti anda)
 • Paparan perkataan demi perkataan dengan sorotan segerak semasa bacaan
 • Kod warna Tajwid, transliterasi, carian teks penuh dan nota ayat peribadi
-• Koleksi ayat bertema (6 tema) dan pelan bacaan bertema (4 perjalanan) untuk renungan
+• Koleksi ayat bertema dan pelan bacaan bertema untuk renungan
 
 BELAJAR MEMBACA AL-QURAN
 Kursus lengkap dengan 42 pelajaran membimbing anda langkah demi langkah dari huruf Arab sehingga surah pertama anda:
@@ -49,24 +49,28 @@ SALATI AI
 ILMU & HATI
 • Pengajian: 12 kursus bersumber dengan 311 pelajaran — Akidah, Tajwid, 40 Hadis (Nawawi), Sirah, Para Nabi, Sahabat & Ulama, Akhlak, Perkahwinan & Keluarga, tatabahasa Al-Quran, bahasa Arab harian, bahasa Arab Madinah (buku 1–4), dialek Arab — susun semula kursus dan dialek sesuka hati
 • Ujian penempatan & pengetahuan, ulangan spaced-repetition, latihan kelemahan, rentetan pembelajaran & matlamat harian
-• Latihan & Kuiz: 14 mod dengan 177 soalan, serta ulangan kesilapan untuk mengulang perkara yang menyukarkan anda
+• Latihan & Kuiz: 14 mod, serta ulangan kesilapan untuk mengulang perkara yang menyukarkan anda
 • Rumusan mingguan sebagai imej boleh kongsi: pelajaran, rentetan dan skor terbaik minggu ini
-• 22 lencana bagi pencapaian tonggak
-• 13 koleksi hadis dengan carian merentas kesemuanya sekali gus (Arab, Inggeris, Turki)
+• Lencana bagi pencapaian tonggak
+• Koleksi hadis dengan carian merentas kesemuanya sekali gus (Arab, Inggeris, Turki)
 • Radio Al-Quran: strim bacaan 24/7
-• 99 Nama Allah dengan audio, 106 doa dengan rujukan sumber
-• 11 panduan amali dengan foto: Wuduk, Ghusl, solat, Jenazah, Haji & Umrah dan banyak lagi
-• Kalkulator Zakat dan pusaka, 26 hikmah bersumber, pengira Tasbih
+• 99 Nama Allah dengan audio, doa dengan rujukan sumber
+• Panduan amali dengan foto: Wuduk, Ghusl, solat, Jenazah, Haji & Umrah dan banyak lagi
+• Kalkulator Zakat dan pusaka, hikmah bersumber, pengira Tasbih
+
+PODCAST, VIDEO & REELS
+• Podcast „Bahasa Al-Quran": bahasa Arab Al-Quran episod demi episod (bahasa Jerman) — di Spotify
+• Video pembelajaran di YouTube, Reels di Instagram, dan PDF untuk dimuat turun
 
 DATA ANDA KEKAL MILIK ANDA
 Salati tanpa iklan dan tidak mengandungi SDK penjejakan. Tiada akaun dan tiada pendaftaran — data anda kekal pada peranti anda. Lokasi anda hanya digunakan untuk waktu solat, Kiblat dan carian berdekatan. Kandungan teras berfungsi luar talian.
 
-Salati tersedia sepenuhnya dalam 14 bahasa: Inggeris, Jerman, Turki, Arab, Sepanyol, Perancis, Indonesia, Bengali, Parsi, Melayu, Urdu, Rusia, Swahili dan Pashto — termasuk sokongan RTL untuk Arab, Urdu, Parsi dan Pashto.
+Salati tersedia sepenuhnya dalam 14 bahasa — termasuk sokongan RTL untuk Arab, Urdu, Parsi dan Pashto.
 
 Soalan atau maklum balas? info@menucloud-berlin.de
 Dasar privasi: https://www.salati.pro/datenschutz
 
-(3889/4000 Zeichen)
+(3915/4000 Zeichen)
 
 ## Keywords
 

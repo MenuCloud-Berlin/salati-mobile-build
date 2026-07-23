@@ -11,7 +11,7 @@
     "mosques": "Moscheen",
     "learn": "Koran lesen lernen",
     "quiz": "Üben & Quiz",
-    "hifz": "Auswendiglernen",
+    "hifz": "Rezitieren",
     "tasbih": "Tasbih",
     "guides": "Gebet & Praxis",
     "wisdom": "Weisheiten",
@@ -38,7 +38,8 @@
     "journeys": "Tages-Pläne",
     "search": "Suche",
     "gettingStarted": "Erste Schritte",
-    "lernen": "Lernen"
+    "lernen": "Lernen",
+    "media": "Medien"
   },
   "common": {
     "loading": "Wird geladen…",
@@ -510,7 +511,9 @@
     "wrongListTitle": "Falsch beantwortet"
   },
   "hifz": {
-    "title": "Auswendiglernen",
+    "title": "Rezitieren",
+    "recognitionNoteCta": "Wie zuverlässig ist die Erkennung?",
+    "recognitionDisclaimer": "Diese Erkennung nutzt ein kleines Sprachmodell direkt auf deinem Gerät. Es macht Fehler und kann einen echten Lehrer nicht ersetzen. Für ernsthaftes, präzises Rezitations-Feedback empfehlen wir die App Tarteel, die ein servergestütztes System nutzt und deutlich besser funktioniert.",
     "subtitle": "Vers für Vers: anhören, verdecken, aufsagen, abhaken",
     "searchNoResults": "Keine Sure gefunden für „{query}“.",
     "memorized": "gelernt",
@@ -565,7 +568,7 @@
     "tapWordHint": "Markiertes Wort antippen, um zu sehen, was erkannt wurde",
     "gapTestCta": "Testmodus (ohne Ton)",
     "gapTest": {
-      "title": "Auswendiglern-Test",
+      "title": "Rezitations-Test",
       "noKnownVerses": "Noch keine Verse als „Kann ich“ markiert - lerne zuerst ein paar Verse, dann kannst du sie hier ohne Ton abfragen.",
       "backCta": "Zurück zur Sure",
       "progressLabel": "Vers {current} von {total}",
@@ -646,12 +649,16 @@
   "settings": {
     "groups": {
       "prayer": "Gebet & Berechnung",
-      "notifications": "Benachrichtigungen & Erinnerungen",
+      "notifications": "Benachrichtigungen",
+      "reminders": "Erinnerungen",
       "quran": "Koran & Rezitation",
       "language": "Sprache & Anzeige",
       "learning": "Lernen & Üben",
       "data": "Speicher & Daten",
       "about": "Über & Rechtliches"
+    },
+    "moreReminders": {
+      "title": "Weitere Erinnerungen"
     },
     "location": "Standort",
     "current": "Aktuell",
@@ -2170,7 +2177,7 @@
   "podcast": {
     "listenOnSpotify": "Auf Spotify anhören",
     "title": "Sprache des Qur’an",
-    "subtitle": "Arabisch verstehen — in 15 Folgen",
+    "subtitle": "Arabisch verstehen, Folge für Folge",
     "heroDesc": "Der Podcast: die Grammatik des Qur’an, Folge für Folge zum Zuhören.",
     "empty": "Bald verfügbar.",
     "episodeLabel": "Folge",
@@ -2333,5 +2340,24 @@
     "settings": "Einstellungen",
     "speed": "Geschwindigkeit",
     "renamePlaylist": "Umbenennen"
+  },
+  "media": {
+    "title": "Medien",
+    "subtitle": "Podcast, Videos und Reels an einem Ort."
+  },
+  "handouts": {
+    "title": "Lernunterlagen",
+    "subtitle": "Gesammelte PDF-Unterlagen zum Lesen und Herunterladen.",
+    "empty": "Bald verfügbar.",
+    "pages": "Seiten",
+    "read": "Lesen",
+    "download": "Herunterladen",
+    "offline": "Offline",
+    "cancelDownload": "Download abbrechen",
+    "deleteDownload": "Download löschen",
+    "deleteDownloadConfirmTitle": "Download löschen?",
+    "deleteDownloadConfirmBody": "Die PDF wird von deinem Gerät entfernt.",
+    "openInBrowser": "Im Browser öffnen",
+    "viewerError": "PDF konnte nicht geladen werden."
   }
 }

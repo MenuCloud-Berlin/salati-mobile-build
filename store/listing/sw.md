@@ -30,7 +30,7 @@ QURANI
 • Mkufunzi wa Hifdhi mwenye ukaguzi wa tilawa: rekodi yako hukaguliwa neno kwa neno (kwa hiari kwa modeli ya AI kwenye kifaa — rekodi haiondoki kamwe kwenye kifaa chako)
 • Mwonekano wa neno kwa neno wenye kuangazia kwa wakati mmoja wakati wa tilawa
 • Msimbo wa rangi wa Tajwidi, unukuzi, utafutaji wa maandishi kamili na madokezo binafsi ya aya
-• Makusanyo ya aya kwa mada (mada 6) na mipango ya usomaji kwa mada (safari 4) kwa tafakari
+• Makusanyo ya aya kwa mada na mipango ya usomaji kwa mada kwa tafakari
 
 JIFUNZE KUSOMA QURANI
 Kozi kamili ya masomo 42 inakuongoza hatua kwa hatua kutoka alfabeti ya Kiarabu hadi Sura zako za kwanza:
@@ -49,24 +49,28 @@ SALATI AI
 ELIMU NA MOYO
 • Masomo: kozi 12 zenye vyanzo na masomo 311 — Akida, Tajwidi, Hadithi 40 (Nawawi), Sira, Mitume, Maswahaba na Wanavyuoni, Akhlaki, Ndoa na Familia, sarufi ya Qurani, Kiarabu cha kila siku, Kiarabu cha Madina (vitabu 1–4), lahaja za Kiarabu — panga upya kozi na lahaja upendavyo
 • Vipimo vya kiwango na maarifa, marudio ya nafasi, mazoezi ya udhaifu, mfululizo wa kujifunza na lengo la kila siku
-• Mazoezi na Jaribio: hali 14 zenye maswali 177, pamoja na marudio ya makosa kupitia yaliyokukwaza
+• Mazoezi na Jaribio: hali 14, pamoja na marudio ya makosa kupitia yaliyokukwaza
 • Muhtasari wa wiki kama picha ya kushirikiwa: masomo, mfululizo na alama bora za wiki
-• Beji 22 kwa hatua zilizofikiwa
-• Makusanyo 13 ya hadithi yenye utafutaji katika yote kwa pamoja (Kiarabu, Kiingereza, Kituruki)
+• Beji kwa hatua zilizofikiwa
+• Makusanyo ya hadithi yenye utafutaji katika yote kwa pamoja (Kiarabu, Kiingereza, Kituruki)
 • Redio ya Qurani: mitiririko ya tilawa 24/7
-• Majina 99 ya Allah yenye sauti, dua 106 zenye marejeleo ya vyanzo
-• Miongozo 11 ya vitendo yenye picha: Udhu, Ghusl, sala, Janaza, Hija na Umra na zaidi
-• Vikokotoo vya Zaka na urithi, hekima 26 zilizothibitishwa, kihesabu cha Tasbihi
+• Majina 99 ya Allah yenye sauti, dua zenye marejeleo ya vyanzo
+• Miongozo ya vitendo yenye picha: Udhu, Ghusl, sala, Janaza, Hija na Umra na zaidi
+• Vikokotoo vya Zaka na urithi, hekima zilizothibitishwa, kihesabu cha Tasbihi
+
+PODCAST, VIDEO NA REELS
+• Podikasti „Lugha ya Qurani": Kiarabu cha Qurani kipindi baada ya kipindi (Kijerumani) — Spotify
+• Video kwenye YouTube, Reels kwenye Instagram, na PDF za kupakua
 
 DATA YAKO INABAKI YAKO
 Salati haina matangazo na haina SDK za ufuatiliaji. Hakuna akaunti wala usajili — data yako inabaki kwenye kifaa chako. Eneo lako hutumika kwa nyakati za sala, Kibla na utafutaji wa karibu pekee. Maudhui ya msingi hufanya kazi nje ya mtandao.
 
-Salati inapatikana kikamilifu katika lugha 14: Kiingereza, Kijerumani, Kituruki, Kiarabu, Kihispania, Kifaransa, Kiindonesia, Kibengali, Kiajemi, Kimalei, Kiurdu, Kirusi, Kiswahili na Kipashto — ikijumuisha usaidizi wa RTL kwa Kiarabu, Kiurdu, Kiajemi na Kipashto.
+Salati inapatikana kikamilifu katika lugha 14 — ikijumuisha usaidizi wa RTL kwa Kiarabu, Kiurdu, Kiajemi na Kipashto.
 
 Maswali au maoni? info@menucloud-berlin.de
 Sera ya faragha: https://www.salati.pro/datenschutz
 
-(3984/4000 Zeichen)
+(3973/4000 Zeichen)
 
 ## Keywords
 
