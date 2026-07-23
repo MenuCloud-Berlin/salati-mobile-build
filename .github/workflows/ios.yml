@@ -33,16 +33,13 @@ jobs:
       - name: whisper.rn iOS-SDK-Fix (vtool, wie EAS-Post-Install-Hook)
         run: bash scripts/fix-whisper-rn-ios-sdk.sh || echo "Fix-Skript-Warnung ignoriert"
 
-      # Xcode 26 nötig: das generierte @bacons-'apple'-Package verlangt
-      # Swift-Tools 6.2 (Xcode 16.x hat nur 6.0/6.1). Xcode 26 erfüllt zugleich
-      # RN 0.86 (>= 16.1). Fallback-Kette auf verfügbare 26.x-Slots.
-      - name: Xcode-Version wählen (26.x für Swift-Tools 6.2)
+      # Xcode 16.1: Expo SDK 57 (expo-modules-jsi) kompiliert NICHT unter Xcode 26
+      # (Swift 6.2 lehnt `weak let` ab). Das generierte @bacons-'apple'-Package
+      # deklariert zwar swift-tools 6.2 — das patchen wir nach dem prebuild auf 6.0
+      # runter (s. nächster Schritt), damit Xcode 16.1 es auflösen kann.
+      - name: Xcode-Version wählen (16.1 — Expo SDK 57 kompatibel)
         run: |
-          ls /Applications | grep -i Xcode || true
-          sudo xcode-select -s /Applications/Xcode_26.0.app \
-            || sudo xcode-select -s /Applications/Xcode_26.1.app \
-            || sudo xcode-select -s /Applications/Xcode_26.2.app \
-            || sudo xcode-select -s /Applications/Xcode_16.4.app
+          sudo xcode-select -s /Applications/Xcode_16.1.app || sudo xcode-select -s /Applications/Xcode_16.4.app
           xcodebuild -version
 
       # Watch-App + Komplikation aus DIESEM Build ausschliessen: sie sind
@@ -56,6 +53,22 @@ jobs:
 
       - name: expo prebuild (iOS-Projekt generieren)
         run: npx expo prebuild -p ios --no-install
+
+      # Das generierte @bacons-'apple'-SPM-Package deklariert swift-tools 6.2
+      # (bräuchte Xcode 26, das Expo SDK 57 nicht kompiliert). Auf 6.0 runter-
+      # patchen — das simple generierte Manifest nutzt keine 6.1/6.2-only-APIs,
+      # so löst Xcode 16.1 es auf.
+      - name: 'apple'-Package swift-tools 6.2 -> 6.0 patchen
+        run: |
+          found=0
+          while IFS= read -r f; do
+            if head -1 "$f" | grep -q "swift-tools-version"; then
+              perl -i -pe 's/swift-tools-version:\s*6\.\d+/swift-tools-version:6.0/ if $. == 1' "$f"
+              echo "patched: $f -> $(head -1 "$f")"
+              found=1
+            fi
+          done < <(find ios targets . -maxdepth 4 -name "Package.swift" -not -path "*/node_modules/*" 2>/dev/null | sort -u)
+          [ "$found" = 1 ] || echo "keine Package.swift mit tools-version gefunden (evtl. anderer Pfad)"
 
       - name: CocoaPods installieren
         working-directory: ios
