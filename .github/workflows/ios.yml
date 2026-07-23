@@ -39,8 +39,14 @@ jobs:
           sudo xcode-select -s /Applications/Xcode_16.1.app || sudo xcode-select -s /Applications/Xcode_16.2.app || sudo xcode-select -s /Applications/Xcode.app
           xcodebuild -version
 
-      - name: watchOS-Plattform nachladen (Watch-Target braucht die Simulator-Runtime)
-        run: sudo xcodebuild -downloadPlatform watchOS || echo "watchOS-Download-Warnung ignoriert"
+      # Watch-App + Komplikation aus DIESEM Build ausschliessen: sie sind
+      # ungetestetes Geruest und ihr Asset-Catalog-Compile verlangt eine
+      # watchOS-Simulator-Runtime, die der Runner nicht hat (blockierte Lauf #4/#5).
+      # Wir entfernen die @bacons-Target-Configs VOR dem prebuild -> es werden nur
+      # die (getesteten) App- + Widget/LiveActivity-Targets generiert. Rein CI-lokal,
+      # der committete App-Code bleibt unveraendert.
+      - name: Watch-Targets aus diesem Build ausschliessen
+        run: rm -rf targets/salati-watch targets/salati-watch-complication && echo "Watch-Targets entfernt (nur fuer diesen CI-Build)"
 
       - name: expo prebuild (iOS-Projekt generieren)
         run: npx expo prebuild -p ios --no-install
@@ -96,8 +102,6 @@ jobs:
             <dict>
               <key>de.salatibox.de</key><string>Salati AppStore v3 2026-07-19</string>
               <key>de.salatibox.de.widget</key><string>Salati Widget AppStore v2 2026-07-19</string>
-              <key>de.salatibox.de.watch</key><string>Salati Watch AppStore 2026-07-19</string>
-              <key>de.salatibox.de.watch.clock</key><string>Salati Watch Clock AppStore v2 2026-07-19</string>
             </dict>
           </dict>
           </plist>
