@@ -30,16 +30,29 @@ jobs:
       - name: pnpm install (wendet whisper.rn-Patch an)
         run: pnpm install --no-frozen-lockfile
 
+      # Swift 6.2 (Xcode 26) lehnt `weak let` als Fehler ab ("weak must be a
+      # mutable variable"). Expo SDK 57s Swift-Code nutzt es an mehreren Stellen.
+      # `weak var` ist die semantisch korrekte Form (weak-Refs sind mutabel).
+      - name: Swift-6.2-Fix weak-let zu weak-var in Expo-Modulen
+        run: |
+          cnt=0
+          while IFS= read -r f; do
+            perl -i -pe 's/\bweak let /weak var /g' "$f"
+            cnt=$((cnt+1))
+          done < <(grep -rl "weak let " node_modules --include="*.swift" 2>/dev/null)
+          echo "weak-let->weak-var in $cnt Swift-Dateien gepatcht"
+
       - name: whisper.rn iOS-SDK-Fix (vtool, wie EAS-Post-Install-Hook)
         run: bash scripts/fix-whisper-rn-ios-sdk.sh || echo "Fix-Skript-Warnung ignoriert"
 
-      # Xcode 16.1: Expo SDK 57 (expo-modules-jsi) kompiliert NICHT unter Xcode 26
-      # (Swift 6.2 lehnt `weak let` ab). Das generierte @bacons-'apple'-Package
-      # deklariert zwar swift-tools 6.2 — das patchen wir nach dem prebuild auf 6.0
-      # runter (s. nächster Schritt), damit Xcode 16.1 es auflösen kann.
-      - name: Xcode-Version wählen (16.1 — Expo SDK 57 kompatibel)
+      # Xcode 26: Expo SDK 57s SPM-Pakete (expo-modules-jsi etc.) deklarieren
+      # swift-tools 6.2 und brauchen daher Xcode 26 zum Auflösen. Der Swift-6.2-
+      # Compilefehler in expo-modules-jsi (`weak let`) wird separat gepatcht.
+      - name: Xcode-Version wählen (26 — Expo SDK 57 SPM-Tools 6.2)
         run: |
-          sudo xcode-select -s /Applications/Xcode_16.1.app || sudo xcode-select -s /Applications/Xcode_16.4.app
+          sudo xcode-select -s /Applications/Xcode_26.0.app \
+            || sudo xcode-select -s /Applications/Xcode_26.1.app \
+            || sudo xcode-select -s /Applications/Xcode_26.2.app
           xcodebuild -version
 
       # Watch-App + Komplikation aus DIESEM Build ausschliessen: sie sind
@@ -57,23 +70,6 @@ jobs:
       - name: CocoaPods installieren
         working-directory: ios
         run: pod install --repo-update
-
-      # Das @bacons-'apple'-SPM-Package deklariert swift-tools 6.2 (bräuchte
-      # Xcode 26, unter dem Expo SDK 57 nicht kompiliert). NACH pod install im
-      # GANZEN Baum (inkl. node_modules/Pods) suchen und auf 6.0 runterpatchen.
-      - name: apple-Package swift-tools auf 6.0 patchen (nach pod install)
-        run: |
-          echo "--- Package.swift mit tools 6.1/6.2 (ganzer Baum): ---"
-          grep -rlE "swift-tools-version[: ]*6\.[12]" --include="Package.swift" . 2>/dev/null | tee /tmp/pkgs.txt || true
-          echo "--- ALLE Package.swift (Debug, erste 40): ---"
-          find . -name "Package.swift" 2>/dev/null | head -40 | while read x; do echo "$x : $(head -1 "$x" 2>/dev/null)"; done
-          echo "--- Patch ---"
-          while IFS= read -r f; do
-            [ -n "$f" ] || continue
-            perl -i -pe 's/swift-tools-version:\s*[0-9]+\.[0-9]+/swift-tools-version:6.0/ if $. == 1' "$f"
-            echo "patched: $f -> $(head -1 "$f")"
-          done < /tmp/pkgs.txt
-          [ -s /tmp/pkgs.txt ] || echo "keine mit 6.1/6.2 gefunden (evtl. erst zur xcodebuild-Resolve-Zeit erzeugt)"
 
       - name: Signing einrichten (Keychain + Zertifikat + Profile)
         env:
