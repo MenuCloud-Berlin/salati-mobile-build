@@ -54,28 +54,26 @@ jobs:
       - name: expo prebuild (iOS-Projekt generieren)
         run: npx expo prebuild -p ios --no-install
 
-      # Das generierte @bacons-'apple'-SPM-Package deklariert swift-tools 6.2
-      # (bräuchte Xcode 26, das Expo SDK 57 nicht kompiliert). Auf 6.0 runter-
-      # patchen — das simple generierte Manifest nutzt keine 6.1/6.2-only-APIs,
-      # so löst Xcode 16.1 es auf.
-      - name: apple-Package swift-tools 6.2 auf 6.0 patchen
-        run: |
-          echo "--- Alle Package.swift im Baum (Debug): ---"
-          find . -name "Package.swift" -not -path "./node_modules/*" -not -path "./ios/Pods/*" 2>/dev/null | while read x; do echo "$x : $(head -1 "$x")"; done
-          echo "--- Patch ---"
-          found=0
-          while IFS= read -r f; do
-            if head -1 "$f" | grep -q "swift-tools-version"; then
-              perl -i -pe 's/swift-tools-version:\s*[0-9]+\.[0-9]+/swift-tools-version:6.0/ if $. == 1' "$f"
-              echo "patched: $f -> $(head -1 "$f")"
-              found=1
-            fi
-          done < <(find . -name "Package.swift" -not -path "./node_modules/*" -not -path "./ios/Pods/*" 2>/dev/null | sort -u)
-          [ "$found" = 1 ] || echo "keine Package.swift mit tools-version gefunden"
-
       - name: CocoaPods installieren
         working-directory: ios
         run: pod install --repo-update
+
+      # Das @bacons-'apple'-SPM-Package deklariert swift-tools 6.2 (bräuchte
+      # Xcode 26, unter dem Expo SDK 57 nicht kompiliert). NACH pod install im
+      # GANZEN Baum (inkl. node_modules/Pods) suchen und auf 6.0 runterpatchen.
+      - name: apple-Package swift-tools auf 6.0 patchen (nach pod install)
+        run: |
+          echo "--- Package.swift mit tools 6.1/6.2 (ganzer Baum): ---"
+          grep -rlE "swift-tools-version[: ]*6\.[12]" --include="Package.swift" . 2>/dev/null | tee /tmp/pkgs.txt || true
+          echo "--- ALLE Package.swift (Debug, erste 40): ---"
+          find . -name "Package.swift" 2>/dev/null | head -40 | while read x; do echo "$x : $(head -1 "$x" 2>/dev/null)"; done
+          echo "--- Patch ---"
+          while IFS= read -r f; do
+            [ -n "$f" ] || continue
+            perl -i -pe 's/swift-tools-version:\s*[0-9]+\.[0-9]+/swift-tools-version:6.0/ if $. == 1' "$f"
+            echo "patched: $f -> $(head -1 "$f")"
+          done < /tmp/pkgs.txt
+          [ -s /tmp/pkgs.txt ] || echo "keine mit 6.1/6.2 gefunden (evtl. erst zur xcodebuild-Resolve-Zeit erzeugt)"
 
       - name: Signing einrichten (Keychain + Zertifikat + Profile)
         env:
